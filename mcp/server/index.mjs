@@ -29392,7 +29392,7 @@ var KiCADMcpServer = class {
     if (!existsSync3(this.kicadScriptPath)) {
       errors.push(`KiCAD interface script not found: ${this.kicadScriptPath}`);
     }
-    const distPath = join3(dirname(dirname(this.kicadScriptPath)), "dist", "index.js");
+    const distPath = join3(dirname(dirname(this.kicadScriptPath)), "server", "index.mjs");
     if (!existsSync3(distPath)) {
       errors.push("Project not built. Run: npm run build");
     }
