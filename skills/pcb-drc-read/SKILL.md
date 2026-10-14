@@ -1,6 +1,6 @@
 ---
 name: pcb-drc-read
-description: 读 KiCad DRC 报告的正确口径：铜级 8 类硬项须 0、丝印/库级容忍、未知类 fail-closed 拦链。chain 的 DRC 步就是这个分类法；手工复核也用它。
+description: 读 KiCad DRC 报告的正确口径：铜级 9 类硬项须 0、丝印/库级容忍、未知类 fail-closed 拦链。chain 的 DRC 步就是这个分类法；手工复核也用它。
 ---
 
 # DRC 报告解读
@@ -25,8 +25,9 @@ kicad-cli pcb drc --refill-zones --save-board \
 
 **铜级硬项（须 0，一条都不容）**——`shorting` `clearance`
 `solder_mask_bridge` `hole_clearance` `hole_to_hole` `track_width`
-`via_dangling` `unconnected`。这些是电气/制造硬伤：短路、间距不足、
-阻焊桥、孔距、线宽、悬空过孔、没连上。
+`via_dangling` `unconnected` `copper_edge_clearance`。这些是电气/制造
+硬伤：短路、间距不足、阻焊桥、孔距、线宽、悬空过孔、没连上、
+铜距板边不足（铣边伤铜；2026-10-14 归类，此前以未知类拦下）。
 
 **容忍项（如实报数、不挡链）**——丝印类（`silk_overlap`
 `silk_over_copper` `silk_edge_clearance` `silkscreen` `silk`）、

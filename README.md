@@ -53,7 +53,7 @@
 | `pcb-place` / `pcb-route` | 单独重跑放置 / 布线（换 seed、调阶梯、看真数） |
 | `pcb-route-session` | 剩余死网手术：candidates/blockers/单网重布/快照回滚 |
 | `pcb-intent-spec` | 写放置意图前检查清单 + 交付验收对照 |
-| `pcb-drc-read` | DRC 报告口径（铜级 8 类 / 容忍项 / fail-closed） |
+| `pcb-drc-read` | DRC 报告口径（铜级 9 类 / 容忍项 / fail-closed） |
 | `pcb-silk-tidy` | 丝印清理五条方法学（美观项，不挡验收） |
 | `pcb-fab-export` | Gerber + 钻孔 + 贴片坐标导出打包 |
 

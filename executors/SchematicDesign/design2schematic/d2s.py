@@ -295,7 +295,8 @@ def cmd_board(args) -> int:
 
 # DRC 铜级门禁：电气/铜制造硬项，须 0（与 realboard 验收标准一致：0 未布通 + 0 铜级）。
 _DRC_COPPER = {"shorting", "clearance", "solder_mask_bridge", "hole_clearance",
-               "hole_to_hole", "track_width", "via_dangling", "unconnected"}
+               "hole_to_hole", "track_width", "via_dangling", "unconnected",
+               "copper_edge_clearance"}  # 铜距板边（2026-10-14 归类：铣边伤铜=制造硬伤）
 # 容忍项（footprint 原生/注释级，如实报数不挡链）：丝印四类（含压板边）、
 # 库副本警告、庭院/文本。
 _DRC_TOLERATED = {"silk_overlap", "silk_over_copper", "silkscreen", "silk",
@@ -402,10 +403,15 @@ def cmd_chain(args) -> int:
         # ModuleNotFoundError: place_rl / kicad_access）
         if run_place:
             cur["step"] = "place"
-            r = _run([RL_PY, "-m", "place_rl.cli", "place", sch, base,
-                      "--out", placed, "--model", "policy_rl.pt", "--grid-mm", "1.27",
-                      "--xy-std", "0.08", "--legalize-iters", "200", "--lam-net", "0.1",
-                      "--seed", str(args.seed)], cwd=PLACEMENT_RL, env=RL_ENV,
+            # 意图 spec 透传（P2 验收 C-1：此前 chain 无 intent 入口，spec 被静默丢弃）。
+            # place 子进程 cwd=PLACEMENT_RL，相对路径会指错位置 → 绝对路径化。
+            place_cmd = [RL_PY, "-m", "place_rl.cli", "place", sch, base,
+                         "--out", placed, "--model", "policy_rl.pt", "--grid-mm", "1.27",
+                         "--xy-std", "0.08", "--legalize-iters", "200", "--lam-net", "0.1",
+                         "--seed", str(args.seed)]
+            if args.intent_file:
+                place_cmd += ["--intent-file", os.path.abspath(args.intent_file)]
+            r = _run(place_cmd, cwd=PLACEMENT_RL, env=RL_ENV,
                      log_prefix="[chain/place] ")
             if step("place", r["returncode"] == 0 and os.path.exists(placed),
                     **merge_step_payload(r)):
@@ -546,6 +552,8 @@ def main() -> int:
     p.add_argument("--clearances", default="205,215,225,235,245",
                    help="µm 阶梯（route_rl 甜点 235 已双板验证）")
     p.add_argument("--mp", type=int, default=60)
+    p.add_argument("--intent-file", default=None,
+                   help="放置意图 spec JSON（透传 place 步；格式见 docs/输入格式说明 §二）")
     p.add_argument("--full-pads", default=None, help="铺铜实连焊盘 ref（默认取设计表 board.full_pads）")
     p.add_argument("--step-from", default="sch",
                    choices=["sch", "board", "place", "route", "drc"],

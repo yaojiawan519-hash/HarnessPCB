@@ -28,6 +28,10 @@ intent.json 格式见 `docs/输入格式说明.md` §二（items/power_cluster
 - [ ] **A6 热源与热敏件**：功率器件意向、散热铜皮；小功率板写「无」。
 - [ ] **A7 已知工艺量**：层数/参考平面/最小线宽线距——布线 clearance
   阶梯起点档的依据。
+- [ ] **A8 pad_clear ≥ 板边铜距约束**：`pad_clear_mm` 必须 ≥ 板设置的
+  copper-edge clearance（KiCad 默认 0.5mm）+ 裕量，否则贴边连接器焊盘
+  直接触发 `copper_edge_clearance` 铜级硬项拦链（学费：demo 意图初版
+  0.3mm < 0.5 板规，place 忠实执行、DRC 如实拦下——错在 spec 不在引擎）。
 
 ## B. 交付验收时逐条对数
 

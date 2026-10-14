@@ -33,7 +33,7 @@ cd <包根>/executors/Placement
 
 1. 日志尾 `score [A,B,C]`：A=铜级违例、B=未布通、C=其他；`[0,0,x]` 达标。
 2. **选定板从 `<route目录>/result.json` 的 `final` 字段重读**（不是猜文件名；
-   final 是相对 `executors/Placement` 的路径）。
+   final 实测为绝对路径——但别依赖这一点，重读 JSON 即可）。
 3. 布线达标 ≠ 完工：铜级终判在铺铜后 DRC（pcb-chain / pcb-drc-read）。
 
 ## 铁律

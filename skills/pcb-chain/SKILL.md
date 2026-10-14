@@ -28,10 +28,15 @@ python3 <包根>/executors/SchematicDesign/design2schematic/d2s.py chain \
 ```
 
 - `--clearances` µm 阶梯：布线步逐档试，全通即停（阶梯是双板验证过的甜点带）。
+- `--intent-file <spec.json>`：放置意图透传给 place 步（可选；格式见
+  `docs/输入格式说明.md` §二，范例 `demo/demo_blinker_intent.json`）。
+  也可手动分步：`plr place --intent-file` 单跑 + `--step-from route` 续跑。
 - `--full-pads R1,J1`：指定铺铜实连焊盘（默认取设计表 `board.full_pads`）。
 - 重入：`--step-from {sch,board,place,route,drc}` 复用既有产物从某步续跑；
   `--step-from sch` 默认开新版本号 vN+1，其余默认复用最新。
 - 跑完读 `chain.log` + `<项目>_vN_chain_report.json`（各步指标与产物路径）。
+- log 开头可能出现一条 `[srv] [ERROR] ... wx assert`——是 MCP server 启动
+  噪声，无害（紧接 READY 即正常），不是链失败。
 
 ## 验证方法（三查）
 

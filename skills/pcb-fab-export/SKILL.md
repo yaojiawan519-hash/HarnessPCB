@@ -47,7 +47,9 @@ cd $F/gerbers && zip -j ../fab_gerbers.zip * && cd ..
 ## 验证
 
 - 导出日志每层一条「繪製到/Plotting」无报错；`ls` 数齐 9 gerber + drl。
-- pos.csv 行数 = 正面贴片器件数（DRC 后板上的 SMD 计数）。
+- pos.csv 行数 = **正面全部封装数**（`--side front` 导出含 THT 与安装孔，
+  不只 SMD；demo 板实测 23 行 = 16 SMD + THT 连接器 + 安装孔——纯 SMT
+  产线口径看 Type 列自行过滤）。
 - 投厂前最后再跑一次 DRC（pcb-drc-read 口径，铜级 0）确认导的是
   通过版。
 
