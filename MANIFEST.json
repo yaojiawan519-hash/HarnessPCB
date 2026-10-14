@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-14 21:14:11",
+ "generated_at": "2026-10-14 21:48:42",
  "studio": "PCBStudioV2",
  "studio_rev": "",
  "n_files": 100,
@@ -450,9 +450,9 @@
    "bytes": 8915
   },
   "SchematicDesign/design2schematic/d2s.py": {
-   "sha256": "1f222a4fc1de3f6334fe2e2dc738ce3d6b2de1527c4c1c0264ad6e0708595384",
+   "sha256": "14bdcba74d434c97479836a5d0f59848b7efadd20d8d086ae40169fd3685f5ad",
    "source": "SchematicDesign/design2schematic/d2s.py",
-   "bytes": 27081
+   "bytes": 27143
   },
   "SchematicDesign/design2schematic/lib/__init__.py": {
    "sha256": "e7e12257565a765209075f73d9bbdf22afbfcf50de14efe0e7b474c23f9c0c8d",

@@ -33,6 +33,11 @@ REPO = HERE.parent                       # 发行仓根
 EXECUTORS = REPO / "executors"
 MANIFEST = REPO / "MANIFEST.json"
 
+# FLAG_FREEZE 参数快照（发行包计划 §6.2：同步时生成、带源文件 sha256 戳）。
+# Skills/文档「引用不复制」——推荐命令行的唯一权威源即此快照；手抄参数=漂移源。
+FLAG_FREEZE_SRC_REL = "KiCAD_Access/eval_out/FLAG_FREEZE.md"
+FLAG_FREEZE_SNAPSHOT = REPO / "docs" / "参数快照_FLAG_FREEZE.md"
+
 # 全局跳过（结构上排除：RL 权重/过程产物/缓存，§6.1）
 SKIP_NAMES = {"__pycache__", ".venv", ".git", ".DS_Store", ".pytest_cache"}
 SKIP_SUFFIXES = (".pyc", ".lck", ".pt", ".npz")
@@ -102,7 +107,35 @@ def collect_files(studio: Path, includes: list[str], excludes: list[str]) -> dic
     return out
 
 
-def check(files: dict[str, Path]) -> int:
+def build_freeze_snapshot(studio: Path, git_rev: str) -> str:
+    """FLAG_FREEZE.md → 发行仓快照文本（头部戳 + 正文 verbatim，不含墙钟时间，
+    保证 --check 的确定性：只有源文件或工作台 rev 变了快照才变）。"""
+    src = studio / FLAG_FREEZE_SRC_REL
+    if not src.is_file():
+        raise SystemExit(f"FLAG_FREEZE 源不存在：{src}")
+    digest = sha256(src)
+    body = src.read_text(encoding="utf-8")
+    header = (
+        f"> 参数快照（生成物，勿手改——由 tools/pack_from_studio.py --sync 重生成）\n"
+        f"> 源：{FLAG_FREEZE_SRC_REL}（sha256 {digest[:16]}…）\n"
+        f"> 工作台 rev：{git_rev or '未知'} · 快照义务见发行包计划 §6.2\n"
+        f"> Skills/文档引用推荐参数一律指向本文件，不抄副本。\n\n"
+    )
+    return header + body
+
+
+def write_freeze_snapshot(studio: Path, git_rev: str) -> bool:
+    """写 docs/参数快照_FLAG_FREEZE.md；返回内容是否有变化。"""
+    FLAG_FREEZE_SNAPSHOT.parent.mkdir(parents=True, exist_ok=True)
+    text = build_freeze_snapshot(studio, git_rev)
+    changed = (not FLAG_FREEZE_SNAPSHOT.exists()
+               or FLAG_FREEZE_SNAPSHOT.read_text(encoding="utf-8") != text)
+    if changed:
+        FLAG_FREEZE_SNAPSHOT.write_text(text, encoding="utf-8")
+    return changed
+
+
+def check(files: dict[str, Path], studio: Path, git_rev: str) -> int:
     """对比 executors/ 现状与应收集合；返回差异数。"""
     diffs = 0
     have = {p.relative_to(EXECUTORS).as_posix(): p
@@ -118,6 +151,15 @@ def check(files: dict[str, Path]) -> int:
             diffs += 1
     for rel in sorted(set(have) - set(files)):
         print(f"  多余  {rel}")
+        diffs += 1
+
+    # FLAG_FREEZE 快照同样纳入三态校验
+    want = build_freeze_snapshot(studio, git_rev)
+    if not FLAG_FREEZE_SNAPSHOT.exists():
+        print(f"  缺失  docs/{FLAG_FREEZE_SNAPSHOT.name}")
+        diffs += 1
+    elif FLAG_FREEZE_SNAPSHOT.read_text(encoding="utf-8") != want:
+        print(f"  变动  docs/{FLAG_FREEZE_SNAPSHOT.name}")
         diffs += 1
 
     print(f"应收 {len(files)} 文件，差异 {diffs}"
@@ -155,8 +197,11 @@ def sync(files: dict[str, Path], studio: Path) -> None:
         "files": entries,
     }
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n")
+    changed = write_freeze_snapshot(studio, git_rev)
     print(f"已同步 {len(entries)} 文件 → {EXECUTORS}")
     print(f"MANIFEST → {MANIFEST}")
+    print(f"FLAG_FREEZE 快照 → {FLAG_FREEZE_SNAPSHOT}"
+          + ("（已更新）" if changed else "（未变）"))
 
 
 def main() -> None:
@@ -176,9 +221,15 @@ def main() -> None:
 
     includes, excludes = parse_allowlist(HERE / "allowlist.txt")
     files = collect_files(studio, includes, excludes)
+    try:
+        git_rev = subprocess.run(
+            ["git", "-C", str(studio), "rev-parse", "--short", "HEAD"],
+            capture_output=True, text=True, timeout=15).stdout.strip()
+    except (OSError, subprocess.TimeoutExpired):
+        git_rev = ""
 
     if args.check:
-        n = check(files)
+        n = check(files, studio, git_rev)
         sys.exit(1 if n else 0)
     sync(files, studio)
 

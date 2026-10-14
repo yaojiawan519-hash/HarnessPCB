@@ -1,0 +1,11 @@
+{
+  "protrude_mm": 1.0,
+  "pad_clear_mm": 0.3,
+  "min_gap_mm": 0.25,
+  "obstacle_band_mm": 12.0,
+  "items": {
+    "J1": {"edge": "left", "along": 0.5},
+    "J2": {"edge": "right", "along": 0.5}
+  },
+  "power_cluster": {"anchor": "J1", "depth_mm": 15.0, "margin_mm": 6.0, "gap_mm": 1.0}
+}
