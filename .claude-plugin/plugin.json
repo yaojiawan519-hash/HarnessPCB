@@ -1,0 +1,18 @@
+{
+  "name": "harnesspcb",
+  "displayName": "HarnessPCB",
+  "version": "0.1.0",
+  "description": "在 Claude Code 里设计 PCB：设计表 + 三段意图 → 原理图 → 放置 → 布线 → 铺铜 → DRC → 可送厂 Gerber，一条链跑完。",
+  "author": {
+    "name": "HarnessPCB project"
+  },
+  "keywords": ["pcb", "kicad", "eda", "schematic", "routing", "fabrication"],
+  "userConfig": {
+    "kicad_ext": {
+      "type": "string",
+      "title": "KiCad app Contents 目录",
+      "description": "KiCad.app/Contents 的绝对路径（标准安装不用改）",
+      "default": "/Applications/KiCad/KiCad.app/Contents"
+    }
+  }
+}

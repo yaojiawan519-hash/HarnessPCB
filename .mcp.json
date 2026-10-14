@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "kicad": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/server/index.mjs"],
+      "env": {
+        "KICAD_PYTHON": "${user_config.kicad_ext}/Frameworks/Python.framework/Versions/Current/bin/python3",
+        "KICAD_CLI": "${user_config.kicad_ext}/MacOS/kicad-cli",
+        "KICAD10_SYMBOL_DIR": "${user_config.kicad_ext}/SharedSupport/symbols",
+        "KICAD10_FOOTPRINT_DIR": "${user_config.kicad_ext}/SharedSupport/footprints",
+        "LOG_LEVEL": "error"
+      }
+    }
+  }
+}

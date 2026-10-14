@@ -9,6 +9,9 @@ venv/
 # 本机
 .DS_Store
 
+# demo 全链输出（quickstart 产物，不入库）
+demo/out/
+
 # 环境与凭据（绝不入库）
 .env
 *.local.json

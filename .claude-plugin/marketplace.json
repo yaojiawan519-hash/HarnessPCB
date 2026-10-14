@@ -1,0 +1,14 @@
+{
+  "name": "harnesspcb",
+  "description": "HarnessPCB 单插件市场：在 Claude Code 里从设计表一路跑到可送厂 Gerber",
+  "owner": {
+    "name": "HarnessPCB project"
+  },
+  "plugins": [
+    {
+      "name": "harnesspcb",
+      "source": "./",
+      "description": "设计表 + 三段意图 → 原理图 → 放置 → 布线 → 铺铜 → DRC → Gerber 全链"
+    }
+  ]
+}
