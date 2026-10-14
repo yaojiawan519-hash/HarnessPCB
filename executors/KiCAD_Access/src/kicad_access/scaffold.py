@@ -47,7 +47,7 @@ board:
     power_plane: In2.Cu
   mount_holes: []             # [{size: 3.2, pos: [x, y]}]，四角定位孔
   fusion_band:
-    default: 1.5              # 区域融合带宽（by_class 可覆盖 power/ethercat 等）
+    default: 1.5              # 区域融合带宽（by_class 可按电源/接口等功能类覆盖）
 
 modules:                      # 至少一条；{sheet, placement: {anchor, edge|relative}, recipe?, refs?}
   - sheet: main               # 换成你的原理图 sheet 名（ingest 的层级 sheet）

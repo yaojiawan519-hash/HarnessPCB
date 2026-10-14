@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """design2schematic (d2s) — 设计表 → 原理图 → 板骨架 → RL 放置 → RL 布线 → 铺铜 → DRC 0。
 
-三个子命令（产物默认落 PCBStudioV2/KiCAD_Projects/<项目>/，规范命名 + 版本编号）：
+三个子命令（产物默认落 <工作区>/KiCAD_Projects/<项目>/，规范命名 + 版本编号；
+D2S_PROJECTS 可改指）：
   d2s sch   --design t.json            → <项目>_vN.kicad_sch / .net / .pdf（ERC 0 错误门禁）
   d2s board --sch S --design t.json    → <项目>_vN_base.kicad_pcb（板框/安装孔/锚点预放/stackup）
   d2s chain --design t.json            → …_placed.kicad_pcb → …_route/ → …_routed.kicad_pcb（DRC 0 终板）
@@ -36,7 +37,7 @@ PLACEMENT_RL = os.environ.get(
     "D2S_PLACEMENT_RL", os.path.normpath(os.path.join(HERE, "..", "..", "Placement"))
 )
 # KICAD_Projects 根（用户 2026-09-22/23 指令：项目文件按 <项目>/<项目>_v<N> 规范存放。
-# 统一用 PCBStudioV2 顶层既有的 KiCAD_Projects/，与 EtherCAT_CAN_Converter 等历史项目同处）
+# 统一用工作台顶层的 KiCAD_Projects/，与历史工程同处）
 PROJECTS_DIR = os.environ.get(
     "D2S_PROJECTS", os.path.normpath(os.path.join(HERE, "..", "..", "KiCAD_Projects"))
 )

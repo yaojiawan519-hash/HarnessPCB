@@ -42,10 +42,10 @@ class LegalizeConfig:
                                  # lam_decoup（默认，浮点路径逐位不变）；>0 时仅这类
                                  # 电容改用此系数——共享轨（多 IC 轨）电容仍走
                                  # lam_decoup，不受全局提系数的锚点翻转误伤
-                                 # （ecat C8/C10 ±8–12mm 实测）。
+                                 # （评估板 C8/C10 ±8–12mm 实测）。
     lam_block: float = 0.05      # 块内聚系数（分图语义化）：同功能块的「松散被动件」
                                  # 向其块锚点（IC + 固定连接器）收拢，把 5 个功能块分成
-                                 # 独立区域（power 聚到 J1/U2/U3、ethercat 聚到 J2/J3、
+                                 # 独立区域（power 聚到 J1/U2/U3、eth 聚到 J2/J3、
                                  # can 聚到 J6/J7/U4/U5），压过全局 HPWL 的「全拉最短」
                                  # 把整板挤成一团的倾向。只动 passive，不动大 IC（锚点）。
     lam_density: float = 0.03    # 密度扩散系数（0=关）：把可动件从密集区推向空旷区
@@ -53,7 +53,7 @@ class LegalizeConfig:
     density_max: float = 0.5     # 每轮密度推力上限 (mm)，防止撕裂关键网邻接
     lam_edge_ic: float = 0.0     # 原则①支撑 IC 贴边（0=关，默认关=A/B 隔离）：非主、
                                  # 非锚定可动 IC 向最近板边带弱吸引（只拉不推，已在带
-                                 # 内不受力；每轮上限 _EDGE_IC_CAP 防压过网吸引）。EtherCAT
+                                 # 内不受力；每轮上限 _EDGE_IC_CAP 防压过网吸引）。某评估板
                                  # U4/U6 类支撑 IC 基线距边 ~19mm 的对症项。
     lam_ic_spread: float = 0.0   # 原则⑥主芯片均匀（0=关）：可动 IC 两两 AABB 间隙低于
                                  # _IC_SPREAD_MARGIN 时沿体心连线软斥（只推开不拉近；
@@ -193,7 +193,7 @@ def _density_spread(problem: PlacementProblem, pos: dict, movable: list[str],
 
 
 # 原则①支撑 IC 贴边带参数：IC bbox 边到最近板边的目标距离（mm）与每轮吸引上限
-# （mm，再乘 step=0.1 阻尼）。EtherCAT U4/U5 基线距边 ~19mm → 带设 5mm 即在「主控
+# （mm，再乘 step=0.1 阻尼）。某评估板 U4/U5 基线距边 ~19mm → 带设 5mm 即在「主控
 # 引脚锚邻域」与「板边」之间留出整段梯度，弱力多轮拉过去。
 _EDGE_IC_BAND = 5.0
 _EDGE_IC_CAP = 10.0
@@ -274,7 +274,7 @@ def refine(
                 disp[r][0] += cfg.lam_pin * (a[0] - pos[r][0])
                 disp[r][1] += cfg.lam_pin * (a[1] - pos[r][1])
         # 块内聚（分图语义化）：只拉「松散被动件」向块的锚点（IC + 固定连接器）收拢，
-        # 把 power/ethercat/can/debug 的电容/二极管/电感/电阻留在各自功能区，而非被
+        # 把 power/eth/can/debug 的电容/二极管/电感/电阻留在各自功能区，而非被
         # HPWL 混进 MCU 团。两处关键：
         #  ① 只动 passive——大 IC（U1 MCU / U4/U5 隔离器 / U2/U3 电源 IC）是块的锚、
         #     整板布线的支点，绝不拖动（否则 U1 漂移 +2.5mm、U4 左移 9mm，12 条网
@@ -428,7 +428,7 @@ def _resolve_overlaps(problem, pos, movable, g, rng, fixed=None,
             # 通道前沿件（端子调理链）锚到**固定连接器**：锚点不依赖任何可动件，
             # 必须先于 IC 定格——否则 tier-0 主控在力松弛后蹲进通道走廊、合法保持
             # 原位，通道件轮到时近锚格全在 IC 身体里，被 pin_nearest 弹到 ~11mm 外
-            # （stm32_plc U1 压 J5 锚点带即此）。锚点几何序（先 y 后 x）扇出成列。
+            # （某 4 层评估板 U1 压 J5 锚点带即此）。锚点几何序（先 y 后 x）扇出成列。
             a = anchor_point(problem, pos, r)
             return (0, area, a[1] if a is not None else 1e9,
                     a[0] if a is not None else 1e9, r)

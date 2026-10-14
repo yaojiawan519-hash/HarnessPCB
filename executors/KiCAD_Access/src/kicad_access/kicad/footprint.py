@@ -3,7 +3,7 @@
 只读不改；给布局引擎（floorplan 非重叠 / recipe pad 几何 / 融合推挤）
 和写板层（raw 整块嵌入）提供几何。
 
-变换约定（2026-09-08 从 EtherCAT_CAN_60 板上 J5/PinHeader_1x03 θ=90 校准）：
+变换约定（2026-09-08 从一块评估板的 J5/PinHeader_1x03 θ=90 校准）：
 - 板文件 footprint 内 pad 坐标 = 库本地系原样（不随封装旋转预变换）；
 - 绝对位置 = 原点 + rot(本地, θ)，rot 为 y-down 系屏幕逆时针：
   x' = x·cosθ + y·sinθ, y' = −x·sinθ + y·cosθ；

@@ -1,13 +1,13 @@
 {
- "generated_at": "2026-10-14 22:12:53",
+ "generated_at": "2026-10-15 06:31:44",
  "studio": "PCBStudioV2",
  "studio_rev": "",
- "n_files": 100,
+ "n_files": 99,
  "files": {
   "KiCAD_Access/README.md": {
-   "sha256": "8af8561647b9d6cf88b62183c687a8a379dc6b6b2dbb0812947ca0b08c4110bd",
+   "sha256": "f74bb845b4b05f855c9a0f88d220cfee0741595acf5eedc6792b6c5afb568767",
    "source": "KiCAD_Access/README.md",
-   "bytes": 2231
+   "bytes": 2225
   },
   "KiCAD_Access/pyproject.toml": {
    "sha256": "f0b4eca7026c2c8a9f1d82f83f392ba69799babd7be275483e88ac41f9847cbc",
@@ -40,9 +40,9 @@
    "bytes": 1857
   },
   "KiCAD_Access/src/kicad_access/ingest/netbuild.py": {
-   "sha256": "ff676b80eeffe827823c0b128a592b66026e22106c0690f114bf195997b5f8f1",
+   "sha256": "494a8bcdbd842ee19ea797f5ada88b0dd3dad848ce75c64d45a111e43e8b391f",
    "source": "KiCAD_Access/src/kicad_access/ingest/netbuild.py",
-   "bytes": 11770
+   "bytes": 11758
   },
   "KiCAD_Access/src/kicad_access/ingest/report.py": {
    "sha256": "8761603f39fdf3813f73c4234b43d242054311078c214eb11282ac8388096b5c",
@@ -55,9 +55,9 @@
    "bytes": 108
   },
   "KiCAD_Access/src/kicad_access/kicad/footprint.py": {
-   "sha256": "ae91353a45d1d676b9621d4a964e21eb2a01b4e32259ce47a40b9b3683a88215",
+   "sha256": "0acf627d907d121d050825992667d3ea17a45d46fbca96e7c26e99b504177069",
    "source": "KiCAD_Access/src/kicad_access/kicad/footprint.py",
-   "bytes": 6129
+   "bytes": 6124
   },
   "KiCAD_Access/src/kicad_access/kicad/fplib.py": {
    "sha256": "db7564200195c76183528f2d9522290ab0d426370c95aec8ce90ae25f72dad94",
@@ -205,9 +205,9 @@
    "bytes": 27806
   },
   "KiCAD_Access/src/kicad_access/route/segment.py": {
-   "sha256": "2c54693d776eed7eb5bc39f219a8fe4843287da790e060186f5a91c4ecb24615",
+   "sha256": "5b3071328d496f6591fd1b5c4e8f642ed6521cca123a9d5dcf0f820d8bb3119f",
    "source": "KiCAD_Access/src/kicad_access/route/segment.py",
-   "bytes": 29759
+   "bytes": 29761
   },
   "KiCAD_Access/src/kicad_access/route/snap.py": {
    "sha256": "d5de960628f691778680a025af81c0bd80e7f2bddd7f7ee01ccb75d8fecedc09",
@@ -220,9 +220,9 @@
    "bytes": 4254
   },
   "KiCAD_Access/src/kicad_access/scaffold.py": {
-   "sha256": "f416748826f266ec352f1ef2a0e7faa6039ef5a2aac40d27078237c56861f41c",
+   "sha256": "71db9ee68e87352eb618e317f7dad73fb3bdede70fd9096c992456dbb64ed679",
    "source": "KiCAD_Access/src/kicad_access/scaffold.py",
-   "bytes": 6101
+   "bytes": 6110
   },
   "KiCAD_Access/src/kicad_access/spec.py": {
    "sha256": "bb0fd96381337ecee77245a3d89e8d5f6c9060afd55b8a2c5db1f77b7834e266",
@@ -280,9 +280,9 @@
    "bytes": 241
   },
   "Placement/src/place_rl/data/real.py": {
-   "sha256": "5e62556d9a2352215e050f44464eb86f895af32169b24b3818e22c5332a4304a",
+   "sha256": "2c7592be7020222dfd9518d96d8dfe3636151dad455a3e6df1571169bd2d374f",
    "source": "Placement/src/place_rl/data/real.py",
-   "bytes": 13966
+   "bytes": 13965
   },
   "Placement/src/place_rl/data/synthetic.py": {
    "sha256": "44ef37dc48c6b26ada98f1e5bd72fb3141a9943dbc712dda725eeac380d14fe4",
@@ -295,9 +295,9 @@
    "bytes": 255
   },
   "Placement/src/place_rl/env/problem.py": {
-   "sha256": "0dccfc00a1280156af27450d34df4279677a5c22d61e63d10b6eec0f9aed434f",
+   "sha256": "767a91912993a84c90e232090cf84ecd5d8829b73e6276df91af94cd30231d36",
    "source": "Placement/src/place_rl/env/problem.py",
-   "bytes": 47577
+   "bytes": 47585
   },
   "Placement/src/place_rl/eval.py": {
    "sha256": "a1ae244f855ec3e22f48a2ae252689a2fba225862148707990cf7ea42f9f0a92",
@@ -345,9 +345,9 @@
    "bytes": 16550
   },
   "Placement/src/place_rl/policy/legalize.py": {
-   "sha256": "ca855ac484f2c4401a41c83b53fb260aa91cc4c17154f1cef9cba87fa1242c26",
+   "sha256": "da332f62f2de136dd77dbb2669c7caea742e6e5212eeb611dc1f9831c5b51720",
    "source": "Placement/src/place_rl/policy/legalize.py",
-   "bytes": 32251
+   "bytes": 32263
   },
   "Placement/src/place_rl/policy/mask.py": {
    "sha256": "ee72001c47b7f7c535318a5de9b8e802feb8e60966f2342b37f8757ab03d5d69",
@@ -390,9 +390,9 @@
    "bytes": 541
   },
   "Placement/src/route_rl/__main__.py": {
-   "sha256": "f51b4b512f447281d9efe14e75b2a290483d71320db4848f967a139be72644a4",
+   "sha256": "ec6c539067471d56a1f98e28fe04d42b8c205c73a75d853b2c03da223a8dbbdd",
    "source": "Placement/src/route_rl/__main__.py",
-   "bytes": 2196
+   "bytes": 2150
   },
   "Placement/src/route_rl/dsn_edit.py": {
    "sha256": "89916f995bb11aa8c0a925ffb8e09be546b1f11457bbd04ec1a80fbe8d1a8227",
@@ -405,9 +405,9 @@
    "bytes": 7071
   },
   "Placement/src/route_rl/loop.py": {
-   "sha256": "0790eccd591281d28ba787fb7eab9e514dce2b521b28e34e4129124a1d8217d9",
+   "sha256": "9ac3d2c1672a14d7ee7e7c02a8080a64599b5be99c2504266a697d4facd9a1cf",
    "source": "Placement/src/route_rl/loop.py",
-   "bytes": 22635
+   "bytes": 22700
   },
   "Placement/src/route_rl/mdp.py": {
    "sha256": "91fa1f10f0f3656aa7f49443beac3efcc6734a673bf17e76a35bd52222130e6c",
@@ -420,9 +420,9 @@
    "bytes": 3108
   },
   "Placement/src/route_rl/planes.py": {
-   "sha256": "d3cf1f3fb4d21cee3c9d2bbb54b535cfe89504cdb78071e7fc3cb16fdb8c3964",
+   "sha256": "c51b218ff211eeb82690492b98a89b672974ae6c9f56375e3071103c939dd740",
    "source": "Placement/src/route_rl/planes.py",
-   "bytes": 4377
+   "bytes": 4376
   },
   "Placement/src/route_rl/records.py": {
    "sha256": "a14bec126f42e4fe439e1ab71435eed7ca68e8419daf351c386e39406318e909",
@@ -445,14 +445,14 @@
    "bytes": 157500
   },
   "SchematicDesign/design2schematic/README.md": {
-   "sha256": "fdca366a03754687e4a143a319a08e1c6c2fcf6ea0e8f17a9d97ac871416dd98",
+   "sha256": "300f8e63f0de3811b8a2d1094dcb24bbb35c541a7af5a4366c1c819beb69eca6",
    "source": "SchematicDesign/design2schematic/README.md",
-   "bytes": 8915
+   "bytes": 9043
   },
   "SchematicDesign/design2schematic/d2s.py": {
-   "sha256": "fa49bfc1f4cc9fdcc235dd4652a01a699b849d22fd6a6bfe919c0127507d2b07",
+   "sha256": "fb78ede5da35ef0830078d90ca258dbd7661194f6c5b1b6753236d90cf629958",
    "source": "SchematicDesign/design2schematic/d2s.py",
-   "bytes": 27783
+   "bytes": 27772
   },
   "SchematicDesign/design2schematic/lib/__init__.py": {
    "sha256": "e7e12257565a765209075f73d9bbdf22afbfcf50de14efe0e7b474c23f9c0c8d",
@@ -495,14 +495,9 @@
    "bytes": 11551
   },
   "SchematicDesign/design2schematic/scripts/pour_2layer.py": {
-   "sha256": "6f3746e57ea2b5d2b5c9050d739ed5eb56eda4d7df728c8c9e000cf2a168047f",
+   "sha256": "304d55ddbd20f5f3aacb57821859d80d950bbfd7fdf6516cde1417a0f55778d9",
    "source": "SchematicDesign/design2schematic/scripts/pour_2layer.py",
-   "bytes": 3419
-  },
-  "SchematicDesign/design2schematic/templates/usb2rs485.design.json": {
-   "sha256": "9c35834c308843d2a9d72064d2cd22b665af8e68fb3870f88de6a5b83c924495",
-   "source": "SchematicDesign/design2schematic/templates/usb2rs485.design.json",
-   "bytes": 9508
+   "bytes": 3418
   }
  }
 }

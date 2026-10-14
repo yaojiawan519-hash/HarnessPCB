@@ -5,7 +5,7 @@
 2. 每个平面层倒整板实心 zone（bbox 内缩 EDGE_INSET，FULL 连接）。
 3. refill 持久化后引擎 DRC 终验。
 
-移植自 eval_out/stm32_plc/merge_planes.py（该板已验证：117 条内层走线删除、
+移植自工作台 merge_planes.py（一块 4 层板已验证：117 条内层走线删除、
 GND 7193 / +3V3 8476 顶点、铜级 0）。pcbnew 经 KPY 子进程执行；
 无 wxApp 时 zone/net SWIG 调用会触发断言，须先建 wx.App。
 """

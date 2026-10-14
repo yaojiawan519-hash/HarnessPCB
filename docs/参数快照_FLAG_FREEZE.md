@@ -1,5 +1,5 @@
 > 参数快照（生成物，勿手改——由 tools/pack_from_studio.py --sync 重生成）
-> 源：KiCAD_Access/eval_out/FLAG_FREEZE.md（sha256 9bf3f220fbc99e01…）
+> 源：KiCAD_Access/eval_out/FLAG_FREEZE.md（sha256 506b5bbde074c6f8…）
 > 工作台 rev：未知 · 快照义务见发行包计划 §6.2
 > Skills/文档引用推荐参数一律指向本文件，不抄副本。
 
@@ -391,3 +391,23 @@ S 臂 47.7GB 爆内存追修（`--edge-slice-s 45` 墙钟切片，REPORT §十�
   与各自冻结值逐字节一致，零改动。
 - 顺带基线快照：今日全套 pytest **10F/228P/7S/12E**，与 10-11 存档
   基线 10F/223P/7S/12E 同型（漂移集一致，+5P 为其后的新增测试）。
+
+## 附录续（2026-10-15）：segment.py docstring 中性化（发行包 P4 数据剥离；行为 inert）
+
+P4 出包审计发现 segment.py 模块 docstring 首行携带工作台内部复盘指引
+（板名 + eval_out 相对路径）。发行包 executors/ 面不得携带工作台板名，
+故做一次**纯 docstring 文本替换**（动机句改「一块工业接口板的复盘，
+工作台 eval_out 归档 REPORT」），零代码逻辑改动。
+
+1. **构造性 inert + 实证**：命中在模块 docstring（永不执行；docstring
+   进 code object，marshal 恒等法不可用），改用真实 CLI 前后对照——
+   pic_programmer 语料板、COMMON+pic 冻结档（230µm/max-iter 15/…
+   /h-weight 1.0/budget-s 600，双跑同参数），产物 .kicad_pcb
+   `cmp` **逐字节一致**（33/33 网、119/119 盘 100%、segs=410、vias=45，
+   MD5 `1d5577545b936d811f56b61e04555f20` 两跑同值）。
+2. **镜像**：`Routing/route/segment.py` 同步补拷；`diff -rq -x
+   __pycache__` 两树全等。
+3. **MD5 重录**：两树均 **`3d2fbb09749785da33e300174ae7a1ad`**
+   （29761 B / 621 行），取代 2026-10-14 附录的 `c74bca10…`；其余
+   七文件（engine/astar/model/snap/freeroute/drc/actions）零触碰、
+   冻结值继续有效。

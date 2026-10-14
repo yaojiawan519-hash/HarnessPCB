@@ -258,7 +258,7 @@ def _is_power_input(value: str) -> bool:
 
     两个信号：显式电源标记（VBUS/VIN/VCC/VDD/BAT/PWR/POWER/SUPPLY），或
     「带电压数字 + IN」的电压输入（24V_IN → ["24V","IN"]）。信号连接器
-    （EtherCAT_0/JTAG/UART0/CAN_CAN1/MDIO）都不含这些，判定为 False。
+    （JTAG/UART0/CAN_CAN1/MDIO 这类协议信号网）都不含这些，判定为 False。
     """
     v = (value or "").upper()
     toks = [t for t in re.split(r"[^A-Z0-9]+", v) if t]
@@ -515,7 +515,7 @@ def power_cluster_passive_refs(problem: PlacementProblem) -> set[str]:
 #      MCU 侧、被隔离光耦挡住时，拓扑够不着，设计者的通道命名是唯一线索。
 # 再两道闸门（成员资格按顺序收紧）：
 #   3. **核心规模 ≥3 才是「链」**：BFS 核（拓扑可达的被动件）至少 3 块才算调理前沿
-#      ——1 块是孤立件：串联端接（J—R—IC，EtherCAT 的 R5-R8 只挂一个 {J,R} 网）、
+#      ——1 块是孤立件：串联端接（J—R—IC，R5-R8 这类只挂一个 {J,R} 网）、
 #      上拉（J—R—电源轨，R11）、CAN 端接（J—R—IC×2，R12/R13）；2 块是头旁 RC 对
 #      （R14+C37 同网即止）。这些归属在两侧中点，锚到端子会拉长另一侧（同
 #      pin_anchor_refs 的串联桥教训）。规模判据对观察者对称：差分总线的调理网络
@@ -596,7 +596,7 @@ def _compute_channel_members(problem: PlacementProblem) -> dict[str, str]:
                         seen.add(n2.name)
                         queue.append((n2.name, h + 1))
         # 「链」资格：BFS 核至少 3 块被动件；孤立件/RC 对归属中点，整体弃锚
-        # （EtherCAT 所有连接器邻域均止步于此层，canonical 放置零扰动）
+        # （评估板所有连接器邻域均止步于此层，canonical 放置零扰动）
         if len(found) < _CHANNEL_MIN_CORE:
             continue
         # 2) 命名：网名以 <端子value>_ 为前缀
@@ -685,7 +685,7 @@ def channel_anchor_point(problem: PlacementProblem,
 
 # —— LED 贴边带（原则②：LED 就近靠边）——
 # LED 是对外可见性器件：用户要求贴板边放（就近 + 靠边），而非默认被动件那样贴
-# 驱动 IC 引脚（= 板中央，EtherCAT D4 距边 20.9mm 的案例根因）。识别靠封装名
+# 驱动 IC 引脚（= 板中央，某评估板 D4 距边 20.9mm 的案例根因）。识别靠封装名
 # （value 常是 "RUN" 这类不含类名的串，LED 标记只在 fp_name 里）；同网 2-pin
 # 串联限流电阻随行（r1 交互搬位实测：只搬 LED 不搬 R，串联网拉长反布不通）。
 _LED_EDGE_BAND = 3.5  # 贴边带中心距板边（mm）；抄通道 _CHANNEL_EDGE_FLUSH=3.0 先例
@@ -855,7 +855,7 @@ def anchor_refs(problem: PlacementProblem) -> set[str]:
     ——一次把 33 颗去耦电容全锚到 IC 电源引脚（含 17 颗 MCU 电容，lam_pin=0.5 且跳过
     块内聚）会过度约束 MCU 区，把 U1 从固定以太网连接器 J2/J3 旁拽到板右侧（x≈55），
     使 ETH0_LED0_A/ETH1_TD_N/ETH1_RD_P 三条点对点网布不通（0→3 未连接）。这些电容在
-    「mcu/can/ethercat」块内靠块内聚已贴紧所属 IC；真正需要单独处理的是 board-only
+    「mcu/can」等功能块内靠块内聚已贴紧所属 IC；真正需要单独处理的是 board-only
     固定 DC-DC（U6/U7）的无归属电容，需更外科的规则（见下一步）。
 
     电源簇模式：problem.power_cluster 非空时并入簇成员（变换 IC + 非 C 电源件），

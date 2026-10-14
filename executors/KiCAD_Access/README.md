@@ -44,7 +44,7 @@ projects/<name>/
 ```
 
 `regions/` 放分区工作物、`build/` 放机器产物，二者永不混放。旧板仍平铺
-`projects/*.yaml`（`ethercat_can*.yaml` 三块），与目录式并存。
+`projects/*.yaml`（历史遗留若干块），与目录式并存。
 
 ```bash
 uv run kca new my_board          # → projects/my_board/

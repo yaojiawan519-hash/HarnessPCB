@@ -214,8 +214,9 @@ def compile_pass_dsn(board: Path, dst: Path, spec: PassSpec, stackup: Stackup,
 # --------------------------------------------------------------------------
 def _engine_src() -> Path:
     """权威引擎源码树（KiCAD_Access/src）。RRL_KICAD_ACCESS_SRC 可覆盖；
-    缺省工作区相对推导（本文件 → 上三级 = PCBStudioV2）。不能用 venv 里的
-    kicad_access——那是 9/17 冻结副本，没有 route/engine。
+    缺省工作区相对推导（本文件 → 上三级 = 工作区根；工作台与发行包
+    executors/ 布局同构）。不能用 venv 里的 kicad_access——工作台 venv
+    是 9/17 冻结副本，没有 route/engine。
     """
     p = os.environ.get("RRL_KICAD_ACCESS_SRC")
     src = (Path(p) if p else Path(__file__).resolve().parents[3]

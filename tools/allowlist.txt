@@ -11,7 +11,7 @@
 #
 # 判据（发行包计划 §6.1，2026-10-14 用户拍板「许多中间过程不需要」）：
 # 白名单自下而上从 Skills 调用面反推。本表 = P0 定版的最小面 —— 与同日
-# USB2RS485 v7 全链验收（d2s→place→route→pour→drc→gerber，铜级 0 / 未连 0）
+# 用户板 v7 全链验收（d2s→place→route→pour→drc→gerber，铜级 0 / 未连 0）
 # 实证跑通的调用面一致；P2 写 Skills 时按需增量补，宁小勿大。
 
 # ── d2s 原理图→板全链（SchematicDesign）──────────────────────────
@@ -22,7 +22,7 @@ SchematicDesign/design2schematic/mcp_client.py
 SchematicDesign/design2schematic/README.md
 SchematicDesign/design2schematic/lib/
 SchematicDesign/design2schematic/scripts/pour_2layer.py
-SchematicDesign/design2schematic/templates/usb2rs485.design.json
+# （设计表模板不随包：格式范例 = demo/demo_blinker.design.json，见 docs/输入格式说明.md）
 
 # ── 放置/布线执行器（Placement）──────────────────────────────────
 # chain 调用面：place_rl.cli place（含 --intent-file 意图 spec）+

@@ -3,7 +3,7 @@
 连通语义（对齐 KiCad sch）：
 - wire 自身链式连通（顶点两两 union）；
 - pin / 标签可落在 wire 顶点**或线段中点**（T 型结）——
-  M1-3 校准发现 ethercat 页 2 个 GND 标签正挂在线段中点；
+  M1-3 校准发现某页 2 个 GND 标签正挂在线段中点；
 - junction（实心圆点）让所有穿过该点的 wire 互连；
 - 无 junction 的交叉线不连通；
 - global label 与电源符号值跨页全局合并；local label 页内命名。
@@ -127,7 +127,7 @@ def build_ir(design: Design) -> DesignIR:
         # pin / 标签附着 + 浮动检测
         # KiCad 连接语义（M1-4 对 oracle 校准）：
         # - pin / 电源符号：只在 wire 端点或 junction 处相连。压线中段不算——
-        #   can 页 C36/1、C35/2 与 ethercat 页 J2/SH 均压中段无 junction，
+        #   某页 C36/1、C35/2 与另一页 J2/SH 均压中段无 junction，
         #   KiCad 判 unconnected，宽松吸附曾把它们误并进 +3V3；
         # - 标签：线上任意位置均可贴（中段标签合法命名）。
         attach: list[tuple[tuple[float, float], str, str, bool, str]] = []  # (pos, ref, pin, is_global, name)

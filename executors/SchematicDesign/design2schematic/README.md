@@ -24,21 +24,21 @@
 cd SchematicDesign/design2schematic
 
 # 只生成原理图（ERC 门禁：errors>0 直接失败）
-python3 d2s.py sch --design templates/usb2rs485.design.json --out /tmp/d2s_out
+python3 d2s.py sch --design <你的设计表>.design.json --out /tmp/d2s_out
 
 # 只生成板骨架（需要先有 sch 产物）
-python3 d2s.py board --sch /tmp/d2s_out/usb2rs485.kicad_sch \
-    --design templates/usb2rs485.design.json --out /tmp/d2s_out
+python3 d2s.py board --sch /tmp/d2s_out/my_board.kicad_sch \
+    --design <你的设计表>.design.json --out /tmp/d2s_out
 
 # 全链一条命令（sch → board → place → route → pour → DRC）
 # --out 缺省 = KiCAD_Projects/<项目名>/，版本自动取目录内最大 vN + 1
-python3 d2s.py chain --design templates/usb2rs485.design.json
+python3 d2s.py chain --design <你的设计表>.design.json
 
 # 从某步重入（之前的产物必须已存在，缺即报错；重入自动复用最新版本）
-python3 d2s.py chain --design templates/usb2rs485.design.json --step-from route
+python3 d2s.py chain --design <你的设计表>.design.json --step-from route
 
 # 显式钉定版本号（如重跑 v4）
-python3 d2s.py chain --design templates/usb2rs485.design.json --version 4 --step-from place
+python3 d2s.py chain --design <你的设计表>.design.json --version 4 --step-from place
 ```
 
 ## 产物命名规范（KiCAD_Projects/<项目>/）
@@ -63,7 +63,8 @@ python3 d2s.py chain --design templates/usb2rs485.design.json --version 4 --step
 
 ## 设计表 schema（输入契约）
 
-以 `templates/usb2rs485.design.json` 为准，字段一览：
+字段一览（完整示例见发行包 `demo/demo_blinker.design.json` 与
+`docs/输入格式说明.md`）：
 
 | 键 | 说明 |
 |---|---|
@@ -76,7 +77,8 @@ python3 d2s.py chain --design templates/usb2rs485.design.json --version 4 --step
 | `keep_connected[名字]` | 未连接但**不要**自动 NC 的引脚名（交给工程师） |
 | `anchors[{ref,x,y,rotation}]` | 板上预放锚点（连接器/接口），Placement 视为固定锚 |
 
-模板即知识库的第一条目：新设计抄一份改 parts/conns 即可。
+设计表即知识库的条目：新设计抄一份现成的改 parts/conns 即可
+（发行包 demo 或既有设计表均可作底）。
 
 ## 环境变量
 
@@ -109,8 +111,8 @@ design2schematic/
 │   ├── erc.py          # ERC 门禁（schematicRule.md：零错误是定稿硬条件）+ 网表导出
 │   └── verify.py       # 逐 pin 网表回读对账（missing/extra/mismatch/aux + TopologyHash）
 ├── scripts/pour_2layer.py  # 双层 GND 铺铜（KiCad 自带 Python/pcbnew；会话双板验证参数）
-├── tests/test_verify.py    # verify 单测（golden=USB2RS485_v4.net，79 pin 锚定 + 扰动注入 + 审计层）
-└── templates/usb2rs485.design.json  # 首个设计表模板
+├── tests/test_verify.py    # verify 单测（golden 真实网表锚定 + 扰动注入 + 审计层）
+└── templates/<项目>.design.json  # 设计表模板（每项目一份；发行包示例见包内 demo/）
 ```
 
 Python stdlib-only（铺铜脚本用 KiCad 自带 Python，同样零第三方依赖）。

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3.9
 """双层板 GND 铺铜（KiCad 自带 Python / pcbnew swig，无第三方依赖）。
 
-收编 2026-09-22 会话在 STM32F103_USB（60×60）与 pic_programmer（100×100）
-两块板上验证过的参数：inset 0.475mm / 间隙 0.2mm / 最小颈 0.254mm /
+收编 2026-09-22 会话在两块板（60×60 用户板 / 100×100 语料板
+pic_programmer）上验证过的参数：inset 0.475mm / 间隙 0.2mm / 最小颈 0.254mm /
 THERMAL 十字花（gap 0.2 / spoke 0.5）+ 指定器件实连（starved_thermal 修复）。
 
 zone 建立后不在此处 fill——铺铜的 refill 与 DRC 终判由 d2s chain 统一用

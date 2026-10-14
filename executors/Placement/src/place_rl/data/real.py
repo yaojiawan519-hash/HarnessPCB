@@ -197,7 +197,7 @@ def problem_from_ir(
     # 分图语义化：板上独有件（board-only，如 U8/U9 收发器）在 IR 里没有 module，
     # 用「块专属网」投票推断——某网上所有 IR 成员同属一个块，则该网判定该块。
     # GND/+5V 等横跨多块的电源网不算（多块 → 弃权），故 U8/U9 的 CAN1_* 网全指向
-    # can 块、正确归 can；而 U6 的 +5V_ISO1/GND1 也连 ethercat 的 C31/C32（弃权）、
+    # can 块、正确归 can；而 U6 的 +5V_ISO1/GND1 也连隔离块的 C31/C32（弃权）、
     # SW1/SW2 的 RSTN/BOOT0 也连 mcu 的 U1（弃权）→ 空块，交给网表/电源岛自然落点。
     if board_nets and extra_components:
         module_of = {d.ref: d.module for d in ir.devices.values() if d.module}

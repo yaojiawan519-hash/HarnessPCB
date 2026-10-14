@@ -7,6 +7,7 @@
     "name": "HarnessPCB project"
   },
   "keywords": ["pcb", "kicad", "eda", "schematic", "routing", "fabrication"],
+  "license": "MIT",
   "userConfig": {
     "kicad_ext": {
       "type": "string",

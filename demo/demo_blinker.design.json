@@ -1,5 +1,5 @@
 {
-  "$schema_note": "design2schematic 合成演示设计表（demo_blinker，2026-10-14 P2 首发）。字段语义见 docs/输入格式说明.md；真实工程范例见 executors/SchematicDesign/design2schematic/templates/usb2rs485.design.json。",
+  "$schema_note": "design2schematic 合成演示设计表（demo_blinker，2026-10-14 P2 首发）。字段语义见 docs/输入格式说明.md；新设计抄一份本表改 parts/conns 即可。",
   "project": {
     "name": "DEMO_BLINKER",
     "title": "LED 闪烁演示板（合成 demo）",

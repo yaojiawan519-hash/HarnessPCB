@@ -1,9 +1,9 @@
 """CLI 入口。
 
-用法示例（stm32_plc 收尾 pass 冒烟）：
+用法示例（4 层板收尾 pass 冒烟）：
     PYTHONPATH=src .venv/bin/python -m route_rl \
-        --board eval_out/stm32_plc/power_routed.kicad_pcb \
-        --stackup eval_out/stm32_plc/stackup.json \
+        --board <板>.kicad_pcb \
+        --stackup <叠层>.json \
         --out /tmp/rrl_smoke --passes finish --clearances finish=215 --mp 60
 """
 from __future__ import annotations
