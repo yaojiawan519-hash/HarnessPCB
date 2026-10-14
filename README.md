@@ -3,8 +3,8 @@
 **在自己的 Claude Code 里设计 PCB**：喂三段意图报告（原理图设计表 / 放置意图 /
 布线意图），LLM 决策层调度执行器完成全链，产出可送厂的 Gerber。
 
-> 状态：🟢 P0–P3 已完成（执行器抽取 + 双仓字节级复现 + 8 Skills + plugin 骨架
-> + MCP server 随包）；P4（数据剥离审计 + 许可 + v0.1 发版）进行中。
+> 状态：🟢 P0–P4 已完成（执行器抽取 + 双仓字节级复现 + 8 Skills + plugin 骨架
+> + MCP server 随包 + 数据剥离审计 + MIT 许可），当前 **v0.1**。
 
 ## 快速开始（一屏）
 
@@ -118,6 +118,15 @@ python3 tools/pack_from_studio.py --sync    # 重生成 executors/ + MANIFEST.js
 | KiCAD-MCP-Server | v2.7.0（已随包 bundle，MIT） | 原理图步的 KiCad 桥 |
 | Node | 18+（实测 25） | 起 MCP server |
 | uv | 任意近期版 | 建 Python 环境 |
+
+## 许可
+
+- 本仓库代码与文档：**MIT**（见根目录 `LICENSE`）。
+- 随包 `mcp/`：源自 KiCAD-MCP-Server（MIT），原许可文件保留于
+  `mcp/LICENSE-KiCAD-MCP-Server`。
+- **FreeRouting 不随包分发**：它是 GPL-3.0，与本包 MIT 不兼容，故 jar
+  由使用者自行从官方 [GitHub Releases](https://github.com/freerouting/freerouting/releases)
+  下载，包内只含调用接口（`HWS_FREEROUTING_JAR` 指向你自己的 jar）。
 
 所有工具路径**三级解析**：环境变量（`HWS_*` / `D2S_*`）> 机器配置文件
 `~/.harnesspcb.json`（`HWS_CONFIG` 可改指）> 标准探测（PATH / 常见安装位）。
