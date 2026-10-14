@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# 本机
+.DS_Store
+
+# 环境与凭据（绝不入库）
+.env
+*.local.json
