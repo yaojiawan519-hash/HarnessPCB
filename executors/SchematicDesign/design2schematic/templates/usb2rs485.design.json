@@ -1,0 +1,659 @@
+{
+ "$schema_note": "design2schematic 设计表。parts/conns 外置自 Codex 版 gen_schematic.mjs（2026-09-22），并吸收 finalize_schematic.mjs 的终版修正：PWR_FLAG 只留 GND 一个（+5V 由 VBUS、+3V3 由 LDO VO 驱动），U1.VBAT 上拉到 +3V3，U3 的 /RE 并入 RS485_DIR。",
+ "project": {
+  "name": "USB2RS485",
+  "title": "STM32F103 USB→RS485 转换器（USB 供电）",
+  "spec": "../specifications/USB2RS485.md"
+ },
+ "board": {
+  "width": 60,
+  "height": 60,
+  "layers": 2,
+  "mounting_holes": 4,
+  "hole_d": 4.0,
+  "hole_edge_offset": 4.0
+ },
+ "parts": [
+  {
+   "ref": "U1",
+   "lib": "MCU_ST_STM32F1:STM32F103C8Tx",
+   "value": "STM32F103C8T6",
+   "footprint": "Package_QFP:LQFP-48_7x7mm_P0.5mm",
+   "x": 125,
+   "y": 105
+  },
+  {
+   "ref": "U2",
+   "lib": "Regulator_Linear:AMS1117-3.3",
+   "value": "AMS1117-3.3",
+   "footprint": "Package_TO_SOT_SMD:SOT-223-3_TabPin2",
+   "x": 60,
+   "y": 55
+  },
+  {
+   "ref": "U3",
+   "lib": "Interface_UART:MAX3485",
+   "value": "MAX3485",
+   "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+   "x": 210,
+   "y": 95
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector:USB_B_Micro",
+   "value": "USB_B_Micro",
+   "footprint": "Connector_USB:USB_Micro-B_Molex-105017-0001",
+   "x": 35,
+   "y": 100
+  },
+  {
+   "ref": "J2",
+   "lib": "Connector:Screw_Terminal_01x03",
+   "value": "RS485",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+   "x": 255,
+   "y": 105
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x04",
+   "value": "SWD",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+   "x": 55,
+   "y": 178
+  },
+  {
+   "ref": "J4",
+   "lib": "Connector_Generic:Conn_01x03",
+   "value": "BOOT",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+   "x": 195,
+   "y": 178
+  },
+  {
+   "ref": "X1",
+   "lib": "Device:Crystal",
+   "value": "8MHz",
+   "footprint": "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm",
+   "x": 100,
+   "y": 172
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C_Polarized",
+   "value": "10uF",
+   "footprint": "Capacitor_SMD:CP_Elec_4x5.4",
+   "x": 45,
+   "y": 75
+  },
+  {
+   "ref": "C2",
+   "lib": "Device:C_Polarized",
+   "value": "10uF",
+   "footprint": "Capacitor_SMD:CP_Elec_4x5.4",
+   "x": 78,
+   "y": 75
+  },
+  {
+   "ref": "C3",
+   "lib": "Device:C",
+   "value": "20pF",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 85,
+   "y": 185
+  },
+  {
+   "ref": "C4",
+   "lib": "Device:C",
+   "value": "20pF",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 115,
+   "y": 185
+  },
+  {
+   "ref": "C5",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 145,
+   "y": 55
+  },
+  {
+   "ref": "C6",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 160,
+   "y": 55
+  },
+  {
+   "ref": "C7",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 175,
+   "y": 55
+  },
+  {
+   "ref": "C8",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 150,
+   "y": 172
+  },
+  {
+   "ref": "R5",
+   "lib": "Device:R",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 170,
+   "y": 158
+  },
+  {
+   "ref": "R9",
+   "lib": "Device:R",
+   "value": "1k",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 35,
+   "y": 135
+  },
+  {
+   "ref": "R10",
+   "lib": "Device:R",
+   "value": "10k",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 220,
+   "y": 185
+  },
+  {
+   "ref": "R11",
+   "lib": "Device:R",
+   "value": "1k",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 235,
+   "y": 130
+  },
+  {
+   "ref": "R12",
+   "lib": "Device:R",
+   "value": "120R",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 210,
+   "y": 140
+  },
+  {
+   "ref": "LED1",
+   "lib": "Device:LED",
+   "value": "PWR",
+   "footprint": "LED_SMD:LED_0603_1608Metric",
+   "x": 35,
+   "y": 155
+  },
+  {
+   "ref": "LED2",
+   "lib": "Device:LED",
+   "value": "ACT",
+   "footprint": "LED_SMD:LED_0603_1608Metric",
+   "x": 235,
+   "y": 155
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "VBUS",
+   "net": "+5V"
+  },
+  {
+   "ref": "J1",
+   "pin": "GND",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "D-",
+   "net": "USB_DM",
+   "pin_aliases": [
+    "DM"
+   ]
+  },
+  {
+   "ref": "J1",
+   "pin": "D+",
+   "net": "USB_DP",
+   "pin_aliases": [
+    "DP"
+   ]
+  },
+  {
+   "ref": "J1",
+   "pin": "SH",
+   "net": "GND",
+   "pin_aliases": [
+    "Shield",
+    "SHIELD"
+   ]
+  },
+  {
+   "ref": "J1",
+   "pin": "ID",
+   "net": null
+  },
+  {
+   "ref": "U2",
+   "pin": "VI",
+   "net": "+5V"
+  },
+  {
+   "ref": "U2",
+   "pin": "VO",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U2",
+   "pin": "GND",
+   "net": "GND"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "+5V"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C5",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C6",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C7",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C7",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R9",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R9",
+   "pin": "2",
+   "net": "LED_PWR"
+  },
+  {
+   "ref": "LED1",
+   "pin": "A",
+   "net": "LED_PWR"
+  },
+  {
+   "ref": "LED1",
+   "pin": "K",
+   "net": "GND"
+  },
+  {
+   "ref": "R11",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R11",
+   "pin": "2",
+   "net": "LED_A2"
+  },
+  {
+   "ref": "LED2",
+   "pin": "A",
+   "net": "LED_A2"
+  },
+  {
+   "ref": "LED2",
+   "pin": "K",
+   "net": "LED_ACT"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA9",
+   "net": "USART1_TX"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA10",
+   "net": "USART1_RX"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA8",
+   "net": "RS485_DIR"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA11",
+   "net": "USB_DM"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA12",
+   "net": "USB_DP"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA13",
+   "net": "SWDIO"
+  },
+  {
+   "ref": "U1",
+   "pin": "PA14",
+   "net": "SWCLK"
+  },
+  {
+   "ref": "U1",
+   "pin": "PC13",
+   "net": "LED_ACT"
+  },
+  {
+   "ref": "U1",
+   "pin": "NRST",
+   "net": "NRST"
+  },
+  {
+   "ref": "U1",
+   "pin": "BOOT0",
+   "net": "BOOT0"
+  },
+  {
+   "ref": "U1",
+   "pin": "VBAT",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U1",
+   "pin": "VDDA",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U1",
+   "pin": "VSSA",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "VDD",
+   "net": "+3V3",
+   "multi": true
+  },
+  {
+   "ref": "U1",
+   "pin": "VSS",
+   "net": "GND",
+   "multi": true
+  },
+  {
+   "ref": "U1",
+   "pin": "PD0",
+   "net": "OSC_IN",
+   "pin_aliases": [
+    "OSC_IN"
+   ]
+  },
+  {
+   "ref": "U1",
+   "pin": "PD1",
+   "net": "OSC_OUT",
+   "pin_aliases": [
+    "OSC_OUT"
+   ]
+  },
+  {
+   "ref": "X1",
+   "pin": "1",
+   "net": "OSC_IN"
+  },
+  {
+   "ref": "X1",
+   "pin": "2",
+   "net": "OSC_OUT"
+  },
+  {
+   "ref": "C3",
+   "pin": "1",
+   "net": "OSC_IN"
+  },
+  {
+   "ref": "C3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C4",
+   "pin": "1",
+   "net": "OSC_OUT"
+  },
+  {
+   "ref": "C4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C8",
+   "pin": "1",
+   "net": "NRST"
+  },
+  {
+   "ref": "C8",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R5",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R5",
+   "pin": "2",
+   "net": "NRST"
+  },
+  {
+   "ref": "R10",
+   "pin": "1",
+   "net": "BOOT0"
+  },
+  {
+   "ref": "R10",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "VCC",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U3",
+   "pin": "GND",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "RO",
+   "net": "USART1_RX"
+  },
+  {
+   "ref": "U3",
+   "pin": "DI",
+   "net": "USART1_TX"
+  },
+  {
+   "ref": "U3",
+   "pin": "DE",
+   "net": "RS485_DIR"
+  },
+  {
+   "ref": "U3",
+   "pin": "RE",
+   "net": "RS485_DIR"
+  },
+  {
+   "ref": "U3",
+   "pin": "A",
+   "net": "RS485_A"
+  },
+  {
+   "ref": "U3",
+   "pin": "B",
+   "net": "RS485_B"
+  },
+  {
+   "ref": "R12",
+   "pin": "1",
+   "net": "RS485_A"
+  },
+  {
+   "ref": "R12",
+   "pin": "2",
+   "net": "RS485_B"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "RS485_A"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "RS485_B"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "SWDIO"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "SWCLK"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J4",
+   "pin": "2",
+   "net": "BOOT0"
+  },
+  {
+   "ref": "J4",
+   "pin": "3",
+   "net": "GND"
+  }
+ ],
+ "power": {
+  "rails": [
+   "+5V",
+   "+3V3",
+   "GND"
+  ],
+  "pwr_flags": []
+ },
+ "no_connect": [
+  {
+   "ref": "U1",
+   "pin_prefix": "OSC32"
+  }
+ ],
+ "keep_connected": [
+  "PA8",
+  "PA9",
+  "PA10",
+  "PA11",
+  "PA12",
+  "PA13",
+  "PA14",
+  "PC13",
+  "NRST",
+  "BOOT0",
+  "VDDA",
+  "VSSA",
+  "VDD",
+  "VSS",
+  "VBAT"
+ ],
+ "anchors": [
+  {
+   "ref": "J1",
+   "x": 30.0,
+   "y": 4.0,
+   "rotation": 180
+  },
+  {
+   "ref": "J2",
+   "x": 7.58,
+   "y": 35.08,
+   "rotation": 90
+  },
+  {
+   "ref": "J3",
+   "x": 52.5,
+   "y": 26.18,
+   "rotation": 270
+  },
+  {
+   "ref": "J4",
+   "x": 52.5,
+   "y": 40.0,
+   "rotation": 270
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+# HarnessPCB 发行包白名单 —— 从工作台（PCBStudioV2）抽取的执行器面
+#
+# 规则：
+#   - 路径相对工作台根（PCBStudioV2/）
+#   - 目录以 / 结尾 = 递归全收；不带 / = 单文件
+#   - ! 前缀 = 排除（作用于包含集，后行胜前）
+#   - 全程跳过：__pycache__ / *.pyc / .venv / .git / *.lck / *.pt / *.npz /
+#     .DS_Store（RL 权重与过程产物结构上就进不来，§6.1）
+#
+# 判据（发行包计划 §6.1，2026-10-14 用户拍板「许多中间过程不需要」）：
+# 白名单自下而上从 Skills 调用面反推。本表 = P0 定版的最小面 —— 与同日
+# USB2RS485 v7 全链验收（d2s→place→route→pour→drc→gerber，铜级 0 / 未连 0）
+# 实证跑通的调用面一致；P2 写 Skills 时按需增量补，宁小勿大。
+
+# ── d2s 原理图→板全链（SchematicDesign）──────────────────────────
+# d2s.py 是 stdlib-only 入口；lib/ 是其原理图构建库（import 依赖）；
+# pour_2layer.py 由 chain 的 pour 步调用（KiCad 内置 python 运行）。
+SchematicDesign/design2schematic/d2s.py
+SchematicDesign/design2schematic/mcp_client.py
+SchematicDesign/design2schematic/README.md
+SchematicDesign/design2schematic/lib/
+SchematicDesign/design2schematic/scripts/pour_2layer.py
+SchematicDesign/design2schematic/templates/usb2rs485.design.json
+
+# ── 放置/布线执行器（Placement）──────────────────────────────────
+# chain 调用面：place_rl.cli place（含 --intent-file 意图 spec）+
+# route_rl 模块（freerouting 执行器路径）。.venv 不进包——消费方自建
+# （P1 在副本上做干净重建验证）。route_rl 的 pcbnew 桥经
+# place_rl/_pcbnew_ops.py，故两包互相依赖、必须同收。
+Placement/src/place_rl/
+Placement/src/route_rl/
+!Placement/src/route_rl/collect.py
+!Placement/src/route_rl/demo.py
+!Placement/src/route_rl/train.py
+!Placement/src/route_rl/replay.py
+
+# ── kca 管线本体（KiCAD_Access）─────────────────────────────────
+# place_rl.reuse 的依赖（ingest/kicad 解析/place.geometry 等）+ kca doctor
+# 环境体检 + route/ 协商引擎（含冻结八文件与 actions.py，pcb-route-session
+# 的动作协议）。tools/ 下的调试脚本（smoke_freerouting.sh、weld_edges.py
+# 等）不在 src 内，结构上已排除。
+KiCAD_Access/src/kicad_access/
+
+# ── 结构上已排除、在此列明备查（grep 审计 2026-10-14）────────────
+# 以下均不在任何包含路径内，列出来防将来误灌：
+#   - KiCAD_Access/tools/*            调试/支撑脚本（smoke_freerouting.sh
+#                                     默认值含本机路径）
+#   - Routing/route/                  与 kicad_access/route/ 逐字节镜像，
+#                                     actions.py 已随上面收入；P2 若
+#                                     pcb-route-session 指认镜像树再议
+#   - Routing/scripts/*               研究脚本（q0_pair_scan.sh 等）
+#   - eval_out/ 全部                  评估证据，不是产品（§6.1）
+#   - KiCAD_Projects/                 用户真实板，铁律绝不进包
+#   - V3 过程文档 / REPORT* / 语料板 / policy*.pt / npz / harness 产物
