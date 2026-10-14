@@ -1,0 +1,37 @@
+[project]
+name = "place-rl"
+version = "0.1.0"
+description = "PCB 元器件自动放置（RL）—— KiCad 兼容，复用 kicad-access 数据层"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "kicad-access",
+    "numpy>=2",
+    "shapely>=2",
+    "gymnasium>=1.0",
+    "torch>=2.4",
+]
+
+[project.scripts]
+plr = "place_rl.cli:main"
+
+[dependency-groups]
+# torch 在主依赖：plr place 生产路径（policy/place.py）需要它做推理；
+# 本组只留训练专用依赖。
+rl = [
+    "d3rlpy>=2.8.0",
+]
+dev = ["pytest>=8.0"]
+
+[tool.uv.sources]
+kicad-access = { path = "../KiCAD_Access" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/place_rl", "src/route_rl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

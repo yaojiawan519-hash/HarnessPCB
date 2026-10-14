@@ -4,8 +4,10 @@
 #   - 路径相对工作台根（PCBStudioV2/）
 #   - 目录以 / 结尾 = 递归全收；不带 / = 单文件
 #   - ! 前缀 = 排除（作用于包含集，后行胜前）
-#   - 全程跳过：__pycache__ / *.pyc / .venv / .git / *.lck / *.pt / *.npz /
-#     .DS_Store（RL 权重与过程产物结构上就进不来，§6.1）
+#   - 目录递归全程跳过：__pycache__ / *.pyc / .venv / .git / *.lck / *.pt /
+#     *.npz / .DS_Store；SKIP_SUFFIXES 只作用于目录递归，单文件条目不受限
+#     ——唯一例外 = Placement/policy_rl.pt（放置推理权重，2026-10-14 P1 拍板：
+#     plr place 生产路径的产品件随包走；训练资产 policy.pt/npz 仍绝不进包）
 #
 # 判据（发行包计划 §6.1，2026-10-14 用户拍板「许多中间过程不需要」）：
 # 白名单自下而上从 Skills 调用面反推。本表 = P0 定版的最小面 —— 与同日
@@ -34,12 +36,24 @@ Placement/src/route_rl/
 !Placement/src/route_rl/train.py
 !Placement/src/route_rl/replay.py
 
+# venv 重建面（P1，2026-10-14）：消费方 `uv sync` 需要安装描述三件套
+# （pyproject 的 kicad-access 路径依赖 ../KiCAD_Access → 两仓必须平级）；
+# torch 在 Placement 主依赖（place 推理路径需要，见 pyproject 注释）；
+# policy_rl.pt = plr place 默认加载的推理权重（产品件，见文件头注）。
+Placement/pyproject.toml
+Placement/uv.lock
+Placement/README.md
+Placement/policy_rl.pt
+
 # ── kca 管线本体（KiCAD_Access）─────────────────────────────────
 # place_rl.reuse 的依赖（ingest/kicad 解析/place.geometry 等）+ kca doctor
 # 环境体检 + route/ 协商引擎（含冻结八文件与 actions.py，pcb-route-session
 # 的动作协议）。tools/ 下的调试脚本（smoke_freerouting.sh、weld_edges.py
 # 等）不在 src 内，结构上已排除。
 KiCAD_Access/src/kicad_access/
+KiCAD_Access/pyproject.toml
+KiCAD_Access/uv.lock
+KiCAD_Access/README.md
 
 # ── 结构上已排除、在此列明备查（grep 审计 2026-10-14）────────────
 # 以下均不在任何包含路径内，列出来防将来误灌：

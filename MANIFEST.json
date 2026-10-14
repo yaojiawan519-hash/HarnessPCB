@@ -1,472 +1,507 @@
 {
- "generated_at": "2026-10-14 20:06:27",
- "studio_root": "/Users/yaoyuan/Documents/PCBStudioV2",
+ "generated_at": "2026-10-14 21:14:11",
+ "studio": "PCBStudioV2",
  "studio_rev": "",
- "n_files": 93,
+ "n_files": 100,
  "files": {
+  "KiCAD_Access/README.md": {
+   "sha256": "8af8561647b9d6cf88b62183c687a8a379dc6b6b2dbb0812947ca0b08c4110bd",
+   "source": "KiCAD_Access/README.md",
+   "bytes": 2231
+  },
+  "KiCAD_Access/pyproject.toml": {
+   "sha256": "f0b4eca7026c2c8a9f1d82f83f392ba69799babd7be275483e88ac41f9847cbc",
+   "source": "KiCAD_Access/pyproject.toml",
+   "bytes": 520
+  },
   "KiCAD_Access/src/kicad_access/__init__.py": {
    "sha256": "15fb3ae84856918f4eeb220a5938d9d5863754c7f18b60ee7b841692cb319b00",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/__init__.py",
+   "source": "KiCAD_Access/src/kicad_access/__init__.py",
    "bytes": 253
   },
   "KiCAD_Access/src/kicad_access/cli.py": {
    "sha256": "a78b1e0e51706179b533470d97728b90f8761b5aaf52fe805b4f74ccbbb72ff3",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/cli.py",
+   "source": "KiCAD_Access/src/kicad_access/cli.py",
    "bytes": 32854
   },
   "KiCAD_Access/src/kicad_access/ingest/__init__.py": {
    "sha256": "c96ab146561dd7610f901241fc7b2bd0efc82ccf531d6e4dd276000f9182566a",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/ingest/__init__.py",
+   "source": "KiCAD_Access/src/kicad_access/ingest/__init__.py",
    "bytes": 257
   },
   "KiCAD_Access/src/kicad_access/ingest/crosscheck.py": {
    "sha256": "3806a37df66a0959aa631cc9eeede0f5e41b36218067d6fc9a1bc5bf9614f69c",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/ingest/crosscheck.py",
+   "source": "KiCAD_Access/src/kicad_access/ingest/crosscheck.py",
    "bytes": 2132
   },
   "KiCAD_Access/src/kicad_access/ingest/ir.py": {
    "sha256": "7e414083236565e4118b59e911f24ae73a38e09853406fdc6f3211006b368409",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/ingest/ir.py",
+   "source": "KiCAD_Access/src/kicad_access/ingest/ir.py",
    "bytes": 1857
   },
   "KiCAD_Access/src/kicad_access/ingest/netbuild.py": {
    "sha256": "ff676b80eeffe827823c0b128a592b66026e22106c0690f114bf195997b5f8f1",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/ingest/netbuild.py",
+   "source": "KiCAD_Access/src/kicad_access/ingest/netbuild.py",
    "bytes": 11770
   },
   "KiCAD_Access/src/kicad_access/ingest/report.py": {
    "sha256": "8761603f39fdf3813f73c4234b43d242054311078c214eb11282ac8388096b5c",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/ingest/report.py",
+   "source": "KiCAD_Access/src/kicad_access/ingest/report.py",
    "bytes": 2348
   },
   "KiCAD_Access/src/kicad_access/kicad/__init__.py": {
    "sha256": "e7341f423b49aeb6f625a3922e695f296acfa6cd95bffebde5d4e350cf477b9e",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/__init__.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/__init__.py",
    "bytes": 108
   },
   "KiCAD_Access/src/kicad_access/kicad/footprint.py": {
    "sha256": "ae91353a45d1d676b9621d4a964e21eb2a01b4e32259ce47a40b9b3683a88215",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/footprint.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/footprint.py",
    "bytes": 6129
   },
   "KiCAD_Access/src/kicad_access/kicad/fplib.py": {
    "sha256": "db7564200195c76183528f2d9522290ab0d426370c95aec8ce90ae25f72dad94",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/fplib.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/fplib.py",
    "bytes": 4163
   },
   "KiCAD_Access/src/kicad_access/kicad/partswap.py": {
    "sha256": "98c72d1ca25d61e9dc8d81d21024f08c2e5c3de09e52989cd75b85c110d3bdfc",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/partswap.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/partswap.py",
    "bytes": 4785
   },
   "KiCAD_Access/src/kicad_access/kicad/pcb.py": {
    "sha256": "5600bb11f09e329085777b9e0c229119ec42e9f70e60c03957eeff15b23c96d4",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/pcb.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/pcb.py",
    "bytes": 2245
   },
   "KiCAD_Access/src/kicad_access/kicad/pcbwrite.py": {
    "sha256": "3dac70b544b16a8dbb01251a0a42af7e5872d2c0ffc9542ebf6a9735d4611484",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/pcbwrite.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/pcbwrite.py",
    "bytes": 14060
   },
   "KiCAD_Access/src/kicad_access/kicad/schematic.py": {
    "sha256": "7b83bf11df5ef0f46ad2cf4c66014e0d58fdfad81e69b378e3805d12eb704aea",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/schematic.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/schematic.py",
    "bytes": 8542
   },
   "KiCAD_Access/src/kicad_access/kicad/sexpr.py": {
    "sha256": "fc6ae4dc55d09704b3cf049c91b7fcf5ed460045d3beb103314341fa15101832",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/kicad/sexpr.py",
+   "source": "KiCAD_Access/src/kicad_access/kicad/sexpr.py",
    "bytes": 1899
   },
   "KiCAD_Access/src/kicad_access/place/__init__.py": {
    "sha256": "5e7910e3bb257c452854f70fba2ab0e1f0fb667d570d11d745e214e0f83f26fb",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/__init__.py",
+   "source": "KiCAD_Access/src/kicad_access/place/__init__.py",
    "bytes": 121
   },
   "KiCAD_Access/src/kicad_access/place/fallback.py": {
    "sha256": "b6ff7e63dd80f1711947e2d697888814db4a1ce2aa3192e2f899567c83efd1aa",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/fallback.py",
+   "source": "KiCAD_Access/src/kicad_access/place/fallback.py",
    "bytes": 15670
   },
   "KiCAD_Access/src/kicad_access/place/floorplan.py": {
    "sha256": "96f63d3f422a4e0991f81de2f45fb2e1823256bc7e7ed2ff2cb32b0cc139450a",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/floorplan.py",
+   "source": "KiCAD_Access/src/kicad_access/place/floorplan.py",
    "bytes": 14083
   },
   "KiCAD_Access/src/kicad_access/place/fusion.py": {
    "sha256": "7e32ba0cf27e1e8eae4b734955b7c8514df8599a001ade57b27b0c341b8880eb",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/fusion.py",
+   "source": "KiCAD_Access/src/kicad_access/place/fusion.py",
    "bytes": 14821
   },
   "KiCAD_Access/src/kicad_access/place/geometry.py": {
    "sha256": "b702792616f05eb775205b13dc3c2af07132d3337f5fe7de62b296129625a033",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/geometry.py",
+   "source": "KiCAD_Access/src/kicad_access/place/geometry.py",
    "bytes": 2972
   },
   "KiCAD_Access/src/kicad_access/place/preview.py": {
    "sha256": "e69aa27d0ef3b801e5441c7bfec9202af85aa6533d90f54ebe31f6f668d33d03",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/preview.py",
+   "source": "KiCAD_Access/src/kicad_access/place/preview.py",
    "bytes": 4093
   },
   "KiCAD_Access/src/kicad_access/place/recipe.py": {
    "sha256": "0e39a66eeb413399cf044a5e92cdb3a31e496e3edfdf4a98cb015f3d6f331cf2",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/recipe.py",
+   "source": "KiCAD_Access/src/kicad_access/place/recipe.py",
    "bytes": 8382
   },
   "KiCAD_Access/src/kicad_access/place/shrink.py": {
    "sha256": "52d84dcf2d6667313e871049620d232abd8643d0ce99248cce749cd1d1f0958f",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/place/shrink.py",
+   "source": "KiCAD_Access/src/kicad_access/place/shrink.py",
    "bytes": 7271
   },
   "KiCAD_Access/src/kicad_access/route/__init__.py": {
    "sha256": "283a1baae1b4045288ce5cc0218d4f083d691a3d3547ced657d20fb5d5a21494",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/__init__.py",
+   "source": "KiCAD_Access/src/kicad_access/route/__init__.py",
    "bytes": 2778
   },
   "KiCAD_Access/src/kicad_access/route/actions.py": {
    "sha256": "3058aca402abbcd56e9b34d1e4ba9b96b6e692bf9523370ec9c9f0c4c60b4acc",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/actions.py",
+   "source": "KiCAD_Access/src/kicad_access/route/actions.py",
    "bytes": 30337
   },
   "KiCAD_Access/src/kicad_access/route/anchors.py": {
    "sha256": "1e911e07b4830539447f481cc1045b21a9c95234bb9ed356307f4779a367469f",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/anchors.py",
+   "source": "KiCAD_Access/src/kicad_access/route/anchors.py",
    "bytes": 17311
   },
   "KiCAD_Access/src/kicad_access/route/astar.py": {
    "sha256": "a36980efba9c3c42fd31df4c18a83beba19770ec6a49885a7fe4adcf6aa1b29b",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/astar.py",
+   "source": "KiCAD_Access/src/kicad_access/route/astar.py",
    "bytes": 77645
   },
   "KiCAD_Access/src/kicad_access/route/diff.py": {
    "sha256": "d293a0c01a4acc4b4a8d48b76c1e077902b476459ca1a606d07ec96ea3641fa0",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/diff.py",
+   "source": "KiCAD_Access/src/kicad_access/route/diff.py",
    "bytes": 8284
   },
   "KiCAD_Access/src/kicad_access/route/drc.py": {
    "sha256": "386dd0055353d6e183254eb1d80c5620649679cbca6c7123a2c4f08eda9706ca",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/drc.py",
+   "source": "KiCAD_Access/src/kicad_access/route/drc.py",
    "bytes": 5572
   },
   "KiCAD_Access/src/kicad_access/route/dsn.py": {
    "sha256": "7725278e7ee7cb1abb66180e48c871509009617176dd71949fd4ccd532e7ad9a",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/dsn.py",
+   "source": "KiCAD_Access/src/kicad_access/route/dsn.py",
    "bytes": 20583
   },
   "KiCAD_Access/src/kicad_access/route/engine.py": {
    "sha256": "20ada4e1bc40548e6af6e46be4eb75bccbb649e72ec6dfe7de163649323444f3",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/engine.py",
+   "source": "KiCAD_Access/src/kicad_access/route/engine.py",
    "bytes": 81880
   },
   "KiCAD_Access/src/kicad_access/route/freeroute.py": {
    "sha256": "649b734eb4d638114f9cc0cb7514c1d953a76c067782db9f6f16579442e6bcfd",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/freeroute.py",
+   "source": "KiCAD_Access/src/kicad_access/route/freeroute.py",
    "bytes": 18721
   },
   "KiCAD_Access/src/kicad_access/route/l1.py": {
    "sha256": "b0c3ac1f244fba427aa194111a4c8117329d7c6e2f612ddbfde6ab7b538e9ad9",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/l1.py",
+   "source": "KiCAD_Access/src/kicad_access/route/l1.py",
    "bytes": 4740
   },
   "KiCAD_Access/src/kicad_access/route/merge.py": {
    "sha256": "5c00bd3e05392f440c7e2449ab1225a35e117ad729bff4b76c7f8718a0993a01",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/merge.py",
+   "source": "KiCAD_Access/src/kicad_access/route/merge.py",
    "bytes": 8171
   },
   "KiCAD_Access/src/kicad_access/route/model.py": {
    "sha256": "469cbeb1627c15abc71b5e7e098f102ee36ec5265f9570cadf974bba6fa08db1",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/model.py",
+   "source": "KiCAD_Access/src/kicad_access/route/model.py",
    "bytes": 26189
   },
   "KiCAD_Access/src/kicad_access/route/planes.py": {
    "sha256": "6601afc9743157260db7c138195041b3c1c9a4a025a276067eda92af924746d8",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/planes.py",
+   "source": "KiCAD_Access/src/kicad_access/route/planes.py",
    "bytes": 38887
   },
   "KiCAD_Access/src/kicad_access/route/quality.py": {
    "sha256": "da25acb8f9561e8dd18543a0cf5661a1852e1c4acc3415f3a9e2c2dcf5868cd2",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/quality.py",
+   "source": "KiCAD_Access/src/kicad_access/route/quality.py",
    "bytes": 10752
   },
   "KiCAD_Access/src/kicad_access/route/regions.py": {
    "sha256": "5c1bf4ffffe336983fa8b34477fb207766f78775fe31df2cb56394dff87f9378",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/regions.py",
+   "source": "KiCAD_Access/src/kicad_access/route/regions.py",
    "bytes": 27806
   },
   "KiCAD_Access/src/kicad_access/route/segment.py": {
    "sha256": "2c54693d776eed7eb5bc39f219a8fe4843287da790e060186f5a91c4ecb24615",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/segment.py",
+   "source": "KiCAD_Access/src/kicad_access/route/segment.py",
    "bytes": 29759
   },
   "KiCAD_Access/src/kicad_access/route/snap.py": {
    "sha256": "d5de960628f691778680a025af81c0bd80e7f2bddd7f7ee01ccb75d8fecedc09",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/snap.py",
+   "source": "KiCAD_Access/src/kicad_access/route/snap.py",
    "bytes": 24734
   },
   "KiCAD_Access/src/kicad_access/route/stitch.py": {
    "sha256": "a02ce30c3cc82fa6c5fce413903461d50301833c77ec95e3abb6e59f2a3807f0",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/route/stitch.py",
+   "source": "KiCAD_Access/src/kicad_access/route/stitch.py",
    "bytes": 4254
   },
   "KiCAD_Access/src/kicad_access/scaffold.py": {
    "sha256": "f416748826f266ec352f1ef2a0e7faa6039ef5a2aac40d27078237c56861f41c",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/scaffold.py",
+   "source": "KiCAD_Access/src/kicad_access/scaffold.py",
    "bytes": 6101
   },
   "KiCAD_Access/src/kicad_access/spec.py": {
    "sha256": "bb0fd96381337ecee77245a3d89e8d5f6c9060afd55b8a2c5db1f77b7834e266",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/spec.py",
+   "source": "KiCAD_Access/src/kicad_access/spec.py",
    "bytes": 16134
   },
   "KiCAD_Access/src/kicad_access/tools.py": {
    "sha256": "78a80723f16b26bf36e5b8b280c09c4f100b53230bda09a65ef15769701a7360",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/tools.py",
+   "source": "KiCAD_Access/src/kicad_access/tools.py",
    "bytes": 11141
   },
   "KiCAD_Access/src/kicad_access/verify/__init__.py": {
    "sha256": "c5de44019274a4b0cb1917d8aa99d5dac9e8a1d35ab42d1533bc6be7f7ec8290",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/KiCAD_Access/src/kicad_access/verify/__init__.py",
+   "source": "KiCAD_Access/src/kicad_access/verify/__init__.py",
    "bytes": 112
+  },
+  "KiCAD_Access/uv.lock": {
+   "sha256": "2107d3dc867d2c0ec5f954df9deee7a3bafe92793d46ddb7b2aa0c87ad32a201",
+   "source": "KiCAD_Access/uv.lock",
+   "bytes": 18222
+  },
+  "Placement/README.md": {
+   "sha256": "f095821f64570ea1d35fddbb2aa9546c2f42d297e80eb7c5910e17ec3450ac88",
+   "source": "Placement/README.md",
+   "bytes": 1148
+  },
+  "Placement/policy_rl.pt": {
+   "sha256": "6b6e914bca01e117fb03ac0f1bdafbfecf1ecc2c6ea0e0d09db2ba87b9aac362",
+   "source": "Placement/policy_rl.pt",
+   "bytes": 950666
+  },
+  "Placement/pyproject.toml": {
+   "sha256": "b430ec98a6d33c15749d621a675c55ca5e742f3d57781c22259e4308ff2466f6",
+   "source": "Placement/pyproject.toml",
+   "bytes": 815
   },
   "Placement/src/place_rl/__init__.py": {
    "sha256": "8fb77a114976d0c5dbf14e07f657f9efb1d63954797957304f6d22c6264f48b5",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/__init__.py",
+   "source": "Placement/src/place_rl/__init__.py",
    "bytes": 217
   },
   "Placement/src/place_rl/_pcbnew_ops.py": {
    "sha256": "df597bdbf23705603bef656f8bb505b2e0a0aa43da563121e6f2770cf61e7f3c",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/_pcbnew_ops.py",
+   "source": "Placement/src/place_rl/_pcbnew_ops.py",
    "bytes": 7930
   },
   "Placement/src/place_rl/cli.py": {
    "sha256": "43c3dded1852ed6cd53e348157e12b4c3f50610102843c8f2a01546c5d10b2af",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/cli.py",
+   "source": "Placement/src/place_rl/cli.py",
    "bytes": 19373
   },
   "Placement/src/place_rl/data/__init__.py": {
    "sha256": "3c5b8c9db7ee0291ed4800910a7babf08704c827c946e5e5c6cc99fb4258d32f",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/data/__init__.py",
+   "source": "Placement/src/place_rl/data/__init__.py",
    "bytes": 241
   },
   "Placement/src/place_rl/data/real.py": {
    "sha256": "5e62556d9a2352215e050f44464eb86f895af32169b24b3818e22c5332a4304a",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/data/real.py",
+   "source": "Placement/src/place_rl/data/real.py",
    "bytes": 13966
   },
   "Placement/src/place_rl/data/synthetic.py": {
    "sha256": "44ef37dc48c6b26ada98f1e5bd72fb3141a9943dbc712dda725eeac380d14fe4",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/data/synthetic.py",
+   "source": "Placement/src/place_rl/data/synthetic.py",
    "bytes": 4956
   },
   "Placement/src/place_rl/env/__init__.py": {
    "sha256": "c21e5dadf01af6b5b28faaaed2694212e73c1d77e7dfb78aedf3909c3268b2cf",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/env/__init__.py",
+   "source": "Placement/src/place_rl/env/__init__.py",
    "bytes": 255
   },
   "Placement/src/place_rl/env/problem.py": {
    "sha256": "0dccfc00a1280156af27450d34df4279677a5c22d61e63d10b6eec0f9aed434f",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/env/problem.py",
+   "source": "Placement/src/place_rl/env/problem.py",
    "bytes": 47577
   },
   "Placement/src/place_rl/eval.py": {
    "sha256": "a1ae244f855ec3e22f48a2ae252689a2fba225862148707990cf7ea42f9f0a92",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/eval.py",
+   "source": "Placement/src/place_rl/eval.py",
    "bytes": 11272
   },
   "Placement/src/place_rl/metrics/__init__.py": {
    "sha256": "81954149bba57b4adc6ccd859f437ba3ee23738dcc579945bd44525bc420ab3d",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/metrics/__init__.py",
+   "source": "Placement/src/place_rl/metrics/__init__.py",
    "bytes": 221
   },
   "Placement/src/place_rl/metrics/congestion.py": {
    "sha256": "a29028c1e2df2d7ae25a9e991f66bd84126ea71e4ee4ede71c851046d71488dd",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/metrics/congestion.py",
+   "source": "Placement/src/place_rl/metrics/congestion.py",
    "bytes": 2325
   },
   "Placement/src/place_rl/metrics/hpwl.py": {
    "sha256": "13d564f42883260dd6ab1f2772c0aafe84f7b8bdca9e8bf9b18f4da18b43daf4",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/metrics/hpwl.py",
+   "source": "Placement/src/place_rl/metrics/hpwl.py",
    "bytes": 3884
   },
   "Placement/src/place_rl/net/__init__.py": {
    "sha256": "f310a28fd929f66506e3f7a97e92316eaabb518e507ecc673c6e2916c1f21736",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/net/__init__.py",
+   "source": "Placement/src/place_rl/net/__init__.py",
    "bytes": 42
   },
   "Placement/src/place_rl/net/gnn.py": {
    "sha256": "20a77b6f264402e002d33cb8fdde1cabe6b84eeb4dd35feff563c2fa0957e18c",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/net/gnn.py",
+   "source": "Placement/src/place_rl/net/gnn.py",
    "bytes": 2774
   },
   "Placement/src/place_rl/policy/__init__.py": {
    "sha256": "c1cf972f28f5cf86e2e45a28dfe1e2ca9b0196f5f41da35bf722e31c7e5a8379",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/__init__.py",
+   "source": "Placement/src/place_rl/policy/__init__.py",
    "bytes": 58
   },
   "Placement/src/place_rl/policy/bc.py": {
    "sha256": "dfc48d17ddee9fc2a03141fe679f48da6b27d136682faeb04bb5f87664523734",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/bc.py",
+   "source": "Placement/src/place_rl/policy/bc.py",
    "bytes": 9947
   },
   "Placement/src/place_rl/policy/intent.py": {
    "sha256": "8ea588299ccd7af0b17a40f2f628868acc180bd5622de9ada833066a52953926",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/intent.py",
+   "source": "Placement/src/place_rl/policy/intent.py",
    "bytes": 16550
   },
   "Placement/src/place_rl/policy/legalize.py": {
    "sha256": "ca855ac484f2c4401a41c83b53fb260aa91cc4c17154f1cef9cba87fa1242c26",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/legalize.py",
+   "source": "Placement/src/place_rl/policy/legalize.py",
    "bytes": 32251
   },
   "Placement/src/place_rl/policy/mask.py": {
    "sha256": "ee72001c47b7f7c535318a5de9b8e802feb8e60966f2342b37f8757ab03d5d69",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/mask.py",
+   "source": "Placement/src/place_rl/policy/mask.py",
    "bytes": 3332
   },
   "Placement/src/place_rl/policy/place.py": {
    "sha256": "e21805d740672358aacb15fa562442e7f6a126f5879c7115b1686b1bd6b88ea6",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/place.py",
+   "source": "Placement/src/place_rl/policy/place.py",
    "bytes": 12288
   },
   "Placement/src/place_rl/policy/policy.py": {
    "sha256": "4fa834030ea0a393b23393c6a0dee69c084ad3f5122fc3af2d2a69f80207ada3",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/policy.py",
+   "source": "Placement/src/place_rl/policy/policy.py",
    "bytes": 2733
   },
   "Placement/src/place_rl/policy/rl.py": {
    "sha256": "8297c0868efbdbc6aa16bd7146dde883753510805c460cc9132825a15d2a85f7",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/policy/rl.py",
+   "source": "Placement/src/place_rl/policy/rl.py",
    "bytes": 13829
   },
   "Placement/src/place_rl/reuse.py": {
    "sha256": "33fbf896593f9aeb4929204d3ad84d7bdda70471de5b4f299afe44581f66f551",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/reuse.py",
+   "source": "Placement/src/place_rl/reuse.py",
    "bytes": 4022
   },
   "Placement/src/place_rl/teacher/__init__.py": {
    "sha256": "b6cce2d6234b56d0714c808c60649f1e93e20b656dcfd9bba6fcd150e3e563cf",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/teacher/__init__.py",
+   "source": "Placement/src/place_rl/teacher/__init__.py",
    "bytes": 165
   },
   "Placement/src/place_rl/teacher/sa.py": {
    "sha256": "e4bd242d63151d47a2270e82b5f1058715653498589281c13aafa974db6a63e8",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/place_rl/teacher/sa.py",
+   "source": "Placement/src/place_rl/teacher/sa.py",
    "bytes": 5590
   },
   "Placement/src/route_rl/__init__.py": {
    "sha256": "4e7d8c80f8a04bc4b7ab383aede9a714189ffaea1d8506d591a9ac932b1ac0b8",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/__init__.py",
+   "source": "Placement/src/route_rl/__init__.py",
    "bytes": 541
   },
   "Placement/src/route_rl/__main__.py": {
    "sha256": "f51b4b512f447281d9efe14e75b2a290483d71320db4848f967a139be72644a4",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/__main__.py",
+   "source": "Placement/src/route_rl/__main__.py",
    "bytes": 2196
   },
   "Placement/src/route_rl/dsn_edit.py": {
    "sha256": "89916f995bb11aa8c0a925ffb8e09be546b1f11457bbd04ec1a80fbe8d1a8227",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/dsn_edit.py",
+   "source": "Placement/src/route_rl/dsn_edit.py",
    "bytes": 2399
   },
   "Placement/src/route_rl/env.py": {
    "sha256": "4ce8a1cd6ad0626ad5bcea440d2da49ee46c5ce675ba33165da27aa212804b0f",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/env.py",
+   "source": "Placement/src/route_rl/env.py",
    "bytes": 7071
   },
   "Placement/src/route_rl/loop.py": {
    "sha256": "0790eccd591281d28ba787fb7eab9e514dce2b521b28e34e4129124a1d8217d9",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/loop.py",
+   "source": "Placement/src/route_rl/loop.py",
    "bytes": 22635
   },
   "Placement/src/route_rl/mdp.py": {
    "sha256": "91fa1f10f0f3656aa7f49443beac3efcc6734a673bf17e76a35bd52222130e6c",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/mdp.py",
+   "source": "Placement/src/route_rl/mdp.py",
    "bytes": 22184
   },
   "Placement/src/route_rl/metrics.py": {
    "sha256": "9c5799a03bf6899489498a31f086327273720823ba68027428b7bf3ade833e3b",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/metrics.py",
+   "source": "Placement/src/route_rl/metrics.py",
    "bytes": 3108
   },
   "Placement/src/route_rl/planes.py": {
    "sha256": "d3cf1f3fb4d21cee3c9d2bbb54b535cfe89504cdb78071e7fc3cb16fdb8c3964",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/planes.py",
+   "source": "Placement/src/route_rl/planes.py",
    "bytes": 4377
   },
   "Placement/src/route_rl/records.py": {
    "sha256": "a14bec126f42e4fe439e1ab71435eed7ca68e8419daf351c386e39406318e909",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/records.py",
+   "source": "Placement/src/route_rl/records.py",
    "bytes": 1221
   },
   "Placement/src/route_rl/stackup.py": {
    "sha256": "ae9a3fa2346f164ba680dd8d090b7fbd81b6790a983ff2edf83a671bd0c55e56",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/stackup.py",
+   "source": "Placement/src/route_rl/stackup.py",
    "bytes": 6882
   },
   "Placement/src/route_rl/unroute_pcb.py": {
    "sha256": "f74b1abc69650efd6979bbece2f03b73f429a3554d2a510e84b95ec433476671",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/Placement/src/route_rl/unroute_pcb.py",
+   "source": "Placement/src/route_rl/unroute_pcb.py",
    "bytes": 5782
+  },
+  "Placement/uv.lock": {
+   "sha256": "0ca01a03272acf286678d5264e42629fc5c48a57a7f14ac8a55d80090f80be18",
+   "source": "Placement/uv.lock",
+   "bytes": 157500
   },
   "SchematicDesign/design2schematic/README.md": {
    "sha256": "fdca366a03754687e4a143a319a08e1c6c2fcf6ea0e8f17a9d97ac871416dd98",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/README.md",
+   "source": "SchematicDesign/design2schematic/README.md",
    "bytes": 8915
   },
   "SchematicDesign/design2schematic/d2s.py": {
    "sha256": "1f222a4fc1de3f6334fe2e2dc738ce3d6b2de1527c4c1c0264ad6e0708595384",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/d2s.py",
+   "source": "SchematicDesign/design2schematic/d2s.py",
    "bytes": 27081
   },
   "SchematicDesign/design2schematic/lib/__init__.py": {
    "sha256": "e7e12257565a765209075f73d9bbdf22afbfcf50de14efe0e7b474c23f9c0c8d",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/__init__.py",
+   "source": "SchematicDesign/design2schematic/lib/__init__.py",
    "bytes": 76
   },
   "SchematicDesign/design2schematic/lib/auto_nc.py": {
    "sha256": "a6afa8bcbd2d1c5d748fb16ccf42a619001f3facff8b545e36eca5604d61a54d",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/auto_nc.py",
+   "source": "SchematicDesign/design2schematic/lib/auto_nc.py",
    "bytes": 1406
   },
   "SchematicDesign/design2schematic/lib/components.py": {
    "sha256": "884f529f7d7bd61b7f3478b9278377d5ed2f88f7f1162925c16e937855c92a80",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/components.py",
+   "source": "SchematicDesign/design2schematic/lib/components.py",
    "bytes": 1203
   },
   "SchematicDesign/design2schematic/lib/erc.py": {
    "sha256": "cbf95004054d9c38b2f25a73806d4b89601be32305943b738b0b9a3a9cfcc41d",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/erc.py",
+   "source": "SchematicDesign/design2schematic/lib/erc.py",
    "bytes": 2361
   },
   "SchematicDesign/design2schematic/lib/nets.py": {
    "sha256": "f40aeadaa66185ef0f78a60538da3384caafc8349a3a0d779a5cffeba48896e8",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/nets.py",
+   "source": "SchematicDesign/design2schematic/lib/nets.py",
    "bytes": 7135
   },
   "SchematicDesign/design2schematic/lib/power_rails.py": {
    "sha256": "0e965b48542c9b7d9c660a569544ffbf9c689091182f43ebacefc1999d7bcb6a",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/power_rails.py",
+   "source": "SchematicDesign/design2schematic/lib/power_rails.py",
    "bytes": 2715
   },
   "SchematicDesign/design2schematic/lib/verify.py": {
    "sha256": "afeb14b77ef0f1a83f2d48b5bf649e13c59c191a5ac0c666467ee38e867b43ab",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/lib/verify.py",
+   "source": "SchematicDesign/design2schematic/lib/verify.py",
    "bytes": 5589
   },
   "SchematicDesign/design2schematic/mcp_client.py": {
    "sha256": "feb576227174eb81675508e70bf9c5e7e6f26e1847b6188521ad4d234e46fc93",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/mcp_client.py",
+   "source": "SchematicDesign/design2schematic/mcp_client.py",
    "bytes": 11551
   },
   "SchematicDesign/design2schematic/scripts/pour_2layer.py": {
    "sha256": "6f3746e57ea2b5d2b5c9050d739ed5eb56eda4d7df728c8c9e000cf2a168047f",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/scripts/pour_2layer.py",
+   "source": "SchematicDesign/design2schematic/scripts/pour_2layer.py",
    "bytes": 3419
   },
   "SchematicDesign/design2schematic/templates/usb2rs485.design.json": {
    "sha256": "9c35834c308843d2a9d72064d2cd22b665af8e68fb3870f88de6a5b83c924495",
-   "source": "/Users/yaoyuan/Documents/PCBStudioV2/SchematicDesign/design2schematic/templates/usb2rs485.design.json",
+   "source": "SchematicDesign/design2schematic/templates/usb2rs485.design.json",
    "bytes": 9508
   }
  }

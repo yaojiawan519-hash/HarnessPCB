@@ -138,7 +138,7 @@ def sync(files: dict[str, Path], studio: Path) -> None:
         shutil.copy2(src, dst)
         entries[rel] = {
             "sha256": sha256(dst),
-            "source": str(src),
+            "source": rel,  # 相对工作台根（绝不记绝对路径，防用户名外泄）
             "bytes": src.stat().st_size,
         }
     try:
@@ -149,7 +149,7 @@ def sync(files: dict[str, Path], studio: Path) -> None:
         git_rev = ""
     manifest = {
         "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "studio_root": str(studio),
+        "studio": studio.name,  # 只记目录名，不记绝对路径
         "studio_rev": git_rev,
         "n_files": len(entries),
         "files": entries,
