@@ -72,9 +72,12 @@ FR_JAR = _resolve(
     "HWS_FREEROUTING_JAR",
     (str(Path.home() / ".kicad-mcp" / "freerouting.jar"),))
 KICAD_CLI = _resolve("HWS_KICAD_CLI", _KICAD_CLI_CANDIDATES)
-OPS = Path(__file__).resolve().parents[1] / "place_rl" / "_pcbnew_ops.py"
+# pcbnew 单操作脚本（2026-10-29 从 place_rl/ 搬进来：RL 放置线退役、place_rl 整包删除，
+# 这个文件是**布线引擎自己的运行时依赖**，不是 RL 资产，所以跟着 route_rl 走）。
+OPS = Path(__file__).resolve().parent / "_pcbnew_ops.py"
 
-# 铜级 DRC 分类（须 0）：与 place_rl/_COPPER_KINDS 一致
+# 铜级 DRC 分类（须 0）。历史备注：原 `place_rl/_COPPER_KINDS` 与这份逐项相同，
+# 2026-10-29 那个包整包退役删除，此表从此只有这一处权威。
 COPPER_KINDS = frozenset({"shorting_items", "clearance", "solder_mask_bridge",
                           "hole_clearance", "track_width", "via_dangling",
                           "unconnected"})

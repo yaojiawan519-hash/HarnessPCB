@@ -1,26 +1,19 @@
 [project]
+# 2026-10-29：RL 放置线退役（`HarnessPCB_总体规划.md` §八），`src/place_rl` 整包删除，
+# 本包只剩布线引擎 route_rl。名字保留 `place-rl` 只是因为 uv.lock / venv 路径钉着它，
+# 改包名要重装整个 .venv（d2s chain 的 RL_PY 指着它），不值当。
 name = "place-rl"
 version = "0.1.0"
-description = "PCB 元器件自动放置（RL）—— KiCad 兼容，复用 kicad-access 数据层"
+description = "PCB 布线引擎（route_rl）—— KiCad 兼容，复用 kicad-access 数据层"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "kicad-access",
     "numpy>=2",
     "shapely>=2",
-    "gymnasium>=1.0",
-    "torch>=2.4",
 ]
-
-[project.scripts]
-plr = "place_rl.cli:main"
 
 [dependency-groups]
-# torch 在主依赖：plr place 生产路径（policy/place.py）需要它做推理；
-# 本组只留训练专用依赖。
-rl = [
-    "d3rlpy>=2.8.0",
-]
 dev = ["pytest>=8.0"]
 
 [tool.uv.sources]
@@ -31,7 +24,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/place_rl", "src/route_rl"]
+packages = ["src/route_rl"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

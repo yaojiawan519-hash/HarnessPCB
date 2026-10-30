@@ -34,6 +34,41 @@ def lock_layer(txt: str, layer: str) -> str:
                        f"(layer {layer}\n      (type power)")
 
 
+def keep_only_nets(txt: str, names: list[str]) -> str:
+    """只让这几根网可布：其余网块只摘掉 `(pins …)`，网名声明留着。
+
+    为什么不整棵删网：`(net X)` 块被别处引用（class/keepout/规则）时会变成
+    "未知网"，FreeRouting 直接报错；而 pins 清空的网等于没有脚可连，布线器
+    自然不布，DSN 仍然自洽。返回值用于"关键网先布"这一 pass。
+
+    只在 `(network` 之后动：前面 `(structure …)` 里也有叫 net 的东西。
+    """
+    net = txt.find("(network")
+    if net < 0:
+        return txt
+    keep = set(names)
+    pat = re.compile(r'\(net\s+("(?:[^"\\]|\\.)*"|\S+)(?=[\s)])')
+    out, pos = [txt[:net]], net
+    for m in pat.finditer(txt, net):
+        k = m.start()
+        if k < pos:                          # 已被上一个块吃掉
+            continue
+        name = m.group(1).strip('"')
+        d, i = 0, k
+        while i < len(txt):
+            d += 1 if txt[i] == "(" else (-1 if txt[i] == ")" else 0)
+            if d == 0:
+                break
+            i += 1
+        if name in keep:
+            continue
+        out.append(txt[pos:k])
+        out.append(f"(net {m.group(1)})")
+        pos = i + 1
+    out.append(txt[pos:])
+    return "".join(out)
+
+
 def protect_wiring(txt: str) -> tuple[str, int]:
     """既有 wiring 全部 (type route)→(type protect)（固定为障碍不得重布），
     返回 (新文本, 保护条数)。（power_route / finish_pass）"""

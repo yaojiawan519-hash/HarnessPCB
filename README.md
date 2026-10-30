@@ -91,7 +91,7 @@ claude plugin install harnesspcb@harnesspcb
 | `commands/` | 插件斜杠命令（pcb-demo / pcb-run / pcb-new） |
 | `.claude-plugin/` + `.mcp.json` | Claude Code plugin 清单与 MCP 声明 |
 | `mcp/` | 随包 KiCad MCP server（单文件 bundle + python 接口层，源自 KiCAD-MCP-Server v2.7.0，MIT，见 `mcp/LICENSE-KiCAD-MCP-Server`） |
-| `executors/` | 白名单抽取的执行器（d2s / plr place / route 冻结梯子 / actions / 工具脚本 + 政策模型），`MANIFEST.json` 逐文件 sha256 |
+| `executors/` | 白名单抽取的执行器（d2s / 规则摆件 place_rules / route 冻结梯子 / actions / 块工具链 sdi + IL 解析层），`MANIFEST.json` 逐文件 sha256 |
 | `docs/` | 输入格式说明、参数快照 FLAG_FREEZE |
 | `demo/` | 合成 demo 板（设计表 + 意图 spec + 期望产物说明） |
 | `tools/` | `pack_from_studio.py` 抽取脚本 + allowlist |

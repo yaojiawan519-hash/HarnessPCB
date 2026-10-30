@@ -6,8 +6,8 @@
 #   - ! 前缀 = 排除（作用于包含集，后行胜前）
 #   - 目录递归全程跳过：__pycache__ / *.pyc / .venv / .git / *.lck / *.pt /
 #     *.npz / .DS_Store；SKIP_SUFFIXES 只作用于目录递归，单文件条目不受限
-#     ——唯一例外 = Placement/policy_rl.pt（放置推理权重，2026-10-14 P1 拍板：
-#     plr place 生产路径的产品件随包走；训练资产 policy.pt/npz 仍绝不进包）
+#     ——P5（2026-10-31）起无例外：RL 放置线退役，policy_rl.pt 已随 place_rl
+#     一并出包（见下「放置/布线执行器」节）
 #
 # 判据（发行包计划 §6.1，2026-10-14 用户拍板「许多中间过程不需要」）：
 # 白名单自下而上从 Skills 调用面反推。本表 = P0 定版的最小面 —— 与同日
@@ -24,12 +24,16 @@ SchematicDesign/design2schematic/lib/
 SchematicDesign/design2schematic/scripts/pour_2layer.py
 # （设计表模板不随包：格式范例 = demo/demo_blinker.design.json，见 docs/输入格式说明.md）
 
-# ── 放置/布线执行器（Placement）──────────────────────────────────
-# chain 调用面：place_rl.cli place（含 --intent-file 意图 spec）+
-# route_rl 模块（freerouting 执行器路径）。.venv 不进包——消费方自建
-# （P1 在副本上做干净重建验证）。route_rl 的 pcbnew 桥经
-# place_rl/_pcbnew_ops.py，故两包互相依赖、必须同收。
-Placement/src/place_rl/
+# ── 布线执行器（Placement）────────────────────────────────────────
+# chain 调用面：route_rl 模块（freerouting 执行器路径）。.venv 不进包——
+# 消费方自建（P1 在副本上做干净重建验证）。route_rl 的 pcbnew 桥
+# 2026-10-29 起就在 route_rl/_pcbnew_ops.py 里，不再依赖 place_rl。
+#
+# ⚠ P5（2026-10-31）换血：`Placement/src/place_rl/` 与 `Placement/policy_rl.pt`
+# 出包。工作室 2026-10-29 已整体删除 RL 放置线（`HarnessPCB_总体规划.md` §八，
+# 代码+两个权重归档 `~/Backup/rl_code_retired_20261029.tar.gz`），包里的
+# 那份从此无法再从源头同步，留着就是永久漂移的死件。整板放置现在由
+# `DesignBlockTools/place_rules.py`（规则摆件，见下节）承担。
 Placement/src/route_rl/
 !Placement/src/route_rl/collect.py
 !Placement/src/route_rl/demo.py
@@ -37,16 +41,31 @@ Placement/src/route_rl/
 !Placement/src/route_rl/replay.py
 
 # venv 重建面（P1，2026-10-14）：消费方 `uv sync` 需要安装描述三件套
-# （pyproject 的 kicad-access 路径依赖 ../KiCAD_Access → 两仓必须平级）；
-# torch 在 Placement 主依赖（place 推理路径需要，见 pyproject 注释）；
-# policy_rl.pt = plr place 默认加载的推理权重（产品件，见文件头注）。
+# （pyproject 的 kicad-access 路径依赖 ../KiCAD_Access → 两仓必须平级）。
+# P5：torch 已是 kca 之外的死依赖，随 place_rl 一起出包——本包不再需要 torch，
+# `uv sync` 的 venv 从 634MB 掉到百来 MB 量级（P5 冒烟复测为准）。
 Placement/pyproject.toml
 Placement/uv.lock
 Placement/README.md
-Placement/policy_rl.pt
+
+# ── 块工具链（DesignBlockTools，P5 2026-10-31 新增）───────────────
+# place_rules.py 是 d2s chain 的 place 步（2026-10-29 起顶替 place_rl），
+# d2s.py 按 `SchematicDesign/design2schematic/../../DesignBlockTools/place_rules.py`
+# 定位它 —— 缺这个文件包里 chain 直接断，故为硬依赖。
+DesignBlockTools/place_rules.py
+# sdi/ = 扣块 / 块卡 / 门禁引擎（carve·card·cardpcb·spur·checkall·basis·netcheck
+# ·blockpcb·unify…）。跑法 `python3 -m sdi.<子模块>`（工作目录 = DesignBlockTools）。
+# 依赖：pyyaml（已在 KiCAD_Access/pyproject.toml）+ pcbnew/wx（KiCad 自带 python）
+# + `../SchematicDesign/il/tools`（见下节，sdi 按相对路径 sys.path 注入）。
+DesignBlockTools/sdi/
+# sdi 的 IL 解析层（extract/geom/sexpr/render_full/style_metrics/wireup/blocks/index）。
+# 只收 tools/，不收同级 il/corpus/ —— 那是第三方开源原理图语料，属于研究资产，不随包。
+SchematicDesign/il/tools/
+# （DesignBlockTools/specs/ 与 DesignBlocks/ 块库不走本白名单：
+#   前者随块库一起由 tools/pack_blocks.py 按许可证筛后复制，见该文件头注。）
 
 # ── kca 管线本体（KiCAD_Access）─────────────────────────────────
-# place_rl.reuse 的依赖（ingest/kicad 解析/place.geometry 等）+ kca doctor
+# route_rl 的依赖（ingest/kicad 解析/place.geometry 等）+ kca doctor
 # 环境体检 + route/ 协商引擎（含冻结八文件与 actions.py，pcb-route-session
 # 的动作协议）。tools/ 下的调试脚本（smoke_freerouting.sh、weld_edges.py
 # 等）不在 src 内，结构上已排除。

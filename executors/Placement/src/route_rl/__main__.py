@@ -35,6 +35,16 @@ def main() -> None:
                     default="freerouting",
                     help="执行器：negotiated=kicad_access 协商引擎子进程"
                          "直出板（①③④ 替换，⑤ DRC 考官不动）")
+    ap.add_argument("--priority-nets", default="",
+                    help="逗分网名：这几根网**先单独布一轮**，后续 pass 把它们"
+                         "当障碍（时钟/晶振这类短、不许打孔的关键网）")
+    ap.add_argument("--fan-early", action="store_true",
+                    help="平面网扇出：细间距引脚场里的脚**布线前**就占位（keepout）。"
+                         "默认等 priority 之后再规划（省走廊）；不传时行为与旧版一致")
+    ap.add_argument("--fan-early-only", default="",
+                    help="逗分 位号-脚号（如 U1-9,U1-8）：只给这几只平面网脚在"
+                         "**布线前**占位。用法 = 先布一遍看 result.json 的 "
+                         "fan_nospot，再只救那几只重布（keepout 越少越不挡线）")
     a = ap.parse_args()
 
     st = Stackup.from_json(a.stackup)
@@ -46,7 +56,10 @@ def main() -> None:
             cl[k] = [int(x) for x in v.split(",") if x]
 
     res = run_pipeline(a.board, st, a.out, passes, cl or None, a.mp,
-                       a.attempts, a.engine)
+                       a.attempts, a.engine,
+                       priority_nets=[n for n in a.priority_nets.split(",") if n],
+                       fan_early=a.fan_early,
+                       fan_early_only=[x for x in a.fan_early_only.split(",") if x])
     print(json.dumps(res, ensure_ascii=False, indent=1))
 
 

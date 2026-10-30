@@ -38,6 +38,10 @@ class PassSpec:
     shrink_npth: bool = False            # NPTH keepout 收缩
     force_clearance_txt: bool = False    # DSN 文本再抬 clearance（signal legacy 行为）
     default_clearance_um: int = 245
+    # 只布这几根网（其余网在 DSN 里摘掉 pins = 不可布）。空 = 全布。
+    # 用途：**关键网先布**——时钟/晶振这类"短、不许打孔、绕不开"的网先独占
+    # 通道布完，后面所有 pass 把它当障碍（protect_wiring），它就不会被挤着走远。
+    only_nets: tuple[str, ...] = ()
     # 评分序（越小越好）；前两键 = (完成度, 铜级)，也用作早停判据
     score_keys: tuple[str, ...] = ("sig", "copper", "un")
 
@@ -80,7 +84,12 @@ class Stackup:
                      force_clearance_txt=True,
                      score_keys=("sig", "copper", "un")),
             # B 电源：信号 wiring 全 protect，平面网纯走线布通（power_route）
-            PassSpec("power", protect_wiring=True,
+            # ⚠ 也必须 lock_non_signal：10-29 mcu_stm32f411 实测，这一轮没锁层，
+            # FreeRouting 把信号网 `MCU_LED_C` 布到了 In2.Cu（3V3 平面层）上——
+            # 信号那条 pass 明明已经锁了 In1/In2，是**这一轮把层开回去了**。
+            # 后果是 planes pass 直接 LAYER-DISCIPLINE VIOLATIONS 中止（两个过孔
+            # (17.55,15.87)/(13.84,18.86) 之间一段 In2 走线）。平面层永远不该有信号铜。
+            PassSpec("power", protect_wiring=True, lock_non_signal=True,
                      score_keys=("pwr_plane", "copper", "un")),
             # C 收尾：protect + 锁层 + NPTH 缩径，clearance 阶梯由控制器给
             PassSpec("finish", protect_wiring=True, lock_non_signal=True,

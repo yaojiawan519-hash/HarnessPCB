@@ -3,9 +3,10 @@
 
 三个子命令（产物默认落 <工作区>/KiCAD_Projects/<项目>/，规范命名 + 版本编号；
 D2S_PROJECTS 可改指）：
-  d2s sch   --design t.json            → <项目>_vN.kicad_sch / .net / .pdf（ERC 0 错误门禁）
-  d2s board --sch S --design t.json    → <项目>_vN_base.kicad_pcb（板框/安装孔/锚点预放/stackup）
-  d2s chain --design t.json            → …_placed.kicad_pcb → …_route/ → …_routed.kicad_pcb（DRC 0 终板）
+  d2s sch     --design t.json          → <项目>_vN.kicad_sch / .net / .pdf（ERC 0 错误门禁）
+  d2s board   --sch S --design t.json  → <项目>_vN_base.kicad_pcb（板框/安装孔/锚点预放/stackup）
+  d2s chain   --design t.json          → …_placed.kicad_pcb → …_route/ → …_routed.kicad_pcb（DRC 0 终板）
+  d2s leadout --sch S                  → 网标外移 + 引线（只动画法；网表逐 pin 比对原样才算过）
 
 版本规则：vN 自动递增（项目目录内扫描 max+1）；chain --step-from 重入时自动复用最新版本；
 --version N 显式指定。board 子命令的版本从 --sch 文件名推导（sch 文件名即版本载体）。
@@ -46,6 +47,12 @@ PROJECTS_DIR = os.environ.get(
 VENV_PY = os.path.join(PLACEMENT_RL, ".venv", "bin", "python")
 RL_PY = VENV_PY if os.path.exists(VENV_PY) else sys.executable
 RL_ENV = None if os.path.exists(VENV_PY) else {**os.environ, "PYTHONPATH": "src"}
+# 规则摆件（2026-10-29 起 chain 的 place 步用它）。RL 放置线已退役：`place_rl` 整个包
+# 连同 policy.pt / policy_rl.pt 一起删除（归档在 ~/Backup/pcbstudio2_rl_retired_*.tar.gz），
+# 整板放置回到可复现的规则（接口簇贴边 / 去耦贴脚 / 时钟贴芯片 / 其余就近）。
+PLACE_RULES = os.environ.get(
+    "D2S_PLACE_RULES",
+    os.path.normpath(os.path.join(HERE, "..", "..", "DesignBlockTools", "place_rules.py")))
 
 
 def log(*a):
@@ -204,6 +211,180 @@ def cmd_sch(args) -> int:
         client.close()
 
 
+# ================= leadout（只动画法，不动连接） =================
+def cmd_leadout(args) -> int:
+    """网标外移 + 引线。d2s 的连网步把标签锚在引脚端点上，文字正好盖住符号的引脚名；
+    这一步把标签按引脚朝向外移并补引线，**连接关系零改动**——门禁是逐 pin 比网表，
+    网表有任何差异就回滚原文件并报错。"""
+    from scripts import leadout_labels as L     # 几何借 il 工具，和 d2s 主链解耦
+    import extract                              # 由 L 把 il/tools 放进 sys.path
+
+    sch = os.path.abspath(args.sch)
+    kicad = resolve_kicad_cli()
+    if not kicad:
+        log("[leadout] ✗ 找不到 kicad-cli（HWS_KICAD_CLI）")
+        return 1
+    stem = os.path.basename(sch)[:-len(".kicad_sch")]
+    out_dir = os.path.dirname(sch)
+    bak = os.path.join(out_dir, f"{stem}.pre_leadout.kicad_sch")
+    tmp = tempfile.mkdtemp(prefix="d2s_leadout_")
+    before_net = os.path.join(tmp, "before.net")
+    after_net = os.path.join(tmp, "after.net")
+
+    def export_net(dst):
+        r = subprocess.run([kicad, "sch", "export", "netlist", "-o", dst, sch],
+                           capture_output=True, text=True)
+        if r.returncode != 0 or not os.path.exists(dst):
+            raise RuntimeError(f"网表导出失败: {r.stderr.strip()[:300]}")
+
+    log("[leadout] 基准网表 …")
+    export_net(before_net)
+    before = L.netlist_sig(before_net)
+    orig_text = open(sch, encoding='utf-8').read()
+    if not os.path.exists(bak):
+        open(bak, 'w', encoding='utf-8').write(orig_text)
+
+    il = extract.extract(sch)
+    text, moved = L.fix(orig_text, il, args.lead)
+    if args.title:
+        text = L.title_block(text, args.title, args.rev, args.comment)
+    open(sch, 'w', encoding='utf-8').write(text)
+    log(f"[leadout] 外移标签 {moved} / {len(il['labels'])} …")
+
+    try:
+        export_net(after_net)
+        after = L.netlist_sig(after_net)
+    except Exception:
+        open(sch, 'w', encoding='utf-8').write(orig_text)
+        raise
+    if before != after:
+        diff = [k for k in set(before) | set(after) if before.get(k) != after.get(k)]
+        open(sch, 'w', encoding='utf-8').write(orig_text)     # 回滚，绝不留坏文件
+        log(f"[leadout] ✗ 网表变了 {len(diff)} 个引脚，已回滚: {diff[:6]}")
+        return 1
+    log(f"[leadout] 网表逐脚一致（{len(before)} 引脚）")
+
+    rpt = os.path.join(tmp, "erc.rpt")
+    subprocess.run([kicad, "sch", "erc", "-o", rpt, sch], capture_output=True, text=True)
+    errs = warns = 0
+    if os.path.exists(rpt):
+        body = open(rpt, encoding='utf-8', errors='replace').read()
+        # 报告的权威行是末尾 `** ERC messages: N  Errors N  Warnings N`
+        # （"Found N violations" 只出现在 stdout，别拿它当数）
+        m = re.search(r"Errors (\d+)\s+Warnings (\d+)", body)
+        if m:
+            errs, warns = int(m.group(1)), int(m.group(2))
+        else:
+            errs = len(re.findall(r"^\[[a-z_]+\]", body, re.M))
+            warns = errs
+    log(f"[leadout] ERC 错误 {errs} 警告 {warns}")
+
+    subprocess.run([kicad, "sch", "export", "pdf", "-o",
+                    os.path.join(out_dir, f"{stem}.pdf"), sch],
+                   capture_output=True, text=True)
+    rep = {"sch": sch, "moved": moved, "labels": len(il['labels']),
+           "net_pins": len(before), "net_identical": True,
+           "erc_errors": errs, "erc_warnings": warns, "backup": bak}
+    with open(os.path.join(out_dir, f"{stem}_leadout_report.json"), "w",
+              encoding="utf-8") as f:
+        json.dump(rep, f, ensure_ascii=False, indent=1)
+    log(f"[leadout] ✓ {sch}")
+    return 0
+
+
+def cmd_rewire(args) -> int:
+    """人类画法总装：就近摆放 → 就近连线 → 电源符号 → 剩下才贴标签。
+
+    d2s 的连网步只会贴标签，出来是"每根脚挂个名字"的图（GND 无接地符号、
+    晶振与负载电容之间无连线）。这一步把它们补齐，**连接关系零改动**——
+    门禁仍是逐 pin 比网表，有任何差异回滚。"""
+    from scripts import rewire_sch as R
+    from scripts import leadout_labels as L
+
+    sch = os.path.abspath(args.sch)
+    kicad = resolve_kicad_cli()
+    if not kicad:
+        log("[rewire] ✗ 找不到 kicad-cli（HWS_KICAD_CLI）")
+        return 1
+    stem = os.path.basename(sch)[:-len(".kicad_sch")]
+    out_dir = os.path.dirname(sch)
+    bak = os.path.join(out_dir, f"{stem}.pre_rewire.kicad_sch")
+    tmp = tempfile.mkdtemp(prefix="d2s_rewire_")
+    before_net = os.path.join(tmp, "before.net")
+    after_net = os.path.join(tmp, "after.net")
+
+    def export_net(dst, path=None):
+        r = subprocess.run([kicad, "sch", "export", "netlist", "-o", dst,
+                            path or sch], capture_output=True, text=True)
+        if r.returncode != 0 or not os.path.exists(dst):
+            raise RuntimeError(f"网表导出失败: {r.stderr.strip()[:300]}")
+
+    log("[rewire] 基准网表 …")
+    export_net(before_net)
+    before = L.netlist_sig(before_net)
+    orig_text = open(sch, encoding='utf-8').read()
+    if not os.path.exists(bak):
+        open(bak, 'w', encoding='utf-8').write(orig_text)
+
+    text, rep = R.rewire(sch, before_net, do_place=not args.no_place, kicad=kicad)
+    open(sch, 'w', encoding='utf-8').write(text)
+    log(f"[rewire] 功能块 {rep.get('blocks', 0)} 个 / 图纸 {rep.get('paper', '-')} / "
+        f"挪件 {rep['parts_moved']} / 连线 {rep['wires']} 段 / "
+        f"电源符号 {rep['power_symbols']} / 剩余标签 {rep['labels']} …")
+    if rep.get('needs_split'):
+        log(f"[rewire] ⚠ 需要 {rep['needs_split'][0]:.0f}×{rep['needs_split'][1]:.0f}mm，"
+            f"A1 也放不下 —— 该拆多页了（当前还没实现分页，先按 A1 出图）")
+
+    try:
+        export_net(after_net)
+        after = L.netlist_sig(after_net)
+        # 电源符号是逐个放的，放不下才退回贴标签；全页摆完后，凡是"同网已经有
+        # 电源符号"的网标都是多余的一行字（GND 旁边再写一个 GND 标签），删掉。
+        text2, dropped = L.drop_power_labels(text, L.extract.extract(sch))
+        if dropped:
+            open(sch, 'w', encoding='utf-8').write(text2)
+            export_net(after_net)
+            after = L.netlist_sig(after_net)
+            text = text2
+            rep['labels'] -= dropped
+            log(f"[rewire] 删掉多余的电源网标 {dropped} 个（该网已有电源符号）")
+    except Exception:
+        open(sch, 'w', encoding='utf-8').write(orig_text)
+        raise
+    if L.net_partitions(before) != L.net_partitions(after):
+        pa, pb = L.net_partitions(before), L.net_partitions(after)
+        diff = [sorted(p) for p in (pa - pb)] + [sorted(p) for p in (pb - pa)]
+        open(sch, 'w', encoding='utf-8').write(orig_text)      # 回滚，绝不留坏文件
+        log(f"[rewire] ✗ 连通关系变了 {len(diff)} 处，已回滚: {diff[:4]}")
+        return 1
+    renamed = [k for k in set(before) | set(after) if before.get(k) != after.get(k)]
+    if renamed:
+        log(f"[rewire] 网名变化 {len(renamed)} 个引脚（局部网不再挂标签，连通关系不变）")
+    log(f"[rewire] 连通关系逐脚一致（{len(before)} 引脚）")
+
+    rpt = os.path.join(tmp, "erc.rpt")
+    subprocess.run([kicad, "sch", "erc", "-o", rpt, sch], capture_output=True, text=True)
+    errs = warns = 0
+    if os.path.exists(rpt):
+        body = open(rpt, encoding='utf-8', errors='replace').read()
+        m = re.search(r"Errors (\d+)\s+Warnings (\d+)", body)
+        if m:
+            errs, warns = int(m.group(1)), int(m.group(2))
+    log(f"[rewire] ERC 错误 {errs} 警告 {warns}")
+
+    subprocess.run([kicad, "sch", "export", "pdf", "-o",
+                    os.path.join(out_dir, f"{stem}.pdf"), sch],
+                   capture_output=True, text=True)
+    rep.update({"sch": sch, "net_pins": len(before), "net_identical": True,
+                "net_names_changed": len(renamed),
+                "erc_errors": errs, "erc_warnings": warns, "backup": bak})
+    with open(os.path.join(out_dir, f"{stem}_rewire_report.json"), "w",
+              encoding="utf-8") as f:
+        json.dump(rep, f, ensure_ascii=False, indent=1)
+    log(f"[rewire] ✓ {sch}")
+    return 0
+
+
 # ================= board =================
 def _board_footprint_refs(board_path: str) -> list[str]:
     """从板文件文本提取全部 footprint 的 Reference（按文件顺序）。"""
@@ -241,11 +422,17 @@ def generate_board(client, sch: str, design: dict, out_dir: str) -> dict:
                 {"shape": "rectangle",
                  "params": {"width": W, "height": H, "x": 0, "y": 0, "unit": "mm"}})
 
-    # 最小 .kicad_pro（部分工具链需要工程文件在场；与 sch 同 stem 共用一个工程）
+    # 最小 .kicad_pro（部分工具链需要工程文件在场；与 sch 同 stem 共用一个工程）。
+    # board.design_rules / board.rule_severities 写进 [board.design_settings]：
+    # kicad-cli drc 按同名 .kicad_pro 读板规（缺省=KiCad 默认值），
+    # 板级规则须在设计表里显式声明（例：0.2mm 模块散热孔需 min hole 0.2）。
     pro = os.path.join(out_dir, f"{stem}.kicad_pro")
     if not os.path.exists(pro):
         with open(pro, "w", encoding="utf-8") as f:
-            json.dump({"board": {"design_settings": {}}, "meta": {"filename": pro}}, f)
+            json.dump({"board": {"design_settings": {
+                "rules": b.get("design_rules") or {},
+                "rule_severities": b.get("rule_severities") or {},
+            }}, "meta": {"filename": pro}}, f)
 
     o = b.get("hole_edge_offset", 4.0)
     d = b.get("hole_d", 4.0)
@@ -264,11 +451,36 @@ def generate_board(client, sch: str, design: dict, out_dir: str) -> dict:
         client.tool("batch_move_components", {"moves": moves})
         log(f"[board] 锚点预放 ×{len(moves)}: {', '.join(moves)}")
 
+    # 叠层：默认 2 层；board.layers >= 4 时先经 MCP add_layer 真的把内层加进板
+    # （SetCopperLayerCount），再按 board.planes 把内层声明成 plane（net=…），
+    # 未声明的内层退化为 signal。route_rl 的 pass 计划据此决定是否走 merge 法。
+    n_layers = int(b.get("layers", 2))
+    if n_layers < 2 or n_layers % 2 or n_layers > 32:
+        raise RuntimeError(f"board.layers={n_layers} 非法：须为 2..32 的偶数")
+    planes = b.get("planes") or {}
+    inner = list(range(1, n_layers - 1))
+    for i in inner:
+        nm = f"In{i}.Cu"
+        # name 必须传规范名：传自定义名（如 "GND"）会让 DSN 层名变成该自定义名，
+        # route_rl 的 lock_layer("In1.Cu") 就锁不住平面层 → 信号被布到内层，
+        # planes pass 的层纪律断言（LAYER-DISCIPLINE VIOLATIONS）随即失败。
+        client.tool("add_layer", {"name": nm, "type": "signal",
+                                  "position": "inner", "number": i})
+    log(f"[board] 叠层 {n_layers} 层：内层 {', '.join(f'In{i}.Cu' for i in inner) or '无'}"
+        + (f"（平面 {', '.join(f'{k}={v}' for k, v in planes.items())}）" if planes else ""))
+
+    layers = [{"name": "F.Cu", "role": "signal"}]
+    for i in inner:
+        nm = f"In{i}.Cu"
+        layers.append({"name": nm, "role": "plane", "net": planes[nm]}
+                      if planes.get(nm) else {"name": nm, "role": "signal"})
+    layers.append({"name": "B.Cu", "role": "signal"})
     stackup = {
         "board_id": stem.lower().replace("-", "_"),
-        "layers": [{"name": "F.Cu", "role": "signal"}, {"name": "B.Cu", "role": "signal"}],
-        "aux_power_nets": [],
-        "via_ladder": [[300, 600]],  # PCBRouter.md: 过孔 0.3 孔 / 0.6 外径
+        "layers": layers,
+        "aux_power_nets": b.get("aux_power_nets", []),
+        # PCBRouter.md: 过孔 0.3 孔 / 0.6 外径；多层板再给一档小孔（stm32_plc 已验证）
+        "via_ladder": [[300, 600], [200, 500]] if inner else [[300, 600]],
     }
     stackup_path = os.path.join(out_dir, f"{stem}_stackup.json")
     with open(stackup_path, "w", encoding="utf-8") as f:
@@ -300,10 +512,18 @@ _DRC_COPPER = {"shorting", "clearance", "solder_mask_bridge", "hole_clearance",
                "copper_edge_clearance"}  # 铜距板边（2026-10-14 归类：铣边伤铜=制造硬伤）
 # 容忍项（footprint 原生/注释级，如实报数不挡链）：丝印四类（含压板边）、
 # 库副本警告、庭院/文本。
+# lib_footprint_issues = 「封装在本机库里找不到」（如 MountingHole 库未装），
+# 与 lib_footprint_mismatch 同为库级提示，不改板上任何几何（ESP32S3_TestBoard
+# v2 首撞：4 个安装孔的 MountingHole_3.2mm 库里没装）。
 _DRC_TOLERATED = {"silk_overlap", "silk_over_copper", "silkscreen", "silk",
                   "silk_edge_clearance",
-                  "lib_footprint_mismatch", "courtyard_overlap", "courtyard",
-                  "text_overlap", "text", "reference", "value"}
+                  "lib_footprint_mismatch", "lib_footprint_issues",
+                  "courtyard_overlap", "courtyard",
+                  "text_overlap", "text", "reference", "value",
+                  # 热焊盘辐条只接孤立铜岛（2026-10-15 归类，BlockBoard_CANUSB 首撞）：
+                  # 网级连通由 unconnected=0 独立把关（PTH 孔常经另一层全连通），
+                  # 孤立岛是背层冗余铜非断路；真开路会先撞 unconnected 铜级门。
+                  "starved_thermal"}
 
 
 def _run(cmd, cwd=None, env=None, log_prefix="") -> dict:
@@ -399,19 +619,19 @@ def cmd_chain(args) -> int:
             log(f"[chain] board 复用 {base}")
             step("board", True, status="reused", note=f"复用 {base}")
 
-        # 3. Placement（.venv python：place_rl 依赖 kicad_access 包，仅 src 布局的
-        # PYTHONPATH 不够——uv venv 里已装路径依赖；曾因 sys.executable 直跑报
-        # ModuleNotFoundError: place_rl / kicad_access）
+        # 3. Placement：规则摆件 `place_rules.py`（2026-10-29 RL 放置退役，原
+        # `place_rl.cli place --model policy_rl.pt` 已删）。它只吃板 + 网表，接口簇
+        # 从网表推，不需要设计表；因此**意图 spec / extra_fixed 不再支持**——写在设计表
+        # 里也不会生效，这里显式告警而不是静默丢弃（P2 验收 C-1 的教训）。
         if run_place:
             cur["step"] = "place"
-            # 意图 spec 透传（P2 验收 C-1：此前 chain 无 intent 入口，spec 被静默丢弃）。
-            # place 子进程 cwd=PLACEMENT_RL，相对路径会指错位置 → 绝对路径化。
-            place_cmd = [RL_PY, "-m", "place_rl.cli", "place", sch, base,
-                         "--out", placed, "--model", "policy_rl.pt", "--grid-mm", "1.27",
-                         "--xy-std", "0.08", "--legalize-iters", "200", "--lam-net", "0.1",
-                         "--seed", str(args.seed)]
-            if args.intent_file:
-                place_cmd += ["--intent-file", os.path.abspath(args.intent_file)]
+            _ip = args.intent_file or design.get("intent_file")
+            if _ip:
+                log("[chain/place] ⚠ intent spec 不再生效（RL 放置退役，规则摆件不支持意图）")
+            if design.get("extra_fixed"):
+                log(f"[chain/place] ⚠ extra_fixed {design['extra_fixed']} 不再生效"
+                    f"（锚点已由 board 步预放钉死）")
+            place_cmd = [RL_PY, PLACE_RULES, "--board", base, "--out", placed]
             r = _run(place_cmd, cwd=PLACEMENT_RL, env=RL_ENV,
                      log_prefix="[chain/place] ")
             if step("place", r["returncode"] == 0 and os.path.exists(placed),
@@ -438,9 +658,21 @@ def cmd_chain(args) -> int:
             if not os.path.exists(stackup):
                 return step("route", False, error=f"复用失败，不存在 {stackup}")
             cur["step"] = "route"
+            # 叠层含 plane 层 → 走 merge 法全 pass 计划（signal→power→finish→planes），
+            # 2 层板维持单 signal pass。pass 计划由 stackup JSON 决定，这里只做透传。
+            try:
+                with open(stackup, encoding="utf-8") as f:
+                    _st = json.load(f)
+            except (ValueError, OSError):
+                _st = {}
+            has_planes = any(l.get("role") == "plane" for l in _st.get("layers", []))
             r = _run([RL_PY, "-m", "route_rl", "--board", placed,
                       "--stackup", stackup, "--out", route_out,
-                      "--passes", "signal", "--clearances", f"signal={args.clearances}",
+                      "--passes", "" if has_planes else "signal",
+                      "--clearances",
+                      (f"signal={args.clearances};power={args.clearances};"
+                       f"finish={args.clearances}"
+                       if has_planes else f"signal={args.clearances}"),
                       "--mp", str(args.mp)], cwd=PLACEMENT_RL, env=RL_ENV,
                      log_prefix="[chain/route] ")
             final_abs = _final_board()  # 跑完重读（旧代码跑前读，fresh 链必失败）
@@ -474,6 +706,11 @@ def cmd_chain(args) -> int:
         with tempfile.TemporaryDirectory(prefix="d2s_drc_") as td:
             copy = os.path.join(td, "check.kicad_pcb")
             shutil.copy(poured, copy)
+            # 板规随同名 .kicad_pro 进临时目录：否则 kicad-cli 用 KiCad 默认规则判，
+            # 设计表声明的 design_rules/rule_severities 被静默忽略。
+            pro_src = os.path.join(out, f"{stem}.kicad_pro")
+            if os.path.exists(pro_src):
+                shutil.copy(pro_src, os.path.join(td, "check.kicad_pro"))
             rpt = os.path.join(td, "drc.rpt")
             r = _run([kicad_cli, "pcb", "drc", "--refill-zones", "--save-board",
                       "--output", rpt, copy], log_prefix="[chain/drc] ")
@@ -535,6 +772,20 @@ def main() -> int:
     p.add_argument("--no-erc-gate", action="store_true")
     p.set_defaults(fn=cmd_sch)
 
+    p = sub.add_parser("leadout", help="网标外移 + 引线（只动画法；网表逐 pin 一致才落盘）")
+    p.add_argument("--sch", required=True)
+    p.add_argument("--lead", type=float, default=5.08, help="外移基准长度 mm（堵住会自增档）")
+    p.add_argument("--title", default="", help="非空则补写标题栏 title")
+    p.add_argument("--rev", default="v1")
+    p.add_argument("--comment", default="")
+    p.set_defaults(fn=cmd_leadout)
+
+    p = sub.add_parser("rewire", help="人类画法总装：就近摆放 + 就近连线 + 电源符号"
+                                    "（网表逐 pin 一致才落盘）")
+    p.add_argument("--sch", required=True)
+    p.add_argument("--no-place", action="store_true", help="只连线/换电源符号，不挪器件")
+    p.set_defaults(fn=cmd_rewire)
+
     p = sub.add_parser("board", help="原理图 → 板骨架（板框/安装孔/锚点预放 + stackup）")
     p.add_argument("--sch", required=True,
                    help="版本从文件名推导（<项目>_vN.kicad_sch）")
@@ -549,7 +800,8 @@ def main() -> int:
     p.add_argument("--name", default=None)
     p.add_argument("--version", type=int, default=None,
                    help="版本号（--step-from sch 默认新号，重入默认复用最新）")
-    p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--seed", type=int, default=42,
+                   help="（已废弃：RL 放置退役后规则摆件是确定性的，此参数不再起作用）")
     p.add_argument("--clearances", default="205,215,225,235,245",
                    help="µm 阶梯（route_rl 甜点 235 已双板验证）")
     p.add_argument("--mp", type=int, default=60)

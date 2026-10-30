@@ -1,9 +1,199 @@
 {
- "generated_at": "2026-10-15 06:31:44",
+ "generated_at": "2026-10-31 07:03:48",
  "studio": "PCBStudioV2",
  "studio_rev": "",
- "n_files": 99,
+ "n_files": 120,
  "files": {
+  "DesignBlockTools/place_rules.py": {
+   "sha256": "db2d947a7428c1b43b4ee6e39242866d39e65fc6f6ecd9bb601f1ecec76269bd",
+   "source": "DesignBlockTools/place_rules.py",
+   "bytes": 62499
+  },
+  "DesignBlockTools/sdi/__init__.py": {
+   "sha256": "9b6d395e08b5b64d01e70f1f82653cee51ec286f48e33712880ff8789d7ba135",
+   "source": "DesignBlockTools/sdi/__init__.py",
+   "bytes": 2401
+  },
+  "DesignBlockTools/sdi/__main__.py": {
+   "sha256": "6cdf5549dc5c40558cfea4f460f6e49309d3ce0f2414b2a3c3cea9752d6eead6",
+   "source": "DesignBlockTools/sdi/__main__.py",
+   "bytes": 9505
+  },
+  "DesignBlockTools/sdi/adopt.py": {
+   "sha256": "fa22d16d61a7a30863e2b16491789ecdede0cfde94cc0f01e384281ecf702b75",
+   "source": "DesignBlockTools/sdi/adopt.py",
+   "bytes": 9053
+  },
+  "DesignBlockTools/sdi/asmfacts.py": {
+   "sha256": "4568ee22cb9319ba2501452e24e8141e68a1c8f9883c9a064a2ec94a947b9449",
+   "source": "DesignBlockTools/sdi/asmfacts.py",
+   "bytes": 9459
+  },
+  "DesignBlockTools/sdi/basis.py": {
+   "sha256": "f4b87de24644238b1ed4dbe6b668653fd311c0491b4e243f0d4a08da88dbaf2a",
+   "source": "DesignBlockTools/sdi/basis.py",
+   "bytes": 7687
+  },
+  "DesignBlockTools/sdi/block_sch.py": {
+   "sha256": "5612e5242466fb70092c1318eae399ef3a557216e8083a87a0933a5f87cfdfbf",
+   "source": "DesignBlockTools/sdi/block_sch.py",
+   "bytes": 19256
+  },
+  "DesignBlockTools/sdi/blockpcb.py": {
+   "sha256": "ba794669b8a8104fd96216f94e5fb43bce27716c7ae68679edb197ebf4f2d0fb",
+   "source": "DesignBlockTools/sdi/blockpcb.py",
+   "bytes": 77171
+  },
+  "DesignBlockTools/sdi/boardspec.py": {
+   "sha256": "d2a0900deee4084ebbe902e573b5d325e22fed01f1fa89b3cab28d13b27ab062",
+   "source": "DesignBlockTools/sdi/boardspec.py",
+   "bytes": 12063
+  },
+  "DesignBlockTools/sdi/card.py": {
+   "sha256": "7e9e8d8b5400bca1410d600995bcddff10c92d80f13d4c66ff4e13d910c818f4",
+   "source": "DesignBlockTools/sdi/card.py",
+   "bytes": 36694
+  },
+  "DesignBlockTools/sdi/cardpcb.py": {
+   "sha256": "1051bc4790898a98460cca78a18eb1e3ce6e1330ba59a64aa15513c8bab17607",
+   "source": "DesignBlockTools/sdi/cardpcb.py",
+   "bytes": 19333
+  },
+  "DesignBlockTools/sdi/carve.py": {
+   "sha256": "5d9d545c4f6eacaa6d7591e94a140804cfb1e3888b11e6fec70772a8b2486b14",
+   "source": "DesignBlockTools/sdi/carve.py",
+   "bytes": 39905
+  },
+  "DesignBlockTools/sdi/checkall.py": {
+   "sha256": "bbbf5dc2bb6e5d5a64f9cfa299a5e9d46cc777249c8649baf541f389b4977b78",
+   "source": "DesignBlockTools/sdi/checkall.py",
+   "bytes": 5610
+  },
+  "DesignBlockTools/sdi/collapse.py": {
+   "sha256": "a859501a72c2b7f6ff9e32d8c1180e66fc0ea9e4e85f7f039146ad0c1e1f040a",
+   "source": "DesignBlockTools/sdi/collapse.py",
+   "bytes": 5437
+  },
+  "DesignBlockTools/sdi/conn.py": {
+   "sha256": "23cdab6fd827743b89e2f57df6c4ee47941be255286eb3b5eeb507f11638ec39",
+   "source": "DesignBlockTools/sdi/conn.py",
+   "bytes": 5374
+  },
+  "DesignBlockTools/sdi/deffrag.py": {
+   "sha256": "1b450f618329cf1e0dfb04b613f2c9af4add655a941416079d0fb843f1c81215",
+   "source": "DesignBlockTools/sdi/deffrag.py",
+   "bytes": 5942
+  },
+  "DesignBlockTools/sdi/draw.py": {
+   "sha256": "8de0cee32b22bb6e8eb4298c1dd3da8293e12c168e78878f7266515e5dec65dc",
+   "source": "DesignBlockTools/sdi/draw.py",
+   "bytes": 16714
+  },
+  "DesignBlockTools/sdi/expand.py": {
+   "sha256": "248b59b1b77ed5e1f090375c0a7bc0a0d8215f0e4f1a84af98322245ebed26d5",
+   "source": "DesignBlockTools/sdi/expand.py",
+   "bytes": 16278
+  },
+  "DesignBlockTools/sdi/floorplan.py": {
+   "sha256": "5d99142f0753c93b37cdcc9c7dd26532e56d8c442b2ffd334209b24b4df22725",
+   "source": "DesignBlockTools/sdi/floorplan.py",
+   "bytes": 17850
+  },
+  "DesignBlockTools/sdi/gates.py": {
+   "sha256": "c2d785def09de64b9d5152044e698e5fe9c58a944ad1f3f99ad941eaade0c9fa",
+   "source": "DesignBlockTools/sdi/gates.py",
+   "bytes": 11630
+  },
+  "DesignBlockTools/sdi/kicadblocks.py": {
+   "sha256": "6a548be368d5eb76ef5d88d14d27dc9613793a3add9ec8fddba62c5c1556f7d6",
+   "source": "DesignBlockTools/sdi/kicadblocks.py",
+   "bytes": 22672
+  },
+  "DesignBlockTools/sdi/langblocks.py": {
+   "sha256": "18d1818b862c7e4fc5976657d3ad037c8c1e1cde42a717f1d9bd9132a0c94fd9",
+   "source": "DesignBlockTools/sdi/langblocks.py",
+   "bytes": 8783
+  },
+  "DesignBlockTools/sdi/legacy_sch.py": {
+   "sha256": "e5bee021f4504149ef471f7b1170cc19b45c5ff7e348ea243583e7e682d95c48",
+   "source": "DesignBlockTools/sdi/legacy_sch.py",
+   "bytes": 43914
+  },
+  "DesignBlockTools/sdi/libdiff.py": {
+   "sha256": "aea50bbf46d04269e623939e1338e226429c2ceece87e0fe2d827ec2d1315619",
+   "source": "DesignBlockTools/sdi/libdiff.py",
+   "bytes": 12643
+  },
+  "DesignBlockTools/sdi/library.py": {
+   "sha256": "2e97516bac2450d2b54ac817d60716a98064304b318703222eff252202bb2108",
+   "source": "DesignBlockTools/sdi/library.py",
+   "bytes": 20782
+  },
+  "DesignBlockTools/sdi/netcheck.py": {
+   "sha256": "87c8d213428b58289339938476604fab06ee8e82fe8b863450b7ffaf52feffb9",
+   "source": "DesignBlockTools/sdi/netcheck.py",
+   "bytes": 6796
+  },
+  "DesignBlockTools/sdi/netpoly.py": {
+   "sha256": "245a915f45f21e9838222628a8ce4d394196dd8c059ed41026fd4e0f8baa098b",
+   "source": "DesignBlockTools/sdi/netpoly.py",
+   "bytes": 22865
+  },
+  "DesignBlockTools/sdi/pageprobe.py": {
+   "sha256": "288549777b7af9059f6b0da7d6dadf2fb44e4a914e2d184a2703945b714faacc",
+   "source": "DesignBlockTools/sdi/pageprobe.py",
+   "bytes": 8706
+  },
+  "DesignBlockTools/sdi/pcbcarve.py": {
+   "sha256": "a2cca0ec9efbe08f2cf193abaef8f2ec377d46bd42551690cdb4bebd0a33ee94",
+   "source": "DesignBlockTools/sdi/pcbcarve.py",
+   "bytes": 84303
+  },
+  "DesignBlockTools/sdi/pcbdrc.py": {
+   "sha256": "eb3dd551016e00a9a6e4d7eb3b51ba4adee2b1aa659209b2f69c4f4f14a029aa",
+   "source": "DesignBlockTools/sdi/pcbdrc.py",
+   "bytes": 11868
+  },
+  "DesignBlockTools/sdi/renderdiff.py": {
+   "sha256": "56c3284d99138bb8b6e707cc75bcf95c748b60d648f4f59b0216ea100e1fb8fa",
+   "source": "DesignBlockTools/sdi/renderdiff.py",
+   "bytes": 6268
+  },
+  "DesignBlockTools/sdi/reroute.py": {
+   "sha256": "7d0b2e5f97d53d78985b36e9268da99b8d29b6dc76c3dba03d2fb12267feb683",
+   "source": "DesignBlockTools/sdi/reroute.py",
+   "bytes": 31271
+  },
+  "DesignBlockTools/sdi/schwrite.py": {
+   "sha256": "053c8d57274f3400cfd528efdcbda10dc8a88331261eda2131464c609b79a846",
+   "source": "DesignBlockTools/sdi/schwrite.py",
+   "bytes": 22935
+  },
+  "DesignBlockTools/sdi/spec.py": {
+   "sha256": "2cdb79451dd734b1cae43fa92a20f4caadc2d6850447d4f864a49e377e309da7",
+   "source": "DesignBlockTools/sdi/spec.py",
+   "bytes": 38859
+  },
+  "DesignBlockTools/sdi/spur.py": {
+   "sha256": "7ffb7a739bb0414d6eedb526068e7e09c74036d96388bc4271ac93df802dd390",
+   "source": "DesignBlockTools/sdi/spur.py",
+   "bytes": 36901
+  },
+  "DesignBlockTools/sdi/surgery.py": {
+   "sha256": "dc24d399736699413a95de7c84d103474fb2d95388bdf7df91f081fed384986a",
+   "source": "DesignBlockTools/sdi/surgery.py",
+   "bytes": 14560
+  },
+  "DesignBlockTools/sdi/unify.py": {
+   "sha256": "de2a4f86900cfdd05f1f748e798775eaafab1b51bcde783e9b3e1671c044b266",
+   "source": "DesignBlockTools/sdi/unify.py",
+   "bytes": 15069
+  },
+  "DesignBlockTools/sdi/wires.py": {
+   "sha256": "4d7bc1e4a8b0e7bb760261ce98aa94613e8d30743cdfab2a80f3d162a7f3b828",
+   "source": "DesignBlockTools/sdi/wires.py",
+   "bytes": 35665
+  },
   "KiCAD_Access/README.md": {
    "sha256": "f74bb845b4b05f855c9a0f88d220cfee0741595acf5eedc6792b6c5afb568767",
    "source": "KiCAD_Access/README.md",
@@ -245,144 +435,14 @@
    "bytes": 18222
   },
   "Placement/README.md": {
-   "sha256": "c3c0c733ef1dd1ff8ae7eb0e3133d8d19aa3302f370ad029f0905c407ff0b1d3",
+   "sha256": "7e6daccaf4eb5f787e3ce188ab3a92bfcbddce0914dd0884fbb7db5fce1397df",
    "source": "Placement/README.md",
-   "bytes": 1533
-  },
-  "Placement/policy_rl.pt": {
-   "sha256": "6b6e914bca01e117fb03ac0f1bdafbfecf1ecc2c6ea0e0d09db2ba87b9aac362",
-   "source": "Placement/policy_rl.pt",
-   "bytes": 950666
+   "bytes": 2181
   },
   "Placement/pyproject.toml": {
-   "sha256": "b430ec98a6d33c15749d621a675c55ca5e742f3d57781c22259e4308ff2466f6",
+   "sha256": "a88cb6eeb7f647f34d208417b0e158deef5d560deaf85cc8a199932ec41c5c9f",
    "source": "Placement/pyproject.toml",
-   "bytes": 815
-  },
-  "Placement/src/place_rl/__init__.py": {
-   "sha256": "8fb77a114976d0c5dbf14e07f657f9efb1d63954797957304f6d22c6264f48b5",
-   "source": "Placement/src/place_rl/__init__.py",
-   "bytes": 217
-  },
-  "Placement/src/place_rl/_pcbnew_ops.py": {
-   "sha256": "df597bdbf23705603bef656f8bb505b2e0a0aa43da563121e6f2770cf61e7f3c",
-   "source": "Placement/src/place_rl/_pcbnew_ops.py",
-   "bytes": 7930
-  },
-  "Placement/src/place_rl/cli.py": {
-   "sha256": "43c3dded1852ed6cd53e348157e12b4c3f50610102843c8f2a01546c5d10b2af",
-   "source": "Placement/src/place_rl/cli.py",
-   "bytes": 19373
-  },
-  "Placement/src/place_rl/data/__init__.py": {
-   "sha256": "3c5b8c9db7ee0291ed4800910a7babf08704c827c946e5e5c6cc99fb4258d32f",
-   "source": "Placement/src/place_rl/data/__init__.py",
-   "bytes": 241
-  },
-  "Placement/src/place_rl/data/real.py": {
-   "sha256": "2c7592be7020222dfd9518d96d8dfe3636151dad455a3e6df1571169bd2d374f",
-   "source": "Placement/src/place_rl/data/real.py",
-   "bytes": 13965
-  },
-  "Placement/src/place_rl/data/synthetic.py": {
-   "sha256": "44ef37dc48c6b26ada98f1e5bd72fb3141a9943dbc712dda725eeac380d14fe4",
-   "source": "Placement/src/place_rl/data/synthetic.py",
-   "bytes": 4956
-  },
-  "Placement/src/place_rl/env/__init__.py": {
-   "sha256": "c21e5dadf01af6b5b28faaaed2694212e73c1d77e7dfb78aedf3909c3268b2cf",
-   "source": "Placement/src/place_rl/env/__init__.py",
-   "bytes": 255
-  },
-  "Placement/src/place_rl/env/problem.py": {
-   "sha256": "767a91912993a84c90e232090cf84ecd5d8829b73e6276df91af94cd30231d36",
-   "source": "Placement/src/place_rl/env/problem.py",
-   "bytes": 47585
-  },
-  "Placement/src/place_rl/eval.py": {
-   "sha256": "a1ae244f855ec3e22f48a2ae252689a2fba225862148707990cf7ea42f9f0a92",
-   "source": "Placement/src/place_rl/eval.py",
-   "bytes": 11272
-  },
-  "Placement/src/place_rl/metrics/__init__.py": {
-   "sha256": "81954149bba57b4adc6ccd859f437ba3ee23738dcc579945bd44525bc420ab3d",
-   "source": "Placement/src/place_rl/metrics/__init__.py",
-   "bytes": 221
-  },
-  "Placement/src/place_rl/metrics/congestion.py": {
-   "sha256": "a29028c1e2df2d7ae25a9e991f66bd84126ea71e4ee4ede71c851046d71488dd",
-   "source": "Placement/src/place_rl/metrics/congestion.py",
-   "bytes": 2325
-  },
-  "Placement/src/place_rl/metrics/hpwl.py": {
-   "sha256": "13d564f42883260dd6ab1f2772c0aafe84f7b8bdca9e8bf9b18f4da18b43daf4",
-   "source": "Placement/src/place_rl/metrics/hpwl.py",
-   "bytes": 3884
-  },
-  "Placement/src/place_rl/net/__init__.py": {
-   "sha256": "f310a28fd929f66506e3f7a97e92316eaabb518e507ecc673c6e2916c1f21736",
-   "source": "Placement/src/place_rl/net/__init__.py",
-   "bytes": 42
-  },
-  "Placement/src/place_rl/net/gnn.py": {
-   "sha256": "20a77b6f264402e002d33cb8fdde1cabe6b84eeb4dd35feff563c2fa0957e18c",
-   "source": "Placement/src/place_rl/net/gnn.py",
-   "bytes": 2774
-  },
-  "Placement/src/place_rl/policy/__init__.py": {
-   "sha256": "c1cf972f28f5cf86e2e45a28dfe1e2ca9b0196f5f41da35bf722e31c7e5a8379",
-   "source": "Placement/src/place_rl/policy/__init__.py",
-   "bytes": 58
-  },
-  "Placement/src/place_rl/policy/bc.py": {
-   "sha256": "dfc48d17ddee9fc2a03141fe679f48da6b27d136682faeb04bb5f87664523734",
-   "source": "Placement/src/place_rl/policy/bc.py",
-   "bytes": 9947
-  },
-  "Placement/src/place_rl/policy/intent.py": {
-   "sha256": "8ea588299ccd7af0b17a40f2f628868acc180bd5622de9ada833066a52953926",
-   "source": "Placement/src/place_rl/policy/intent.py",
-   "bytes": 16550
-  },
-  "Placement/src/place_rl/policy/legalize.py": {
-   "sha256": "da332f62f2de136dd77dbb2669c7caea742e6e5212eeb611dc1f9831c5b51720",
-   "source": "Placement/src/place_rl/policy/legalize.py",
-   "bytes": 32263
-  },
-  "Placement/src/place_rl/policy/mask.py": {
-   "sha256": "ee72001c47b7f7c535318a5de9b8e802feb8e60966f2342b37f8757ab03d5d69",
-   "source": "Placement/src/place_rl/policy/mask.py",
-   "bytes": 3332
-  },
-  "Placement/src/place_rl/policy/place.py": {
-   "sha256": "e21805d740672358aacb15fa562442e7f6a126f5879c7115b1686b1bd6b88ea6",
-   "source": "Placement/src/place_rl/policy/place.py",
-   "bytes": 12288
-  },
-  "Placement/src/place_rl/policy/policy.py": {
-   "sha256": "4fa834030ea0a393b23393c6a0dee69c084ad3f5122fc3af2d2a69f80207ada3",
-   "source": "Placement/src/place_rl/policy/policy.py",
-   "bytes": 2733
-  },
-  "Placement/src/place_rl/policy/rl.py": {
-   "sha256": "8297c0868efbdbc6aa16bd7146dde883753510805c460cc9132825a15d2a85f7",
-   "source": "Placement/src/place_rl/policy/rl.py",
-   "bytes": 13829
-  },
-  "Placement/src/place_rl/reuse.py": {
-   "sha256": "33fbf896593f9aeb4929204d3ad84d7bdda70471de5b4f299afe44581f66f551",
-   "source": "Placement/src/place_rl/reuse.py",
-   "bytes": 4022
-  },
-  "Placement/src/place_rl/teacher/__init__.py": {
-   "sha256": "b6cce2d6234b56d0714c808c60649f1e93e20b656dcfd9bba6fcd150e3e563cf",
-   "source": "Placement/src/place_rl/teacher/__init__.py",
-   "bytes": 165
-  },
-  "Placement/src/place_rl/teacher/sa.py": {
-   "sha256": "e4bd242d63151d47a2270e82b5f1058715653498589281c13aafa974db6a63e8",
-   "source": "Placement/src/place_rl/teacher/sa.py",
-   "bytes": 5590
+   "bytes": 856
   },
   "Placement/src/route_rl/__init__.py": {
    "sha256": "4e7d8c80f8a04bc4b7ab383aede9a714189ffaea1d8506d591a9ac932b1ac0b8",
@@ -390,24 +450,34 @@
    "bytes": 541
   },
   "Placement/src/route_rl/__main__.py": {
-   "sha256": "ec6c539067471d56a1f98e28fe04d42b8c205c73a75d853b2c03da223a8dbbdd",
+   "sha256": "18ea132b3c6240db4ed9556555a4eac1409c05019b5a584338db197d85ed44ed",
    "source": "Placement/src/route_rl/__main__.py",
-   "bytes": 2150
+   "bytes": 3228
+  },
+  "Placement/src/route_rl/_pcbnew_ops.py": {
+   "sha256": "df597bdbf23705603bef656f8bb505b2e0a0aa43da563121e6f2770cf61e7f3c",
+   "source": "Placement/src/route_rl/_pcbnew_ops.py",
+   "bytes": 7930
   },
   "Placement/src/route_rl/dsn_edit.py": {
-   "sha256": "89916f995bb11aa8c0a925ffb8e09be546b1f11457bbd04ec1a80fbe8d1a8227",
+   "sha256": "c3f7feabb5b76d7595c9fc5d8421e98801315fd3d89d2550d2b8ff13dbee6ca5",
    "source": "Placement/src/route_rl/dsn_edit.py",
-   "bytes": 2399
+   "bytes": 3677
   },
   "Placement/src/route_rl/env.py": {
-   "sha256": "4ce8a1cd6ad0626ad5bcea440d2da49ee46c5ce675ba33165da27aa212804b0f",
+   "sha256": "2714cedb14312649de184abbd131a2873a4e18fe401a3c71429c889ea2d8339f",
    "source": "Placement/src/route_rl/env.py",
-   "bytes": 7071
+   "bytes": 7390
+  },
+  "Placement/src/route_rl/fanout.py": {
+   "sha256": "2d13839a0086d07c92b13a5f559ef140ae16e1ab5011f11f227a73793d45f1a8",
+   "source": "Placement/src/route_rl/fanout.py",
+   "bytes": 30194
   },
   "Placement/src/route_rl/loop.py": {
-   "sha256": "9ac3d2c1672a14d7ee7e7c02a8080a64599b5be99c2504266a697d4facd9a1cf",
+   "sha256": "3bd67985c2e498bea01c8a40e1dec1ff87b56f94da2e13e6aa7fe9672aae2571",
    "source": "Placement/src/route_rl/loop.py",
-   "bytes": 22700
+   "bytes": 31720
   },
   "Placement/src/route_rl/mdp.py": {
    "sha256": "91fa1f10f0f3656aa7f49443beac3efcc6734a673bf17e76a35bd52222130e6c",
@@ -420,9 +490,9 @@
    "bytes": 3108
   },
   "Placement/src/route_rl/planes.py": {
-   "sha256": "c51b218ff211eeb82690492b98a89b672974ae6c9f56375e3071103c939dd740",
+   "sha256": "49464beeba0b8987d995ccd66e890def4db548689b7475234f323268a9693b18",
    "source": "Placement/src/route_rl/planes.py",
-   "bytes": 4376
+   "bytes": 14455
   },
   "Placement/src/route_rl/records.py": {
    "sha256": "a14bec126f42e4fe439e1ab71435eed7ca68e8419daf351c386e39406318e909",
@@ -430,14 +500,9 @@
    "bytes": 1221
   },
   "Placement/src/route_rl/stackup.py": {
-   "sha256": "ae9a3fa2346f164ba680dd8d090b7fbd81b6790a983ff2edf83a671bd0c55e56",
+   "sha256": "950b3f786bac2ed0b779508f5fe6943d69cdfe5cb215fa8005a862e55fe07bbf",
    "source": "Placement/src/route_rl/stackup.py",
-   "bytes": 6882
-  },
-  "Placement/src/route_rl/unroute_pcb.py": {
-   "sha256": "f74b1abc69650efd6979bbece2f03b73f429a3554d2a510e84b95ec433476671",
-   "source": "Placement/src/route_rl/unroute_pcb.py",
-   "bytes": 5782
+   "bytes": 7740
   },
   "Placement/uv.lock": {
    "sha256": "0ca01a03272acf286678d5264e42629fc5c48a57a7f14ac8a55d80090f80be18",
@@ -445,14 +510,14 @@
    "bytes": 157500
   },
   "SchematicDesign/design2schematic/README.md": {
-   "sha256": "300f8e63f0de3811b8a2d1094dcb24bbb35c541a7af5a4366c1c819beb69eca6",
+   "sha256": "d3f3efb4ebbe5c384b64c62a363ee5bddecde0c8f687d2d9426908e965116ac5",
    "source": "SchematicDesign/design2schematic/README.md",
-   "bytes": 9043
+   "bytes": 15793
   },
   "SchematicDesign/design2schematic/d2s.py": {
-   "sha256": "fb78ede5da35ef0830078d90ca258dbd7661194f6c5b1b6753236d90cf629958",
+   "sha256": "2c197ea38328a8ab600a7b1c38ff0a95c3e0cd13411ce4454fa3c2ba924268df",
    "source": "SchematicDesign/design2schematic/d2s.py",
-   "bytes": 27772
+   "bytes": 41359
   },
   "SchematicDesign/design2schematic/lib/__init__.py": {
    "sha256": "e7e12257565a765209075f73d9bbdf22afbfcf50de14efe0e7b474c23f9c0c8d",
@@ -475,9 +540,9 @@
    "bytes": 2361
   },
   "SchematicDesign/design2schematic/lib/nets.py": {
-   "sha256": "f40aeadaa66185ef0f78a60538da3384caafc8349a3a0d779a5cffeba48896e8",
+   "sha256": "018427ab15ca9097413bce5d777b391ed8b8b638830850088dddda3c4747b48a",
    "source": "SchematicDesign/design2schematic/lib/nets.py",
-   "bytes": 7135
+   "bytes": 7477
   },
   "SchematicDesign/design2schematic/lib/power_rails.py": {
    "sha256": "0e965b48542c9b7d9c660a569544ffbf9c689091182f43ebacefc1999d7bcb6a",
@@ -498,6 +563,46 @@
    "sha256": "304d55ddbd20f5f3aacb57821859d80d950bbfd7fdf6516cde1417a0f55778d9",
    "source": "SchematicDesign/design2schematic/scripts/pour_2layer.py",
    "bytes": 3418
+  },
+  "SchematicDesign/il/tools/blocks.py": {
+   "sha256": "bb17c81dbd5c214bc4edaa604e7d0cbd8fa68957e829acaa25423d0bb080cb50",
+   "source": "SchematicDesign/il/tools/blocks.py",
+   "bytes": 22752
+  },
+  "SchematicDesign/il/tools/extract.py": {
+   "sha256": "736e1039312565a9e6bd0535c39aa1be5d898c58221763f9e232a0b044bc5780",
+   "source": "SchematicDesign/il/tools/extract.py",
+   "bytes": 40343
+  },
+  "SchematicDesign/il/tools/geom.py": {
+   "sha256": "68be683ddc40db3234baf894ccf26eb466d810e77a03166161ec0b474f0704de",
+   "source": "SchematicDesign/il/tools/geom.py",
+   "bytes": 8719
+  },
+  "SchematicDesign/il/tools/index.py": {
+   "sha256": "026222493ae2b484301c05fc2386b6e59e405b115ac7c1e3f31d5fd61edebcb0",
+   "source": "SchematicDesign/il/tools/index.py",
+   "bytes": 13434
+  },
+  "SchematicDesign/il/tools/render_full.py": {
+   "sha256": "a699539da511c405f5aec46722a8b49481ef6f2563e8af2be57722a0b1e0db32",
+   "source": "SchematicDesign/il/tools/render_full.py",
+   "bytes": 8493
+  },
+  "SchematicDesign/il/tools/sexpr.py": {
+   "sha256": "e8a80db26ae0b72b348dabb4418b47e6ea33979bf2f796b203a93a05d2ff26f3",
+   "source": "SchematicDesign/il/tools/sexpr.py",
+   "bytes": 1085
+  },
+  "SchematicDesign/il/tools/style_metrics.py": {
+   "sha256": "fe9dc60e85628399e68b6aca420a67d89add884d33d5e4212930a37045308d38",
+   "source": "SchematicDesign/il/tools/style_metrics.py",
+   "bytes": 9001
+  },
+  "SchematicDesign/il/tools/wireup.py": {
+   "sha256": "e976c1ddcc0676e501db52ee37552b64721f07192d807983f28111c7e8eca583",
+   "source": "SchematicDesign/il/tools/wireup.py",
+   "bytes": 48337
   }
  }
 }

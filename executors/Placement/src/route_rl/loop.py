@@ -20,10 +20,31 @@ import time
 from pathlib import Path
 
 from . import env, metrics, records
-from .dsn_edit import (del_nets, force_clearance, lock_layer,
+from .dsn_edit import (del_nets, force_clearance, keep_only_nets, lock_layer,
                        protect_wiring, shrink_npth_keepout)
 from .mdp import CLEARANCE_GRID, obs_vector, unflatten_action
 from .stackup import PassSpec, Stackup
+
+
+def _say_unrouted(r) -> None:
+    """把布线器自己写的「哪根网、从哪个脚到哪个脚没布通」打进日志。
+
+    FreeRouting 每轮都会写这种行：
+        Net 'MCU_VCAP' (1 unrouted connection): C10-1 -> U2-22
+
+    此前这里只留 stdout 的**最后一行**（`log_tail`），前面这些行全丢——
+    2026-10-29 mcu_stm32f411 卡在「未连通 1」，只能靠五组对照实验反推是哪根网。
+    答案一直在日志里，只是没被读出来。
+    """
+    txt = (getattr(r, "stdout", "") or "") + "\n" + (getattr(r, "stderr", "") or "")
+    lines = [l.strip() for l in txt.splitlines() if "unrouted connection" in l]
+    if not lines:
+        return
+    print(f"  未布通明细（布线器原话，{len(lines)} 条）：", flush=True)
+    for l in lines[:20]:
+        print("    " + l, flush=True)
+    if len(lines) > 20:
+        print(f"    …另有 {len(lines) - 20} 条", flush=True)
 
 
 # --------------------------------------------------------------------------
@@ -190,6 +211,8 @@ def compile_pass_dsn(board: Path, dst: Path, spec: PassSpec, stackup: Stackup,
     t = dst.read_text()
     if spec.delete_plane_nets:                       # A 序：删网 → 锁层 → 抬 clearance
         t = del_nets(t, sorted(stackup.plane_nets))
+    if spec.only_nets:                               # 关键网先布：其余网摘 pins
+        t = keep_only_nets(t, list(spec.only_nets))
     if spec.shrink_npth:                             # C 序：缩径 → protect → 锁层
         t = shrink_npth_keepout(t, clearance_um,
                                 stackup.npth_hole_radius_um,
@@ -357,6 +380,7 @@ def run_round(base: Path, out_dir: Path, spec: PassSpec, stackup: Stackup,
         compile_pass_dsn(base, dsn, spec, stackup, clr, active)  # ①
         try:
             r = env.freerouting(dsn, ses, max_passes=mp)             # ③
+            _say_unrouted(r)                                         # ③' 病因点名
             log_tail = (r.stdout.splitlines() or [""])[-1][:200]
         except subprocess.TimeoutExpired:
             # 超时=动作把板变成时限内不可布——记 no-SES 失败轮（诚实负样本），
@@ -451,17 +475,53 @@ def run_pass(base: Path, out_dir: Path, spec: PassSpec, stackup: Stackup,
 # --------------------------------------------------------------------------
 # 全管线：pass 计划依序执行，链式喂入
 # --------------------------------------------------------------------------
+def _non_plane_unconnected(drc: dict, plane_nets: set[str]) -> list[dict]:
+    """未布通项里剔掉「纯平面网」的：平面网 SMD 焊盘已在前置扇出里落了过孔，
+    连通由 planes pass 的整板 zone 负责，FreeRouting 再怎么跑也修不了它们。
+    只看它们就重跑 finish（protect 回灌拆线）是净损失。"""
+    import re as _re
+    out: list[dict] = []
+    for u in drc.get("unconnected_items") or []:
+        nets = set()
+        for it in u.get("items") or []:
+            m = _re.search(r"\[([^\]]+)\]", it.get("description", ""))
+            if m:
+                nets.add(m.group(1))
+        if not nets or not nets <= plane_nets:
+            out.append(u)
+    return out
+
+
 def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
                  passes: list[str] | None = None,
                  clearances: dict[str, list[int]] | None = None,
                  mp: int = 60, attempts: int = 1,
-                 engine: str = "freerouting") -> dict:
+                 engine: str = "freerouting",
+                 priority_nets: list[str] | None = None,
+                 fan_early: bool = False,
+                 fan_early_only: list[str] | None = None) -> dict:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     run_id = records.new_run_id()
     plan = [p for p in stackup.pass_plan() if not passes or p.name in passes]
     if not plan:
         raise ValueError(f"空 pass 计划：passes={passes}")
+    if priority_nets:
+        # **关键网先布**：先单独跑一轮"只有这几根网"的信号 pass，随后整条链
+        # 把它的铜当障碍（protect_wiring）。理由：FreeRouting 按自己的网序布，
+        # 时钟网常常排在中后段，等到它上场时通道已被别的线占满，只能绕远或
+        # 打过孔（实测晶振两支引脚被绕 20mm+ / 2~3 孔）。先布就没人能挡它。
+        for p in plan:
+            if p.name == "priority":
+                raise ValueError("优先级 pass 名与计划冲突")
+        plan = [PassSpec("priority", delete_plane_nets=True,
+                         lock_non_signal=True, force_clearance_txt=True,
+                         only_nets=tuple(priority_nets))] + plan
+        # 后续信号 pass 不许重布这几根网：protect = 既有铜变障碍（不是删掉）
+        import dataclasses as _dc
+        plan = [p if p.name != "signal" else _dc.replace(p, protect_wiring=True)
+                for p in plan]
+        print(f"  关键网先布：{'、'.join(priority_nets)}")
 
     records.write_manifest(out_dir, {
         "run_id": run_id, "board_id": stackup.board_id,
@@ -476,8 +536,84 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
 
     cur = Path(board)
     chain: dict[str, dict] = {}
+
+    # 平面网扇出占位：把每个平面网 SMD 焊盘的落孔位找好，用 keepout 规则区占住
+    # （FR 布信号会绕开）。落铜推迟到所有 FR pass 之后、planes 之前——del_nets 会把
+    # 平面网里的 via/wire 一起删掉，提前落铜等于没落。
+    #
+    # **时序：等 priority pass 跑完再规划**（2026-10-29 mcu_stm32f411 实测）。
+    # 原先在光板上就规划，`_hits` 只看得见焊盘，落孔位会一头扎进"关键网唯一的
+    # 出线走廊"：J2（TC2030，脚距 1.27mm）东侧走廊只有 1.17mm，两颗平面网过孔
+    # 落在走廊正中、各自套一个 1.1mm keepout，走廊被挤到 0.61mm（0.2mm 线要
+    # 0.60mm）→ 同封装第 3 脚 NRST 布不出去。对照实验：把这批 keepout 全删，
+    # FreeRouting 的未布通从 6 掉到 1。关键网先布之后，那几根铜本身是 `_hits`
+    # 的障碍，落孔位只能让开——先布的网赢，正是"关键网先布"该有的语义。
+    #
+    # **fan_early=True：细间距引脚场里的平面网脚改到"布线之前"占位**（见下）。
+    fan_spots: list[dict] = []
+    nospot: list[str] = []
+    fan_done = not stackup.plane_layers
+    if stackup.plane_layers:
+        from .fanout import add_keepouts, plan_fanout, place_fanout
+
+    def _plan_fanout(b: Path, tight: bool | None,
+                     only: set[str] | None = None) -> Path:
+        """在**当前**板上找落孔位 + 落 keepout。`tight` 见 fanout.plan_fanout。
+
+        `only`：只给这几只脚落 keepout（其余照常规划但不当障碍），位号-脚号
+        形式，如 {'U1-9'}。用于"先布完看谁真没地方落孔，再只救那几只"。"""
+        nonlocal fan_spots
+        covered = {(s['ref'], s['num']) for s in fan_spots}
+        # 已经订下、但铜还没落的落孔位（早占位那一批）：后一批规划必须让开
+        reserved = [{'x': s['x'], 'y': s['y'], 'vd': s['vd'],
+                     'px': (s['px'], s['py']),
+                     'elbow': tuple(s['elbow']) if s.get('elbow') else None}
+                    for s in fan_spots]
+        try:
+            spots = plan_fanout(b, stackup, tight=tight, skip=covered,
+                                reserved=reserved)
+        except Exception as e:      # 规划失败不挡链：退回布线后 stitch
+            print(f"  [fanout] 规划失败，跳过（回退到 planes.stitch）：{e}")
+            return b
+        if only is not None:
+            spots = [s for s in spots if f"{s['ref']}-{s['num']}" in only]
+            if not spots:
+                print(f"  [fanout] 指定要早占位的脚在这块板上找不到落孔位："
+                      f"{sorted(only)}")
+        if spots:
+            b = add_keepouts(b, spots,
+                             out_dir / "_fanout_keepout.kicad_pcb")
+            fan_spots.extend(spots)
+            print(f"  [fanout] +{len(spots)} 个平面网焊盘已占位（keepout，共 "
+                  f"{len(fan_spots)}）")
+        return b
+
+    # 早占位：只有**细间距引脚场**里的平面网脚（0.5mm 脚距 QFP/QFN）需要在
+    # priority/signal 之前就把落孔位订下来——它们的邻脚只隔 0.5mm，谁先落孔谁
+    # 就把旁边那只挤死，而先布轮的线又会横切它们唯一的另一条走廊。
+    # 10-29 mcu_stm32f103 实测：U1-9(+3.3V) 东侧被 U1-8(GND) 的落孔占死、西侧被
+    # NRST 先布线横切，全流程没有一处能落孔 → 未连通 1（stitch 也救不了，见
+    # planes.py）。普通间距焊盘仍等 priority 之后规划（J2 走廊教训）。
+    if stackup.plane_layers and fan_early_only:
+        cur = _plan_fanout(cur, None, only=set(fan_early_only))
+    elif stackup.plane_layers and fan_early:
+        cur = _plan_fanout(cur, True)
+
     for spec in plan:
+        if not fan_done and spec.name != "priority":
+            cur = _plan_fanout(cur, False if fan_early else None)
+            fan_done = True
+            nospot = [p for p in plan_fanout.last_nospot
+                      if p not in {f"{s['ref']}-{s['num']}" for s in fan_spots}]
+            if nospot:
+                print(f"  [fanout] 这几只平面网脚本轮**没有落孔位**："
+                      f"{'、'.join(nospot)}（布完会悬空）")
         print(f"== pass {spec.name} (base={cur.name}) ==")
+        if fan_spots and spec.name == "planes":
+            cur = place_fanout(cur, fan_spots,
+                               out_dir / "_fanout_copper.kicad_pcb")
+            print(f"  [fanout] 落铜 {len(fan_spots)} 枚过孔 + 引线")
+            fan_spots = None
         if spec.name == "planes":
             from .planes import run_planes_pass
             rec = run_planes_pass(cur, out_dir, stackup, run_id)
@@ -487,6 +623,16 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
                                 "board": str(cur)}
             continue
         cl = (clearances or {}).get(spec.name) or [spec.default_clearance_um]
+        # 收尾 pass 只在上一 pass 留下未布通时才有意义。protect_wiring 的 SES
+        # 回灌会让 FreeRouting 重发既有走线（实测偶发丢段：v1 把 EN 竖直段
+        # 弄断、+5V 断成两截）——无活可干时跑它只会伤已完成的布线。
+        if spec.name == "finish":
+            _d = env.kicad_drc(cur, refill=True)
+            if not _non_plane_unconnected(_d, stackup.plane_nets):
+                print("  [finish] 无未布通项，跳过（避免 protect 回灌拆线）")
+                chain[spec.name] = {"score": None, "board": str(cur),
+                                    "skipped": "nothing_left"}
+                continue
         best = run_pass(cur, out_dir / spec.name, spec, stackup,
                         LadderController(cl), run_id, mp, attempts, engine)
         if best is None:
@@ -494,8 +640,19 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
         cur = best[1]
         chain[spec.name] = {"score": best[0], "board": str(cur),
                             "n_rounds": best[3]}
+
+    # 计划里没有 planes（如只跑 signal/power/finish）时，FR 阶段结束后补落铜
+    if fan_spots:
+        cur = place_fanout(cur, fan_spots,
+                           out_dir / "_fanout_copper.kicad_pcb")
+        print(f"  [fanout] 落铜 {len(fan_spots)} 枚过孔 + 引线")
+        chain["fanout"] = {"board": str(cur), "spots": len(fan_spots)}
+
     result = {"run_id": run_id, "board_id": stackup.board_id,
-              "chain": chain, "final": str(cur)}
+              "chain": chain, "final": str(cur),
+              # 布完仍悬空、且**根本找不到落孔位**的平面网脚：调用方拿它来决定
+              # 要不要换"布线前占位"重来一次（blockpcb 的 ④' 那条路）。
+              "fan_nospot": nospot}
     (out_dir / "result.json").write_text(
         json.dumps(result, ensure_ascii=False, indent=1))
     return result

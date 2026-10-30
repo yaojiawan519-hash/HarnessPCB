@@ -28,9 +28,10 @@ python3 <包根>/executors/SchematicDesign/design2schematic/d2s.py chain \
 ```
 
 - `--clearances` µm 阶梯：布线步逐档试，全通即停（阶梯是双板验证过的甜点带）。
-- `--intent-file <spec.json>`：放置意图透传给 place 步（可选；格式见
-  `docs/输入格式说明.md` §二，范例 `demo/demo_blinker_intent.json`）。
-  也可手动分步：`plr place --intent-file` 单跑 + `--step-from route` 续跑。
+- ⚠ `--intent-file` / 设计表 `extra_fixed` **已不生效**（2026-10-29 RL 放置退役，
+  place 步换成规则摆件 `place_rules.py`，它只吃板 + 网表，不支持意图）。给了不会
+  报错，但 chain 会打印 `⚠ intent spec 不再生效`——**看到这行别以为它生效了**。
+  手动分步改走 `pcb-place` skill，再 `--step-from route` 续跑。
 - `--full-pads R1,J1`：指定铺铜实连焊盘（默认取设计表 `board.full_pads`）。
 - 重入：`--step-from {sch,board,place,route,drc}` 复用既有产物从某步续跑；
   `--step-from sch` 默认开新版本号 vN+1，其余默认复用最新。

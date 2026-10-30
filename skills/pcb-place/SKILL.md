@@ -1,43 +1,70 @@
 ---
 name: pcb-place
-description: 单独跑放置引擎（place_rl）：原理图驱动 + 六原则默认开 + 可选意图 spec。要复放置、换 seed 对比、或只想重摆器件时用；整链跑板请用 pcb-chain。
+description: 单独跑规则摆件（place_rules）：接口一面朝外 + 去耦贴脚 + 时钟贴芯片 + 其余就近，四条确定性规则，无 seed 无模型。要重摆一遍、调朝外面/件间净距、或只想看放置质量时用；整链跑板请用 pcb-chain。
 ---
 
-# PCB 放置（place_rl place）
+# PCB 放置（place_rules.py 规则摆件）
 
-chain 的 place 步即本命令（参数一致）。单独调用用于：重放对比、
-换 seed / 换意图 spec 实验、或只关心放置质量。
+chain 的 place 步就是这条命令。单独调用用于：重摆对比、换朝外面 / 件间净距实验、
+或只关心放置质量。
+
+> **这条线 2026-10-29 换过引擎**：原来的 `plr place`（RL 模型 + `policy_rl.pt` +
+> `--intent-file`）已退役，本包 v0.2 起不再随包。现在是纯规则、确定性：
+> **同样的输入永远得到同样的板**，没有 seed、没有权重、没有意图 spec。
 
 ## 调用形态
 
 ```bash
 cd <包根>/executors/Placement
-./.venv/bin/python -m place_rl.cli place <sch> <base.kicad_pcb> \
-  --out <placed.kicad_pcb> \
-  --model policy_rl.pt --grid-mm 1.27 --xy-std 0.08 \
-  --legalize-iters 200 --lam-net 0.1 --seed 42 \
-  [--intent-file <intent.json>] \
+python3 ../DesignBlockTools/place_rules.py \
+  --board <base.kicad_pcb> --out <placed.kicad_pcb> \
+  [--face E] [--gap 0.45] [--ports <网名,网名>] \
   > place.log 2>&1
 ```
 
-- `<sch>` / `<base>` 用 chain 产物（`<项目>_vN.kicad_sch` / `_vN_base.kicad_pcb`）。
-- `--intent-file`：放置意图 spec（格式 `docs/输入格式说明.md` §二，
-  范例 `demo/demo_blinker_intent.json`）；写 spec 前先过 pcb-intent-spec skill。
-- 六原则旗标默认已开（LED 贴边 / 接口贴边 / 主芯片均匀）——与 chain 行为
-  一致，不要乱关；`--extra-fixed` 可追加锁定位号。
-- ⚠ 本命令 ≠ `kca place`（那是旧的 YAML floorplan 流程，别混用）。
+- `<base>` 用 chain 的产物 `<项目>_vN_base.kicad_pcb`（板框/安装孔/锚点已预放）。
+- `--face {E,S,W,N}`：接口簇朝哪个面。不给时引擎自己选（挑件少的一边）。
+- `--gap <mm>`：件间最小净距，默认 **0.45**；布线吃紧就放大（块内实测 0.6 起
+  QFP 扇出走不动）。
+- `--ports <网名,...>`：口岸网名。**不给则整条"口岸朝外"规则不生效**——
+  独立摆一块不接外部的板时这是对的；给错等于给错的嘴。
+- `--dry-run`：只算不写板，打印摆件表和去耦距离。**改规则 / 摸参数先用它**。
+
+## 四条规则（引擎里就是这么判的）
+
+1. **R1 接口一面对外**：接插件 + 与它共享非电源网的器件（ESD/隔离/收发器/保险丝）
+   排成两列贴在同一个面——接插件在外列、嘴朝外（嘴 = 焊盘质心的反方向，从封装
+   几何算，不查表）。这一面之外不放别的东西，块才是"有嘴的方块"。
+   ⚠ **排针没有嘴**：单排直插排针的规则是"脚排平行于所贴的边"，0°/180° 由
+   "脚到目标脚的距离和"定。
+2. **R2 去耦贴脚**：每只电源脚配一只电容，落在该脚外侧，VDD 盘朝芯片、GND 盘朝外
+   让出过孔位；同侧多只沿边**交错 0.55mm**（禁整齐行——整齐行会把脚到过孔之间
+   的扇出通道砌死）。
+3. **R3 时钟件贴芯片**：晶体/负载电容紧邻芯片时钟脚，且给芯片**留出逃逸走廊**
+   （同面积下宁可远一点，也不让以后没法引线）。
+4. **R4 其余按连接亲密度就近**：与已摆器件共享信号网的往其质心贴，同时给向心力
+   防止摊开；最后统一推开到 `--gap`。
+
+焊盘朝向不查文档：对 0/90/180/270 **逐个试**，读回真实焊盘坐标打分取最优。
+
+## 工具链前置
+
+`place_rules.py` 本身是 stdlib-only，但读/写板要 shell 出 KiCad 自带的 python
+（带 `pcbnew`）。解析顺序 = 环境变量 `HWS_KICAD_PY` > `~/.harnesspcb.json` >
+`kca doctor` 那套标准探测。三样都没有时会直接告诉你三条补法——**不会**抛栈。
 
 ## 验证方法
 
-1. 日志尾的 HPWL / legalize 收敛信息、`--out` 板文件存在。
-2. 给了 `--intent-file` 时读日志的意图落位上报（edge/along/rot 三级信号
-   如实上报，未落位会写明原因——如实读，不猜）。
-3. 终验靠下一步布线真数（放置好坏由布线完成度/孔数说话）：
-   接 pcb-route skill 用同一 stackup 布一遍看 score。
+1. 先 `--dry-run` 看三行数：去耦最远中心距（应 ≤ 2.2mm 量级）、
+   "N/M 只超 2.2mm"（应 0/M）、口岸脚有没有被挡。
+2. 真写板后在 KiCad 里看 overlaps（`check_courtyard_overlaps` 类工具）：应为 0。
+3. 终验靠布线真数（放置好坏由布线完成度/孔数说话）：接 `pcb-route` skill 用
+   同一 stackup 布一遍看 score。
 
 ## 铁律
 
-- 输出永远写新文件（--out），不覆盖输入板；`.lck` 锁窗口不写。
-- 换 seed 只影响初始扰动，锚点/意图/六原则是确定性的——对比实验时
-  一次只动一个变量。
-- 日志重定向再读，禁管道截断。
+- 输出永远写新文件（`--out`），不覆盖输入板。
+- 规则是确定性的：**没有 seed**，跑两遍必然一模一样。所以"对比实验"只能动
+  `--face` / `--gap` / `--ports` 这几个旋钮，一次只动一个。
+- 日志重定向再读，禁管道截断（`| head` 会提前杀进程，板可能写一半）。
+- ⚠ 本命令 ≠ `kca place`（那是旧的 YAML floorplan 流程，别混用）。

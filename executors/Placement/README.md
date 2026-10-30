@@ -1,5 +1,12 @@
 # place-rl（Placement/）
 
+> **⚠️ RL 放置线已退役（2026-10-29，依据 `../HarnessPCB_总体规划.md` §八）。**
+> `src/place_rl/`、`policy.pt`、`policy_rl.pt`、`eval_out/` 已全部删除；本目录**只剩布线引擎
+> `src/route_rl/`**（`d2s chain` 的 route 步和 `sdi.blockpcb` 都在用，在役）。
+> 整板放置改用规则摆件 `../DesignBlockTools/place_rules.py`（`d2s chain` 的 place 步已切换）。
+> 退役资产的小存档（代码 + 两个权重，1.7MB）：`~/Backup/rl_code_retired_20261029.tar.gz`。
+> 下面 M0–M6 里程碑与以下各节是**历史记录**，保留作证据链，不再维护、也不再可运行。
+
 PCB 元器件自动放置工具（RL），与 KiCad 兼容。顺序式 RL 骨架，
 GNN 超图编码 + 两级动作分解 + Pos/Wire 掩码，SA 自蒸馏作教师 →
 行为克隆 → PPO 微调，闭环评估接 FreeRouting（历史设计文档已归档，

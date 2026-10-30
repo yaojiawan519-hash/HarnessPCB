@@ -45,7 +45,12 @@ def pins(client, sch: str, ref: str) -> list[dict]:
 
 def match_pins(pin_list: list[dict], key: str, aliases: tuple = (), multi: bool = False,
                exclude_substring: str | None = None) -> list[dict]:
-    """归一名精确匹配 → 包含匹配 → 别名 → 引脚号。multi 时返回全部同名引脚。"""
+    """归一名精确 → 引脚号精确 → 名字包含 → 别名。multi 时返回全部同名引脚。
+
+    顺序坑（块表数字键首撞，USBLC6 "2" 键被子串吸进名 I/O2=3 脚）：
+    数字键必须先过引脚号精确，再进名字子串——否则 "2" ∈ "I/O2"、
+    "1" ∈ "PC13" 这类带数字脚名必被误吸。Device:C/R 脚名恰为 "1"/"2"，
+    名字精确一步命中，此重排对既有设计表零影响。"""
     k = norm(key)
 
     def candidate(p: dict) -> bool:
@@ -55,13 +60,17 @@ def match_pins(pin_list: list[dict], key: str, aliases: tuple = (), multi: bool 
 
     cands = [p for p in pin_list if candidate(p)]
     exact = [p for p in cands if norm(p.get("pin_name", "")) == k]
+    bynum = [p for p in cands if norm(p.get("pin_number", "")) == k]
     if multi:
         if exact:
             return exact
-        return [p for p in cands if norm(p.get("pin_name", "")).find(k) >= 0] or \
-               [p for p in cands if norm(p.get("pin_number", "")) == k]
+        if bynum:
+            return bynum
+        return [p for p in cands if norm(p.get("pin_name", "")).find(k) >= 0]
     if exact:
         return exact[:1]
+    if bynum:
+        return bynum[:1]
     inc = [p for p in cands if k in norm(p.get("pin_name", ""))]
     if inc:
         return inc[:1]
@@ -71,8 +80,7 @@ def match_pins(pin_list: list[dict], key: str, aliases: tuple = (), multi: bool 
             [p for p in cands if ka in norm(p.get("pin_name", ""))]
         if m:
             return m[:1]
-    bynum = [p for p in cands if norm(p.get("pin_number", "")) == k]
-    return bynum[:1]
+    return []
 
 
 # ---------- 主入口 ----------
