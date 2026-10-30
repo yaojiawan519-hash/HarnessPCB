@@ -12,6 +12,14 @@ venv/
 # demo 全链输出（quickstart 产物，不入库）
 demo/out/
 
+# KiCad 本机工程偏好与锁文件（kicad-cli 打开工程时自己写出来的旁产物）
+*.kicad_prl
+~*.lck
+*.lck
+
+# 编辑器本地历史（曾把一整个 git 仓库塞进 blocks/，见 tools/pack_blocks.py）
+.history/
+
 # 环境与凭据（绝不入库）
 .env
 *.local.json
