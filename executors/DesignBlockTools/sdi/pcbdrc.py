@@ -22,7 +22,7 @@ LDO 输入输出短在一起，全库巡检一直是绿的——2026-10-30 补�
 两个跑法上的事实：
 
 * **必须带 `--refill-zones`**：块里存的铜皮是上次铺的结果，不重铺等于拿旧账判新板。
-* **一次全库 ~20 分钟**（123 块，纯 kicad-cli）。所以读数按板文件指纹（大小 + mtime）缓存在
+* **一次全库 ~20 分钟**（123 块，纯 kicad-cli）。所以读数按板文件指纹（内容 sha256）缓存在
   `<块>/_geom/drc.json`；文件没动过就直接引用上一次的读数，门禁秒出。要重算是 `--force`。
 
 跑法：
@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import hashlib
 import json
 import os
 import subprocess
@@ -59,8 +60,13 @@ def _cli() -> str:
 
 
 def fingerprint(pcb: Path) -> str:
-    st = pcb.stat()
-    return f'{st.st_size}:{st.st_mtime_ns}'
+    """缓存键 = 板文件内容 sha256 前 16 位。
+
+    原先是 `size:mtime_ns`——**拷贝 / 克隆都会改 mtime**，于是每跑一次门禁就把
+    105 个 `_geom/drc.json` 全部写脏（2026-10-31 实测：`pack_blocks --sync` 之后
+    再跑一次 `checkall`，工作树里 105 个块全是 M）。内容没变就该是同一把键。
+    """
+    return hashlib.sha256(pcb.read_bytes()).hexdigest()[:16]
 
 
 #: 器件自带的"图形铜"在 DRC 里读作 `[<no net>]`——**焊盘跳线（solder jumper）、PCB 天线馈点、

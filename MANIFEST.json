@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31 07:13:29",
+ "generated_at": "2026-10-31 07:20:33",
  "studio": "PCBStudioV2",
  "studio_rev": "",
  "n_files": 120,
@@ -150,9 +150,9 @@
    "bytes": 84303
   },
   "DesignBlockTools/sdi/pcbdrc.py": {
-   "sha256": "eb3dd551016e00a9a6e4d7eb3b51ba4adee2b1aa659209b2f69c4f4f14a029aa",
+   "sha256": "2f9dc9fc13d0605def20088349c91594d6cf1ba7f3f1d184a9e4c2ab3bf8fb1d",
    "source": "DesignBlockTools/sdi/pcbdrc.py",
-   "bytes": 11868
+   "bytes": 12243
   },
   "DesignBlockTools/sdi/renderdiff.py": {
    "sha256": "56c3284d99138bb8b6e707cc75bcf95c748b60d648f4f59b0216ea100e1fb8fa",
