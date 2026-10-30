@@ -1,0 +1,152 @@
+{
+  "name": "ir_rcv_38k",
+  "source": "bp5-ir-toy-v3-rev3.kicad_pcb",
+  "origin_src_mm": [
+    155.2341,
+    97.0323
+  ],
+  "size_mm": [
+    10.4308,
+    7.3854
+  ],
+  "ports": {
+    "VOUT": [
+      "C3",
+      "C6",
+      "C7",
+      "C8",
+      "D3",
+      "J1",
+      "J2",
+      "R1",
+      "R10",
+      "R12",
+      "R2",
+      "R7",
+      "R8",
+      "R9",
+      "U5"
+    ],
+    "IO5": [
+      "J1",
+      "J2"
+    ],
+    "GND": [
+      "C1",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "D1",
+      "D10",
+      "J1",
+      "J2",
+      "R11",
+      "R13",
+      "R6",
+      "U1",
+      "U2",
+      "U4",
+      "U5"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 159.6,
+      "y": 101.525,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 159.6,
+      "y": 92.5396,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO5",
+      "x": 149.2188,
+      "y": 97.5188,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 12,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 9,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "IO5",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C2",
+      "value": "4.7uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -1.4841,
+      "dy": -0.5323,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R4",
+      "value": "100R",
+      "fp": "R_0805_2012Metric",
+      "dx": -3.7341,
+      "dy": -0.5323,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R5",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.2341,
+      "dy": 2.7177,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U3",
+      "value": "IRM-3638T",
+      "fp": "TSOP18XX",
+      "dx": 1.7393,
+      "dy": -0.5335,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

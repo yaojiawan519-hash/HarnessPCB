@@ -1,0 +1,75 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "usb_batt_switch",
+ "interface": [],
+ "power_rails": [
+  "+5V",
+  "+BATT",
+  "GND",
+  "VBUS"
+ ],
+ "parts": [
+  {
+   "ref": "Q1",
+   "lib": "Transistor_FET:DMG2301L",
+   "value": "DMG3415U",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 177.8,
+   "y": 76.2
+  },
+  {
+   "ref": "D4",
+   "lib": "Device:D_Schottky",
+   "value": "B5819W",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "x": 170.18,
+   "y": 82.55
+  },
+  {
+   "ref": "R15",
+   "lib": "Device:R_Small_US",
+   "value": "100kR 1%",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 162.56,
+   "y": 90.17
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D4",
+   "pin": "1",
+   "net": "+5V"
+  },
+  {
+   "ref": "Q1",
+   "pin": "2",
+   "net": "+5V"
+  },
+  {
+   "ref": "Q1",
+   "pin": "3",
+   "net": "+BATT"
+  },
+  {
+   "ref": "R15",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "D4",
+   "pin": "2",
+   "net": "VBUS"
+  },
+  {
+   "ref": "Q1",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "R15",
+   "pin": "1",
+   "net": "VBUS"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

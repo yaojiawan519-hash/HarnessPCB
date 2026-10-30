@@ -1,0 +1,99 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**Bus Pirate 5 的适配板接口面**：J2（1x10 直针）与 J1（1x10 卧式母座，图形镜像 y） 并排、引脚一一对应，是\"插上主机的排针 + 母座\"；J4（1x08 卧式直针）是把同一批信号\n  再引到目标板的一条 8 位带（VPP / VPP_SW / VOUT / GND / IO4~IO7）。\n  整块 12 张网里 8 张是出块（VOUT / VPP / VPP_ADC / VPP_HIGH / VPP_LOW / VPP_PWM / VPP_SW / GND），\n  IO4~IO7 是 4 张**纯贯通**网（每张只有三个排针脚，块内没有任何别的器件）。\n  复用要点：① 这块是**板级接口**不是电路——换主机时整块替换；② 1x10 + 1x08 的脚序是\n  Bus Pirate 的约定（`2.54 mm 90degrees, right angle male header` 是原图唯一一段文字，\n  已经作为装饰照搬进块），**别按自己的定义重排**；③ J1 是镜像放置，复制块时连镜像一起搬。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/1",
+      "note": "Bus Pirate 的 5V 轨，经 J1.1/J2.1/J4.3 三处引出"
+    },
+    {
+      "name": "VPP",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J4/1",
+      "note": "升压后的高压，J4.1 出线"
+    },
+    {
+      "name": "VPP_ADC",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/5",
+      "note": "分压后的采样点，J1.5/J2.5 回主机 ADC"
+    },
+    {
+      "name": "VPP_HIGH",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/3",
+      "note": "VPP 开启控制，J1.3/J2.3"
+    },
+    {
+      "name": "VPP_LOW",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/2",
+      "note": "VPP_SW 下拉控制，J1.2/J2.2"
+    },
+    {
+      "name": "VPP_PWM",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/4",
+      "note": "升压开关管驱动，J1.4/J2.4"
+    },
+    {
+      "name": "VPP_SW",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J4/2",
+      "note": "开关后的高压，J4.2 出线"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J1",
+    "max_mm": 24.0,
+    "rationale": "J1 与 J2 相距 3.85mm（并排插在同一排孔距上），J4 在 23.62mm 外的另一侧——\n    **这个 23.6mm 是板宽决定的，不是布局偏好**：J4 是出线口，必须对着目标板那边。\n    复用时 J1/J2 那条\"3.85mm 并排\"要保住（母座和直针共享同一排引脚），J4 按目标板位置摆。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "IO4",
+    "IO5",
+    "IO6",
+    "IO7"
+  ],
+  "notes": [
+    "3 件 / 12 网：7 个信号口岸（VOUT / VPP / VPP_ADC / VPP_HIGH / VPP_LOW / VPP_PWM / VPP_SW）+ 轨 GND；4 张块内网是 IO4~IO7——它们在块里**只有三个排针脚**（J1/J2/J4），是纯贯通网，所以既不是口岸也不是轨。",
+    "J1 在原理图里是**镜像放置**（mirror y），和 J2 引脚一一对应、只差 3.85mm；复制块时镜像要一起搬，别只搬坐标。",
+    "这块是板级接口面：唯一一段原图文字 `2.54 mm 90degrees, right angle male header` 已作为装饰照搬进块，脚序是 Bus Pirate 的约定，别按自己的定义重排。",
+    "⚠ `cut_ends`（切端）与 `exit_points`（出口）**不是一回事**：这块三根排针横跨板子，铜被\"删掉别人的部分\"留下 10 处断头，而真正走到窗口边出去的只有 4 处。",
+    "铜 70 段 + 2 孔（B 25 / F 56）；死铜删 23 段/孔；口岸切口 10 处、走线出口 4 处；铺铜带走 0 张（源板那张 GND 铺铜按「块内不带铺铜」整张删掉，拼板时由整板铺铜接上）。",
+    "块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "kicad-cli DRC：isolated_copper 0；未连通 4 条，落在 GND、VOUT 上（块里它们的铜只走了半截）；其余 26 条（track_dangling×17、via_dangling×6、lib_footprint_mismatch×3）是源板自带 + 切块断头——源板本身 23 条违规 / 未连通 0（lib_footprint_mismatch×20、silk_over_copper×1、silk_overlap×1、starved_thermal×1），块里能对上的都是从那儿继承的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 vpp-maker-rev6-ian.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 GND 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "3 件 / 12 网 / 端口 7 + 轨 1；铜 70 段 + 2 孔；死铜删 23；口岸切口 10；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

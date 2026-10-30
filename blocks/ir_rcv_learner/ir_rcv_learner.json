@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100r 10k 4.7uf os1200mw-a1",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "ir_rcv_learner"
+  }
+}

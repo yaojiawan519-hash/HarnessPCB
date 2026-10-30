@@ -1,0 +1,108 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ph_ports",
+ "interface": [
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J6-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟：J6.1"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J6-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据：J7.1 + J6.2"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J6-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "整板电源（丝印 `V+`）：J7.2 + J6.3"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J7",
+   "lib": "Connector_Generic_MountingPin:Conn_01x03_MountingPin",
+   "value": "S3B-PH-SM4-TB (HC-PH-3AWT)",
+   "footprint": "footprints:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal",
+   "x": 100.33,
+   "y": 68.58
+  },
+  {
+   "ref": "J6",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "S4B-PH-SM4-TB (HC-PH-4AWT)",
+   "footprint": "footprints:JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm_Horizontal",
+   "x": 144.78,
+   "y": 67.31
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J6",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "J6",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J7",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "J7",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J6",
+   "pin": "1",
+   "net": "SCL"
+  },
+  {
+   "ref": "J6",
+   "pin": "2",
+   "net": "SDA"
+  },
+  {
+   "ref": "J7",
+   "pin": "1",
+   "net": "SDA"
+  },
+  {
+   "ref": "J6",
+   "pin": "3",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J7",
+   "pin": "2",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

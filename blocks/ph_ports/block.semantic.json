@@ -1,0 +1,64 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**两只 JST-PH 2.0mm 卧贴座，对应 Adafruit 的 STEMMA 两档**：J6 `S4B-PH-SM4-TB`（4P） 是 STEMMA I2C，J7 `S3B-PH-SM4-TB`（3P）是 STEMMA 3 线（GND / V+ / 信号）。 两只都 rot 180、开口朝板外上方，中心距 13.00mm、同一水平线上。 **逐脚（以网表为准）**：J6 **1=SCL、2=SDA、3=VOUT、4=GND**； J7 **1=SDA、2=VOUT、3=GND**。 ⚠ 页上注释写的是生态标准脚序（J6 `1.GND, VCC, SDA, SCL`、J7 `1.GND, VCC, DAT`）， 与网表**正好反着**。两个说法都在卡里，谁对要靠实物：复用前拿万用表对着插头量一遍； 本块只保证\"图上/板上/卡里\"三处一致。 复用要点：① 3P 那只的中间脚是 V+、不是信号，接错会短路电源； ② 两只的固定脚（MP）都接 GND；③ 1.0/2.0 两种节距的插头**不通插**，别指望用 SH 线插 PH 座。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "SCL",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J6/1",
+      "note": "I2C 时钟：J6.1"
+    },
+    {
+      "name": "SDA",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J6/2",
+      "note": "I2C 数据：J7.1 + J6.2"
+    },
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J6/3",
+      "note": "整板电源（丝印 `V+`）：J7.2 + J6.3"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J7",
+    "max_mm": 15.0,
+    "rationale": "两只同一朝向（rot 180、开口朝上/板外），中心距 13.00mm、脚 1 同侧。 贴板上沿放，右邻四只 JST-SH 那一列仍留得下。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**两只 JST-PH 2.0mm 卧贴座，对应 Adafruit STEMMA 的两档**：J6 `S4B-PH-SM4-TB`（4P，I2C）、J7 `S3B-PH-SM4-TB`（3P，3 线）。2 件 / 4 网：3 个出块端口（SCL / SDA / VOUT）+ 1 条轨（GND）。",
+    "**逐脚（网表为准）**：J6 **1=SCL、2=SDA、3=VOUT、4=GND**；J7 **1=SDA、2=VOUT、3=GND**。两只固定脚 MP 接 GND。",
+    "⚠ 页上注释写的是生态标准脚序（J6 `1.GND, VCC, SDA, SCL`、J7 `1.GND, VCC, DAT`），**与网表正好反着**。卡里两个说法都留着：复用前拿万用表对着插头量一遍再信哪一个。本块只保证\"图 / 板 / 卡\"三处一致。",
+    "⚠ 3P 那只的**中间脚是 V+**，不是信号——接错直接把电源灌到信号线上。",
+    "两只都是 rot 180、开口朝板上沿（板外），中心距 13.00mm、脚 1 同侧。1.0mm（SH）与 2.0mm（PH）的插头互不通插，别指望混用线。",
+    "⚠ `VOUT` 在本卡里记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）。它电学上是**整板的电源网**（板上丝印写 `V+`），拼板时按同名接，不要当信号口串东西。",
+    "铜 4 段 + 0 孔（F 10）；死铜删 23 段/孔；口岸切口 4 处、走线出口 5 处；削剩残迹留 2 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND 是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。",
+    "块里 6 个平面网焊盘一根铜都没有（源板就靠那张整板 GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "GND 裂成 6 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上；**SDA 裂成 2 个铜岛**（各含焊盘）：源板上 SDA 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上。",
+    "kicad-cli DRC：isolated_copper 0；未连通 6 条（GND×10、SDA×2）；断头走线 4 + 悬空过孔 1 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_* 2 条（源板自带，见基线）；源板基线：未连通 0 / isolated_copper 0 / 违规 46 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 GND 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 4 网 / 端口 3 + 轨 1；铜 4 段 + 0 孔；死铜删 23；口岸切口 4；卡↔板门 ①~⑤ 全过"
+  }
+}

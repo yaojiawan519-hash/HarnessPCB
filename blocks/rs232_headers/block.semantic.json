@@ -1,0 +1,83 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**主机接口**：J2 = 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`，骑在 Bus Pirate 5 的十脚排针上）、J3 = 1×10 竖针（`PinHeader_1x10_P2.54mm_Vertical`），两只**逐脚并联**。 脚序：`1=VOUT 2=UART1TX 3=UART1RX 4=UART1CTS 5=UART1RTS 6=UART0TX 7=UART0RX 8=UART0CTS 9=UART0RTS 10=GND`。 这块板**没有自己的电路**：八根 UART 网全部是\"去 COM1 / COM2 那两块\"的接口网， VOUT/GND 是电源轨。 ⚠ 源板的位号交叉就发生在这里：原理图把这只卧座叫 J2，板上却把它标成 J4 （板上 J2 是 COM2 那只母头）。脚本只对调位号，不动铜。",
+  "power_rails": [
+    "GND",
+    "VOUT"
+  ],
+  "interface": [
+    {
+      "name": "UART0CTS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART0RTS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART0RX",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART0TX",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1CTS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1RTS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1RX",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1TX",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J2",
+    "max_mm": 6.0,
+    "rationale": "两只 1×10 竖排在板左（J2 的母座本体探出板沿、朝外骑在主机排针上， J3 在它右边一列）。要保住的是\"两只同号脚同一行\"。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**主机接口**：J2 = 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`，骑在 Bus Pirate 5 的十脚排针上）、J3 = 1×10 竖针，两只**逐脚并联**。脚序 `1=VOUT 2=UART1TX 3=UART1RX 4=UART1CTS 5=UART1RTS 6=UART0TX 7=UART0RX 8=UART0CTS 9=UART0RTS 10=GND`。2 件 / 10 网 / 端口 8 + 轨 2。",
+    "这块板**没有自己的电路**：八根 UART 网全是\"去 COM1 / COM2 那两块\"的接口网，VOUT/GND 是电源轨。所以内部网 0 条——拼装时不需要给任何网改名。",
+    "⚠ 源板的**位号交叉**就发生在这里：原理图把这只卧座叫 J2，板上却把它标成 J4（板上 J2 是 COM2 那只母头）。`specs/_pcb_surgery_rs232.py` 只对调位号、不动铜，块板因此与原理图一致；照源板丝印找件会对不上。",
+    "⚠ 口沿上 10 段铜都被窗口截断了（`counts.cut_ends` = 10）：那是人布到这十只脚上的短线，一段都没删；拼板时按端口名从焊盘重新引出去。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `rs232-dual-adapter.kicad_pcb` 的**位号修正副本** 扣，见 `specs/_pcb_surgery_rs232.py`；块内铜按窗口剪、0 铺铜）",
+  "provenance": {
+    "basis": "2 件 / 10 网 / 端口 8 + 轨 2；铜 10 段 + 0 孔；死铜删 2；口岸切口 10",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 RS232 双通道转接板 REV0",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

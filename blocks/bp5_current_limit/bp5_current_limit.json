@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 10k 1n4148wt 200r dnf lmv331 mmdt3906",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_current_limit"
+  }
+}

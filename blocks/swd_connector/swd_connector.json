@@ -1,0 +1,8 @@
+{
+  "description": "从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 \"SWD Connector\" 整框裁出； 板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。",
+  "keywords": "100n arm 10pin",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "swd_connector"
+  }
+}

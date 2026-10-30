@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "1k 330r 6.8k 680r bc807 bc817",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "power_good_sense"
+  }
+}

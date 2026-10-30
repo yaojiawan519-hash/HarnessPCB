@@ -1,0 +1,87 @@
+{
+  "name": "proto_header_trio",
+  "source": "blank-plank-rev0b.kicad_pcb",
+  "origin_src_mm": [
+    102.9938,
+    98.4666
+  ],
+  "size_mm": [
+    24.3376,
+    27.8633
+  ],
+  "ports": {
+    "VOUT": [
+      "REF**"
+    ]
+  },
+  "cut_points": [],
+  "counts": {
+    "members": 3,
+    "nets": 10,
+    "copper_segs": 17,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 0,
+    "exit_points": 0,
+    "segs_by_layer": {
+      "B.Cu": 17
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {
+      "IO7": 1
+    },
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 3,
+      "IO7": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 3,
+        "vias": 0,
+        "nets": [
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": -1.5938,
+      "dy": -12.1066,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical_No_Silk",
+      "dx": 3.6862,
+      "dy": -12.1066,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J5",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical_Reduced_2",
+      "dx": 7.4962,
+      "dy": -12.1066,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

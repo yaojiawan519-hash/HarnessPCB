@@ -1,0 +1,158 @@
+{
+  "name": "ir_rcv_38k_barrier",
+  "source": "bp5-ir-toy-v3-rev3.kicad_pcb",
+  "origin_src_mm": [
+    155.2446,
+    78.0241
+  ],
+  "size_mm": [
+    10.4518,
+    7.5106
+  ],
+  "ports": {
+    "VOUT": [
+      "C3",
+      "C6",
+      "C7",
+      "C8",
+      "D3",
+      "J1",
+      "J2",
+      "R10",
+      "R12",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "U5"
+    ],
+    "GND": [
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "D1",
+      "D10",
+      "J1",
+      "J2",
+      "R11",
+      "R13",
+      "R6",
+      "U1",
+      "U3",
+      "U4",
+      "U5"
+    ],
+    "IO3": [
+      "J1",
+      "J2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 152.623,
+      "y": 82.5794,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 151.6174,
+      "y": 82.5794,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 159.6,
+      "y": 82.5794,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO3",
+      "x": 156.775,
+      "y": 82.5794,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 17,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 1,
+    "exit_points": 4,
+    "segs_by_layer": {
+      "B.Cu": 4,
+      "F.Cu": 13
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 5,
+        "vias": 2,
+        "nets": [
+          "IO3",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C1",
+      "value": "4.7uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -1.4946,
+      "dy": -0.7741,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "100R",
+      "fp": "R_0805_2012Metric",
+      "dx": -3.7446,
+      "dy": -0.7741,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R2",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.2446,
+      "dy": 2.2259,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U2",
+      "value": "IRM-3638J7",
+      "fp": "TSOP18XX",
+      "dx": 1.7498,
+      "dy": 0.5937,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

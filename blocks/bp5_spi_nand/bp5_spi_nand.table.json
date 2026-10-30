@@ -1,0 +1,103 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_spi_nand",
+ "interface": [
+  {
+   "net": "SD_CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U105-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CDI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U105-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U105-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U105-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U105",
+   "lib": "dp-memory:MT29F1G01ABAFDWB",
+   "value": "MT29F1G01ABAFDWB",
+   "footprint": "dp-memory:U-PDFN-8",
+   "x": 135.89,
+   "y": 173.99
+  }
+ ],
+ "conns": [
+  {
+   "ref": "U105",
+   "pin": "3",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U105",
+   "pin": "7",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U105",
+   "pin": "8",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U105",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "U105",
+   "pin": "1",
+   "net": "SD_CS"
+  },
+  {
+   "ref": "U105",
+   "pin": "2",
+   "net": "SPI_CDI"
+  },
+  {
+   "ref": "U105",
+   "pin": "5",
+   "net": "SPI_CDO"
+  },
+  {
+   "ref": "U105",
+   "pin": "6",
+   "net": "SPI_CLK"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,53 @@
+{
+ "pcb": "136460:1793372621169301570",
+ "violations": 109,
+ "unconnected": 2,
+ "kinds": {
+  "clearance": 11,
+  "copper_edge_clearance": 20,
+  "courtyards_overlap": 9,
+  "lib_footprint_issues": 5,
+  "lib_footprint_mismatch": 15,
+  "shorting_items": 3,
+  "silk_over_copper": 10,
+  "silk_overlap": 12,
+  "solder_mask_bridge": 8,
+  "track_dangling": 16
+ },
+ "shorts": [],
+ "bridges": [
+  {
+   "nets": [
+    "<no net>",
+    "+3V3"
+   ],
+   "items": [
+    "Polygon [<no net>] of SJ31 on F.Cu",
+    "Pad 1 [+3V3] of SJ31 on F.Cu"
+   ],
+   "kind": "bridge"
+  },
+  {
+   "nets": [
+    "<no net>",
+    "Net-(C22-Pad1"
+   ],
+   "items": [
+    "Polygon [<no net>] of SJ31 on F.Cu",
+    "Pad 2 [Net-(C22-Pad1)] of SJ31 on F.Cu"
+   ],
+   "kind": "bridge"
+  },
+  {
+   "nets": [
+    "<no net>",
+    "/+1.2V_CORE"
+   ],
+   "items": [
+    "Polygon [<no net>] of SJ34 on B.Cu",
+    "Pad 1 [/+1.2V_CORE] of SJ34 on B.Cu"
+   ],
+   "kind": "bridge"
+  }
+ ]
+}

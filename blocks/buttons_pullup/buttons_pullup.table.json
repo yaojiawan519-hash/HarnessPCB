@@ -1,0 +1,203 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "buttons_pullup",
+ "interface": [
+  {
+   "net": "BTN1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R4-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按下拉低（R4 100K 上拉在块内）"
+  },
+  {
+   "net": "BTN2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R7-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按下拉低（R7 100K 上拉在块内），兼电源控制"
+  },
+  {
+   "net": "BTN3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R10-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按下拉低（R10 100K 上拉在块内），兼 BOOT"
+  },
+  {
+   "net": "BTN4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R11-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按下拉低（R11 100K 上拉在块内）"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R7",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 85.852,
+   "y": 184.912
+  },
+  {
+   "ref": "SW1",
+   "lib": "Switch:SW_SPST",
+   "value": "BTN2",
+   "footprint": "Watchy:EVQPUC",
+   "x": 52.07,
+   "y": 177.8
+  },
+  {
+   "ref": "R10",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 95.504,
+   "y": 184.912
+  },
+  {
+   "ref": "SW3",
+   "lib": "Switch:SW_SPST",
+   "value": "BTN3",
+   "footprint": "Watchy:EVQPUC",
+   "x": 25.4,
+   "y": 177.8
+  },
+  {
+   "ref": "SW4",
+   "lib": "Switch:SW_SPST",
+   "value": "BTN4",
+   "footprint": "Watchy:EVQPUC",
+   "x": 25.4,
+   "y": 190.5
+  },
+  {
+   "ref": "SW2",
+   "lib": "Switch:SW_SPST",
+   "value": "BTN1",
+   "footprint": "Watchy:EVQPUC",
+   "x": 52.07,
+   "y": 190.5
+  },
+  {
+   "ref": "R4",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 76.2,
+   "y": 184.912
+  },
+  {
+   "ref": "R11",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 105.156,
+   "y": 184.912
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R10",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R11",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R4",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R7",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R4",
+   "pin": "1",
+   "net": "BTN1"
+  },
+  {
+   "ref": "SW2",
+   "pin": "1",
+   "net": "BTN1"
+  },
+  {
+   "ref": "R7",
+   "pin": "1",
+   "net": "BTN2"
+  },
+  {
+   "ref": "SW1",
+   "pin": "1",
+   "net": "BTN2"
+  },
+  {
+   "ref": "R10",
+   "pin": "1",
+   "net": "BTN3"
+  },
+  {
+   "ref": "SW3",
+   "pin": "1",
+   "net": "BTN3"
+  },
+  {
+   "ref": "R11",
+   "pin": "1",
+   "net": "BTN4"
+  },
+  {
+   "ref": "SW4",
+   "pin": "1",
+   "net": "BTN4"
+  },
+  {
+   "ref": "SW1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "SW2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "SW3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "SW4",
+   "pin": "2",
+   "net": "GND"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

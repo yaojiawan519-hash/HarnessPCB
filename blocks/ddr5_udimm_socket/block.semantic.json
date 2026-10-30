@@ -1,0 +1,65 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**DDR5 UDIMM 288 脚插座**（符号 292 脚，多出来的是 SH 屏蔽壳）。这块适配板只把 插座上跟\"测电源/测总线\"有关的 8 根引出来：01/145/146 = BULK_VIN（5V 输入）、 04 = HSCL、05 = HSDA、147 = PWR_GOOD、148/150/SH = GND、151 = +3.3V；**其余 184 脚一个信号都不出** —— 这不是漏画，是作者的设计：本板只给内存条供电、并把 SPD 的 I²C 与电源就绪信号 引到测试排针，不接 DRAM 数据/地址总线。 复用要点：① 插座**开口朝板边**、带弹出卡扣，卡扣要伸出板沿，摆位时先把这条定死， 其余小件围着它排；② 0.85mm 节距、两排各 ~147 脚、座体总长 ~158.6mm（含卡扣）， 这是整块板的\"主尺\"，别把它塞进小底板；③ 一大半脚是 NC，布铜时别从插座底下穿越别的网 —— 那些脚虽然不接，但过孔和走线穿过去会顶到塑料底座与卡扣机构。",
+  "power_rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "HSCL",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/04",
+      "note": "插座 04 脚：SPD（EEPROM）I²C 时钟，**3.3V 摆幅**，经 i2c_level_shift 才到 5V 侧"
+    },
+    {
+      "name": "HSDA",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/05",
+      "note": "插座 05 脚：SPD I²C 数据，3.3V 摆幅；线上必须有上拉（块里没有）"
+    },
+    {
+      "name": "PWR_GOOD",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/147",
+      "note": "插座 147 脚：内存条自检就绪，低=就绪，进 power_good_sense 的两级缓冲"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J1",
+    "max_mm": 8.0,
+    "rationale": "块里只有这一只插座：它自己就是整条板的长边。规矩是**插口朝板沿、卡扣朝外**， 排针/电源小件全部让到它的侧后方。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**DDR5 UDIMM 288 脚插座**（符号 292 脚：多出来的是 SH 屏蔽壳）。1 件 / 6 网：3 个出块端口（HSCL / HSDA / PWR_GOOD）+ 3 条轨（BULK_VIN 5V 输入、+3.3V、GND）。",
+    "插座上真正用到的只有 8 根：01/145/146=BULK_VIN、04=HSCL、05=HSDA、147=PWR_GOOD、148/150/SH=GND、151=+3.3V；**其余 184 脚一个都不出**——作者的设计是\"只给内存条供电 + 把 SPD 的 I²C 和电源就绪引到测试排针\"，不接 DRAM 数据/地址总线。别以为漏画了。",
+    "⚠ 源板自身有一处符号↔封装对不上：符号的 `SH`（屏蔽壳）脚接 GND，而封装 `DDR5 UDIMM GENERIC` 里对应的是三只**无号焊盘** `S1/S2/S3`（NetCode=0），板上根本没有 `SH` 这只脚。`pcbcarve` 的 sch↔pcb 门会把它打印出来并从原理图那侧摘掉（其余 9 个管脚逐脚同网）。裁块改不了这件事，复用时要自己决定壳子接不接地。",
+    "机构是这个块的全部：0.85mm 节距、两排各 ~147 脚、座体总长 ~158.6mm（含卡扣）。插口朝板边、卡扣伸出板沿，摆位先把这条定死；一大半脚是 NC，但过孔/走线别从插座底下穿——那些脚虽不接，穿过去会顶到塑料底座与卡扣机构。",
+    "⚠ 网名：本板的 5V 供电在**页上有三个名字**（`BULK_VIN` 全局标签 / `+5V` 电源符号 / `VOUT` 全局标签），kicad-cli 把它们当同一张网、名取 `BULK_VIN`；卡里的网名一律用 `BULK_VIN`，而块内原理图上剩的可能是其中另一个名字——同一个网，不是两根轨。",
+    "铜 7 段 + 2 孔（B 5 / F 25）；死铜删 16 段/孔；口岸切口 5 处、走线出口 12 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（本板两张都是平面网，按「块内不带铺铜」整张删，拼板时重铺）。",
+    "块里每个脚都有铜可接（没有\"只靠铺铜连\"的焊盘）。",
+    "GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。",
+    "kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND**（2 个焊盘点名）——源板靠铺铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 5 + 悬空过孔 5 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 248 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 adapter-ram-ddr5-1REV2.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板两张铺铜（GND 平面 + LDO 输出那一小片 +3.3V）按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "1 件 / 97 网 / 端口 3 + 轨 3；铜 7 段 + 2 孔；死铜删 16；口岸切口 5；卡↔板门 ①~⑤ 全过"
+  }
+}

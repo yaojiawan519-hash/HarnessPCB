@@ -1,0 +1,16 @@
+{
+ "pcb": "59214:1793372110333931150",
+ "violations": 38,
+ "unconnected": 6,
+ "kinds": {
+  "clearance": 2,
+  "courtyards_overlap": 1,
+  "lib_footprint_issues": 2,
+  "lib_footprint_mismatch": 4,
+  "silk_over_copper": 3,
+  "solder_mask_bridge": 7,
+  "track_dangling": 19
+ },
+ "shorts": [],
+ "bridges": []
+}

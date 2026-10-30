@@ -1,0 +1,57 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "**反流保护（作者标题 Backflow prevention）**：Q401 = `BCM857` 匹配双 PNP（一侧二极管接法 当参考）、Q402 = `SI2301` P-MOS 与它背靠背，串在 `VREG_OUT ↔ VREF_VOUT` 之间， 做「正向低阻、反向阻断」。R412 100K 把 gate 默认拉到 GND（=**默认开**）， D401 给参考节点定基准，R408/R409/R410 是偏置。7 件 / 7 网。 ⚠ **两个朝向相反的器件背靠背**，体二极管互相抵消才挡得住反流；拼板时只留一个 MOS 就等于没保护（单管体二极管在反接时直接导通）。 ⚠ **默认是导通的**（R412 拉低 gate），所以这一块不带电就只是两根线短接； 要真断开得靠 Q401 那侧的参考节点被拉起来。 ⚠ 作者注释：BCM857 / BCM856 / NST45010MW6T1G 可互换；DMMT3906 那类 BBCEEC 脚序 也能换但要改板。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "VREF_VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "Q401/1",
+      "note": "背靠背开关之后的对外输出，全板 27 个件挂在它上面"
+    },
+    {
+      "name": "VREG_OUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "D401/1",
+      "note": "LDO 输出侧（`bp5_vreg_adj_ldo`）"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {},
+  "hot_loop": [],
+  "internal_nets": [
+    "_bp5_backflow_prevent_N1",
+    "_bp5_backflow_prevent_N2",
+    "_bp5_backflow_prevent_N3",
+    "_bp5_backflow_prevent_N4"
+  ],
+  "notes": [
+    "7 件 / 7 网：2 个信号口岸（VREG_OUT 进、VREF_VOUT 出）+ 轨 GND；另外 4 张无名网是块内偏置/参考节点，不出块。",
+    "Q401 = `BCM857` 匹配双 PNP（一侧二极管接法当参考）、Q402 = `SI2301` P-MOS，两者**背靠背**串在 `VREG_OUT ↔ VREF_VOUT` 之间，做「正向低阻、反向阻断」。",
+    "⚠ **必须两个朝向相反的器件背靠背**：体二极管互相抵消才挡得住反流，单管等于没保护。",
+    "⚠ **默认是导通的**：R412 100K 把 gate 拉到 GND（=默认开）。要真断开，靠 Q401 那侧的参考节点被拉起来；不带电时这一块就是两根线短接。",
+    "作者注释：BCM857 / BCM856 / NST45010MW6T1G 可互换；DMMT3906 那类 BBCEEC 脚序也能换但要改板。",
+    "板 6.64×9.94mm；铜 40 段 + 4 孔（F 37 / In1 6）；死铜删 5 段/孔；口岸切口 4 处、走线出口 3 处；源板在本块这几张网上铺过铜（GND），按「块内不带铺铜」**整张删**，拼板时由整板铺铜接上。",
+    "块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它们），拼板时由整板铺铜接上。",
+    "借道块外焊盘 1 处：VREF_VOUT->R319.2（In1.Cu 换层）——铜端压在别的块的焊盘上换层续接，块单看这里是断的，拼板时插上就通。",
+    "kicad-cli DRC：isolated_copper 0、clearance 0、shorting 0；未连通 1 条：1 条落在源板铺过铜的网（GND×1）——块里不带铺铜，拼板时由整板铺铜接上；违规 4 条全部是 `track_dangling`——那是块的口岸断头（铜走到窗口边就停），不是毛刺（`sdi.spur` 已把毛刺清零）。明细：track_dangling×4。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 原样扣，4 层板保留原层；Q401/Q402 与 D401 全在 F.Cu）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "7 件 / 7 网 / 端口 2 + 轨 1；铜 40 段 + 4 孔；死铜删 5；口岸切口 4；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

@@ -1,0 +1,867 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_rgb_leds",
+ "interface": [
+  {
+   "net": "LEDS_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R502-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "链首数据入口（经 R502 进 LED719.DI）；该网在 `IO-expand-595-mux` 页以 `shape output` 出现，输出侧不在本块"
+  }
+ ],
+ "power_rails": [
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C704",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 46.99,
+   "y": 80.01
+  },
+  {
+   "ref": "C703",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 46.99,
+   "y": 57.15
+  },
+  {
+   "ref": "LED703",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 58.42,
+   "y": 52.07
+  },
+  {
+   "ref": "LED705",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 82.55,
+   "y": 38.1
+  },
+  {
+   "ref": "C705",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 77.47,
+   "y": 26.67
+  },
+  {
+   "ref": "LED713",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 199.39,
+   "y": 38.1
+  },
+  {
+   "ref": "C713",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 194.31,
+   "y": 26.67
+  },
+  {
+   "ref": "C716",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 240.03,
+   "y": 66.04
+  },
+  {
+   "ref": "LED715",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 228.6,
+   "y": 50.8
+  },
+  {
+   "ref": "C715",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 240.03,
+   "y": 45.72
+  },
+  {
+   "ref": "C717",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 240.03,
+   "y": 109.22
+  },
+  {
+   "ref": "LED718",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 228.6,
+   "y": 137.16
+  },
+  {
+   "ref": "C718",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 240.03,
+   "y": 132.08
+  },
+  {
+   "ref": "C712",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 168.91,
+   "y": 156.21
+  },
+  {
+   "ref": "LED714",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 184.15,
+   "y": 144.78
+  },
+  {
+   "ref": "C714",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 189.23,
+   "y": 156.21
+  },
+  {
+   "ref": "C708",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 125.73,
+   "y": 156.21
+  },
+  {
+   "ref": "LED710",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 140.97,
+   "y": 144.78
+  },
+  {
+   "ref": "C710",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 146.05,
+   "y": 156.21
+  },
+  {
+   "ref": "LED706",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 97.79,
+   "y": 144.78
+  },
+  {
+   "ref": "C706",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 102.87,
+   "y": 156.21
+  },
+  {
+   "ref": "C701",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 45.72,
+   "y": 113.03
+  },
+  {
+   "ref": "LED702",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 58.42,
+   "y": 128.27
+  },
+  {
+   "ref": "C702",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 45.72,
+   "y": 133.35
+  },
+  {
+   "ref": "C707",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 166.37,
+   "y": 26.67
+  },
+  {
+   "ref": "R502",
+   "lib": "Device:R_Small",
+   "value": "1K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 137.16,
+   "y": 38.1
+  },
+  {
+   "ref": "LED707",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 171.45,
+   "y": 38.1
+  },
+  {
+   "ref": "LED716",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 228.6,
+   "y": 71.12
+  },
+  {
+   "ref": "LED717",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 228.6,
+   "y": 114.3
+  },
+  {
+   "ref": "LED712",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 163.83,
+   "y": 144.78
+  },
+  {
+   "ref": "LED708",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 120.65,
+   "y": 144.78
+  },
+  {
+   "ref": "LED701",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 58.42,
+   "y": 107.95
+  },
+  {
+   "ref": "LED704",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 58.42,
+   "y": 74.93
+  },
+  {
+   "ref": "LED719",
+   "lib": "dp-LED:SK6812-mini-e",
+   "value": "SK6812-mini-e",
+   "footprint": "dp-LED:SK6812-mini-e",
+   "x": 147.32,
+   "y": 38.1
+  },
+  {
+   "ref": "C719",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 140.97,
+   "y": 26.67
+  },
+  {
+   "ref": "C720",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 100.33,
+   "y": 26.67
+  },
+  {
+   "ref": "LED720",
+   "lib": "dp-LED:SK6812-side-a_b",
+   "value": "SK6812-side-a_b",
+   "footprint": "dp-LED:SK6812-side-a_b",
+   "x": 105.41,
+   "y": 38.1
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C701",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C702",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C703",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C704",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C705",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C706",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C707",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C708",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C710",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C712",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C713",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C714",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C715",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C716",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C717",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C718",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C719",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C720",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED701",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED702",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED703",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED704",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED705",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED706",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED707",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED708",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED710",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED712",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED713",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED714",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED715",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED716",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED717",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED718",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED719",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "LED720",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C701",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C702",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C703",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C704",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C705",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C706",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C707",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C708",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C710",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C712",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C713",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C714",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C715",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C716",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C717",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C718",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C719",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C720",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED701",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED702",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED703",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED704",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED705",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED706",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED707",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED708",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED710",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED712",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED713",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED714",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED715",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED716",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED717",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LED718",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED719",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "LED720",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R502",
+   "pin": "1",
+   "net": "LEDS_CDO"
+  },
+  {
+   "ref": "LED703",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N1"
+  },
+  {
+   "ref": "LED705",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N1"
+  },
+  {
+   "ref": "LED703",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N2"
+  },
+  {
+   "ref": "LED704",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N2"
+  },
+  {
+   "ref": "LED705",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N3"
+  },
+  {
+   "ref": "LED720",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N3"
+  },
+  {
+   "ref": "LED713",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N4"
+  },
+  {
+   "ref": "LED715",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N4"
+  },
+  {
+   "ref": "LED707",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N5"
+  },
+  {
+   "ref": "LED713",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N5"
+  },
+  {
+   "ref": "LED715",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N6"
+  },
+  {
+   "ref": "LED716",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N6"
+  },
+  {
+   "ref": "LED714",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N7"
+  },
+  {
+   "ref": "LED718",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N7"
+  },
+  {
+   "ref": "LED717",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N8"
+  },
+  {
+   "ref": "LED718",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N8"
+  },
+  {
+   "ref": "LED712",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N9"
+  },
+  {
+   "ref": "LED714",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N9"
+  },
+  {
+   "ref": "LED708",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N10"
+  },
+  {
+   "ref": "LED710",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N10"
+  },
+  {
+   "ref": "LED710",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N11"
+  },
+  {
+   "ref": "LED712",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N11"
+  },
+  {
+   "ref": "LED702",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N12"
+  },
+  {
+   "ref": "LED706",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N12"
+  },
+  {
+   "ref": "LED706",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N13"
+  },
+  {
+   "ref": "LED708",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N13"
+  },
+  {
+   "ref": "LED701",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N14"
+  },
+  {
+   "ref": "LED702",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N14"
+  },
+  {
+   "ref": "LED719",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N15"
+  },
+  {
+   "ref": "R502",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N15"
+  },
+  {
+   "ref": "LED707",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N16"
+  },
+  {
+   "ref": "LED719",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N16"
+  },
+  {
+   "ref": "LED716",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N17"
+  },
+  {
+   "ref": "LED717",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N17"
+  },
+  {
+   "ref": "LED701",
+   "pin": "2",
+   "net": "_bp5_rgb_leds_N18"
+  },
+  {
+   "ref": "LED704",
+   "pin": "4",
+   "net": "_bp5_rgb_leds_N18"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

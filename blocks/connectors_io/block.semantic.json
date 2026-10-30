@@ -1,0 +1,372 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "UPduino 的全部对外接口：左排 J3、右排 J2 各 1×24 2.54mm 直插排针（间距 17.78mm， 正好是面包板两排的宽度），加 J4 1×02 的 5V 供电座。42 个信号口岸就是 FPGA 的 IO 与电源控制脚原样引到排针；三颗 DNI 电容 C23/C33/C34 是**留空的备用去耦位** （只在图纸上占位，装配不装），其中一个 C23 挂在 VIO_BANK_0_2 上—— 改银行电压时这里才是要补电容的地方。 复用要点：这块的\"电路\"几乎没有（就是排针），价值全在**几何**：两排 2.54mm 栅格、 间距 17.78、以及块宽 62.05mm = 整板宽。要换排针数量，等于重画这块。",
+  "power_rails": [
+    "+3V3",
+    "+5VD",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CDONE",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/4"
+    },
+    {
+      "name": "CLK_12M_EXT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/8"
+    },
+    {
+      "name": "CRESET_N",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/3"
+    },
+    {
+      "name": "FLASH_MISO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/4"
+    },
+    {
+      "name": "FLASH_MOSI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/3"
+    },
+    {
+      "name": "FT_SCK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/2"
+    },
+    {
+      "name": "FT_SSn",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/1"
+    },
+    {
+      "name": "IOB_0A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/23",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_13B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/16",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_16A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/15",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_18A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/6",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_20A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/14",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_22A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/9",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_23B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/10",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_24A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/11",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_25B_G3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/5",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_29B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/12",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_2A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/22",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_31B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/13",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_3B_G6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/17",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_4A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/20",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_5B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/21",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_6A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/24",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_8A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/18",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOB_9B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/19",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_36B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/12",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_37A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/11",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_38B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/14",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_39A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/13",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_41A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/24",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_42B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/17",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_43A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/15",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_44B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/19",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_45A_G1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/18",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_46B_G0",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/16",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_48B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/21",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_49A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/20",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_50B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/23",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "IOT_51A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/22",
+      "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+    },
+    {
+      "name": "LED_B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/7"
+    },
+    {
+      "name": "LED_G",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/6"
+    },
+    {
+      "name": "LED_R",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/5"
+    },
+    {
+      "name": "VIO_BANK_0_2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C23/1"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J3",
+    "max_mm": 62.0,
+    "rationale": "参照物是左排 J3：右排 J2 在 17.78mm 外（对齐、同高、同朝向 270°）， 三颗 DNI 备用电容 C23 15.78 / C33 27.33 / C34 55.60mm 散在中间（**说明它们不是 \"贴脚去耦\"，是空位**），5V 座 J4 在最右端 57.91mm。 块宽 62.05mm 由两排排针 + 5V 座的总长决定，是这块的硬事实； 复用要么整块搬（保持 62.05×20.18），要么按目标板的排针数量重画。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "6 件 / 46 网：43 个信号口岸 + 轨 +3V3/+5VD/GND。42 个信号就是 FPGA 的 IO 原样引到 J2/J3 两排 2.54mm 排针（间距 17.78mm），另加 J4 的 5V 座。",
+    "铜 833 段 + 57 孔（B.Cu 407 / F.Cu 363 / In1.Cu 8 / In2.Cu 74）——库里铜最多的一块；死铜删 356 段/孔，也是最多的一块（这块占着板子中间，周围几乎全是别人的干线）。",
+    "⚠ 缝分辨：`cut_ends` 63 处、`exit_points` **0** 处，两者不是一回事——这块和整板一样宽（62.05mm = 板宽），铜从来没被窗口裁过，63 处切端全部来自\"删掉别人的铜\"留下的断头。别把切端数当切口数。",
+    "有 65 处信号借道**块外器件**的孔（本块是全区所有信号网的过路点），块单看不连通，拼板时由那些孔接上。",
+    "三颗 DNI 电容 C23/C33/C34 是留空的备用去耦位（装配不装）；C23 挂在 VIO_BANK_0_2 上，改银行电压时才补。",
+    "kicad-cli DRC：isolated_copper 0；未连通 3 条，全是 GND（源板靠铺铜连）。",
+    "源板 4 层（F/In1/In2/B），本块内层走线 In1 8 段 + In2 74 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "UPduino v3.01",
+    "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+    "license_tier": "permissive",
+    "author": "TinyVision.ai（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "6 件 / 46 网 / 端口 43 + 轨 3；铜 833 段 + 57 孔；死铜删 356；口岸切口 63（出口 0，块与板同宽）；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

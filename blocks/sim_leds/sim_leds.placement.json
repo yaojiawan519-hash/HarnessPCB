@@ -1,0 +1,141 @@
+{
+  "name": "sim_leds",
+  "source": "sim-rev3c.kicad_pcb",
+  "origin_src_mm": [
+    102.6252,
+    100.375
+  ],
+  "size_mm": [
+    3.9528,
+    57.4465
+  ],
+  "ports": {
+    "GND": [
+      "J1",
+      "J2",
+      "J3",
+      "SW2",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "Net-(D1-K)": [
+      "J1"
+    ],
+    "VOUT": [
+      "J2",
+      "J3",
+      "SW1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "Net-(D1-K)",
+      "x": 106.3274,
+      "y": 120.9226,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 106.3274,
+      "y": 110.3914,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 106.3274,
+      "y": 76.75,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 106.3274,
+      "y": 109.22,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 106.3274,
+      "y": 79.4226,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 5,
+    "copper_segs": 9,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 2,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "F.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VOUT->J2.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+      "total": 1,
+      "port_cuts": 1,
+      "port_cut_nets": [
+        "VOUT"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 5,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "Net-(D1-K)"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D1",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -0.6252,
+      "dy": 25.285,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D2",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -0.8752,
+      "dy": -25.375,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -0.6252,
+      "dy": 13.375,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R2",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -0.8752,
+      "dy": -18.125,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

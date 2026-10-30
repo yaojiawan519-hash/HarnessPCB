@@ -1,0 +1,175 @@
+{
+  "name": "flash_zif_port",
+  "source": "flash-zif-rev3.kicad_pcb",
+  "origin_src_mm": [
+    137.9268,
+    87.0125
+  ],
+  "size_mm": [
+    20.1288,
+    47.7215
+  ],
+  "ports": {
+    "HOLD": [
+      "J3"
+    ],
+    "GND": [
+      "D1"
+    ],
+    "CDI": [
+      "J3"
+    ],
+    "VOUT": [
+      "R1"
+    ],
+    "SCLK": [
+      "J3"
+    ],
+    "CDO": [
+      "J3"
+    ],
+    "GND_CHIP": [
+      "C1",
+      "J3"
+    ],
+    "CS": [
+      "J3"
+    ],
+    "VCC_CHIP": [
+      "C1",
+      "J3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 148.7913,
+      "y": 67.75,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 148.7913,
+      "y": 76.2087,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "CDI",
+      "x": 148.7913,
+      "y": 88.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "CS",
+      "x": 148.7913,
+      "y": 90.683,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCLK",
+      "x": 148.7913,
+      "y": 93.223,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "CDO",
+      "x": 148.7913,
+      "y": 95.763,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HOLD",
+      "x": 148.7913,
+      "y": 83.063,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VCC_CHIP",
+      "x": 148.7913,
+      "y": 72.5,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 12,
+    "copper_segs": 45,
+    "vias": 3,
+    "stub_kept": 5,
+    "isolated_deleted": 10,
+    "cut_ends": 8,
+    "exit_points": 8,
+    "segs_by_layer": {
+      "B.Cu": 6,
+      "F.Cu": 39
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 16,
+        "vias": 2,
+        "nets": [
+          "CDI",
+          "CDO",
+          "CS",
+          "GND",
+          "GND_CHIP",
+          "HOLD",
+          "SCLK",
+          "VCC_CHIP",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 0.5106,
+      "dy": -11.6069,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 4.3132,
+      "dy": -11.5695,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "SW1",
+      "value": "SW_SPDT",
+      "fp": "SW_SPDT_PCM12",
+      "dx": 4.3132,
+      "dy": -18.7625,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "SW2",
+      "value": "SW_SPDT",
+      "fp": "SW_SPDT_PCM12",
+      "dx": 4.3232,
+      "dy": 18.7625,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

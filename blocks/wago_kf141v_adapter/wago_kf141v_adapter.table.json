@@ -1,0 +1,238 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "wago_kf141v_adapter",
+ "interface": [
+  {
+   "net": "P1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 1 脚：与 J2 第 1 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 2 脚：与 J2 第 2 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 3 脚：与 J2 第 3 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 4 脚：与 J2 第 4 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 5 脚：与 J2 第 5 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 6 脚：与 J2 第 6 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 7 脚：与 J2 第 7 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P8",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 8 脚：与 J2 第 8 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P9",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 9 脚：与 J2 第 9 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  },
+  {
+   "net": "P10",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-10",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 10 脚：与 J2 第 10 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+  }
+ ],
+ "power_rails": [],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "dp_connector:wago_kf141v_2.54",
+   "x": 134.62,
+   "y": 91.44
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 97.79,
+   "y": 91.44
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "P1"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "P1"
+  },
+  {
+   "ref": "J1",
+   "pin": "10",
+   "net": "P10"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "P10"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "P2"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "P2"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "P3"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "P3"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "P4"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "P4"
+  },
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "P5"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "P5"
+  },
+  {
+   "ref": "J1",
+   "pin": "6",
+   "net": "P6"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "P6"
+  },
+  {
+   "ref": "J1",
+   "pin": "7",
+   "net": "P7"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "P7"
+  },
+  {
+   "ref": "J1",
+   "pin": "8",
+   "net": "P8"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "P8"
+  },
+  {
+   "ref": "J1",
+   "pin": "9",
+   "net": "P9"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "P9"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

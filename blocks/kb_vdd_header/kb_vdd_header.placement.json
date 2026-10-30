@@ -1,0 +1,94 @@
+{
+  "name": "kb_vdd_header",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    137.25,
+    87.6494
+  ],
+  "size_mm": [
+    3.65,
+    7.4012
+  ],
+  "ports": {
+    "VDD": [
+      "C1",
+      "C2",
+      "C3",
+      "L1",
+      "L2",
+      "L4",
+      "L5",
+      "R2",
+      "SW1"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "J7",
+      "J8",
+      "R1",
+      "R408",
+      "R412",
+      "R5"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VDD",
+      "x": 134.625,
+      "y": 87.625,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 1,
+    "nets": 2,
+    "copper_segs": 0,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 1,
+    "segs_by_layer": {},
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 1,
+        "vias": 0,
+        "nets": [
+          "VDD"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J9",
+      "value": "Conn_01x02_Pin",
+      "fp": "PinHeader_1x02_P2.54mm_Vertical",
+      "dx": 0.0,
+      "dy": -0.6744,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

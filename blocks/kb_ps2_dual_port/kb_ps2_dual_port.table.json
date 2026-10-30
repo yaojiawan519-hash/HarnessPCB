@@ -1,0 +1,145 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_ps2_dual_port",
+ "interface": [
+  {
+   "net": "CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-5",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DAT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND",
+  "VDD"
+ ],
+ "parts": [
+  {
+   "ref": "J4",
+   "lib": "Connector:Mini-DIN-6",
+   "value": "Mini-DIN-6",
+   "footprint": "connector-mini-din-6:Connector_Mini-DIN_Female_6Pin_2rows",
+   "x": 107.95,
+   "y": 139.7
+  },
+  {
+   "ref": "L5",
+   "lib": "kicad5-device:Ferrite_Bead_Small",
+   "value": "CBW201209U300T",
+   "footprint": "Inductor_SMD:L_0805_2012Metric",
+   "x": 88.9,
+   "y": 139.7
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C",
+   "value": "47uF/CL21A226MAYNNNE",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 86.36,
+   "y": 41.91
+  },
+  {
+   "ref": "L4",
+   "lib": "kicad5-device:Ferrite_Bead_Small",
+   "value": "CBW201209U300T",
+   "footprint": "Inductor_SMD:L_0805_2012Metric",
+   "x": 87.63,
+   "y": 118.11
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector:Mini-DIN-6",
+   "value": "Mini-DIN-6",
+   "footprint": "connector-mini-din-6:Connector_Mini-DIN_Female_6Pin_2rows",
+   "x": 107.95,
+   "y": 118.11
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "CLK"
+  },
+  {
+   "ref": "J4",
+   "pin": "5",
+   "net": "CLK"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "DAT"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "DAT"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "VDD"
+  },
+  {
+   "ref": "L4",
+   "pin": "2",
+   "net": "VDD"
+  },
+  {
+   "ref": "L5",
+   "pin": "2",
+   "net": "VDD"
+  },
+  {
+   "ref": "J4",
+   "pin": "4",
+   "net": "_kb_ps2_dual_port_N1"
+  },
+  {
+   "ref": "L5",
+   "pin": "1",
+   "net": "_kb_ps2_dual_port_N1"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "_kb_ps2_dual_port_N2"
+  },
+  {
+   "ref": "L4",
+   "pin": "1",
+   "net": "_kb_ps2_dual_port_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

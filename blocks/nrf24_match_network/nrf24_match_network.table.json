@@ -1,0 +1,188 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "nrf24_match_network",
+ "interface": [
+  {
+   "net": "NRF_ANT1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "L2-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_ANT2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "L1-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_VDD_PA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C17-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "L2",
+   "lib": "Device:L",
+   "value": "8n2",
+   "footprint": "Inductor_SMD:L_0402_1005Metric",
+   "x": 125.73,
+   "y": 105.41
+  },
+  {
+   "ref": "L1",
+   "lib": "Device:L",
+   "value": "3n9",
+   "footprint": "Inductor_SMD:L_0402_1005Metric",
+   "x": 135.255,
+   "y": 100.33
+  },
+  {
+   "ref": "L3",
+   "lib": "Device:L",
+   "value": "2n7",
+   "footprint": "Inductor_SMD:L_0402_1005Metric",
+   "x": 135.255,
+   "y": 110.49
+  },
+  {
+   "ref": "C15",
+   "lib": "Device:C",
+   "value": "1p5",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 145.415,
+   "y": 100.33
+  },
+  {
+   "ref": "C16",
+   "lib": "Device:C",
+   "value": "1p",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 151.765,
+   "y": 105.41
+  },
+  {
+   "ref": "C18",
+   "lib": "Device:C",
+   "value": "4p7",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 141.605,
+   "y": 122.555
+  },
+  {
+   "ref": "C17",
+   "lib": "Device:C",
+   "value": "2n2",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 130.81,
+   "y": 122.555
+  },
+  {
+   "ref": "J2",
+   "lib": "Connector:Conn_Coaxial",
+   "value": "SMA",
+   "footprint": "Connector_Coaxial:SMA_Samtec_SMA-J-P-X-ST-EM1_EdgeMount",
+   "x": 162.56,
+   "y": 100.33
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C16",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C17",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C18",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "L2",
+   "pin": "2",
+   "net": "NRF_ANT1"
+  },
+  {
+   "ref": "L3",
+   "pin": "2",
+   "net": "NRF_ANT1"
+  },
+  {
+   "ref": "L1",
+   "pin": "1",
+   "net": "NRF_ANT2"
+  },
+  {
+   "ref": "L2",
+   "pin": "1",
+   "net": "NRF_ANT2"
+  },
+  {
+   "ref": "C17",
+   "pin": "2",
+   "net": "NRF_VDD_PA"
+  },
+  {
+   "ref": "C18",
+   "pin": "2",
+   "net": "NRF_VDD_PA"
+  },
+  {
+   "ref": "L3",
+   "pin": "1",
+   "net": "NRF_VDD_PA"
+  },
+  {
+   "ref": "C15",
+   "pin": "1",
+   "net": "_nrf24_match_network_N1"
+  },
+  {
+   "ref": "C16",
+   "pin": "2",
+   "net": "_nrf24_match_network_N1"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "_nrf24_match_network_N1"
+  },
+  {
+   "ref": "C15",
+   "pin": "2",
+   "net": "_nrf24_match_network_N2"
+  },
+  {
+   "ref": "L1",
+   "pin": "2",
+   "net": "_nrf24_match_network_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

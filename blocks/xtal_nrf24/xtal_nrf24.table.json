@@ -1,0 +1,116 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "xtal_nrf24",
+ "interface": [
+  {
+   "net": "NRF_XC1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C13-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_XC2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C14-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "Y1",
+   "lib": "Device:Crystal_GND24_Small",
+   "value": "16MHz",
+   "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+   "x": 128.27,
+   "y": 161.925
+  },
+  {
+   "ref": "C14",
+   "lib": "Device:C",
+   "value": "12p",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 133.985,
+   "y": 168.91
+  },
+  {
+   "ref": "C13",
+   "lib": "Device:C",
+   "value": "12p",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 122.555,
+   "y": 168.91
+  },
+  {
+   "ref": "R5",
+   "lib": "Device:R",
+   "value": "1M",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 128.27,
+   "y": 155.575
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C13",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C14",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Y1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Y1",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "C13",
+   "pin": "1",
+   "net": "NRF_XC1"
+  },
+  {
+   "ref": "R5",
+   "pin": "2",
+   "net": "NRF_XC1"
+  },
+  {
+   "ref": "Y1",
+   "pin": "1",
+   "net": "NRF_XC1"
+  },
+  {
+   "ref": "C14",
+   "pin": "1",
+   "net": "NRF_XC2"
+  },
+  {
+   "ref": "R5",
+   "pin": "1",
+   "net": "NRF_XC2"
+  },
+  {
+   "ref": "Y1",
+   "pin": "3",
+   "net": "NRF_XC2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

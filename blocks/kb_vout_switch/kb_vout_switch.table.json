@@ -1,0 +1,42 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_vout_switch",
+ "interface": [
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW1-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "VDD"
+ ],
+ "parts": [
+  {
+   "ref": "SW1",
+   "lib": "Switch:SW_SPDT",
+   "value": "SW_SPDT",
+   "footprint": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "x": 50.8,
+   "y": 69.85
+  }
+ ],
+ "conns": [
+  {
+   "ref": "SW1",
+   "pin": "2",
+   "net": "VDD"
+  },
+  {
+   "ref": "SW1",
+   "pin": "1",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**Bus Pirate 5 十脚总线接口**：J2 = 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`， 骑在 BP5 的十脚排针上）、J3 = 1×10 竖针，两只**逐脚并联**。 脚序：`1=VOUT_BP_SIDE 2=TRIG 3=USB_D+ 4=USB_D- 5=IO3 6=DAT 7=CLK 8=IO6 9=IO7 10=GND`。 ⚠ 与多数 plank 不同，**1 号脚不是 VOUT 而是 `VOUT_BP_SIDE`**（BP 那头送来的 5V）： 这块板自己在下游用一只 P-MOS（`kb_backflow_prevent`）把它变成板内 5V，再由一只 SPDT（`kb_vout_switch`）接到 `VDD`。所以拼装时这两张网**不能并成一张**。 `IO3/IO6/IO7`（5/8/9 脚）在这块板上**只到排针为止**——板上没有任何其它器件接它们， 块里登记成端口是因为外面（BP5 那侧）才是它们真正的去处。 这块板**没有自己的电路**：全部是接口网 + 两条电源轨，拼装时不需要给任何网改名。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CLK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "DAT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "TRIG",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "USB_D+",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D-"
+    },
+    {
+      "name": "USB_D-",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D+"
+    },
+    {
+      "name": "VOUT_BP_SIDE",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "IO3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "note": "在 BP5 十脚排针的 5 号脚；本块只到排针为止。"
+    },
+    {
+      "name": "IO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "note": "在 BP5 十脚排针的 8 号脚；本块只到排针为止。"
+    },
+    {
+      "name": "IO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "note": "在 BP5 十脚排针的 9 号脚；本块只到排针为止。"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J2",
+    "max_mm": 6.0,
+    "rationale": "两只 1×10 并排在板左上（J2 卧座本体探出板沿、朝外骑在主机排针上，J3 在它右边一列）。 要保住的是\"两只同号脚同一行\"。"
+  },
+  "hot_loop": [],
+  "internal_nets": [],
+  "notes": [
+    "**Bus Pirate 5 十脚总线接口**：J2 = 1×10 卧式母座（骑在 BP5 的十脚排针上）、J3 = 1×10 竖针，两只**逐脚并联**。2 件 / 10 网 / 端口 9 + 轨 GND。",
+    "脚序 `1=VOUT_BP_SIDE 2=TRIG 3=USB_D+ 4=USB_D- 5=IO3 6=DAT 7=CLK 8=IO6 9=IO7 10=GND`。⚠ **1 号脚不是 VOUT 而是 `VOUT_BP_SIDE`**（BP 那头送来的 5V）：这块板自己在下游用一只 P-MOS（`kb_backflow_prevent`）把它变成板内 `VOUT`，再由一只 SPDT（`kb_vout_switch`）接到 `VDD`。拼装时 `VOUT` / `VOUT_BP_SIDE` / `VDD` **三张网都不能并**。",
+    "`IO3/IO6/IO7`（5/8/9 脚）登记成端口：源板上它们**只到排针为止**，板里没有任何别的东西接它们，去向在 BP5 那一侧。出口脚记 J2 的对应脚（J3 与 J2 逐脚并联，算同一条口岸）。",
+    "**铜**：26 段（B.Cu 17 / F.Cu 9）、0 孔、0 铺铜。孤立铜删 2 段；口沿上被窗口截断 5 处（一段没删，拼板时按端口名从焊盘重新引出去）。`counts.naked_plane_pads` = 2：两只排针的 GND 脚在源板上靠整板铺铜连，块里不带铺铜 → `island_split` 记 `GND×2`。**这只块单看 GND 是断的**，拼板时整板重铺一次就连上。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：2 件、块内 26 段铜、 0 孔、0 铺铜；源板那张 GND 是整板平面，按\"块内不带铺铜\"整张删）",
+  "provenance": {
+    "basis": "2 件 / 10 网 / 端口 9 + 轨 1；铜 15 段 + 0 孔；死铜删 2；口岸切口 5",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

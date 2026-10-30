@@ -1,0 +1,67 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "status_led",
+ "interface": [
+  {
+   "net": "IO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R11-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "WS2812B 的数据输入，经块内 R11 0R"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R11",
+   "lib": "Device:R_Small_US",
+   "value": "0R 1%",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 132.08,
+   "y": 118.11
+  },
+  {
+   "ref": "D9",
+   "lib": "LED:WS2812B",
+   "value": "WS2812B",
+   "footprint": "LED_SMD:LED_SK6812MINI_PLCC4_3.5x3.5mm_P1.75mm",
+   "x": 144.78,
+   "y": 118.11
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D9",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "D9",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "R11",
+   "pin": "1",
+   "net": "IO2"
+  },
+  {
+   "ref": "D9",
+   "pin": "4",
+   "net": "_status_led_N1"
+  },
+  {
+   "ref": "R11",
+   "pin": "2",
+   "net": "_status_led_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**USB-C 母座（含 CC 下拉）**：J7 = `HRO TYPE-C-31-M-12`（16 脚贴片）， `CC1`/`CC2` 各经一只 5.1K（R1/R5）下拉到 GND——这是**设备侧（sink/UFP）**的标准签名， 告诉主机\"我是个设备、按默认电流给我供电\"。**板上没有 PD 控制器、没有升压/取电芯片**： `VBUS`（A4B9/B4A9 两只脚并联）只经 0805 磁珠 `L1` 到 `VDD` 当一个 5V 取电口，C3（47µF）储能。 `D+`/`D-`（A6/B6、A7/B7）直通到总线 `USB_D+`/`USB_D-`；`SBU1/SBU2` 空脚； `SHIELD S1..S4` 与 A1B12/B1A12 全部落 GND。 复用要点：**5.1K 是必须的**——换成 10K/56K 就变成别的角色（USB-C 靠这对电阻读角色和电流档）， 没有它们主机根本不会给 VBUS。",
+  "power_rails": [
+    "GND",
+    "VDD"
+  ],
+  "interface": [
+    {
+      "name": "USB_D+",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D-"
+    },
+    {
+      "name": "USB_D-",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D+"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J7",
+    "max_mm": 14.0,
+    "rationale": "J7 在板左上、本体探出板沿朝外；R1/R5 贴在它下方的两只 CC 脚上；L1 与 C3 在 板中部那一行（VDD 汇流处）——件框因此拉长到 16.23×18.76mm，这是作者的布局事实。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_kb_usb_c_port_N1",
+    "_kb_usb_c_port_N2",
+    "_kb_usb_c_port_N3"
+  ],
+  "notes": [
+    "**USB-C 母座（USB2.0 设备口）**：J7 = `TYPE-C-31-M-12`，D+/D− 各并两只脚（A6/B6、A7/B7）——正反插都能用，但只有 USB2.0。5 件 / 9 网 / 端口 USB_D± + 轨 GND+VDD / 内部网 3 条。",
+    "**R1 / R5 = 5.1K CC 下拉**（`Net-(J7-CC1)`、`Net-(J7-CC2)`）——这是 **UFP/设备端** 端接：这块板在 USB-C 那一侧是\"被供电的一方\"，从主机拿 5V。要改成 host 侧（往外出电）得把这两只换成上拉/电源芯片，不是改电阻值就行的。",
+    "**VBUS 路径**：`J7.A4B9 / B4A9`（VBUS 并四只脚）→ L1 磁珠 → `VDD`，C3 = 47µF 在 VDD 上。屏蔽脚 S1–S4 直接落地。",
+    "⚠ **三个 USB 口的 D± 是并联的**：本块的 USB_D+/USB_D- 与 `kb_usb_a_port`、`kb_host_header` 是同一对网——同一时刻只能当其中一路用，别指望同时插两个。",
+    "**铜**：66 段（F.Cu 60 / B.Cu 6）、10 孔、0 铺铜，是九块里最密的一块。孤立铜删 6 段；口沿截断 5 处；残迹保留 1 段（少了会断网）；`naked_plane_pads` 1 / `island_split` `GND×6`（六只岛都是接地脚，拼板重铺后并起来）。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：5 件、块内 66 段铜、 10 孔、0 铺铜；GND 在源板上是整板平面 → 整张删）",
+  "provenance": {
+    "basis": "5 件 / 7 网 / 端口 2 + 轨 2；铜 39 段 + 4 孔；死铜删 6；口岸切口 5",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

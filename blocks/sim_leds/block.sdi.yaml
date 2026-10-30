@@ -1,0 +1,112 @@
+project:
+  kind: block
+  name: sim_leds
+  version: sdi/1
+defs:
+  sim_leds:
+    category: indicator
+    rationale: "**两只 0805 指示灯，各串一只 2K 限流电阻，阳极都接 `VOUT`（排针 1 脚送进来的 3.3V）**： · D2 + R2：阴极接 **GND** ⇒ 接上\
+      \ 3.3V 就常亮的电源灯。约 (3.3−2.0)/2000 ≈ **0.65mA**，\n  很暗（0805 现代片式灯 0.5mA 已经能看见，但别指望当照明）。\n· D1 + R1：阴极接\
+      \ `SIM_CD`（卡片检测开关那一侧，来自 `sim_socket_te5145` 的 `J1.SW2`）\n  ⇒ **开关闭合（SIM_CD 被拉到 GND）时亮**，就是\"卡片在不在\"\
+      灯。开关断开时这根线悬空，\n  灯自然灭（没有下拉，靠 LED 反向漏电，视觉上就是灭）。\n复用要点：① 逻辑是**低电平点亮**（阴极接被拉低的节点），换到高电平有效的信号上就要 把 LED\
+      \ 反过来并把电阻挪到阴极侧；② `VOUT` 这根网**不是本块产生的**，它来自排针； ③ 2K 是按 3.3V 与这颗灯的 Vf 选的，系统电压换成 5V 时亮度会翻倍（电流 ≈1.5mA），\
+      \ 需要恒定亮度就重算电阻。"
+    ports:
+    - name: SIM_CD
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D1-1
+        connector: false
+      pin: D1/1
+      note: 卡片检测开关触点：被开关拉到 GND 时 D1 亮；悬空时灭
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R1-1
+        connector: false
+      pin: R1/1
+      note: 排针 1 脚送进来的 3.3V，两颗灯的共同阳极电源（经各自的 2K）
+    rails:
+    - GND
+    parts:
+    - ref: D2
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: D1
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: R1
+      lib: Device:R
+      value: 2K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R2
+      lib: Device:R
+      value: 2K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: D2
+      pin: '1'
+      net: GND
+    - ref: D1
+      pin: '1'
+      net: SIM_CD
+    - ref: R1
+      pin: '1'
+      net: VOUT
+    - ref: R2
+      pin: '1'
+      net: VOUT
+    - ref: D2
+      pin: '2'
+      net: _sim_leds_N1
+    - ref: R2
+      pin: '2'
+      net: _sim_leds_N1
+    - ref: D1
+      pin: '2'
+      net: _sim_leds_N2
+    - ref: R1
+      pin: '2'
+      net: _sim_leds_N2
+    placement_prior:
+      anchor: D2
+      max_mm: 6.0
+      rationale: 一颗灯一个电阻，串起来直线摆（源板就是 R→LED 竖排）。灯要朝板边/朝上让人看得见， 电阻不挡灯面。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _sim_leds_N1
+    - _sim_leds_N2
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 5 网 / 端口 2 + 轨 1；铜 9 段 + 0 孔；死铜删 2；口岸切口 2；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 sim-rev3c.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 /SIM_GND 灌铜是跨块的**口岸网**，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**两只 0805 指示灯**，各串一只 2K 限流电阻，阳极都接 `VOUT`（排针 1 脚送进来的 3.3V）。4 件 / 5 网：2 个出块端口（VOUT / SIM_CD）+ 1 条轨（GND）+
+      2 张块内网（两颗 LED 的阳极段，卡里 `_sim_leds_N*`）。'
+    - D2 + R2：阴极接 **GND** ⇒ 接上 VOUT 就**常亮**。电流 ≈ (3.3−2.0)/2000 ≈ **0.65mA**，很暗（0805 片式灯 0.5mA 已能看见，但别当照明）。
+    - D1 + R1：阴极接 **`SIM_CD`**（来自 `sim_socket_te5145` 的卡片检测开关触点）⇒ **开关闭合、SIM_CD 被拉到 GND 时亮**。开关断开时这根线悬空，灯自然灭（没有下拉，靠
+      LED 反向漏电；实测观感就是灭）。
+    - 两块板之间的那根线就是 `SIM_CD`：卡里登记为**出块端口**（不是块内网）——拼装时按同名直连，别按块内网逐实例改名，否则灯与开关会被断开。
+    - 2K 是按 3.3V 与这颗灯的 Vf 定的：换 5V 亮度翻倍多（≈1.5mA），换 1.8V 基本看不见。逻辑是**低电平点亮**，挪到高有效信号上要把 LED 反过来。
+    - ⚠ 网名：本板的网在页上和板上都带**前导斜杠**（`/VCC`、`/SIM_GND`、`/I{slash}O` …），那是 KiCad 给局部网加的分页路径，不是层级设计。卡里照抄板上写法，拼板接网时按**同名**匹配；`I{slash}O`
+      是 KiCad5 对 `I/O` 的转义写法，说的是同一根线。
+    - 铜 9 段 + 0 孔（F 14）；死铜删 2 段/孔；口岸切口 2 处、走线出口 5 处；削剩残迹留 1 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张 /SIM_GND
+      是跨块的口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - 借道块外器件焊盘换层 1 处（VOUT->J2.1）——那孔不在块里，块单看这几处是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 2 + 悬空过孔 1 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通
+      0 / isolated_copper 0 / 违规 36 条。

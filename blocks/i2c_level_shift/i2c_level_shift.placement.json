@@ -1,0 +1,180 @@
+{
+  "name": "i2c_level_shift",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    128.1866,
+    38.82
+  ],
+  "size_mm": [
+    6.3233,
+    12.0565
+  ],
+  "ports": {
+    "GND": [
+      "C4",
+      "C5",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "Q6",
+      "R11",
+      "R9",
+      "U2"
+    ],
+    "+3.3V": [
+      "C5",
+      "J1",
+      "J4",
+      "R10",
+      "R12",
+      "R2",
+      "R9",
+      "U2"
+    ],
+    "HSDA": [
+      "J1",
+      "J4"
+    ],
+    "HSCL": [
+      "J1",
+      "J4"
+    ],
+    "SDA": [
+      "J2",
+      "J3"
+    ],
+    "BULK_VIN": [
+      "C4",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R13",
+      "U2"
+    ],
+    "SCL": [
+      "J2",
+      "J3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "BULK_VIN",
+      "x": 127.7,
+      "y": 31.9917,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 124.225,
+      "y": 37.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 124.225,
+      "y": 40.3,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSDA",
+      "x": 132.1483,
+      "y": 37.575,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSCL",
+      "x": 132.0,
+      "y": 45.6482,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSCL",
+      "x": 132.1483,
+      "y": 39.6526,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 129.3926,
+      "y": 45.6482,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 3,
+    "nets": 7,
+    "copper_segs": 9,
+    "vias": 0,
+    "stub_kept": 5,
+    "isolated_deleted": 6,
+    "cut_ends": 7,
+    "exit_points": 7,
+    "segs_by_layer": {
+      "F.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3.3V->R9.2": 1
+    },
+    "island_split": {
+      "GND": 3
+    },
+    "dangling": {
+      "total": 2,
+      "port_cuts": 2,
+      "port_cut_nets": [
+        "+3.3V"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 7,
+        "vias": 1,
+        "nets": [
+          "BULK_VIN",
+          "HSCL",
+          "HSDA",
+          "SCL",
+          "SDA"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C6",
+      "value": "10uF/6.3V",
+      "fp": "C_0805_2012Metric",
+      "dx": -1.4366,
+      "dy": -3.5,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C7",
+      "value": "10uF/6.3V",
+      "fp": "C_0805_2012Metric",
+      "dx": 0.2634,
+      "dy": 3.5,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U1",
+      "value": "TXS0102DCU",
+      "fp": "VSSOP-8_2.3x2mm_P0.5mm",
+      "dx": 0.3134,
+      "dy": 0.08,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

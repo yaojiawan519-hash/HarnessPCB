@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100nf 1k 1n4001 s8050 vibration_motor",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "vib_motor_drv"
+  }
+}

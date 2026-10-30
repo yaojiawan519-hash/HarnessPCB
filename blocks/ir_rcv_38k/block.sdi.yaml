@@ -1,0 +1,109 @@
+project:
+  kind: block
+  name: ir_rcv_38k
+  version: sdi/1
+defs:
+  ir_rcv_38k:
+    category: sensor
+    rationale: '**标准 38kHz 红外解调头**：U3 IRM-3638T（TSOP18XX 封装）＋三颗 0805——R4 100R 串在 VOUT 与模块 VCC 之间、C2 4.7µF
+      做 RC 滤波（≈340Hz 拐点）、R5 10K 输出上拉。 输出开漏、**低电平有效**（收到 38kHz 载波时拉低），高电平等于 VOUT。 备选 IRM 换 TSOP34438 /
+      OS-883YM-MS（页上注记），都是 38kHz、脚位兼容。 与 ir_rcv_learner 的差别只有一个：本块的模块是**固定 38kHz**、只认一路载频， 所以抗环境光/邻频干扰更稳；学码要宽频就换
+      learner 那块。 复用要点：① 受光面朝板边或开窗；② 100R + 4.7µF 别省（挡 VOUT 上传来的纹波）； ③ 上拉接 VOUT ⇒ 输出摆到 5V，**接 3.3V 主机要把
+      R5 改接到 3V3**。'
+    ports:
+    - name: IO5
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R5-1
+        connector: false
+      pin: R5/1
+      note: 解调输出：开漏、有 38kHz 载波时拉低；块内 R5 10K 上拉到 VOUT
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R4-2
+        connector: false
+      pin: R4/2
+      note: 5V 电源，经块内 R4 100R 到模块 VCC（同节点挂 C2 4.7µF）
+    rails:
+    - GND
+    parts:
+    - ref: R5
+      lib: Device:R
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: C2
+      lib: Device:C
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: R4
+      lib: Device:R
+      value: 100R
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: U3
+      lib: TSOP4838:TSOP4838
+      value: IRM-3638T
+      footprint: Library:TSOP18XX
+    conns:
+    - ref: C2
+      pin: '2'
+      net: GND
+    - ref: U3
+      pin: GND
+      net: GND
+    - ref: R5
+      pin: '1'
+      net: IO5
+    - ref: U3
+      pin: OUT
+      net: IO5
+    - ref: R4
+      pin: '2'
+      net: VOUT
+    - ref: R5
+      pin: '2'
+      net: VOUT
+    - ref: C2
+      pin: '1'
+      net: _ir_rcv_38k_N1
+    - ref: R4
+      pin: '1'
+      net: _ir_rcv_38k_N1
+    - ref: U3
+      pin: VCC
+      net: _ir_rcv_38k_N1
+    placement_prior:
+      anchor: U3
+      max_mm: 6.5
+      rationale: 四颗件排成 10.43×7.39mm 一条（实测到 U3 中心：C2 3.22mm、R5 5.13mm、R4 5.47mm）， 布局与另外三个接收块同构：模块在右、C 贴模块电源脚、上拉在输出侧、串阻最外。
+        要保住的是"C2 贴模块电源脚 + U3 朝板边"，其余按同构摆即可。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _ir_rcv_38k_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 IR Toy 适配板（3REV3）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 4 网 / 端口 2 + 轨 1；铜 12 段 + 0 孔；死铜删 0；口岸切口 2；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 4 件 / 4 网：2 个出块端口（IO5 输出、VOUT 供电）+ 轨 GND + 1 张块内网（R4 100R 之后的模块 VCC 段，卡里 `_ir_rcv_38k_N1`）。
+    - 与 ir_rcv_learner 逐颗同构：100R 串供 + 4.7µF 做 ≈340Hz RC + 10K 输出上拉。差别只在模块——本块是**固定 38kHz**、只认一路载频，抗邻频/环境光比宽频头稳，但不能用来学陌生遥控器。
+    - 输出开漏、低有效：有 38kHz 载波时 IO5 被拉低。上拉接 VOUT ⇒ 空闲电平 = VOUT，接 3.3V 主机要把 R5 改接到 3V3。
+    - 备选 IRM 换 TSOP34438 / OS-883YM-MS（页上注记），都是 38kHz、脚位兼容。
+    - 铜 12 段 + 0 孔（F 21）；死铜删 0 段/孔；口岸切口 2 处、走线出口 3 处；削剩残迹留 0 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（GND
+      铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。
+    - 块里 1 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND**（2 个焊盘点名）——源板靠铺铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 2 + 悬空过孔
+      1 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 113 条。

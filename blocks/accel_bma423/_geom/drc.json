@@ -1,0 +1,13 @@
+{
+ "pcb": "32431:1793371549871548152",
+ "violations": 32,
+ "unconnected": 1,
+ "kinds": {
+  "lib_footprint_issues": 2,
+  "lib_footprint_mismatch": 1,
+  "solder_mask_bridge": 17,
+  "track_dangling": 12
+ },
+ "shorts": [],
+ "bridges": []
+}

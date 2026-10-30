@@ -1,0 +1,151 @@
+{
+  "name": "power_3v3_usb_ldo",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    28.09,
+    30.195
+  ],
+  "size_mm": [
+    11.69,
+    5.54
+  ],
+  "ports": {
+    "+3V3": [
+      "C10",
+      "C11",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J3",
+      "U3",
+      "U4"
+    ],
+    "+5V": [
+      "J1",
+      "U2"
+    ],
+    "GND": [
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J1",
+      "J2",
+      "J3",
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "U2",
+      "U3",
+      "U4",
+      "Y1"
+    ]
+  },
+  "cut_points": [],
+  "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 5,
+    "copper_segs": 39,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 3,
+    "cut_ends": 1,
+    "exit_points": 0,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 38
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+5V->J1.1": 1
+    },
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 1,
+      "port_cuts": 1,
+      "port_cut_nets": [
+        "+5V"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 5,
+        "vias": 8,
+        "nets": [
+          "+3V3",
+          "GND"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C1",
+      "value": "10u",
+      "fp": "C_0603_1608Metric",
+      "dx": -0.08,
+      "dy": 1.2625,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C2",
+      "value": "10u",
+      "fp": "C_0603_1608Metric",
+      "dx": 5.09,
+      "dy": 1.2575,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "F1",
+      "value": "100mA",
+      "fp": "Fuse_1206_3216Metric",
+      "dx": -3.54,
+      "dy": -1.595,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "FB1",
+      "value": "100 @ 100MHz",
+      "fp": "L_0805_2012Metric",
+      "dx": 0.5725,
+      "dy": -1.795,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U1",
+      "value": "XC6206P332MR",
+      "fp": "SOT-23",
+      "dx": 2.51,
+      "dy": 1.045,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

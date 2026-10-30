@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k 100nf 51k micro usb usblc6-2p6",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "usb_dev_esd"
+  }
+}

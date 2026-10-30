@@ -1,0 +1,116 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "plank_edge",
+ "interface": [
+  {
+   "net": "INT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J10-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "中断线（Breakout Garden 第 5 线）：J10.4 与 J10.7 两只镜像触点；全板唯一带 INT 的口，另一端在 plank_io_headers 的第 4 脚（丝印写 IO2）"
+  },
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J10-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟：J10.5 与 J10.6 两只镜像触点"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J10-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据：J10.3 与 J10.8 两只镜像触点"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J10-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "整板电源（丝印 `V+`）：J10.1 与 J10.10 两只镜像触点"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J10",
+   "lib": "Connector_Generic:Conn_02x05_Odd_Even",
+   "value": "ED10BGFBK",
+   "footprint": "footprints:CONN-TH_SA10BL01D",
+   "x": 111.76,
+   "y": 148.59
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J10",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J10",
+   "pin": "9",
+   "net": "GND"
+  },
+  {
+   "ref": "J10",
+   "pin": "4",
+   "net": "INT"
+  },
+  {
+   "ref": "J10",
+   "pin": "7",
+   "net": "INT"
+  },
+  {
+   "ref": "J10",
+   "pin": "5",
+   "net": "SCL"
+  },
+  {
+   "ref": "J10",
+   "pin": "6",
+   "net": "SCL"
+  },
+  {
+   "ref": "J10",
+   "pin": "3",
+   "net": "SDA"
+  },
+  {
+   "ref": "J10",
+   "pin": "8",
+   "net": "SDA"
+  },
+  {
+   "ref": "J10",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J10",
+   "pin": "10",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

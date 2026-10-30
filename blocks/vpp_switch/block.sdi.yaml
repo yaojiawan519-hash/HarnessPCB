@@ -1,0 +1,177 @@
+project:
+  kind: block
+  name: vpp_switch
+  version: sdi/1
+defs:
+  vpp_switch:
+    category: power
+    rationale: "VPP 到 VPP_SW 的**三管双向开关**，两个方向各一个驱动：\n  · 通：Q1（MMBT3906 PNP）发射极接 VPP、集电极接 VPP_SW，基极由 R23\
+      \ 100K 上拉到 VPP 常关；\n    VPP_HIGH 经 R27 10K 驱动 Q3（MMBT3904 NPN），Q3 集电极经 R25 10K 把 Q1 基极拉低 → Q1 导通。\n\
+      \  · 断/下拉：VPP_LOW 经 R29 10K 驱动 Q2（MMBT3904 NPN），Q2 集电极经 R28 100R 把 VPP_SW 拉向地。\n  复用要点：① 这是**电平/状态选择**，不是限流源——R28\
+      \ 100R 只在 VPP_LOW 态做下拉，\n  真接负载时要另算电流；② VPP_HIGH / VPP_LOW **必须互斥**，两路同时高会把 Q1 直通到地\n  （R28 100R\
+      \ 是唯一的限流）；③ 五颗电阻全部 0805，需要更高耐压时换封装、不改拓扑。"
+    ports:
+    - name: VPP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: Q1-2
+        connector: false
+      pin: Q1/2
+      note: 高压输入（来自 vpp_boost / J4.1）
+    - name: VPP_HIGH
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R27-2
+        connector: false
+      pin: R27/2
+      note: 使能 Q1 导通的控制脚（高有效）
+    - name: VPP_LOW
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R29-2
+        connector: false
+      pin: R29/2
+      note: 把 VPP_SW 下拉到地的控制脚（高有效，**与 VPP_HIGH 互斥**）
+    - name: VPP_SW
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: Q1-3
+        connector: false
+      pin: Q1/3
+      note: 开关后的高压输出（到 J4.2）
+    rails:
+    - GND
+    parts:
+    - ref: Q2
+      lib: Transistor_BJT:MMBT3904
+      value: MMBT3904
+      footprint: Package_TO_SOT_SMD:SOT-23
+    - ref: Q3
+      lib: Transistor_BJT:MMBT3904
+      value: MMBT3904
+      footprint: Package_TO_SOT_SMD:SOT-23
+    - ref: R28
+      lib: Device:R
+      value: 100R
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R27
+      lib: Device:R
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R25
+      lib: Device:R
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: Q1
+      lib: Transistor_BJT:MMBT3906
+      value: MMBT3906
+      footprint: Package_TO_SOT_SMD:SOT-23
+    - ref: R29
+      lib: Device:R
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R23
+      lib: Device:R
+      value: 100K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: Q2
+      pin: '2'
+      net: GND
+    - ref: Q3
+      pin: '2'
+      net: GND
+    - ref: Q1
+      pin: '2'
+      net: VPP
+    - ref: R23
+      pin: '2'
+      net: VPP
+    - ref: R27
+      pin: '2'
+      net: VPP_HIGH
+    - ref: R29
+      pin: '2'
+      net: VPP_LOW
+    - ref: Q1
+      pin: '3'
+      net: VPP_SW
+    - ref: R28
+      pin: '2'
+      net: VPP_SW
+    - ref: Q1
+      pin: '1'
+      net: _vpp_switch_N1
+    - ref: R23
+      pin: '1'
+      net: _vpp_switch_N1
+    - ref: R25
+      pin: '2'
+      net: _vpp_switch_N1
+    - ref: Q2
+      pin: '1'
+      net: _vpp_switch_N2
+    - ref: R29
+      pin: '1'
+      net: _vpp_switch_N2
+    - ref: Q2
+      pin: '3'
+      net: _vpp_switch_N3
+    - ref: R28
+      pin: '1'
+      net: _vpp_switch_N3
+    - ref: Q3
+      pin: '1'
+      net: _vpp_switch_N4
+    - ref: R27
+      pin: '1'
+      net: _vpp_switch_N4
+    - ref: Q3
+      pin: '3'
+      net: _vpp_switch_N5
+    - ref: R25
+      pin: '1'
+      net: _vpp_switch_N5
+    placement_prior:
+      anchor: Q1
+      max_mm: 8.0
+      rationale: "三颗管和它们的基极电阻挤在 Q1 周围：R23 3.06mm、Q2 3.94mm、Q3 4.50mm、R28 4.50mm、\n    R25 4.65mm、R29 4.94mm，最远的\
+        \ R27 7.59mm（它是 VPP_HIGH 的输入电阻，跟着口岸走）。\n    必须保住的是\"Q1 基极—Q3 集电极—R25\"这条三段小回路（这里走的是 100K 级的基极电流，\n\
+        \    但它是**开关速度**的决定项），以及 Q1 的 E/C 两个高压脚的间距与爬电。"
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _vpp_switch_N1
+    - _vpp_switch_N2
+    - _vpp_switch_N3
+    - _vpp_switch_N4
+    - _vpp_switch_N5
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 VPP Maker 适配板（1REV6）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 8 件 / 10 网 / 端口 4 + 轨 1；铜 20 段 + 0 孔；死铜删 11；口岸切口 5；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 vpp-maker-rev6-ian.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 8 件 / 10 网：4 个信号口岸（VPP / VPP_SW / VPP_HIGH / VPP_LOW）+ 轨 GND；另外 5 张网是块内的**基极/集电极节点**（Q1-B、Q2-B、Q2-C、Q3-B、Q3-C，原理图上无名），不出块。
+    - 阀门的方向是两路互斥：VPP_HIGH 经 R27 驱动 Q3，Q3 经 R25 拉低 Q1（PNP）基极 → VPP 通到 VPP_SW；VPP_LOW 经 R29 驱动 Q2，Q2 经 R28
+      100R 把 VPP_SW 下拉。
+    - ⚠ **两路同时高会把 Q1 直通到地**，R28 100R 是唯一的限流。固件必须互斥，硬件里没有互锁。
+    - R23 100K 是 Q1 的基极上拉到 VPP（保证默认关断），换高压时注意它的耐压与漏电：100K 在高温下漏电流会自己把管子开起来。
+    - 铜 20 段 + 0 孔（F 23）；死铜删 11 段/孔；口岸切口 5 处、走线出口 7 处；铺铜带走 0 张（源板那张 GND 铺铜按「块内不带铺铜」整张删掉，拼板时由整板铺铜接上）。
+    - 块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条，全是 GND 焊盘（源板靠铺铜连，块里没铺铜）；其余 13 条（lib_footprint_mismatch×8、track_dangling×5）是源板自带
+      + 切块断头——源板本身 23 条违规 / 未连通 0（lib_footprint_mismatch×20、silk_over_copper×1、silk_overlap×1、starved_thermal×1），块里能对上的都是从那儿继承的。

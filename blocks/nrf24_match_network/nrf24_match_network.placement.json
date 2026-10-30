@@ -1,0 +1,198 @@
+{
+  "name": "nrf24_match_network",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    59.0625,
+    34.5
+  ],
+  "size_mm": [
+    20.415,
+    19.7738
+  ],
+  "ports": {
+    "NRF_ANT1": [
+      "U4"
+    ],
+    "NRF_ANT2": [
+      "U4"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J1",
+      "J3",
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "Y1"
+    ],
+    "NRF_VDD_PA": [
+      "U4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 48.055,
+      "y": 40.825,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 48.055,
+      "y": 33.65,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_VDD_PA",
+      "x": 48.055,
+      "y": 35.3675,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_ANT2",
+      "x": 48.055,
+      "y": 34.15,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_ANT1",
+      "x": 48.055,
+      "y": 34.65,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 22,
+    "vias": 2,
+    "stub_kept": 2,
+    "isolated_deleted": 33,
+    "cut_ends": 3,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "B.Cu": 2,
+      "F.Cu": 20
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 5
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 10,
+        "vias": 7,
+        "nets": [
+          "GND",
+          "NRF_ANT1",
+          "NRF_ANT2",
+          "NRF_VDD_PA"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C15",
+      "value": "1p5",
+      "fp": "C_0402_1005Metric",
+      "dx": -6.2775,
+      "dy": -0.6,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C16",
+      "value": "1p",
+      "fp": "C_0402_1005Metric",
+      "dx": -4.7625,
+      "dy": -1.085,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C17",
+      "value": "2n2",
+      "fp": "C_0402_1005Metric",
+      "dx": -7.1975,
+      "dy": 2.4,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C18",
+      "value": "4p7",
+      "fp": "C_0402_1005Metric",
+      "dx": -7.1975,
+      "dy": 1.4,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "SMA",
+      "fp": "SMA_Samtec_SMA-J-P-X-ST-EM1_EdgeMount",
+      "dx": -1.4625,
+      "dy": 0.0,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "L1",
+      "value": "3n9",
+      "fp": "L_0402_1005Metric",
+      "dx": -8.2275,
+      "dy": -0.6,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "L2",
+      "value": "8n2",
+      "fp": "L_0402_1005Metric",
+      "dx": -9.7125,
+      "dy": -0.1,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "L3",
+      "value": "2n7",
+      "fp": "L_0402_1005Metric",
+      "dx": -8.7125,
+      "dy": 0.91,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

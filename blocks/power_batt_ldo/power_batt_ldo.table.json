@@ -1,0 +1,458 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "power_batt_ldo",
+ "interface": [
+  {
+   "net": "ADC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C11-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "电池电压分压的中点，R8 100K/R9 360K 把 4.2V 分到 3.29V；MCU 侧 ADC 直接读，别再并电阻"
+  },
+  {
+   "net": "BTN2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按键网，同时接进 U1(SR2HARU)——不是纯按键，电源控制也看它"
+  },
+  {
+   "net": "BTN3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按键网，同时接进 U1(SR2HARU)，并且是 BOOT 键（TP3 也在这根网上）"
+  },
+  {
+   "net": "EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "MCU 使能/复位 RC 的那一侧（R1 10K + C2 1uF 在 MCU 块里）"
+  },
+  {
+   "net": "STAT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R5-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "充电器开漏状态，R5 51K 上拉到 VBUS、R6 100K 串到 U3 的 STAT 脚"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND",
+  "VBUS"
+ ],
+ "parts": [
+  {
+   "ref": "U3",
+   "lib": "Battery_Management:MCP73831-2-OT",
+   "value": "TP4054",
+   "footprint": "TO_SOT_Packages_SMD:SOT-23-5",
+   "x": 61.468,
+   "y": 152.146
+  },
+  {
+   "ref": "R3",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 51.308,
+   "y": 158.496
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector_Generic:Conn_01x02",
+   "value": "Battery",
+   "footprint": "Watchy:1.25T-2PWT (Molex 532610271)",
+   "x": 100.838,
+   "y": 156.464
+  },
+  {
+   "ref": "R5",
+   "lib": "Device:R",
+   "value": "51K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 77.978,
+   "y": 147.574
+  },
+  {
+   "ref": "C10",
+   "lib": "Device:C",
+   "value": "10uF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 71.374,
+   "y": 126.238
+  },
+  {
+   "ref": "U1",
+   "lib": "Watchy:SR2HARU",
+   "value": "SR2HARU",
+   "footprint": "Watchy:SR2HARU",
+   "x": 25.4,
+   "y": 57.15
+  },
+  {
+   "ref": "D1",
+   "lib": "Device:D_Schottky",
+   "value": "MBR0530",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "x": 34.798,
+   "y": 130.048
+  },
+  {
+   "ref": "Q1",
+   "lib": "Transistor_FET:FDN340P",
+   "value": "CJ2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 24.892,
+   "y": 124.968
+  },
+  {
+   "ref": "R8",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 86.614,
+   "y": 123.698
+  },
+  {
+   "ref": "C6",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 38.1,
+   "y": 99.06
+  },
+  {
+   "ref": "C4",
+   "lib": "Device:C",
+   "value": "1uF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 27.94,
+   "y": 99.06
+  },
+  {
+   "ref": "R2",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 24.892,
+   "y": 133.858
+  },
+  {
+   "ref": "C11",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 96.52,
+   "y": 131.318
+  },
+  {
+   "ref": "R9",
+   "lib": "Device:R",
+   "value": "360K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 86.614,
+   "y": 131.318
+  },
+  {
+   "ref": "C5",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 33.02,
+   "y": 86.36
+  },
+  {
+   "ref": "C3",
+   "lib": "Device:C",
+   "value": "1uF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 21.59,
+   "y": 86.36
+  },
+  {
+   "ref": "U2",
+   "lib": "Regulator_Linear:AP2112K-3.3",
+   "value": "RT908033",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "x": 54.356,
+   "y": 124.968
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C",
+   "value": "10uF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 17.78,
+   "y": 99.06
+  },
+  {
+   "ref": "R6",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 77.978,
+   "y": 155.194
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C10",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C3",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C4",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C5",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C6",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U1",
+   "pin": "6",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U2",
+   "pin": "5",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "+BATT"
+  },
+  {
+   "ref": "Q1",
+   "pin": "3",
+   "net": "+BATT"
+  },
+  {
+   "ref": "R8",
+   "pin": "1",
+   "net": "+BATT"
+  },
+  {
+   "ref": "U3",
+   "pin": "3",
+   "net": "+BATT"
+  },
+  {
+   "ref": "C11",
+   "pin": "1",
+   "net": "ADC"
+  },
+  {
+   "ref": "R8",
+   "pin": "2",
+   "net": "ADC"
+  },
+  {
+   "ref": "R9",
+   "pin": "1",
+   "net": "ADC"
+  },
+  {
+   "ref": "U1",
+   "pin": "2",
+   "net": "BTN2"
+  },
+  {
+   "ref": "U1",
+   "pin": "5",
+   "net": "BTN3"
+  },
+  {
+   "ref": "U1",
+   "pin": "3",
+   "net": "EN"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C10",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C11",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R3",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R9",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R5",
+   "pin": "2",
+   "net": "STAT"
+  },
+  {
+   "ref": "R6",
+   "pin": "1",
+   "net": "STAT"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "VBUS"
+  },
+  {
+   "ref": "Q1",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "R2",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "R5",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "U3",
+   "pin": "4",
+   "net": "VBUS"
+  },
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "_power_batt_ldo_N1"
+  },
+  {
+   "ref": "Q1",
+   "pin": "2",
+   "net": "_power_batt_ldo_N1"
+  },
+  {
+   "ref": "U2",
+   "pin": "1",
+   "net": "_power_batt_ldo_N1"
+  },
+  {
+   "ref": "U2",
+   "pin": "3",
+   "net": "_power_batt_ldo_N1"
+  },
+  {
+   "ref": "R6",
+   "pin": "2",
+   "net": "_power_batt_ldo_N2"
+  },
+  {
+   "ref": "U3",
+   "pin": "1",
+   "net": "_power_batt_ldo_N2"
+  },
+  {
+   "ref": "R3",
+   "pin": "2",
+   "net": "_power_batt_ldo_N3"
+  },
+  {
+   "ref": "U3",
+   "pin": "5",
+   "net": "_power_batt_ldo_N3"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

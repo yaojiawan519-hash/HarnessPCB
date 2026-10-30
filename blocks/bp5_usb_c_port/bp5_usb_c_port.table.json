@@ -1,0 +1,241 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_usb_c_port",
+ "interface": [
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "R203-1",
+    "connector": false
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "R202-1",
+    "connector": false
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "L201",
+   "lib": "kicad5-device:Ferrite_Bead_Small",
+   "value": "1.5A",
+   "footprint": "Inductor_SMD:L_0805_2012Metric",
+   "x": 92.71,
+   "y": 30.48
+  },
+  {
+   "ref": "R201",
+   "lib": "Device:R_Small",
+   "value": "5.1K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 36.83,
+   "y": 35.56
+  },
+  {
+   "ref": "R204",
+   "lib": "Device:R_Small",
+   "value": "5.1K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 92.71,
+   "y": 43.18
+  },
+  {
+   "ref": "R202",
+   "lib": "Device:R_Small",
+   "value": "22R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 36.83,
+   "y": 40.64
+  },
+  {
+   "ref": "R203",
+   "lib": "Device:R_Small",
+   "value": "22R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 92.71,
+   "y": 40.64
+  },
+  {
+   "ref": "C201",
+   "lib": "Device:C_Small",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 105.41,
+   "y": 16.51
+  },
+  {
+   "ref": "C202",
+   "lib": "Device:C_Small",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 105.41,
+   "y": 20.32
+  },
+  {
+   "ref": "J202",
+   "lib": "usb-c:TYPE-C-31-M-12",
+   "value": "TYPE-C-31-M-12",
+   "footprint": "usb-c:HRO_TYPE-C-31-M-12",
+   "x": 64.77,
+   "y": 40.64
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C201",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C202",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "L201",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C201",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C202",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J202",
+   "pin": "A1B12",
+   "net": "GND"
+  },
+  {
+   "ref": "J202",
+   "pin": "B1A12",
+   "net": "GND"
+  },
+  {
+   "ref": "J202",
+   "pin": "S1",
+   "net": "GND"
+  },
+  {
+   "ref": "J202",
+   "pin": "S2",
+   "net": "GND"
+  },
+  {
+   "ref": "J202",
+   "pin": "S3",
+   "net": "GND"
+  },
+  {
+   "ref": "J202",
+   "pin": "S4",
+   "net": "GND"
+  },
+  {
+   "ref": "R201",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R204",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R203",
+   "pin": "1",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "R202",
+   "pin": "1",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "J202",
+   "pin": "A7",
+   "net": "USB_N"
+  },
+  {
+   "ref": "J202",
+   "pin": "B7",
+   "net": "USB_N"
+  },
+  {
+   "ref": "R202",
+   "pin": "2",
+   "net": "USB_N"
+  },
+  {
+   "ref": "J202",
+   "pin": "A6",
+   "net": "USB_P"
+  },
+  {
+   "ref": "J202",
+   "pin": "B6",
+   "net": "USB_P"
+  },
+  {
+   "ref": "R203",
+   "pin": "2",
+   "net": "USB_P"
+  },
+  {
+   "ref": "J202",
+   "pin": "A4B9",
+   "net": "_bp5_usb_c_port_N1"
+  },
+  {
+   "ref": "J202",
+   "pin": "B4A9",
+   "net": "_bp5_usb_c_port_N1"
+  },
+  {
+   "ref": "L201",
+   "pin": "2",
+   "net": "_bp5_usb_c_port_N1"
+  },
+  {
+   "ref": "J202",
+   "pin": "A5",
+   "net": "_bp5_usb_c_port_N2"
+  },
+  {
+   "ref": "R201",
+   "pin": "2",
+   "net": "_bp5_usb_c_port_N2"
+  },
+  {
+   "ref": "J202",
+   "pin": "B5",
+   "net": "_bp5_usb_c_port_N3"
+  },
+  {
+   "ref": "R204",
+   "pin": "2",
+   "net": "_bp5_usb_c_port_N3"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

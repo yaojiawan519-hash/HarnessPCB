@@ -1,0 +1,75 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "analog",
+  "rationale": "**限流比较器 + 硬件锁存（作者标题 Current limit）**：U602 = `LMV331` 比较器， 反相端阈值由 `CURRENT_ADJ_MCU` 经 R415 10K / C416 0.1µF 滤波给（τ≈1ms）， 同相端接 `CURRENT_SENSE`；Q601 = 通用双 PNP 做成**锁存**（节点 A 经 R610 10K 看 `CURRENT_DETECT`，拉得越低越锁死），D601 把比较器反相端钳在 `+3V3` 一个压降内， R611 10K 引 `CURRENT_RESET` 复位。12 件 / 11 网。 ⚠ **这是一旦触发就自己锁住、只能靠 `CURRENT_RESET` 或断电解除**的硬件保护， 不是 MCU 轮询那种软限流；拼板若拿掉 Q601，`CURRENT_DETECT` 会变成一次性的比较器输出。 ⚠ 作者把 R415/C416 摆在 MCU 那头（x≈136-141），离 U602 二十毫米，**块框因此横跨整页**—— 照抄不改，因为那是 PWM 阈值滤波该靠近谁的问题（作者选了靠近源）。 ⚠ 作者注释：Q601 是通用双 PNP（EBCEBC 脚序），可换 Q401 那种匹配对，但贵。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CURRENT_ADJ_MCU",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R415/2",
+      "note": "MCU 的 PWM 阈值（`micro-rp2040` 页），块内 R415/C416 滤成直流"
+    },
+    {
+      "name": "CURRENT_DETECT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R610/2",
+      "note": "锁存后的过流标志，去 `bp5_current_en_gate` 与 MCU"
+    },
+    {
+      "name": "CURRENT_RESET",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R611/1",
+      "note": "MCU 给脉冲解除锁存"
+    },
+    {
+      "name": "CURRENT_SENSE",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R606/2",
+      "note": "来自 `bp5_current_sense` 的放大器输出"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {},
+  "hot_loop": [],
+  "internal_nets": [
+    "_bp5_current_limit_N1",
+    "_bp5_current_limit_N2",
+    "_bp5_current_limit_N3",
+    "_bp5_current_limit_N4",
+    "_bp5_current_limit_N5"
+  ],
+  "notes": [
+    "12 件 / 11 网：4 个信号口岸（CURRENT_ADJ_MCU 阈值进、CURRENT_SENSE 采样进、CURRENT_DETECT 触发出、CURRENT_RESET 复位进）+ 轨 +3V3/GND；另外 5 张无名网是块内比较器/锁存节点（`Net-(Q601-x)` 这类），不出块。",
+    "U602 = `LMV331` 比较器：反相端阈值来自 `CURRENT_ADJ_MCU`（R415 10K / C416 0.1µF 滤，τ≈1ms），同相端接 `CURRENT_SENSE`；Q601 = 通用双 PNP（EBCEBC）做成**硬件锁存**，D601 把比较器反相端钳在 `+3V3` 一个压降内（限制阈值上限），R611 10K 引 `CURRENT_RESET` 解除。",
+    "⚠ **一旦触发就自己锁住**，只能靠 `CURRENT_RESET` 或断电解除——不是 MCU 轮询那种软限流。拼板若把 Q601 拿掉，`CURRENT_DETECT` 会退化成一次性的比较器输出。",
+    "⚠ 块框横跨整页（38.24mm）：R415/C416 是 PWM 阈值的 RC，作者把它摆在 MCU 那头（x≈136-141），离 U602 二十毫米。照抄不改——那是\"滤波靠近源\"的选择。",
+    "作者注释：Q601 可换 Q401 那种匹配对，但贵；反过来 Q401 也可以拿 Q601 顶（见反流块）。",
+    "板 33.24×9.31mm；铜 84 段 + 8 孔（B 5 / F 70 / In1 11 / In2 4）；死铜删 98 段/孔；口岸切口 5 处、走线出口 15 处；源板在本块这几张网上铺过铜（+3V3、GND），按「块内不带铺铜」**整张删**，拼板时由整板铺铜接上；sdi.spur 清掉毛刺 4 段 + 3 孔（网 +3V3, GND）。",
+    "块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它们），拼板时由整板铺铜接上。",
+    "借道块外焊盘 3 处：CURRENT_DETECT->Q602.2（In1.Cu 换层）、CURRENT_SENSE->U103.41（In1.Cu 换层）、CURRENT_SENSE->U601.4（In1.Cu 换层）——铜端压在别的块的焊盘上换层续接，块单看这里是断的，拼板时插上就通。",
+    "kicad-cli DRC：isolated_copper 0、clearance 0、shorting 0；未连通 2 条：2 条落在源板铺过铜的网（GND×2）——块里不带铺铜，拼板时由整板铺铜接上；违规 5 条全部是 `track_dangling`——那是块的口岸断头（铜走到窗口边就停），不是毛刺（`sdi.spur` 已把毛刺清零）。明细：track_dangling×5。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 原样扣，4 层板保留原层；**横跨整页**，因为 R415/C416 摆在 MCU 那头、离 U602 二十毫米——铜窗口为此从 0.80 外扩到 2.03mm，否则 14 个过孔落在窗外）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "12 件 / 11 网 / 端口 4 + 轨 2；铜 84 段 + 8 孔；死铜删 98；口岸切口 5；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

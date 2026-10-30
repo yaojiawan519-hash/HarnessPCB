@@ -1,0 +1,244 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "flash_zif_socket",
+ "interface": [
+  {
+   "net": "CDI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 2+6 → 芯片 MISO"
+  },
+  {
+   "net": "CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-13",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 9+13 → 芯片 MOSI"
+  },
+  {
+   "net": "CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 1+5（同一根 CS 两个夹点）"
+  },
+  {
+   "net": "GND_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 4+8（+ C1 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片"
+  },
+  {
+   "net": "HOLD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-11",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 3+7+11+15（四只触点同网）"
+  },
+  {
+   "net": "SCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-10",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 10+14"
+  },
+  {
+   "net": "VCC_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "ZIF 触点 12+16（+ C1 的 1 脚）：芯片侧电源"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "只接到 R1（灯在这块里）：本块不出 VOUT，是消费方"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_02x08_Counter_Clockwise",
+   "value": "ZIF SOCKET",
+   "footprint": "Socket:DIP_Socket-16_W4.3_W5.08_W7.62_W10.16_W10.9_3M_216-3340-00-0602J",
+   "x": 184.15,
+   "y": 102.87
+  },
+  {
+   "ref": "D1",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 137.16,
+   "y": 82.55
+  },
+  {
+   "ref": "R1",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 129.54,
+   "y": 82.55
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 146.05,
+   "y": 132.08
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "CDI"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "CDI"
+  },
+  {
+   "ref": "J3",
+   "pin": "13",
+   "net": "CDO"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "CDO"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "CS"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "CS"
+  },
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J3",
+   "pin": "11",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J3",
+   "pin": "15",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "SCLK"
+  },
+  {
+   "ref": "J3",
+   "pin": "14",
+   "net": "SCLK"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "J3",
+   "pin": "12",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "J3",
+   "pin": "16",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "_flash_zif_socket_N1"
+  },
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "_flash_zif_socket_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

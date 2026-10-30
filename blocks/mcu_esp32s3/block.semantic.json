@@ -1,0 +1,218 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "mcu",
+  "rationale": "ESP32-S3 的**裸芯片**最小系统（不是模块）：U4 是 QFN-56 带 5.6×5.6 散热盘，57 个脚里有 21 个空脚（本块只做基本外设，其余 GPIO/Flash 脚空着）。两套时钟各一组：40MHz Y2 配 C16/C19（板上写 22pF）走 40M_P/40M_N，R12 是 1M 反馈电阻；32.768kHz Y1 配 C17/C18 （板上写 18pF）走 32K_P/32K_N。**验收口径以原理图为准**：原理图上这几个电容写的是 26pF / 10pF，作者改了板上的 Value 没同步原理图，两边对不上，块里照原理图保留。 C13 100nF + C15 1uF 是 VDD（内部 LDO 输出）的去耦，+3V3 直接进 4 个 VDD3P3 脚。 R1 10K + C2 1uF 是 EN 的 RC 延时（上电复位时序）。AE1 是芯片天线，L1 + C7/C9 是 π 型匹配（板上 Value 写 TBD，说明作者是打样时按实测调的）。7 个测试点 TP1~TP7 把 TX/RX/BOOT/3V3/GND/SCL/SDA 引出来——这是块对外的调试口，不是装饰。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "ACC_INT_1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/19",
+      "note": "加速度计中断 1"
+    },
+    {
+      "name": "ACC_INT_2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/18",
+      "note": "加速度计中断 2"
+    },
+    {
+      "name": "ADC",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/14",
+      "note": "电池电压分压（分压电阻在电源块里）"
+    },
+    {
+      "name": "BTN1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/12",
+      "note": "按键 1（上拉在按键块里）"
+    },
+    {
+      "name": "BTN2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/11",
+      "note": "按键 2，兼电源控制"
+    },
+    {
+      "name": "BTN3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "TP3/1",
+      "note": "按键 3 / BOOT（TP3 在同一根网上）"
+    },
+    {
+      "name": "BTN4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/13",
+      "note": "按键 4"
+    },
+    {
+      "name": "BUSY",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/41",
+      "note": "墨水屏忙信号"
+    },
+    {
+      "name": "CS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/38",
+      "note": "墨水屏片选"
+    },
+    {
+      "name": "DC",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/39",
+      "note": "墨水屏数据/命令"
+    },
+    {
+      "name": "EN",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C2/1",
+      "note": "芯片使能，R1 10K + C2 1uF 做上电延时"
+    },
+    {
+      "name": "MOSI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/36",
+      "note": "墨水屏 SPI 数据"
+    },
+    {
+      "name": "RES",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/40",
+      "note": "墨水屏复位"
+    },
+    {
+      "name": "SCK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/37",
+      "note": "墨水屏 SPI 时钟"
+    },
+    {
+      "name": "SCL",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "TP6/1",
+      "note": "I2C 时钟（加速度计的线）"
+    },
+    {
+      "name": "SDA",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "TP7/1",
+      "note": "I2C 数据"
+    },
+    {
+      "name": "STAT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/15",
+      "note": "充电器状态输入"
+    },
+    {
+      "name": "USB_D+",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D-",
+      "pin": "U4/26",
+      "note": "USB D+（座子侧那一段在 usb_dev_esd 块里）"
+    },
+    {
+      "name": "USB_D-",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D+",
+      "pin": "U4/25",
+      "note": "USB D-（同 D+，两段网）"
+    },
+    {
+      "name": "USB_DET",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/27",
+      "note": "USB 插入检测，来自 VBUS 分压"
+    },
+    {
+      "name": "VIB_PWM",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/23",
+      "note": "振动马达 PWM（低边开关在马达块里）"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U4",
+    "max_mm": 22.0,
+    "rationale": "去耦电容贴各自电源脚、晶振贴 XTAL 脚、天线匹配链贴 RF 脚并往板边走。源板实测： 去耦 C13/C15 离芯片中心 5.05/5.89mm、Y1 5.90mm、Y2 7.15mm、天线 L1 5.68mm， 而 AE1 离 L1 14.56mm（天线本来就该在最外侧，中间是匹配元件）。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "32K_N",
+    "32K_P",
+    "40M_N",
+    "40M_P",
+    "VDD",
+    "_mcu_esp32s3_N1",
+    "_mcu_esp32s3_N2",
+    "_mcu_esp32s3_N3",
+    "_mcu_esp32s3_N4",
+    "_mcu_esp32s3_N5"
+  ],
+  "notes": [
+    "23 件 / 33 网，21 个信号口岸 + 2 条轨；U4 的 21 个未用脚（GPIO/Flash 相关）按\"空脚不是网\"不写进卡。",
+    "⚠ 电容值两处对不上：40MHz 的 C16/C19 板上写 22pF、原理图写 26pF；32.768kHz 的 C17/C18 板上写 18pF、原理图写 10pF。作者改了板没同步图，卡里按原理图记，复用时按晶振规格重新算（负载电容 = 2×(CL - Cstray)）。",
+    "天线链 AE1 + L1 + C7/C9 的 Value 在板上写的是 TBD——说明是打样后按实测调的，这块的天线匹配**不可照抄**，换板必须重配。",
+    "U4 散热盘（5.6×5.6mm）上压着 10 只 GND 缝合孔，删掉内层 GND 平面后它们只靠散热盘与块内铜连通（保留）。源板 In2 还有 49 段走线被保留，拼板时同样不能整层铺。",
+    "源板自带的 DRC 违规在这里照搬：AE1(天线) 本体上的无网多边形与 Net-(AE1-FEED)、GND 走线相碰（clearance 3 条 + shorting 1 条）——是上游封装的老问题，不是裁块引入的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Watchy",
+    "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+    "license_tier": "permissive",
+    "author": "SQFMI（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "23 件 / 33 网 / 端口 21 + 轨 2；铜 311 段 + 34 孔；死铜删 51；口岸切口 31；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

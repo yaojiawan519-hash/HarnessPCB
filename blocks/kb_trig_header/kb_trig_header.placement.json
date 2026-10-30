@@ -1,0 +1,112 @@
+{
+  "name": "kb_trig_header",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    134.05,
+    107.227
+  ],
+  "size_mm": [
+    10.05,
+    8.746
+  ],
+  "ports": {
+    "TRIG": [
+      "J2",
+      "J3"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "J7",
+      "J9",
+      "R1",
+      "R408",
+      "R412",
+      "R5"
+    ],
+    "VOUT_BP_SIDE": [
+      "D401",
+      "J2",
+      "J3",
+      "Q401",
+      "Q402"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "TRIG",
+      "x": 128.225,
+      "y": 106.725,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT_BP_SIDE",
+      "x": 128.225,
+      "y": 104.975,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+      "F.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 2,
+        "vias": 0,
+        "nets": [
+          "TRIG",
+          "VOUT_BP_SIDE"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J8",
+      "value": "Conn_01x02_Pin",
+      "fp": "PinHeader_1x02_P2.54mm_Vertical",
+      "dx": 3.2,
+      "dy": -0.002,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R3",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -4.05,
+      "dy": -0.977,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

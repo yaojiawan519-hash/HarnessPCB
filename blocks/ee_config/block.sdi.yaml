@@ -1,0 +1,142 @@
+project:
+  kind: block
+  name: ee_config
+  version: sdi/1
+defs:
+  ee_config:
+    category: interface
+    rationale: "93LC56BT（2Kbit Microwire EEPROM，SOT-23-6）是 tinyFPGA 引导程序读配置的地方。\n  三颗 10K 上拉各管一根：R4 在\
+      \ DO 上、R17 在 EE_CS 上、R18 在 EE_CLK 上；\n  R1 2.2K 串在 DO 上（作者用它做限流/阻尼），C3 0.1u 去耦。\n  出块 3 个信号 EE_CLK\
+      \ / EE_CS / EE_DAT，轨 +3V3/GND。\n  复用要点：Microwire 三线，接口要的是\"三根线能推挽、CS 有上拉\"，\n  换成 SPI EEPROM 得同时改\
+      \ DO 的串阻和上拉位置。"
+    ports:
+    - name: EE_CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R18-1
+        connector: false
+      pin: R18/1
+      note: Microwire 时钟，经 R18 串到 U1
+    - name: EE_CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R17-2
+        connector: false
+      pin: R17/2
+      note: Microwire 片选，经 R17 到 U1
+    - name: EE_DAT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R1-1
+        connector: false
+      pin: R1/1
+      note: Microwire 数据，经 R1 到 U1
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: U1
+      lib: UPduino_v3.0:93LCxxBxxOT-Memory_EEPROM
+      value: 93LC56BT-I/OT
+      footprint: vs:SOT-23-6
+    - ref: R1
+      lib: UPduino_v3.0:Device_R_Small
+      value: 2.2K
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R18
+      lib: UPduino_v3.0:Device_R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R17
+      lib: UPduino_v3.0:Device_R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R4
+      lib: UPduino_v3.0:Device_R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: C3
+      lib: UPduino_v3.0:Device_C
+      value: 0.1u
+      footprint: Capacitor_SMD:C_0603_1608Metric
+    conns:
+    - ref: C3
+      pin: '1'
+      net: +3V3
+    - ref: R17
+      pin: '1'
+      net: +3V3
+    - ref: R18
+      pin: '2'
+      net: +3V3
+    - ref: R4
+      pin: '2'
+      net: +3V3
+    - ref: U1
+      pin: '6'
+      net: +3V3
+    - ref: R18
+      pin: '1'
+      net: EE_CLK
+    - ref: U1
+      pin: '4'
+      net: EE_CLK
+    - ref: R17
+      pin: '2'
+      net: EE_CS
+    - ref: U1
+      pin: '5'
+      net: EE_CS
+    - ref: R1
+      pin: '1'
+      net: EE_DAT
+    - ref: U1
+      pin: '3'
+      net: EE_DAT
+    - ref: C3
+      pin: '2'
+      net: GND
+    - ref: U1
+      pin: '2'
+      net: GND
+    - ref: R1
+      pin: '2'
+      net: _ee_config_N1
+    - ref: R4
+      pin: '1'
+      net: _ee_config_N1
+    - ref: U1
+      pin: '1'
+      net: _ee_config_N1
+    placement_prior:
+      anchor: U1
+      max_mm: 8.0
+      rationale: "四颗电阻全在 3.5~3.9mm 内（R1 3.51 / R4 3.51 / R17 3.61 / R18 3.88），\n    去耦 C3 6.09mm。整块 11.66×4.49mm，是库里最小的一块之一——**没有可压缩的空间**，\n\
+        \    也没有需要复用的空间判据：这是\"贴脚就是全部\"的块。"
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: UPduino v3.01
+      license: MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc
+      license_tier: permissive
+      author: TinyVision.ai（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 6 件 / 6 网 / 端口 3 + 轨 2；铜 122 段 + 5 孔；死铜删 0；口岸切口 7；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板的铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 6 件 / 6 网：3 个信号口岸 + 轨 +3V3/GND。U1 是 93LC56BT（Microwire EEPROM）。
+    - 上拉不是随便接的：EE_CS 与 EE_CLK 各有一只 **10K 上拉到 +3V3**（R17 / R18）；EE_DAT 是"**R1 2.2K 串阻 + R4 10K 上拉**"两级——数据线既上拉又限流，复用时这两只别当一颗电阻省掉。
+    - 铜 122 段 + 5 孔（B.Cu 19 / F.Cu 104）；死铜删 **0** 段/孔；口岸切口 7 处。
+    - ⚠ 三条信号全是**经测试点换层**的：EE_CLK→TP27.1、EE_CS→TP26.1、EE_DAT→TP28.1，测试点属 page_furniture（不进任何块），所以块单看是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 2 条，都是轨。
+    internal_nets:
+    - _ee_config_N1

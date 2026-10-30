@@ -1,0 +1,80 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "**两只 SPDT 拨动开关，给 SIM 卡座选供电与地**（本块没有任何有源器件）： · SW1：1=VCC_PIN（排针 6 脚送进来的）、3=VOUT（排针 1 脚送进来的 3.3V）、\n  2=公共端 → `/VCC`。**用户自己决定卡座吃哪一个电压**（3.3V 还是外部 VCC）。\n· SW2：1=GND、3=GND_PIN（排针 7 脚）、2=公共端 → `/SIM_GND`。地也可以选：\n  接本地 GND，或接主机送进来的 GND_PIN（**隔离地/远端地**的用法）。\n两只开关是**同一功能的两个半边**：切 VCC 时地也要跟着切，否则卡座的地与主机不同电位。 复用要点：① 这是 SPDT（三脚）开关，`2` 是刀，`1`/`3` 是两掷；封装都是 `SW_SPDT_PCM12`（贴片拨动，本体 8.89×5.94mm）；② 开关**没有电流规格余量大**可言—— 按各自 datasheet 的触点额定值用，SIM 卡峰值 ICC 约几十 mA，够用；③ 6 只无名焊盘是 机构脚（不接网）；④ 换开关时注意 `1/2/3` 在封装上的**物理顺序**（源板 SW1 转 180°、 SW2 转 0°，两只刀朝向相反）——照块搬就不会接反。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "GND_PIN",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SW2/3",
+      "note": "SW2 掷 3：主机送进来的地（本地 GND 是掷 1）"
+    },
+    {
+      "name": "SIM_GND",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SW2/2",
+      "note": "SW2 的公共端 → 卡座地（`/SIM_GND`）"
+    },
+    {
+      "name": "VCC",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SW1/2",
+      "note": "SW1 的公共端 → 卡座供电（`/VCC`）"
+    },
+    {
+      "name": "VCC_PIN",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SW1/1",
+      "note": "SW1 掷 1：主机送进来的 VCC"
+    },
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SW1/3",
+      "note": "SW1 掷 3：主机送进来的 3.3V"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "SW1",
+    "max_mm": 8.0,
+    "rationale": "两只开关贴着各自要选的那一侧：SW1 靠近排针 VCC_PIN/VOUT 那一端，SW2 靠近 GND_PIN。 源板上两只分居板的上下两端（SW1 y≈73、SW2 y≈127），因为卡座占了中间。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**两只 SPDT 拨动开关，给 SIM 卡座选供电与地**（本块没有任何有源器件）。2 件 / 6 网：5 个出块端口 + 1 条轨（GND）。",
+    "SW1：1=VCC_PIN（主机送来的）、3=VOUT（主机送来的 3.3V）、2=公共端 → `/VCC`。**卡座吃哪个电压由这只开关定**。SW2：1=GND、3=GND_PIN（主机送来的地）、2=公共端 → `/SIM_GND`。地也能选：本地地，或主机送来的远端地。",
+    "⚠ 两只开关是**同一件事的两个半边**：切 VCC 时必须跟着切地，否则卡座的地与主机不同电位（轻则通信不稳，重则经 I/O 口倒灌）。",
+    "封装都是 `SW_SPDT_PCM12`（贴片拨动，本体 8.89×5.94mm，每只另有 6 只无名机械焊盘）。SW1 在源板上转 180°、SW2 转 0°，两只的\"刀\"朝向相反——照块搬就不会接反；自己换开关时注意 1/2/3 在封装上的**物理顺序**。",
+    "SIM 卡峰值 ICC 只有几十 mA，这两只开关的触点额定值绰绰有余；换更大电流的卡座时才需要重新核。",
+    "⚠ 网名：本板的网在页上和板上都带**前导斜杠**（`/VCC`、`/SIM_GND`、`/I{slash}O` …），那是 KiCad 给局部网加的分页路径，不是层级设计。卡里照抄板上写法，拼板接网时按**同名**匹配；`I{slash}O` 是 KiCad5 对 `I/O` 的转义写法，说的是同一根线。",
+    "铜 21 段 + 4 孔（B 6 / F 24）；死铜删 37 段/孔；口岸切口 6 处、走线出口 16 处；削剩残迹留 0 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张 /SIM_GND 是跨块的口岸网，按「块内不带铺铜」整张删，拼板时重铺）。",
+    "块里 1 个平面网焊盘一根铜都没有（源板就靠那张 /SIM_GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "借道块外器件焊盘换层 1 处（/VCC->J1.C1）——那孔不在块里，块单看这几处是断的，拼板时插上就通。",
+    "kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 6 + 悬空过孔 0 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 36 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 sim-rev3c.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 /SIM_GND 灌铜是跨块的**口岸网**，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 6 网 / 端口 5 + 轨 1；铜 21 段 + 4 孔；死铜删 37；口岸切口 6；卡↔板门 ①~⑤ 全过"
+  }
+}

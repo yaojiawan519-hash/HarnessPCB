@@ -1,0 +1,61 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "power_led",
+ "interface": [
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "被测/被指示的 5V 轨（Bus Pirate 供）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D1",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 63.5,
+   "y": 73.66
+  },
+  {
+   "ref": "R1",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 55.88,
+   "y": 73.66
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "_power_led_N1"
+  },
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "_power_led_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

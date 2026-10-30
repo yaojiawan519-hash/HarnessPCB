@@ -1,0 +1,52 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**USB-A 母座**：J5 = `Connector_USB:USB_A_CONNFLY_DS1095-WNR0`（直插母座，本体探出板边朝外）。 `1=VBUS` 经 0805 磁珠 `L2` 到 `VDD`，`C2`（47µF）是这条的本地储能； `2=D-`、`3=D+` 直通总线 `USB_D+`/`USB_D-`；`4=GND` 与屏蔽壳（同一只封装里**两个都叫 5 号** 的焊盘）落 GND。 与 `kb_usb_c_port` 是同一种用法：**只取电 + 把两根数据线让出来**，没有任何协议芯片。 两块可以互换（谁在板上就用谁）；差别只是 USB-A 那头没有 CC 电阻可谈， VBUS 有没有电完全看对面给不给。",
+  "power_rails": [
+    "GND",
+    "VDD"
+  ],
+  "interface": [
+    {
+      "name": "USB_D+",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D-"
+    },
+    {
+      "name": "USB_D-",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D+"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J5",
+    "max_mm": 14.0,
+    "rationale": "J5 在板右上、本体探出板沿朝外；L2 与 C2 贴在同一列的 VDD 汇流处（与 D2/R2 同排）。 件框 17.69×24.93mm 拉长的原因是 J5 与 L2/C2 之间隔着别人的走线区。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_kb_usb_a_port_N1"
+  ],
+  "notes": [
+    "**USB-A 母座 + VBUS 磁珠**：J5 = `USB_A`（1=VBUS 2=D− 3=D+ 4/5=GND），`J5.1 → L2 磁珠 → VDD`，C2 = 47µF 在 VDD 上。3 件 / 5 网 / 端口 USB_D± + 轨 GND+VDD / 内部网 1 条（磁珠后那段 `Net-(J5-VBUS)`）。",
+    "这只 A 口**只接了 VBUS/D±/GND**：没有上拉、没有 host 控制——它和 USB-C 那只、以及 BP5 排针上的 `USB_D±` 是**同一对网**。所以本板做的是\"USB 通路引出\"，而不是\"USB host\"。同一时刻只能用其中一路。",
+    "⚠ **`counts.borrowed_pads` = `VDD→C3.1`、`VDD→R2.1`**：VDD 的铜端正好压在块外两只焊盘上（C3 属 `kb_usb_c_port`、R2 属 `kb_power_led`）——源板上 VDD 是整片连着的。块单看 VDD 是断的；拼板时这两块要挨着放，或者按端口名重新引。",
+    "**铜**：26 段（F.Cu 25 / B.Cu 1）、3 孔、0 铺铜。孤立铜删 7 段（九块里最多——A 座的地脚之间原来是铺铜连的）；口沿截断 4 处；`naked_plane_pads` 3 / `island_split` `GND×4`。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：3 件、块内 26 段铜、 3 孔、0 铺铜；GND 在源板上是整板平面 → 整张删）",
+  "provenance": {
+    "basis": "3 件 / 5 网 / 端口 2 + 轨 2；铜 17 段 + 2 孔；死铜删 7；口岸切口 4",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

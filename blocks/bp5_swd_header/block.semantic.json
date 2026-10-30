@@ -1,0 +1,45 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "debug",
+  "rationale": "**SWD 调试排针**：J201 = `PinSocket_1x03_P2.54mm_Vertical`（母座，1×03）， 逐脚 `1=GND 2=SWDIO 3=SWCLK`。1 件 / 3 网。 ⚠ **只有三根线，没有 3V3**：这只座只做\"探针夹\"用（RP2040 那颗 3.3V 由板子自己 从 USB 拿），所以调试器要么共用 USB 供电、要么自己给板子插 USB——别指望从这里取电。\n 作者原话：`Programming header`。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "SWCLK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SWDIO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J201",
+    "max_mm": 6.0,
+    "rationale": "J201 在板右沿（148.01, 70.85），离 U103 17mm、离 U105 16mm，周围 4mm 内没有别的件 ——边沿上的一只独立排座。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**SWD 调试排针**：J201 = `Conn_01x03`（2.54mm 单排，rot 90°）：**1=GND 2=SWDIO 3=SWCLK**。1 件 / 3 网 / 端口 2 + 轨 `GND`。",
+    "⚠ **这只排针没有 3V3**：三只脚里只有两根信号 + 地。调试器要么自供电、要么从别处取目标电压（本板自身由 USB 供电，SWD 只是信号）。要按标准 10 脚 Cortex 调试座改，至少得补 3V3 和 nRESET 两根——本块没有。",
+    "**铜**：4 段 + 0 孔、0 铺铜；孤立铜删 3 段；口沿截断 2 处（正好是 SWDIO/SWCLK 两根出块）；残迹留 1 段（单脚网的铜接口）。`naked_plane_pads` 1（1 号地脚靠整板铺铜）。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整机主板的整板 REV10a.kicad_pcb 扣，4 层板、0.8mm 铜窗口外扩；交付板 15.37×9.02mm；4 段铜 + 0 孔 + 0 张铺铜）",
+  "provenance": {
+    "basis": "1 件 / 3 网 / 端口 2 + 轨 1；铜 2 段 + 0 孔；死铜删 3；口岸切口 2",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

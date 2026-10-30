@@ -1,0 +1,98 @@
+project:
+  kind: block
+  name: bp5_spi_nand
+  version: sdi/1
+defs:
+  bp5_spi_nand:
+    category: interface
+    rationale: '**SPI NAND 存储**：U105 = `MT29F1G01ABAFDWB`（1Gbit = 128MB，PDFN-8）， 逐脚 `1=SD_CS 2=SPI_CDI
+      3=+3V3 4=GND 5=SPI_CDO 6=SPI_CLK 7=+3V3 8=+3V3` ——三只 VCC 脚全接、四线 SPI 一进一出。1 件 / 6 网，是库里最"裸"的一块。 ⚠
+      **它没有自己的专属去耦**：三只 VCC 脚挂在 `+3V3` 上，靠整板铺铜。 拿走这块时要么接受"跟着 MCU 那 9 只去耦走"，要么自己在拼板层补一只 0.1µF （`+3V3` 上
+      11 只电容已经被 RP2040 的 9 只脚 + flash 一对占满，见 `bp5_mcu_rp2040` 与 `bp5_qspi_flash` 的归属口径）。'
+    ports:
+    - name: SD_CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U105-1
+        connector: false
+    - name: SPI_CDI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U105-2
+        connector: false
+    - name: SPI_CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U105-5
+        connector: false
+    - name: SPI_CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U105-6
+        connector: false
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: U105
+      lib: dp-memory:MT29F1G01ABAFDWB
+      value: MT29F1G01ABAFDWB
+      footprint: dp-memory:U-PDFN-8
+    conns:
+    - ref: U105
+      pin: '3'
+      net: +3V3
+    - ref: U105
+      pin: '7'
+      net: +3V3
+    - ref: U105
+      pin: '8'
+      net: +3V3
+    - ref: U105
+      pin: '4'
+      net: GND
+    - ref: U105
+      pin: '1'
+      net: SD_CS
+    - ref: U105
+      pin: '2'
+      net: SPI_CDI
+    - ref: U105
+      pin: '5'
+      net: SPI_CDO
+    - ref: U105
+      pin: '6'
+      net: SPI_CLK
+    placement_prior:
+      anchor: U105
+      max_mm: 5.0
+      rationale: U105 在板右侧（146.30, 86.00），离 RP2040 9.7mm、离最近的 0.1µF 5.0mm ——作者把它当"挂在 3V3 平面上的存储"，没给它单独配电容。
+    slots: []
+    hot_loop: []
+    provenance:
+      basis: 1 件 / 6 网 / 端口 4 + 轨 2；铜 14 段 + 2 孔；死铜删 20；口岸切口 4
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 扣，4 层板； U105 在板上 rot
+      180°、封装 `dp-memory:U-PDFN-8`）
+    notes:
+    - '**SPI NAND**：U105 = `MT29F1G01ABAFDWB`（PDFN-8，1Gbit）。1 件 / 6 网 / 端口 4 + 轨 `+3V3`/`GND` / 无内部网。'
+    - '**三只 VCC 脚全挂 `+3V3`**（3/7/8）、GND 在 4 号脚；**它没有专属去耦**——整板上没有"给 NAND 的那只电容"，靠整板铺铜。拼装时这只块的地/电源脚是裸的（`naked_plane_pads`
+      1）。'
+    - '**端口 4 条**（出口脚全在 U105）：`SD_CS`(1) / `SPI_CDI`(2) / `SPI_CDO`(5) / `SPI_CLK`(6)。和 `bp5_qspi_flash`
+      共用 SPI 总线的三根时钟/数据，片选各自一根。'
+    - '**铜**：25 段 + 5 孔、0 铺铜；孤立铜删 20 段/孔；口沿截断 4 处；残迹留 0；无裂岛。另：`counts.borrowed_pads` 里 `+3V3→C121.1` 属别的块的去耦（C121
+      在 MCU 块），这只件的 +3V3 有一段是借道它换层的。'

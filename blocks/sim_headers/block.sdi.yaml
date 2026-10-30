@@ -1,0 +1,195 @@
+project:
+  kind: block
+  name: sim_headers
+  version: sdi/1
+defs:
+  sim_headers:
+    category: connector
+    rationale: '**两只 1×10 引出排针**，脚位一一对应、并联：J2 是卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`， 开口朝板边），J3 是直针（`PinHeader_1x10_Vertical`）。同一个信号两口都能取，
+      插一根就能用，插两根就是"直通+分支"。 脚位：**1=VOUT（主机送来的 3.3V）、2=I/O、3=CLK、4=RST、5=VPP、6=VCC_PIN（主机送来的 VCC）、 7=GND_PIN（主机送来的地）、8=C8、9=C4、10=GND**。
+      复用要点：① 1/6/7 三根不是"电源/地"而是**送进来再由开关选**的候选源——本块自己不产生电源； ② 2.54mm 节距、母座与直针中心距 3.73mm，两只的焊盘在局部挨得近，布线留神；
+      ③ C4/C8 只到得了 U2 那只 8 触点座子。'
+    ports:
+    - name: C4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-9
+        connector: true
+      pin: J2/9
+      note: J2.9 / J3.9：TE 座 C4 → U2.C4
+    - name: C8
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-8
+        connector: true
+      pin: J2/8
+      note: J2.8 / J3.8：TE 座 C8 → U2.C8
+    - name: CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-3
+        connector: true
+      pin: J2/3
+      note: J2.3 / J3.3：SIM 时钟
+    - name: GND_PIN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-7
+        connector: true
+      pin: J2/7
+      note: J2.7 / J3.7：主机送来的地，进 SW2 的一个掷（远端地用法）
+    - name: I/O
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-2
+        connector: true
+      pin: J2/2
+      note: J2.2 / J3.2：SIM 数据 I/O（开漏，需上拉）
+    - name: RST
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-4
+        connector: true
+      pin: J2/4
+      note: J2.4 / J3.4：SIM 复位（低有效）
+    - name: VCC_PIN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-6
+        connector: true
+      pin: J2/6
+      note: J2.6 / J3.6：主机送来的 VCC，进 SW1 的一个掷
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-1
+        connector: true
+      pin: J2/1
+      note: J2.1 / J3.1：主机送来的 3.3V——既喂灯，也是 SW1 的一个候选源
+    - name: VPP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J2-5
+        connector: true
+      pin: J2/5
+      note: J2.5 / J3.5：SIM 编程电压
+    rails:
+    - GND
+    parts:
+    - ref: J2
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal
+    - ref: J3
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical
+    conns:
+    - ref: J2
+      pin: '9'
+      net: C4
+    - ref: J3
+      pin: '9'
+      net: C4
+    - ref: J2
+      pin: '8'
+      net: C8
+    - ref: J3
+      pin: '8'
+      net: C8
+    - ref: J2
+      pin: '3'
+      net: CLK
+    - ref: J3
+      pin: '3'
+      net: CLK
+    - ref: J2
+      pin: '10'
+      net: GND
+    - ref: J3
+      pin: '10'
+      net: GND
+    - ref: J2
+      pin: '7'
+      net: GND_PIN
+    - ref: J3
+      pin: '7'
+      net: GND_PIN
+    - ref: J2
+      pin: '2'
+      net: I/O
+    - ref: J3
+      pin: '2'
+      net: I/O
+    - ref: J2
+      pin: '4'
+      net: RST
+    - ref: J3
+      pin: '4'
+      net: RST
+    - ref: J2
+      pin: '6'
+      net: VCC_PIN
+    - ref: J3
+      pin: '6'
+      net: VCC_PIN
+    - ref: J2
+      pin: '1'
+      net: VOUT
+    - ref: J3
+      pin: '1'
+      net: VOUT
+    - ref: J2
+      pin: '5'
+      net: VPP
+    - ref: J3
+      pin: '5'
+      net: VPP
+    placement_prior:
+      anchor: J2
+      max_mm: 6.0
+      rationale: 两只并排、脚 1 对齐（源板就是这么放的：J2 在左、J3 在其右 3.73mm）。 母座开口朝板边，直针竖立朝上——复制块时朝向一起搬。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 2 件 / 10 网 / 端口 9 + 轨 1；铜 11 段 + 0 孔；死铜删 0；口岸切口 12；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 sim-rev3c.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 /SIM_GND 灌铜是跨块的**口岸网**，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**两只 1×10 引出排针**，脚位一一对应、并联：J2 卧式母座（开口朝板边）+ J3 直针。2 件 / 10 网：9 个出块端口 + 1 条轨（GND）。'
+    - 脚位（两只相同）：**1=VOUT、2=I/O、3=CLK、4=RST、5=VPP、6=VCC_PIN、7=GND_PIN、8=C8、9=C4、10=GND**。
+    - ⚠ 1/6/7 三根**不是本块产生的电源**，而是"送进来再由开关选"的候选源：VOUT 与 VCC_PIN 二选一进 `sim_power_select` 的 SW1，GND 与 GND_PIN
+      二选一进 SW2。整块板自己**不发电**——不接主机时卡座是无电的。
+    - 2.54mm 节距，母座与直针中心距 3.73mm、脚 1 对齐。复制块时朝向一起搬：母座开口朝板边、直针竖立朝上，摆反了插头进不来。
+    - ⚠ 网名：本板的网在页上和板上都带**前导斜杠**（`/VCC`、`/SIM_GND`、`/I{slash}O` …），那是 KiCad 给局部网加的分页路径，不是层级设计。卡里照抄板上写法，拼板接网时按**同名**匹配；`I{slash}O`
+      是 KiCad5 对 `I/O` 的转义写法，说的是同一根线。
+    - 铜 11 段 + 0 孔（B 14 / F 10）；死铜删 0 段/孔；口岸切口 12 处、走线出口 12 处；削剩残迹留 7 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张
+      /SIM_GND 是跨块的口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 12 + 悬空过孔 0 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通
+      0 / isolated_copper 0 / 违规 36 条。

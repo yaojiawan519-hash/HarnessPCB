@@ -1,0 +1,144 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "regulators",
+ "interface": [],
+ "power_rails": [
+  "+1V2",
+  "+3V3",
+  "+5VD",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C19",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 321.31,
+   "y": 139.7
+  },
+  {
+   "ref": "C21",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 345.44,
+   "y": 137.16
+  },
+  {
+   "ref": "C29",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 393.7,
+   "y": 137.16
+  },
+  {
+   "ref": "U7",
+   "lib": "UPduino_v3.0:AP2127K-1.2",
+   "value": "AP2127K-1.2",
+   "footprint": "vs:SOT-23-5",
+   "x": 382.27,
+   "y": 135.89
+  },
+  {
+   "ref": "C20",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 369.57,
+   "y": 139.7
+  },
+  {
+   "ref": "U6",
+   "lib": "UPduino_v3.0:AP2127K-3.3",
+   "value": "AP2127K-3.3",
+   "footprint": "vs:SOT-23-5",
+   "x": 334.01,
+   "y": 135.89
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C29",
+   "pin": "1",
+   "net": "+1V2"
+  },
+  {
+   "ref": "U7",
+   "pin": "5",
+   "net": "+1V2"
+  },
+  {
+   "ref": "C21",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U6",
+   "pin": "5",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C19",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "C20",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "U6",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "U6",
+   "pin": "3",
+   "net": "+5VD"
+  },
+  {
+   "ref": "U7",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "U7",
+   "pin": "3",
+   "net": "+5VD"
+  },
+  {
+   "ref": "C19",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C20",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C21",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C29",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U7",
+   "pin": "2",
+   "net": "GND"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

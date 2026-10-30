@@ -1,0 +1,167 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_backflow_prevent",
+ "interface": [
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q401-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VOUT_BP_SIDE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D401-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D401",
+   "lib": "Diode:1N4148WS",
+   "value": "1N4148WT",
+   "footprint": "Diode_SMD:D_SOD-523",
+   "x": 200.66,
+   "y": 105.41
+  },
+  {
+   "ref": "R410",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 204.47,
+   "y": 109.22
+  },
+  {
+   "ref": "R408",
+   "lib": "Device:R_Small",
+   "value": "68K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 193.04,
+   "y": 116.84
+  },
+  {
+   "ref": "Q401",
+   "lib": "kicad5-device:Q_DUAL_PNP_PNP_E1B1C2E2B2C1",
+   "value": "BCM857BS-7-F",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 213.36,
+   "y": 109.22
+  },
+  {
+   "ref": "Q402",
+   "lib": "Transistor_FET:BSS84",
+   "value": "BC2301T 2.8A",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 204.47,
+   "y": 100.33
+  },
+  {
+   "ref": "R412",
+   "lib": "Device:R_Small",
+   "value": "100K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 215.9,
+   "y": 116.84
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R408",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R412",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Q401",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "Q402",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D401",
+   "pin": "1",
+   "net": "VOUT_BP_SIDE"
+  },
+  {
+   "ref": "Q401",
+   "pin": "4",
+   "net": "VOUT_BP_SIDE"
+  },
+  {
+   "ref": "Q402",
+   "pin": "3",
+   "net": "VOUT_BP_SIDE"
+  },
+  {
+   "ref": "D401",
+   "pin": "2",
+   "net": "_kb_backflow_prevent_N1"
+  },
+  {
+   "ref": "Q401",
+   "pin": "3",
+   "net": "_kb_backflow_prevent_N1"
+  },
+  {
+   "ref": "Q401",
+   "pin": "5",
+   "net": "_kb_backflow_prevent_N1"
+  },
+  {
+   "ref": "R408",
+   "pin": "1",
+   "net": "_kb_backflow_prevent_N1"
+  },
+  {
+   "ref": "R410",
+   "pin": "2",
+   "net": "_kb_backflow_prevent_N1"
+  },
+  {
+   "ref": "Q401",
+   "pin": "6",
+   "net": "_kb_backflow_prevent_N2"
+  },
+  {
+   "ref": "Q402",
+   "pin": "1",
+   "net": "_kb_backflow_prevent_N2"
+  },
+  {
+   "ref": "R412",
+   "pin": "1",
+   "net": "_kb_backflow_prevent_N2"
+  },
+  {
+   "ref": "Q401",
+   "pin": "2",
+   "net": "_kb_backflow_prevent_N3"
+  },
+  {
+   "ref": "R410",
+   "pin": "1",
+   "net": "_kb_backflow_prevent_N3"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

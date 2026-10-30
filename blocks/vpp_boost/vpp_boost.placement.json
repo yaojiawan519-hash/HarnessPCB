@@ -1,0 +1,180 @@
+{
+  "name": "vpp_boost",
+  "source": "vpp-maker-rev6-ian.kicad_pcb",
+  "origin_src_mm": [
+    150.5224,
+    84.515
+  ],
+  "size_mm": [
+    16.6518,
+    29.3388
+  ],
+  "ports": {
+    "VOUT": [
+      "J1",
+      "J2",
+      "J4",
+      "R1"
+    ],
+    "VPP": [
+      "J4",
+      "Q1",
+      "R22",
+      "R23"
+    ],
+    "GND": [
+      "D1",
+      "D4",
+      "J1",
+      "J2",
+      "J4",
+      "Q2",
+      "Q3",
+      "R24"
+    ],
+    "VPP_PWM": [
+      "J1",
+      "J2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 159.6483,
+      "y": 82.1483,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 141.3965,
+      "y": 75.55,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VPP",
+      "x": 159.6483,
+      "y": 78.125,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP_PWM",
+      "x": 141.3965,
+      "y": 83.17,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 32,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 38,
+    "cut_ends": 4,
+    "exit_points": 4,
+    "segs_by_layer": {
+      "B.Cu": 2,
+      "F.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 5,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VOUT->J2.1": 1,
+      "VPP->Q1.2": 1,
+      "VPP->R22.1": 1,
+      "VPP->R23.2": 1,
+      "VPP_PWM->J2.4": 1
+    },
+    "island_split": {
+      "GND": 5
+    },
+    "dangling": {
+      "total": 4,
+      "port_cuts": 4,
+      "port_cut_nets": [
+        "VOUT",
+        "VPP",
+        "VPP_PWM"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 1,
+        "vias": 0,
+        "nets": [
+          "VPP"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C13",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric_Pad1.18x1.45mm_HandSolder",
+      "dx": -5.4625,
+      "dy": -7.015,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C14",
+      "value": "10uF/16V/CASE-A",
+      "fp": "CP_EIA-3216-18_Kemet-A",
+      "dx": -3.4197,
+      "dy": -7.3777,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C15",
+      "value": "47uF/25V/CASE-D",
+      "fp": "CP_EIA-7343-31_Kemet-D",
+      "dx": -0.5224,
+      "dy": 6.485,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "D2",
+      "value": "BAT54W",
+      "fp": "SOT-23",
+      "dx": 1.9276,
+      "dy": -0.015,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "D3",
+      "value": "18V",
+      "fp": "D_SOD-123",
+      "dx": 5.4776,
+      "dy": 11.985,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "L1",
+      "value": "680uH",
+      "fp": "L_YP0504",
+      "dx": 0.7276,
+      "dy": -5.015,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q4",
+      "value": "MMBT3904",
+      "fp": "SOT-23",
+      "dx": -4.2723,
+      "dy": -3.3323,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

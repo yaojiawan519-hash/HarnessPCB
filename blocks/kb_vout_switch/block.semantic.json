@@ -1,0 +1,40 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "**Bus Pirate 供电开关**：SW1 = `SW_SPDT_PCM12`（贴片拨动，三脚）。 `2=B` 是公共端接 `VDD`、`1=A` 接 `VOUT`、`3=C` **空脚**—— 所以它是一个**二位开关**：一头把 `VDD` 接到 `VOUT`（也就是接到经 `kb_backflow_prevent` 过来的 BP 5V），另一头什么也不接（`VDD` 只由 USB VBUS / `J9` 那一路供给）。 复用要点：这块只有一只件、两根网（VDD/VOUT），但它定的是\"板子从 BP 取不取电\"这件事， 拼装时别把它漏掉——**VOUT 与 VDD 是两张网，不能并**（并了就等于把这个开关短掉， 回流保护也就失效了）。",
+  "power_rails": [
+    "VDD"
+  ],
+  "interface": [
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "SW1",
+    "max_mm": 5.0,
+    "rationale": "SW1 在板右沿、拨柄朝外，两只脚一上一下接 VDD/VOUT，空脚那侧留给手指。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**Bus Pirate 供电开关**：SW1 = `SW_SPDT`（贴片拨动 PCM12，三脚）。`2=B` 公共端接 `VDD`、`1=A` 接 `VOUT`、`3=C` **空脚**。1 件 / 3 网 / 端口 VOUT + 轨 VDD。",
+    "所以它是一个**二位开关**：一头把 `VDD` 接到 `VOUT`（经 `kb_backflow_prevent` 过来的 BP 5V），另一头什么也不接（`VDD` 只由 USB VBUS / `J9` 供给）。",
+    "⚠ **`VOUT` 与 `VDD` 是两张网，拼装时不能并**——并了等于把这个开关短掉，回流保护也就跟着失效了。本块只有 1 只件，但它是\"板子从 BP 取不取电\"的那一句话。",
+    "**铜**：6 段（F.Cu 5 / B.Cu 1）、2 孔、0 铺铜。口沿截断 1 处；残迹保留 1 段。空脚 C 上没有铜（作者也没接）。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：1 件、块内 6 段铜 + 2 孔、0 铺铜；VOUT 那张小铜没带进来）",
+  "provenance": {
+    "basis": "1 件 / 2 网 / 端口 1 + 轨 1；铜 5 段 + 2 孔；死铜删 0；口岸切口 1",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

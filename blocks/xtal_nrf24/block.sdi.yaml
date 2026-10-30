@@ -1,0 +1,94 @@
+project:
+  kind: block
+  name: xtal_nrf24
+  version: sdi/1
+defs:
+  xtal_nrf24:
+    category: clock
+    rationale: '**nRF24 的 16MHz 晶振**（作者分区框 "Transceiver Crystal"）：Y1 是四脚贴片 `Crystal_GND24_Small`（两只晶体脚
+      + 两只接地脚），C13/C14 各 12pF 负载电容， R5 1M 与晶体并联。作者在框里写了选值公式 **C = 2 × (Cload − Cstray)**， 12pF 是按 Cload=12pF、Cstray≈6pF
+      算出来的——换晶体要照这条重算，别照抄 12pF。 ⚠ 这是**独立成块**的：nRF24 的晶体在原理图上被作者单独框出来，物理上也贴着 U4 摆；拼板时这块要贴回 `nrf24_transceiver`
+      旁边，不是随便放。'
+    ports:
+    - name: NRF_XC1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C13-1
+        connector: false
+    - name: NRF_XC2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C14-1
+        connector: false
+    rails:
+    - GND
+    parts:
+    - ref: Y1
+      lib: Device:Crystal_GND24_Small
+      value: 16MHz
+      footprint: Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm
+    - ref: C14
+      lib: Device:C
+      value: 12p
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C13
+      lib: Device:C
+      value: 12p
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: R5
+      lib: Device:R
+      value: 1M
+      footprint: Resistor_SMD:R_0402_1005Metric
+    conns:
+    - ref: C13
+      pin: '2'
+      net: GND
+    - ref: C14
+      pin: '2'
+      net: GND
+    - ref: Y1
+      pin: '2'
+      net: GND
+    - ref: Y1
+      pin: '4'
+      net: GND
+    - ref: C13
+      pin: '1'
+      net: NRF_XC1
+    - ref: R5
+      pin: '2'
+      net: NRF_XC1
+    - ref: Y1
+      pin: '1'
+      net: NRF_XC1
+    - ref: C14
+      pin: '1'
+      net: NRF_XC2
+    - ref: R5
+      pin: '1'
+      net: NRF_XC2
+    - ref: Y1
+      pin: '3'
+      net: NRF_XC2
+    placement_prior:
+      anchor: Y1
+      max_mm: 6.0
+      rationale: 晶体紧贴用它的芯片（本条块自己看不出对端是谁：XC1/XC2 是出块口岸， 在 STRF 上接 nRF24 的 XC1/XC2）。两颗负载电容贴在晶体两侧，R5 与晶体并行。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      basis: 从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 "Transceiver Crystal" 整框裁出； 板从同工程 `STRF_2layer.kicad_pcb`
+        按位号原样扣铜。
+      board: STRF (2.4GHz RF-to-USB dongle)
+      license: MIT — 上游 Copyright (c) 2020 Philip Salmony
+      license_tier: permissive
+      author: Philip Salmony（上游）/ HarnessPCB（裁块）
+      date: '2026-10-31'
+      kicad: 10.0.5
+    geometry_status: carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py`
+      无损收 2 层）按位号原样扣铜。本块：4 件 / 3 网， 铜 19 段 + 0 孔，口岸切口 2 处；GND 裂 2 岛（铺铜删掉的必然结果）。

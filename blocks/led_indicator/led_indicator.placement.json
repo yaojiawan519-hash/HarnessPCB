@@ -1,0 +1,276 @@
+{
+  "name": "led_indicator",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    118.4637,
+    88.9175
+  ],
+  "size_mm": [
+    18.5333,
+    15.5974
+  ],
+  "ports": {
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C25",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C30",
+      "C31",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R10",
+      "R3",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8"
+    ],
+    "/LED_G": [
+      "J2",
+      "U2"
+    ],
+    "/CDONE": [
+      "J2",
+      "U2",
+      "U3"
+    ],
+    "+3V3": [
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C21",
+      "C3",
+      "C30",
+      "C33",
+      "C36",
+      "C7",
+      "C8",
+      "C9",
+      "D2",
+      "FB1",
+      "FB2",
+      "J2",
+      "R14",
+      "R15",
+      "R17",
+      "R18",
+      "R4",
+      "R5",
+      "R8",
+      "R9",
+      "SJ20",
+      "SJ31",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U8"
+    ],
+    "/LED_B": [
+      "J2",
+      "U2"
+    ],
+    "/LED_R": [
+      "J2",
+      "U2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 128.5303,
+      "y": 83.5028,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 128.5303,
+      "y": 92.8972,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 128.5303,
+      "y": 82.2613,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 128.5303,
+      "y": 93.25,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/CDONE",
+      "x": 128.5303,
+      "y": 89.68,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/LED_G",
+      "x": 113.35,
+      "y": 80.3188,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/LED_G",
+      "x": 113.35,
+      "y": 80.3188,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/LED_R",
+      "x": 108.397,
+      "y": 81.55,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 136,
+    "vias": 5,
+    "stub_kept": 0,
+    "isolated_deleted": 30,
+    "cut_ends": 6,
+    "exit_points": 8,
+    "segs_by_layer": {
+      "B.Cu": 73,
+      "F.Cu": 63
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->U5.8": 1,
+      "/CDONE->U2.7": 1,
+      "/LED_B->U2.40": 1,
+      "/LED_G->U2.39": 1,
+      "/LED_R->U2.41": 1,
+      "GND->C10.2": 1,
+      "GND->C11.2": 1,
+      "GND->C14.2": 1,
+      "GND->C15.2": 1,
+      "GND->C22.2": 1,
+      "GND->C29.2": 1,
+      "GND->C30.2": 1,
+      "GND->C35.2": 1,
+      "GND->C6.2": 1
+    },
+    "island_split": {
+      "+3V3": 2,
+      "GND": 2
+    },
+    "dangling": {
+      "total": 11,
+      "port_cuts": 11,
+      "port_cut_nets": [
+        "+3V3",
+        "/CDONE",
+        "/LED_B",
+        "/LED_G",
+        "/LED_R",
+        "GND"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 3,
+        "vias": 7,
+        "nets": [
+          "+3V3",
+          "/LED_B",
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C24",
+      "value": "4.7u",
+      "fp": "C_0603_1608Metric",
+      "dx": -8.0237,
+      "dy": -4.8475,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D1",
+      "value": "LTST-C191KGKT",
+      "fp": "LED_0603_1608Metric",
+      "dx": 4.3363,
+      "dy": 6.7625,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "D3",
+      "value": "CLMVC-FKA-CLBDGL7LBB79353",
+      "fp": "LED_Cree-PLCC4_2x2mm_CW",
+      "dx": -7.5417,
+      "dy": -1.8715,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R28",
+      "value": "SHORT",
+      "fp": "ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+      "dx": -6.2137,
+      "dy": -4.8775,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R7",
+      "value": "2.2K",
+      "fp": "R_0603_1608Metric",
+      "dx": 7.7617,
+      "dy": 7.0437,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

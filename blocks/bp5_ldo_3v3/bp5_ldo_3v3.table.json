@@ -1,0 +1,74 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_ldo_3v3",
+ "interface": [],
+ "power_rails": [
+  "+3V3",
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C401",
+   "lib": "Device:C_Small",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 50.8,
+   "y": 168.91
+  },
+  {
+   "ref": "C402",
+   "lib": "Device:C_Small",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 76.2,
+   "y": 168.91
+  },
+  {
+   "ref": "U401",
+   "lib": "Regulator_Linear:AP2204RA-3.3",
+   "value": "ME6211A33PG-N",
+   "footprint": "Package_TO_SOT_SMD:SOT-89-3",
+   "x": 63.5,
+   "y": 165.1
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C402",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U401",
+   "pin": "3",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C401",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U401",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C401",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C402",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U401",
+   "pin": "1",
+   "net": "GND"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

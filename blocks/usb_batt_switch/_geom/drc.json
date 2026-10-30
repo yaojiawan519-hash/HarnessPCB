@@ -1,0 +1,10 @@
+{
+ "pcb": "19671:1793373518666724797",
+ "violations": 3,
+ "unconnected": 1,
+ "kinds": {
+  "lib_footprint_mismatch": 3
+ },
+ "shorts": [],
+ "bridges": []
+}

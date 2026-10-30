@@ -1,0 +1,150 @@
+project:
+  kind: block
+  name: kb_usb_c_port
+  version: sdi/1
+defs:
+  kb_usb_c_port:
+    category: connector
+    rationale: '**USB-C 母座（含 CC 下拉）**：J7 = `HRO TYPE-C-31-M-12`（16 脚贴片）， `CC1`/`CC2` 各经一只 5.1K（R1/R5）下拉到
+      GND——这是**设备侧（sink/UFP）**的标准签名， 告诉主机"我是个设备、按默认电流给我供电"。**板上没有 PD 控制器、没有升压/取电芯片**： `VBUS`（A4B9/B4A9
+      两只脚并联）只经 0805 磁珠 `L1` 到 `VDD` 当一个 5V 取电口，C3（47µF）储能。 `D+`/`D-`（A6/B6、A7/B7）直通到总线 `USB_D+`/`USB_D-`；`SBU1/SBU2`
+      空脚； `SHIELD S1..S4` 与 A1B12/B1A12 全部落 GND。 复用要点：**5.1K 是必须的**——换成 10K/56K 就变成别的角色（USB-C 靠这对电阻读角色和电流档），
+      没有它们主机根本不会给 VBUS。'
+    ports:
+    - name: USB_D+
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D-
+      exit:
+        pin: J7-A6
+        connector: true
+    - name: USB_D-
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D+
+      exit:
+        pin: J7-A7
+        connector: true
+    rails:
+    - GND
+    - VDD
+    parts:
+    - ref: J7
+      lib: usb-c:TYPE-C-31-M-12
+      value: TYPE-C-31-M-12
+      footprint: TYPE-C-31-M-12:HRO_TYPE-C-31-M-12
+    - ref: L1
+      lib: kicad5-device:Ferrite_Bead_Small
+      value: CBW201209U300T
+      footprint: Inductor_SMD:L_0805_2012Metric
+    - ref: R1
+      lib: Device:R_Small
+      value: 5.1K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R5
+      lib: Device:R_Small
+      value: 5.1K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: C3
+      lib: Device:C
+      value: 47uF/CL21A226MAYNNNE
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    conns:
+    - ref: C3
+      pin: '2'
+      net: GND
+    - ref: J7
+      pin: A1B12
+      net: GND
+    - ref: J7
+      pin: B1A12
+      net: GND
+    - ref: J7
+      pin: S1
+      net: GND
+    - ref: J7
+      pin: S2
+      net: GND
+    - ref: J7
+      pin: S3
+      net: GND
+    - ref: J7
+      pin: S4
+      net: GND
+    - ref: R1
+      pin: '1'
+      net: GND
+    - ref: R5
+      pin: '1'
+      net: GND
+    - ref: J7
+      pin: A6
+      net: USB_D+
+    - ref: J7
+      pin: B6
+      net: USB_D+
+    - ref: J7
+      pin: A7
+      net: USB_D-
+    - ref: J7
+      pin: B7
+      net: USB_D-
+    - ref: C3
+      pin: '1'
+      net: VDD
+    - ref: L1
+      pin: '1'
+      net: VDD
+    - ref: J7
+      pin: A4B9
+      net: _kb_usb_c_port_N1
+    - ref: J7
+      pin: B4A9
+      net: _kb_usb_c_port_N1
+    - ref: L1
+      pin: '2'
+      net: _kb_usb_c_port_N1
+    - ref: J7
+      pin: A5
+      net: _kb_usb_c_port_N2
+    - ref: R1
+      pin: '2'
+      net: _kb_usb_c_port_N2
+    - ref: J7
+      pin: B5
+      net: _kb_usb_c_port_N3
+    - ref: R5
+      pin: '2'
+      net: _kb_usb_c_port_N3
+    placement_prior:
+      anchor: J7
+      max_mm: 14.0
+      rationale: J7 在板左上、本体探出板沿朝外；R1/R5 贴在它下方的两只 CC 脚上；L1 与 C3 在 板中部那一行（VDD 汇流处）——件框因此拉长到 16.23×18.76mm，这是作者的布局事实。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _kb_usb_c_port_N1
+    - _kb_usb_c_port_N2
+    - _kb_usb_c_port_N3
+    provenance:
+      basis: 5 件 / 7 网 / 端口 2 + 轨 2；铜 39 段 + 4 孔；死铜删 6；口岸切口 5
+      source: human:open-source
+      board: Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：5 件、块内 66 段铜、
+      10 孔、0 铺铜；GND 在源板上是整板平面 → 整张删）
+    notes:
+    - '**USB-C 母座（USB2.0 设备口）**：J7 = `TYPE-C-31-M-12`，D+/D− 各并两只脚（A6/B6、A7/B7）——正反插都能用，但只有 USB2.0。5 件
+      / 9 网 / 端口 USB_D± + 轨 GND+VDD / 内部网 3 条。'
+    - '**R1 / R5 = 5.1K CC 下拉**（`Net-(J7-CC1)`、`Net-(J7-CC2)`）——这是 **UFP/设备端** 端接：这块板在 USB-C 那一侧是"被供电的一方"，从主机拿
+      5V。要改成 host 侧（往外出电）得把这两只换成上拉/电源芯片，不是改电阻值就行的。'
+    - '**VBUS 路径**：`J7.A4B9 / B4A9`（VBUS 并四只脚）→ L1 磁珠 → `VDD`，C3 = 47µF 在 VDD 上。屏蔽脚 S1–S4 直接落地。'
+    - ⚠ **三个 USB 口的 D± 是并联的**：本块的 USB_D+/USB_D- 与 `kb_usb_a_port`、`kb_host_header` 是同一对网——同一时刻只能当其中一路用，别指望同时插两个。
+    - '**铜**：66 段（F.Cu 60 / B.Cu 6）、10 孔、0 铺铜，是九块里最密的一块。孤立铜删 6 段；口沿截断 5 处；残迹保留 1 段（少了会断网）；`naked_plane_pads`
+      1 / `island_split` `GND×6`（六只岛都是接地脚，拼板重铺后并起来）。'

@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "4.7u ap2127k-1.2 ap2127k-3.3",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "regulators"
+  }
+}

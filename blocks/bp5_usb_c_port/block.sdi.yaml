@@ -1,0 +1,187 @@
+project:
+  kind: block
+  name: bp5_usb_c_port
+  version: sdi/1
+defs:
+  bp5_usb_c_port:
+    category: connector
+    rationale: '**USB-C 设备口（UFP）**：J202 = `HRO_TYPE-C-31-M-12`（16 脚贴片母座）。 逐块事实：`A4B9/B4A9` = VBUS 并四脚
+      → 磁珠 L201（`L_0805` 1.5A）→ `VUSB`， C201/C202 各 4.7µF 在 `VUSB` 上；`A6/B6` = D+、`A7/B7` = D−，各串一只 22R
+      （R203 / R202）再进 `USB_D+/USB_D-`；`A5 → R201 5.1K → GND`、`B5 → R204 5.1K → GND` 是 **两只独立的 CC 下拉**（UFP
+      签名：板子从主机取电，不做 host）； `S1..S4` 屏蔽脚直接落地；`SBU1/SBU2` 悬空（原页就是单脚网）。8 件 / 11 网。 ⚠ 22R 是 USB2.0 全速的串阻，**不是**阻抗匹配用的（这条板上没有受控阻抗要求）；
+      改成 USB-C host 口要动的是 CC（换成上拉/电源开关），不是这两只。'
+    ports:
+    - name: USB_D+
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D-
+      exit:
+        pin: R203-1
+        connector: false
+    - name: USB_D-
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D+
+      exit:
+        pin: R202-1
+        connector: false
+    rails:
+    - +VUSB
+    - GND
+    parts:
+    - ref: L201
+      lib: kicad5-device:Ferrite_Bead_Small
+      value: 1.5A
+      footprint: Inductor_SMD:L_0805_2012Metric
+    - ref: R201
+      lib: Device:R_Small
+      value: 5.1K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R204
+      lib: Device:R_Small
+      value: 5.1K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R202
+      lib: Device:R_Small
+      value: 22R
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R203
+      lib: Device:R_Small
+      value: 22R
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: C201
+      lib: Device:C_Small
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C202
+      lib: Device:C_Small
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: J202
+      lib: usb-c:TYPE-C-31-M-12
+      value: TYPE-C-31-M-12
+      footprint: usb-c:HRO_TYPE-C-31-M-12
+    conns:
+    - ref: C201
+      pin: '2'
+      net: +VUSB
+    - ref: C202
+      pin: '2'
+      net: +VUSB
+    - ref: L201
+      pin: '1'
+      net: +VUSB
+    - ref: C201
+      pin: '1'
+      net: GND
+    - ref: C202
+      pin: '1'
+      net: GND
+    - ref: J202
+      pin: A1B12
+      net: GND
+    - ref: J202
+      pin: B1A12
+      net: GND
+    - ref: J202
+      pin: S1
+      net: GND
+    - ref: J202
+      pin: S2
+      net: GND
+    - ref: J202
+      pin: S3
+      net: GND
+    - ref: J202
+      pin: S4
+      net: GND
+    - ref: R201
+      pin: '1'
+      net: GND
+    - ref: R204
+      pin: '1'
+      net: GND
+    - ref: R203
+      pin: '1'
+      net: USB_D+
+    - ref: R202
+      pin: '1'
+      net: USB_D-
+    - ref: J202
+      pin: A7
+      net: USB_N
+    - ref: J202
+      pin: B7
+      net: USB_N
+    - ref: R202
+      pin: '2'
+      net: USB_N
+    - ref: J202
+      pin: A6
+      net: USB_P
+    - ref: J202
+      pin: B6
+      net: USB_P
+    - ref: R203
+      pin: '2'
+      net: USB_P
+    - ref: J202
+      pin: A4B9
+      net: _bp5_usb_c_port_N1
+    - ref: J202
+      pin: B4A9
+      net: _bp5_usb_c_port_N1
+    - ref: L201
+      pin: '2'
+      net: _bp5_usb_c_port_N1
+    - ref: J202
+      pin: A5
+      net: _bp5_usb_c_port_N2
+    - ref: R201
+      pin: '2'
+      net: _bp5_usb_c_port_N2
+    - ref: J202
+      pin: B5
+      net: _bp5_usb_c_port_N3
+    - ref: R204
+      pin: '2'
+      net: _bp5_usb_c_port_N3
+    placement_prior:
+      anchor: J202
+      max_mm: 12.0
+      rationale: J202 在板顶沿（129.90, 61.50）开口朝外；R201/R204 分列它左右 6mm（贴各自 CC 脚）， R202/R203 在它下方 10mm 扇出，L201
+        与 C201/C202 再往右下 7~9mm 排开。 "CC 下拉贴脚、VBUS 磁珠靠座、bulk 电容在磁珠之后"是这块板的布局事实。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - USB_N
+    - USB_P
+    - _bp5_usb_c_port_N1
+    - _bp5_usb_c_port_N2
+    - _bp5_usb_c_port_N3
+    provenance:
+      basis: 8 件 / 9 网 / 端口 2 + 轨 2；铜 26 段 + 2 孔；死铜删 43；口岸切口 2
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 扣，4 层板； J202 开口朝板沿、rot
+      180°）
+    notes:
+    - '**USB-C 设备口（UFP）**：J202 = `TYPE-C-31-M-12`（16 脚，开口 rot 180° 朝板沿）+ R201/R204 5.1K CC 下拉 + R203/R202
+      22R 串阻 + L201 磁珠 + C201/C202 4.7µF。8 件 / 9 网 / 端口 2 + 轨 `+VUSB`/`GND` / 内部网 5 条。'
+    - '**两条 5.1K CC 下拉 = 设备端（UFP）**：`J202.A5/B5` 各经一只 5.1K 到地。这块板在 USB-C 这侧是**被供电的一方**；要改成 host（往外出电）不是换电阻值，得加上拉/电源开关。`SBU1/SBU2`
+      空（`unconnected-*`，只做 USB2.0）。'
+    - '**D± 走的是 22R 串阻**：`J202.A6/B6 (D+) → USB_P → R203 22R → USB_D+`（端口）；`A7/B7 (D−) → USB_N → R202
+      22R → USB_D−`。A/B 两脚并联是正反插都能用的原因。22R 是源端串阻（匹配/EMI），别当成上拉下拉。'
+    - '**VBUS 路径**：`A4B9/B4A9`（四只 VBUS 脚并联）→ L201 磁珠 → `+VUSB`（轨），C201/C202 各 4.7µF 落在 `+VUSB` 上。**整板唯一的供电入口就是这里**——没有
+      USB 就没电（`bp5_ldo_3v3` 的输入就是 `+VUSB`）。'
+    - ⚠ **这是唯一保留了铺铜的块（3 张，网 `Net-(J202-VBUS-PadA4B9)`）**：VBUS 那一段在源板上**只靠铺铜连**——F.Cu 两块 + B.Cu 一块，中间**两只过孔（`counts.vias`=2）就是桥**。按"块内不带铺铜"的规矩本该整张删，这属于唯一例外（"铺铜是这条内部网唯一的连接手段"）。拼板时这
+      3 张要跟着块走。
+    - '**铜**：30 段 + 2 孔 + 3 张铺铜；孤立铜删 43 段/孔；口沿截断 2 处；残迹留 0。`naked_plane_pads` 9（`+VUSB` 3 / GND 6），`island_split`
+      `+VUSB×3` + `GND×8`。'

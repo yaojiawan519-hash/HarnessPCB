@@ -1,0 +1,205 @@
+project:
+  kind: block
+  name: sim_sockets
+  version: sdi/1
+defs:
+  sim_sockets:
+    category: connector
+    rationale: '**三只并联的 SIM 卡座**，插哪一只都能用，电气上完全等价（C1=VCC / C2=RST / C3=CLK / C5=SIM_GND / C6=VPP / C7=I/O
+      都是同一批网直连到 J1 和 J2/J3 排针）： U1 `DGLZ-SIM-0004`（6 触点 + 4 只 SH 屏蔽脚）、U2 `SIM-0030`（8 触点 + 4 只 SH， 多出
+      C4/C8 两只脚——**全页只有这一只座子接了 C4/C8**，两张网再经排针 8/9 脚引出）、 U3 `SIM-0036`（6 触点 + 2 只 SH，另有 2 只无名机械焊盘）。 复用要点：①
+      三只座子的触点编号**同名同义**（ISO 7816 C1..C8），换座子只认编号不认封装名； ② 座子 SH 脚全部接 GND，是**屏蔽壳/机构脚**不是信号；③ 本块**不带任何上拉/滤波**——
+      SIM 卡的上拉与 ESD 在主机侧（读卡器/电平转换）解决，这里只是一段延长线； ④ 卡座是**常开触点加机械开关**的机械件，插入方向与翻盖/推拉方式按各座子封装自带。'
+    ports:
+    - name: C4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U2-C4
+        connector: false
+      pin: U2/C4
+      note: 出块端口：U2.C4 → J1.C4 / 排针 8-9 脚那一侧（另两只座子没有这只脚）
+    - name: C8
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U2-C8
+        connector: false
+      pin: U2/C8
+      note: 出块端口：U2.C8 → J1.C8 / 排针 8-9 脚那一侧
+    - name: CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-C3
+        connector: false
+      pin: U1/C3
+      note: SIM 时钟 CLK（ISO C3）；三条并联座子 + J1 + 两只排针共 6 个脚
+    - name: I/O
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-C7
+        connector: false
+      pin: U1/C7
+      note: SIM 数据 I/O（ISO C7），开漏双向；线上必须有上拉（块里没有）
+    - name: RST
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-C2
+        connector: false
+      pin: U1/C2
+      note: SIM 复位 RST（ISO C2），低有效
+    - name: SIM_GND
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-C5
+        connector: false
+      pin: U1/C5
+      note: 卡座的"地"——**经 SW2 选出来的**，不一定是本地 GND（见 sim_power_select）
+    - name: VCC
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-C1
+        connector: false
+      pin: U1/C1
+      note: 卡座的"供电"——**经 SW1 选出来的**，可能是 VOUT(3.3V) 也可能是 VCC_PIN
+    - name: VPP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-C6
+        connector: false
+      pin: U1/C6
+      note: SIM 编程电压 VPP（ISO C6）；现代卡多不用，但要引到排针
+    rails:
+    - GND
+    parts:
+    - ref: U3
+      lib: sim card:SIM 6P
+      value: SIM 6P
+      footprint: SIM_CARDS:SIM-0036
+    - ref: U2
+      lib: sim card:SIM 8P
+      value: SIM 8P
+      footprint: SIM_CARDS:SIM-0030
+    - ref: U1
+      lib: sim card:SIM 6P
+      value: SIM 6P
+      footprint: footprints2:DGLZ-SIM-0004
+    conns:
+    - ref: U2
+      pin: C4
+      net: C4
+    - ref: U2
+      pin: C8
+      net: C8
+    - ref: U1
+      pin: C3
+      net: CLK
+    - ref: U2
+      pin: C3
+      net: CLK
+    - ref: U3
+      pin: C3
+      net: CLK
+    - ref: U1
+      pin: SH
+      net: GND
+    - ref: U2
+      pin: SH
+      net: GND
+    - ref: U3
+      pin: SH
+      net: GND
+    - ref: U1
+      pin: C7
+      net: I/O
+    - ref: U2
+      pin: C7
+      net: I/O
+    - ref: U3
+      pin: C7
+      net: I/O
+    - ref: U1
+      pin: C2
+      net: RST
+    - ref: U2
+      pin: C2
+      net: RST
+    - ref: U3
+      pin: C2
+      net: RST
+    - ref: U1
+      pin: C5
+      net: SIM_GND
+    - ref: U2
+      pin: C5
+      net: SIM_GND
+    - ref: U3
+      pin: C5
+      net: SIM_GND
+    - ref: U1
+      pin: C1
+      net: VCC
+    - ref: U2
+      pin: C1
+      net: VCC
+    - ref: U3
+      pin: C1
+      net: VCC
+    - ref: U1
+      pin: C6
+      net: VPP
+    - ref: U2
+      pin: C6
+      net: VPP
+    - ref: U3
+      pin: C6
+      net: VPP
+    placement_prior:
+      anchor: U2
+      max_mm: 30.0
+      rationale: 三只座子电气等价、物理并列，摆放就是"哪个方向好插卡"。U2 居中（8 触点那只）， U1/U3 分列上下；座子边缘朝向板边，方便插卡。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 3 件 / 9 网 / 端口 8 + 轨 1；铜 120 段 + 16 孔；死铜删 30；口岸切口 12；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 sim-rev3c.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 /SIM_GND 灌铜是跨块的**口岸网**，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**三只并联的 SIM 卡座**，插哪一只都等价（C1=VCC / C2=RST / C3=CLK / C5=SIM_GND / C6=VPP / C7=I/O 直连到 J1 与 J2/J3
+      排针）。3 件 / 9 网：8 个出块端口 + 1 条轨（GND）。'
+    - 三只座子不是同一种：U1 `DGLZ-SIM-0004`（6 触点 + 4 只 SH）、U2 `SIM-0030`（8 触点 + 4 只 SH）、U3 `SIM-0036`（6 触点 + 2
+      只 SH + 2 只无名机械焊盘）。**全页只有 U2 接了 C4/C8 两只触点**（另外两只座子没有这两只脚），这两张网再经排针 8/9 脚引出——想在 U1/U3 上测 C4/C8 是测不到的。
+    - 触点编号按 ISO 7816（C1..C8）命名，换座子只认编号不认封装名；所有 SH 脚都是**屏蔽壳/机构脚**（接 GND），不是信号。
+    - 本块**不带任何上拉/滤波/ESD**——SIM 卡的上拉与保护在主机侧（读卡器 / 电平转换）解决，这里只是一段延长线。
+    - ⚠ 网名：本板的网在页上和板上都带**前导斜杠**（`/VCC`、`/SIM_GND`、`/I{slash}O` …），那是 KiCad 给局部网加的分页路径，不是层级设计。卡里照抄板上写法，拼板接网时按**同名**匹配；`I{slash}O`
+      是 KiCad5 对 `I/O` 的转义写法，说的是同一根线。
+    - 铜 120 段 + 16 孔（B 39 / F 99）；死铜删 30 段/孔；口岸切口 12 处、走线出口 14 处；削剩残迹留 3 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走
+      0 张（源板那张 /SIM_GND 是跨块的口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里 2 个平面网焊盘一根铜都没有（源板就靠那张 /SIM_GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - '**/CLK 裂成 2 个铜岛**（各含焊盘）：源板上 /CLK 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上；**/SIM_GND 裂成 3 个铜岛**（各含焊盘）：源板上
+      /SIM_GND 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上；**/VCC 裂成 3 个铜岛**（各含焊盘）：源板上 /VCC 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上；GND
+      裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。'
+    - 借道块外器件焊盘换层 4 处（/C8->J1.C8、/I/O->J1.C7、/SIM_GND->J1.C5、/VPP->J1.C6）——那孔不在块里，块单看这几处是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 6 条（/CLK×2、/SIM_GND×4、/VCC×4、GND×2）；断头走线 13 + 悬空过孔 1 处就是"口岸切口"（铜走到窗口边就停
+      = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 36 条。

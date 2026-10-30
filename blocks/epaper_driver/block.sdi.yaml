@@ -1,0 +1,352 @@
+project:
+  kind: block
+  name: epaper_driver
+  version: sdi/1
+defs:
+  epaper_driver:
+    category: interface
+    rationale: 墨水屏整套接口：J3 是 24 脚 0.5mm FPC 座（SPI 的 SCK/MOSI/CS/DC/RES/BUSY 加电源与 两组栅极轨），其余是**自举出 ±高压**的电荷泵——L2
+      47uH 从 +3V3 进，Q3(AO3400A) 做开关管， R17 2.2Ω 是它的源极采样电阻（RESE 网就是靠这颗量电流的），R16 1M 把栅极 GDR 下拉； D5(MBR0530)
+      + C22 出 PREVGH（正轨），D3/D4 背靠背 + C29/C21 出 PREVGL（负轨）。 C23~C28 六颗 1uF/50V 是屏侧的储能/滤波（J3 的 5/18/20/22/24
+      各挂一颗）。 R19 100K 是 RES 的下拉。**这是一块高压区**：±20V 上下的轨就在这几颗电容上。
+    ports:
+    - name: BUSY
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-9
+        connector: true
+      pin: J3/9
+      note: 屏忙
+    - name: CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-12
+        connector: true
+      pin: J3/12
+      note: 片选
+    - name: DC
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-11
+        connector: true
+      pin: J3/11
+      note: 数据/命令
+    - name: MOSI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-14
+        connector: true
+      pin: J3/14
+      note: SPI 数据
+    - name: RES
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-10
+        connector: true
+      pin: J3/10
+      note: 屏复位（R19 100K 下拉）
+    - name: SCK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-13
+        connector: true
+      pin: J3/13
+      note: SPI 时钟
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: J3
+      lib: Connector_Generic:Conn_01x24
+      value: FPC24(0.5MM)
+      footprint: Watchy:24_Pins_0.5mm_Pitch_ZIF_Connector_UP
+    - ref: C23
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: C24
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: C25
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: C26
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: C27
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: C28
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: C20
+      lib: Device:C
+      value: 4.7uF/50V
+      footprint: Capacitor_SMD:C_0603_1608Metric
+    - ref: L2
+      lib: Device:L
+      value: 47uH 0.5A
+      footprint: Inductor_SMD:L_Taiyo-Yuden_NR-40xx
+    - ref: C21
+      lib: Device:C
+      value: 4.7uF/50V
+      footprint: Capacitor_SMD:C_0603_1608Metric
+    - ref: D3
+      lib: Device:D
+      value: MBR0530
+      footprint: Diodes_SMD:D_SOD-123
+    - ref: D4
+      lib: Device:D
+      value: MBR0530
+      footprint: Diodes_SMD:D_SOD-123
+    - ref: D5
+      lib: Device:D
+      value: MBR0530
+      footprint: Diodes_SMD:D_SOD-123
+    - ref: C22
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    - ref: Q3
+      lib: Transistor_FET:DMN3042L
+      value: AO3400A
+      footprint: Package_TO_SOT_SMD:SOT-23
+    - ref: R16
+      lib: Device:R
+      value: 1M
+      footprint: Watchy:R_0402_1005Metric
+    - ref: R17
+      lib: Device:R
+      value: '2.2'
+      footprint: Watchy:R_0402_1005Metric
+    - ref: R19
+      lib: Device:R
+      value: 100K
+      footprint: Watchy:R_0402_1005Metric
+    - ref: C29
+      lib: Device:C
+      value: 1uF/50V
+      footprint: Watchy:C_0402_1005Metric
+    conns:
+    - ref: C20
+      pin: '1'
+      net: +3V3
+    - ref: C28
+      pin: '1'
+      net: +3V3
+    - ref: J3
+      pin: '15'
+      net: +3V3
+    - ref: J3
+      pin: '16'
+      net: +3V3
+    - ref: L2
+      pin: '2'
+      net: +3V3
+    - ref: R19
+      pin: '1'
+      net: +3V3
+    - ref: J3
+      pin: '9'
+      net: BUSY
+    - ref: J3
+      pin: '12'
+      net: CS
+    - ref: J3
+      pin: '11'
+      net: DC
+    - ref: J3
+      pin: '2'
+      net: GDR
+    - ref: Q3
+      pin: '1'
+      net: GDR
+    - ref: R16
+      pin: '1'
+      net: GDR
+    - ref: C20
+      pin: '2'
+      net: GND
+    - ref: C22
+      pin: '2'
+      net: GND
+    - ref: C23
+      pin: '2'
+      net: GND
+    - ref: C24
+      pin: '2'
+      net: GND
+    - ref: C25
+      pin: '2'
+      net: GND
+    - ref: C26
+      pin: '2'
+      net: GND
+    - ref: C27
+      pin: '2'
+      net: GND
+    - ref: C28
+      pin: '2'
+      net: GND
+    - ref: C29
+      pin: '1'
+      net: GND
+    - ref: D4
+      pin: '1'
+      net: GND
+    - ref: J3
+      pin: '17'
+      net: GND
+    - ref: J3
+      pin: '8'
+      net: GND
+    - ref: R16
+      pin: '2'
+      net: GND
+    - ref: R17
+      pin: '1'
+      net: GND
+    - ref: J3
+      pin: '14'
+      net: MOSI
+    - ref: C22
+      pin: '1'
+      net: PREVGH
+    - ref: D5
+      pin: '1'
+      net: PREVGH
+    - ref: J3
+      pin: '21'
+      net: PREVGH
+    - ref: C29
+      pin: '2'
+      net: PREVGL
+    - ref: D3
+      pin: '2'
+      net: PREVGL
+    - ref: J3
+      pin: '23'
+      net: PREVGL
+    - ref: J3
+      pin: '10'
+      net: RES
+    - ref: R19
+      pin: '2'
+      net: RES
+    - ref: J3
+      pin: '3'
+      net: RESE
+    - ref: Q3
+      pin: '2'
+      net: RESE
+    - ref: R17
+      pin: '2'
+      net: RESE
+    - ref: J3
+      pin: '13'
+      net: SCK
+    - ref: C21
+      pin: '2'
+      net: _epaper_driver_N1
+    - ref: D5
+      pin: '2'
+      net: _epaper_driver_N1
+    - ref: L2
+      pin: '1'
+      net: _epaper_driver_N1
+    - ref: Q3
+      pin: '3'
+      net: _epaper_driver_N1
+    - ref: C21
+      pin: '1'
+      net: _epaper_driver_N2
+    - ref: D3
+      pin: '1'
+      net: _epaper_driver_N2
+    - ref: D4
+      pin: '2'
+      net: _epaper_driver_N2
+    - ref: C24
+      pin: '1'
+      net: _epaper_driver_N3
+    - ref: J3
+      pin: '18'
+      net: _epaper_driver_N3
+    - ref: C25
+      pin: '1'
+      net: _epaper_driver_N4
+    - ref: J3
+      pin: '20'
+      net: _epaper_driver_N4
+    - ref: C26
+      pin: '1'
+      net: _epaper_driver_N5
+    - ref: J3
+      pin: '22'
+      net: _epaper_driver_N5
+    - ref: C27
+      pin: '1'
+      net: _epaper_driver_N6
+    - ref: J3
+      pin: '24'
+      net: _epaper_driver_N6
+    - ref: C23
+      pin: '1'
+      net: _epaper_driver_N7
+    - ref: J3
+      pin: '5'
+      net: _epaper_driver_N7
+    placement_prior:
+      anchor: J3
+      max_mm: 30.0
+      rationale: 理想口径是"开关回路最小"：L2、Q3、D3/D4/D5 与升压电容围成一小圈，采样电阻 R17 贴 Q3 源极。**源板没这么摆**：Q3 离 L2 21.66mm、离
+        D5 23.25mm、离 R17 12.63mm，电荷泵被 拆在两端——复用时要按最小回路重摆，别照抄这个距离。J3 贴板边、开口朝外。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - GDR
+    - PREVGH
+    - PREVGL
+    - RESE
+    - _epaper_driver_N1
+    - _epaper_driver_N2
+    - _epaper_driver_N3
+    - _epaper_driver_N4
+    - _epaper_driver_N5
+    - _epaper_driver_N6
+    - _epaper_driver_N7
+    provenance:
+      source: human:open-source
+      board: Watchy
+      license: MIT — 上游 Copyright (c) 2026 SQFMI
+      license_tier: permissive
+      author: SQFMI（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 19 件 / 19 网 / 端口 6 + 轨 2；铜 129 段 + 9 孔；死铜删 34；口岸切口 8；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板的铺铜按"块内不带铺铜"整张删掉）'
+    notes:
+    - 19 件 / 19 网，6 个 SPI 口岸 + 轨 +3V3/GND；PREVGH/PREVGL/GDR/RESE 是**块内网**——±高压是这块自己造出来的，不出块。
+    - J3 的 24 脚里 1/4/6/7/19 五个空脚，按"空脚不是网"不写进卡。
+    - ⚠ 电荷泵回路在源板上很不紧凑：开关管 Q3 离电感 L2 21.66mm、离升压二极管 D5 23.25mm、离采样电阻 R17 12.63mm。这是高压开关回路，复用时必须按最小回路重摆，照抄这个距离会出
+      EMI/振铃。
+    - 4 层板：F.Cu 97 / In2.Cu 25 / B.Cu 2 段 + 17 过孔；内层 GND 平面按规矩删掉，拼板重铺时 In2 不能再整层铺铜。
+    - 死铜删 34 段/孔，口岸切口 8 处，DRC isolated_copper 0。

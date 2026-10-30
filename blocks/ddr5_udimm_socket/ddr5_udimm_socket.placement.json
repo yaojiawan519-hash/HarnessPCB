@@ -1,0 +1,190 @@
+{
+  "name": "ddr5_udimm_socket",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    136.6911,
+    97.5
+  ],
+  "size_mm": [
+    9.6843,
+    158.55
+  ],
+  "ports": {
+    "BULK_VIN": [
+      "C4",
+      "C6",
+      "J2",
+      "J3",
+      "J4",
+      "R13",
+      "U1",
+      "U2"
+    ],
+    "HSCL": [
+      "J4",
+      "U1"
+    ],
+    "HSDA": [
+      "J4",
+      "U1"
+    ],
+    "PWR_GOOD": [
+      "J4",
+      "R8"
+    ],
+    "+3.3V": [
+      "C5",
+      "C7",
+      "J4",
+      "R10",
+      "R12",
+      "R2",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "GND": [
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "D2",
+      "J2",
+      "J3",
+      "J4",
+      "Q6",
+      "R11",
+      "R9",
+      "U1",
+      "U2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "BULK_VIN",
+      "x": 131.049,
+      "y": 29.549,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSDA",
+      "x": 131.049,
+      "y": 70.451,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSDA",
+      "x": 131.049,
+      "y": 37.575,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSCL",
+      "x": 131.049,
+      "y": 67.701,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSCL",
+      "x": 131.049,
+      "y": 40.3,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD",
+      "x": 131.049,
+      "y": 71.0,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 131.049,
+      "y": 26.95,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 131.049,
+      "y": 51.799,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 131.049,
+      "y": 25.05,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 131.049,
+      "y": 54.3635,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 131.049,
+      "y": 68.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 131.049,
+      "y": 87.6,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 1,
+    "nets": 97,
+    "copper_segs": 7,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 16,
+    "cut_ends": 5,
+    "exit_points": 12,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 6
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 23,
+        "vias": 8,
+        "nets": [
+          "+3.3V",
+          "BULK_VIN",
+          "GND",
+          "HSCL",
+          "HSDA",
+          "PWR_GOOD"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "DDR504111002KQ",
+      "fp": "DDR5 UDIMM GENERIC",
+      "dx": -0.9411,
+      "dy": 0.0,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

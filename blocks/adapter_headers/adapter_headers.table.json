@@ -1,0 +1,255 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "adapter_headers",
+ "interface": [
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "Bus Pirate 的 5V 轨，经 J1.1/J2.1/J4.3 三处引出"
+  },
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J4-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "升压后的高压，J4.1 出线"
+  },
+  {
+   "net": "VPP_ADC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "分压后的采样点，J1.5/J2.5 回主机 ADC"
+  },
+  {
+   "net": "VPP_HIGH",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "VPP 开启控制，J1.3/J2.3"
+  },
+  {
+   "net": "VPP_LOW",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "VPP_SW 下拉控制，J1.2/J2.2"
+  },
+  {
+   "net": "VPP_PWM",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "升压开关管驱动，J1.4/J2.4"
+  },
+  {
+   "net": "VPP_SW",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J4-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "开关后的高压，J4.2 出线"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J4",
+   "lib": "Connector_Generic:Conn_01x08",
+   "value": "Conn_01x08",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal",
+   "x": 130.81,
+   "y": 50.8
+  },
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 59.69,
+   "y": 52.07
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 48.26,
+   "y": 52.07
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J4",
+   "pin": "5",
+   "net": "IO4"
+  },
+  {
+   "ref": "J1",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J4",
+   "pin": "6",
+   "net": "IO5"
+  },
+  {
+   "ref": "J1",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J4",
+   "pin": "7",
+   "net": "IO6"
+  },
+  {
+   "ref": "J1",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J4",
+   "pin": "8",
+   "net": "IO7"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J4",
+   "pin": "3",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "VPP"
+  },
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "VPP_ADC"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "VPP_ADC"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "VPP_HIGH"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "VPP_HIGH"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "VPP_LOW"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "VPP_LOW"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "VPP_PWM"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "VPP_PWM"
+  },
+  {
+   "ref": "J4",
+   "pin": "2",
+   "net": "VPP_SW"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

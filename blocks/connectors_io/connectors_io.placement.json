@@ -1,0 +1,496 @@
+{
+  "name": "connectors_io",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    131.12,
+    88.865
+  ],
+  "size_mm": [
+    62.05,
+    20.18
+  ],
+  "ports": {
+    "/IOB_25B_G3": [
+      "SJ16",
+      "SJ25",
+      "U2"
+    ],
+    "/CRESET_N": [
+      "R5",
+      "U2",
+      "U3"
+    ],
+    "/FT_SCK": [
+      "R9",
+      "U2",
+      "U3",
+      "U5"
+    ],
+    "/IOB_22A": [
+      "R21",
+      "U2"
+    ],
+    "+3V3": [
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C21",
+      "C3",
+      "C30",
+      "C36",
+      "C7",
+      "C8",
+      "C9",
+      "D2",
+      "FB1",
+      "FB2",
+      "R14",
+      "R15",
+      "R17",
+      "R18",
+      "R28",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "SJ20",
+      "SJ31",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U8"
+    ],
+    "/IOT_48B": [
+      "U2"
+    ],
+    "/CDONE": [
+      "D1",
+      "R7",
+      "U2",
+      "U3"
+    ],
+    "/IOB_18A": [
+      "SJ24",
+      "U2"
+    ],
+    "/IOB_5B": [
+      "U2"
+    ],
+    "/IOT_42B": [
+      "U2"
+    ],
+    "/LED_R": [
+      "D3",
+      "U2"
+    ],
+    "/IOB_9B": [
+      "U2"
+    ],
+    "/FLASH_MISO": [
+      "R11",
+      "R13",
+      "U3",
+      "U5"
+    ],
+    "/IOB_4A": [
+      "U2"
+    ],
+    "/IOB_31B": [
+      "U2"
+    ],
+    "/IOT_45A_G1": [
+      "U2"
+    ],
+    "/IOB_23B": [
+      "R22",
+      "U2"
+    ],
+    "/IOB_24A": [
+      "R23",
+      "U2"
+    ],
+    "/FT_SSn": [
+      "R8",
+      "U2",
+      "U3",
+      "U5"
+    ],
+    "/IOT_37A": [
+      "U2"
+    ],
+    "/IOT_50B": [
+      "U2"
+    ],
+    "/IOT_39A": [
+      "U2"
+    ],
+    "/IOT_44B": [
+      "U2"
+    ],
+    "/IOB_20A": [
+      "U2"
+    ],
+    "/IOT_43A": [
+      "U2"
+    ],
+    "/IOT_51A": [
+      "U2"
+    ],
+    "/IOB_2A": [
+      "U2"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C20",
+      "C21",
+      "C22",
+      "C24",
+      "C25",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C30",
+      "C31",
+      "C35",
+      "C36",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "D1",
+      "J1",
+      "R10",
+      "R3",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8"
+    ],
+    "/LED_G": [
+      "D3",
+      "U2"
+    ],
+    "+5VD": [
+      "C1",
+      "C19",
+      "C20",
+      "FB3",
+      "U3",
+      "U6",
+      "U7"
+    ],
+    "/IOB_6A": [
+      "U2"
+    ],
+    "/IOT_36B": [
+      "U2"
+    ],
+    "/IOT_41A": [
+      "U2"
+    ],
+    "/IOT_38B": [
+      "U2"
+    ],
+    "/VIO_BANK_0_2": [
+      "SJ19",
+      "SJ26"
+    ],
+    "/IOT_46B_G0": [
+      "U2"
+    ],
+    "/LED_B": [
+      "D3",
+      "U2"
+    ],
+    "/CLK_12M_EXT": [
+      "U8"
+    ],
+    "/IOB_29B": [
+      "U2"
+    ],
+    "/IOB_0A": [
+      "U2"
+    ],
+    "/IOB_3B_G6": [
+      "U2"
+    ],
+    "/IOT_49A": [
+      "U2"
+    ],
+    "/FLASH_MOSI": [
+      "R12",
+      "R27",
+      "U3",
+      "U5"
+    ],
+    "/IOB_8A": [
+      "U2"
+    ],
+    "/IOB_16A": [
+      "U2"
+    ],
+    "/IOB_13B": [
+      "U2"
+    ]
+  },
+  "cut_points": [],
+  "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 46,
+    "copper_segs": 833,
+    "vias": 57,
+    "stub_kept": 0,
+    "isolated_deleted": 356,
+    "cut_ends": 63,
+    "exit_points": 0,
+    "segs_by_layer": {
+      "B.Cu": 398,
+      "F.Cu": 354,
+      "In1.Cu": 8,
+      "In2.Cu": 73
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->C7.1": 1,
+      "+3V3->U3.24": 1,
+      "+5VD->C1.1": 1,
+      "+5VD->C19.1": 1,
+      "+5VD->C20.1": 1,
+      "+5VD->U3.40": 1,
+      "/CDONE->D1.2": 1,
+      "/CDONE->U2.7": 1,
+      "/CDONE->U3.19": 1,
+      "/CLK_12M_EXT->U8.6": 1,
+      "/CRESET_N->R5.1": 1,
+      "/CRESET_N->U2.8": 1,
+      "/CRESET_N->U3.20": 1,
+      "/FLASH_MISO->R11.2": 1,
+      "/FLASH_MISO->R13.1": 1,
+      "/FLASH_MISO->U3.15": 1,
+      "/FLASH_MISO->U5.2": 1,
+      "/FLASH_MOSI->R12.2": 1,
+      "/FLASH_MOSI->U3.14": 1,
+      "/FLASH_MOSI->U5.5": 1,
+      "/FT_SCK->R9.1": 1,
+      "/FT_SCK->U2.15": 1,
+      "/FT_SCK->U3.13": 1,
+      "/FT_SCK->U5.6": 1,
+      "/FT_SSn->U2.16": 1,
+      "/FT_SSn->U3.17": 1,
+      "/FT_SSn->U5.1": 1,
+      "/IOB_0A->U2.46": 1,
+      "/IOB_13B->U2.6": 1,
+      "/IOB_16A->U2.9": 1,
+      "/IOB_18A->SJ24.2": 1,
+      "/IOB_18A->U2.10": 1,
+      "/IOB_20A->U2.11": 1,
+      "/IOB_22A->R21.2": 1,
+      "/IOB_22A->U2.12": 1,
+      "/IOB_23B->R22.1": 1,
+      "/IOB_23B->U2.21": 1,
+      "/IOB_24A->R23.1": 1,
+      "/IOB_24A->U2.13": 1,
+      "/IOB_25B_G3->SJ16.2": 1,
+      "/IOB_25B_G3->U2.20": 1,
+      "/IOB_29B->U2.19": 1,
+      "/IOB_2A->U2.47": 1,
+      "/IOB_31B->U2.18": 1,
+      "/IOB_3B_G6->U2.44": 1,
+      "/IOB_4A->U2.48": 1,
+      "/IOB_5B->U2.45": 1,
+      "/IOB_6A->U2.2": 1,
+      "/IOB_8A->U2.4": 1,
+      "/IOB_9B->U2.3": 1,
+      "/IOT_36B->U2.25": 1,
+      "/IOT_37A->U2.23": 1,
+      "/IOT_38B->U2.27": 1,
+      "/IOT_39A->U2.26": 1,
+      "/IOT_41A->U2.28": 1,
+      "/IOT_42B->U2.31": 1,
+      "/IOT_43A->U2.32": 1,
+      "/IOT_44B->U2.34": 1,
+      "/IOT_45A_G1->U2.37": 1,
+      "/IOT_46B_G0->U2.35": 1,
+      "/IOT_48B->U2.36": 1,
+      "/IOT_49A->U2.43": 1,
+      "/IOT_50B->U2.38": 1,
+      "/IOT_51A->U2.42": 1,
+      "/LED_B->U2.40": 1,
+      "/LED_G->D3.3": 1,
+      "/LED_G->U2.39": 1,
+      "/LED_R->D3.4": 1,
+      "/LED_R->U2.41": 1,
+      "/VIO_BANK_0_2->SJ19.1": 1,
+      "/VIO_BANK_0_2->SJ26.1": 1,
+      "GND->C19.2": 1,
+      "GND->C20.2": 1,
+      "GND->C21.2": 1,
+      "GND->J1.6": 1
+    },
+    "island_split": {
+      "GND": 4
+    },
+    "dangling": {
+      "total": 70,
+      "port_cuts": 70,
+      "port_cut_nets": [
+        "+3V3",
+        "+5VD",
+        "/CDONE",
+        "/CLK_12M_EXT",
+        "/CRESET_N",
+        "/FLASH_MISO",
+        "/FLASH_MOSI",
+        "/FT_SCK",
+        "/FT_SSn",
+        "/IOB_0A",
+        "/IOB_13B",
+        "/IOB_16A",
+        "/IOB_18A",
+        "/IOB_22A",
+        "/IOB_23B",
+        "/IOB_24A",
+        "/IOB_25B_G3",
+        "/IOB_29B",
+        "/IOB_2A",
+        "/IOB_31B",
+        "/IOB_3B_G6",
+        "/IOB_4A",
+        "/IOB_5B",
+        "/IOB_6A",
+        "/IOB_8A",
+        "/IOB_9B",
+        "/IOT_36B",
+        "/IOT_37A",
+        "/IOT_38B",
+        "/IOT_39A",
+        "/IOT_41A",
+        "/IOT_42B",
+        "/IOT_43A",
+        "/IOT_44B",
+        "/IOT_45A_G1",
+        "/IOT_46B_G0",
+        "/IOT_48B",
+        "/IOT_49A",
+        "/IOT_50B",
+        "/IOT_51A",
+        "/LED_B",
+        "/LED_G",
+        "/LED_R",
+        "/VIO_BANK_0_2",
+        "GND"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 19,
+        "vias": 4,
+        "nets": [
+          "/CDONE",
+          "/CLK_12M_EXT",
+          "/CRESET_N",
+          "/FLASH_MISO",
+          "/FLASH_MOSI",
+          "/FT_SSn",
+          "/IOB_18A",
+          "/IOB_20A",
+          "/IOB_23B",
+          "/IOB_24A",
+          "/IOB_25B_G3",
+          "/IOB_31B",
+          "/IOT_36B",
+          "/IOT_37A",
+          "/LED_B",
+          "/LED_G",
+          "/LED_R",
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C23",
+      "value": "DNI",
+      "fp": "C_0603_1608Metric",
+      "dx": 28.011,
+      "dy": -6.823,
+      "rot": 0.0,
+      "side": "B"
+    },
+    {
+      "ref": "C33",
+      "value": "DNI",
+      "fp": "C_0603_1608Metric",
+      "dx": 6.88,
+      "dy": -6.865,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C34",
+      "value": "DNI",
+      "fp": "C_0603_1608Metric",
+      "dx": -25.32,
+      "dy": -1.997,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "J2",
+      "value": "Right",
+      "fp": "PinHeader_1x24_P2.54mm_Vertical",
+      "dx": 29.2,
+      "dy": -8.865,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Left",
+      "fp": "PinHeader_1x24_P2.54mm_Vertical",
+      "dx": 29.2,
+      "dy": 8.915,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "J4",
+      "value": "5V Power",
+      "fp": "PinHeader_1x02_P2.54mm_Vertical",
+      "dx": -28.42,
+      "dy": 3.175,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

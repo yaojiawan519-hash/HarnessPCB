@@ -1,0 +1,806 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "connectors_io",
+ "interface": [
+  {
+   "net": "CDONE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-4",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CLK_12M_EXT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-8",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CRESET_N",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-3",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "FLASH_MISO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-4",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "FLASH_MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-3",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "FT_SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-2",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "FT_SSn",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "IOB_0A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-23",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_13B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-16",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_16A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-15",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_18A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_20A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-14",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_22A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_23B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-10",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_24A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-11",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_25B_G3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_29B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-12",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_2A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-22",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_31B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-13",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_3B_G6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-17",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_4A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-20",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_5B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-21",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_6A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-24",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_8A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-18",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOB_9B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-19",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_36B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-12",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_37A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-11",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_38B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-14",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_39A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-13",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_41A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-24",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_42B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-17",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_43A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-15",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_44B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-19",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_45A_G1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-18",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_46B_G0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-16",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_48B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-21",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_49A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-20",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_50B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-23",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "IOT_51A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-22",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO 原样引到排针（芯片那头在 fpga_ice40up5k 的 U2）"
+  },
+  {
+   "net": "LED_B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-7",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "LED_G",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-6",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "LED_R",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-5",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VIO_BANK_0_2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C23-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "+5VD",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "UPduino_v3.0:Connector_Generic_Conn_01x24",
+   "value": "Right",
+   "footprint": "vs:PinHeader_1x24_P2.54mm_Vertical",
+   "x": 379.73,
+   "y": 55.88
+  },
+  {
+   "ref": "J3",
+   "lib": "UPduino_v3.0:Connector_Generic_Conn_01x24",
+   "value": "Left",
+   "footprint": "vs:PinHeader_1x24_P2.54mm_Vertical",
+   "x": 328.93,
+   "y": 54.61
+  },
+  {
+   "ref": "J4",
+   "lib": "UPduino_v3.0:Connector_Generic_Conn_01x02",
+   "value": "5V Power",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+   "x": 379.095,
+   "y": 95.25
+  },
+  {
+   "ref": "C23",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "DNI",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 314.96,
+   "y": 99.06
+  },
+  {
+   "ref": "C34",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "DNI",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 337.82,
+   "y": 99.06
+  },
+  {
+   "ref": "C33",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "DNI",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 326.39,
+   "y": 99.06
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C33",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C34",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "+5VD"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "CDONE"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "CLK_12M_EXT"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "CRESET_N"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "FLASH_MISO"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "FLASH_MOSI"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "FT_SCK"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "FT_SSn"
+  },
+  {
+   "ref": "C23",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C33",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C34",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "23",
+   "net": "IOB_0A"
+  },
+  {
+   "ref": "J3",
+   "pin": "16",
+   "net": "IOB_13B"
+  },
+  {
+   "ref": "J3",
+   "pin": "15",
+   "net": "IOB_16A"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "IOB_18A"
+  },
+  {
+   "ref": "J3",
+   "pin": "14",
+   "net": "IOB_20A"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "IOB_22A"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "IOB_23B"
+  },
+  {
+   "ref": "J3",
+   "pin": "11",
+   "net": "IOB_24A"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "IOB_25B_G3"
+  },
+  {
+   "ref": "J3",
+   "pin": "12",
+   "net": "IOB_29B"
+  },
+  {
+   "ref": "J3",
+   "pin": "22",
+   "net": "IOB_2A"
+  },
+  {
+   "ref": "J3",
+   "pin": "13",
+   "net": "IOB_31B"
+  },
+  {
+   "ref": "J3",
+   "pin": "17",
+   "net": "IOB_3B_G6"
+  },
+  {
+   "ref": "J3",
+   "pin": "20",
+   "net": "IOB_4A"
+  },
+  {
+   "ref": "J3",
+   "pin": "21",
+   "net": "IOB_5B"
+  },
+  {
+   "ref": "J3",
+   "pin": "24",
+   "net": "IOB_6A"
+  },
+  {
+   "ref": "J3",
+   "pin": "18",
+   "net": "IOB_8A"
+  },
+  {
+   "ref": "J3",
+   "pin": "19",
+   "net": "IOB_9B"
+  },
+  {
+   "ref": "J2",
+   "pin": "12",
+   "net": "IOT_36B"
+  },
+  {
+   "ref": "J2",
+   "pin": "11",
+   "net": "IOT_37A"
+  },
+  {
+   "ref": "J2",
+   "pin": "14",
+   "net": "IOT_38B"
+  },
+  {
+   "ref": "J2",
+   "pin": "13",
+   "net": "IOT_39A"
+  },
+  {
+   "ref": "J2",
+   "pin": "24",
+   "net": "IOT_41A"
+  },
+  {
+   "ref": "J2",
+   "pin": "17",
+   "net": "IOT_42B"
+  },
+  {
+   "ref": "J2",
+   "pin": "15",
+   "net": "IOT_43A"
+  },
+  {
+   "ref": "J2",
+   "pin": "19",
+   "net": "IOT_44B"
+  },
+  {
+   "ref": "J2",
+   "pin": "18",
+   "net": "IOT_45A_G1"
+  },
+  {
+   "ref": "J2",
+   "pin": "16",
+   "net": "IOT_46B_G0"
+  },
+  {
+   "ref": "J2",
+   "pin": "21",
+   "net": "IOT_48B"
+  },
+  {
+   "ref": "J2",
+   "pin": "20",
+   "net": "IOT_49A"
+  },
+  {
+   "ref": "J2",
+   "pin": "23",
+   "net": "IOT_50B"
+  },
+  {
+   "ref": "J2",
+   "pin": "22",
+   "net": "IOT_51A"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "LED_B"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "LED_G"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "LED_R"
+  },
+  {
+   "ref": "C23",
+   "pin": "1",
+   "net": "VIO_BANK_0_2"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "VIO_BANK_0_2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

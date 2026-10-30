@@ -1,0 +1,232 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "flash_wson_sockets",
+ "interface": [
+  {
+   "net": "CDI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 2 脚 → 芯片 MISO"
+  },
+  {
+   "net": "CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 5 脚 → 芯片 MOSI"
+  },
+  {
+   "net": "CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 1 脚（U1.1 / U2.1）"
+  },
+  {
+   "net": "GND_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 4 脚（+ 两只 0.1uF 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片"
+  },
+  {
+   "net": "HOLD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-7",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 7 脚"
+  },
+  {
+   "net": "SCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-6",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 6 脚"
+  },
+  {
+   "net": "VCC_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 8 脚（+ 两只 0.1uF 的 1 脚）：芯片侧电源"
+  },
+  {
+   "net": "WP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "焊位 3 脚（写保护）：本版真的到焊位"
+  }
+ ],
+ "power_rails": [],
+ "parts": [
+  {
+   "ref": "U2",
+   "lib": "Memory_EEPROM:25LCxxx",
+   "value": "25LCxxx",
+   "footprint": "TEST_SOCKETS:WSON8-6x8",
+   "x": 209.55,
+   "y": 107.95
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 179.07,
+   "y": 104.14
+  },
+  {
+   "ref": "C2",
+   "lib": "Device:C",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 231.14,
+   "y": 104.14
+  },
+  {
+   "ref": "U1",
+   "lib": "Memory_EEPROM:25LCxxx",
+   "value": "25LCxxx",
+   "footprint": "TEST_SOCKETS:WSON-5x6",
+   "x": 157.48,
+   "y": 107.95
+  }
+ ],
+ "conns": [
+  {
+   "ref": "U1",
+   "pin": "2",
+   "net": "CDI"
+  },
+  {
+   "ref": "U2",
+   "pin": "2",
+   "net": "CDI"
+  },
+  {
+   "ref": "U1",
+   "pin": "5",
+   "net": "CDO"
+  },
+  {
+   "ref": "U2",
+   "pin": "5",
+   "net": "CDO"
+  },
+  {
+   "ref": "U1",
+   "pin": "1",
+   "net": "CS"
+  },
+  {
+   "ref": "U2",
+   "pin": "1",
+   "net": "CS"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "U1",
+   "pin": "4",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "U2",
+   "pin": "4",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "U1",
+   "pin": "7",
+   "net": "HOLD"
+  },
+  {
+   "ref": "U2",
+   "pin": "7",
+   "net": "HOLD"
+  },
+  {
+   "ref": "U1",
+   "pin": "6",
+   "net": "SCLK"
+  },
+  {
+   "ref": "U2",
+   "pin": "6",
+   "net": "SCLK"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "U1",
+   "pin": "8",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "U2",
+   "pin": "8",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "U1",
+   "pin": "3",
+   "net": "WP"
+  },
+  {
+   "ref": "U2",
+   "pin": "3",
+   "net": "WP"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

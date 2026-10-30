@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "sim 6p sim 8p",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "sim_sockets"
+  }
+}

@@ -1,0 +1,881 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "usb_ftdi_bridge",
+ "interface": [
+  {
+   "net": "CDONE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-19",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置完成，回读给 FT232H 的 U3.19"
+  },
+  {
+   "net": "CLK_12M_FT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "12MHz 输入（源在 clock_12m 的 U4.3）"
+  },
+  {
+   "net": "CRESET_N",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-20",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置复位，由 U3.20 驱动"
+  },
+  {
+   "net": "EE_CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-44",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "Microwire EEPROM 时钟（93LC56）"
+  },
+  {
+   "net": "EE_CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-45",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "Microwire EEPROM 片选"
+  },
+  {
+   "net": "EE_DAT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-43",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "Microwire EEPROM 数据（双向）"
+  },
+  {
+   "net": "FLASH_MISO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-15",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 数据入 U3.15"
+  },
+  {
+   "net": "FLASH_MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-14",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 数据出 U3.14"
+  },
+  {
+   "net": "FT_SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-13",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 时钟出 U3.13"
+  },
+  {
+   "net": "FT_SSn",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-17",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 片选出 U3.17"
+  },
+  {
+   "net": "USB_M",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "USB D-，经 SJ36 短路跳线直通 FPGA（同上）"
+  },
+  {
+   "net": "USB_P",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "USB D+，经 SJ35 短路跳线直通 FPGA（tinyFPGA 引导模式用）"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "+5VD",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U3",
+   "lib": "UPduino_v3.0:Interface_USB_FT232H",
+   "value": "FT232H",
+   "footprint": "vs:QFN-48-1EP_8x8mm_P0.5mm_EP6.2x6.2mm",
+   "x": 96.52,
+   "y": 224.79
+  },
+  {
+   "ref": "J1",
+   "lib": "UPduino_v3.0:Connector_USB_B_Micro",
+   "value": "47589-0001",
+   "footprint": "vs:USB_Micro_AB_Female_0475890001",
+   "x": 26.67,
+   "y": 209.55
+  },
+  {
+   "ref": "C1",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 53.34,
+   "y": 198.12
+  },
+  {
+   "ref": "C7",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 114.3,
+   "y": 181.61
+  },
+  {
+   "ref": "C8",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 124.46,
+   "y": 181.61
+  },
+  {
+   "ref": "C9",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 134.62,
+   "y": 181.61
+  },
+  {
+   "ref": "R3",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "12K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 66.04,
+   "y": 222.25
+  },
+  {
+   "ref": "C4",
+   "lib": "UPduino_v3.0:Device_C_Small",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 67.31,
+   "y": 204.47
+  },
+  {
+   "ref": "SJ35",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "SHORT",
+   "footprint": "vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+   "x": 57.15,
+   "y": 209.55
+  },
+  {
+   "ref": "SJ36",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "SHORT",
+   "footprint": "vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+   "x": 57.15,
+   "y": 212.09
+  },
+  {
+   "ref": "C2",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 54.61,
+   "y": 181.61
+  },
+  {
+   "ref": "FB1",
+   "lib": "UPduino_v3.0:Device_Ferrite_Bead_Small",
+   "value": "BLM18HE152SN1D",
+   "footprint": "Inductor_SMD:L_0603_1608Metric",
+   "x": 148.59,
+   "y": 168.91
+  },
+  {
+   "ref": "FB2",
+   "lib": "UPduino_v3.0:Device_Ferrite_Bead_Small",
+   "value": "BLM18HE152SN1D",
+   "footprint": "Inductor_SMD:L_0603_1608Metric",
+   "x": 148.59,
+   "y": 182.88
+  },
+  {
+   "ref": "C12",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 158.75,
+   "y": 172.72
+  },
+  {
+   "ref": "C13",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 158.75,
+   "y": 186.69
+  },
+  {
+   "ref": "TP1",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 217.17
+  },
+  {
+   "ref": "TP11",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 139.7,
+   "y": 201.93
+  },
+  {
+   "ref": "TP12",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 139.7,
+   "y": 207.01
+  },
+  {
+   "ref": "TP2",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 219.71
+  },
+  {
+   "ref": "TP3",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 222.25
+  },
+  {
+   "ref": "TP4",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 224.79
+  },
+  {
+   "ref": "TP5",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 227.33
+  },
+  {
+   "ref": "TP6",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 229.87
+  },
+  {
+   "ref": "TP7",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 232.41
+  },
+  {
+   "ref": "TP8",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 234.95
+  },
+  {
+   "ref": "TP9",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 237.49
+  },
+  {
+   "ref": "TP10",
+   "lib": "UPduino_v3.0:Connector_TestPoint",
+   "value": "TestPoint",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 121.92,
+   "y": 240.03
+  },
+  {
+   "ref": "FB3",
+   "lib": "UPduino_v3.0:Device_Ferrite_Bead_Small",
+   "value": "MF-FSMF035X-2",
+   "footprint": "Inductor_SMD:L_0603_1608Metric",
+   "x": 40.64,
+   "y": 204.47
+  },
+  {
+   "ref": "C25",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 36.83,
+   "y": 195.58
+  },
+  {
+   "ref": "C28",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 171.45,
+   "y": 186.69
+  },
+  {
+   "ref": "C27",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 171.45,
+   "y": 172.72
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C7",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C8",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C9",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "FB1",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "FB2",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U3",
+   "pin": "12",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U3",
+   "pin": "24",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U3",
+   "pin": "34",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U3",
+   "pin": "46",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "FB3",
+   "pin": "1",
+   "net": "+5VD"
+  },
+  {
+   "ref": "U3",
+   "pin": "40",
+   "net": "+5VD"
+  },
+  {
+   "ref": "U3",
+   "pin": "19",
+   "net": "CDONE"
+  },
+  {
+   "ref": "U3",
+   "pin": "1",
+   "net": "CLK_12M_FT"
+  },
+  {
+   "ref": "U3",
+   "pin": "20",
+   "net": "CRESET_N"
+  },
+  {
+   "ref": "U3",
+   "pin": "44",
+   "net": "EE_CLK"
+  },
+  {
+   "ref": "U3",
+   "pin": "45",
+   "net": "EE_CS"
+  },
+  {
+   "ref": "U3",
+   "pin": "43",
+   "net": "EE_DAT"
+  },
+  {
+   "ref": "U3",
+   "pin": "15",
+   "net": "FLASH_MISO"
+  },
+  {
+   "ref": "U3",
+   "pin": "14",
+   "net": "FLASH_MOSI"
+  },
+  {
+   "ref": "U3",
+   "pin": "13",
+   "net": "FT_SCK"
+  },
+  {
+   "ref": "U3",
+   "pin": "17",
+   "net": "FT_SSn"
+  },
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "FT_VCORE"
+  },
+  {
+   "ref": "U3",
+   "pin": "38",
+   "net": "FT_VCORE"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C12",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C13",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C25",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C27",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C28",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C7",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C8",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C9",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "6",
+   "net": "GND"
+  },
+  {
+   "ref": "R3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "11",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "22",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "23",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "35",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "36",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "41",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "42",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "47",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "48",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "9",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "USB_M"
+  },
+  {
+   "ref": "SJ35",
+   "pin": "2",
+   "net": "USB_M"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "USB_P"
+  },
+  {
+   "ref": "SJ36",
+   "pin": "2",
+   "net": "USB_P"
+  },
+  {
+   "ref": "C12",
+   "pin": "1",
+   "net": "V_PHY"
+  },
+  {
+   "ref": "C27",
+   "pin": "1",
+   "net": "V_PHY"
+  },
+  {
+   "ref": "FB1",
+   "pin": "1",
+   "net": "V_PHY"
+  },
+  {
+   "ref": "U3",
+   "pin": "3",
+   "net": "V_PHY"
+  },
+  {
+   "ref": "C13",
+   "pin": "1",
+   "net": "V_PLL"
+  },
+  {
+   "ref": "C28",
+   "pin": "1",
+   "net": "V_PLL"
+  },
+  {
+   "ref": "FB2",
+   "pin": "1",
+   "net": "V_PLL"
+  },
+  {
+   "ref": "U3",
+   "pin": "8",
+   "net": "V_PLL"
+  },
+  {
+   "ref": "C25",
+   "pin": "2",
+   "net": "V_USB"
+  },
+  {
+   "ref": "FB3",
+   "pin": "2",
+   "net": "V_USB"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "V_USB"
+  },
+  {
+   "ref": "TP11",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N1"
+  },
+  {
+   "ref": "U3",
+   "pin": "16",
+   "net": "_usb_ftdi_bridge_N1"
+  },
+  {
+   "ref": "TP12",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N2"
+  },
+  {
+   "ref": "U3",
+   "pin": "18",
+   "net": "_usb_ftdi_bridge_N2"
+  },
+  {
+   "ref": "TP1",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N3"
+  },
+  {
+   "ref": "U3",
+   "pin": "21",
+   "net": "_usb_ftdi_bridge_N3"
+  },
+  {
+   "ref": "TP2",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N4"
+  },
+  {
+   "ref": "U3",
+   "pin": "25",
+   "net": "_usb_ftdi_bridge_N4"
+  },
+  {
+   "ref": "TP3",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N5"
+  },
+  {
+   "ref": "U3",
+   "pin": "26",
+   "net": "_usb_ftdi_bridge_N5"
+  },
+  {
+   "ref": "TP4",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N6"
+  },
+  {
+   "ref": "U3",
+   "pin": "27",
+   "net": "_usb_ftdi_bridge_N6"
+  },
+  {
+   "ref": "TP5",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N7"
+  },
+  {
+   "ref": "U3",
+   "pin": "28",
+   "net": "_usb_ftdi_bridge_N7"
+  },
+  {
+   "ref": "TP6",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N8"
+  },
+  {
+   "ref": "U3",
+   "pin": "29",
+   "net": "_usb_ftdi_bridge_N8"
+  },
+  {
+   "ref": "TP7",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N9"
+  },
+  {
+   "ref": "U3",
+   "pin": "30",
+   "net": "_usb_ftdi_bridge_N9"
+  },
+  {
+   "ref": "TP8",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N10"
+  },
+  {
+   "ref": "U3",
+   "pin": "31",
+   "net": "_usb_ftdi_bridge_N10"
+  },
+  {
+   "ref": "TP9",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N11"
+  },
+  {
+   "ref": "U3",
+   "pin": "32",
+   "net": "_usb_ftdi_bridge_N11"
+  },
+  {
+   "ref": "TP10",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N12"
+  },
+  {
+   "ref": "U3",
+   "pin": "33",
+   "net": "_usb_ftdi_bridge_N12"
+  },
+  {
+   "ref": "C4",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N13"
+  },
+  {
+   "ref": "U3",
+   "pin": "37",
+   "net": "_usb_ftdi_bridge_N13"
+  },
+  {
+   "ref": "R3",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N14"
+  },
+  {
+   "ref": "U3",
+   "pin": "5",
+   "net": "_usb_ftdi_bridge_N14"
+  },
+  {
+   "ref": "SJ35",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N15"
+  },
+  {
+   "ref": "U3",
+   "pin": "6",
+   "net": "_usb_ftdi_bridge_N15"
+  },
+  {
+   "ref": "SJ36",
+   "pin": "1",
+   "net": "_usb_ftdi_bridge_N16"
+  },
+  {
+   "ref": "U3",
+   "pin": "7",
+   "net": "_usb_ftdi_bridge_N16"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,159 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "led_indicator",
+ "interface": [
+  {
+   "net": "CDONE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置完成指示：D1 与 FPGA 的 CDONE、FT232H 的 U3.19 同网"
+  },
+  {
+   "net": "LED_B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D3-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "蓝灯驱动"
+  },
+  {
+   "net": "LED_G",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D3-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "绿灯驱动"
+  },
+  {
+   "net": "LED_R",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D3-4",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "红灯驱动（FPGA 银行 2 的 IO 直接来）"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D1",
+   "lib": "UPduino_v3.0:Device_LED_ALT",
+   "value": "LTST-C191KGKT",
+   "footprint": "LED_SMD:LED_0603_1608Metric",
+   "x": 297.18,
+   "y": 154.94
+  },
+  {
+   "ref": "R7",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "2.2K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 297.18,
+   "y": 147.32
+  },
+  {
+   "ref": "D3",
+   "lib": "UPduino_v3.0:Device_LED_ARGB",
+   "value": "CLMVC-FKA-CLBDGL7LBB79353",
+   "footprint": "VS.preety:LED_Cree-PLCC4_2x2mm_CW",
+   "x": 285.75,
+   "y": 124.46
+  },
+  {
+   "ref": "R28",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "SHORT",
+   "footprint": "vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+   "x": 273.05,
+   "y": 118.11
+  },
+  {
+   "ref": "C24",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 273.05,
+   "y": 128.27
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R28",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R7",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "CDONE"
+  },
+  {
+   "ref": "R7",
+   "pin": "1",
+   "net": "CDONE"
+  },
+  {
+   "ref": "C24",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "D3",
+   "pin": "2",
+   "net": "LED_B"
+  },
+  {
+   "ref": "D3",
+   "pin": "3",
+   "net": "LED_G"
+  },
+  {
+   "ref": "D3",
+   "pin": "4",
+   "net": "LED_R"
+  },
+  {
+   "ref": "C24",
+   "pin": "1",
+   "net": "_led_indicator_N1"
+  },
+  {
+   "ref": "D3",
+   "pin": "1",
+   "net": "_led_indicator_N1"
+  },
+  {
+   "ref": "R28",
+   "pin": "1",
+   "net": "_led_indicator_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,108 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "sim_leds",
+ "interface": [
+  {
+   "net": "SIM_CD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "卡片检测开关触点：被开关拉到 GND 时 D1 亮；悬空时灭"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "排针 1 脚送进来的 3.3V，两颗灯的共同阳极电源（经各自的 2K）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D2",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 101.6,
+   "y": 72.39
+  },
+  {
+   "ref": "D1",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 101.6,
+   "y": 80.01
+  },
+  {
+   "ref": "R1",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 93.98,
+   "y": 80.01
+  },
+  {
+   "ref": "R2",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 93.98,
+   "y": 72.39
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "SIM_CD"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "R2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "_sim_leds_N1"
+  },
+  {
+   "ref": "R2",
+   "pin": "2",
+   "net": "_sim_leds_N1"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "_sim_leds_N2"
+  },
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "_sim_leds_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

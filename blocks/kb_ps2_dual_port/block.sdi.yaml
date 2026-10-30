@@ -1,0 +1,123 @@
+project:
+  kind: block
+  name: kb_ps2_dual_port
+  version: sdi/1
+defs:
+  kb_ps2_dual_port:
+    category: connector
+    rationale: '**两只 PS/2 口（mini-DIN-6 母座，两只并联在同一对 CLK/DAT 上）**：J1、J4 都是 `Connector_Mini-DIN_Female_6Pin_2rows`，脚序是
+      PS/2 标准 `1=DATA 2=NC 3=GND 4=+5V 5=CLK 6=NC`；两只的 1/5 脚直接并在 `DAT`/`CLK` 上 （网表：`DAT = J1.1 J2.6 J3.6
+      J4.1`、`CLK = J1.5 J2.7 J3.7 J4.5`）， 谁也分不开——插鼠标还是插键盘由 BP5 侧看数据流决定，不是硬件选的。 各自的 4 脚（+5V）经一只 0805 磁珠到
+      `VDD`：`L4`（J1）、`L5`（J4）。 `C1`（47µF，CL21A226MAYNNNE）就架在两只磁珠中间，是这条 5V 的储能。 复用要点：磁珠一只都不能省——PS/2 线是长线，热插拔时的浪涌直接打在
+      VDD 上； 47µF 是这两只口的本地储能，不是"多画了一只"。'
+    ports:
+    - name: CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-5
+        connector: true
+    - name: DAT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-1
+        connector: true
+    rails:
+    - GND
+    - VDD
+    parts:
+    - ref: J4
+      lib: Connector:Mini-DIN-6
+      value: Mini-DIN-6
+      footprint: connector-mini-din-6:Connector_Mini-DIN_Female_6Pin_2rows
+    - ref: L5
+      lib: kicad5-device:Ferrite_Bead_Small
+      value: CBW201209U300T
+      footprint: Inductor_SMD:L_0805_2012Metric
+    - ref: C1
+      lib: Device:C
+      value: 47uF/CL21A226MAYNNNE
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: L4
+      lib: kicad5-device:Ferrite_Bead_Small
+      value: CBW201209U300T
+      footprint: Inductor_SMD:L_0805_2012Metric
+    - ref: J1
+      lib: Connector:Mini-DIN-6
+      value: Mini-DIN-6
+      footprint: connector-mini-din-6:Connector_Mini-DIN_Female_6Pin_2rows
+    conns:
+    - ref: J1
+      pin: '5'
+      net: CLK
+    - ref: J4
+      pin: '5'
+      net: CLK
+    - ref: J1
+      pin: '1'
+      net: DAT
+    - ref: J4
+      pin: '1'
+      net: DAT
+    - ref: C1
+      pin: '2'
+      net: GND
+    - ref: J1
+      pin: '3'
+      net: GND
+    - ref: J4
+      pin: '3'
+      net: GND
+    - ref: C1
+      pin: '1'
+      net: VDD
+    - ref: L4
+      pin: '2'
+      net: VDD
+    - ref: L5
+      pin: '2'
+      net: VDD
+    - ref: J4
+      pin: '4'
+      net: _kb_ps2_dual_port_N1
+    - ref: L5
+      pin: '1'
+      net: _kb_ps2_dual_port_N1
+    - ref: J1
+      pin: '4'
+      net: _kb_ps2_dual_port_N2
+    - ref: L4
+      pin: '1'
+      net: _kb_ps2_dual_port_N2
+    placement_prior:
+      anchor: J1
+      max_mm: 12.0
+      rationale: 5 件占 34.05×22.95mm：两只 mini-DIN 都在板下沿、本体探出板边朝外，磁珠与 47µF 在它们上方一行。要保住的是"两只口同一行、各自的磁珠贴着自己的
+        4 脚"。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _kb_ps2_dual_port_N1
+    - _kb_ps2_dual_port_N2
+    provenance:
+      basis: 5 件 / 6 网 / 端口 2 + 轨 2；铜 23 段 + 2 孔；死铜删 6；口岸切口 2
+      source: human:open-source
+      board: Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：5 件、块内 29 段铜、
+      3 孔、0 铺铜；GND 在源板上是整板平面 → 按"块内不带铺铜"整张删）
+    notes:
+    - '**两只 PS/2 mini-DIN-6 母座并联**：J1 / J4 的 CLK 脚（5）与 DAT 脚（1）分别硬连到同两条网，GND 落在 3 号脚。5 件 / 10 网 / 端口 CLK+DAT
+      + 轨 GND+VDD / 内部网 2 条。'
+    - ⚠ **两只座子插的是同一对线**：键盘和鼠标不能同时插（插了也会在同一根时钟/数据上打架）——Bus Pirate 5 的十脚排针只给了一对 PS/2 线，这块板做的是"两只座随便插哪个"。
+    - '**供电方向是板子给键鼠**：`VDD` 经 L4 / L5（`CBW201209U300T` 磁珠）送到两只座子的 4 号脚（PS/2 的 +5V），两条无名网 `_kb_ps2_dual_port_N1/N2`
+      就是这两段磁珠后的线。C1 = 47µF 落在 VDD 上做共用储能。PS/2 的 6 号脚是 NC，两只座都没接。'
+    - '**铜**：29 段（B.Cu 16 / F.Cu 13）、3 孔、0 铺铜。孤立铜删 6 段；口沿被截断 2 处；`naked_plane_pads` 2 / `island_split`
+      `GND×3`——三个 GND 岛在源板上靠整板铺铜连着，块里不带铺铜，拼板重铺后连上。'

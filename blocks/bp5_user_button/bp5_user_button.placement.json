@@ -1,0 +1,129 @@
+{
+  "name": "bp5_user_button",
+  "source": "REV10a.kicad_pcb",
+  "origin_src_mm": [
+    129.9,
+    66.2384
+  ],
+  "size_mm": [
+    5.2024,
+    6.8732
+  ],
+  "ports": {
+    "+3V3": [
+      "C103",
+      "C104",
+      "C108",
+      "C110",
+      "C111",
+      "C112",
+      "C113",
+      "C114",
+      "C115",
+      "C116",
+      "C121",
+      "C301",
+      "C302",
+      "C303",
+      "C307",
+      "C308",
+      "C309",
+      "C313",
+      "C314",
+      "C402",
+      "C413",
+      "C414",
+      "C501",
+      "C502",
+      "C605",
+      "D601",
+      "LCD201",
+      "Q601",
+      "R102",
+      "R103",
+      "R501",
+      "R609",
+      "R613",
+      "U102",
+      "U103",
+      "U105",
+      "U301",
+      "U302",
+      "U303",
+      "U304",
+      "U305",
+      "U306",
+      "U307",
+      "U308",
+      "U401",
+      "U501",
+      "U502",
+      "U602",
+      "U603"
+    ],
+    "BUTTONS": [
+      "U103"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "+3V3",
+      "x": 133.3012,
+      "y": 63.65,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BUTTONS",
+      "x": 133.175,
+      "y": 70.475,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 1,
+    "nets": 4,
+    "copper_segs": 2,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 2,
+    "segs_by_layer": {
+      "B.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 7,
+        "vias": 2,
+        "nets": [
+          "+3V3",
+          "BUTTONS"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "SW102",
+      "value": "4P_button_sw",
+      "fp": "GT-TC026X-HXXX-LX",
+      "dx": -0.0,
+      "dy": 0.7616,
+      "rot": 90.0,
+      "side": "B"
+    }
+  ]
+}

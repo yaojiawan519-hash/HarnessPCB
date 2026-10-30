@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "conn_01x04_pin conn_01x05_pin sw_spdt ts3425ba 098 2.5h 250gf",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "proto_switched_headers"
+  }
+}

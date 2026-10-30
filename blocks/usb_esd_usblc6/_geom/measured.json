@@ -1,0 +1,14 @@
+{
+  "block": "usb_esd_usblc6",
+  "geometry_status": "carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py` 无损收 2 层，见 power_3v3_usb_ldo 卡）按位号原样扣铜。 本块：2 件 / 7 网，铜 37 段 + 7 孔，口岸切口 2 处；GND 裂 2 岛（铺铜删掉的必然结果）。",
+  "parts_xy": {
+    "J1": [
+      104.14,
+      38.735
+    ],
+    "U2": [
+      158.115,
+      41.275
+    ]
+  }
+}

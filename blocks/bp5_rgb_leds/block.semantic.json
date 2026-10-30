@@ -1,0 +1,69 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "io",
+  "rationale": "**RGB 状态灯链**：18 颗 SK6812（自带驱动 IC 的可寻址 RGB），一条 DO→DI 菊花链， 链首串 `R502`（1K 0402，数据线限流/阻尼）接跨页端口 `LEDS_CDO`；每颗灯一只 0.1µF 就近跨 `+VUSB`/`GND`。37 件 / 22 网。电气上极简，价值在**画法与实物**：这是全库唯一一条 \"同一电路复制 18 份、链序决定行为\"的块，正好用来验\"块内重复单元\"这条复用路径。 ⚠ **两种封装、脚序相反**（换料别混）：`SK6812-mini-e` 1=VDD 2=DO 3=GND 4=DI（10 颗， 顶面）；`SK6812-side-a_b` 1=GND 3=VDD 2=DO 4=DI（8 颗，侧发光，沿板边照光）。 ⚠ **链是有序的**，顺序错了灯串不出图：719→707→713→715→716→717→718→714→712→710→ 708→706→702→701→704→703→705→720（720.DO 悬空 = 链尾，`unconnected-(LED720-DO)`）。 链序不是从图上推的，是从板上 `Net-(LEDxxx-DI)` 网名逐个对出来的。 ⚠ **灯沿整板四周铺开**（侧发光要贴板边），所以块框 60.7×60.4mm 几乎就是整板， 内部全是空的——这是\"用面积换外观\"的设计，不是布局松散。 ⚠ **块内不带铺铜**：18 颗灯的地和 5V 原本靠整板铺铜连（22 个 GND 脚没有走线可达）， 拼板时必须重铺，否则这些脚悬空（`naked_plane_pads` 有账）。",
+  "power_rails": [
+    "+VUSB",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "LEDS_CDO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R502/1",
+      "note": "链首数据入口（经 R502 进 LED719.DI）；该网在 `IO-expand-595-mux` 页以 `shape output` 出现，输出侧不在本块"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {},
+  "hot_loop": [],
+  "internal_nets": [
+    "_bp5_rgb_leds_N1",
+    "_bp5_rgb_leds_N10",
+    "_bp5_rgb_leds_N11",
+    "_bp5_rgb_leds_N12",
+    "_bp5_rgb_leds_N13",
+    "_bp5_rgb_leds_N14",
+    "_bp5_rgb_leds_N15",
+    "_bp5_rgb_leds_N16",
+    "_bp5_rgb_leds_N17",
+    "_bp5_rgb_leds_N18",
+    "_bp5_rgb_leds_N2",
+    "_bp5_rgb_leds_N3",
+    "_bp5_rgb_leds_N4",
+    "_bp5_rgb_leds_N5",
+    "_bp5_rgb_leds_N6",
+    "_bp5_rgb_leds_N7",
+    "_bp5_rgb_leds_N8",
+    "_bp5_rgb_leds_N9"
+  ],
+  "notes": [
+    "37 件 / 22 网（IL 记 21 张真网）：1 个信号口岸 `LEDS_CDO` + 轨 `+VUSB`/`GND`；剩下 18 张是**链上每两颗灯之间的 DI 段**（原理图上无名，kicad-cli 叫 `Net-(LEDxxx-DI)`），不出块。件构成：18 颗 SK6812 + 18 只 0.1µF + 1 只串阻。",
+    "⚠ **链是有序的**，顺序错了灯串不出图（DO→DI 逐段）：LED719 → LED707 → LED713 → LED715 → LED716 → LED717 → LED718 → LED714 → LED712 → LED710 → LED708 → LED706 → LED702 → LED701 → LED704 → LED703 → LED705 → LED720。链尾 `LED720.DO` **悬空**（作者没回收，KiCad 自动名 `unconnected-(LED720-DO-Pad2)`）——所以本块的空脚账上就这 1 只，不写进卡。",
+    "⚠ **两种封装、脚序相反**（换料/抄板别混）：`SK6812-mini-e` 1=VDD(`+VUSB`) 2=DO 3=GND 4=DI（10 颗，顶面朝上）；`SK6812-side-a_b` 1=GND 3=VDD(`+VUSB`) 2=DO 4=DI（8 颗，侧发光，沿板边朝外照）。两者都内建驱动 IC，DI 直连即可，不需要外部限流/译码。",
+    "`R502` = **1K 0402**（不是 0R），串在链首数据线上；作者只在这条链的入口放了一只，链内各段是直连的。",
+    "每颗灯一只 0.1µF 0402 跨 `+VUSB`/`GND`（18 只，全部就近贴灯脚）。这批电容是灯链唯一的储能——18 颗全亮时的瞬态电流靠它们扛。",
+    "⚠ **地在这个块里完全靠铺铜**：22 只 GND 脚在块里一根铜都没有（源板就是整板地铺连的）；`+VUSB` 也裂成 3 个铜岛。块不带铺铜，拼板时必须重铺，否则这些脚是真空焊盘（见下面 DRC 那句的来源）。",
+    "⚠ **5V 在块里靠别人家的焊盘换层**：借道块外焊盘 29 处，其中 28 处是 `+VUSB`→相邻块的电容/二极管/IC 脚（都在 In1.Cu），1 处是 `LEDS_CDO`→`U503.13`。换板复用时这些脚不存在，`+VUSB` 的内层段要自己重布。",
+    "⚠ **块框 60.7×60.4mm ≈ 整块板**，中间是空的：侧发光灯必须贴板边才照得出去，这不是布局松散，是外观决定的位置。拼板时这一块要占外圈走廊，别当普通功能块打包。",
+    "4 层板的 `In1.Cu` 段留在块里（16 段）——扣块保真，中间层有铜就照留；拼到 2 层目标板上时要重布。",
+    "DRC 里那 18 条 `lib_footprint_issues` 说的是**本机没装上游的 `dp-LED` 封装库**（\"The current configuration does not include the footprint library 'dp-LED'\"），不是块的问题：板上的封装是上游自己画好带进来的，位号/焊盘/网都对得上。",
+    "板 60.70×60.40mm；铜 370 段 + 41 孔（B 112 / F 242 / In1 16）；死铜删 308 段/孔；口岸切口 18 处、走线出口 0 处；源板在本块这几张网上铺过铜（+VUSB、GND），按「块内不带铺铜」**整张删**，拼板时由整板铺铜接上；sdi.spur 清掉毛刺 18 段 + 23 孔（网 +VUSB, GND）。",
+    "块里 22 个平面网焊盘一根铜都没有（源板就靠铺铜连它们），拼板时由整板铺铜接上。",
+    "借道块外焊盘 29 处：+VUSB 28 处（In1.Cu，落点 C401.1、C403.2、C405.2、C406.1…）；LEDS_CDO 1 处（In1.Cu，落点 U503.13）（逐条清单在 `placement.json.counts.borrowed_pads`）——铜端压在别的块的焊盘上换层续接，块单看这里是断的，拼板时插上就通。",
+    "kicad-cli DRC：isolated_copper 0、clearance 0、shorting 0；未连通 33 条：33 条落在源板铺过铜的网（+VUSB×2、GND×31）——块里不带铺铜，拼板时由整板铺铜接上；违规 39 条除 `track_dangling` 还有 `lib_footprint_issues`，须单独看。明细：track_dangling×21、lib_footprint_issues×18。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 原样扣，4 层板保留原层；灯沿板四周贴边摆——侧发光要朝外——所以块框几乎就是整块板",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "37 件 / 22 网 / 端口 1 + 轨 2；铜 370 段 + 41 孔；死铜删 308；口岸切口 18；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "name": "flash_wson_sockets",
+  "source": "flash-wson-rev3.kicad_pcb",
+  "origin_src_mm": [
+    153.75,
+    86.3586
+  ],
+  "size_mm": [
+    10.45,
+    30.7272
+  ],
+  "ports": {
+    "VCC_CHIP": [
+      "SW1"
+    ],
+    "SCLK": [
+      "J1",
+      "J2"
+    ],
+    "CS": [
+      "J1",
+      "J2"
+    ],
+    "CDO": [
+      "J1",
+      "J2"
+    ],
+    "GND_CHIP": [
+      "SW2"
+    ],
+    "WP": [
+      "J1",
+      "J2"
+    ],
+    "HOLD": [
+      "J1",
+      "J2"
+    ],
+    "CDI": [
+      "J1",
+      "J2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "CDI",
+      "x": 147.1,
+      "y": 88.143,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "CS",
+      "x": 147.1,
+      "y": 90.683,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCLK",
+      "x": 147.1,
+      "y": 97.85,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "CDO",
+      "x": 147.1,
+      "y": 99.1,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HOLD",
+      "x": 147.1,
+      "y": 83.063,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VCC_CHIP",
+      "x": 147.1,
+      "y": 73.25,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 8,
+    "copper_segs": 55,
+    "vias": 6,
+    "stub_kept": 0,
+    "isolated_deleted": 11,
+    "cut_ends": 4,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 4,
+      "F.Cu": 51
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND_CHIP": 4
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 22,
+        "vias": 7,
+        "nets": [
+          "CDO",
+          "CS",
+          "GND_CHIP",
+          "HOLD",
+          "SCLK",
+          "WP"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C1",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 0.25,
+      "dy": -14.3586,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C2",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 0.25,
+      "dy": 0.6414,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U1",
+      "value": "25LCxxx",
+      "fp": "WSON-5x6",
+      "dx": 0.25,
+      "dy": -7.6086,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "U2",
+      "value": "25LCxxx",
+      "fp": "WSON8-6x8",
+      "dx": 0.0,
+      "dy": 8.6414,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

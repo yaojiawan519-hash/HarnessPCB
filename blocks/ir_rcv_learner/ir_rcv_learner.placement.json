@@ -1,0 +1,145 @@
+{
+  "name": "ir_rcv_learner",
+  "source": "bp5-ir-toy-v3-rev3.kicad_pcb",
+  "origin_src_mm": [
+    154.2446,
+    71.761
+  ],
+  "size_mm": [
+    12.4518,
+    6.3208
+  ],
+  "ports": {
+    "IO1": [
+      "J1",
+      "J2"
+    ],
+    "VOUT": [
+      "C3",
+      "C6",
+      "C7",
+      "C8",
+      "D3",
+      "J1",
+      "J2",
+      "R1",
+      "R10",
+      "R12",
+      "R2",
+      "R4",
+      "R5",
+      "R7",
+      "U5"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "D1",
+      "D10",
+      "J1",
+      "J2",
+      "R11",
+      "R13",
+      "R6",
+      "U2",
+      "U3",
+      "U4",
+      "U5"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 147.2188,
+      "y": 71.4125,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO1",
+      "x": 147.2188,
+      "y": 72.0,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 8,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 5,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+      "F.Cu": 8
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 4,
+        "vias": 1,
+        "nets": [
+          "IO1",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C4",
+      "value": "4.7uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -0.4946,
+      "dy": -1.261,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R8",
+      "value": "100R",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.7446,
+      "dy": -1.261,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R9",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": -1.2446,
+      "dy": 1.739,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U1",
+      "value": "OS1200MW-A1",
+      "fp": "TSOP18XX",
+      "dx": 2.7498,
+      "dy": -0.0012,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

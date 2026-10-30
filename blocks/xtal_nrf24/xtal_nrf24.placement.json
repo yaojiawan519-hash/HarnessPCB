@@ -1,0 +1,146 @@
+{
+  "name": "xtal_nrf24",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    46.0875,
+    39.39
+  ],
+  "size_mm": [
+    6.515,
+    4.62
+  ],
+  "ports": {
+    "NRF_XC1": [
+      "U4"
+    ],
+    "NRF_XC2": [
+      "U4"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C16",
+      "C17",
+      "C18",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J1",
+      "J2",
+      "J3",
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "U1",
+      "U2",
+      "U3",
+      "U4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 45.9,
+      "y": 36.28,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_XC1",
+      "x": 46.9,
+      "y": 36.28,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_XC2",
+      "x": 46.4,
+      "y": 36.28,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "not_built": [],
+    "nets": 3,
+    "copper_segs": 19,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 5,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "F.Cu": 19
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 4,
+        "vias": 2,
+        "nets": [
+          "GND",
+          "NRF_XC1",
+          "NRF_XC2"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C13",
+      "value": "12p",
+      "fp": "C_0402_1005Metric",
+      "dx": 2.7625,
+      "dy": 0.585,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C14",
+      "value": "12p",
+      "fp": "C_0402_1005Metric",
+      "dx": -2.7625,
+      "dy": 0.585,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R5",
+      "value": "1M",
+      "fp": "R_0402_1005Metric",
+      "dx": 0.9875,
+      "dy": -1.815,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Y1",
+      "value": "16MHz",
+      "fp": "Crystal_SMD_3225-4Pin_3.2x2.5mm",
+      "dx": 0.0125,
+      "dy": 0.585,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

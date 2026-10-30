@@ -1,0 +1,81 @@
+project:
+  kind: block
+  name: bp5_ldo_3v3
+  version: sdi/1
+defs:
+  bp5_ldo_3v3:
+    category: power
+    rationale: '**USB 5V → 3.3V LDO**：U401 = `ME6211A33PG-N`（SOT-89-3）， 逐脚 `1=GND 2=VUSB（IN） 3=+3V3（OUT）`；C401
+      4.7µF 在输入侧、C402 4.7µF 在输出侧 （`C402.1 = +3V3`、`C402.2 = GND`）。3 件 / 3 网。 ⚠ **板上 3.3V 只有一个来源**：`VUSB`（USB-C
+      的 VBUS 经 L201 过来）。也就是说 **拔掉 USB 这板子没有任何电**——Bus Pirate 5 自己的 VOUT 不进 3V3（VOUT 由主板的 电源页管，走的是别处）。想改成"电池/外部
+      3V3 也能喂"，得在拼板层另做电源选择。 作者原话（卡片 `decoration`）：「Worst case power budget is 220mA during full buffer
+      short. Sized for 145mA max, 100mA typical. C402 can be a ceremic capacitor with 0-2ohms ESR」——**C402
+      允许 0~2Ω ESR 的陶瓷电容**，不用非上钽电容。'
+    ports: []
+    rails:
+    - +3V3
+    - +VUSB
+    - GND
+    parts:
+    - ref: C401
+      lib: Device:C_Small
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C402
+      lib: Device:C_Small
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U401
+      lib: Regulator_Linear:AP2204RA-3.3
+      value: ME6211A33PG-N
+      footprint: Package_TO_SOT_SMD:SOT-89-3
+    conns:
+    - ref: C402
+      pin: '1'
+      net: +3V3
+    - ref: U401
+      pin: '3'
+      net: +3V3
+    - ref: C401
+      pin: '1'
+      net: +VUSB
+    - ref: U401
+      pin: '2'
+      net: +VUSB
+    - ref: C401
+      pin: '2'
+      net: GND
+    - ref: C402
+      pin: '2'
+      net: GND
+    - ref: U401
+      pin: '1'
+      net: GND
+    placement_prior:
+      anchor: U401
+      max_mm: 8.0
+      rationale: U401 在板右上（142.57, 67.65），两只 4.7µF 在它右边 3.6mm 竖排（输入上、输出下）， 离 USB-C 座 12.7mm——"LDO 离输入磁珠近、两只电容贴
+        IC"是这块板的事实。
+    slots: []
+    hot_loop: []
+    provenance:
+      basis: 3 件 / 3 网 / 端口 0 + 轨 3；铜 2 段 + 0 孔；死铜删 22；口岸切口 1
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 扣，4 层板； U401 rot 90°，C401/C402
+      在它右侧一竖排）
+    notes:
+    - '**3.3V LDO**：U401 = `ME6211A33PG-N`（SOT-89-3：**1=GND 2=VIN 3=VOUT**）+ C401 4.7µF 输入 + C402 4.7µF
+      输出。3 件 / 3 网 / **端口 0** + 轨 `+VUSB`/`+3V3`/`GND`。'
+    - '**没有信号端口**：这块的接口就是三条电源轨——输入 `+VUSB`、输出 `+3V3`、地 `GND`。拼装时按轨名接，不用管端口表。'
+    - '**作者原话（`decoration`，一字未改）**：`Worst case power budget is 220mA during full buffer short. Sized for
+      145mA max, 100mA typical.` / `C402 can be a ceremic capacitor with 0-2ohms ESR`。也就是这只 4.7µF 输出电容**不要求低
+      ESR**（0–2Ω 都行）。'
+    - ⚠ **本板无 USB 就没电**：`+VUSB` 只从 `bp5_usb_c_port` 来（VBUS 经磁珠）。要电池供电得在 `+VUSB` 上加一路输入。
+    - '**铜**：6 段 + 4 孔、0 铺铜；孤立铜删 22 段/孔；口沿截断 1 处；残迹留 0。`naked_plane_pads` 4（`+3V3` 1 / GND 3 —— SOT-89
+      的散热脚就是 1 号地脚，靠铺铜散热），`island_split` `+3V3×2` + `GND×3`。'

@@ -1,0 +1,71 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "display",
+  "rationale": "**2.0 寸并口/SPI IPS 屏 + 背光开关**：LCD201 是焊接式 FPC 屏（SPI_CLK/SPI_CDO/DISPLAY_CS/ DISPLAY_DP/DISPLAY_RESET 由 RP2040 直接驱动）。背光 LED-A 直接接 +VUSB，LED-K 经 R209(33R) 到 Q202（MMBT7002K N-MOS）漏极，Q202 栅极经 R208(200R) 由 595 的 DISPLAY_BACKLIGHT 控制—— **低边开关**，写 1 才亮。 ⚠ 作者批注「3 LEDs, 3.2Vf @ 20mA，30R 限流，R209 最小 0805」。⚠ **按 3 串 3.2V=9.6V 算 5V 根本点不亮**，说明这块屏的背光是并/串混接——装料前必须按实物量，别照批注算电阻。 ⚠ 屏的 1/5/6/12 四只脚在符号里是**隐藏的 power_in 脚**（都叫 GND）：图上只画了脚 1， 按几何算另外三只会浮空，而 kicad-cli 网表把它们全并进 GND。IL 侧为此补了\"隐藏电源脚\" 规则（`geom.lib_hidden_power`），否则\"图↔板同一电路\"门会红。 ⚠ 屏占板面一大块（块框 50.8×36.5mm 几乎就是屏的轮廓），中间是开窗不是空白。",
+  "power_rails": [
+    "+3V3",
+    "+VUSB",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "DISPLAY_BACKLIGHT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "DISPLAY_CS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "DISPLAY_DP",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "DISPLAY_RESET",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SPI_CDO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SPI_CLK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "board",
+    "max_mm": 0,
+    "rationale": "屏居中、FPC 焊盘朝板内便于引出；背光开关管与两只电阻贴屏的 LED-K 脚（大电流回路越短 越好）；数据线走屏的另一侧，避免和背光回路并行。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "DISPLAY_LED-K",
+    "_bp5_lcd_display_N1",
+    "_bp5_lcd_display_N2"
+  ],
+  "geometry_status": "schematic-only —— 只交了原理图，板级几何（摆放/布线/DRC）未做",
+  "provenance": {
+    "source": "human:open-source",
+    "basis": "从 Bus Pirate 5 主板 REV10A 的 `IO-expand-595-mux` 子页裁出，板从整板 `REV10a.kicad_pcb` 按位号原样扣铜（只做平移 + 删死铜）。",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

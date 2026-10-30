@@ -1,0 +1,569 @@
+{
+  "name": "mcu_esp32s3",
+  "source": "Watchy.kicad_pcb",
+  "origin_src_mm": [
+    84.5736,
+    85.1291
+  ],
+  "size_mm": [
+    21.1371,
+    21.6983
+  ],
+  "ports": {
+    "USB_D-": [
+      "U5"
+    ],
+    "MOSI": [
+      "J3"
+    ],
+    "+3V3": [
+      "C1",
+      "C10",
+      "C14",
+      "C20",
+      "C28",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "D2",
+      "J3",
+      "L2",
+      "M1",
+      "R10",
+      "R11",
+      "R18",
+      "R19",
+      "R20",
+      "R4",
+      "R7",
+      "U1",
+      "U2",
+      "U6"
+    ],
+    "SCL": [
+      "R20",
+      "U6"
+    ],
+    "BTN4": [
+      "R11",
+      "SW4"
+    ],
+    "BTN2": [
+      "R7",
+      "SW1",
+      "U1"
+    ],
+    "RES": [
+      "J3",
+      "R19"
+    ],
+    "ACC_INT_2": [
+      "U6"
+    ],
+    "BUSY": [
+      "J3"
+    ],
+    "ADC": [
+      "C11",
+      "R8",
+      "R9"
+    ],
+    "DC": [
+      "J3"
+    ],
+    "USB_DET": [
+      "R14",
+      "R15"
+    ],
+    "CS": [
+      "J3"
+    ],
+    "SCK": [
+      "J3"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C20",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "D4",
+      "J1",
+      "J2",
+      "J3",
+      "Q2",
+      "R15",
+      "R16",
+      "R17",
+      "R2",
+      "R3",
+      "R9",
+      "SW1",
+      "SW2",
+      "SW3",
+      "SW4",
+      "U1",
+      "U2",
+      "U3",
+      "U5",
+      "U6"
+    ],
+    "BTN1": [
+      "R4",
+      "SW2"
+    ],
+    "STAT": [
+      "R5",
+      "R6"
+    ],
+    "EN": [
+      "U1"
+    ],
+    "BTN3": [
+      "R10",
+      "SW3",
+      "U1"
+    ],
+    "VIB_PWM": [
+      "R13"
+    ],
+    "USB_D+": [
+      "U5"
+    ],
+    "ACC_INT_1": [
+      "U6"
+    ],
+    "SDA": [
+      "R18",
+      "U6"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "+3V3",
+      "x": 84.34,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 92.27,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 95.9421,
+      "y": 95.3321,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 84.5618,
+      "y": 96.7782,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 73.205,
+      "y": 84.1,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 73.205,
+      "y": 83.455,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "BUSY",
+      "x": 87.4,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "RES",
+      "x": 86.9,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "RES",
+      "x": 87.6517,
+      "y": 96.7782,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "DC",
+      "x": 86.4,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCK",
+      "x": 85.4,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "ADC",
+      "x": 95.9421,
+      "y": 88.3,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "CS",
+      "x": 85.9,
+      "y": 96.7782,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BTN1",
+      "x": 95.1024,
+      "y": 96.7782,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "STAT",
+      "x": 94.8,
+      "y": 96.7782,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "BTN2",
+      "x": 95.9421,
+      "y": 87.77,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "BTN3",
+      "x": 73.205,
+      "y": 81.749,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "BTN4",
+      "x": 75.7599,
+      "y": 96.7782,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 25,
+    "not_built": [],
+    "nets": 54,
+    "copper_segs": 311,
+    "vias": 34,
+    "stub_kept": 0,
+    "isolated_deleted": 51,
+    "cut_ends": 31,
+    "exit_points": 18,
+    "segs_by_layer": {
+      "B.Cu": 90,
+      "F.Cu": 172,
+      "In2.Cu": 49
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->C1.1": 1,
+      "+3V3->C3.1": 1,
+      "+3V3->C5.1": 1,
+      "+3V3->C6.1": 1,
+      "+3V3->R18.2": 1,
+      "+3V3->R19.1": 1,
+      "+3V3->R20.2": 1,
+      "+3V3->R7.2": 1,
+      "+3V3->U1.6": 1,
+      "+3V3->U6.10": 1,
+      "+3V3->U6.3": 1,
+      "+3V3->U6.7": 1,
+      "ACC_INT_1->U6.5": 1,
+      "ACC_INT_2->U6.6": 1,
+      "BTN2->R7.1": 1,
+      "BTN3->R10.1": 1,
+      "BTN3->U1.5": 1,
+      "EN->U1.3": 1,
+      "GND->C3.2": 1,
+      "GND->C5.2": 1,
+      "SCL->R20.1": 1,
+      "SCL->U6.12": 1,
+      "SDA->R18.1": 1,
+      "SDA->U6.2": 1,
+      "USB_D+->U5.1": 1,
+      "USB_D-->U5.3": 1,
+      "USB_DET->R14.2": 1,
+      "USB_DET->R15.1": 1,
+      "VIB_PWM->R13.2": 1
+    },
+    "island_split": {
+      "+3V3": 2,
+      "GND": 9
+    },
+    "dangling": {
+      "total": 30,
+      "port_cuts": 30,
+      "port_cut_nets": [
+        "+3V3",
+        "ACC_INT_1",
+        "ACC_INT_2",
+        "BTN2",
+        "BTN3",
+        "EN",
+        "GND",
+        "SCL",
+        "SDA",
+        "USB_D+",
+        "USB_D-",
+        "USB_DET",
+        "VIB_PWM"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 67,
+        "vias": 21,
+        "nets": [
+          "+3V3",
+          "ADC",
+          "BTN1",
+          "BTN4",
+          "BUSY",
+          "CS",
+          "DC",
+          "GND",
+          "MOSI",
+          "RES",
+          "SCK",
+          "STAT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "AE1",
+      "value": "Antenna_Chip",
+      "fp": "SWRA117D",
+      "dx": -10.3186,
+      "dy": -5.9491,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C13",
+      "value": "100nF",
+      "fp": "C_0402_1005Metric",
+      "dx": -0.5736,
+      "dy": 5.3609,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C15",
+      "value": "1uF",
+      "fp": "C_0402_1005Metric",
+      "dx": -0.5736,
+      "dy": 6.2809,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C16",
+      "value": "22pF",
+      "fp": "C_0402_1005Metric",
+      "dx": 9.5314,
+      "dy": 4.3409,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C17",
+      "value": "18pF",
+      "fp": "C_0402_1005Metric",
+      "dx": -6.1436,
+      "dy": -0.5691,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C18",
+      "value": "18pF",
+      "fp": "C_0402_1005Metric",
+      "dx": -6.1436,
+      "dy": 1.1109,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C19",
+      "value": "22pF",
+      "fp": "C_0402_1005Metric",
+      "dx": 5.2064,
+      "dy": 5.8109,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C2",
+      "value": "1uF",
+      "fp": "C_0402_1005Metric",
+      "dx": -0.4436,
+      "dy": -5.1891,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C7",
+      "value": "TBD",
+      "fp": "C_0402_1005Metric",
+      "dx": 2.7664,
+      "dy": -4.9091,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C9",
+      "value": "TBD",
+      "fp": "C_0402_1005Metric",
+      "dx": 5.5264,
+      "dy": -3.7991,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "L1",
+      "value": "TBD",
+      "fp": "L_0402_1005Metric",
+      "dx": 4.1464,
+      "dy": -4.2691,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "10K",
+      "fp": "R_0402_1005Metric",
+      "dx": -1.3736,
+      "dy": -5.1691,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R12",
+      "value": "TBD",
+      "fp": "R_0402_1005Metric",
+      "dx": 6.5964,
+      "dy": -1.0491,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP1",
+      "value": "TX",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": 9.0864,
+      "dy": 2.4309,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP2",
+      "value": "RX",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": 8.5864,
+      "dy": -0.4791,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP3",
+      "value": "BOOT",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -4.3136,
+      "dy": 3.2909,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP4",
+      "value": "3V3",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": 2.1564,
+      "dy": 7.0009,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP5",
+      "value": "GND",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": 0.2964,
+      "dy": 7.7409,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP6",
+      "value": "SCL",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -1.5836,
+      "dy": 8.4509,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP7",
+      "value": "SDA",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -2.4836,
+      "dy": 6.6609,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U4",
+      "value": "ESP32-S3",
+      "fp": "QFN-56-1EP_7x7mm_P0.4mm_EP5.6x5.6mm",
+      "dx": 1.5464,
+      "dy": 0.7809,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "Y1",
+      "value": "32.768KHz",
+      "fp": "Crystal_SMD_2012-2Pin_2.0x1.2mm",
+      "dx": -4.3336,
+      "dy": 0.2709,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "Y2",
+      "value": "40MHz",
+      "fp": "Crystal_SMD_2520-4Pin_2.5x2.0mm",
+      "dx": 7.3664,
+      "dy": 4.9309,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

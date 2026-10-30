@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "1.5a 22r 4.7uf 5.1k type-c-31-m-12",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_usb_c_port"
+  }
+}

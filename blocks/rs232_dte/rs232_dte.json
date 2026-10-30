@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 0.47uf com1 max3232",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "rs232_dte"
+  }
+}

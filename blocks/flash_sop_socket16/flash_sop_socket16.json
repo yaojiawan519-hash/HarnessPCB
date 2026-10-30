@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 16pin 2k led",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "flash_sop_socket16"
+  }
+}

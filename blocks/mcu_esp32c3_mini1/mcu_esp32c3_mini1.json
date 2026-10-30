@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100nf 10v 10kr 1% 10nf 10v 1uf 16v 32.768hz 470r 1% dnp esp32-c3-mini-1",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "mcu_esp32c3_mini1"
+  }
+}

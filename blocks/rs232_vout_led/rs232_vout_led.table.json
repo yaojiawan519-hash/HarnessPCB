@@ -1,0 +1,50 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "rs232_vout_led",
+ "interface": [],
+ "power_rails": [
+  "GND",
+  "VOUT"
+ ],
+ "parts": [
+  {
+   "ref": "D2",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 45.72,
+   "y": 69.85
+  },
+  {
+   "ref": "R2",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 38.1,
+   "y": 69.85
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "_rs232_vout_led_N1"
+  },
+  {
+   "ref": "R2",
+   "pin": "2",
+   "net": "_rs232_vout_led_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

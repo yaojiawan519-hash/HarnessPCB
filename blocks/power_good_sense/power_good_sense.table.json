@@ -1,0 +1,156 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "power_good_sense",
+ "interface": [
+  {
+   "net": "PWR_GOOD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R8-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "来自两根插座的 147 / 7 脚；低=内存条就绪（经 R8 1K 进 Q5 基极）"
+  },
+  {
+   "net": "PWR_GOOD_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q6-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "开集输出，R13 6.8K 上拉到 BULK_VIN；低=就绪。可直连 MCU 的 GPIO（5V 电平）"
+  }
+ ],
+ "power_rails": [
+  "+3.3V",
+  "BULK_VIN",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R13",
+   "lib": "Device:R",
+   "value": "6.8K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 53.34,
+   "y": 153.67
+  },
+  {
+   "ref": "Q6",
+   "lib": "Transistor_BJT:BC817",
+   "value": "BC817",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 53.34,
+   "y": 172.72
+  },
+  {
+   "ref": "R10",
+   "lib": "Device:R",
+   "value": "680R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 26.67,
+   "y": 166.37
+  },
+  {
+   "ref": "R11",
+   "lib": "Device:R",
+   "value": "330R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 26.67,
+   "y": 177.8
+  },
+  {
+   "ref": "R8",
+   "lib": "Device:R",
+   "value": "1K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 36.83,
+   "y": 184.15
+  },
+  {
+   "ref": "Q5",
+   "lib": "Transistor_BJT:BC807",
+   "value": "BC807",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 36.83,
+   "y": 175.26
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R10",
+   "pin": "2",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "Q6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R11",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R8",
+   "pin": "1",
+   "net": "PWR_GOOD"
+  },
+  {
+   "ref": "Q6",
+   "pin": "3",
+   "net": "PWR_GOOD_OUT"
+  },
+  {
+   "ref": "R13",
+   "pin": "1",
+   "net": "PWR_GOOD_OUT"
+  },
+  {
+   "ref": "Q5",
+   "pin": "2",
+   "net": "_power_good_sense_N1"
+  },
+  {
+   "ref": "R10",
+   "pin": "1",
+   "net": "_power_good_sense_N1"
+  },
+  {
+   "ref": "R11",
+   "pin": "2",
+   "net": "_power_good_sense_N1"
+  },
+  {
+   "ref": "Q5",
+   "pin": "3",
+   "net": "_power_good_sense_N2"
+  },
+  {
+   "ref": "Q6",
+   "pin": "1",
+   "net": "_power_good_sense_N2"
+  },
+  {
+   "ref": "Q5",
+   "pin": "1",
+   "net": "_power_good_sense_N3"
+  },
+  {
+   "ref": "R8",
+   "pin": "2",
+   "net": "_power_good_sense_N3"
+  },
+  {
+   "ref": "R13",
+   "pin": "2",
+   "net": "BULK_VIN"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

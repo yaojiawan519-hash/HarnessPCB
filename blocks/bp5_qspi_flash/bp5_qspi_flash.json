@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 1k 2.2uf dnf sw_spst w25q128jvsiq",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_qspi_flash"
+  }
+}

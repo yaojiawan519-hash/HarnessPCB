@@ -1,0 +1,238 @@
+{
+  "name": "accel_bma423",
+  "source": "Watchy.kicad_pcb",
+  "origin_src_mm": [
+    79.5477,
+    82.4366
+  ],
+  "size_mm": [
+    6.7918,
+    4.6632
+  ],
+  "ports": {
+    "SCL": [
+      "TP6",
+      "U4"
+    ],
+    "+3V3": [
+      "C1",
+      "C10",
+      "C14",
+      "C20",
+      "C28",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "D2",
+      "J3",
+      "L2",
+      "M1",
+      "R1",
+      "R10",
+      "R11",
+      "R19",
+      "R4",
+      "R7",
+      "TP4",
+      "U1",
+      "U2",
+      "U4"
+    ],
+    "ACC_INT_2": [
+      "U4"
+    ],
+    "ACC_INT_1": [
+      "U4"
+    ],
+    "SDA": [
+      "TP7",
+      "U4"
+    ],
+    "GND": [
+      "AE1",
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C20",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C9",
+      "D4",
+      "J1",
+      "J2",
+      "J3",
+      "Q2",
+      "R15",
+      "R16",
+      "R17",
+      "R2",
+      "R3",
+      "R9",
+      "SW1",
+      "SW2",
+      "SW3",
+      "SW4",
+      "TP5",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "Y2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 77.95,
+      "y": 85.5682,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 75.3518,
+      "y": 80.57,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 83.7436,
+      "y": 83.76,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 83.7436,
+      "y": 83.74,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 83.7436,
+      "y": 84.758,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 75.3518,
+      "y": 83.8182,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 79.681,
+      "y": 85.5682,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 79.3786,
+      "y": 85.5682,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 8,
+    "copper_segs": 79,
+    "vias": 8,
+    "stub_kept": 1,
+    "isolated_deleted": 7,
+    "cut_ends": 11,
+    "exit_points": 8,
+    "segs_by_layer": {
+      "B.Cu": 15,
+      "F.Cu": 48,
+      "In2.Cu": 16
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->R1.2": 1,
+      "+3V3->U1.6": 1,
+      "ACC_INT_1->U4.19": 1,
+      "ACC_INT_2->U4.18": 1,
+      "GND->U1.1": 1,
+      "SCL->U4.16": 1,
+      "SDA->U4.17": 1
+    },
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 12,
+      "port_cuts": 12,
+      "port_cut_nets": [
+        "+3V3",
+        "ACC_INT_1",
+        "ACC_INT_2",
+        "GND",
+        "SCL",
+        "SDA"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 0,
+        "vias": 2,
+        "nets": [
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "R18",
+      "value": "10K",
+      "fp": "R_0402_1005Metric",
+      "dx": -1.3777,
+      "dy": 0.2034,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R20",
+      "value": "10K",
+      "fp": "R_0402_1005Metric",
+      "dx": 0.6623,
+      "dy": -1.8366,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U6",
+      "value": "BMA423",
+      "fp": "LGA-12_2x2mm_P0.5mm",
+      "dx": 0.3423,
+      "dy": -0.1166,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

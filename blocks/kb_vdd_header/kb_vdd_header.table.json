@@ -1,0 +1,32 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_vdd_header",
+ "interface": [],
+ "power_rails": [
+  "GND",
+  "VDD"
+ ],
+ "parts": [
+  {
+   "ref": "J9",
+   "lib": "Connector:Conn_01x02_Pin",
+   "value": "Conn_01x02_Pin",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+   "x": 163.83,
+   "y": 62.23
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J9",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J9",
+   "pin": "1",
+   "net": "VDD"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

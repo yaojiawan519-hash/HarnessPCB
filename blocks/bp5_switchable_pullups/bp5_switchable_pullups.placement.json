@@ -1,0 +1,459 @@
+{
+  "name": "bp5_switchable_pullups",
+  "source": "REV10a.kicad_pcb",
+  "origin_src_mm": [
+    128.7611,
+    111.166
+  ],
+  "size_mm": [
+    49.4229,
+    9.36
+  ],
+  "ports": {
+    "PULLUP_EN": [
+      "U503"
+    ],
+    "BPIO4": [
+      "J301",
+      "J302",
+      "RN309",
+      "RN317"
+    ],
+    "BPIO3": [
+      "J301",
+      "J302",
+      "RN305",
+      "RN318"
+    ],
+    "BPIO5": [
+      "J301",
+      "J302",
+      "RN309",
+      "RN317"
+    ],
+    "BPIO1": [
+      "J301",
+      "J302",
+      "RN305",
+      "RN318"
+    ],
+    "+VUSB": [
+      "C201",
+      "C202",
+      "C401",
+      "C403",
+      "C405",
+      "C406",
+      "C503",
+      "C504",
+      "C506",
+      "C507",
+      "C508",
+      "C509",
+      "C510",
+      "C601",
+      "C602",
+      "C701",
+      "C702",
+      "C703",
+      "C704",
+      "C705",
+      "C706",
+      "C707",
+      "C708",
+      "C710",
+      "C712",
+      "C713",
+      "C714",
+      "C715",
+      "C716",
+      "C717",
+      "C718",
+      "C719",
+      "C720",
+      "D500",
+      "D501",
+      "D502",
+      "D503",
+      "D504",
+      "L201",
+      "LCD201",
+      "LED701",
+      "LED702",
+      "LED703",
+      "LED704",
+      "LED705",
+      "LED706",
+      "LED707",
+      "LED708",
+      "LED710",
+      "LED712",
+      "LED713",
+      "LED714",
+      "LED715",
+      "LED716",
+      "LED717",
+      "LED718",
+      "LED719",
+      "LED720",
+      "R320",
+      "R402",
+      "R601",
+      "R602",
+      "U401",
+      "U402",
+      "U404",
+      "U503",
+      "U504",
+      "U505",
+      "U506",
+      "U601"
+    ],
+    "BPIO7": [
+      "J301",
+      "J302",
+      "RN309",
+      "RN317"
+    ],
+    "VREF_VOUT": [
+      "C304",
+      "C305",
+      "C306",
+      "C310",
+      "C311",
+      "C312",
+      "C315",
+      "C316",
+      "J301",
+      "Q401",
+      "Q402",
+      "R301",
+      "R319",
+      "U301",
+      "U302",
+      "U303",
+      "U304",
+      "U305",
+      "U306",
+      "U307",
+      "U308"
+    ],
+    "BPIO6": [
+      "J301",
+      "J302",
+      "RN309",
+      "RN317"
+    ],
+    "BPIO0": [
+      "J301",
+      "J302",
+      "RN305",
+      "RN318"
+    ],
+    "BPIO2": [
+      "J301",
+      "J302",
+      "RN305",
+      "RN318"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VREF_VOUT",
+      "x": 110.18,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 151.125,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 148.2989,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 112.95,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 115.95,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 154.1,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 107.03,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 145.85,
+      "y": 104.3726,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 104.6726,
+      "y": 104.3726,
+      "layer": "In1.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 148.5,
+      "y": 104.3726,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 145.5,
+      "y": 104.3726,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 144.0274,
+      "y": 104.3726,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VREF_VOUT",
+      "x": 151.6702,
+      "y": 104.3726,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+VUSB",
+      "x": 139.075,
+      "y": 117.9594,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+VUSB",
+      "x": 155.586,
+      "y": 108.4463,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+VUSB",
+      "x": 104.3,
+      "y": 104.3726,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+VUSB",
+      "x": 136.9594,
+      "y": 117.9594,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+VUSB",
+      "x": 109.65,
+      "y": 117.9594,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "PULLUP_EN",
+      "x": 134.955,
+      "y": 104.3726,
+      "layer": "In1.Cu"
+    }
+  ],
+  "counts": {
+    "members": 11,
+    "not_built": [],
+    "nets": 19,
+    "copper_segs": 236,
+    "vias": 22,
+    "stub_kept": 1,
+    "isolated_deleted": 61,
+    "cut_ends": 29,
+    "exit_points": 19,
+    "segs_by_layer": {
+      "B.Cu": 20,
+      "F.Cu": 146,
+      "In1.Cu": 70
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "BPIO0->J301.2": 1,
+      "BPIO0->RN305.1": 1,
+      "BPIO0->RN318.8": 1,
+      "BPIO1->J301.3": 1,
+      "BPIO1->RN305.2": 1,
+      "BPIO1->RN318.7": 1,
+      "BPIO2->J301.4": 1,
+      "BPIO2->RN305.3": 1,
+      "BPIO2->RN318.6": 1,
+      "BPIO3->J301.5": 1,
+      "BPIO3->RN305.4": 1,
+      "BPIO3->RN318.5": 1,
+      "BPIO4->J301.6": 1,
+      "BPIO4->RN309.1": 1,
+      "BPIO4->RN317.8": 1,
+      "BPIO5->J301.7": 1,
+      "BPIO5->RN309.2": 1,
+      "BPIO5->RN317.7": 1,
+      "BPIO6->J301.8": 1,
+      "BPIO6->RN309.3": 1,
+      "BPIO6->RN317.6": 1,
+      "BPIO7->J301.9": 1,
+      "BPIO7->RN309.4": 1,
+      "BPIO7->RN317.5": 1,
+      "VREF_VOUT->C304.1": 1,
+      "VREF_VOUT->C306.1": 1,
+      "VREF_VOUT->C310.1": 1,
+      "VREF_VOUT->J301.1": 1,
+      "VREF_VOUT->R301.1": 1
+    },
+    "island_split": {
+      "VREF_VOUT": 2
+    },
+    "dangling": {
+      "total": 31,
+      "port_cuts": 31,
+      "port_cut_nets": [
+        "BPIO0",
+        "BPIO1",
+        "BPIO2",
+        "BPIO3",
+        "BPIO4",
+        "BPIO5",
+        "BPIO6",
+        "BPIO7",
+        "VREF_VOUT"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 9,
+        "vias": 2,
+        "nets": [
+          "+VUSB",
+          "BPIO6",
+          "PULLUP_EN"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "Q300",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": 19.8205,
+      "dy": 1.8001,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q301",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": 22.3589,
+      "dy": -2.081,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q302",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": 19.8189,
+      "dy": -0.3817,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q303",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": 17.5509,
+      "dy": 3.505,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q304",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": -17.7684,
+      "dy": 0.0132,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q305",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": -15.2355,
+      "dy": 2.6174,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q306",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": -17.5109,
+      "dy": 2.208,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q307",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": -20.1861,
+      "dy": -1.946,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R313",
+      "value": "10K",
+      "fp": "R_0402_1005Metric",
+      "dx": 24.2164,
+      "dy": -2.2097,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "RN311",
+      "value": "10K",
+      "fp": "R_Array_Convex_4x0402",
+      "dx": 16.7889,
+      "dy": 0.709,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "RN312",
+      "value": "10K",
+      "fp": "R_Array_Convex_4x0402",
+      "dx": -15.2311,
+      "dy": 0.074,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

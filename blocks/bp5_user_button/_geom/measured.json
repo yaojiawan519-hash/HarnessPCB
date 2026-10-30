@@ -1,0 +1,10 @@
+{
+ "block": "bp5_user_button",
+ "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整机主板的整板 REV10a.kicad_pcb 扣，4 层板、0.8mm 铜窗口外扩；交付板 10.20×11.87mm；9 段铜 + 2 孔 + 0 张铺铜）",
+ "parts_xy": {
+  "SW102": [
+   269.24,
+   143.51
+  ]
+ }
+}

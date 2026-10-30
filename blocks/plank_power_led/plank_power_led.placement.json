@@ -1,0 +1,103 @@
+{
+  "name": "plank_power_led",
+  "source": "stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb",
+  "origin_src_mm": [
+    101.9631,
+    77.7795
+  ],
+  "size_mm": [
+    3.4661,
+    10.851
+  ],
+  "ports": {
+    "VOUT": [
+      "J1",
+      "J10",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ],
+    "GND": [
+      "J1",
+      "J10",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 101.25,
+      "y": 84.005,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 1,
+    "segs_by_layer": {
+      "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 1,
+        "vias": 0,
+        "nets": [
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D1",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -0.7131,
+      "dy": -1.7795,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -0.7131,
+      "dy": 3.7205,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

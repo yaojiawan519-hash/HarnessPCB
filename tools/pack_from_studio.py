@@ -42,6 +42,33 @@ FLAG_FREEZE_SNAPSHOT = REPO / "docs" / "参数快照_FLAG_FREEZE.md"
 SKIP_NAMES = {"__pycache__", ".venv", ".git", ".DS_Store", ".pytest_cache"}
 SKIP_SUFFIXES = (".pyc", ".lck", ".pt", ".npz")
 
+# 正文清洗（P4 数据剥离口径的**门禁化**）：2026-10-31 实测 `sdi/blockpcb.py` 里
+# 一句老的血统模版 `'author': 'yaoyuan'` 随白名单原样进了包——P4 当年手工 grep
+# 出来的"零命中"，新目录一加就破了。从此改成**同步时自动清洗 + 断言**：
+# 命中禁用串直接整批失败，靠人记着 grep 是不可靠的。
+TEXT_SUFFIXES = (".py", ".md", ".txt", ".json", ".yaml", ".yml", ".cfg", ".toml", ".sh")
+RENAMES = (("yaoyuan", "HarnessPCB"),)
+# 只禁**绝对路径**与**用户名**。相对的工作台目录名（`PCBStudioV2/DesignBlocks`）在
+# docstring 里是正当的指路，包里到处都是，禁它等于逼人改一堆注释。
+FORBIDDEN = ("yaoyuan", "/Users/")
+
+
+def payload_for(src: Path) -> bytes:
+    """发行仓里该文件的字节 = 源文件 + 清洗。二进制原样。"""
+    data = src.read_bytes()
+    if src.suffix not in TEXT_SUFFIXES:
+        return data
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError:
+        return data
+    for old, new in RENAMES:
+        text = text.replace(old, new)
+    for bad in FORBIDDEN:
+        if bad in text:
+            raise SystemExit(f"✗ 数据剥离失败：{src} 仍含 {bad!r}")
+    return text.encode("utf-8")
+
 
 def default_studio() -> Path:
     """默认工作台根：发行仓的平级兄弟目录 PCBStudioV2。"""
@@ -138,15 +165,20 @@ def write_freeze_snapshot(studio: Path, git_rev: str) -> bool:
 def check(files: dict[str, Path], studio: Path, git_rev: str) -> int:
     """对比 executors/ 现状与应收集合；返回差异数。"""
     diffs = 0
+    # 现状侧要用和收集侧同一把筛子：包里跑一次 sdi 就会生成 __pycache__/*.pyc，
+    # 不筛它们会被当成"多余"报差异，把 --check 弄脏（2026-10-31 实测 11 条）。
     have = {p.relative_to(EXECUTORS).as_posix(): p
-            for p in EXECUTORS.rglob("*") if p.is_file()} if EXECUTORS.is_dir() else {}
+            for p in EXECUTORS.rglob("*")
+            if p.is_file()
+            and not any(part in SKIP_NAMES for part in p.parts)
+            and p.suffix not in SKIP_SUFFIXES} if EXECUTORS.is_dir() else {}
 
     for rel, src in sorted(files.items()):
         dst = EXECUTORS / rel
         if not dst.exists():
             print(f"  缺失  {rel}")
             diffs += 1
-        elif sha256(dst) != sha256(src):
+        elif dst.read_bytes() != payload_for(src):
             print(f"  变动  {rel}")
             diffs += 1
     for rel in sorted(set(have) - set(files)):
@@ -177,11 +209,13 @@ def sync(files: dict[str, Path], studio: Path) -> None:
     for rel, src in sorted(files.items()):
         dst = EXECUTORS / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, dst)
+        data = payload_for(src)          # 清洗后再落盘（不是 copy2）
+        dst.write_bytes(data)
+        shutil.copystat(src, dst)
         entries[rel] = {
             "sha256": sha256(dst),
             "source": rel,  # 相对工作台根（绝不记绝对路径，防用户名外泄）
-            "bytes": src.stat().st_size,
+            "bytes": len(data),
         }
     try:
         git_rev = subprocess.run(

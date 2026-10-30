@@ -1,0 +1,237 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "boot_straps",
+ "interface": [
+  {
+   "net": "FLASH_MISO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R11-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 引导拉绳（R11）"
+  },
+  {
+   "net": "FLASH_MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R12-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 引导拉绳（R12）"
+  },
+  {
+   "net": "FPGA_SI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R13-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置口引导拉绳（R13）"
+  },
+  {
+   "net": "FPGA_SO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R11-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置口引导拉绳（R11）"
+  },
+  {
+   "net": "IOB_22A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R21-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "IO 引导拉绳（R21）"
+  },
+  {
+   "net": "IOB_23B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R22-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "IO 引导拉绳（R22）"
+  },
+  {
+   "net": "IOB_24A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R23-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "IO 引导拉绳（R23）"
+  },
+  {
+   "net": "USB_M",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R23-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "USB D- 的引导拉绳（R23 串进去）"
+  },
+  {
+   "net": "USB_P",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R21-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "USB D+ 的引导拉绳（R21 串进去）"
+  }
+ ],
+ "power_rails": [],
+ "parts": [
+  {
+   "ref": "R22",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 232.41,
+   "y": 190.5
+  },
+  {
+   "ref": "R23",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 232.41,
+   "y": 194.31
+  },
+  {
+   "ref": "R21",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "DNI",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 226.06,
+   "y": 186.69
+  },
+  {
+   "ref": "R13",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 330.2,
+   "y": 201.93
+  },
+  {
+   "ref": "R12",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "0",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 330.2,
+   "y": 189.23
+  },
+  {
+   "ref": "R11",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "DNI",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 325.12,
+   "y": 195.58
+  },
+  {
+   "ref": "R27",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "DNI",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 336.55,
+   "y": 195.58
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R11",
+   "pin": "2",
+   "net": "FLASH_MISO"
+  },
+  {
+   "ref": "R13",
+   "pin": "1",
+   "net": "FLASH_MISO"
+  },
+  {
+   "ref": "R12",
+   "pin": "2",
+   "net": "FLASH_MOSI"
+  },
+  {
+   "ref": "R27",
+   "pin": "1",
+   "net": "FLASH_MOSI"
+  },
+  {
+   "ref": "R13",
+   "pin": "2",
+   "net": "FPGA_SI"
+  },
+  {
+   "ref": "R27",
+   "pin": "2",
+   "net": "FPGA_SI"
+  },
+  {
+   "ref": "R11",
+   "pin": "1",
+   "net": "FPGA_SO"
+  },
+  {
+   "ref": "R12",
+   "pin": "1",
+   "net": "FPGA_SO"
+  },
+  {
+   "ref": "R21",
+   "pin": "2",
+   "net": "IOB_22A"
+  },
+  {
+   "ref": "R22",
+   "pin": "1",
+   "net": "IOB_23B"
+  },
+  {
+   "ref": "R23",
+   "pin": "1",
+   "net": "IOB_24A"
+  },
+  {
+   "ref": "R23",
+   "pin": "2",
+   "net": "USB_M"
+  },
+  {
+   "ref": "R21",
+   "pin": "1",
+   "net": "USB_P"
+  },
+  {
+   "ref": "R22",
+   "pin": "2",
+   "net": "USB_P"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

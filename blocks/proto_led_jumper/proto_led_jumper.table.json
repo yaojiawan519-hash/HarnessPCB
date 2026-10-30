@@ -1,0 +1,78 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "proto_led_jumper",
+ "interface": [],
+ "power_rails": [
+  "GND",
+  "VOUT"
+ ],
+ "parts": [
+  {
+   "ref": "D3",
+   "lib": "Device:LED_Dual_Bidirectional",
+   "value": "LED_Dual_Bidirectional",
+   "footprint": "",
+   "x": 111.76,
+   "y": 90.17
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector:Conn_01x04_Pin",
+   "value": "Conn_01x04_Pin",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+   "x": 87.63,
+   "y": 92.71
+  },
+  {
+   "ref": "R1",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 107.95,
+   "y": 82.55
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D3",
+   "pin": "1",
+   "net": "_proto_led_jumper_N1"
+  },
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "_proto_led_jumper_N1"
+  },
+  {
+   "ref": "D3",
+   "pin": "2",
+   "net": "_proto_led_jumper_N2"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "_proto_led_jumper_N2"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "_proto_led_jumper_N3"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "_proto_led_jumper_N3"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

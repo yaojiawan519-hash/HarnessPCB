@@ -1,0 +1,145 @@
+{
+  "name": "ddr5_status_leds",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    120.7306,
+    63.5069
+  ],
+  "size_mm": [
+    9.5012,
+    11.9763
+  ],
+  "ports": {
+    "GND": [
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "Q6",
+      "R11",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "+3.3V": [
+      "C5",
+      "C7",
+      "J1",
+      "J4",
+      "R10",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "PWR_GOOD_OUT": [
+      "J2",
+      "J3",
+      "Q6",
+      "R13"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "PWR_GOOD_OUT",
+      "x": 122.25,
+      "y": 56.7188,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 123.4125,
+      "y": 56.7188,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 126.2812,
+      "y": 68.2812,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 5,
+    "copper_segs": 15,
+    "vias": 1,
+    "stub_kept": 1,
+    "isolated_deleted": 4,
+    "cut_ends": 1,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 14
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "PWR_GOOD_OUT->R13.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+      "total": 1,
+      "port_cuts": 1,
+      "port_cut_nets": [
+        "PWR_GOOD_OUT"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 3,
+        "vias": 3,
+        "nets": [
+          "+3.3V",
+          "GND",
+          "PWR_GOOD_OUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D2",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -3.7306,
+      "dy": -2.7569,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "D3",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -3.7306,
+      "dy": 4.2431,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R12",
+      "value": "6.8K",
+      "fp": "R_0805_2012Metric",
+      "dx": 1.7694,
+      "dy": 2.9931,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R2",
+      "value": "6.8K",
+      "fp": "R_0805_2012Metric",
+      "dx": 1.7694,
+      "dy": -2.0069,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

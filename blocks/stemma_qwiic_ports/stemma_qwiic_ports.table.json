@@ -1,0 +1,179 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "stemma_qwiic_ports",
+ "interface": [
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟：四只口的 4 脚并联"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据（开漏双向，需上拉；块里没有）：四只口的 3 脚并联"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "整板电源（板上丝印 `V+`）：四只口的 2 脚并联；本块不产生它，是消费方"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+   "footprint": "footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+   "x": 99.06,
+   "y": 29.21
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+   "footprint": "footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+   "x": 125.73,
+   "y": 29.21
+  },
+  {
+   "ref": "J4",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+   "footprint": "footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+   "x": 149.86,
+   "y": 29.21
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+   "footprint": "footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+   "x": 72.39,
+   "y": 29.21
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "SCL"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "SCL"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "SCL"
+  },
+  {
+   "ref": "J4",
+   "pin": "4",
+   "net": "SCL"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "SDA"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "SDA"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "SDA"
+  },
+  {
+   "ref": "J4",
+   "pin": "3",
+   "net": "SDA"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J4",
+   "pin": "2",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

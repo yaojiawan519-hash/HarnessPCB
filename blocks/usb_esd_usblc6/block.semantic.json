@@ -1,0 +1,47 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**micro-B USB 口 + 六脚 ESD 阵列**（作者分区框 \"USB Connector and ESD Protection\"）： J1 USB_B_Micro 五脚（VBUS/D-/D+/ID/GND+屏蔽壳）接 U2 USBLC6-2SC6——一颗四路 TVS 阵列，两路挂在 D+/D- 上、VBUS 与 GND 各一路，串在座子与主控之间。 ⚠ 作者在框里写明**这颗 MCU 不需要外部端接电阻**：STM32L432 的 USB_DP/DM 驱动已经 内建匹配阻抗（数据手册原话，见框外注释）。所以本块 D+/D- 是**直通**，谁要把 STM32F1/F4 一类需要 22Ω 串阻的 MCU 接上来，串阻得自己加。 ⚠ U2 的 IO 脚顺序在符号上是 `IO1/D+/IO2/D-/…` 的固定排列，别按封装脚号想当然接线。",
+  "power_rails": [
+    "+5V",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "USB_D+",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D-"
+    },
+    {
+      "name": "USB_D-",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D+"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J1",
+    "max_mm": 10.0,
+    "rationale": "座子必须贴板边、插头朝外；U2 紧贴座子背面（越近越好——ESD 器件的意义就在 电流不进板子深处），D+/D- 从 U2 直接出到块外。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "USB_CONN_D+",
+    "USB_CONN_D-"
+  ],
+  "geometry_status": "carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py` 无损收 2 层，见 power_3v3_usb_ldo 卡）按位号原样扣铜。 本块：2 件 / 7 网，铜 37 段 + 7 孔，口岸切口 2 处；GND 裂 2 岛（铺铜删掉的必然结果）。",
+  "provenance": {
+    "source": "human:open-source",
+    "basis": "从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 \"USB Connector and ESD Protection\" 整框裁出；板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。",
+    "board": "STRF (2.4GHz RF-to-USB dongle)",
+    "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+    "license_tier": "permissive",
+    "author": "Philip Salmony（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-31",
+    "kicad": "10.0.5"
+  }
+}

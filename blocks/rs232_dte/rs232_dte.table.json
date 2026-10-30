@@ -1,0 +1,374 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "rs232_dte",
+ "interface": [
+  {
+   "net": "UART1CTS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-12",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1RTS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1RX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-9",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1TX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-10",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DTE_DCD",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 1 脚。DCD：⚠ **本块没接**（原页上是单脚网，板上也无铜）——外部线缆直接接到这个焊盘上才有用"
+  },
+  {
+   "net": "DTE_RXD",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 2 脚。RXD：对面设备发过来的电平（DB9 的 2 号脚是 DTE 的收、DCE 的发）"
+  },
+  {
+   "net": "DTE_TXD",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 3 脚。TXD：本块发出去的电平（DB9 的 3 号脚是 DTE 的发、DCE 的收）"
+  },
+  {
+   "net": "DTE_DTR",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 4 脚。DTR：⚠ **本块没接**（同上）"
+  },
+  {
+   "net": "DTE_DSR",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 6 脚。DSR：⚠ **本块没接**（同上）"
+  },
+  {
+   "net": "DTE_RTS",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 7 脚。RTS：握手输出"
+  },
+  {
+   "net": "DTE_CTS",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 8 脚。CTS：握手输入"
+  },
+  {
+   "net": "DTE_RI",
+   "kind": "hlabel",
+   "class": "analog",
+   "exit": {
+    "pin": "J1-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "DB9 第 9 脚。RI：⚠ **本块没接**（同上）"
+  }
+ ],
+ "power_rails": [
+  "GND",
+  "VOUT"
+ ],
+ "parts": [
+  {
+   "ref": "C1",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 152.4,
+   "y": 24.13
+  },
+  {
+   "ref": "C5",
+   "lib": "Device:C_Small",
+   "value": "0.47uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 171.45,
+   "y": 57.15
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector:DE9_Plug_MountingHoles",
+   "value": "COM1",
+   "footprint": "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm",
+   "x": 229.87,
+   "y": 58.42
+  },
+  {
+   "ref": "C4",
+   "lib": "Device:C_Small",
+   "value": "0.47uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 165.1,
+   "y": 40.64
+  },
+  {
+   "ref": "U1",
+   "lib": "Interface_UART:MAX3232",
+   "value": "MAX3232",
+   "footprint": "Package_SO:SOP-16_3.9x9.9mm_P1.27mm",
+   "x": 140.97,
+   "y": 59.69
+  },
+  {
+   "ref": "C3",
+   "lib": "Device:C_Small",
+   "value": "0.47uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 171.45,
+   "y": 49.53
+  },
+  {
+   "ref": "C2",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 114.3,
+   "y": 40.64
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "8",
+   "net": "DTE_CTS"
+  },
+  {
+   "ref": "U1",
+   "pin": "13",
+   "net": "DTE_CTS"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "DTE_DCD"
+  },
+  {
+   "ref": "J1",
+   "pin": "6",
+   "net": "DTE_DSR"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "DTE_DTR"
+  },
+  {
+   "ref": "J1",
+   "pin": "9",
+   "net": "DTE_RI"
+  },
+  {
+   "ref": "J1",
+   "pin": "7",
+   "net": "DTE_RTS"
+  },
+  {
+   "ref": "U1",
+   "pin": "14",
+   "net": "DTE_RTS"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "DTE_RXD"
+  },
+  {
+   "ref": "U1",
+   "pin": "8",
+   "net": "DTE_RXD"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "DTE_TXD"
+  },
+  {
+   "ref": "U1",
+   "pin": "7",
+   "net": "DTE_TXD"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "15",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "12",
+   "net": "UART1CTS"
+  },
+  {
+   "ref": "U1",
+   "pin": "11",
+   "net": "UART1RTS"
+  },
+  {
+   "ref": "U1",
+   "pin": "9",
+   "net": "UART1RX"
+  },
+  {
+   "ref": "U1",
+   "pin": "10",
+   "net": "UART1TX"
+  },
+  {
+   "ref": "C5",
+   "pin": "1",
+   "net": "_rs232_dte_N1"
+  },
+  {
+   "ref": "U1",
+   "pin": "6",
+   "net": "_rs232_dte_N1"
+  },
+  {
+   "ref": "C4",
+   "pin": "1",
+   "net": "_rs232_dte_N2"
+  },
+  {
+   "ref": "U1",
+   "pin": "4",
+   "net": "_rs232_dte_N2"
+  },
+  {
+   "ref": "C4",
+   "pin": "2",
+   "net": "_rs232_dte_N3"
+  },
+  {
+   "ref": "U1",
+   "pin": "5",
+   "net": "_rs232_dte_N3"
+  },
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "_rs232_dte_N4"
+  },
+  {
+   "ref": "U1",
+   "pin": "1",
+   "net": "_rs232_dte_N4"
+  },
+  {
+   "ref": "C3",
+   "pin": "1",
+   "net": "_rs232_dte_N5"
+  },
+  {
+   "ref": "U1",
+   "pin": "2",
+   "net": "_rs232_dte_N5"
+  },
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "_rs232_dte_N6"
+  },
+  {
+   "ref": "U1",
+   "pin": "3",
+   "net": "_rs232_dte_N6"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "U1",
+   "pin": "16",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

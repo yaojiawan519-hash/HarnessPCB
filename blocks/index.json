@@ -1,0 +1,6946 @@
+{
+ "count": 108,
+ "license_tier": "permissive",
+ "blocks": [
+  {
+   "name": "ir_tx_cc",
+   "dir": "ir_tx_cc",
+   "category": "actuator",
+   "parts": 15,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 15,
+    "nets": 12,
+    "copper_segs": 69,
+    "vias": 4,
+    "stub_kept": 0,
+    "isolated_deleted": 29,
+    "cut_ends": 1,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "B.Cu": 9,
+     "F.Cu": 60
+    },
+    "zones_kept": 5,
+    "naked_plane_pads": 5,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "IO4->J2.6": 1,
+     "VOUT->R12.2": 1,
+     "VOUT->R2.2": 1,
+     "VOUT->R4.2": 1,
+     "VOUT->R5.2": 1,
+     "VOUT->R7.2": 1
+    },
+    "island_split": {
+     "GND": 8,
+     "VOUT": 3
+    },
+    "dangling": {
+     "total": 4,
+     "port_cuts": 4,
+     "port_cut_nets": [
+      "IO4",
+      "VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 8,
+      "vias": 7,
+      "nets": [
+       "GND",
+       "IO4",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "vib_motor_drv",
+   "dir": "vib_motor_drv",
+   "category": "actuator",
+   "parts": 5,
+   "ports": 1,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 5,
+    "copper_segs": 28,
+    "vias": 3,
+    "stub_kept": 0,
+    "isolated_deleted": 13,
+    "cut_ends": 4,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "F.Cu": 18,
+     "In2.Cu": 10
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->R10.2": 1,
+     "+3V3->R18.2": 1,
+     "+3V3->U1.6": 1,
+     "+3V3->U6.3": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "+3V3"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "VIB_PWM"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_analog_buffers",
+   "dir": "bp5_analog_buffers",
+   "category": "analog",
+   "parts": 12,
+   "ports": 16,
+   "rails": [
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 12,
+    "not_built": [],
+    "nets": 26,
+    "copper_segs": 266,
+    "vias": 27,
+    "stub_kept": 0,
+    "isolated_deleted": 30,
+    "cut_ends": 32,
+    "exit_points": 18,
+    "segs_by_layer": {
+     "B.Cu": 14,
+     "F.Cu": 201,
+     "In1.Cu": 51
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+VUSB->C403.2": 1,
+     "+VUSB->C503.2": 1,
+     "+VUSB->R320.2": 1,
+     "+VUSB->U402.24": 1,
+     "+VUSB->U503.20": 1,
+     "BPIO0->RN305.1": 1,
+     "BPIO1->RN305.2": 1,
+     "BPIO2->RN305.3": 1,
+     "BPIO3->RN305.4": 1,
+     "BPIO4->RN309.1": 1,
+     "BPIO5->RN309.2": 1,
+     "BPIO6->RN309.3": 1,
+     "BPIO7->RN309.4": 1,
+     "MUX_BPIO0->RN401.5": 1,
+     "MUX_BPIO1->RN401.6": 1,
+     "MUX_BPIO2->RN401.7": 1,
+     "MUX_BPIO3->RN401.8": 1,
+     "MUX_BPIO4->RN400.5": 1,
+     "MUX_BPIO5->RN400.6": 1,
+     "MUX_BPIO6->RN400.7": 1,
+     "MUX_BPIO7->RN400.8": 1
+    },
+    "island_split": {
+     "GND": 5
+    },
+    "dangling": {
+     "total": 37,
+     "port_cuts": 37,
+     "port_cut_nets": [
+      "+VUSB",
+      "BPIO0",
+      "BPIO1",
+      "BPIO2",
+      "BPIO3",
+      "BPIO4",
+      "BPIO5",
+      "BPIO6",
+      "BPIO7",
+      "MUX_BPIO0",
+      "MUX_BPIO1",
+      "MUX_BPIO2",
+      "MUX_BPIO3",
+      "MUX_BPIO4",
+      "MUX_BPIO5",
+      "MUX_BPIO6",
+      "MUX_BPIO7"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 4,
+      "nets": [
+       "BPIO4",
+       "BPIO6",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_analog_mux",
+   "dir": "bp5_analog_mux",
+   "category": "analog",
+   "parts": 17,
+   "ports": 17,
+   "rails": [
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 17,
+    "not_built": [],
+    "nets": 38,
+    "copper_segs": 198,
+    "vias": 18,
+    "stub_kept": 1,
+    "isolated_deleted": 129,
+    "cut_ends": 16,
+    "exit_points": 21,
+    "segs_by_layer": {
+     "B.Cu": 32,
+     "F.Cu": 119,
+     "In1.Cu": 34,
+     "In2.Cu": 13
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 8,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+VUSB->C509.2": 1,
+     "+VUSB->C510.2": 1,
+     "+VUSB->D503.3": 1,
+     "AMUX_S0->R316.1": 1,
+     "MUX_BPIO5->U504.8": 1,
+     "MUX_BPIO7->U504.7": 1,
+     "VREF_VOUT->Q401.1": 1
+    },
+    "island_split": {
+     "GND": 10
+    },
+    "dangling": {
+     "total": 14,
+     "port_cuts": 13,
+     "port_cut_nets": [
+      "+VUSB",
+      "AMUX_S0",
+      "MUX_BPIO5",
+      "MUX_BPIO7",
+      "VREF_VOUT"
+     ],
+     "binds": 1,
+     "bind_nets": [
+      "AMUX_EN"
+     ],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 77,
+      "vias": 5,
+      "nets": [
+       "+VUSB",
+       "AMUX_EN",
+       "AMUX_OUT",
+       "AMUX_S1",
+       "AMUX_S2",
+       "AMUX_S3",
+       "GND",
+       "MUX_BPIO0",
+       "MUX_BPIO1",
+       "MUX_BPIO2",
+       "MUX_BPIO3",
+       "MUX_BPIO4",
+       "MUX_BPIO6",
+       "VREF_VOUT"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_current_limit",
+   "dir": "bp5_current_limit",
+   "category": "analog",
+   "parts": 12,
+   "ports": 4,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 12,
+    "not_built": [],
+    "nets": 11,
+    "copper_segs": 84,
+    "vias": 8,
+    "stub_kept": 0,
+    "isolated_deleted": 98,
+    "cut_ends": 5,
+    "exit_points": 15,
+    "segs_by_layer": {
+     "B.Cu": 5,
+     "F.Cu": 65,
+     "In1.Cu": 10,
+     "In2.Cu": 4
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "CURRENT_DETECT->Q602.2": 1,
+     "CURRENT_SENSE->U103.41": 1,
+     "CURRENT_SENSE->U601.4": 1
+    },
+    "island_split": {
+     "GND": 3
+    },
+    "dangling": {
+     "total": 3,
+     "port_cuts": 3,
+     "port_cut_nets": [
+      "CURRENT_DETECT",
+      "CURRENT_SENSE"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 10,
+      "vias": 4,
+      "nets": [
+       "+3V3",
+       "CURRENT_ADJ_MCU",
+       "CURRENT_RESET",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_current_sense",
+   "dir": "bp5_current_sense",
+   "category": "analog",
+   "parts": 8,
+   "ports": 2,
+   "rails": [
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 22,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 19,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 21
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 5,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "+VUSB": 3,
+     "GND": 4
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 16,
+      "vias": 7,
+      "nets": [
+       "+VUSB",
+       "CURRENT_SENSE"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_vreg_adj_buffer",
+   "dir": "bp5_vreg_adj_buffer",
+   "category": "analog",
+   "parts": 5,
+   "ports": 2,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 5,
+    "copper_segs": 10,
+    "vias": 1,
+    "stub_kept": 3,
+    "isolated_deleted": 7,
+    "cut_ends": 4,
+    "exit_points": 4,
+    "segs_by_layer": {
+     "F.Cu": 9,
+     "In1.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 10,
+      "vias": 2,
+      "nets": [
+       "+3V3",
+       "GND",
+       "VREG_ADJ",
+       "VREG_ADJ_MCU"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "nrf24_match_network",
+   "dir": "nrf24_match_network",
+   "category": "analog",
+   "parts": 8,
+   "ports": 3,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 22,
+    "vias": 2,
+    "stub_kept": 2,
+    "isolated_deleted": 33,
+    "cut_ends": 3,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "B.Cu": 2,
+     "F.Cu": 20
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 5
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 10,
+      "vias": 7,
+      "nets": [
+       "GND",
+       "NRF_ANT1",
+       "NRF_ANT2",
+       "NRF_VDD_PA"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "xtal_nrf24",
+   "dir": "xtal_nrf24",
+   "category": "clock",
+   "parts": 4,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "not_built": [],
+    "nets": 3,
+    "copper_segs": 19,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 5,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "F.Cu": 19
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 2,
+      "nets": [
+       "GND",
+       "NRF_XC1",
+       "NRF_XC2"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "bp5_bpio_headers",
+   "dir": "bp5_bpio_headers",
+   "category": "connector",
+   "parts": 3,
+   "ports": 9,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "not_built": [
+     "R404"
+    ],
+    "nets": 10,
+    "copper_segs": 57,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 64,
+    "cut_ends": 12,
+    "exit_points": 16,
+    "segs_by_layer": {
+     "F.Cu": 48,
+     "In1.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "BPIO0->RN305.1": 1,
+     "BPIO0->RN312.1": 1,
+     "BPIO7->RN309.4": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 4,
+     "port_cuts": 4,
+     "port_cut_nets": [
+      "BPIO0",
+      "BPIO7"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 16,
+      "vias": 0,
+      "nets": [
+       "BPIO1",
+       "BPIO2",
+       "BPIO3",
+       "BPIO4",
+       "BPIO5",
+       "BPIO6",
+       "VREF_VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_usb_c_port",
+   "dir": "bp5_usb_c_port",
+   "category": "connector",
+   "parts": 8,
+   "ports": 2,
+   "rails": [
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "nets": 11,
+    "copper_segs": 26,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 43,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 26
+    },
+    "zones_kept": 3,
+    "naked_plane_pads": 9,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "+VUSB": 3,
+     "GND": 8
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 0,
+      "nets": [
+       "USB_D+",
+       "USB_D-"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_lotes_port",
+   "dir": "flash_lotes_port",
+   "category": "connector",
+   "parts": 4,
+   "ports": 9,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 12,
+    "copper_segs": 43,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 16,
+    "cut_ends": 6,
+    "exit_points": 11,
+    "segs_by_layer": {
+     "B.Cu": 9,
+     "F.Cu": 34
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->R1.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 23,
+      "vias": 6,
+      "nets": [
+       "CDI",
+       "CDO",
+       "CS",
+       "GND",
+       "GND_CHIP",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP",
+       "WP"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (SOP/LOTES) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_lotes_sockets",
+   "dir": "flash_lotes_sockets",
+   "category": "connector",
+   "parts": 4,
+   "ports": 8,
+   "rails": [],
+   "counts": {
+    "members": 4,
+    "nets": 8,
+    "copper_segs": 69,
+    "vias": 13,
+    "stub_kept": 0,
+    "isolated_deleted": 12,
+    "cut_ends": 3,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "B.Cu": 14,
+     "F.Cu": 55
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 9,
+      "vias": 2,
+      "nets": [
+       "GND_CHIP",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (SOP/LOTES) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_sop_port",
+   "dir": "flash_sop_port",
+   "category": "connector",
+   "parts": 4,
+   "ports": 8,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 12,
+    "copper_segs": 48,
+    "vias": 3,
+    "stub_kept": 4,
+    "isolated_deleted": 11,
+    "cut_ends": 6,
+    "exit_points": 7,
+    "segs_by_layer": {
+     "B.Cu": 6,
+     "F.Cu": 42
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->R1.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 12,
+      "vias": 3,
+      "nets": [
+       "CDI",
+       "CDO",
+       "CS",
+       "GND",
+       "GND_CHIP",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (SOP) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_sop_socket16",
+   "dir": "flash_sop_socket16",
+   "category": "connector",
+   "parts": 4,
+   "ports": 8,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 10,
+    "copper_segs": 27,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 17,
+    "cut_ends": 10,
+    "exit_points": 11,
+    "segs_by_layer": {
+     "B.Cu": 6,
+     "F.Cu": 21
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND_CHIP": 3,
+     "HOLD": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 23,
+      "vias": 2,
+      "nets": [
+       "CDI",
+       "CDO",
+       "CS",
+       "GND",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (SOP) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_sop_socket20",
+   "dir": "flash_sop_socket20",
+   "category": "connector",
+   "parts": 2,
+   "ports": 7,
+   "rails": [],
+   "counts": {
+    "members": 2,
+    "nets": 11,
+    "copper_segs": 38,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 20,
+    "cut_ends": 9,
+    "exit_points": 12,
+    "segs_by_layer": {
+     "B.Cu": 8,
+     "F.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND_CHIP": 3
+    },
+    "dangling": {
+     "total": 1,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 1,
+     "bind_nets": [
+      "CS"
+     ],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 21,
+      "vias": 3,
+      "nets": [
+       "CDI",
+       "CDO",
+       "CS",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (SOP) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_wson_port",
+   "dir": "flash_wson_port",
+   "category": "connector",
+   "parts": 4,
+   "ports": 9,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 12,
+    "copper_segs": 47,
+    "vias": 4,
+    "stub_kept": 1,
+    "isolated_deleted": 17,
+    "cut_ends": 11,
+    "exit_points": 12,
+    "segs_by_layer": {
+     "B.Cu": 11,
+     "F.Cu": 36
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->R1.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 26,
+      "vias": 4,
+      "nets": [
+       "CDI",
+       "CDO",
+       "CS",
+       "GND",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP",
+       "WP"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (WSON) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_wson_sockets",
+   "dir": "flash_wson_sockets",
+   "category": "connector",
+   "parts": 4,
+   "ports": 8,
+   "rails": [],
+   "counts": {
+    "members": 4,
+    "nets": 8,
+    "copper_segs": 55,
+    "vias": 6,
+    "stub_kept": 0,
+    "isolated_deleted": 11,
+    "cut_ends": 4,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 4,
+     "F.Cu": 51
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND_CHIP": 4
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 22,
+      "vias": 7,
+      "nets": [
+       "CDO",
+       "CS",
+       "GND_CHIP",
+       "HOLD",
+       "SCLK",
+       "WP"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (WSON) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_zif_port",
+   "dir": "flash_zif_port",
+   "category": "connector",
+   "parts": 4,
+   "ports": 8,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 12,
+    "copper_segs": 45,
+    "vias": 3,
+    "stub_kept": 5,
+    "isolated_deleted": 10,
+    "cut_ends": 8,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "B.Cu": 6,
+     "F.Cu": 39
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 16,
+      "vias": 2,
+      "nets": [
+       "CDI",
+       "CDO",
+       "CS",
+       "GND",
+       "GND_CHIP",
+       "HOLD",
+       "SCLK",
+       "VCC_CHIP",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (DIP/ZIF) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_zif_socket",
+   "dir": "flash_zif_socket",
+   "category": "connector",
+   "parts": 4,
+   "ports": 8,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 10,
+    "copper_segs": 59,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 21,
+    "cut_ends": 6,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "B.Cu": 10,
+     "F.Cu": 49
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND_CHIP": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 16,
+      "vias": 3,
+      "nets": [
+       "CDO",
+       "CS",
+       "GND",
+       "GND_CHIP",
+       "SCLK",
+       "VCC_CHIP",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (DIP/ZIF) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "grove_gravity_ports",
+   "dir": "grove_gravity_ports",
+   "category": "connector",
+   "parts": 2,
+   "ports": 3,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 4,
+    "copper_segs": 12,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 14,
+    "cut_ends": 3,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 11
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 6,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 6,
+     "SDA": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 10,
+      "vias": 0,
+      "nets": [
+       "SCL",
+       "SDA"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_host_header",
+   "dir": "kb_host_header",
+   "category": "connector",
+   "parts": 2,
+   "ports": 9,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 15,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 8,
+     "F.Cu": 7
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 11,
+      "vias": 0,
+      "nets": [
+       "CLK",
+       "DAT",
+       "TRIG",
+       "USB_D+",
+       "USB_D-",
+       "VOUT_BP_SIDE"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_ps2_dual_port",
+   "dir": "kb_ps2_dual_port",
+   "category": "connector",
+   "parts": 5,
+   "ports": 2,
+   "rails": [
+    "GND",
+    "VDD"
+   ],
+   "counts": {
+    "members": 5,
+    "nets": 10,
+    "copper_segs": 23,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "B.Cu": 11,
+     "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 3
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 6,
+      "vias": 1,
+      "nets": [
+       "CLK",
+       "DAT",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_usb_a_port",
+   "dir": "kb_usb_a_port",
+   "category": "connector",
+   "parts": 3,
+   "ports": 2,
+   "rails": [
+    "GND",
+    "VDD"
+   ],
+   "counts": {
+    "members": 3,
+    "nets": 5,
+    "copper_segs": 17,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 7,
+    "cut_ends": 4,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 16
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VDD->C3.1": 1,
+     "VDD->R2.1": 1
+    },
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "VDD"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 9,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "USB_D+",
+       "USB_D-"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_usb_c_port",
+   "dir": "kb_usb_c_port",
+   "category": "connector",
+   "parts": 5,
+   "ports": 2,
+   "rails": [
+    "GND",
+    "VDD"
+   ],
+   "counts": {
+    "members": 5,
+    "nets": 9,
+    "copper_segs": 39,
+    "vias": 4,
+    "stub_kept": 1,
+    "isolated_deleted": 6,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 3,
+     "F.Cu": 36
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 6
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 27,
+      "vias": 6,
+      "nets": [
+       "GND",
+       "USB_D+",
+       "USB_D-",
+       "VDD"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_vdd_header",
+   "dir": "kb_vdd_header",
+   "category": "connector",
+   "parts": 1,
+   "ports": 0,
+   "rails": [
+    "GND",
+    "VDD"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 2,
+    "copper_segs": 0,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 1,
+    "segs_by_layer": {},
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 1,
+      "vias": 0,
+      "nets": [
+       "VDD"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ph_ports",
+   "dir": "ph_ports",
+   "category": "connector",
+   "parts": 2,
+   "ports": 3,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 4,
+    "copper_segs": 4,
+    "vias": 0,
+    "stub_kept": 2,
+    "isolated_deleted": 23,
+    "cut_ends": 4,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 4
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 6,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 6,
+     "SDA": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 6,
+      "vias": 1,
+      "nets": [
+       "SCL",
+       "SDA",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "plank_edge",
+   "dir": "plank_edge",
+   "category": "connector",
+   "parts": 1,
+   "ports": 4,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 5,
+    "copper_segs": 14,
+    "vias": 0,
+    "stub_kept": 4,
+    "isolated_deleted": 3,
+    "cut_ends": 6,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 7,
+     "F.Cu": 7
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "INT": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 8,
+      "vias": 0,
+      "nets": [
+       "GND",
+       "INT",
+       "SCL",
+       "SDA",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "plank_io_headers",
+   "dir": "plank_io_headers",
+   "category": "connector",
+   "parts": 2,
+   "ports": 4,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 10,
+    "vias": 0,
+    "stub_kept": 7,
+    "isolated_deleted": 0,
+    "cut_ends": 8,
+    "exit_points": 11,
+    "segs_by_layer": {
+     "F.Cu": 10
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 13,
+      "vias": 0,
+      "nets": [
+       "GND",
+       "INT",
+       "SCL",
+       "SDA",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "proto_header_trio",
+   "dir": "proto_header_trio",
+   "category": "connector",
+   "parts": 3,
+   "ports": 8,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {
+    "members": 3,
+    "nets": 10,
+    "copper_segs": 17,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 0,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 17
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {
+     "IO7": 1
+    },
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 3,
+     "IO7": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 0,
+      "nets": [
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch.kicad_pcb",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "proto_switched_headers",
+   "dir": "proto_switched_headers",
+   "category": "connector",
+   "parts": 4,
+   "ports": 0,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {},
+   "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "rs232_headers",
+   "dir": "rs232_headers",
+   "category": "connector",
+   "parts": 2,
+   "ports": 8,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 10,
+    "vias": 0,
+    "stub_kept": 7,
+    "isolated_deleted": 2,
+    "cut_ends": 10,
+    "exit_points": 10,
+    "segs_by_layer": {
+     "B.Cu": 9,
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 16,
+      "vias": 0,
+      "nets": [
+       "UART0CTS",
+       "UART0RTS",
+       "UART0RX",
+       "UART0TX",
+       "UART1CTS",
+       "UART1RTS",
+       "UART1RX",
+       "UART1TX",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 RS232 双通道转接板 REV0",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "sim_headers",
+   "dir": "sim_headers",
+   "category": "connector",
+   "parts": 2,
+   "ports": 9,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 11,
+    "vias": 0,
+    "stub_kept": 7,
+    "isolated_deleted": 0,
+    "cut_ends": 12,
+    "exit_points": 12,
+    "segs_by_layer": {
+     "B.Cu": 10,
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 13,
+      "vias": 0,
+      "nets": [
+       "/C4",
+       "/C8",
+       "/CLK",
+       "/I{slash}O",
+       "/RST",
+       "/VPP",
+       "GND",
+       "GND_PIN",
+       "VCC_PIN",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "sim_socket_te5145",
+   "dir": "sim_socket_te5145",
+   "category": "connector",
+   "parts": 1,
+   "ports": 9,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 10,
+    "copper_segs": 186,
+    "vias": 25,
+    "stub_kept": 0,
+    "isolated_deleted": 84,
+    "cut_ends": 22,
+    "exit_points": 9,
+    "segs_by_layer": {
+     "B.Cu": 64,
+     "F.Cu": 122
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "/C4->J3.9": 1,
+     "/C4->U2.C4": 1,
+     "/C8->J3.8": 1,
+     "/C8->U2.C8": 1,
+     "/CLK->J3.3": 1,
+     "/CLK->U2.C3": 1,
+     "/CLK->U3.C3": 1,
+     "/I{slash}O->J3.2": 1,
+     "/I{slash}O->U1.C7": 1,
+     "/I{slash}O->U2.C7": 1,
+     "/I{slash}O->U3.C7": 1,
+     "/RST->J3.4": 1,
+     "/RST->U2.C2": 1,
+     "/RST->U3.C2": 1,
+     "/SIM_GND->U2.C5": 1,
+     "/VCC->SW1.2": 1,
+     "/VCC->U2.C1": 1,
+     "/VCC->U3.C1": 1,
+     "/VPP->J3.5": 1,
+     "/VPP->U1.C6": 1,
+     "/VPP->U2.C6": 1,
+     "/VPP->U3.C6": 1,
+     "GND->J3.10": 1,
+     "GND->U2.SH": 1,
+     "GND->U3.SH": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 28,
+     "port_cuts": 28,
+     "port_cut_nets": [
+      "/C4",
+      "/C8",
+      "/CLK",
+      "/I{slash}O",
+      "/RST",
+      "/SIM_GND",
+      "/VCC",
+      "/VPP",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 2,
+      "nets": [
+       "/I{slash}O",
+       "/VCC",
+       "GND",
+       "Net-(D1-K)"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "sim_sockets",
+   "dir": "sim_sockets",
+   "category": "connector",
+   "parts": 3,
+   "ports": 8,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 3,
+    "nets": 9,
+    "copper_segs": 120,
+    "vias": 16,
+    "stub_kept": 3,
+    "isolated_deleted": 30,
+    "cut_ends": 12,
+    "exit_points": 14,
+    "segs_by_layer": {
+     "B.Cu": 32,
+     "F.Cu": 88
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "/C8->J1.C8": 1,
+     "/I{slash}O->J1.C7": 1,
+     "/SIM_GND->J1.C5": 1,
+     "/VPP->J1.C6": 1
+    },
+    "island_split": {
+     "/CLK": 2,
+     "/SIM_GND": 3,
+     "/VCC": 3,
+     "GND": 2
+    },
+    "dangling": {
+     "total": 4,
+     "port_cuts": 4,
+     "port_cut_nets": [
+      "/C8",
+      "/SIM_GND",
+      "/VPP"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 18,
+      "vias": 3,
+      "nets": [
+       "/CLK",
+       "/VCC",
+       "/VPP",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "stemma_qwiic_ports",
+   "dir": "stemma_qwiic_ports",
+   "category": "connector",
+   "parts": 4,
+   "ports": 3,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 15,
+    "vias": 4,
+    "stub_kept": 3,
+    "isolated_deleted": 22,
+    "cut_ends": 7,
+    "exit_points": 7,
+    "segs_by_layer": {
+     "B.Cu": 4,
+     "F.Cu": 11
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 11,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 12,
+     "SDA": 4
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 8,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "SCL",
+       "SDA",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "wago_kf141r_adapter",
+   "dir": "wago_kf141r_adapter",
+   "category": "connector",
+   "parts": 2,
+   "ports": 10,
+   "rails": [],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 30,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 0,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 0,
+      "vias": 0,
+      "nets": [],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "wago kf141r adapter.kicad_sch / .kicad_pcb",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "wago_kf141v_adapter",
+   "dir": "wago_kf141v_adapter",
+   "category": "connector",
+   "parts": 2,
+   "ports": 10,
+   "rails": [],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 30,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 0,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 0,
+      "vias": 0,
+      "nets": [],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "wago kf141v adapter.kicad_sch / .kicad_pcb",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_swd_header",
+   "dir": "bp5_swd_header",
+   "category": "debug",
+   "parts": 1,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 3,
+    "copper_segs": 2,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "F.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 2,
+      "vias": 0,
+      "nets": [
+       "SWCLK",
+       "SWDIO"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "swd_connector",
+   "dir": "swd_connector",
+   "category": "debug",
+   "parts": 2,
+   "ports": 3,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 8,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 12,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {
+     "GND": 3
+    },
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 5,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "NRST",
+       "SWCLK",
+       "SWDIO"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "bp5_lcd_display",
+   "dir": "bp5_lcd_display",
+   "category": "display",
+   "parts": 4,
+   "ports": 6,
+   "rails": [
+    "+3V3",
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "not_built": [],
+    "nets": 12,
+    "copper_segs": 255,
+    "vias": 31,
+    "stub_kept": 0,
+    "isolated_deleted": 389,
+    "cut_ends": 33,
+    "exit_points": 16,
+    "segs_by_layer": {
+     "B.Cu": 98,
+     "F.Cu": 128,
+     "In1.Cu": 14,
+     "In2.Cu": 15
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C121.1": 1,
+     "+3V3->C302.2": 1,
+     "+3V3->C303.2": 1,
+     "+3V3->C307.2": 1,
+     "+3V3->C308.2": 1,
+     "+3V3->C309.2": 1,
+     "+3V3->C314.2": 1,
+     "+3V3->C501.2": 1,
+     "+3V3->C502.2": 1,
+     "+3V3->R501.1": 1,
+     "+3V3->U105.3": 1,
+     "+3V3->U105.7": 1,
+     "+3V3->U105.8": 1,
+     "+3V3->U301.1": 1,
+     "+3V3->U302.1": 1,
+     "+3V3->U303.1": 1,
+     "+3V3->U304.1": 1,
+     "+3V3->U305.1": 1,
+     "+3V3->U306.1": 1,
+     "+3V3->U308.1": 1,
+     "+3V3->U501.10": 1,
+     "+3V3->U501.16": 1,
+     "+3V3->U502.10": 1,
+     "+3V3->U502.16": 1,
+     "+VUSB->C403.2": 1,
+     "+VUSB->C405.2": 1,
+     "+VUSB->C406.1": 1,
+     "+VUSB->C503.2": 1,
+     "+VUSB->C507.2": 1,
+     "+VUSB->C508.2": 1,
+     "+VUSB->C509.2": 1,
+     "+VUSB->C510.2": 1,
+     "+VUSB->C601.1": 1,
+     "+VUSB->C602.2": 1,
+     "+VUSB->D501.3": 1,
+     "+VUSB->D502.3": 1,
+     "+VUSB->D503.3": 1,
+     "+VUSB->R320.2": 1,
+     "+VUSB->U402.24": 1,
+     "+VUSB->U404.5": 1,
+     "+VUSB->U503.1": 1,
+     "+VUSB->U503.20": 1,
+     "+VUSB->U504.4": 1,
+     "+VUSB->U601.5": 1,
+     "DISPLAY_BACKLIGHT->U501.5": 1,
+     "DISPLAY_CS->U103.37": 1,
+     "DISPLAY_DP->U103.36": 1,
+     "GND->Y101.2": 1,
+     "SPI_CDO->U103.30": 1,
+     "SPI_CDO->U105.5": 1,
+     "SPI_CLK->U103.29": 1,
+     "SPI_CLK->U105.6": 1,
+     "SPI_CLK->U501.11": 1,
+     "SPI_CLK->U502.11": 1
+    },
+    "island_split": {
+     "GND": 5
+    },
+    "dangling": {
+     "total": 42,
+     "port_cuts": 42,
+     "port_cut_nets": [
+      "+3V3",
+      "+VUSB",
+      "DISPLAY_BACKLIGHT",
+      "DISPLAY_CS",
+      "DISPLAY_DP",
+      "GND",
+      "SPI_CDO",
+      "SPI_CLK"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 19,
+      "vias": 6,
+      "nets": [
+       "+3V3",
+       "+VUSB",
+       "DISPLAY_RESET",
+       "GND",
+       "SPI_CLK"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ddr5_status_leds",
+   "dir": "ddr5_status_leds",
+   "category": "indicator",
+   "parts": 4,
+   "ports": 1,
+   "rails": [
+    "+3.3V",
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 5,
+    "copper_segs": 15,
+    "vias": 1,
+    "stub_kept": 1,
+    "isolated_deleted": 4,
+    "cut_ends": 1,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 14
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "PWR_GOOD_OUT->R13.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "PWR_GOOD_OUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 3,
+      "nets": [
+       "+3.3V",
+       "GND",
+       "PWR_GOOD_OUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_lotes_led",
+   "dir": "flash_lotes_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 1,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 2,
+    "isolated_deleted": 0,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 2,
+      "vias": 0,
+      "nets": [
+       "GND",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (SOP/LOTES) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_wson_led",
+   "dir": "flash_wson_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 1,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 0,
+      "nets": [
+       "GND",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 flash adapter (WSON) REV3",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "irtoy_power_led",
+   "dir": "irtoy_power_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 1,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 0,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 0,
+      "vias": 0,
+      "nets": [],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_power_led",
+   "dir": "kb_power_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 0,
+   "rails": [
+    "GND",
+    "VDD"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 14,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 1,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 13
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VDD->J9.1": 1,
+     "VDD->SW1.2": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 3,
+     "port_cuts": 3,
+     "port_cut_nets": [
+      "VDD"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 0,
+      "vias": 0,
+      "nets": [],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "led_indicator",
+   "dir": "led_indicator",
+   "category": "indicator",
+   "parts": 5,
+   "ports": 4,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 136,
+    "vias": 5,
+    "stub_kept": 0,
+    "isolated_deleted": 30,
+    "cut_ends": 6,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "B.Cu": 73,
+     "F.Cu": 63
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->U5.8": 1,
+     "/CDONE->U2.7": 1,
+     "/LED_B->U2.40": 1,
+     "/LED_G->U2.39": 1,
+     "/LED_R->U2.41": 1,
+     "GND->C10.2": 1,
+     "GND->C11.2": 1,
+     "GND->C14.2": 1,
+     "GND->C15.2": 1,
+     "GND->C22.2": 1,
+     "GND->C29.2": 1,
+     "GND->C30.2": 1,
+     "GND->C35.2": 1,
+     "GND->C6.2": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 2
+    },
+    "dangling": {
+     "total": 11,
+     "port_cuts": 11,
+     "port_cut_nets": [
+      "+3V3",
+      "/CDONE",
+      "/LED_B",
+      "/LED_G",
+      "/LED_R",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 7,
+      "nets": [
+       "+3V3",
+       "/LED_B",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "plank_power_led",
+   "dir": "plank_power_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 1,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 1,
+    "segs_by_layer": {
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 1,
+      "vias": 0,
+      "nets": [
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "power_led",
+   "dir": "power_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 1,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 1,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 1,
+      "vias": 0,
+      "nets": [
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "proto_led_jumper",
+   "dir": "proto_led_jumper",
+   "category": "indicator",
+   "parts": 3,
+   "ports": 0,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {},
+   "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "proto_vout_indicator",
+   "dir": "proto_vout_indicator",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 0,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {},
+   "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "rs232_vout_led",
+   "dir": "rs232_vout_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 0,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 1,
+    "segs_by_layer": {
+     "F.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 2,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 RS232 双通道转接板 REV0",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "sim_leds",
+   "dir": "sim_leds",
+   "category": "indicator",
+   "parts": 4,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 5,
+    "copper_segs": 9,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 2,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->J2.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 5,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "Net-(D1-K)"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "status_led",
+   "dir": "status_led",
+   "category": "indicator",
+   "parts": 2,
+   "ports": 1,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 5,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 25,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 14,
+      "vias": 3,
+      "nets": [
+       "+3V3",
+       "IO2"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "esp-rust-board",
+   "license": "CERN-OHL-P-2.0 — 上游 esp-rs / Espressif（github.com/esp-rs/esp-rust-board，commit efe1e8ad）",
+   "source": "human:esp-rust-board",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_user_button",
+   "dir": "bp5_user_button",
+   "category": "input",
+   "parts": 1,
+   "ports": 1,
+   "rails": [
+    "+3V3"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 4,
+    "copper_segs": 2,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "B.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 7,
+      "vias": 2,
+      "nets": [
+       "+3V3",
+       "BUTTONS"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "buttons_pullup",
+   "dir": "buttons_pullup",
+   "category": "input",
+   "parts": 8,
+   "ports": 4,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 255,
+    "vias": 30,
+    "stub_kept": 0,
+    "isolated_deleted": 104,
+    "cut_ends": 22,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 58,
+     "F.Cu": 130,
+     "In2.Cu": 67
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C1.1": 1,
+     "+3V3->C10.1": 1,
+     "+3V3->C14.1": 1,
+     "+3V3->C28.1": 1,
+     "+3V3->C3.1": 1,
+     "+3V3->C5.1": 1,
+     "+3V3->C6.1": 1,
+     "+3V3->D2.1": 1,
+     "+3V3->R1.2": 1,
+     "+3V3->R18.2": 1,
+     "+3V3->R19.1": 1,
+     "+3V3->R20.2": 1,
+     "+3V3->TP4.1": 1,
+     "+3V3->U1.6": 1,
+     "+3V3->U2.5": 1,
+     "+3V3->U4.2": 1,
+     "+3V3->U4.20": 1,
+     "+3V3->U4.3": 1,
+     "+3V3->U4.46": 1,
+     "+3V3->U4.55": 1,
+     "+3V3->U4.56": 1,
+     "+3V3->U6.10": 1,
+     "+3V3->U6.3": 1,
+     "+3V3->U6.7": 1,
+     "BTN1->U4.12": 1,
+     "BTN2->U4.11": 1,
+     "BTN3->U1.5": 1,
+     "BTN3->U4.5": 1,
+     "BTN4->U4.13": 1,
+     "GND->R2.2": 1,
+     "GND->R3.1": 1
+    },
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 31,
+     "port_cuts": 31,
+     "port_cut_nets": [
+      "+3V3",
+      "BTN1",
+      "BTN2",
+      "BTN3",
+      "BTN4",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 2,
+      "vias": 4,
+      "nets": [
+       "+3V3",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_trig_header",
+   "dir": "kb_trig_header",
+   "category": "input",
+   "parts": 2,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "F.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 2,
+      "vias": 0,
+      "nets": [
+       "TRIG",
+       "VOUT_BP_SIDE"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "adapter_headers",
+   "dir": "adapter_headers",
+   "category": "interface",
+   "parts": 3,
+   "ports": 7,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 12,
+    "copper_segs": 70,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 23,
+    "cut_ends": 10,
+    "exit_points": 4,
+    "segs_by_layer": {
+     "B.Cu": 25,
+     "F.Cu": 45
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->C13.1": 1,
+     "VOUT->C14.1": 1,
+     "VOUT->L1.1": 1,
+     "VPP->C15.1": 1,
+     "VPP->D3.1": 1,
+     "VPP->Q1.2": 1,
+     "VPP->R22.1": 1,
+     "VPP->R23.2": 1,
+     "VPP_ADC->D4.1": 1,
+     "VPP_ADC->R22.2": 1,
+     "VPP_ADC->R24.1": 1,
+     "VPP_HIGH->R27.2": 1,
+     "VPP_PWM->Q4.1": 1,
+     "VPP_SW->Q1.3": 1,
+     "VPP_SW->R28.2": 1
+    },
+    "island_split": {
+     "GND": 3,
+     "VOUT": 2
+    },
+    "dangling": {
+     "total": 12,
+     "port_cuts": 12,
+     "port_cut_nets": [
+      "VOUT",
+      "VPP",
+      "VPP_ADC",
+      "VPP_HIGH",
+      "VPP_PWM",
+      "VPP_SW"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 11,
+      "vias": 6,
+      "nets": [
+       "GND",
+       "VOUT",
+       "VPP",
+       "VPP_LOW",
+       "VPP_PWM"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "boot_straps",
+   "dir": "boot_straps",
+   "category": "interface",
+   "parts": 7,
+   "ports": 9,
+   "rails": [],
+   "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 9,
+    "copper_segs": 58,
+    "vias": 7,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 12,
+    "exit_points": 17,
+    "segs_by_layer": {
+     "B.Cu": 34,
+     "F.Cu": 20,
+     "In1.Cu": 1,
+     "In2.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "/USB_M->J1.2": 1,
+     "/USB_M->TP21.1": 1,
+     "/USB_P->J1.3": 1,
+     "/USB_P->TP20.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 4,
+     "port_cuts": 4,
+     "port_cut_nets": [
+      "/USB_M",
+      "/USB_P"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 39,
+      "vias": 2,
+      "nets": [
+       "/FLASH_MISO",
+       "/FLASH_MOSI",
+       "/FPGA_SI",
+       "/FPGA_SO",
+       "/IOB_23B",
+       "/IOB_24A"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_io_buffer_0_3",
+   "dir": "bp5_io_buffer_0_3",
+   "category": "interface",
+   "parts": 17,
+   "ports": 13,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 17,
+    "not_built": [],
+    "nets": 23,
+    "copper_segs": 235,
+    "vias": 42,
+    "stub_kept": 0,
+    "isolated_deleted": 20,
+    "cut_ends": 23,
+    "exit_points": 19,
+    "segs_by_layer": {
+     "B.Cu": 22,
+     "F.Cu": 124,
+     "In1.Cu": 59,
+     "In2.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 24,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "BPIO0->RN318.8": 1,
+     "BPIO1->RN318.7": 1,
+     "BPIO2->RN312.3": 1,
+     "BPIO2->RN318.6": 1,
+     "BPIO3->RN312.4": 1,
+     "BPIO3->RN318.5": 1,
+     "VREF_VOUT->Q307.2": 1,
+     "VREF_VOUT->R301.1": 1
+    },
+    "island_split": {
+     "GND": 24
+    },
+    "dangling": {
+     "total": 15,
+     "port_cuts": 15,
+     "port_cut_nets": [
+      "BPIO0",
+      "BPIO1",
+      "BPIO2",
+      "BPIO3",
+      "VREF_VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 27,
+      "vias": 2,
+      "nets": [
+       "+3V3",
+       "BUFDIR0",
+       "BUFDIR1",
+       "BUFDIR2",
+       "BUFDIR3",
+       "BUFIO0",
+       "BUFIO1",
+       "BUFIO2",
+       "BUFIO3"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_io_buffer_4_7",
+   "dir": "bp5_io_buffer_4_7",
+   "category": "interface",
+   "parts": 17,
+   "ports": 13,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 17,
+    "not_built": [],
+    "nets": 23,
+    "copper_segs": 227,
+    "vias": 39,
+    "stub_kept": 0,
+    "isolated_deleted": 28,
+    "cut_ends": 18,
+    "exit_points": 21,
+    "segs_by_layer": {
+     "B.Cu": 29,
+     "F.Cu": 125,
+     "In1.Cu": 45,
+     "In2.Cu": 28
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 24,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "BPIO4->RN311.1": 1,
+     "BPIO4->RN317.8": 1,
+     "BPIO5->RN317.7": 1,
+     "BPIO6->RN317.6": 1,
+     "BPIO7->RN317.5": 1,
+     "VREF_VOUT->Q301.2": 1,
+     "VREF_VOUT->Q302.2": 1
+    },
+    "island_split": {
+     "GND": 24
+    },
+    "dangling": {
+     "total": 11,
+     "port_cuts": 11,
+     "port_cut_nets": [
+      "BPIO4",
+      "BPIO5",
+      "BPIO6",
+      "BPIO7",
+      "VREF_VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 20,
+      "vias": 4,
+      "nets": [
+       "+3V3",
+       "BPIO5",
+       "BUFDIR4",
+       "BUFDIR5",
+       "BUFDIR6",
+       "BUFDIR7",
+       "BUFIO4",
+       "BUFIO5",
+       "BUFIO6",
+       "BUFIO7"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_qspi_flash",
+   "dir": "bp5_qspi_flash",
+   "category": "interface",
+   "parts": 6,
+   "ports": 6,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "nets": 9,
+    "copper_segs": 35,
+    "vias": 5,
+    "stub_kept": 1,
+    "isolated_deleted": 31,
+    "cut_ends": 5,
+    "exit_points": 11,
+    "segs_by_layer": {
+     "B.Cu": 7,
+     "F.Cu": 25,
+     "In1.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 4,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->R613.1": 1
+    },
+    "island_split": {
+     "GND": 5
+    },
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "+3V3"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 17,
+      "vias": 3,
+      "nets": [
+       "GND",
+       "QSPI_SCLK",
+       "QSPI_SD0",
+       "QSPI_SD2",
+       "QSPI_SD3",
+       "QSPI_SS"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_spi_nand",
+   "dir": "bp5_spi_nand",
+   "category": "interface",
+   "parts": 1,
+   "ports": 4,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 6,
+    "copper_segs": 14,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 20,
+    "cut_ends": 4,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "F.Cu": 12,
+     "In2.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C121.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "+3V3"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 11,
+      "vias": 3,
+      "nets": [
+       "+3V3",
+       "SD_CS",
+       "SPI_CDI",
+       "SPI_CDO",
+       "SPI_CLK"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "connectors_io",
+   "dir": "connectors_io",
+   "category": "interface",
+   "parts": 6,
+   "ports": 43,
+   "rails": [
+    "+3V3",
+    "+5VD",
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 46,
+    "copper_segs": 833,
+    "vias": 57,
+    "stub_kept": 0,
+    "isolated_deleted": 356,
+    "cut_ends": 63,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 398,
+     "F.Cu": 354,
+     "In1.Cu": 8,
+     "In2.Cu": 73
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C7.1": 1,
+     "+3V3->U3.24": 1,
+     "+5VD->C1.1": 1,
+     "+5VD->C19.1": 1,
+     "+5VD->C20.1": 1,
+     "+5VD->U3.40": 1,
+     "/CDONE->D1.2": 1,
+     "/CDONE->U2.7": 1,
+     "/CDONE->U3.19": 1,
+     "/CLK_12M_EXT->U8.6": 1,
+     "/CRESET_N->R5.1": 1,
+     "/CRESET_N->U2.8": 1,
+     "/CRESET_N->U3.20": 1,
+     "/FLASH_MISO->R11.2": 1,
+     "/FLASH_MISO->R13.1": 1,
+     "/FLASH_MISO->U3.15": 1,
+     "/FLASH_MISO->U5.2": 1,
+     "/FLASH_MOSI->R12.2": 1,
+     "/FLASH_MOSI->U3.14": 1,
+     "/FLASH_MOSI->U5.5": 1,
+     "/FT_SCK->R9.1": 1,
+     "/FT_SCK->U2.15": 1,
+     "/FT_SCK->U3.13": 1,
+     "/FT_SCK->U5.6": 1,
+     "/FT_SSn->U2.16": 1,
+     "/FT_SSn->U3.17": 1,
+     "/FT_SSn->U5.1": 1,
+     "/IOB_0A->U2.46": 1,
+     "/IOB_13B->U2.6": 1,
+     "/IOB_16A->U2.9": 1,
+     "/IOB_18A->SJ24.2": 1,
+     "/IOB_18A->U2.10": 1,
+     "/IOB_20A->U2.11": 1,
+     "/IOB_22A->R21.2": 1,
+     "/IOB_22A->U2.12": 1,
+     "/IOB_23B->R22.1": 1,
+     "/IOB_23B->U2.21": 1,
+     "/IOB_24A->R23.1": 1,
+     "/IOB_24A->U2.13": 1,
+     "/IOB_25B_G3->SJ16.2": 1,
+     "/IOB_25B_G3->U2.20": 1,
+     "/IOB_29B->U2.19": 1,
+     "/IOB_2A->U2.47": 1,
+     "/IOB_31B->U2.18": 1,
+     "/IOB_3B_G6->U2.44": 1,
+     "/IOB_4A->U2.48": 1,
+     "/IOB_5B->U2.45": 1,
+     "/IOB_6A->U2.2": 1,
+     "/IOB_8A->U2.4": 1,
+     "/IOB_9B->U2.3": 1,
+     "/IOT_36B->U2.25": 1,
+     "/IOT_37A->U2.23": 1,
+     "/IOT_38B->U2.27": 1,
+     "/IOT_39A->U2.26": 1,
+     "/IOT_41A->U2.28": 1,
+     "/IOT_42B->U2.31": 1,
+     "/IOT_43A->U2.32": 1,
+     "/IOT_44B->U2.34": 1,
+     "/IOT_45A_G1->U2.37": 1,
+     "/IOT_46B_G0->U2.35": 1,
+     "/IOT_48B->U2.36": 1,
+     "/IOT_49A->U2.43": 1,
+     "/IOT_50B->U2.38": 1,
+     "/IOT_51A->U2.42": 1,
+     "/LED_B->U2.40": 1,
+     "/LED_G->D3.3": 1,
+     "/LED_G->U2.39": 1,
+     "/LED_R->D3.4": 1,
+     "/LED_R->U2.41": 1,
+     "/VIO_BANK_0_2->SJ19.1": 1,
+     "/VIO_BANK_0_2->SJ26.1": 1,
+     "GND->C19.2": 1,
+     "GND->C20.2": 1,
+     "GND->C21.2": 1,
+     "GND->J1.6": 1
+    },
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 70,
+     "port_cuts": 70,
+     "port_cut_nets": [
+      "+3V3",
+      "+5VD",
+      "/CDONE",
+      "/CLK_12M_EXT",
+      "/CRESET_N",
+      "/FLASH_MISO",
+      "/FLASH_MOSI",
+      "/FT_SCK",
+      "/FT_SSn",
+      "/IOB_0A",
+      "/IOB_13B",
+      "/IOB_16A",
+      "/IOB_18A",
+      "/IOB_22A",
+      "/IOB_23B",
+      "/IOB_24A",
+      "/IOB_25B_G3",
+      "/IOB_29B",
+      "/IOB_2A",
+      "/IOB_31B",
+      "/IOB_3B_G6",
+      "/IOB_4A",
+      "/IOB_5B",
+      "/IOB_6A",
+      "/IOB_8A",
+      "/IOB_9B",
+      "/IOT_36B",
+      "/IOT_37A",
+      "/IOT_38B",
+      "/IOT_39A",
+      "/IOT_41A",
+      "/IOT_42B",
+      "/IOT_43A",
+      "/IOT_44B",
+      "/IOT_45A_G1",
+      "/IOT_46B_G0",
+      "/IOT_48B",
+      "/IOT_49A",
+      "/IOT_50B",
+      "/IOT_51A",
+      "/LED_B",
+      "/LED_G",
+      "/LED_R",
+      "/VIO_BANK_0_2",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 19,
+      "vias": 4,
+      "nets": [
+       "/CDONE",
+       "/CLK_12M_EXT",
+       "/CRESET_N",
+       "/FLASH_MISO",
+       "/FLASH_MOSI",
+       "/FT_SSn",
+       "/IOB_18A",
+       "/IOB_20A",
+       "/IOB_23B",
+       "/IOB_24A",
+       "/IOB_25B_G3",
+       "/IOB_31B",
+       "/IOT_36B",
+       "/IOT_37A",
+       "/LED_B",
+       "/LED_G",
+       "/LED_R",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ddr5_bus_headers",
+   "dir": "ddr5_bus_headers",
+   "category": "interface",
+   "parts": 2,
+   "ports": 3,
+   "rails": [
+    "BULK_VIN",
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 9,
+    "vias": 0,
+    "stub_kept": 3,
+    "isolated_deleted": 2,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "F.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 9,
+      "vias": 1,
+      "nets": [
+       "BULK_VIN",
+       "PWR_GOOD_OUT",
+       "SCL",
+       "SDA"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ddr5_sodimm_socket",
+   "dir": "ddr5_sodimm_socket",
+   "category": "interface",
+   "parts": 1,
+   "ports": 3,
+   "rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 97,
+    "copper_segs": 3,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 4,
+    "cut_ends": 3,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 5
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 13,
+      "vias": 5,
+      "nets": [
+       "BULK_VIN",
+       "GND",
+       "HSCL",
+       "HSDA",
+       "PWR_GOOD"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ddr5_udimm_socket",
+   "dir": "ddr5_udimm_socket",
+   "category": "interface",
+   "parts": 1,
+   "ports": 3,
+   "rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 97,
+    "copper_segs": 7,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 16,
+    "cut_ends": 5,
+    "exit_points": 12,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 6
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 23,
+      "vias": 8,
+      "nets": [
+       "+3.3V",
+       "BULK_VIN",
+       "GND",
+       "HSCL",
+       "HSDA",
+       "PWR_GOOD"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ee_config",
+   "dir": "ee_config",
+   "category": "interface",
+   "parts": 6,
+   "ports": 3,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 122,
+    "vias": 5,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 7,
+    "exit_points": 7,
+    "segs_by_layer": {
+     "B.Cu": 19,
+     "F.Cu": 103
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C8.1": 1,
+     "+3V3->FB1.2": 1,
+     "+3V3->U3.46": 1,
+     "/EE_CLK->TP27.1": 1,
+     "/EE_CS->TP26.1": 1,
+     "/EE_CS->U3.45": 1,
+     "/EE_DAT->TP28.1": 1,
+     "GND->C1.2": 1,
+     "GND->C8.2": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 2
+    },
+    "dangling": {
+     "total": 11,
+     "port_cuts": 11,
+     "port_cut_nets": [
+      "+3V3",
+      "/EE_CLK",
+      "/EE_CS",
+      "/EE_DAT",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 1,
+      "vias": 0,
+      "nets": [
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "epaper_driver",
+   "dir": "epaper_driver",
+   "category": "interface",
+   "parts": 19,
+   "ports": 6,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 19,
+    "not_built": [],
+    "nets": 24,
+    "copper_segs": 129,
+    "vias": 9,
+    "stub_kept": 0,
+    "isolated_deleted": 34,
+    "cut_ends": 8,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 2,
+     "F.Cu": 100,
+     "In2.Cu": 27
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C10.1": 1,
+     "+3V3->R4.2": 1,
+     "+3V3->TP4.1": 1,
+     "+3V3->U2.5": 1,
+     "GND->C10.2": 1
+    },
+    "island_split": {
+     "GND": 12
+    },
+    "dangling": {
+     "total": 19,
+     "port_cuts": 19,
+     "port_cut_nets": [
+      "+3V3",
+      "CS",
+      "GND",
+      "SCK"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 15,
+      "vias": 12,
+      "nets": [
+       "BUSY",
+       "DC",
+       "GND",
+       "MOSI",
+       "RES"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "flash_qspi",
+   "dir": "flash_qspi",
+   "category": "interface",
+   "parts": 8,
+   "ports": 6,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 10,
+    "copper_segs": 92,
+    "vias": 10,
+    "stub_kept": 0,
+    "isolated_deleted": 22,
+    "cut_ends": 11,
+    "exit_points": 12,
+    "segs_by_layer": {
+     "B.Cu": 17,
+     "F.Cu": 67,
+     "In2.Cu": 8
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C18.1": 1,
+     "/FT_SCK->U2.15": 1,
+     "/FT_SSn->U2.16": 1,
+     "/IOB_25B_G3->U2.20": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 2
+    },
+    "dangling": {
+     "total": 7,
+     "port_cuts": 7,
+     "port_cut_nets": [
+      "+3V3",
+      "/FT_SCK",
+      "/FT_SSn",
+      "/IOB_25B_G3"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 20,
+      "vias": 8,
+      "nets": [
+       "+3V3",
+       "/FLASH_MISO",
+       "/FLASH_MOSI",
+       "/FT_SCK",
+       "/IOB_18A",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "i2c_level_shift",
+   "dir": "i2c_level_shift",
+   "category": "interface",
+   "parts": 3,
+   "ports": 4,
+   "rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+   ],
+   "counts": {
+    "members": 3,
+    "nets": 7,
+    "copper_segs": 9,
+    "vias": 0,
+    "stub_kept": 5,
+    "isolated_deleted": 6,
+    "cut_ends": 7,
+    "exit_points": 7,
+    "segs_by_layer": {
+     "F.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3.3V->R9.2": 1
+    },
+    "island_split": {
+     "GND": 3
+    },
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "+3.3V"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 7,
+      "vias": 1,
+      "nets": [
+       "BULK_VIN",
+       "HSCL",
+       "HSDA",
+       "SCL",
+       "SDA"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "irtoy_headers",
+   "dir": "irtoy_headers",
+   "category": "interface",
+   "parts": 2,
+   "ports": 6,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 22,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 4,
+    "cut_ends": 6,
+    "exit_points": 7,
+    "segs_by_layer": {
+     "B.Cu": 16,
+     "F.Cu": 6
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2,
+     "VOUT": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 18,
+      "vias": 0,
+      "nets": [
+       "IO1",
+       "IO3",
+       "IO4",
+       "IO5",
+       "IO7",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "nrf24_transceiver",
+   "dir": "nrf24_transceiver",
+   "category": "interface",
+   "parts": 7,
+   "ports": 11,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 15,
+    "copper_segs": 43,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 7,
+    "exit_points": 12,
+    "segs_by_layer": {
+     "F.Cu": 43
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {
+     "GND": 1
+    },
+    "borrowed_pads": {
+     "NRF_ANT1->L2.2": 1,
+     "NRF_ANT2->L2.1": 1,
+     "NRF_XC1->R5.2": 1,
+     "NRF_XC2->R5.1": 1
+    },
+    "island_split": {
+     "+3V3": 3,
+     "GND": 8
+    },
+    "dangling": {
+     "total": 4,
+     "port_cuts": 4,
+     "port_cut_nets": [
+      "NRF_ANT1",
+      "NRF_ANT2",
+      "NRF_XC1",
+      "NRF_XC2"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 26,
+      "vias": 15,
+      "nets": [
+       "+3V3",
+       "GND",
+       "NRF_CE",
+       "NRF_IRQ",
+       "NRF_VDD_PA",
+       "SPI3_!CS",
+       "SPI3_MISO",
+       "SPI3_MOSI",
+       "SPI3_SCK"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "power_good_sense",
+   "dir": "power_good_sense",
+   "category": "interface",
+   "parts": 6,
+   "ports": 2,
+   "rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "nets": 8,
+    "copper_segs": 18,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 12,
+    "cut_ends": 3,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "F.Cu": 18
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 10,
+      "vias": 5,
+      "nets": [
+       "+3.3V",
+       "BULK_VIN",
+       "GND",
+       "PWR_GOOD",
+       "PWR_GOOD_OUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "rs232_dce",
+   "dir": "rs232_dce",
+   "category": "interface",
+   "parts": 7,
+   "ports": 12,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {
+    "members": 7,
+    "nets": 21,
+    "copper_segs": 53,
+    "vias": 4,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 5,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "B.Cu": 3,
+     "F.Cu": 50
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->C1.1": 1,
+     "VOUT->U1.16": 1
+    },
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 16,
+      "vias": 3,
+      "nets": [
+       "GND",
+       "UART0CTS",
+       "UART0RTS",
+       "UART0RX",
+       "UART0TX"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 RS232 双通道转接板 REV0",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "rs232_dte",
+   "dir": "rs232_dte",
+   "category": "interface",
+   "parts": 7,
+   "ports": 12,
+   "rails": [
+    "GND",
+    "VOUT"
+   ],
+   "counts": {
+    "members": 7,
+    "nets": 21,
+    "copper_segs": 42,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 41
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 15,
+      "vias": 3,
+      "nets": [
+       "GND",
+       "UART1CTS",
+       "UART1RTS",
+       "UART1RX",
+       "UART1TX",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 RS232 双通道转接板 REV0",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "usb_dev_esd",
+   "dir": "usb_dev_esd",
+   "category": "interface",
+   "parts": 5,
+   "ports": 3,
+   "rails": [
+    "GND",
+    "VBUS"
+   ],
+   "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 8,
+    "copper_segs": 31,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 17,
+    "cut_ends": 5,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 31
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VBUS->D1.2": 1
+    },
+    "island_split": {
+     "GND": 4
+    },
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "VBUS"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 15,
+      "vias": 7,
+      "nets": [
+       "GND",
+       "USB_D+",
+       "USB_D-",
+       "USB_DET"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "usb_esd_usblc6",
+   "dir": "usb_esd_usblc6",
+   "category": "interface",
+   "parts": 2,
+   "ports": 2,
+   "rails": [
+    "+5V",
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 26,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 12,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "B.Cu": 2,
+     "F.Cu": 24
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+5V->F1.2": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "+5V"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 11,
+      "vias": 5,
+      "nets": [
+       "+5V",
+       "GND",
+       "USB_D+",
+       "USB_D-"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "usb_ftdi_bridge",
+   "dir": "usb_ftdi_bridge",
+   "category": "interface",
+   "parts": 31,
+   "ports": 12,
+   "rails": [
+    "+3V3",
+    "+5VD",
+    "GND"
+   ],
+   "counts": {
+    "members": 31,
+    "not_built": [],
+    "nets": 38,
+    "copper_segs": 571,
+    "vias": 29,
+    "stub_kept": 0,
+    "isolated_deleted": 26,
+    "cut_ends": 24,
+    "exit_points": 11,
+    "segs_by_layer": {
+     "B.Cu": 172,
+     "F.Cu": 368,
+     "In1.Cu": 1,
+     "In2.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C3.1": 1,
+     "+3V3->C33.1": 1,
+     "+3V3->C36.1": 1,
+     "+3V3->J2.9": 1,
+     "+3V3->R17.1": 1,
+     "+3V3->R18.2": 1,
+     "+3V3->U8.8": 1,
+     "+5VD->J2.8": 1,
+     "/CDONE->J2.4": 1,
+     "/CLK_12M_FT->U8.2": 1,
+     "/CLK_12M_FT->U8.5": 1,
+     "/CRESET_N->J2.3": 1,
+     "/EE_CLK->R18.1": 1,
+     "/EE_CLK->TP27.1": 1,
+     "/EE_CS->R17.2": 1,
+     "/EE_CS->TP26.1": 1,
+     "/EE_DAT->TP28.1": 1,
+     "/EE_DAT->U1.3": 1,
+     "/FLASH_MISO->R11.2": 1,
+     "/FLASH_MISO->R13.1": 1,
+     "/FLASH_MOSI->R12.2": 1,
+     "/USB_M->R23.2": 1,
+     "/USB_M->TP21.1": 1,
+     "/USB_P->R21.1": 1,
+     "/USB_P->R22.2": 1,
+     "/USB_P->TP20.1": 1,
+     "GND->C23.2": 1,
+     "GND->C3.2": 1,
+     "GND->C36.2": 1,
+     "GND->J2.1": 1,
+     "GND->U8.1": 1,
+     "GND->U8.4": 1,
+     "GND->U8.7": 1
+    },
+    "island_split": {
+     "+3V3": 4,
+     "GND": 3
+    },
+    "dangling": {
+     "total": 42,
+     "port_cuts": 28,
+     "port_cut_nets": [
+      "+3V3",
+      "+5VD",
+      "/CDONE",
+      "/CLK_12M_FT",
+      "/CRESET_N",
+      "/EE_CLK",
+      "/EE_CS",
+      "/EE_DAT",
+      "/FLASH_MISO",
+      "/FLASH_MOSI",
+      "/USB_M",
+      "/USB_P",
+      "GND"
+     ],
+     "binds": 14,
+     "bind_nets": [
+      "+3V3",
+      "/CDONE",
+      "/CRESET_N",
+      "/EE_DAT",
+      "/FLASH_MISO",
+      "/FLASH_MOSI",
+      "/FT_SCK",
+      "/FT_SSn",
+      "/FT_VCORE"
+     ],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 17,
+      "vias": 11,
+      "nets": [
+       "+3V3",
+       "/FLASH_MOSI",
+       "/FT_SCK",
+       "/FT_SSn",
+       "GND"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_io_expander",
+   "dir": "bp5_io_expander",
+   "category": "io",
+   "parts": 9,
+   "ports": 17,
+   "rails": [
+    "+3V3",
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 9,
+    "not_built": [],
+    "nets": 39,
+    "copper_segs": 207,
+    "vias": 15,
+    "stub_kept": 1,
+    "isolated_deleted": 42,
+    "cut_ends": 27,
+    "exit_points": 22,
+    "segs_by_layer": {
+     "B.Cu": 28,
+     "F.Cu": 162,
+     "In1.Cu": 16,
+     "In2.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 4,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+VUSB->C403.2": 1,
+     "+VUSB->C507.2": 1,
+     "+VUSB->C508.2": 1,
+     "+VUSB->C509.2": 1,
+     "+VUSB->C510.2": 1,
+     "+VUSB->D501.3": 1,
+     "+VUSB->LCD201.3": 1,
+     "+VUSB->R320.2": 1,
+     "+VUSB->U402.24": 1,
+     "+VUSB->U504.4": 1,
+     "AMUX_S2->U402.14": 1,
+     "AMUX_S3->U402.13": 1,
+     "CURRENT_EN_OVERRIDE->D603.2": 1,
+     "GND->C105.2": 1,
+     "SPI_CDO->LCD201.10": 1,
+     "SPI_CLK->LCD201.9": 1
+    },
+    "island_split": {
+     "GND": 7
+    },
+    "dangling": {
+     "total": 19,
+     "port_cuts": 19,
+     "port_cut_nets": [
+      "+VUSB",
+      "AMUX_S2",
+      "AMUX_S3",
+      "CURRENT_EN_OVERRIDE",
+      "GND",
+      "SPI_CDO",
+      "SPI_CLK"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 49,
+      "vias": 10,
+      "nets": [
+       "+3V3",
+       "+VUSB",
+       "AMUX_EN",
+       "AMUX_S0",
+       "AMUX_S1",
+       "AMUX_S2",
+       "CURRENT_EN",
+       "CURRENT_RESET",
+       "DISPLAY_BACKLIGHT",
+       "DISPLAY_RESET",
+       "GND",
+       "LEDS_CDO",
+       "PULLUP_EN",
+       "RGB_CDO",
+       "SHIFT_EN",
+       "SHIFT_LATCH"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_rgb_leds",
+   "dir": "bp5_rgb_leds",
+   "category": "io",
+   "parts": 37,
+   "ports": 1,
+   "rails": [
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 37,
+    "not_built": [],
+    "nets": 22,
+    "copper_segs": 370,
+    "vias": 41,
+    "stub_kept": 0,
+    "isolated_deleted": 308,
+    "cut_ends": 18,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 112,
+     "F.Cu": 242,
+     "In1.Cu": 16
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 22,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+VUSB->C401.1": 1,
+     "+VUSB->C403.2": 1,
+     "+VUSB->C405.2": 1,
+     "+VUSB->C406.1": 1,
+     "+VUSB->C503.2": 1,
+     "+VUSB->C504.2": 1,
+     "+VUSB->C506.1": 1,
+     "+VUSB->C507.2": 1,
+     "+VUSB->C508.2": 1,
+     "+VUSB->C509.2": 1,
+     "+VUSB->C510.2": 1,
+     "+VUSB->C601.1": 1,
+     "+VUSB->C602.2": 1,
+     "+VUSB->D500.3": 1,
+     "+VUSB->D501.3": 1,
+     "+VUSB->D502.3": 1,
+     "+VUSB->D503.3": 1,
+     "+VUSB->LCD201.3": 1,
+     "+VUSB->R313.2": 1,
+     "+VUSB->R320.2": 1,
+     "+VUSB->R602.2": 1,
+     "+VUSB->U402.24": 1,
+     "+VUSB->U404.5": 1,
+     "+VUSB->U503.1": 1,
+     "+VUSB->U503.20": 1,
+     "+VUSB->U504.4": 1,
+     "+VUSB->U506.5": 1,
+     "+VUSB->U601.5": 1,
+     "LEDS_CDO->U503.13": 1
+    },
+    "island_split": {
+     "+VUSB": 3,
+     "GND": 32
+    },
+    "dangling": {
+     "total": 21,
+     "port_cuts": 21,
+     "port_cut_nets": [
+      "+VUSB",
+      "LEDS_CDO"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 18,
+      "vias": 23,
+      "nets": [
+       "+VUSB",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_switchable_pullups",
+   "dir": "bp5_switchable_pullups",
+   "category": "io",
+   "parts": 11,
+   "ports": 10,
+   "rails": [
+    "+VUSB"
+   ],
+   "counts": {
+    "members": 11,
+    "not_built": [],
+    "nets": 19,
+    "copper_segs": 236,
+    "vias": 22,
+    "stub_kept": 1,
+    "isolated_deleted": 61,
+    "cut_ends": 29,
+    "exit_points": 19,
+    "segs_by_layer": {
+     "B.Cu": 20,
+     "F.Cu": 146,
+     "In1.Cu": 70
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "BPIO0->J301.2": 1,
+     "BPIO0->RN305.1": 1,
+     "BPIO0->RN318.8": 1,
+     "BPIO1->J301.3": 1,
+     "BPIO1->RN305.2": 1,
+     "BPIO1->RN318.7": 1,
+     "BPIO2->J301.4": 1,
+     "BPIO2->RN305.3": 1,
+     "BPIO2->RN318.6": 1,
+     "BPIO3->J301.5": 1,
+     "BPIO3->RN305.4": 1,
+     "BPIO3->RN318.5": 1,
+     "BPIO4->J301.6": 1,
+     "BPIO4->RN309.1": 1,
+     "BPIO4->RN317.8": 1,
+     "BPIO5->J301.7": 1,
+     "BPIO5->RN309.2": 1,
+     "BPIO5->RN317.7": 1,
+     "BPIO6->J301.8": 1,
+     "BPIO6->RN309.3": 1,
+     "BPIO6->RN317.6": 1,
+     "BPIO7->J301.9": 1,
+     "BPIO7->RN309.4": 1,
+     "BPIO7->RN317.5": 1,
+     "VREF_VOUT->C304.1": 1,
+     "VREF_VOUT->C306.1": 1,
+     "VREF_VOUT->C310.1": 1,
+     "VREF_VOUT->J301.1": 1,
+     "VREF_VOUT->R301.1": 1
+    },
+    "island_split": {
+     "VREF_VOUT": 2
+    },
+    "dangling": {
+     "total": 31,
+     "port_cuts": 31,
+     "port_cut_nets": [
+      "BPIO0",
+      "BPIO1",
+      "BPIO2",
+      "BPIO3",
+      "BPIO4",
+      "BPIO5",
+      "BPIO6",
+      "BPIO7",
+      "VREF_VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 9,
+      "vias": 2,
+      "nets": [
+       "+VUSB",
+       "BPIO6",
+       "PULLUP_EN"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_mcu_rp2040",
+   "dir": "bp5_mcu_rp2040",
+   "category": "mcu",
+   "parts": 18,
+   "ports": 40,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 18,
+    "nets": 46,
+    "copper_segs": 274,
+    "vias": 41,
+    "stub_kept": 0,
+    "isolated_deleted": 43,
+    "cut_ends": 38,
+    "exit_points": 37,
+    "segs_by_layer": {
+     "B.Cu": 45,
+     "F.Cu": 178,
+     "In1.Cu": 24,
+     "In2.Cu": 27
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 23,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C413.1": 1,
+     "+3V3->C414.2": 1,
+     "+3V3->U105.7": 1,
+     "+3V3->U105.8": 1,
+     "+3V3->U603.5": 1,
+     "AMUX_OUT->R406.2": 1,
+     "AMUX_OUT->R407.2": 1,
+     "CURRENT_ADJ_MCU->R415.2": 1,
+     "CURRENT_SENSE->U601.4": 1,
+     "DISPLAY_CS->LCD201.8": 1,
+     "DISPLAY_DP->LCD201.7": 1,
+     "GND->U503.8": 1,
+     "QSPI_SCLK->U102.6": 1,
+     "QSPI_SD0->U102.5": 1,
+     "RGB_CDO->U503.7": 1,
+     "SPI_CDO->LCD201.10": 1,
+     "SPI_CDO->U105.5": 1,
+     "SPI_CLK->LCD201.9": 1,
+     "SPI_CLK->U105.6": 1,
+     "VREG_ADJ_MCU->R414.2": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 27
+    },
+    "dangling": {
+     "total": 20,
+     "port_cuts": 20,
+     "port_cut_nets": [
+      "+3V3",
+      "AMUX_OUT",
+      "CURRENT_ADJ_MCU",
+      "CURRENT_SENSE",
+      "DISPLAY_CS",
+      "DISPLAY_DP",
+      "GND",
+      "QSPI_SCLK",
+      "QSPI_SD0",
+      "RGB_CDO",
+      "SPI_CDO",
+      "SPI_CLK",
+      "VREG_ADJ_MCU"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 117,
+      "vias": 13,
+      "nets": [
+       "+3V3",
+       "BUFDIR1",
+       "BUFDIR2",
+       "BUFDIR3",
+       "BUFDIR4",
+       "BUFDIR5",
+       "BUFDIR6",
+       "BUFDIR7",
+       "BUFIO0",
+       "BUFIO1",
+       "BUFIO2",
+       "BUFIO3",
+       "BUFIO4",
+       "BUFIO5",
+       "BUFIO6",
+       "BUFIO7",
+       "BUTTONS",
+       "GND",
+       "QSPI_SD1",
+       "QSPI_SD2",
+       "QSPI_SD3",
+       "QSPI_SS",
+       "SD_CS",
+       "SHIFT_EN",
+       "SHIFT_LATCH",
+       "SPI_CDI",
+       "SPI_CLK",
+       "SWCLK",
+       "SWDIO",
+       "USB_D+",
+       "USB_D-"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "clock_12m",
+   "dir": "clock_12m",
+   "category": "mcu",
+   "parts": 6,
+   "ports": 3,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 196,
+    "vias": 7,
+    "stub_kept": 1,
+    "isolated_deleted": 96,
+    "cut_ends": 17,
+    "exit_points": 14,
+    "segs_by_layer": {
+     "B.Cu": 56,
+     "F.Cu": 128,
+     "In2.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->U3.12": 1,
+     "/CLK_12M_FT->U3.1": 1,
+     "/IOB_25B_G3->J3.5": 1,
+     "GND->C1.2": 1,
+     "GND->C13.2": 1,
+     "GND->C27.2": 1,
+     "GND->C28.2": 1,
+     "GND->C3.2": 1,
+     "GND->C7.2": 1,
+     "GND->C8.2": 1,
+     "GND->C9.2": 1,
+     "GND->R3.2": 1,
+     "GND->U3.10": 1,
+     "GND->U3.11": 1,
+     "GND->U3.22": 1,
+     "GND->U3.23": 1,
+     "GND->U3.9": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 4
+    },
+    "dangling": {
+     "total": 19,
+     "port_cuts": 19,
+     "port_cut_nets": [
+      "+3V3",
+      "/CLK_12M_FT",
+      "/IOB_25B_G3",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 10,
+      "vias": 10,
+      "nets": [
+       "/CLK_12M_EXT",
+       "/IOB_25B_G3",
+       "GND",
+       "Net-(SJ16-Pad1)"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "fpga_ice40up5k",
+   "dir": "fpga_ice40up5k",
+   "category": "mcu",
+   "parts": 20,
+   "ports": 42,
+   "rails": [
+    "+1V2",
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 20,
+    "not_built": [],
+    "nets": 50,
+    "copper_segs": 242,
+    "vias": 29,
+    "stub_kept": 2,
+    "isolated_deleted": 65,
+    "cut_ends": 44,
+    "exit_points": 52,
+    "segs_by_layer": {
+     "B.Cu": 123,
+     "F.Cu": 100,
+     "In2.Cu": 19
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+1V2->C29.1": 1,
+     "/FT_SCK->R9.1": 1,
+     "/FT_SCK->U5.6": 1,
+     "/FT_SSn->U5.1": 1,
+     "/LED_G->D3.3": 1,
+     "/LED_R->D3.4": 1,
+     "GND->C18.2": 1,
+     "GND->C24.2": 1,
+     "GND->C29.2": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 2
+    },
+    "dangling": {
+     "total": 16,
+     "port_cuts": 16,
+     "port_cut_nets": [
+      "+1V2",
+      "/FT_SCK",
+      "/FT_SSn",
+      "/IOB_18A",
+      "/IOB_8A",
+      "/IOB_9B",
+      "/IOT_36B",
+      "/IOT_38B",
+      "/IOT_48B",
+      "/LED_G",
+      "/LED_R",
+      "GND"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 203,
+      "vias": 24,
+      "nets": [
+       "+1V2",
+       "+3V3",
+       "/CDONE",
+       "/FPGA_SI",
+       "/FPGA_SO",
+       "/FT_SCK",
+       "/IOB_0A",
+       "/IOB_13B",
+       "/IOB_16A",
+       "/IOB_20A",
+       "/IOB_22A",
+       "/IOB_23B",
+       "/IOB_24A",
+       "/IOB_25B_G3",
+       "/IOB_29B",
+       "/IOB_2A",
+       "/IOB_31B",
+       "/IOB_3B_G6",
+       "/IOB_4A",
+       "/IOB_5B",
+       "/IOB_6A",
+       "/IOT_37A",
+       "/IOT_39A",
+       "/IOT_41A",
+       "/IOT_42B",
+       "/IOT_43A",
+       "/IOT_44B",
+       "/IOT_45A_G1",
+       "/IOT_46B_G0",
+       "/IOT_49A",
+       "/IOT_50B",
+       "/IOT_51A",
+       "/LED_B",
+       "/LED_R",
+       "/VIO_BANK_0_2",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "mcu_esp32c3_mini1",
+   "dir": "mcu_esp32c3_mini1",
+   "category": "mcu",
+   "parts": 13,
+   "ports": 16,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 13,
+    "not_built": [],
+    "nets": 33,
+    "copper_segs": 100,
+    "vias": 14,
+    "stub_kept": 0,
+    "isolated_deleted": 66,
+    "cut_ends": 16,
+    "exit_points": 21,
+    "segs_by_layer": {
+     "B.Cu": 23,
+     "F.Cu": 77
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 38,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->U4.2": 1,
+     "CHIP_PU->U4.1": 1,
+     "IO10_SDA->R18.2": 1,
+     "IO8_SCL->R17.2": 1,
+     "IO9_BOOT->R19.2": 1
+    },
+    "island_split": {
+     "GND": 38
+    },
+    "dangling": {
+     "total": 7,
+     "port_cuts": 7,
+     "port_cut_nets": [
+      "+3V3",
+      "CHIP_PU",
+      "IO10_SDA",
+      "IO8_SCL",
+      "IO9_BOOT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 39,
+      "vias": 8,
+      "nets": [
+       "IO0",
+       "IO1",
+       "IO10_SDA",
+       "IO2",
+       "IO20_RX",
+       "IO21_TX",
+       "IO3",
+       "IO4",
+       "IO5",
+       "IO6",
+       "IO7",
+       "USB_D+"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "esp-rust-board",
+   "license": "CERN-OHL-P-2.0 — 上游 esp-rs / Espressif（github.com/esp-rs/esp-rust-board，commit efe1e8ad）",
+   "source": "human:esp-rust-board",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "mcu_esp32s3",
+   "dir": "mcu_esp32s3",
+   "category": "mcu",
+   "parts": 23,
+   "ports": 21,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 25,
+    "not_built": [],
+    "nets": 54,
+    "copper_segs": 311,
+    "vias": 34,
+    "stub_kept": 0,
+    "isolated_deleted": 51,
+    "cut_ends": 31,
+    "exit_points": 18,
+    "segs_by_layer": {
+     "B.Cu": 90,
+     "F.Cu": 172,
+     "In2.Cu": 49
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C1.1": 1,
+     "+3V3->C3.1": 1,
+     "+3V3->C5.1": 1,
+     "+3V3->C6.1": 1,
+     "+3V3->R18.2": 1,
+     "+3V3->R19.1": 1,
+     "+3V3->R20.2": 1,
+     "+3V3->R7.2": 1,
+     "+3V3->U1.6": 1,
+     "+3V3->U6.10": 1,
+     "+3V3->U6.3": 1,
+     "+3V3->U6.7": 1,
+     "ACC_INT_1->U6.5": 1,
+     "ACC_INT_2->U6.6": 1,
+     "BTN2->R7.1": 1,
+     "BTN3->R10.1": 1,
+     "BTN3->U1.5": 1,
+     "EN->U1.3": 1,
+     "GND->C3.2": 1,
+     "GND->C5.2": 1,
+     "SCL->R20.1": 1,
+     "SCL->U6.12": 1,
+     "SDA->R18.1": 1,
+     "SDA->U6.2": 1,
+     "USB_D+->U5.1": 1,
+     "USB_D-->U5.3": 1,
+     "USB_DET->R14.2": 1,
+     "USB_DET->R15.1": 1,
+     "VIB_PWM->R13.2": 1
+    },
+    "island_split": {
+     "+3V3": 2,
+     "GND": 9
+    },
+    "dangling": {
+     "total": 30,
+     "port_cuts": 30,
+     "port_cut_nets": [
+      "+3V3",
+      "ACC_INT_1",
+      "ACC_INT_2",
+      "BTN2",
+      "BTN3",
+      "EN",
+      "GND",
+      "SCL",
+      "SDA",
+      "USB_D+",
+      "USB_D-",
+      "USB_DET",
+      "VIB_PWM"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 67,
+      "vias": 21,
+      "nets": [
+       "+3V3",
+       "ADC",
+       "BTN1",
+       "BTN4",
+       "BUSY",
+       "CS",
+       "DC",
+       "GND",
+       "MOSI",
+       "RES",
+       "SCK",
+       "STAT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "mcu_stm32l432",
+   "dir": "mcu_stm32l432",
+   "category": "mcu",
+   "parts": 10,
+   "ports": 11,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 10,
+    "not_built": [],
+    "nets": 31,
+    "copper_segs": 113,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 44,
+    "cut_ends": 11,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 112
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "NRF_CE->U4.1": 1,
+     "SPI3_!CS->U4.2": 1,
+     "SPI3_MISO->U4.5": 1,
+     "SPI3_MOSI->U4.4": 1,
+     "SPI3_SCK->U4.3": 1,
+     "USB_D+->U2.1": 1,
+     "USB_D-->U2.3": 1
+    },
+    "island_split": {
+     "+3V3": 3,
+     "GND": 6
+    },
+    "dangling": {
+     "total": 7,
+     "port_cuts": 7,
+     "port_cut_nets": [
+      "NRF_CE",
+      "SPI3_!CS",
+      "SPI3_MISO",
+      "SPI3_MOSI",
+      "SPI3_SCK",
+      "USB_D+",
+      "USB_D-"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 19,
+      "vias": 13,
+      "nets": [
+       "+3V3",
+       "GND",
+       "NRF_IRQ",
+       "NRST",
+       "SWCLK",
+       "SWDIO"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "bp5_backflow_prevent",
+   "dir": "bp5_backflow_prevent",
+   "category": "power",
+   "parts": 7,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 40,
+    "vias": 4,
+    "stub_kept": 2,
+    "isolated_deleted": 5,
+    "cut_ends": 4,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "F.Cu": 36,
+     "In1.Cu": 4
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VREF_VOUT->R319.2": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "VREF_VOUT"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 1,
+      "nets": [
+       "VREG_OUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_current_en_gate",
+   "dir": "bp5_current_en_gate",
+   "category": "power",
+   "parts": 5,
+   "ports": 4,
+   "rails": [
+    "+3V3"
+   ],
+   "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 37,
+    "vias": 7,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 5,
+    "exit_points": 10,
+    "segs_by_layer": {
+     "B.Cu": 7,
+     "F.Cu": 22,
+     "In1.Cu": 7,
+     "In2.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->U102.8": 1
+    },
+    "island_split": {
+     "VREG_EN": 2
+    },
+    "dangling": {
+     "total": 3,
+     "port_cuts": 3,
+     "port_cut_nets": [
+      "+3V3"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 7,
+      "vias": 1,
+      "nets": [
+       "CURRENT_EN",
+       "CURRENT_EN_OVERRIDE"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_ldo_3v3",
+   "dir": "bp5_ldo_3v3",
+   "category": "power",
+   "parts": 3,
+   "ports": 0,
+   "rails": [
+    "+3V3",
+    "+VUSB",
+    "GND"
+   ],
+   "counts": {
+    "members": 3,
+    "nets": 3,
+    "copper_segs": 2,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 22,
+    "cut_ends": 1,
+    "exit_points": 9,
+    "segs_by_layer": {
+     "F.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 4,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "+3V3": 2,
+     "GND": 3
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 4,
+      "nets": [
+       "+3V3",
+       "+VUSB"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "bp5_vreg_adj_ldo",
+   "dir": "bp5_vreg_adj_ldo",
+   "category": "power",
+   "parts": 8,
+   "ports": 4,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 20,
+    "vias": 0,
+    "stub_kept": 2,
+    "isolated_deleted": 5,
+    "cut_ends": 3,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 20
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 7,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 5,
+     "VREG_VIN": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 5,
+      "vias": 2,
+      "nets": [
+       "VREG_ADJ",
+       "VREG_EN"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ddr5_ldo_3v3",
+   "dir": "ddr5_ldo_3v3",
+   "category": "power",
+   "parts": 4,
+   "ports": 0,
+   "rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 3,
+    "copper_segs": 5,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 11,
+    "cut_ends": 3,
+    "exit_points": 6,
+    "segs_by_layer": {
+     "F.Cu": 5
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "+3.3V": 2,
+     "GND": 3
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 8,
+      "vias": 4,
+      "nets": [
+       "+3.3V",
+       "BULK_VIN",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_backflow_prevent",
+   "dir": "kb_backflow_prevent",
+   "category": "power",
+   "parts": 6,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "nets": 6,
+    "copper_segs": 28,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 0,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "B.Cu": 2,
+     "F.Cu": 26
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 2,
+      "nets": [
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "kb_vout_switch",
+   "dir": "kb_vout_switch",
+   "category": "power",
+   "parts": 1,
+   "ports": 1,
+   "rails": [
+    "VDD"
+   ],
+   "counts": {
+    "members": 1,
+    "nets": 3,
+    "copper_segs": 5,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 4,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 4
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 1,
+      "vias": 0,
+      "nets": [
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "power_3v3_usb_ldo",
+   "dir": "power_3v3_usb_ldo",
+   "category": "power",
+   "parts": 5,
+   "ports": 0,
+   "rails": [
+    "+3V3",
+    "+5V",
+    "GND"
+   ],
+   "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 5,
+    "copper_segs": 39,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 3,
+    "cut_ends": 1,
+    "exit_points": 0,
+    "segs_by_layer": {
+     "B.Cu": 1,
+     "F.Cu": 38
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+5V->J1.1": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 1,
+     "port_cuts": 1,
+     "port_cut_nets": [
+      "+5V"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 5,
+      "vias": 8,
+      "nets": [
+       "+3V3",
+       "GND"
+      ],
+      "when": "2026-10-31"
+     }
+    }
+   },
+   "board": "STRF (2.4GHz RF-to-USB dongle)",
+   "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+   "source": "human:open-source",
+   "date": "2026-10-31"
+  },
+  {
+   "name": "power_batt_ldo",
+   "dir": "power_batt_ldo",
+   "category": "power",
+   "parts": 19,
+   "ports": 5,
+   "rails": [
+    "+3V3",
+    "GND",
+    "VBUS"
+   ],
+   "counts": {
+    "members": 19,
+    "not_built": [],
+    "nets": 14,
+    "copper_segs": 294,
+    "vias": 33,
+    "stub_kept": 0,
+    "isolated_deleted": 86,
+    "cut_ends": 26,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "B.Cu": 50,
+     "F.Cu": 171,
+     "In2.Cu": 73
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->C14.1": 1,
+     "+3V3->C28.1": 1,
+     "+3V3->D2.1": 1,
+     "+3V3->R1.2": 1,
+     "+3V3->R10.2": 1,
+     "+3V3->R18.2": 1,
+     "+3V3->R19.1": 1,
+     "+3V3->R20.2": 1,
+     "+3V3->R4.2": 1,
+     "+3V3->R7.2": 1,
+     "+3V3->TP4.1": 1,
+     "+3V3->U4.2": 1,
+     "+3V3->U4.20": 1,
+     "+3V3->U4.3": 1,
+     "+3V3->U4.46": 1,
+     "+3V3->U4.55": 1,
+     "+3V3->U4.56": 1,
+     "+3V3->U6.10": 1,
+     "+3V3->U6.3": 1,
+     "+3V3->U6.7": 1,
+     "ADC->U4.14": 1,
+     "BTN2->R7.1": 1,
+     "BTN2->U4.11": 1,
+     "BTN3->R10.1": 1,
+     "BTN3->U4.5": 1,
+     "EN->C2.1": 1,
+     "EN->R1.1": 1,
+     "EN->U4.4": 1,
+     "GND->C2.2": 1,
+     "GND->C23.2": 1,
+     "GND->C7.2": 1,
+     "GND->R16.2": 1,
+     "GND->U6.1": 1,
+     "STAT->U4.15": 1,
+     "VBUS->J2.1": 1,
+     "VBUS->R14.1": 1,
+     "VBUS->U5.5": 1
+    },
+    "island_split": {
+     "GND": 9
+    },
+    "dangling": {
+     "total": 40,
+     "port_cuts": 40,
+     "port_cut_nets": [
+      "+3V3",
+      "ADC",
+      "BTN2",
+      "BTN3",
+      "EN",
+      "GND",
+      "STAT",
+      "VBUS"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 2,
+      "vias": 9,
+      "nets": [
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "regulators",
+   "dir": "regulators",
+   "category": "power",
+   "parts": 6,
+   "ports": 0,
+   "rails": [
+    "+1V2",
+    "+3V3",
+    "+5VD",
+    "GND"
+   ],
+   "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 53,
+    "vias": 2,
+    "stub_kept": 2,
+    "isolated_deleted": 0,
+    "cut_ends": 5,
+    "exit_points": 10,
+    "segs_by_layer": {
+     "B.Cu": 50,
+     "F.Cu": 1,
+     "In2.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+5VD->J4.1": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "+5VD"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 17,
+      "vias": 4,
+      "nets": [
+       "+1V2",
+       "+3V3",
+       "+5VD",
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "UPduino v3.01",
+   "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "sim_power_select",
+   "dir": "sim_power_select",
+   "category": "power",
+   "parts": 2,
+   "ports": 5,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 2,
+    "nets": 6,
+    "copper_segs": 21,
+    "vias": 4,
+    "stub_kept": 0,
+    "isolated_deleted": 37,
+    "cut_ends": 6,
+    "exit_points": 16,
+    "segs_by_layer": {
+     "B.Cu": 6,
+     "F.Cu": 15
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "/VCC->J1.C1": 1
+    },
+    "island_split": {},
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "/VCC"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 9,
+      "vias": 0,
+      "nets": [
+       "GND",
+       "GND_PIN",
+       "VCC_PIN",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "usb_batt_switch",
+   "dir": "usb_batt_switch",
+   "category": "power",
+   "parts": 3,
+   "ports": 0,
+   "rails": [
+    "+5V",
+    "+BATT",
+    "GND",
+    "VBUS"
+   ],
+   "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 4,
+    "copper_segs": 12,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 9,
+    "cut_ends": 1,
+    "exit_points": 4,
+    "segs_by_layer": {
+     "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "VBUS": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 6,
+      "vias": 3,
+      "nets": [
+       "+BATT",
+       "VBUS"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "esp-rust-board",
+   "license": "CERN-OHL-P-2.0 — 上游 esp-rs / Espressif（github.com/esp-rs/esp-rust-board，commit efe1e8ad）",
+   "source": "human:esp-rust-board",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "vpp_adc_divider",
+   "dir": "vpp_adc_divider",
+   "category": "power",
+   "parts": 3,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 3,
+    "copper_segs": 6,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 13,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 6
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 1,
+      "nets": [
+       "VPP",
+       "VPP_ADC"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "vpp_boost",
+   "dir": "vpp_boost",
+   "category": "power",
+   "parts": 7,
+   "ports": 3,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 32,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 38,
+    "cut_ends": 4,
+    "exit_points": 4,
+    "segs_by_layer": {
+     "B.Cu": 2,
+     "F.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 5,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VOUT->J2.1": 1,
+     "VPP->Q1.2": 1,
+     "VPP->R22.1": 1,
+     "VPP->R23.2": 1,
+     "VPP_PWM->J2.4": 1
+    },
+    "island_split": {
+     "GND": 5
+    },
+    "dangling": {
+     "total": 4,
+     "port_cuts": 4,
+     "port_cut_nets": [
+      "VOUT",
+      "VPP",
+      "VPP_PWM"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 1,
+      "vias": 0,
+      "nets": [
+       "VPP"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "vpp_switch",
+   "dir": "vpp_switch",
+   "category": "power",
+   "parts": 8,
+   "ports": 4,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 10,
+    "copper_segs": 20,
+    "vias": 0,
+    "stub_kept": 3,
+    "isolated_deleted": 11,
+    "cut_ends": 5,
+    "exit_points": 7,
+    "segs_by_layer": {
+     "F.Cu": 20
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "VPP->D3.1": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 2,
+     "port_cuts": 2,
+     "port_cut_nets": [
+      "VPP"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 3,
+      "vias": 0,
+      "nets": [
+       "VPP_HIGH",
+       "VPP_LOW",
+       "VPP_SW"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "accel_bma423",
+   "dir": "accel_bma423",
+   "category": "sensor",
+   "parts": 3,
+   "ports": 4,
+   "rails": [
+    "+3V3",
+    "GND"
+   ],
+   "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 8,
+    "copper_segs": 79,
+    "vias": 8,
+    "stub_kept": 1,
+    "isolated_deleted": 7,
+    "cut_ends": 11,
+    "exit_points": 8,
+    "segs_by_layer": {
+     "B.Cu": 15,
+     "F.Cu": 48,
+     "In2.Cu": 16
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+     "+3V3->R1.2": 1,
+     "+3V3->U1.6": 1,
+     "ACC_INT_1->U4.19": 1,
+     "ACC_INT_2->U4.18": 1,
+     "GND->U1.1": 1,
+     "SCL->U4.16": 1,
+     "SDA->U4.17": 1
+    },
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 12,
+     "port_cuts": 12,
+     "port_cut_nets": [
+      "+3V3",
+      "ACC_INT_1",
+      "ACC_INT_2",
+      "GND",
+      "SCL",
+      "SDA"
+     ],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 0,
+      "vias": 2,
+      "nets": [
+       "GND"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Watchy",
+   "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ir_rcv_38k",
+   "dir": "ir_rcv_38k",
+   "category": "sensor",
+   "parts": 4,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 12,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+     "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 9,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "IO5",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ir_rcv_38k_barrier",
+   "dir": "ir_rcv_38k_barrier",
+   "category": "sensor",
+   "parts": 4,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 17,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 1,
+    "exit_points": 4,
+    "segs_by_layer": {
+     "B.Cu": 4,
+     "F.Cu": 13
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 5,
+      "vias": 2,
+      "nets": [
+       "IO3",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ir_rcv_56k",
+   "dir": "ir_rcv_56k",
+   "category": "sensor",
+   "parts": 4,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 12,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+     "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 8,
+      "vias": 1,
+      "nets": [
+       "GND",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  },
+  {
+   "name": "ir_rcv_learner",
+   "dir": "ir_rcv_learner",
+   "category": "sensor",
+   "parts": 4,
+   "ports": 2,
+   "rails": [
+    "GND"
+   ],
+   "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 8,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 5,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+     "F.Cu": 8
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+     "GND": 2
+    },
+    "dangling": {
+     "total": 0,
+     "port_cuts": 0,
+     "port_cut_nets": [],
+     "binds": 0,
+     "bind_nets": [],
+     "spurs": 0,
+     "regressed": {},
+     "trimmed": {
+      "tracks": 4,
+      "vias": 1,
+      "nets": [
+       "IO1",
+       "VOUT"
+      ],
+      "when": "2026-10-30"
+     }
+    }
+   },
+   "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+   "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+   "source": "human:open-source",
+   "date": "2026-10-30"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k btn1 btn2 btn3 btn4",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "buttons_pullup"
+  }
+}

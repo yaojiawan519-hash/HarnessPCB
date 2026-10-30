@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k 10k 1n4148wt 68k bc2301t 2.8a bcm857bs-7-f",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "kb_backflow_prevent"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "block": "proto_vout_indicator",
+  "geometry_status": "schematic-only —— 只交了原理图：源板 `blank-plank-rev0b.kicad_pcb` 上**没有这几只的封装**（板上 1657 个封装里只有 J2/J3/J5 三只排针带位号，其余是洞洞板焊盘），作者没给它们做 PCB。板级几何（摆放/布线/DRC）未做",
+  "parts_xy": {
+    "D2": [
+      105.41,
+      107.95
+    ],
+    "R2": [
+      97.79,
+      107.95
+    ]
+  }
+}

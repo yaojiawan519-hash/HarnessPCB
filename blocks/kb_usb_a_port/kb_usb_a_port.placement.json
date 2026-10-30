@@ -1,0 +1,162 @@
+{
+  "name": "kb_usb_a_port",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    125.25,
+    83.4292
+  ],
+  "size_mm": [
+    17.69,
+    24.9335
+  ],
+  "ports": {
+    "USB_D+": [
+      "J2",
+      "J3",
+      "J7"
+    ],
+    "VDD": [
+      "C1",
+      "C3",
+      "J9",
+      "L1",
+      "L4",
+      "L5",
+      "R2",
+      "SW1"
+    ],
+    "GND": [
+      "C1",
+      "C3",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J7",
+      "J8",
+      "J9",
+      "R1",
+      "R408",
+      "R412",
+      "R5"
+    ],
+    "USB_D-": [
+      "J2",
+      "J3",
+      "J7"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VDD",
+      "x": 134.446,
+      "y": 96.696,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VDD",
+      "x": 134.895,
+      "y": 87.355,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VDD",
+      "x": 115.605,
+      "y": 88.95,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VDD",
+      "x": 132.054,
+      "y": 96.696,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "USB_D-",
+      "x": 115.605,
+      "y": 78.0414,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 115.605,
+      "y": 78.7486,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 3,
+    "nets": 5,
+    "copper_segs": 17,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 7,
+    "cut_ends": 4,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 16
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VDD->C3.1": 1,
+      "VDD->R2.1": 1
+    },
+    "island_split": {
+      "GND": 4
+    },
+    "dangling": {
+      "total": 2,
+      "port_cuts": 2,
+      "port_cut_nets": [
+        "VDD"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 9,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "USB_D+",
+          "USB_D-"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C2",
+      "value": "47uF/CL21A226MAYNNNE",
+      "fp": "C_0805_2012Metric",
+      "dx": 0.75,
+      "dy": 9.0708,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J5",
+      "value": "USB_A",
+      "fp": "USB_A_CONNFLY_DS1095-WNR0",
+      "dx": 3.5,
+      "dy": 1.0483,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "L2",
+      "value": "CBW201209U300T",
+      "fp": "L_0805_2012Metric",
+      "dx": 2.75,
+      "dy": 9.0708,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

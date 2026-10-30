@@ -1,0 +1,233 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_bpio_headers",
+ "interface": [
+  {
+   "net": "BPIO0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-2",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-3",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-4",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-5",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-6",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-7",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-8",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-9",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VREF_VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J301-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J301",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 240.03,
+   "y": 139.7
+  },
+  {
+   "ref": "J302",
+   "lib": "Connector_Generic:Conn_01x09",
+   "value": "Conn_01x09",
+   "footprint": "Connector_JST:JST_SH_SM09B-SRSS-TB_1x09-1MP_P1.00mm_Horizontal",
+   "x": 262.89,
+   "y": 142.24
+  },
+  {
+   "ref": "R404",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 73.66,
+   "y": 128.27
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J301",
+   "pin": "2",
+   "net": "BPIO0"
+  },
+  {
+   "ref": "J302",
+   "pin": "1",
+   "net": "BPIO0"
+  },
+  {
+   "ref": "J301",
+   "pin": "3",
+   "net": "BPIO1"
+  },
+  {
+   "ref": "J302",
+   "pin": "2",
+   "net": "BPIO1"
+  },
+  {
+   "ref": "J301",
+   "pin": "4",
+   "net": "BPIO2"
+  },
+  {
+   "ref": "J302",
+   "pin": "3",
+   "net": "BPIO2"
+  },
+  {
+   "ref": "J301",
+   "pin": "5",
+   "net": "BPIO3"
+  },
+  {
+   "ref": "J302",
+   "pin": "4",
+   "net": "BPIO3"
+  },
+  {
+   "ref": "J301",
+   "pin": "6",
+   "net": "BPIO4"
+  },
+  {
+   "ref": "J302",
+   "pin": "5",
+   "net": "BPIO4"
+  },
+  {
+   "ref": "J301",
+   "pin": "7",
+   "net": "BPIO5"
+  },
+  {
+   "ref": "J302",
+   "pin": "6",
+   "net": "BPIO5"
+  },
+  {
+   "ref": "J301",
+   "pin": "8",
+   "net": "BPIO6"
+  },
+  {
+   "ref": "J302",
+   "pin": "7",
+   "net": "BPIO6"
+  },
+  {
+   "ref": "J301",
+   "pin": "9",
+   "net": "BPIO7"
+  },
+  {
+   "ref": "J302",
+   "pin": "8",
+   "net": "BPIO7"
+  },
+  {
+   "ref": "J301",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J302",
+   "pin": "9",
+   "net": "GND"
+  },
+  {
+   "ref": "R404",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J301",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "R404",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,204 @@
+{
+  "name": "sim_headers",
+  "source": "sim-rev3c.kicad_pcb",
+  "origin_src_mm": [
+    98.917,
+    97.785
+  ],
+  "size_mm": [
+    16.128,
+    26.5
+  ],
+  "ports": {
+    "/C8": [
+      "J1",
+      "U2"
+    ],
+    "/I{slash}O": [
+      "J1",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "/VPP": [
+      "J1",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "/CLK": [
+      "J1",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "VCC_PIN": [
+      "SW1"
+    ],
+    "GND": [
+      "D2",
+      "J1",
+      "SW2",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "GND_PIN": [
+      "SW2"
+    ],
+    "/RST": [
+      "J1",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "/C4": [
+      "J1",
+      "U2"
+    ],
+    "VOUT": [
+      "R1",
+      "R2",
+      "SW1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "/RST",
+      "x": 107.781,
+      "y": 96.088,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/CLK",
+      "x": 107.781,
+      "y": 91.44,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/C4",
+      "x": 107.781,
+      "y": 106.68,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/VPP",
+      "x": 107.781,
+      "y": 96.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/I{slash}O",
+      "x": 107.781,
+      "y": 88.9,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/C8",
+      "x": 107.781,
+      "y": 101.515,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 107.771,
+      "y": 111.835,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 107.781,
+      "y": 109.22,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 102.75,
+      "y": 111.835,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 101.75,
+      "y": 83.735,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VCC_PIN",
+      "x": 104.515,
+      "y": 83.735,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND_PIN",
+      "x": 103.5,
+      "y": 111.835,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 11,
+    "vias": 0,
+    "stub_kept": 7,
+    "isolated_deleted": 0,
+    "cut_ends": 12,
+    "exit_points": 12,
+    "segs_by_layer": {
+      "B.Cu": 10,
+      "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 13,
+        "vias": 0,
+        "nets": [
+          "/C4",
+          "/C8",
+          "/CLK",
+          "/I{slash}O",
+          "/RST",
+          "/VPP",
+          "GND",
+          "GND_PIN",
+          "VCC_PIN",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 2.511,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 6.239,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

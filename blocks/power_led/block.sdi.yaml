@@ -1,0 +1,71 @@
+project:
+  kind: block
+  name: power_led
+  version: sdi/1
+defs:
+  power_led:
+    category: indicator
+    rationale: "最小的一块**上电指示**：VOUT → R1 2K → D1 LED → GND。2K 在 5V 上给的是约 1.4mA，\n  也就是\"看得见但不亮\"的那一档——原板选它是因为这块适配板常插在主机上一直亮着，\n\
+      \  要的是指示不是照明。复用要点：① 换到 3.3V 供电时要么降 R1 要么换高亮 LED，\n  否则几乎看不见；② 块里只有两颗 0805，是整个库里最小的块，适合当\"块卡最小样例\"\
+      。"
+    ports:
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R1-1
+        connector: false
+      pin: R1/1
+      note: 被测/被指示的 5V 轨（Bus Pirate 供）
+    rails:
+    - GND
+    parts:
+    - ref: D1
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: R1
+      lib: Device:R
+      value: 2K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: D1
+      pin: '1'
+      net: GND
+    - ref: R1
+      pin: '1'
+      net: VOUT
+    - ref: D1
+      pin: '2'
+      net: _power_led_N1
+    - ref: R1
+      pin: '2'
+      net: _power_led_N1
+    placement_prior:
+      anchor: D1
+      max_mm: 4.0
+      rationale: "只有两颗件，相距 3.75mm，D1 与 R1 同一水平线。没有别的约束，摆哪都行——\n    唯一的规矩是\"灯放在板边能看见的地方\"。"
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _power_led_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 VPP Maker 适配板（1REV6）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 2 件 / 3 网 / 端口 1 + 轨 1；铜 1 段 + 0 孔；死铜删 2；口岸切口 1；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 vpp-maker-rev6-ian.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 2 件 / 3 网：1 个信号口岸（VOUT）+ 轨 GND + 1 张块内网（`Net-(D1-A)`，R1 与 D1 之间那段，不出块）。
+    - R1 2K 在 5V 上给约 1.4mA——"看得见但不亮"的一档，原板要的是指示不是照明。换 3.3V 供电时要么降 R1、要么换高亮 LED。
+    - 库里最小的块（2 件、7.20×6.12mm），适合当"块卡最小样例"。
+    - 铜 1 段 + 0 孔（F 2）；死铜删 2 段/孔；口岸切口 1 处、走线出口 3 处；铺铜带走 0 张（源板那张 GND 铺铜按「块内不带铺铜」整张删掉，拼板时由整板铺铜接上）。
+    - 块里 1 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；其余 3 条（lib_footprint_mismatch×2、track_dangling×1）是源板自带
+      + 切块断头——源板本身 23 条违规 / 未连通 0（lib_footprint_mismatch×20、silk_over_copper×1、silk_overlap×1、starved_thermal×1），块里能对上的都是从那儿继承的。

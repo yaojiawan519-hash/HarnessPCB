@@ -1,0 +1,273 @@
+{
+  "name": "boot_straps",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    145.5588,
+    89.76
+  ],
+  "size_mm": [
+    28.2962,
+    9.9826
+  ],
+  "ports": {
+    "/FPGA_SI": [
+      "U2"
+    ],
+    "/FPGA_SO": [
+      "U2"
+    ],
+    "/IOB_24A": [
+      "J3",
+      "U2"
+    ],
+    "/IOB_23B": [
+      "J3",
+      "U2"
+    ],
+    "/USB_M": [
+      "J1",
+      "SJ35",
+      "TP21"
+    ],
+    "/FLASH_MISO": [
+      "J3",
+      "U3",
+      "U5"
+    ],
+    "/FLASH_MOSI": [
+      "J3",
+      "U3",
+      "U5"
+    ],
+    "/IOB_22A": [
+      "J3",
+      "U2"
+    ],
+    "/USB_P": [
+      "J1",
+      "SJ36",
+      "TP20"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "/IOB_24A",
+      "x": 132.8,
+      "y": 96.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/IOB_24A",
+      "x": 129.662,
+      "y": 96.4,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/IOB_24A",
+      "x": 143.15,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/IOB_24A",
+      "x": 136.9,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/IOB_24A",
+      "x": 156.55,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/IOB_23B",
+      "x": 158.3029,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 145.1295,
+      "y": 83.02,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 129.662,
+      "y": 86.305,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 133.05,
+      "y": 83.02,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 141.6848,
+      "y": 83.02,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 145.0276,
+      "y": 83.02,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 145.7925,
+      "y": 83.02,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 134.07,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 148.5,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 146.28,
+      "y": 83.02,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FPGA_SO",
+      "x": 129.662,
+      "y": 91.25,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/FPGA_SI",
+      "x": 129.662,
+      "y": 90.91,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 9,
+    "copper_segs": 58,
+    "vias": 7,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 12,
+    "exit_points": 17,
+    "segs_by_layer": {
+      "B.Cu": 34,
+      "F.Cu": 20,
+      "In1.Cu": 1,
+      "In2.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "/USB_M->J1.2": 1,
+      "/USB_M->TP21.1": 1,
+      "/USB_P->J1.3": 1,
+      "/USB_P->TP20.1": 1
+    },
+    "island_split": {},
+    "dangling": {
+      "total": 4,
+      "port_cuts": 4,
+      "port_cut_nets": [
+        "/USB_M",
+        "/USB_P"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 39,
+        "vias": 2,
+        "nets": [
+          "/FLASH_MISO",
+          "/FLASH_MOSI",
+          "/FPGA_SI",
+          "/FPGA_SO",
+          "/IOB_23B",
+          "/IOB_24A"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "R11",
+      "value": "DNI",
+      "fp": "R_0603_1608Metric",
+      "dx": -12.8888,
+      "dy": 2.89,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R12",
+      "value": "0",
+      "fp": "R_0603_1608Metric",
+      "dx": -12.0988,
+      "dy": 3.71,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R13",
+      "value": "0",
+      "fp": "R_0603_1608Metric",
+      "dx": -12.1088,
+      "dy": 2.1,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R21",
+      "value": "DNI",
+      "fp": "R_0603_1608Metric",
+      "dx": 8.5412,
+      "dy": -2.86,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "R22",
+      "value": "OPEN",
+      "fp": "SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+      "dx": 9.9412,
+      "dy": -1.56,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "R23",
+      "value": "OPEN",
+      "fp": "SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+      "dx": 9.9412,
+      "dy": -0.26,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "R27",
+      "value": "DNI",
+      "fp": "R_0603_1608Metric",
+      "dx": -11.2888,
+      "dy": 2.9,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "name": "clock_12m",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    140.525,
+    89.06
+  ],
+  "size_mm": [
+    23.76,
+    14.93
+  ],
+  "ports": {
+    "/IOB_25B_G3": [
+      "J3",
+      "SJ25",
+      "U2"
+    ],
+    "/CLK_12M_EXT": [
+      "J3"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C19",
+      "C2",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C30",
+      "C31",
+      "C33",
+      "C34",
+      "C35",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "D1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R3",
+      "U1",
+      "U2",
+      "U3",
+      "U5",
+      "U6",
+      "U7"
+    ],
+    "+3V3": [
+      "C14",
+      "C16",
+      "C17",
+      "C21",
+      "C3",
+      "C30",
+      "C33",
+      "C7",
+      "C8",
+      "C9",
+      "D2",
+      "FB1",
+      "FB2",
+      "J2",
+      "R14",
+      "R15",
+      "R17",
+      "R18",
+      "R28",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "SJ20",
+      "SJ31",
+      "U1",
+      "U2",
+      "U3",
+      "U5",
+      "U6"
+    ],
+    "/CLK_12M_FT": [
+      "U3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 137.36,
+      "y": 80.1,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 127.15,
+      "y": 92.9344,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 153.9,
+      "y": 86.868,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 127.15,
+      "y": 92.8972,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 127.15,
+      "y": 82.2613,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 153.9,
+      "y": 81.7976,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 140.0,
+      "y": 80.1,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 127.15,
+      "y": 92.8972,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 127.15,
+      "y": 94.7,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/CLK_12M_EXT",
+      "x": 151.5163,
+      "y": 98.02,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/CLK_12M_EXT",
+      "x": 142.78,
+      "y": 98.02,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/CLK_12M_EXT",
+      "x": 153.9,
+      "y": 85.6274,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/CLK_12M_EXT",
+      "x": 153.9,
+      "y": 81.9736,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/IOB_25B_G3",
+      "x": 127.15,
+      "y": 88.75,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 196,
+    "vias": 7,
+    "stub_kept": 1,
+    "isolated_deleted": 96,
+    "cut_ends": 17,
+    "exit_points": 14,
+    "segs_by_layer": {
+      "B.Cu": 56,
+      "F.Cu": 128,
+      "In2.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->U3.12": 1,
+      "/CLK_12M_FT->U3.1": 1,
+      "/IOB_25B_G3->J3.5": 1,
+      "GND->C1.2": 1,
+      "GND->C13.2": 1,
+      "GND->C27.2": 1,
+      "GND->C28.2": 1,
+      "GND->C3.2": 1,
+      "GND->C7.2": 1,
+      "GND->C8.2": 1,
+      "GND->C9.2": 1,
+      "GND->R3.2": 1,
+      "GND->U3.10": 1,
+      "GND->U3.11": 1,
+      "GND->U3.22": 1,
+      "GND->U3.23": 1,
+      "GND->U3.9": 1
+    },
+    "island_split": {
+      "+3V3": 2,
+      "GND": 4
+    },
+    "dangling": {
+      "total": 19,
+      "port_cuts": 19,
+      "port_cut_nets": [
+        "+3V3",
+        "/CLK_12M_FT",
+        "/IOB_25B_G3",
+        "GND"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 10,
+        "vias": 10,
+        "nets": [
+          "/CLK_12M_EXT",
+          "/IOB_25B_G3",
+          "GND",
+          "Net-(SJ16-Pad1)"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C18",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": -11.125,
+      "dy": -5.96,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C36",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 11.125,
+      "dy": -1.81,
+      "rot": 270.0,
+      "side": "B"
+    },
+    {
+      "ref": "R10",
+      "value": "DNI",
+      "fp": "R_0603_1608Metric",
+      "dx": -8.825,
+      "dy": -3.716,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "SJ16",
+      "value": "OPEN",
+      "fp": "SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+      "dx": 10.097,
+      "dy": 6.64,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U4",
+      "value": "SG-210STF 12.0000ML3",
+      "fp": "Oscillator_SMD_Abracon_ASDMB-4Pin_2.5x2.0mm",
+      "dx": -8.825,
+      "dy": -5.96,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U8",
+      "value": "SN74AUP2G125DCUR",
+      "fp": "VSSOP-8_2.3x2mm_P0.5mm",
+      "dx": 9.2715,
+      "dy": -2.065,
+      "rot": 90.0,
+      "side": "B"
+    }
+  ]
+}

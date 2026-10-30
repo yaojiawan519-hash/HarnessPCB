@@ -1,0 +1,398 @@
+project:
+  kind: block
+  name: bp5_io_expander
+  version: sdi/1
+defs:
+  bp5_io_expander:
+    category: io
+    rationale: '**IO 扩展 + 电平转换**：两片 74HC595（U501/U502）串成 16 位移位输出（QB 串到下一片 SER）， 74HCT245（U503）把 3.3V
+      逻辑抬到 5V 去驱动后级。⚠ 型号不能换：595 必须是 **HC** 不能是 HCT （它跑 3.3V），245 必须是 **HCT** 不能是 HC（它跑 5V）。245 的 A 侧接
+      595、B 侧出块： B7=PULLUP_EN、B6 空、B5=LEDS_CDO、B4 经 R316(510R) 到 AMUX_S0、B3..B0 经 RN315 （510R×4）到 AMUX_S1/S2/S3/AMUX_EN。R501(10K)
+      是 SHIFT_EN——两只 595 的 /OE 与 245 的 /OE 共用的上拉，拉低时才输出。三只 100nF（C501/C502/C503）各自就近去耦。 ⚠ **值要现读**：R501/R316
+      一开始被按惯例填反（以为上拉是 R316），实际 `(property "Value")` 是 R501=10K（上拉）、R316=510R（串阻），已按现读改正。 ⚠ 这块是**整页的驱动源头**：595
+      的 8 条输出经电平转换后几乎连到全板每一个子模块 （显示屏、RGB 灯、电流源、模拟开关），所以端口多达 20 个——不是分块没分好，是它真的 是总线扇出点。'
+    ports:
+    - name: AMUX_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN315-1
+        connector: false
+    - name: AMUX_S0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R316-1
+        connector: false
+    - name: AMUX_S1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN315-4
+        connector: false
+    - name: AMUX_S2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN315-3
+        connector: false
+    - name: AMUX_S3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN315-2
+        connector: false
+    - name: CURRENT_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U502-1
+        connector: false
+    - name: CURRENT_EN_OVERRIDE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U502-5
+        connector: false
+    - name: CURRENT_RESET
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U502-3
+        connector: false
+    - name: DISPLAY_BACKLIGHT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U501-5
+        connector: false
+    - name: DISPLAY_RESET
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U501-6
+        connector: false
+    - name: LEDS_CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U503-13
+        connector: false
+    - name: PULLUP_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U503-11
+        connector: false
+    - name: RGB_CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U503-7
+        connector: false
+    - name: SHIFT_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R501-2
+        connector: false
+    - name: SHIFT_LATCH
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U501-12
+        connector: false
+    - name: SPI_CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U501-14
+        connector: false
+    - name: SPI_CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U501-11
+        connector: false
+    rails:
+    - +3V3
+    - +VUSB
+    - GND
+    parts:
+    - ref: R501
+      lib: Device:R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: U501
+      lib: 74xx:74AHCT595
+      value: AIP74HC595TA
+      footprint: Package_SO:TSSOP-16_4.4x5mm_P0.65mm
+    - ref: C501
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U502
+      lib: 74xx:74AHCT595
+      value: AIP74HC595TA
+      footprint: Package_SO:TSSOP-16_4.4x5mm_P0.65mm
+    - ref: C502
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U503
+      lib: 74xx:74HC245
+      value: AIP74HCT245TA
+      footprint: Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm
+    - ref: C503
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: RN315
+      lib: dp-rarray:R_Array
+      value: 510R
+      footprint: Resistor_SMD:R_Array_Convex_4x0402
+    - ref: R316
+      lib: Device:R_Small
+      value: 510R
+      footprint: Resistor_SMD:R_0402_1005Metric
+    conns:
+    - ref: C501
+      pin: '2'
+      net: +3V3
+    - ref: C502
+      pin: '2'
+      net: +3V3
+    - ref: R501
+      pin: '1'
+      net: +3V3
+    - ref: U501
+      pin: '10'
+      net: +3V3
+    - ref: U501
+      pin: '16'
+      net: +3V3
+    - ref: U502
+      pin: '10'
+      net: +3V3
+    - ref: U502
+      pin: '16'
+      net: +3V3
+    - ref: C503
+      pin: '2'
+      net: +VUSB
+    - ref: U503
+      pin: '1'
+      net: +VUSB
+    - ref: U503
+      pin: '20'
+      net: +VUSB
+    - ref: RN315
+      pin: '1'
+      net: AMUX_EN
+    - ref: R316
+      pin: '1'
+      net: AMUX_S0
+    - ref: RN315
+      pin: '4'
+      net: AMUX_S1
+    - ref: RN315
+      pin: '3'
+      net: AMUX_S2
+    - ref: RN315
+      pin: '2'
+      net: AMUX_S3
+    - ref: U502
+      pin: '1'
+      net: CURRENT_EN
+    - ref: U502
+      pin: '5'
+      net: CURRENT_EN_OVERRIDE
+    - ref: U502
+      pin: '3'
+      net: CURRENT_RESET
+    - ref: U502
+      pin: '4'
+      net: DAC_CS
+    - ref: U501
+      pin: '5'
+      net: DISPLAY_BACKLIGHT
+    - ref: U501
+      pin: '6'
+      net: DISPLAY_RESET
+    - ref: C501
+      pin: '1'
+      net: GND
+    - ref: C502
+      pin: '1'
+      net: GND
+    - ref: C503
+      pin: '1'
+      net: GND
+    - ref: U501
+      pin: '8'
+      net: GND
+    - ref: U502
+      pin: '8'
+      net: GND
+    - ref: U503
+      pin: '10'
+      net: GND
+    - ref: U503
+      pin: '8'
+      net: GND
+    - ref: U503
+      pin: '13'
+      net: LEDS_CDO
+    - ref: U503
+      pin: '11'
+      net: PULLUP_EN
+    - ref: U503
+      pin: '7'
+      net: RGB_CDO
+    - ref: R501
+      pin: '2'
+      net: SHIFT_EN
+    - ref: U501
+      pin: '13'
+      net: SHIFT_EN
+    - ref: U502
+      pin: '13'
+      net: SHIFT_EN
+    - ref: U503
+      pin: '19'
+      net: SHIFT_EN
+    - ref: U501
+      pin: '12'
+      net: SHIFT_LATCH
+    - ref: U502
+      pin: '12'
+      net: SHIFT_LATCH
+    - ref: U501
+      pin: '14'
+      net: SPI_CDO
+    - ref: U501
+      pin: '11'
+      net: SPI_CLK
+    - ref: U502
+      pin: '11'
+      net: SPI_CLK
+    - ref: U501
+      pin: '1'
+      net: _bp5_io_expander_N1
+    - ref: U503
+      pin: '6'
+      net: _bp5_io_expander_N1
+    - ref: U501
+      pin: '15'
+      net: _bp5_io_expander_N2
+    - ref: U503
+      pin: '2'
+      net: _bp5_io_expander_N2
+    - ref: U501
+      pin: '2'
+      net: _bp5_io_expander_N3
+    - ref: U503
+      pin: '5'
+      net: _bp5_io_expander_N3
+    - ref: U501
+      pin: '3'
+      net: _bp5_io_expander_N4
+    - ref: U503
+      pin: '4'
+      net: _bp5_io_expander_N4
+    - ref: U501
+      pin: '4'
+      net: _bp5_io_expander_N5
+    - ref: U503
+      pin: '3'
+      net: _bp5_io_expander_N5
+    - ref: U501
+      pin: '7'
+      net: _bp5_io_expander_N6
+    - ref: U503
+      pin: '9'
+      net: _bp5_io_expander_N6
+    - ref: U501
+      pin: '9'
+      net: _bp5_io_expander_N7
+    - ref: U502
+      pin: '14'
+      net: _bp5_io_expander_N7
+    - ref: R316
+      pin: '2'
+      net: _bp5_io_expander_N8
+    - ref: U503
+      pin: '14'
+      net: _bp5_io_expander_N8
+    - ref: RN315
+      pin: '5'
+      net: _bp5_io_expander_N9
+    - ref: U503
+      pin: '15'
+      net: _bp5_io_expander_N9
+    - ref: RN315
+      pin: '6'
+      net: _bp5_io_expander_N10
+    - ref: U503
+      pin: '16'
+      net: _bp5_io_expander_N10
+    - ref: RN315
+      pin: '7'
+      net: _bp5_io_expander_N11
+    - ref: U503
+      pin: '17'
+      net: _bp5_io_expander_N11
+    - ref: RN315
+      pin: '8'
+      net: _bp5_io_expander_N12
+    - ref: U503
+      pin: '18'
+      net: _bp5_io_expander_N12
+    placement_prior:
+      anchor: board
+      max_mm: 0
+      rationale: 两片 595 并排成一列（QB→SER 的串行链越短越好），245 紧贴 595 输出侧，去耦电容贴各自 电源脚，串阻/排阻朝块外端口那一面摆（接口一面对外）。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - DAC_CS
+    - _bp5_io_expander_N1
+    - _bp5_io_expander_N10
+    - _bp5_io_expander_N11
+    - _bp5_io_expander_N12
+    - _bp5_io_expander_N2
+    - _bp5_io_expander_N3
+    - _bp5_io_expander_N4
+    - _bp5_io_expander_N5
+    - _bp5_io_expander_N6
+    - _bp5_io_expander_N7
+    - _bp5_io_expander_N8
+    - _bp5_io_expander_N9
+    provenance:
+      source: human:open-source
+      basis: 从 Bus Pirate 5 主板 REV10A 的 `IO-expand-595-mux` 子页裁出，板从整板 `REV10a.kicad_pcb` 按位号原样扣铜（只做平移
+        + 删死铜），块内件位置/朝向/走线一字未动。
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: schematic-only —— 只交了原理图，板级几何（摆放/布线/DRC）未做

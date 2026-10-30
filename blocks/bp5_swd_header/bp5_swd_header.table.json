@@ -1,0 +1,57 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_swd_header",
+ "interface": [
+  {
+   "net": "SWCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J201-3",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SWDIO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J201-2",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J201",
+   "lib": "Connector_Generic:Conn_01x03",
+   "value": "Conn_01x03",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical",
+   "x": 69.85,
+   "y": 133.35
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J201",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J201",
+   "pin": "3",
+   "net": "SWCLK"
+  },
+  {
+   "ref": "J201",
+   "pin": "2",
+   "net": "SWDIO"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

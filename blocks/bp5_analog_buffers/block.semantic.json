@@ -1,0 +1,135 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "analog",
+  "rationale": "**8 路模拟缓冲**：BPIO0–7 各经 100K（RN317/RN318）进一只 LMV324 跟随器（U504/U505 共 8 个 unit），输出改名为 MUX_BPIO0–7 往下一块（16:1 开关）走。输入侧用 4 只 BAS40T-05 双二极管 （D501–D504）把 8 根线各钳到 +VUSB，超压时灌进 5V 轨而不是打穿运放；每只运放一只 100nF （C507–C510）去耦。 ⚠ 这块和 `bp5_analog_mux` 之间的切口水落在 **MUX_BPIO0–7** 这条 8 线总线上——这是真接口 不是臆造边界：缓冲段可以整体换增益/换运放，复用段可以换 4051/4053，两边互不需要知道对方 怎么实现。作者把这两段写在一个标题下（\"Analog multiplexer and buffer\"），本轮拆两块， 标题文字留在 mux 那块（作者原话只写一次）。 ⚠ 100K 输入电阻 + 高阻运放 = **这条路径只适合高阻测量**，别拿它驱动任何负载。",
+  "power_rails": [
+    "+VUSB",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "BPIO0",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO0",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "MUX_BPIO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "board",
+    "max_mm": 0,
+    "rationale": "两只四运放分两排，输入排阻贴运放同相端（输入先到电阻再到运放，走线越短越好）， 钳位二极管贴连接器/输入端一侧，输出朝 MUX_BPIO 那一面。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_bp5_analog_buffers_N1",
+    "_bp5_analog_buffers_N2",
+    "_bp5_analog_buffers_N3",
+    "_bp5_analog_buffers_N4",
+    "_bp5_analog_buffers_N5",
+    "_bp5_analog_buffers_N6",
+    "_bp5_analog_buffers_N7",
+    "_bp5_analog_buffers_N8"
+  ],
+  "geometry_status": "schematic-only —— 只交了原理图，板级几何（摆放/布线/DRC）未做",
+  "provenance": {
+    "source": "human:open-source",
+    "basis": "从 Bus Pirate 5 主板 REV10A 的 `IO-expand-595-mux` 子页裁出，板从整板 `REV10a.kicad_pcb` 按位号原样扣铜（只做平移 + 删死铜）。",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

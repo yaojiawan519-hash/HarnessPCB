@@ -1,0 +1,202 @@
+project:
+  kind: block
+  name: flash_lotes_sockets
+  version: sdi/1
+defs:
+  flash_lotes_sockets:
+    category: connector
+    rationale: '**两只并联的 SOP 8 触点测试座**（LOTES 弹簧触点，SOP 片子压进去、脚落到触点上）， 各配一只 0.1uF 芯片侧去耦：U1 `ASPI0001-P001A`
+      + C1，U2 `ACA-SPI-004-K01` + C2。 两只的**八脚逐脚同网、且与 25LCxxx 的 SOIC-8 引脚一一对应**： **1=CS、2=CDI（芯片 MISO）、3=WP、4=GND_CHIP、5=CDO（芯片
+      MOSI）、6=SCLK、 7=HOLD、8=VCC_CHIP**——所以这一版**写保护是独立的**（WP 真的到座）。 ⚠ `CDI`/`CDO` 是**主控侧**的名字，接的是芯片的 MISO
+      / MOSI，与 MOSI/MISO 正好相反。 ⚠ 两只座子是**并联**的：同一时刻只插一颗片子，两只都插会两片抢同一条 MISO。 ⚠ 这两只是不同型号的座（封装 11.06×10.48
+      与 9.64×12.77），对应不同封装尺寸的 SOP。'
+    ports:
+    - name: CDI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-2
+        connector: false
+      pin: U1/2
+      note: 焊位 2 脚 → 芯片 MISO
+    - name: CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-5
+        connector: false
+      pin: U1/5
+      note: 焊位 5 脚 → 芯片 MOSI
+    - name: CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-1
+        connector: false
+      pin: U1/1
+      note: 焊位 1 脚（U1.1 / U2.1）
+    - name: GND_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C1-2
+        connector: false
+      pin: C1/2
+      note: 焊位 4 脚（+ 两只 0.1uF 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片
+    - name: HOLD
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-7
+        connector: false
+      pin: U1/7
+      note: 焊位 7 脚
+    - name: SCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-6
+        connector: false
+      pin: U1/6
+      note: 焊位 6 脚
+    - name: VCC_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C1-1
+        connector: false
+      pin: C1/1
+      note: 焊位 8 脚（+ 两只 0.1uF 的 1 脚）：芯片侧电源
+    - name: WP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-3
+        connector: false
+      pin: U1/3
+      note: 焊位 3 脚（写保护）：本版真的到焊位
+    rails: []
+    parts:
+    - ref: U2
+      lib: Memory_EEPROM:25LCxxx
+      value: 25LCxxx
+      footprint: TEST_SOCKETS:ACA-SPI-004-K01
+    - ref: C1
+      lib: Device:C
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: C2
+      lib: Device:C
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: U1
+      lib: Memory_EEPROM:25LCxxx
+      value: 25LCxxx
+      footprint: TEST_SOCKETS:ASPI0001-P001A
+    conns:
+    - ref: U1
+      pin: '2'
+      net: CDI
+    - ref: U2
+      pin: '2'
+      net: CDI
+    - ref: U1
+      pin: '5'
+      net: CDO
+    - ref: U2
+      pin: '5'
+      net: CDO
+    - ref: U1
+      pin: '1'
+      net: CS
+    - ref: U2
+      pin: '1'
+      net: CS
+    - ref: C1
+      pin: '2'
+      net: GND_CHIP
+    - ref: C2
+      pin: '2'
+      net: GND_CHIP
+    - ref: U1
+      pin: '4'
+      net: GND_CHIP
+    - ref: U2
+      pin: '4'
+      net: GND_CHIP
+    - ref: U1
+      pin: '7'
+      net: HOLD
+    - ref: U2
+      pin: '7'
+      net: HOLD
+    - ref: U1
+      pin: '6'
+      net: SCLK
+    - ref: U2
+      pin: '6'
+      net: SCLK
+    - ref: C1
+      pin: '1'
+      net: VCC_CHIP
+    - ref: C2
+      pin: '1'
+      net: VCC_CHIP
+    - ref: U1
+      pin: '8'
+      net: VCC_CHIP
+    - ref: U2
+      pin: '8'
+      net: VCC_CHIP
+    - ref: U1
+      pin: '3'
+      net: WP
+    - ref: U2
+      pin: '3'
+      net: WP
+    placement_prior:
+      anchor: U1
+      max_mm: 8.0
+      rationale: 右侧竖条 11.06×30.45mm，两只座上下排（U1 y≈77.25、U2 y≈94.00，中心距 16.75mm）， 各自的去耦贴在座的下沿。复用要点：① 座要留出压片的手指空间；
+        ② 去耦必须贴在 `VCC_CHIP` 进座的那两个脚旁边，别拉到别的角落。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 flash adapter (SOP/LOTES) REV3
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 8 网 / 端口 8 + 轨 0；铜 69 段 + 13 孔；死铜删 12；口岸切口 3；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 flash-sop-lotes-rev3.kicad_pcb 原样扣，坐标 =
+      源板坐标平移，origin: page；源板那张双面 **GND_CHIP** 灌铜（芯片侧地，不是板上 GND）是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**两只并联的 SOP 8 触点测试座**（LOTES 弹簧触点：SOP 片子压进去、脚落到触点上），各配一只 0.1uF 芯片侧去耦：U1 `ASPI0001-P001A` + C1，U2
+      `ACA-SPI-004-K01` + C2。4 件 / 8 网 / 8 个端口、**没有轨、没有块内网**。'
+    - '**八脚与 25LCxxx 的 SOIC-8 一一对应**（两只座逐脚同网）：**1=CS、2=CDI（芯片 MISO）、3=WP、4=GND_CHIP、5=CDO（芯片 MOSI）、6=SCLK、7=HOLD、8=VCC_CHIP**——所以这一版**写保护是独立的、真的接到焊位**（与
+      zif/sop 两版最大的电路差别）。'
+    - ⚠ `CDI` / `CDO` 是**主控侧**的名字（Controller Data In / Out）：`CDI` 接芯片的 **MISO**、`CDO` 接芯片的 **MOSI**——与芯片手册上的
+      MOSI/MISO 正好相反。照名字直连会把主控的输入接到芯片的输入上。
+    - ⚠ **本块没有轨是正常的**：芯片地 `GND_CHIP` 在原理图上是**独立网**，它要在 `flash_lotes_port` 的 SW2 上二选一（接板 `GND` 还是接 `GND_PIN`）才和主机地汇合；拼板时按同名接，别把它并到
+      `GND`。
+    - ⚠ 两只座**并联**：同一时刻只插一颗片子，两只都插会互相抢同一条 MISO。两只也是不同型号的座（封装 11.06×10.48 与 9.64×12.77），对应不同尺寸的 SOP。
+    - 几何：右侧竖条，U1 @(153.25, 77.25) rot 0 / U2 @(153.25, 94.00) rot 0（中心距 16.75mm，右脚都贴板右沿 0.77mm）；C1 @(154.25,
+      83.50) rot 180、C2 @(154.25, 101.25) rot 180，各自贴在座的下沿。复用要点：① 座要留出压片的手指空间；② 去耦必须贴着 `VCC_CHIP` 进座的第
+      8 脚，别拉到别处。
+    - '⚠ 这一族四张板子的**灌铜是 `GND_CHIP`（芯片侧地），不是 `GND`**。所以「块内不带铺铜」删掉的是芯片地，裂岛/裸脚全落在 `GND_CHIP` 上；`GND`（排针第 10
+      脚、灯的回流）本来就没有铺铜，只靠走线。卡里 `GND_CHIP` 记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）；它电学上是**芯片的电源/地网**，拼板时按同名接，别当信号口去串阻容。'
+    - 铜 69 段 + 13 孔（B 15 / F 63）；死铜删 12 段/孔（两端全悬空、谁也连不上的才算）；口岸切口 3 处（一端悬空=块的铜接口，按用户拍板留着）、走线出口 8 处；削剩残迹留
+      0 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND_CHIP 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 3 + 悬空过孔 1 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_*
+      4 条（源板自带，见基线）；源板 flash-sop-lotes-rev3.kicad_pcb 基线：未连通 0 / isolated_copper 0 / 违规 71 条。

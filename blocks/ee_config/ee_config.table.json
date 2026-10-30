@@ -1,0 +1,176 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ee_config",
+ "interface": [
+  {
+   "net": "EE_CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R18-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "Microwire 时钟，经 R18 串到 U1"
+  },
+  {
+   "net": "EE_CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R17-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "Microwire 片选，经 R17 到 U1"
+  },
+  {
+   "net": "EE_DAT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "Microwire 数据，经 R1 到 U1"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U1",
+   "lib": "UPduino_v3.0:93LCxxBxxOT-Memory_EEPROM",
+   "value": "93LC56BT-I/OT",
+   "footprint": "vs:SOT-23-6",
+   "x": 35.56,
+   "y": 256.54
+  },
+  {
+   "ref": "R1",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "2.2K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 50.8,
+   "y": 259.08
+  },
+  {
+   "ref": "R18",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 41.91,
+   "y": 243.84
+  },
+  {
+   "ref": "R17",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 29.21,
+   "y": 243.84
+  },
+  {
+   "ref": "R4",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 41.91,
+   "y": 246.38
+  },
+  {
+   "ref": "C3",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 20.32,
+   "y": 267.97
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C3",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R17",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R18",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R4",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U1",
+   "pin": "6",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R18",
+   "pin": "1",
+   "net": "EE_CLK"
+  },
+  {
+   "ref": "U1",
+   "pin": "4",
+   "net": "EE_CLK"
+  },
+  {
+   "ref": "R17",
+   "pin": "2",
+   "net": "EE_CS"
+  },
+  {
+   "ref": "U1",
+   "pin": "5",
+   "net": "EE_CS"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "EE_DAT"
+  },
+  {
+   "ref": "U1",
+   "pin": "3",
+   "net": "EE_DAT"
+  },
+  {
+   "ref": "C3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "_ee_config_N1"
+  },
+  {
+   "ref": "R4",
+   "pin": "1",
+   "net": "_ee_config_N1"
+  },
+  {
+   "ref": "U1",
+   "pin": "1",
+   "net": "_ee_config_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,153 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "accel_bma423",
+ "interface": [
+  {
+   "net": "ACC_INT_1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U6-5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "中断 1（敲击/抬腕等事件，不经 I2C）"
+  },
+  {
+   "net": "ACC_INT_2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U6-6",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "中断 2"
+  },
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R20-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟，上拉 R20 10K 在块内"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R18-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据，上拉 R18 10K 在块内"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U6",
+   "lib": "Watchy:BMA423",
+   "value": "BMA423",
+   "footprint": "Package_LGA:LGA-12_2x2mm_P0.5mm",
+   "x": 240.03,
+   "y": 139.7
+  },
+  {
+   "ref": "R20",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 275.59,
+   "y": 139.7
+  },
+  {
+   "ref": "R18",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 267.97,
+   "y": 139.7
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R18",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R20",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U6",
+   "pin": "10",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U6",
+   "pin": "3",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U6",
+   "pin": "7",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U6",
+   "pin": "5",
+   "net": "ACC_INT_1"
+  },
+  {
+   "ref": "U6",
+   "pin": "6",
+   "net": "ACC_INT_2"
+  },
+  {
+   "ref": "U6",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U6",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "U6",
+   "pin": "9",
+   "net": "GND"
+  },
+  {
+   "ref": "R20",
+   "pin": "1",
+   "net": "SCL"
+  },
+  {
+   "ref": "U6",
+   "pin": "12",
+   "net": "SCL"
+  },
+  {
+   "ref": "R18",
+   "pin": "1",
+   "net": "SDA"
+  },
+  {
+   "ref": "U6",
+   "pin": "2",
+   "net": "SDA"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "conn_01x03",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_swd_header"
+  }
+}

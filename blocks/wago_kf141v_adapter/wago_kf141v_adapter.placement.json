@@ -1,0 +1,67 @@
+{
+  "name": "wago_kf141v_adapter",
+  "source": "wago kf141v adapter.kicad_pcb",
+  "origin_src_mm": [
+    139.955,
+    86.7699
+  ],
+  "size_mm": [
+    24.2,
+    29.4402
+  ],
+  "ports": {},
+  "cut_points": [],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 30,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 0,
+    "exit_points": 0,
+    "segs_by_layer": {
+      "B.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 0,
+        "vias": 0,
+        "nets": [],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": -1.525,
+      "dy": -11.1999,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "wago_kf141v_2.54",
+      "dx": 4.825,
+      "dy": 0.2251,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

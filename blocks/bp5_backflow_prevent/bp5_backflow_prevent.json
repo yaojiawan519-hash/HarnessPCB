@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k 10k 1n4148wt 33k bcm857 si2301",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_backflow_prevent"
+  }
+}

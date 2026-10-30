@@ -1,0 +1,63 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**两级电源就绪（PWR_GOOD）检测**：Q5 BC807（PNP）+ Q6 BC817（NPN）串成一个反相缓冲。 上游侧：PWR_GOOD（来自内存条的 SPD/PMIC 就绪脚）经 R8 1K 顶到 Q5 基极；Q5 的发射极挂在 R10 680R / R11 330R 从 +3.3V 分出的偏置上（3.3 × 330/1010 ≈ **1.078V**）； Q5 集电极接 Q6 基极，Q6 发射极接地，Q6 集电极就是 PWR_GOOD_OUT， 由 R13 6.8K 上拉到 BULK_VIN（5V）。 逻辑：PWR_GOOD 被内存条拉低 → Q5 导通 → 抬高 Q6 基极 → Q6 导通 → PWR_GOOD_OUT 被拉到地（低）； PWR_GOOD 悬空或为高 → Q5 截止 → Q6 无基极电流 → PWR_GOOD_OUT 由 R13 拉高。 复用要点：① 输出是**开集**（只有下拉，没有上拉驱动能力），下悬挂什么自己带，或者用 R13； ② **Q6 基极没有别的直流路径**——Q5 一截止它就悬空，靠漏电与结电容慢慢放。块里没有基极 下拉电阻，所以\"导通 → 截止\"这一侧是软性的，别指望它当高速反相器用； ③ 阈值由 R10/R11 决定，改 3.3V 供电或改触发点要一起重算； ④ 两颗管子极性不同（PNP/NPN），封装一样，靠丝印 Q5/Q6 区分，装反了逻辑整体反过来。",
+  "power_rails": [
+    "+3.3V",
+    "BULK_VIN",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "PWR_GOOD",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R8/1",
+      "note": "来自两根插座的 147 / 7 脚；低=内存条就绪（经 R8 1K 进 Q5 基极）"
+    },
+    {
+      "name": "PWR_GOOD_OUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "Q6/3",
+      "note": "开集输出，R13 6.8K 上拉到 BULK_VIN；低=就绪。可直连 MCU 的 GPIO（5V 电平）"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "Q6",
+    "max_mm": 6.0,
+    "rationale": "六件（两只三极管 + 四只电阻）。规矩是**顺着信号链摆**：PWR_GOOD → R8 → Q5 → Q6 → R13， 分压的 R10/R11 紧贴 Q5 发射极，别绕回头。两只管子挨着放，Q5 集电极到 Q6 基极这段最短。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_power_good_sense_N1",
+    "_power_good_sense_N2",
+    "_power_good_sense_N3"
+  ],
+  "notes": [
+    "**两级电源就绪（PWR_GOOD）检测**：Q5 BC807(PNP) + Q6 BC817(NPN) 串成反相缓冲。6 件 / 8 网：2 个出块端口（PWR_GOOD 进、PWR_GOOD_OUT 出）+ 3 条轨 + 3 张块内网（R8–Q5 基极、Q5 集电极–Q6 基极、Q5 发射极偏置节点，卡里 `_power_good_sense_N*`）。",
+    "偏置：Q5 发射极挂在 R10 680R / R11 330R 从 +3.3V 分出的节点上（3.3 × 330/1010 ≈ **1.078V**）；PWR_GOOD 经 R8 1K 到 Q5 基极；Q5 集电极接 Q6 基极；Q6 发射极=GND、集电极=PWR_GOOD_OUT，R13 6.8K 上拉到 BULK_VIN。",
+    "逻辑：PWR_GOOD 被内存条拉低 → Q5 通 → Q6 通 → PWR_GOOD_OUT 被拉到地；PWR_GOOD 悬空或为高 → Q5 截止 → Q6 无基极电流 → PWR_GOOD_OUT 由 R13 拉高。",
+    "⚠ 输出是**开集**（只有下拉），下悬挂什么自己带；⚠ Q6 基极**没有别的直流路径**，Q5 一截止它就悬空，靠漏电与结电容慢慢放——\"导通 → 截止\"这一侧是软性的，别当高速反相器用。",
+    "阈值由 R10/R11 定，改 3.3V 供电或改触发点要一起重算；两颗管子极性不同（PNP/NPN），封装一样，靠丝印 Q5/Q6 区分，装反了逻辑整体反过来。",
+    "⚠ 网名：本板的 5V 供电在**页上有三个名字**（`BULK_VIN` 全局标签 / `+5V` 电源符号 / `VOUT` 全局标签），kicad-cli 把它们当同一张网、名取 `BULK_VIN`；卡里的网名一律用 `BULK_VIN`，而块内原理图上剩的可能是其中另一个名字——同一个网，不是两根轨。",
+    "铜 18 段 + 0 孔（B 1 / F 27）；死铜删 12 段/孔；口岸切口 3 处、走线出口 8 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（本板两张都是平面网，按「块内不带铺铜」整张删，拼板时重铺）。",
+    "块里每个脚都有铜可接（没有\"只靠铺铜连\"的焊盘）。",
+    "GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。",
+    "kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND**（2 个焊盘点名）——源板靠铺铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 3 + 悬空过孔 4 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 248 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 adapter-ram-ddr5-1REV2.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板两张铺铜（GND 平面 + LDO 输出那一小片 +3.3V）按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "6 件 / 8 网 / 端口 2 + 轨 3；铜 18 段 + 0 孔；死铜删 12；口岸切口 3；卡↔板门 ①~⑤ 全过"
+  }
+}

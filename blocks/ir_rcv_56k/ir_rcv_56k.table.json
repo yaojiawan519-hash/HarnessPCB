@@ -1,0 +1,113 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ir_rcv_56k",
+ "interface": [
+  {
+   "net": "IO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R12-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "解调输出：开漏、有 56kHz 载波时拉低；块内 R12 **20K** 上拉到 VOUT"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R12-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "5V 电源，经块内 R7 100R 到模块 VCC（同节点挂 C5 4.7µF）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U4",
+   "lib": "TSOP4838:TSOP4838",
+   "value": "CHQ0038L-56kHz",
+   "footprint": "Library:TSOP18XX",
+   "x": 167.64,
+   "y": 78.74
+  },
+  {
+   "ref": "R7",
+   "lib": "Device:R",
+   "value": "100R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 148.59,
+   "y": 68.58
+  },
+  {
+   "ref": "C5",
+   "lib": "Device:C",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 148.59,
+   "y": 77.47
+  },
+  {
+   "ref": "R12",
+   "lib": "Device:R",
+   "value": "20K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 158.115,
+   "y": 68.58
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "GND",
+   "net": "GND"
+  },
+  {
+   "ref": "R12",
+   "pin": "1",
+   "net": "IO7"
+  },
+  {
+   "ref": "U4",
+   "pin": "OUT",
+   "net": "IO7"
+  },
+  {
+   "ref": "R12",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "R7",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C5",
+   "pin": "1",
+   "net": "_ir_rcv_56k_N1"
+  },
+  {
+   "ref": "R7",
+   "pin": "1",
+   "net": "_ir_rcv_56k_N1"
+  },
+  {
+   "ref": "U4",
+   "pin": "VCC",
+   "net": "_ir_rcv_56k_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

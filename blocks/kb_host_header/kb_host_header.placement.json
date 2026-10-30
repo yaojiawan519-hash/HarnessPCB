@@ -1,0 +1,157 @@
+{
+  "name": "kb_host_header",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    98.7,
+    97.5
+  ],
+  "size_mm": [
+    15.75,
+    26.5
+  ],
+  "ports": {
+    "DAT": [
+      "J1",
+      "J4"
+    ],
+    "CLK": [
+      "J1",
+      "J4"
+    ],
+    "USB_D+": [
+      "J5",
+      "J7"
+    ],
+    "VOUT_BP_SIDE": [
+      "D401",
+      "Q401",
+      "Q402",
+      "R3"
+    ],
+    "TRIG": [
+      "J8",
+      "R3"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "D2",
+      "J1",
+      "J4",
+      "J5",
+      "J7",
+      "J8",
+      "J9",
+      "R1",
+      "R408",
+      "R412",
+      "R5"
+    ],
+    "USB_D-": [
+      "J5",
+      "J7"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "DAT",
+      "x": 107.375,
+      "y": 104.125,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "CLK",
+      "x": 107.375,
+      "y": 102.625,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "USB_D-",
+      "x": 107.375,
+      "y": 92.4786,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "TRIG",
+      "x": 107.375,
+      "y": 89.875,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 107.375,
+      "y": 91.7714,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT_BP_SIDE",
+      "x": 107.375,
+      "y": 87.125,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 15,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 8,
+      "F.Cu": 7
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 11,
+        "vias": 0,
+        "nets": [
+          "CLK",
+          "DAT",
+          "TRIG",
+          "USB_D+",
+          "USB_D-",
+          "VOUT_BP_SIDE"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 2.7,
+      "dy": -11.45,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 6.05,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

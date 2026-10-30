@@ -1,0 +1,277 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "proto_header_trio",
+ "interface": [
+  {
+   "net": "IO0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 2 脚 = `IO0`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 2 位是同一张网"
+  },
+  {
+   "net": "IO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 3 脚 = `IO1`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 3 位是同一张网"
+  },
+  {
+   "net": "IO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 4 脚 = `IO2`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 4 位是同一张网"
+  },
+  {
+   "net": "IO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 5 脚 = `IO3`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 5 位是同一张网"
+  },
+  {
+   "net": "IO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 6 脚 = `IO4`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 6 位是同一张网"
+  },
+  {
+   "net": "IO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 7 脚 = `IO5`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 7 位是同一张网"
+  },
+  {
+   "net": "IO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 8 脚 = `IO6`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 8 位是同一张网"
+  },
+  {
+   "net": "IO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 9 脚 = `IO7`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 9 位是同一张网"
+  }
+ ],
+ "power_rails": [
+  "GND",
+  "VOUT"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 34.29,
+   "y": 93.98
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "pinheader-reduced:PinHeader_1x10_P2.54mm_Vertical_No_Silk",
+   "x": 45.72,
+   "y": 93.98
+  },
+  {
+   "ref": "J5",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "pinheader-reduced:PinHeader_1x10_P2.54mm_Vertical_Reduced_2",
+   "x": 25.4,
+   "y": 93.98
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J5",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "IO0"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "IO0"
+  },
+  {
+   "ref": "J5",
+   "pin": "2",
+   "net": "IO0"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "IO1"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "IO1"
+  },
+  {
+   "ref": "J5",
+   "pin": "3",
+   "net": "IO1"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "IO2"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "IO2"
+  },
+  {
+   "ref": "J5",
+   "pin": "4",
+   "net": "IO2"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J5",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J5",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J5",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J5",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J5",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J5",
+   "pin": "1",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

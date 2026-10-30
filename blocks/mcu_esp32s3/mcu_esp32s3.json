@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100nf 10k 10pf 1m 1uf 26pf 32.768khz 3v3",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "mcu_esp32s3"
+  }
+}

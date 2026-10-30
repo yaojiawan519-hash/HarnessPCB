@@ -1,0 +1,695 @@
+project:
+  kind: block
+  name: bp5_mcu_rp2040
+  version: sdi/1
+defs:
+  bp5_mcu_rp2040:
+    category: mcu
+    rationale: '**RP2040 主控整簇**：U103（`RP2040-QFN-56`，7×7mm、0.4mm 节距）+ 它的 9 只 `+3V3` 去耦（C108 2.2µF + C110/C111/C112/C113/C114/C115/C116/C121
+      各 0.1µF，**正好对上 RP2040 的 9 只 IOVDD 系电源脚** 1/10/22/26/33/42/44/48/49）+ 内核轨 `+1V1` 三只 （C107 2.2µF、C117/C118
+      0.1µF，对应脚 23/45/50）+ ADC 供电的 RC（R103 200R 串、 C109 2.2µF 落地，`Net-(U103-ADC_AVDD)`）+ 12MHz 晶振 Y101
+      与两只 15pF 负载电容 （C105/C106，`Net-(U103-XIN/XOUT)`）。18 件 / 46 网。 ⚠ **去耦按"数量对得上脚"归属，不按板面距离**：C113 离 NAND
+      只有 6.3mm、离 MCU 9.7mm， 但 `+3V3` 上恰好 11 只电容 = 本块 9 只 + flash 一对（0.1µF+2.2µF），这才是作者的口径。 复用要点：这簇是"最小可跑
+      RP2040"——QSPI flash 与 SPI NAND 各自成块，接上 `bp5_qspi_flash` / `bp5_spi_nand` / `bp5_usb_c_port` / `bp5_swd_header`
+      才是完整最小系统。'
+    ports:
+    - name: AMUX_OUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-40
+        connector: false
+    - name: BUFDIR0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-2
+        connector: false
+    - name: BUFDIR1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-3
+        connector: false
+    - name: BUFDIR2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-4
+        connector: false
+    - name: BUFDIR3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-5
+        connector: false
+    - name: BUFDIR4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-6
+        connector: false
+    - name: BUFDIR5
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-7
+        connector: false
+    - name: BUFDIR6
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-8
+        connector: false
+    - name: BUFDIR7
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-9
+        connector: false
+    - name: BUFIO0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-11
+        connector: false
+    - name: BUFIO1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-12
+        connector: false
+    - name: BUFIO2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-13
+        connector: false
+    - name: BUFIO3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-14
+        connector: false
+    - name: BUFIO4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-15
+        connector: false
+    - name: BUFIO5
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-16
+        connector: false
+    - name: BUFIO6
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-17
+        connector: false
+    - name: BUFIO7
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-18
+        connector: false
+    - name: BUTTONS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-39
+        connector: false
+    - name: CURRENT_ADJ_MCU
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-34
+        connector: false
+    - name: CURRENT_SENSE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-41
+        connector: false
+    - name: DISPLAY_CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-37
+        connector: false
+    - name: DISPLAY_DP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-36
+        connector: false
+    - name: QSPI_SCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-52
+        connector: false
+    - name: QSPI_SD0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-53
+        connector: false
+    - name: QSPI_SD1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-55
+        connector: false
+    - name: QSPI_SD2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-54
+        connector: false
+    - name: QSPI_SD3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-51
+        connector: false
+    - name: QSPI_SS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-56
+        connector: false
+    - name: RGB_CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-28
+        connector: false
+    - name: SD_CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-38
+        connector: false
+    - name: SHIFT_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-32
+        connector: false
+    - name: SHIFT_LATCH
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-31
+        connector: false
+    - name: SPI_CDI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-27
+        connector: false
+    - name: SPI_CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-30
+        connector: false
+    - name: SPI_CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-29
+        connector: false
+    - name: SWCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-24
+        connector: false
+    - name: SWDIO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-25
+        connector: false
+    - name: USB_D+
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D-
+      exit:
+        pin: U103-47
+        connector: false
+    - name: USB_D-
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D+
+      exit:
+        pin: U103-46
+        connector: false
+    - name: VREG_ADJ_MCU
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U103-35
+        connector: false
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: U103
+      lib: RP_Silicon:RP2040
+      value: RP2040
+      footprint: RP_Silicon:RP2040-QFN-56
+    - ref: C106
+      lib: Device:C_Small
+      value: 15pF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C105
+      lib: Device:C_Small
+      value: 15pF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C108
+      lib: Device:C_Small
+      value: 2.2uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C110
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C111
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C112
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C113
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C114
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C115
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C107
+      lib: Device:C_Small
+      value: 2.2uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C117
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C118
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: Y101
+      lib: Device:Crystal_GND24_Small
+      value: 12Mhz
+      footprint: Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm
+    - ref: C116
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: R103
+      lib: Device:R_Small
+      value: 200R
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: C109
+      lib: Device:C_Small
+      value: 2.2uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C121
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    conns:
+    - ref: C107
+      pin: '1'
+      net: +1V1
+    - ref: C117
+      pin: '1'
+      net: +1V1
+    - ref: C118
+      pin: '1'
+      net: +1V1
+    - ref: U103
+      pin: '23'
+      net: +1V1
+    - ref: U103
+      pin: '45'
+      net: +1V1
+    - ref: U103
+      pin: '50'
+      net: +1V1
+    - ref: C108
+      pin: '2'
+      net: +3V3
+    - ref: C110
+      pin: '1'
+      net: +3V3
+    - ref: C111
+      pin: '1'
+      net: +3V3
+    - ref: C112
+      pin: '1'
+      net: +3V3
+    - ref: C113
+      pin: '1'
+      net: +3V3
+    - ref: C114
+      pin: '1'
+      net: +3V3
+    - ref: C115
+      pin: '1'
+      net: +3V3
+    - ref: C116
+      pin: '1'
+      net: +3V3
+    - ref: C121
+      pin: '1'
+      net: +3V3
+    - ref: R103
+      pin: '1'
+      net: +3V3
+    - ref: U103
+      pin: '1'
+      net: +3V3
+    - ref: U103
+      pin: '10'
+      net: +3V3
+    - ref: U103
+      pin: '22'
+      net: +3V3
+    - ref: U103
+      pin: '26'
+      net: +3V3
+    - ref: U103
+      pin: '33'
+      net: +3V3
+    - ref: U103
+      pin: '42'
+      net: +3V3
+    - ref: U103
+      pin: '44'
+      net: +3V3
+    - ref: U103
+      pin: '48'
+      net: +3V3
+    - ref: U103
+      pin: '49'
+      net: +3V3
+    - ref: U103
+      pin: '40'
+      net: AMUX_OUT
+    - ref: U103
+      pin: '2'
+      net: BUFDIR0
+    - ref: U103
+      pin: '3'
+      net: BUFDIR1
+    - ref: U103
+      pin: '4'
+      net: BUFDIR2
+    - ref: U103
+      pin: '5'
+      net: BUFDIR3
+    - ref: U103
+      pin: '6'
+      net: BUFDIR4
+    - ref: U103
+      pin: '7'
+      net: BUFDIR5
+    - ref: U103
+      pin: '8'
+      net: BUFDIR6
+    - ref: U103
+      pin: '9'
+      net: BUFDIR7
+    - ref: U103
+      pin: '11'
+      net: BUFIO0
+    - ref: U103
+      pin: '12'
+      net: BUFIO1
+    - ref: U103
+      pin: '13'
+      net: BUFIO2
+    - ref: U103
+      pin: '14'
+      net: BUFIO3
+    - ref: U103
+      pin: '15'
+      net: BUFIO4
+    - ref: U103
+      pin: '16'
+      net: BUFIO5
+    - ref: U103
+      pin: '17'
+      net: BUFIO6
+    - ref: U103
+      pin: '18'
+      net: BUFIO7
+    - ref: U103
+      pin: '39'
+      net: BUTTONS
+    - ref: U103
+      pin: '34'
+      net: CURRENT_ADJ_MCU
+    - ref: U103
+      pin: '41'
+      net: CURRENT_SENSE
+    - ref: U103
+      pin: '37'
+      net: DISPLAY_CS
+    - ref: U103
+      pin: '36'
+      net: DISPLAY_DP
+    - ref: C105
+      pin: '2'
+      net: GND
+    - ref: C106
+      pin: '2'
+      net: GND
+    - ref: C107
+      pin: '2'
+      net: GND
+    - ref: C108
+      pin: '1'
+      net: GND
+    - ref: C109
+      pin: '2'
+      net: GND
+    - ref: C110
+      pin: '2'
+      net: GND
+    - ref: C111
+      pin: '2'
+      net: GND
+    - ref: C112
+      pin: '2'
+      net: GND
+    - ref: C113
+      pin: '2'
+      net: GND
+    - ref: C114
+      pin: '2'
+      net: GND
+    - ref: C115
+      pin: '2'
+      net: GND
+    - ref: C116
+      pin: '2'
+      net: GND
+    - ref: C117
+      pin: '2'
+      net: GND
+    - ref: C118
+      pin: '2'
+      net: GND
+    - ref: C121
+      pin: '2'
+      net: GND
+    - ref: U103
+      pin: '19'
+      net: GND
+    - ref: U103
+      pin: '57'
+      net: GND
+    - ref: Y101
+      pin: '2'
+      net: GND
+    - ref: Y101
+      pin: '4'
+      net: GND
+    - ref: U103
+      pin: '52'
+      net: QSPI_SCLK
+    - ref: U103
+      pin: '53'
+      net: QSPI_SD0
+    - ref: U103
+      pin: '55'
+      net: QSPI_SD1
+    - ref: U103
+      pin: '54'
+      net: QSPI_SD2
+    - ref: U103
+      pin: '51'
+      net: QSPI_SD3
+    - ref: U103
+      pin: '56'
+      net: QSPI_SS
+    - ref: U103
+      pin: '28'
+      net: RGB_CDO
+    - ref: U103
+      pin: '38'
+      net: SD_CS
+    - ref: U103
+      pin: '32'
+      net: SHIFT_EN
+    - ref: U103
+      pin: '31'
+      net: SHIFT_LATCH
+    - ref: U103
+      pin: '27'
+      net: SPI_CDI
+    - ref: U103
+      pin: '30'
+      net: SPI_CDO
+    - ref: U103
+      pin: '29'
+      net: SPI_CLK
+    - ref: U103
+      pin: '24'
+      net: SWCLK
+    - ref: U103
+      pin: '25'
+      net: SWDIO
+    - ref: U103
+      pin: '47'
+      net: USB_D+
+    - ref: U103
+      pin: '46'
+      net: USB_D-
+    - ref: U103
+      pin: '35'
+      net: VREG_ADJ_MCU
+    - ref: C105
+      pin: '1'
+      net: _bp5_mcu_rp2040_N1
+    - ref: U103
+      pin: '20'
+      net: _bp5_mcu_rp2040_N1
+    - ref: Y101
+      pin: '1'
+      net: _bp5_mcu_rp2040_N1
+    - ref: C106
+      pin: '1'
+      net: _bp5_mcu_rp2040_N2
+    - ref: U103
+      pin: '21'
+      net: _bp5_mcu_rp2040_N2
+    - ref: Y101
+      pin: '3'
+      net: _bp5_mcu_rp2040_N2
+    - ref: C109
+      pin: '1'
+      net: _bp5_mcu_rp2040_N3
+    - ref: R103
+      pin: '2'
+      net: _bp5_mcu_rp2040_N3
+    - ref: U103
+      pin: '43'
+      net: _bp5_mcu_rp2040_N3
+    placement_prior:
+      anchor: U103
+      max_mm: 22.0
+      rationale: 18 件摊开 20×15mm 左右（板面 x 123.1~143.5、y 75.2~90.4），U103 在中间： 晶体 Y101 在它右下 7.6mm 处（也转 45°），去耦围成一圈。这是作者的布局事实，
+        不是这 18 只自己要这么大——QFN-56 的扇出把周围一圈都占了。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - +1V1
+    - _bp5_mcu_rp2040_N1
+    - _bp5_mcu_rp2040_N2
+    - _bp5_mcu_rp2040_N3
+    provenance:
+      basis: 18 件 / 46 网 / 端口 40 + 轨 2；铜 274 段 + 41 孔；死铜删 43；口岸切口 38
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 扣，4 层板； 件在板上转 45°，QFN-56
+      0.4mm 节距）
+    notes:
+    - '**RP2040 主控整簇**：U103 = `RP2040-QFN-56`（7×7mm、**0.4mm 节距**，板上转 45°）+ 18 件 / 46 网 / 端口 40 + 轨 `+3V3`/`GND`
+      / 内部网 4 条（`+1V1` + 3 条无名）。'
+    - '**去耦是按"数量对得上脚"配的，不是按板面距离**：`+3V3` 上 9 只电容对 U103 的 9 只电源脚（1/10/22/26/33/42/44/48/49）；内核轨 `+1V1`
+      三只（C107 2.2µF + C117/C118 0.1µF）对 23/45/50。C113 离 NAND 只有 6.3mm、离 U103 9.7mm，仍属本块。'
+    - '**ADC 供电是 RC**：`U103.43 (ADC_AVDD)` ← R103 200R ← `+3V3`，C109 2.2µF 落地 = 无名网 `_bp5_mcu_rp2040_N3`。**晶振是
+      12MHz + 两只 15pF**（Y101，3225 封装；`N1` = `U103.20 + Y101.1 + C105.1`，`N2` = `U103.21 + Y101.3 + C106.1`）。'
+    - '**端口 40 条的构成**：8 只 `BUFDIR0..7` + 8 只 `BUFIO0..7`（去 `bpu-iobufffer` 那页的缓冲器）、`QSPI_SCLK/SD0..3/SS`
+      六根（去 `bp5_qspi_flash`）、`SPI_CLK/CDI/CDO`+`SD_CS`（去 `bp5_spi_nand`）、`USB_D±`（去 `bp5_usb_c_port`）、`SWDIO/SWCLK`（去
+      `bp5_swd_header`）、`BUTTONS`（去 `bp5_user_button`），外加 9 根去向网：`AMUX_OUT`/`DISPLAY_CS`/`DISPLAY_DP`/`RGB_CDO`/`SHIFT_EN`/`SHIFT_LATCH`
+      → `IO-expand-595-mux` 那页，`CURRENT_ADJ_MCU`/`CURRENT_SENSE`/`VREG_ADJ_MCU` → `bpu-current_limiter`
+      那页。'
+    - ⚠ **别按"两根腿才算连接"判端口**：上面 16 根 `BUFDIR*/BUFIO*` 和后面 9 根去向网在**本页上全只有一条腿**（各只落在 U103 的一个脚上，共 25 根），它们靠**全局标签**跨页——判据是"同目录别的页有没有同名全局标签"，代码在
+      `sdi/block_sch.py` 的 `external_globals()`。不认这条规则，这 25 根会全落进内部网（端口 15 / 内部网 29）。
+    - '**复用要点**：这是"最小可跑 RP2040"的中枢，但要配 `bp5_qspi_flash`（QSPI 六根全在板上走）才起得来；`bp5_usb_c_port` + `bp5_ldo_3v3`
+      给电，`bp5_swd_header` 给调试，`bp5_user_button` 给 BOOTSEL。'
+    - ⚠ **`counts.borrowed_pads` 20 处**：信号 14 条（`AMUX_OUT→R406.2/R407.2`、`CURRENT_SENSE→U601.4`、`DISPLAY_CS→LCD201.8`、`DISPLAY_DP→LCD201.7`、`QSPI_SD0→U102.5`、`SPI_CDO→U105.5`、`RGB_CDO→U503.7`…），即这些铜端**正好压在别的块的焊盘上换层/续接**。块单看是断的，拼板时那几只件插上就通。
+    - '**铜**：391 段 + 54 孔、**0 张铺铜**；孤立铜删 43 段/孔；口沿被窗口截断 38 处（留着，拼板时按端口名从焊盘重新引）；残迹留 0。`naked_plane_pads`
+      23（GND 脚全靠整板铺铜），`island_split` `GND×27` + `+3V3×2`——**这只块单看 GND/+3V3 是碎的**，拼板整板重铺后并起来。'

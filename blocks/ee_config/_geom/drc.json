@@ -1,0 +1,13 @@
+{
+ "pcb": "46282:1793372257675440126",
+ "violations": 20,
+ "unconnected": 2,
+ "kinds": {
+  "clearance": 3,
+  "lib_footprint_issues": 1,
+  "lib_footprint_mismatch": 5,
+  "track_dangling": 11
+ },
+ "shorts": [],
+ "bridges": []
+}

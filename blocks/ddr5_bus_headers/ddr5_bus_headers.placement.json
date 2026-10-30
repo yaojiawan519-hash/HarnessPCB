@@ -1,0 +1,146 @@
+{
+  "name": "ddr5_bus_headers",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    113.7,
+    42.75
+  ],
+  "size_mm": [
+    15.75,
+    26.5
+  ],
+  "ports": {
+    "GND": [
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "D2",
+      "J1",
+      "J4",
+      "Q6",
+      "R11",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "SDA": [
+      "U1"
+    ],
+    "SCL": [
+      "U1"
+    ],
+    "BULK_VIN": [
+      "C4",
+      "C6",
+      "J1",
+      "J4",
+      "R13",
+      "U1",
+      "U2"
+    ],
+    "PWR_GOOD_OUT": [
+      "D3",
+      "Q6",
+      "R13"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "BULK_VIN",
+      "x": 119.75,
+      "y": 27.9226,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BULK_VIN",
+      "x": 123.1524,
+      "y": 30.8476,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BULK_VIN",
+      "x": 116.0,
+      "y": 57.5774,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "PWR_GOOD_OUT",
+      "x": 123.1524,
+      "y": 57.25,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 123.1524,
+      "y": 37.2674,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 123.1524,
+      "y": 39.8074,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 9,
+    "vias": 0,
+    "stub_kept": 3,
+    "isolated_deleted": 2,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "F.Cu": 9
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 9,
+        "vias": 1,
+        "nets": [
+          "BULK_VIN",
+          "PWR_GOOD_OUT",
+          "SCL",
+          "SDA"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 2.7,
+      "dy": -11.45,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 6.05,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

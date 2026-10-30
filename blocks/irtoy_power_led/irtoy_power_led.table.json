@@ -1,0 +1,61 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "irtoy_power_led",
+ "interface": [
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R10-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "上电指示的供电端，块内串 R10 2K 后点 D1"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D1",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 49.53,
+   "y": 45.72
+  },
+  {
+   "ref": "R10",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 41.91,
+   "y": 45.72
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R10",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "_irtoy_power_led_N1"
+  },
+  {
+   "ref": "R10",
+   "pin": "2",
+   "net": "_irtoy_power_led_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

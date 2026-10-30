@@ -1,0 +1,173 @@
+project:
+  kind: block
+  name: bp5_vreg_adj_ldo
+  version: sdi/1
+defs:
+  bp5_vreg_adj_ldo:
+    category: power
+    rationale: '**可调 3.3V→最高 5V 的 LDO（作者标题 Adjustable voltage regulator）**： U403 = `AP2127`（SOT-23-5），逐脚
+      `1=VIN 2=GND 3=EN 4=ADJ 5=VOUT`； C404/C407 是进出各 4.7µF，C408 120pF 在反馈节点，R403 102K 从 ADJ 接到缓冲器 （`VREG_ADJ`），R404
+      133K / R405 33K 是分压，R401 100K 给 EN 下拉。 8 件 / 6 网。 ⚠ **输出电压不是固定的**：`Vout = Vref·(1/R404+1/R403+1/R405)·R404
+      − Vbuf·R404/R403` = `5.067·Vref/0.8 − 1.304·Vbuf`，Vref = 0.8V。缓冲器拉到 0V 时 5.07V， MCU 的 PWM 给 3.3V
+      时约 0.76V——**这是块内 `VREG_ADJ` 一路模拟信号决定的**， 拼板时别把它当电源脚随便接。 ⚠ 作者卡片里写了换料的口径：`MCP1824` 与 `AP2127` 的基准电压不同，
+      配套 R403/R404/R405 理想值分别是 78K/100K/10K 和 31.6K/40.2K/10K； 这块板装的是 AP2127 那一组。'
+    ports:
+    - name: VREG_ADJ
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R403-1
+        connector: false
+      pin: R403/1
+      note: 来自 `bp5_vreg_adj_buffer` 的 U603 输出，进 ADJ 脚
+    - name: VREG_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R401-1
+        connector: false
+      pin: R401/1
+      note: 来自 `bp5_current_en_gate` 的 D602；本块 R401 100K 下拉
+    - name: VREG_OUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C407-1
+        connector: false
+      pin: C407/1
+      note: LDO 输出，去 `bp5_backflow_prevent` 的 Q402 侧
+    - name: VREG_VIN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C404-1
+        connector: false
+      pin: C404/1
+      note: 来自 `bp5_current_sense` 的 R601 下游（0R2 之后），不是直接接 +VUSB
+    rails:
+    - GND
+    parts:
+    - ref: U403
+      lib: dp-vreg:MCP1824
+      value: AP2127
+      footprint: Package_TO_SOT_SMD:SOT-23-5
+    - ref: C407
+      lib: Device:C_Small
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C404
+      lib: Device:C_Small
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: R401
+      lib: Device:R_Small
+      value: 100K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R404
+      lib: Device:R_Small
+      value: 133K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R405
+      lib: Device:R_Small
+      value: 33K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R403
+      lib: Device:R_Small
+      value: 102K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: C408
+      lib: Device:C_Small
+      value: 120pF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    conns:
+    - ref: C404
+      pin: '2'
+      net: GND
+    - ref: C407
+      pin: '2'
+      net: GND
+    - ref: R401
+      pin: '2'
+      net: GND
+    - ref: R405
+      pin: '2'
+      net: GND
+    - ref: U403
+      pin: '2'
+      net: GND
+    - ref: R403
+      pin: '1'
+      net: VREG_ADJ
+    - ref: R401
+      pin: '1'
+      net: VREG_EN
+    - ref: U403
+      pin: '3'
+      net: VREG_EN
+    - ref: C407
+      pin: '1'
+      net: VREG_OUT
+    - ref: C408
+      pin: '1'
+      net: VREG_OUT
+    - ref: R404
+      pin: '1'
+      net: VREG_OUT
+    - ref: U403
+      pin: '5'
+      net: VREG_OUT
+    - ref: C404
+      pin: '1'
+      net: VREG_VIN
+    - ref: U403
+      pin: '1'
+      net: VREG_VIN
+    - ref: C408
+      pin: '2'
+      net: _bp5_vreg_adj_ldo_N1
+    - ref: R403
+      pin: '2'
+      net: _bp5_vreg_adj_ldo_N1
+    - ref: R404
+      pin: '2'
+      net: _bp5_vreg_adj_ldo_N1
+    - ref: R405
+      pin: '1'
+      net: _bp5_vreg_adj_ldo_N1
+    - ref: U403
+      pin: '4'
+      net: _bp5_vreg_adj_ldo_N1
+    placement_prior: {}
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _bp5_vreg_adj_ldo_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 8 件 / 6 网 / 端口 4 + 轨 1；铜 20 段 + 0 孔；死铜删 5；口岸切口 3；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 原样扣，4 层板保留原层；U403 与四只电容全在
+      F.Cu、无背面件）
+    notes:
+    - 8 件 / 6 网：4 个信号口岸（VREG_VIN 进、VREG_OUT 出、VREG_EN 使能、VREG_ADJ 由缓冲器注入）+ 轨 GND；第 6 张是块内 ADJ 分压节点（原理图上无名，kicad-cli
+      自动命名 `Net-(R403-Pad2)`），不出块。
+    - '**输出电压是算出来的，不是固定的 3.3V**：`Vout = Vref·(1/R404+1/R403+1/R405)·R404 − Vbuf·R404/R403` = `5.067·Vref/0.8
+      − 1.304·Vbuf`，Vref(AP2127)=0.8V。缓冲器拉到 0V 时 5.07V，PWM 给 3.3V 时约 0.76V。'
+    - ⚠ 作者注释给了换料口径：MCP1824 与 AP2127 基准电压不同，理想 R403/R404/R405 分别是 78K/100K/10K 与 31.6K/40.2K/10K。本板装的是
+      AP2127 那组（102K/133K/33K 是就近取值）。
+    - C408 120pF 挂在反馈节点上——它不是去耦，是这个误差放大器环路的相位补偿；抄到别的 LDO 上换成固定输出版本时它就该删掉。
+    - R401 100K 是 EN 的下拉（默认关）。它物理上贴着 U403 的 EN 脚，所以留在本块；`bp5_current_en_gate` 那块单独用时就没有这个下拉，EN 会浮。
+    - 板 6.14×6.69mm；铜 20 段 + 0 孔（F 21 / In1 4）；死铜删 5 段/孔；口岸切口 3 处、走线出口 5 处；源板在本块这几张网上铺过铜（GND、VREG_VIN），按「块内不带铺铜」**整张删**，拼板时由整板铺铜接上。
+    - 块里 7 个平面网焊盘一根铜都没有（源板就靠铺铜连它们），拼板时由整板铺铜接上。
+    - 没有借道块外焊盘的铜：本块所有连接都在块内闭合（口岸靠切口引出）。
+    - kicad-cli DRC：isolated_copper 0、clearance 0、shorting 0；未连通 5 条：5 条落在源板铺过铜的网（GND×4、VREG_VIN×1）——块里不带铺铜，拼板时由整板铺铜接上；违规
+      3 条全部是 `track_dangling`——那是块的口岸断头（铜走到窗口边就停），不是毛刺（`sdi.spur` 已把毛刺清零）。明细：track_dangling×3。

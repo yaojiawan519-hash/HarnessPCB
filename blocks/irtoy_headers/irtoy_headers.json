@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "conn_01x10",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "irtoy_headers"
+  }
+}

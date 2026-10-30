@@ -1,0 +1,412 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_switchable_pullups",
+ "interface": [
+  {
+   "net": "BPIO0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN312-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN312-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN312-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN312-4",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN311-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN311-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN311-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN311-4",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "PULLUP_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q300-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VREF_VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q300-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+VUSB"
+ ],
+ "parts": [
+  {
+   "ref": "RN311",
+   "lib": "dp-rarray:R_Array",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 269.24,
+   "y": 38.1
+  },
+  {
+   "ref": "Q300",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 240.03,
+   "y": 39.37
+  },
+  {
+   "ref": "Q301",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 246.38,
+   "y": 33.02
+  },
+  {
+   "ref": "Q302",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 252.73,
+   "y": 26.67
+  },
+  {
+   "ref": "Q303",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 259.08,
+   "y": 20.32
+  },
+  {
+   "ref": "RN312",
+   "lib": "dp-rarray:R_Array",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 269.24,
+   "y": 83.82
+  },
+  {
+   "ref": "R313",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 231.14,
+   "y": 45.72
+  },
+  {
+   "ref": "Q304",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 240.03,
+   "y": 85.09
+  },
+  {
+   "ref": "Q305",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 246.38,
+   "y": 78.74
+  },
+  {
+   "ref": "Q306",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 252.73,
+   "y": 72.39
+  },
+  {
+   "ref": "Q307",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 259.08,
+   "y": 66.04
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R313",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "RN312",
+   "pin": "1",
+   "net": "BPIO0"
+  },
+  {
+   "ref": "RN312",
+   "pin": "2",
+   "net": "BPIO1"
+  },
+  {
+   "ref": "RN312",
+   "pin": "3",
+   "net": "BPIO2"
+  },
+  {
+   "ref": "RN312",
+   "pin": "4",
+   "net": "BPIO3"
+  },
+  {
+   "ref": "RN311",
+   "pin": "1",
+   "net": "BPIO4"
+  },
+  {
+   "ref": "RN311",
+   "pin": "2",
+   "net": "BPIO5"
+  },
+  {
+   "ref": "RN311",
+   "pin": "3",
+   "net": "BPIO6"
+  },
+  {
+   "ref": "RN311",
+   "pin": "4",
+   "net": "BPIO7"
+  },
+  {
+   "ref": "Q300",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q301",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q302",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q303",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q304",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q305",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q306",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q307",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "R313",
+   "pin": "1",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "Q300",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q301",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q302",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q303",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q304",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q305",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q306",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q307",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q301",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N1"
+  },
+  {
+   "ref": "RN311",
+   "pin": "8",
+   "net": "_bp5_switchable_pullups_N1"
+  },
+  {
+   "ref": "Q302",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N2"
+  },
+  {
+   "ref": "RN311",
+   "pin": "7",
+   "net": "_bp5_switchable_pullups_N2"
+  },
+  {
+   "ref": "Q300",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N3"
+  },
+  {
+   "ref": "RN311",
+   "pin": "6",
+   "net": "_bp5_switchable_pullups_N3"
+  },
+  {
+   "ref": "Q303",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N4"
+  },
+  {
+   "ref": "RN311",
+   "pin": "5",
+   "net": "_bp5_switchable_pullups_N4"
+  },
+  {
+   "ref": "Q305",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N5"
+  },
+  {
+   "ref": "RN312",
+   "pin": "8",
+   "net": "_bp5_switchable_pullups_N5"
+  },
+  {
+   "ref": "Q306",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N6"
+  },
+  {
+   "ref": "RN312",
+   "pin": "7",
+   "net": "_bp5_switchable_pullups_N6"
+  },
+  {
+   "ref": "Q304",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N7"
+  },
+  {
+   "ref": "RN312",
+   "pin": "6",
+   "net": "_bp5_switchable_pullups_N7"
+  },
+  {
+   "ref": "Q307",
+   "pin": "3",
+   "net": "_bp5_switchable_pullups_N8"
+  },
+  {
+   "ref": "RN312",
+   "pin": "5",
+   "net": "_bp5_switchable_pullups_N8"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

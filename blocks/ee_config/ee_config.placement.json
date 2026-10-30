@@ -1,0 +1,263 @@
+{
+  "name": "ee_config",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    145.04,
+    94.211
+  ],
+  "size_mm": [
+    11.658,
+    4.488
+  ],
+  "ports": {
+    "+3V3": [
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C21",
+      "C30",
+      "C33",
+      "C36",
+      "C7",
+      "C8",
+      "C9",
+      "D2",
+      "FB1",
+      "FB2",
+      "J2",
+      "R14",
+      "R15",
+      "R28",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "SJ20",
+      "SJ31",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U8"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C27",
+      "C28",
+      "C29",
+      "C30",
+      "C31",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "D1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R10",
+      "R3",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8"
+    ],
+    "/EE_DAT": [
+      "TP28",
+      "U3"
+    ],
+    "/EE_CLK": [
+      "TP27",
+      "U3"
+    ],
+    "/EE_CS": [
+      "TP26",
+      "U3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 147.0725,
+      "y": 91.167,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 149.098,
+      "y": 91.167,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 144.9795,
+      "y": 91.167,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 145.0484,
+      "y": 91.167,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 138.411,
+      "y": 93.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/EE_DAT",
+      "x": 143.5484,
+      "y": 91.167,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/EE_CLK",
+      "x": 144.0484,
+      "y": 91.167,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 6,
+    "not_built": [],
+    "nets": 6,
+    "copper_segs": 122,
+    "vias": 5,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 7,
+    "exit_points": 7,
+    "segs_by_layer": {
+      "B.Cu": 19,
+      "F.Cu": 103
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->C8.1": 1,
+      "+3V3->FB1.2": 1,
+      "+3V3->U3.46": 1,
+      "/EE_CLK->TP27.1": 1,
+      "/EE_CS->TP26.1": 1,
+      "/EE_CS->U3.45": 1,
+      "/EE_DAT->TP28.1": 1,
+      "GND->C1.2": 1,
+      "GND->C8.2": 1
+    },
+    "island_split": {
+      "+3V3": 2,
+      "GND": 2
+    },
+    "dangling": {
+      "total": 11,
+      "port_cuts": 11,
+      "port_cut_nets": [
+        "+3V3",
+        "/EE_CLK",
+        "/EE_CS",
+        "/EE_DAT",
+        "GND"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 1,
+        "vias": 0,
+        "nets": [
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C3",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 5.074,
+      "dy": -0.739,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "2.2K",
+      "fp": "R_0603_1608Metric",
+      "dx": -4.324,
+      "dy": 1.139,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R17",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": 2.661,
+      "dy": 0.023,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R18",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": 2.7245,
+      "dy": 1.489,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R4",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": -4.324,
+      "dy": -0.711,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U1",
+      "value": "93LC56BT-I/OT",
+      "fp": "SOT-23-6",
+      "dx": -0.94,
+      "dy": 0.217,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

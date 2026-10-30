@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "s3b-ph-sm4-tb (hc-ph-3awt) s4b-ph-sm4-tb (hc-ph-4awt)",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "ph_ports"
+  }
+}

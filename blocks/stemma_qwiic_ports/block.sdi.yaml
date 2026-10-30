@@ -1,0 +1,150 @@
+project:
+  kind: block
+  name: stemma_qwiic_ports
+  version: sdi/1
+defs:
+  stemma_qwiic_ports:
+    category: connector
+    rationale: '**四只并联的 JST-SH 1.0mm 4P 卧贴座**（`SM04B-SRSS-TB`，Qwiic / STEMMA QT 同一个物理口）， 板子右沿一列排开、竖向 10mm
+      等距。四只**逐脚同网**，插任意一只等价： **1=GND、2=VOUT、3=SDA、4=SCL**（与页上注释 `1.GND, VCC, SDA, SCL` 逐脚吻合）。 复用要点：① 这是**纯并联的四个同口**，不是四个不同信号——想要四路独立
+      I2C 得自己加 mux，本块做不到；② 1.0mm 节距、6 只焊盘里 2 只是固定脚（MP，也接 GND）， 卧贴开口朝板外，复制块时朝向一起搬，摆反了插头进不来； ③ 本块**不带上拉**：Qwiic/STEMMA
+      的上拉在各家分线板或主机侧，总线电平谁提供要在拼板时定。'
+    ports:
+    - name: SCL
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-4
+        connector: true
+      pin: J1/4
+      note: I2C 时钟：四只口的 4 脚并联
+    - name: SDA
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-3
+        connector: true
+      pin: J1/3
+      note: I2C 数据（开漏双向，需上拉；块里没有）：四只口的 3 脚并联
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-2
+        connector: true
+      pin: J1/2
+      note: 整板电源（板上丝印 `V+`）：四只口的 2 脚并联；本块不产生它，是消费方
+    rails:
+    - GND
+    parts:
+    - ref: J2
+      lib: Connector_Generic_MountingPin:Conn_01x04_MountingPin
+      value: SM04B-SRSS-TB (HC-1.0-4PWT)
+      footprint: footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal
+    - ref: J3
+      lib: Connector_Generic_MountingPin:Conn_01x04_MountingPin
+      value: SM04B-SRSS-TB (HC-1.0-4PWT)
+      footprint: footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal
+    - ref: J4
+      lib: Connector_Generic_MountingPin:Conn_01x04_MountingPin
+      value: SM04B-SRSS-TB (HC-1.0-4PWT)
+      footprint: footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal
+    - ref: J1
+      lib: Connector_Generic_MountingPin:Conn_01x04_MountingPin
+      value: SM04B-SRSS-TB (HC-1.0-4PWT)
+      footprint: footprints:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal
+    conns:
+    - ref: J1
+      pin: '1'
+      net: GND
+    - ref: J1
+      pin: MP
+      net: GND
+    - ref: J2
+      pin: '1'
+      net: GND
+    - ref: J2
+      pin: MP
+      net: GND
+    - ref: J3
+      pin: '1'
+      net: GND
+    - ref: J3
+      pin: MP
+      net: GND
+    - ref: J4
+      pin: '1'
+      net: GND
+    - ref: J4
+      pin: MP
+      net: GND
+    - ref: J1
+      pin: '4'
+      net: SCL
+    - ref: J2
+      pin: '4'
+      net: SCL
+    - ref: J3
+      pin: '4'
+      net: SCL
+    - ref: J4
+      pin: '4'
+      net: SCL
+    - ref: J1
+      pin: '3'
+      net: SDA
+    - ref: J2
+      pin: '3'
+      net: SDA
+    - ref: J3
+      pin: '3'
+      net: SDA
+    - ref: J4
+      pin: '3'
+      net: SDA
+    - ref: J1
+      pin: '2'
+      net: VOUT
+    - ref: J2
+      pin: '2'
+      net: VOUT
+    - ref: J3
+      pin: '2'
+      net: VOUT
+    - ref: J4
+      pin: '2'
+      net: VOUT
+    placement_prior:
+      anchor: J1
+      max_mm: 12.0
+      rationale: 四只同一朝向（源板都是 rot 90、开口朝板右沿）、竖向间距 10.00mm、脚 1 对齐。 整列贴板边放，四只之间没有任何铜要互避——布局上是"一条边上的四个同口"。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 I2C Quick Connect Plank v1 REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 4 网 / 端口 3 + 轨 1；铜 15 段 + 4 孔；死铜删 22；口岸切口 7；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb
+      原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 GND 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**四只并联的 Qwiic / STEMMA QT 口**（JST-SH 1.0mm 4P 卧贴，`SM04B-SRSS-TB`）。四只**逐脚同网**，插任意一只等价：**1=GND、2=VOUT、3=SDA、4=SCL**。4
+      件 / 4 网：3 个出块端口（SCL / SDA / VOUT）+ 1 条轨（GND）。'
+    - ⚠ 这四只是一**个**电气口复制四遍，不是四路独立 I2C。要同时挂四个同地址器件，得另加 mux；本块帮不上。
+    - 每只 6 个焊盘里有 2 只是固定脚（MP，也接 GND），1.0mm 节距；四只都是 rot 90、开口朝板右沿，竖向 10.00mm 等距、脚 1 对齐。复制块时朝向一起搬。
+    - 本块**不带上拉电阻**：Qwiic / STEMMA 的上拉在各家分线板或主机侧，总线上的上拉到底谁提供、多少欧，拼板时要定下来（不带上拉意味着本块单独拿出来是一条裸总线）。
+    - '⚠ `VOUT` 在本卡里记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）。它电学上是**整板的电源网**（板上丝印写
+      `V+`），拼板时按同名接，不要当信号口串东西。'
+    - 铜 15 段 + 4 孔（B 5 / F 18）；死铜删 22 段/孔；口岸切口 7 处、走线出口 7 处；削剩残迹留 3 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面
+      GND 是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里 11 个平面网焊盘一根铜都没有（源板就靠那张整板 GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 12 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上；**SDA 裂成 4 个铜岛**（各含焊盘）：源板上 SDA 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上。
+    - kicad-cli DRC：isolated_copper 0；未连通 14 条（GND×22、SDA×6）；断头走线 7 + 悬空过孔 1 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_*
+      4 条（源板自带，见基线）；源板基线：未连通 0 / isolated_copper 0 / 违规 46 条。

@@ -1,0 +1,681 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_io_buffer_4_7",
+ "interface": [
+  {
+   "net": "BPIO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN309-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN309-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN309-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BPIO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN309-4",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN308-8",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN308-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN308-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN308-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN306-8",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN306-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN306-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN306-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VREF_VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C311-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C308",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 243.84,
+   "y": 78.74
+  },
+  {
+   "ref": "U305",
+   "lib": "Logic_LevelTranslator:SN74LVC1T45DCK",
+   "value": "AiP74LVC1T45GC363.TR",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 251.46,
+   "y": 90.17
+  },
+  {
+   "ref": "C311",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 259.08,
+   "y": 78.74
+  },
+  {
+   "ref": "C309",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 246.38,
+   "y": 29.21
+  },
+  {
+   "ref": "U306",
+   "lib": "Logic_LevelTranslator:SN74LVC1T45DCK",
+   "value": "AiP74LVC1T45GC363.TR",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 254.0,
+   "y": 40.64
+  },
+  {
+   "ref": "C312",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 261.62,
+   "y": 29.21
+  },
+  {
+   "ref": "C313",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 172.72,
+   "y": 83.82
+  },
+  {
+   "ref": "U307",
+   "lib": "Logic_LevelTranslator:SN74LVC1T45DCK",
+   "value": "AiP74LVC1T45GC363.TR",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 180.34,
+   "y": 95.25
+  },
+  {
+   "ref": "C315",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 187.96,
+   "y": 83.82
+  },
+  {
+   "ref": "C314",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 173.99,
+   "y": 30.48
+  },
+  {
+   "ref": "U308",
+   "lib": "Logic_LevelTranslator:SN74LVC1T45DCK",
+   "value": "AiP74LVC1T45GC363.TR",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 181.61,
+   "y": 41.91
+  },
+  {
+   "ref": "C316",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 189.23,
+   "y": 30.48
+  },
+  {
+   "ref": "RN306",
+   "lib": "dp-rarray:R_Array",
+   "value": "330R",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 166.37,
+   "y": 40.64
+  },
+  {
+   "ref": "RN309",
+   "lib": "dp-rarray:R_Array",
+   "value": "330R",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 194.31,
+   "y": 41.91
+  },
+  {
+   "ref": "RN310",
+   "lib": "dp-rarray:R_Array",
+   "value": "1M",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 191.77,
+   "y": 52.07
+  },
+  {
+   "ref": "RN308",
+   "lib": "dp-rarray:R_Array",
+   "value": "100K",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 238.76,
+   "y": 100.33
+  },
+  {
+   "ref": "RN307",
+   "lib": "dp-rarray:R_Array",
+   "value": "1M",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 166.37,
+   "y": 43.18
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C308",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C309",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C313",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C314",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U305",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U306",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U307",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U308",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "RN309",
+   "pin": "1",
+   "net": "BPIO4"
+  },
+  {
+   "ref": "RN309",
+   "pin": "2",
+   "net": "BPIO5"
+  },
+  {
+   "ref": "RN309",
+   "pin": "3",
+   "net": "BPIO6"
+  },
+  {
+   "ref": "RN309",
+   "pin": "4",
+   "net": "BPIO7"
+  },
+  {
+   "ref": "RN308",
+   "pin": "8",
+   "net": "BUFDIR4"
+  },
+  {
+   "ref": "U305",
+   "pin": "5",
+   "net": "BUFDIR4"
+  },
+  {
+   "ref": "RN308",
+   "pin": "7",
+   "net": "BUFDIR5"
+  },
+  {
+   "ref": "U306",
+   "pin": "5",
+   "net": "BUFDIR5"
+  },
+  {
+   "ref": "RN308",
+   "pin": "6",
+   "net": "BUFDIR6"
+  },
+  {
+   "ref": "U307",
+   "pin": "5",
+   "net": "BUFDIR6"
+  },
+  {
+   "ref": "RN308",
+   "pin": "5",
+   "net": "BUFDIR7"
+  },
+  {
+   "ref": "U308",
+   "pin": "5",
+   "net": "BUFDIR7"
+  },
+  {
+   "ref": "RN306",
+   "pin": "8",
+   "net": "BUFIO4"
+  },
+  {
+   "ref": "RN306",
+   "pin": "7",
+   "net": "BUFIO5"
+  },
+  {
+   "ref": "RN306",
+   "pin": "6",
+   "net": "BUFIO6"
+  },
+  {
+   "ref": "RN306",
+   "pin": "5",
+   "net": "BUFIO7"
+  },
+  {
+   "ref": "C308",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C309",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C311",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C312",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C313",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C314",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C315",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C316",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "RN307",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "RN307",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "RN307",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "RN307",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "RN308",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "RN308",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "RN308",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "RN308",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "RN310",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "RN310",
+   "pin": "6",
+   "net": "GND"
+  },
+  {
+   "ref": "RN310",
+   "pin": "7",
+   "net": "GND"
+  },
+  {
+   "ref": "RN310",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "U305",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U306",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U307",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U308",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C311",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "C312",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "C315",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "C316",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "U305",
+   "pin": "6",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "U306",
+   "pin": "6",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "U307",
+   "pin": "6",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "U308",
+   "pin": "6",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "RN306",
+   "pin": "1",
+   "net": "_bp5_io_buffer_4_7_N1"
+  },
+  {
+   "ref": "RN307",
+   "pin": "8",
+   "net": "_bp5_io_buffer_4_7_N1"
+  },
+  {
+   "ref": "U305",
+   "pin": "3",
+   "net": "_bp5_io_buffer_4_7_N1"
+  },
+  {
+   "ref": "RN309",
+   "pin": "8",
+   "net": "_bp5_io_buffer_4_7_N2"
+  },
+  {
+   "ref": "RN310",
+   "pin": "1",
+   "net": "_bp5_io_buffer_4_7_N2"
+  },
+  {
+   "ref": "U305",
+   "pin": "4",
+   "net": "_bp5_io_buffer_4_7_N2"
+  },
+  {
+   "ref": "RN306",
+   "pin": "2",
+   "net": "_bp5_io_buffer_4_7_N3"
+  },
+  {
+   "ref": "RN307",
+   "pin": "7",
+   "net": "_bp5_io_buffer_4_7_N3"
+  },
+  {
+   "ref": "U306",
+   "pin": "3",
+   "net": "_bp5_io_buffer_4_7_N3"
+  },
+  {
+   "ref": "RN309",
+   "pin": "7",
+   "net": "_bp5_io_buffer_4_7_N4"
+  },
+  {
+   "ref": "RN310",
+   "pin": "2",
+   "net": "_bp5_io_buffer_4_7_N4"
+  },
+  {
+   "ref": "U306",
+   "pin": "4",
+   "net": "_bp5_io_buffer_4_7_N4"
+  },
+  {
+   "ref": "RN306",
+   "pin": "3",
+   "net": "_bp5_io_buffer_4_7_N5"
+  },
+  {
+   "ref": "RN307",
+   "pin": "6",
+   "net": "_bp5_io_buffer_4_7_N5"
+  },
+  {
+   "ref": "U307",
+   "pin": "3",
+   "net": "_bp5_io_buffer_4_7_N5"
+  },
+  {
+   "ref": "RN309",
+   "pin": "6",
+   "net": "_bp5_io_buffer_4_7_N6"
+  },
+  {
+   "ref": "RN310",
+   "pin": "3",
+   "net": "_bp5_io_buffer_4_7_N6"
+  },
+  {
+   "ref": "U307",
+   "pin": "4",
+   "net": "_bp5_io_buffer_4_7_N6"
+  },
+  {
+   "ref": "RN306",
+   "pin": "4",
+   "net": "_bp5_io_buffer_4_7_N7"
+  },
+  {
+   "ref": "RN307",
+   "pin": "5",
+   "net": "_bp5_io_buffer_4_7_N7"
+  },
+  {
+   "ref": "U308",
+   "pin": "3",
+   "net": "_bp5_io_buffer_4_7_N7"
+  },
+  {
+   "ref": "RN309",
+   "pin": "5",
+   "net": "_bp5_io_buffer_4_7_N8"
+  },
+  {
+   "ref": "RN310",
+   "pin": "4",
+   "net": "_bp5_io_buffer_4_7_N8"
+  },
+  {
+   "ref": "U308",
+   "pin": "4",
+   "net": "_bp5_io_buffer_4_7_N8"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

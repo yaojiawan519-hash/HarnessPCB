@@ -1,0 +1,227 @@
+{
+  "name": "sim_sockets",
+  "source": "sim-rev3c.kicad_pcb",
+  "origin_src_mm": [
+    131.2295,
+    101.0971
+  ],
+  "size_mm": [
+    19.641,
+    59.1343
+  ],
+  "ports": {
+    "/SIM_GND": [
+      "J1",
+      "SW2"
+    ],
+    "/CLK": [
+      "J1",
+      "J2",
+      "J3"
+    ],
+    "GND": [
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "SW2"
+    ],
+    "/RST": [
+      "J1",
+      "J2",
+      "J3"
+    ],
+    "/I{slash}O": [
+      "J1",
+      "J2",
+      "J3"
+    ],
+    "/C4": [
+      "J1",
+      "J2",
+      "J3"
+    ],
+    "/C8": [
+      "J1",
+      "J2",
+      "J3"
+    ],
+    "/VCC": [
+      "J1",
+      "SW1"
+    ],
+    "/VPP": [
+      "J1",
+      "J2",
+      "J3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "/VCC",
+      "x": 120.609,
+      "y": 108.609,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/VCC",
+      "x": 120.609,
+      "y": 72.03,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/VCC",
+      "x": 120.609,
+      "y": 90.359,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/RST",
+      "x": 120.609,
+      "y": 106.359,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/CLK",
+      "x": 120.609,
+      "y": 104.609,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/CLK",
+      "x": 120.609,
+      "y": 95.147,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/C4",
+      "x": 120.609,
+      "y": 104.75,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/VPP",
+      "x": 120.609,
+      "y": 93.0,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/I{slash}O",
+      "x": 120.609,
+      "y": 90.75,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/C8",
+      "x": 120.609,
+      "y": 100.0,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 120.609,
+      "y": 77.609,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 120.609,
+      "y": 127.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 120.609,
+      "y": 118.65,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 120.609,
+      "y": 106.248,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 3,
+    "nets": 9,
+    "copper_segs": 120,
+    "vias": 16,
+    "stub_kept": 3,
+    "isolated_deleted": 30,
+    "cut_ends": 12,
+    "exit_points": 14,
+    "segs_by_layer": {
+      "B.Cu": 32,
+      "F.Cu": 88
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "/C8->J1.C8": 1,
+      "/I{slash}O->J1.C7": 1,
+      "/SIM_GND->J1.C5": 1,
+      "/VPP->J1.C6": 1
+    },
+    "island_split": {
+      "/CLK": 2,
+      "/SIM_GND": 3,
+      "/VCC": 3,
+      "GND": 2
+    },
+    "dangling": {
+      "total": 4,
+      "port_cuts": 4,
+      "port_cut_nets": [
+        "/C8",
+        "/SIM_GND",
+        "/VPP"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 18,
+        "vias": 3,
+        "nets": [
+          "/CLK",
+          "/VCC",
+          "/VPP",
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "U1",
+      "value": "SIM 6P",
+      "fp": "DGLZ-SIM-0004",
+      "dx": -1.5055,
+      "dy": 19.8789,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U2",
+      "value": "SIM 8P",
+      "fp": "SIM-0030",
+      "dx": 1.0205,
+      "dy": -1.5971,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "U3",
+      "value": "SIM 6P",
+      "fp": "SIM-0036",
+      "dx": -2.9795,
+      "dy": -23.0971,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

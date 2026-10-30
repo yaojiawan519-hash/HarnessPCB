@@ -1,0 +1,47 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "debug",
+  "rationale": "**ARM 10 pin 调试口**（作者分区框 \"SWD Connector\"）：J3 是 2×5 直插排针 （`Conn_02x05_Odd_Even`，标准 ARM Cortex 调试脚序），C3 100n 从 NRST 到地。 ⚠ 作者在框里写明这颗电容**不是必需的**，只是防寄生复位——做成别的板时可以省。 ⚠ 本块只有排针 + 一颗电容，**NRST 的上拉（R1 10k）在 MCU 块里**，作者按功能 而不是按位置分框，拼板时两块要挨着放。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "NRST",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SWCLK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SWDIO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J3",
+    "max_mm": 10.0,
+    "rationale": "排针必须朝板边、插头朝外（调试时要能插上）；C3 贴 NRST 脚。"
+  },
+  "hot_loop": [],
+  "geometry_status": "carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py` 无损收 2 层）按位号原样扣铜。本块：2 件 / 8 网， 铜 8 段 + 1 孔，口岸切口 2 处；GND 裂 4 岛（铺铜删掉的必然结果）。 3 处走线出口（NRST/SWDIO/SWCLK 的铜在这里离开块）。 ⚠ 源板上 GND 有 3 个脚是裸脚（没有走线接上，靠整板 GND 平面），铺铜删掉后 这 3 个脚在块里就是断的——拼板重铺接回。",
+  "provenance": {
+    "source": "human:open-source",
+    "basis": "从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 \"SWD Connector\" 整框裁出； 板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。",
+    "board": "STRF (2.4GHz RF-to-USB dongle)",
+    "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+    "license_tier": "permissive",
+    "author": "Philip Salmony（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-31",
+    "kicad": "10.0.5"
+  }
+}

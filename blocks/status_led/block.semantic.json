@@ -1,0 +1,49 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "indicator",
+  "rationale": "**一颗可寻址 RGB 灯**：D9 WS2812B（PLCC4 3.5×3.5）1 脚 +3V3 供电、3 脚接地， 数据口 4 脚经 R11 **0R** 串到 IO2——0R 不是限流，是留一个可以换小阻值或跳线的 位置，压一压数据线过冲；2 脚（DO 级联输出）在本板上**空着没接**，单颗灯的尾巴， 不是漏画。三根对外线就是 +3V3 / GND / IO2。 复用要点：① WS2812B 对 3V3 供电比 5V 更挑（内部稳压余量小），长链要注意 首颗压降；② 数据线严格单端，走线别与其他高速线并行；③ 串联 0R 位置在 驱动距离长时可以换成 33~100R。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "IO2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R11/1",
+      "note": "WS2812B 的数据输入，经块内 R11 0R"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "D9",
+    "max_mm": 10.0,
+    "rationale": "只有两颗件，R11 距 D9 8.63mm，串阻贴在灯的数据侧、其余无约束。 **灯要朝板边**（能看见），串阻跟着灯走。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_status_led_N1"
+  ],
+  "notes": [
+    "2 件 / 4 网：1 个信号口岸（IO2）+ 轨 +3V3/GND + 1 张块内网（R11 与 D9 之间那段，原理图上无名，kicad-cli 自动命名 `Net-(D9-DIN)`）。",
+    "D9 的 2 脚（DO 级联输出）在本板上**空着没接**——单颗灯的尾巴，不是漏画；卡里也不列（空脚不是电路事实）。",
+    "R11 是 **0R**：不是限流，是留一个可以换 33~100R 或跳线的位置，压数据线过冲。",
+    "同一格里那颗红 LED（D2+R10，挂 IO7）已按用户点名并进 mcu_esp32c3_mini1 块，本块只剩可寻址灯。",
+    "铜 3 段 + 0 孔（B 5 / F 12）；死铜删 25 段/孔；口岸切口 2 处、走线出口 5 处；削剩残迹留 0 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板铺铜按「块内不带铺铜」整张删掉，拼板时由整板铺铜接上）。",
+    "块里 1 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 3 + 悬空过孔 1 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 84 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 esp-rust-board.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 +3V3/GND/VBUS 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:esp-rust-board",
+    "board": "esp-rust-board",
+    "license": "CERN-OHL-P-2.0 — 上游 esp-rs / Espressif（github.com/esp-rs/esp-rust-board，commit efe1e8ad）",
+    "license_tier": "permissive",
+    "author": "esp-rs / Espressif（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 5 网 / 端口 1 + 轨 2；铜 3 段 + 0 孔；死铜删 25；口岸切口 2；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

@@ -1,0 +1,241 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "sim_sockets",
+ "interface": [
+  {
+   "net": "C4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-C4",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "出块端口：U2.C4 → J1.C4 / 排针 8-9 脚那一侧（另两只座子没有这只脚）"
+  },
+  {
+   "net": "C8",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-C8",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "出块端口：U2.C8 → J1.C8 / 排针 8-9 脚那一侧"
+  },
+  {
+   "net": "CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-C3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SIM 时钟 CLK（ISO C3）；三条并联座子 + J1 + 两只排针共 6 个脚"
+  },
+  {
+   "net": "I/O",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-C7",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SIM 数据 I/O（ISO C7），开漏双向；线上必须有上拉（块里没有）"
+  },
+  {
+   "net": "RST",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-C2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SIM 复位 RST（ISO C2），低有效"
+  },
+  {
+   "net": "SIM_GND",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-C5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "卡座的\"地\"——**经 SW2 选出来的**，不一定是本地 GND（见 sim_power_select）"
+  },
+  {
+   "net": "VCC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-C1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "卡座的\"供电\"——**经 SW1 选出来的**，可能是 VOUT(3.3V) 也可能是 VCC_PIN"
+  },
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-C6",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SIM 编程电压 VPP（ISO C6）；现代卡多不用，但要引到排针"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U3",
+   "lib": "sim card:SIM 6P",
+   "value": "SIM 6P",
+   "footprint": "SIM_CARDS:SIM-0036",
+   "x": 171.45,
+   "y": 44.45
+  },
+  {
+   "ref": "U2",
+   "lib": "sim card:SIM 8P",
+   "value": "SIM 8P",
+   "footprint": "SIM_CARDS:SIM-0030",
+   "x": 171.45,
+   "y": 127.0
+  },
+  {
+   "ref": "U1",
+   "lib": "sim card:SIM 6P",
+   "value": "SIM 6P",
+   "footprint": "footprints2:DGLZ-SIM-0004",
+   "x": 172.72,
+   "y": 87.63
+  }
+ ],
+ "conns": [
+  {
+   "ref": "U2",
+   "pin": "C4",
+   "net": "C4"
+  },
+  {
+   "ref": "U2",
+   "pin": "C8",
+   "net": "C8"
+  },
+  {
+   "ref": "U1",
+   "pin": "C3",
+   "net": "CLK"
+  },
+  {
+   "ref": "U2",
+   "pin": "C3",
+   "net": "CLK"
+  },
+  {
+   "ref": "U3",
+   "pin": "C3",
+   "net": "CLK"
+  },
+  {
+   "ref": "U1",
+   "pin": "SH",
+   "net": "GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "SH",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "SH",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "C7",
+   "net": "I/O"
+  },
+  {
+   "ref": "U2",
+   "pin": "C7",
+   "net": "I/O"
+  },
+  {
+   "ref": "U3",
+   "pin": "C7",
+   "net": "I/O"
+  },
+  {
+   "ref": "U1",
+   "pin": "C2",
+   "net": "RST"
+  },
+  {
+   "ref": "U2",
+   "pin": "C2",
+   "net": "RST"
+  },
+  {
+   "ref": "U3",
+   "pin": "C2",
+   "net": "RST"
+  },
+  {
+   "ref": "U1",
+   "pin": "C5",
+   "net": "SIM_GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "C5",
+   "net": "SIM_GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "C5",
+   "net": "SIM_GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "C1",
+   "net": "VCC"
+  },
+  {
+   "ref": "U2",
+   "pin": "C1",
+   "net": "VCC"
+  },
+  {
+   "ref": "U3",
+   "pin": "C1",
+   "net": "VCC"
+  },
+  {
+   "ref": "U1",
+   "pin": "C6",
+   "net": "VPP"
+  },
+  {
+   "ref": "U2",
+   "pin": "C6",
+   "net": "VPP"
+  },
+  {
+   "ref": "U3",
+   "pin": "C6",
+   "net": "VPP"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

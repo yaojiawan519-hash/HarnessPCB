@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "6.8k led",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "ddr5_status_leds"
+  }
+}

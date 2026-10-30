@@ -1,0 +1,52 @@
+{
+ "pcb": "155782:1793373068422468325",
+ "violations": 171,
+ "unconnected": 9,
+ "kinds": {
+  "clearance": 1,
+  "footprint_type_mismatch": 1,
+  "lib_footprint_issues": 13,
+  "lib_footprint_mismatch": 3,
+  "shorting_items": 3,
+  "silk_over_copper": 2,
+  "silk_overlap": 1,
+  "solder_mask_bridge": 117,
+  "track_dangling": 30
+ },
+ "shorts": [],
+ "bridges": [
+  {
+   "nets": [
+    "<no net>",
+    "GND"
+   ],
+   "items": [
+    "Polygon [<no net>] of AE1 on F.Cu",
+    "Track [GND] on F.Cu, length 0.9550 mm"
+   ],
+   "kind": "bridge"
+  },
+  {
+   "nets": [
+    "<no net>",
+    "Net-(AE1-FEED"
+   ],
+   "items": [
+    "Polygon [<no net>] of AE1 on F.Cu",
+    "Track [Net-(AE1-FEED)] on F.Cu, length 0.9400 mm"
+   ],
+   "kind": "bridge"
+  },
+  {
+   "nets": [
+    "<no net>",
+    "Net-(AE1-FEED"
+   ],
+   "items": [
+    "Polygon [<no net>] of AE1 on F.Cu",
+    "Pad 1 [Net-(AE1-FEED)] of AE1 on F.Cu"
+   ],
+   "kind": "bridge"
+  }
+ ]
+}

@@ -1,0 +1,202 @@
+{
+  "name": "usb_dev_esd",
+  "source": "Watchy.kicad_pcb",
+  "origin_src_mm": [
+    97.98,
+    93.1084
+  ],
+  "size_mm": [
+    15.9165,
+    10.3933
+  ],
+  "ports": {
+    "USB_DET": [
+      "U4"
+    ],
+    "GND": [
+      "AE1",
+      "C1",
+      "C10",
+      "C11",
+      "C13",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C20",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C9",
+      "D4",
+      "J1",
+      "J3",
+      "Q2",
+      "R16",
+      "R17",
+      "R2",
+      "R3",
+      "R9",
+      "SW1",
+      "SW2",
+      "SW3",
+      "SW4",
+      "TP5",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U6",
+      "Y2"
+    ],
+    "USB_D+": [
+      "U4"
+    ],
+    "VBUS": [
+      "D1",
+      "Q1",
+      "R2",
+      "R5",
+      "U3"
+    ],
+    "USB_D-": [
+      "U4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 89.2218,
+      "y": 90.46,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VBUS",
+      "x": 98.15,
+      "y": 99.105,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_DET",
+      "x": 89.2218,
+      "y": 93.3748,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "USB_D-",
+      "x": 89.2218,
+      "y": 92.6717,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 89.2218,
+      "y": 93.0724,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 8,
+    "copper_segs": 31,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 17,
+    "cut_ends": 5,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "F.Cu": 31
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VBUS->D1.2": 1
+    },
+    "island_split": {
+      "GND": 4
+    },
+    "dangling": {
+      "total": 2,
+      "port_cuts": 2,
+      "port_cut_nets": [
+        "VBUS"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 15,
+        "vias": 7,
+        "nets": [
+          "GND",
+          "USB_D+",
+          "USB_D-",
+          "USB_DET"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C12",
+      "value": "100nF",
+      "fp": "C_0402_1005Metric",
+      "dx": -1.78,
+      "dy": -3.1884,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "Micro USB",
+      "fp": "USB_Micro-B",
+      "dx": 2.1,
+      "dy": 0.5716,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R14",
+      "value": "51K",
+      "fp": "R_0402_1005Metric",
+      "dx": -6.04,
+      "dy": 0.4016,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R15",
+      "value": "100K",
+      "fp": "R_0402_1005Metric",
+      "dx": -6.98,
+      "dy": 0.4016,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "U5",
+      "value": "USBLC6-2P6",
+      "fp": "SOT-666",
+      "dx": -2.3725,
+      "dy": -1.6284,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

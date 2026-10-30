@@ -1,0 +1,287 @@
+{
+  "name": "nrf24_transceiver",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    46.14,
+    33.4325
+  ],
+  "size_mm": [
+    5.96,
+    9.225
+  ],
+  "ports": {
+    "NRF_XC1": [
+      "C13",
+      "R5",
+      "Y1"
+    ],
+    "NRF_ANT1": [
+      "L2",
+      "L3"
+    ],
+    "SPI3_MOSI": [
+      "U3"
+    ],
+    "NRF_VDD_PA": [
+      "C17",
+      "C18",
+      "L3"
+    ],
+    "SPI3_!CS": [
+      "U3"
+    ],
+    "NRF_CE": [
+      "U3"
+    ],
+    "NRF_ANT2": [
+      "L1",
+      "L2"
+    ],
+    "SPI3_MISO": [
+      "U3"
+    ],
+    "SPI3_SCK": [
+      "U3"
+    ],
+    "GND": [
+      "C1",
+      "C13",
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "J1",
+      "J2",
+      "J3",
+      "R1",
+      "R2",
+      "R3",
+      "U1",
+      "U2",
+      "U3",
+      "Y1"
+    ],
+    "NRF_XC2": [
+      "C14",
+      "R5",
+      "Y1"
+    ],
+    "+3V3": [
+      "C2",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "J3",
+      "U1",
+      "U3"
+    ],
+    "NRF_IRQ": [
+      "U3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 42.36,
+      "y": 28.985,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_XC1",
+      "x": 47.2,
+      "y": 38.845,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_XC2",
+      "x": 46.1,
+      "y": 38.845,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_VDD_PA",
+      "x": 49.92,
+      "y": 35.895,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_ANT2",
+      "x": 49.92,
+      "y": 33.915,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_ANT1",
+      "x": 49.92,
+      "y": 34.885,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_IRQ",
+      "x": 42.36,
+      "y": 36.915,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SPI3_SCK",
+      "x": 42.36,
+      "y": 36.29,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SPI3_MISO",
+      "x": 42.36,
+      "y": 35.66,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SPI3_MOSI",
+      "x": 42.36,
+      "y": 35.2,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SPI3_!CS",
+      "x": 42.36,
+      "y": 33.93,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_CE",
+      "x": 42.36,
+      "y": 33.48,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 7,
+    "not_built": [],
+    "nets": 15,
+    "copper_segs": 43,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 7,
+    "exit_points": 12,
+    "segs_by_layer": {
+      "F.Cu": 43
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {
+      "GND": 1
+    },
+    "borrowed_pads": {
+      "NRF_ANT1->L2.2": 1,
+      "NRF_ANT2->L2.1": 1,
+      "NRF_XC1->R5.2": 1,
+      "NRF_XC2->R5.1": 1
+    },
+    "island_split": {
+      "+3V3": 3,
+      "GND": 8
+    },
+    "dangling": {
+      "total": 4,
+      "port_cuts": 4,
+      "port_cut_nets": [
+        "NRF_ANT1",
+        "NRF_ANT2",
+        "NRF_XC1",
+        "NRF_XC2"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 26,
+        "vias": 15,
+        "nets": [
+          "+3V3",
+          "GND",
+          "NRF_CE",
+          "NRF_IRQ",
+          "NRF_VDD_PA",
+          "SPI3_!CS",
+          "SPI3_MISO",
+          "SPI3_MOSI",
+          "SPI3_SCK"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C10",
+      "value": "10n",
+      "fp": "C_0402_1005Metric",
+      "dx": 2.485,
+      "dy": -3.0175,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C11",
+      "value": "10n",
+      "fp": "C_0402_1005Metric",
+      "dx": -0.065,
+      "dy": -2.5575,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C12",
+      "value": "33n",
+      "fp": "C_0402_1005Metric",
+      "dx": -2.025,
+      "dy": -2.5575,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C8",
+      "value": "10u",
+      "fp": "C_0603_1608Metric",
+      "dx": -0.615,
+      "dy": -3.8575,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C9",
+      "value": "10n",
+      "fp": "C_0402_1005Metric",
+      "dx": -1.825,
+      "dy": 4.1175,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R4",
+      "value": "22k",
+      "fp": "R_0402_1005Metric",
+      "dx": 1.435,
+      "dy": -3.0225,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "U4",
+      "value": "nRF24L01P",
+      "fp": "QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm",
+      "dx": -0.24,
+      "dy": 0.7175,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

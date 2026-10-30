@@ -1,0 +1,195 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "flash_sop_socket20",
+ "interface": [
+  {
+   "net": "CDI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J5-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 2+8 → 芯片 MISO"
+  },
+  {
+   "net": "CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J5-11",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 11+17 → 芯片 MOSI"
+  },
+  {
+   "net": "CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J5-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 1+7"
+  },
+  {
+   "net": "GND_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C1-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 4+10（+ C1 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片"
+  },
+  {
+   "net": "HOLD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J5-13",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 3+9+13+19（四只触点同网）"
+  },
+  {
+   "net": "SCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J5-12",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 12+18"
+  },
+  {
+   "net": "VCC_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "触点 14+20（+ C1 的 1 脚）：芯片侧电源"
+  }
+ ],
+ "power_rails": [],
+ "parts": [
+  {
+   "ref": "J5",
+   "lib": "Connector_Generic:Conn_02x10_Counter_Clockwise",
+   "value": "20PIN",
+   "footprint": "TEST_SOCKETS:20PIN_SCOKET",
+   "x": 232.41,
+   "y": 99.06
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 110.49,
+   "y": 140.97
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J5",
+   "pin": "2",
+   "net": "CDI"
+  },
+  {
+   "ref": "J5",
+   "pin": "8",
+   "net": "CDI"
+  },
+  {
+   "ref": "J5",
+   "pin": "11",
+   "net": "CDO"
+  },
+  {
+   "ref": "J5",
+   "pin": "17",
+   "net": "CDO"
+  },
+  {
+   "ref": "J5",
+   "pin": "1",
+   "net": "CS"
+  },
+  {
+   "ref": "J5",
+   "pin": "7",
+   "net": "CS"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J5",
+   "pin": "10",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J5",
+   "pin": "4",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J5",
+   "pin": "13",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J5",
+   "pin": "19",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J5",
+   "pin": "3",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J5",
+   "pin": "9",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J5",
+   "pin": "12",
+   "net": "SCLK"
+  },
+  {
+   "ref": "J5",
+   "pin": "18",
+   "net": "SCLK"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "J5",
+   "pin": "14",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "J5",
+   "pin": "20",
+   "net": "VCC_CHIP"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,196 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "irtoy_headers",
+ "interface": [
+  {
+   "net": "IO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J1.3 / J2.3 直通，接 ir_rcv_learner 的输出"
+  },
+  {
+   "net": "IO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J1.5 / J2.5 直通，接 ir_rcv_38k_barrier 的输出"
+  },
+  {
+   "net": "IO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J1.6 / J2.6 直通，接 ir_tx_cc 的输入"
+  },
+  {
+   "net": "IO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J1.7 / J2.7 直通，接 ir_rcv_38k 的输出"
+  },
+  {
+   "net": "IO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J1.9 / J2.9 直通，接 ir_rcv_56k 的输出"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "1 脚直通（J1.1 / J2.1），板上 5V 轨"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 44.45,
+   "y": 68.58
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 33.02,
+   "y": 68.58
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "IO0"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "IO0"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "IO1"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "IO1"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "IO2"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "IO2"
+  },
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J1",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J1",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J1",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J1",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

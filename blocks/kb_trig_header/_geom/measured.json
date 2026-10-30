@@ -1,0 +1,14 @@
+{
+  "block": "kb_trig_header",
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：2 件、块内 5 段铜、 0 孔、0 铺铜）",
+  "parts_xy": {
+    "R3": [
+      167.64,
+      36.83
+    ],
+    "J8": [
+      162.56,
+      44.45
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+project:
+  kind: block
+  name: ir_rcv_56k
+  version: sdi/1
+defs:
+  ir_rcv_56k:
+    category: sensor
+    rationale: '**56kHz 红外解调头**：U4 CHQ0038L-56kHz（TSOP18XX 封装）＋ R7 100R / C5 4.7µF 的 RC 供电滤波 ＋ R12 **20K**
+      输出上拉。上拉值是本块与两块 38k 的唯一电路差异 （那两块是 10K）：上拉大 ⇒ 上升沿更慢、静态电流更小，本块是拿来收 56kHz 载波 （常见于部分空调/长码遥控）的第三档载频，56k
+      时脉冲更短、对上升沿不敏感， 所以用 20K 省电不吃亏。 模块型号里的 "0038" 是厂家命名习惯，**这颗是 56kHz 版本**（Value 写了 -56kHz）， 换件别照名字挑 38k
+      的。输出开漏、低电平有效。 复用要点：① 受光面朝板边或开窗；② 三颗外围照抄，仅 R12 的上拉值可按主机电平改小； ③ 上拉接 VOUT ⇒ 输出 5V 摆幅，接 3.3V 主机要改接 3V3。'
+    ports:
+    - name: IO7
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R12-1
+        connector: false
+      pin: R12/1
+      note: 解调输出：开漏、有 56kHz 载波时拉低；块内 R12 **20K** 上拉到 VOUT
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R12-2
+        connector: false
+      pin: R12/2
+      note: 5V 电源，经块内 R7 100R 到模块 VCC（同节点挂 C5 4.7µF）
+    rails:
+    - GND
+    parts:
+    - ref: U4
+      lib: TSOP4838:TSOP4838
+      value: CHQ0038L-56kHz
+      footprint: Library:TSOP18XX
+    - ref: R7
+      lib: Device:R
+      value: 100R
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: C5
+      lib: Device:C
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: R12
+      lib: Device:R
+      value: 20K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: C5
+      pin: '2'
+      net: GND
+    - ref: U4
+      pin: GND
+      net: GND
+    - ref: R12
+      pin: '1'
+      net: IO7
+    - ref: U4
+      pin: OUT
+      net: IO7
+    - ref: R12
+      pin: '2'
+      net: VOUT
+    - ref: R7
+      pin: '2'
+      net: VOUT
+    - ref: C5
+      pin: '1'
+      net: _ir_rcv_56k_N1
+    - ref: R7
+      pin: '1'
+      net: _ir_rcv_56k_N1
+    - ref: U4
+      pin: VCC
+      net: _ir_rcv_56k_N1
+    placement_prior:
+      anchor: U4
+      max_mm: 8.5
+      rationale: 四颗件 12.51×6.32mm（实测到 U4 中心：C5 3.26mm、R7 5.50mm、R12 7.74mm）， 与另外三个接收块同构，只是 R12 被放到串阻更外侧、整块拉长
+        2mm 左右。 要保住的是"C5 贴模块电源脚 + U4 朝板边"。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _ir_rcv_56k_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 IR Toy 适配板（3REV3）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 4 网 / 端口 2 + 轨 1；铜 12 段 + 0 孔；死铜删 3；口岸切口 2；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 4 件 / 4 网：2 个出块端口（IO7 输出、VOUT 供电）+ 轨 GND + 1 张块内网（R7 100R 之后的模块 VCC 段，卡里 `_ir_rcv_56k_N1`）。
+    - 与两块 38k 头同构，只有一处不同：输出上拉 R12 是 **20K**（那两块 10K）。上拉大 ⇒ 上升沿慢一点、静态电流小一点；56kHz 载波的脉冲本身更短，对上升沿不敏感，所以省这点电不吃亏。
+    - 模块 Value 写的是 CHQ0038L-**56kHz**：型号里的 "0038" 是厂家命名习惯，**这颗是 56kHz 版本**，换件别照名字挑 38k 的。
+    - 输出开漏、低有效；上拉接 VOUT ⇒ 空闲电平 = VOUT，接 3.3V 主机要把 R12 改接到 3V3（顺便可以把 20K 降到 10K 换边沿）。
+    - 56kHz 常见于部分空调与长码遥控——它是这块板三档载频里的最高一档。
+    - 铜 12 段 + 0 孔（F 20）；死铜删 3 段/孔；口岸切口 2 处、走线出口 5 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（GND
+      铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。
+    - 块里 1 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND**（2 个焊盘点名）——源板靠铺铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 2 + 悬空过孔
+      1 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 113 条。

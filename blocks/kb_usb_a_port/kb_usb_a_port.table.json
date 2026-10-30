@@ -1,0 +1,106 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_usb_a_port",
+ "interface": [
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "J5-3",
+    "connector": true
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "J5-2",
+    "connector": true
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND",
+  "VDD"
+ ],
+ "parts": [
+  {
+   "ref": "L2",
+   "lib": "kicad5-device:Ferrite_Bead_Small",
+   "value": "CBW201209U300T",
+   "footprint": "Inductor_SMD:L_0805_2012Metric",
+   "x": 48.26,
+   "y": 166.37
+  },
+  {
+   "ref": "C2",
+   "lib": "Device:C",
+   "value": "47uF/CL21A226MAYNNNE",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 96.52,
+   "y": 41.91
+  },
+  {
+   "ref": "J5",
+   "lib": "Connector:USB_A",
+   "value": "USB_A",
+   "footprint": "Connector_USB:USB_A_CONNFLY_DS1095-WNR0",
+   "x": 35.56,
+   "y": 171.45
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J5",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "J5",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "J5",
+   "pin": "3",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "J5",
+   "pin": "2",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "VDD"
+  },
+  {
+   "ref": "L2",
+   "pin": "1",
+   "net": "VDD"
+  },
+  {
+   "ref": "J5",
+   "pin": "1",
+   "net": "_kb_usb_a_port_N1"
+  },
+  {
+   "ref": "L2",
+   "pin": "2",
+   "net": "_kb_usb_a_port_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

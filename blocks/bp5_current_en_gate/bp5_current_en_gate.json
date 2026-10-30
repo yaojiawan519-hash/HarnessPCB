@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "10k 1n4148wt 200r si2301",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_current_en_gate"
+  }
+}

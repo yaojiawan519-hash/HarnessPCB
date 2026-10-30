@@ -1,0 +1,107 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ddr5_udimm_socket",
+ "interface": [
+  {
+   "net": "HSCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-04",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "插座 04 脚：SPD（EEPROM）I²C 时钟，**3.3V 摆幅**，经 i2c_level_shift 才到 5V 侧"
+  },
+  {
+   "net": "HSDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-05",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "插座 05 脚：SPD I²C 数据，3.3V 摆幅；线上必须有上拉（块里没有）"
+  },
+  {
+   "net": "PWR_GOOD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-147",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "插座 147 脚：内存条自检就绪，低=就绪，进 power_good_sense 的两级缓冲"
+  }
+ ],
+ "power_rails": [
+  "+3.3V",
+  "BULK_VIN",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J1",
+   "lib": "DDR504111002KQ:DDR504111002KQ",
+   "value": "DDR504111002KQ",
+   "footprint": "footprints:DDR5 UDIMM GENERIC",
+   "x": 179.07,
+   "y": 90.17
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "151",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "J1",
+   "pin": "01",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "J1",
+   "pin": "145",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "J1",
+   "pin": "146",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "J1",
+   "pin": "148",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "150",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "SH",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "04",
+   "net": "HSCL"
+  },
+  {
+   "ref": "J1",
+   "pin": "05",
+   "net": "HSDA"
+  },
+  {
+   "ref": "J1",
+   "pin": "147",
+   "net": "PWR_GOOD"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

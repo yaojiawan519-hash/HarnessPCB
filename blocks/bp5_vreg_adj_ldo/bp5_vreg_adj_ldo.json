@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k 102k 120pf 133k 33k 4.7uf ap2127",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_vreg_adj_ldo"
+  }
+}

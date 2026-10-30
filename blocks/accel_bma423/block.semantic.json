@@ -1,0 +1,67 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "sensor",
+  "rationale": "BMA423 三轴加速度计的最小系统：I2C 一组（SDA/SCL 各挂一颗 10K 上拉到 +3V3）， 两根中断 INT1/INT2 直连 MCU（敲击/抬腕这类事件不占 I2C 带宽），VDD 与 VDDIO 都接 +3V3。 U6 的 4 脚 ASDA、11 脚 ASCL 是**第二套 I2C 从地址口的引脚，板上空着没接**（单地址用法）， 按\"空脚不是网\"处理；SDO/CSB 也没接（固定 I2C 模式，不用 SPI）。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "ACC_INT_1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U6/5",
+      "note": "中断 1（敲击/抬腕等事件，不经 I2C）"
+    },
+    {
+      "name": "ACC_INT_2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U6/6",
+      "note": "中断 2"
+    },
+    {
+      "name": "SCL",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R20/1",
+      "note": "I2C 时钟，上拉 R20 10K 在块内"
+    },
+    {
+      "name": "SDA",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R18/1",
+      "note": "I2C 数据，上拉 R18 10K 在块内"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U6",
+    "max_mm": 12.0,
+    "rationale": "上拉电阻贴芯片 I2C 脚；传感器本体靠近表壳/手腕一侧。源板实测两颗上拉离 U6 中心 都是 1.75mm——**贴脚**，可按这个距离复用。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "3 件 / 6 网，4 个口岸 + 轨 +3V3/GND。库里最小的完整功能块（11.89×9.76mm）。",
+    "U6.4(ASDA)、U6.11(ASCL) 是第二套 I2C 口的脚，板上空着——按\"空脚不是网\"处理，也就是这颗只用了一个 I2C 地址。SDO/CSB 也没接（固定 I2C 模式）。",
+    "两颗 10K 上拉贴脚（离芯片中心 1.75mm），是这块唯一值得照抄的几何事实。",
+    "块内有一处 1 段残迹承载两个焊盘之间的连通，删了会断网，照留。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Watchy",
+    "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+    "license_tier": "permissive",
+    "author": "SQFMI（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "3 件 / 6 网 / 端口 4 + 轨 2；铜 79 段 + 8 孔；死铜删 7；口岸切口 11；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

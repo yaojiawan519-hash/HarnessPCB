@@ -1,0 +1,91 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**这块板的插接口**：J1 1x10 卧式母座 + J2 1x10 直针，两只脚位一一对应（1=VOUT、 2~9=IO0~IO7、10=GND），等于\"插主机的排针\"和\"接目标板的母座\"并联在同一批信号上。 10 张网里 7 张出块（VOUT / GND / IO1 / IO3 / IO4 / IO5 / IO7——各接一个红外头）， 剩下 **IO0 / IO2 / IO6 三张是纯贯通网**：本页没有任何别的器件挂在上面，两只排针 之间就是一段直通铜，所以在卡里登记为块内网（拼装时按实例改名，避免两份并网）。 复用要点：① 这是**板级接口不是电路**，换主机就整块替换；② 1x10 / 2.54mm 的脚序是 Bus Pirate 的约定，别按自己的定义重排；③ J1 是卧式，插口朝板边、J2 直针朝上， 复制块时朝向一起搬——摆反了母座就伸不进板边。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "IO1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/3",
+      "note": "J1.3 / J2.3 直通，接 ir_rcv_learner 的输出"
+    },
+    {
+      "name": "IO3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/5",
+      "note": "J1.5 / J2.5 直通，接 ir_rcv_38k_barrier 的输出"
+    },
+    {
+      "name": "IO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/6",
+      "note": "J1.6 / J2.6 直通，接 ir_tx_cc 的输入"
+    },
+    {
+      "name": "IO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/7",
+      "note": "J1.7 / J2.7 直通，接 ir_rcv_38k 的输出"
+    },
+    {
+      "name": "IO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/9",
+      "note": "J1.9 / J2.9 直通，接 ir_rcv_56k 的输出"
+    },
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/1",
+      "note": "1 脚直通（J1.1 / J2.1），板上 5V 轨"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J1",
+    "max_mm": 5.0,
+    "rationale": "只有两只排针，实测中心距 3.81mm，并列平行，块外形 16.21×26.50mm（排针本身长）。 唯一的规矩是**插口朝板边**：J1 卧式母座的开口要对着板沿，J2 直针立在它旁边。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "IO0",
+    "IO2",
+    "IO6"
+  ],
+  "notes": [
+    "2 件 / 10 网：7 张出块（VOUT / GND / IO1 / IO3 / IO4 / IO5 / IO7，各接一个红外头）+ 3 张**块内网**（IO0 / IO2 / IO6）。",
+    "IO0/IO2/IO6 是**纯贯通网**——本页没有第三个器件挂在上面，两只排针之间就是一段直通铜。按\"出块网 = 块外还有成员\"的判据它们只能是块内网，所以拼装时按实例改名（两份同块才不会并网）；拼板时想用这三路，得在外面自己接。",
+    "脚序是 Bus Pirate 的固定约定：1=VOUT、2~9=IO0~IO7、10=GND。别按自己的定义重排。",
+    "J1 是**卧式**母座（开口朝板边）、J2 是直针（朝上），复制块时朝向一起搬——摆反了母座就伸不出板边。",
+    "铜 22 段 + 0 孔（B 18 / F 22）；死铜删 4 段/孔；口岸切口 6 处、走线出口 7 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（GND 铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。",
+    "块里 3 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上；**VOUT 裂成 2 个铜岛**（各含焊盘）：源板上 VOUT 是经块外干线绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上。",
+    "kicad-cli DRC：isolated_copper 0；未连通 2 条（GND×2、VOUT×2）；断头走线 6 + 悬空过孔 0 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 113 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 GND 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 10 网 / 端口 6 + 轨 1；铜 22 段 + 0 孔；死铜删 4；口岸切口 6；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

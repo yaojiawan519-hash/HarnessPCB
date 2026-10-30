@@ -1,0 +1,39 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "input",
+  "rationale": "**用户按键（正面是屏、按钮开在背面）**：SW102 = `4P_button_sw` （`dp-switch:GT-TC026X-HXXX-LX` 四脚轻触）。逐脚 `1=BUTTONS 4=+3V3`， `2/3` 在原页上是两张 `unconnected-*` 单脚网。 ⚠ **接法是\"按下把 3V3 接到 GPIO\"**（不是接地）：`BUTTONS` 直连 RP2040 的 39 号脚， 靠芯片内部下拉保持低电平。换成\"按下接地\"的板子要同时改软件极性。 四脚轻触封装里 1↔2、3↔4 是同一片触点，所以 2/3 不接不影响功能。 1 件 / 4 网（含两张单脚网）。",
+  "power_rails": [
+    "+3V3"
+  ],
+  "interface": [
+    {
+      "name": "BUTTONS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "SW102",
+    "max_mm": 5.0,
+    "rationale": "SW102 在板顶（129.90, 67.00）**B 面**，正对着 USB-C 座下面那块， 周围 3mm 内没有别的背面件——手指按压区。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**用户按键**：SW102 = `4P_button_sw`（`GT-TC026X` 4 脚轻触，装在 **B.Cu 背面**、rot 90°）：**1 = `BUTTONS`、4 = `+3V3`**，2/3 脚是同一只开关的另一组触点、源页就没接（`unconnected-(SW102-Pad2/Pad3)`）。1 件 / 2 网 / 端口 1 + 轨 `+3V3`。",
+    "⚠ **按下是把 GPIO 接到 `+3V3`，不是接到地**：`BUTTONS` 直连 `U103.39`。所以 RP2040 那一侧必须开**内部下拉**（默认输入下拉），空闲=低、按下=高。照常见的\"按键接地 + 上拉\"去拼这块会得到相反的电平。",
+    "**铜**：9 段 + 2 孔、0 铺铜；孤立铜删 0（这块没有多余铜）；口沿截断 1 处（`BUTTONS` 出块）；残迹留 0；无裂岛、`naked_plane_pads` 0——它是七块里唯一\"自给自足\"的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整机主板的整板 REV10a.kicad_pcb 扣，4 层板、0.8mm 铜窗口外扩；交付板 10.20×11.87mm；9 段铜 + 2 孔 + 0 张铺铜）",
+  "provenance": {
+    "basis": "1 件 / 2 网 / 端口 1 + 轨 1；铜 2 段 + 0 孔；死铜删 0；口岸切口 1",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "description": "从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 \"Antenna Impedance Matching and SMA Connector\" 整框裁出；板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。",
+  "keywords": "1p 1p5 2n2 2n7 3n9 4p7 8n2 sma",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "nrf24_match_network"
+  }
+}

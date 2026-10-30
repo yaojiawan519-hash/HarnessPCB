@@ -1,0 +1,135 @@
+project:
+  kind: block
+  name: bp5_current_en_gate
+  version: sdi/1
+defs:
+  bp5_current_en_gate:
+    category: power
+    rationale: '**使能门（作者没标标题，本轮按电路岛单独切出）**：Q602 = `SI2301` P-MOS， 栅极由 D602 / D603 把 `CURRENT_DETECT` 与
+      `CURRENT_EN_OVERRIDE` **二极管或** 到 `VREG_EN`：任一路拉低就把 Q602 打开、把 `VREG_EN` 放行给 LDO。 R613 10K 上拉（默认关）、R612
+      200R 串在栅极。5 件 / 7 网。 ⚠ **二极管或两个网**：`CURRENT_DETECT` 是限流锁存的输出，`CURRENT_EN_OVERRIDE` 来自 IO-expand
+      页——所以「过流」和「MCU 强制」是两条独立路径，拼板时删一条 保护就只剩另一条。 ⚠ 真下拉 R401 100K 在 `bp5_vreg_adj_ldo` 那块（物理上贴着 LDO 的 EN
+      脚）， 不在本块内；**单独用这一块时 EN 会浮**，得自己加下拉。 ⚠ 板面形状：这堆件沿 y 拉得很长（D603 在很下面），块框是纵长的。'
+    ports:
+    - name: CURRENT_DETECT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: Q602-2
+        connector: false
+      pin: Q602/2
+      note: 来自 `bp5_current_limit` 的锁存标志
+    - name: CURRENT_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R612-2
+        connector: false
+      pin: R612/2
+      note: 去 MCU 的使能回读/控制
+    - name: CURRENT_EN_OVERRIDE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D603-2
+        connector: false
+      pin: D603/2
+      note: 来自 IO-expand 页的强制使能
+    - name: VREG_EN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D602-1
+        connector: false
+      pin: D602/1
+      note: 去 `bp5_vreg_adj_ldo` 的 EN（那块有 R401 100K 下拉）
+    rails:
+    - +3V3
+    parts:
+    - ref: Q602
+      lib: Transistor_FET:BSS84
+      value: SI2301
+      footprint: Package_TO_SOT_SMD:SOT-523
+    - ref: R612
+      lib: Device:R_Small
+      value: 200R
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R613
+      lib: Device:R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: D602
+      lib: Diode:1N4148WS
+      value: 1N4148WT
+      footprint: Diode_SMD:D_SOD-523
+    - ref: D603
+      lib: Diode:1N4148WS
+      value: 1N4148WT
+      footprint: Diode_SMD:D_SOD-523
+    conns:
+    - ref: R613
+      pin: '1'
+      net: +3V3
+    - ref: Q602
+      pin: '2'
+      net: CURRENT_DETECT
+    - ref: R612
+      pin: '2'
+      net: CURRENT_EN
+    - ref: R613
+      pin: '2'
+      net: CURRENT_EN
+    - ref: D603
+      pin: '2'
+      net: CURRENT_EN_OVERRIDE
+    - ref: D602
+      pin: '1'
+      net: VREG_EN
+    - ref: D603
+      pin: '1'
+      net: VREG_EN
+    - ref: Q602
+      pin: '1'
+      net: _bp5_current_en_gate_N1
+    - ref: R612
+      pin: '1'
+      net: _bp5_current_en_gate_N1
+    - ref: D602
+      pin: '2'
+      net: _bp5_current_en_gate_N2
+    - ref: Q602
+      pin: '3'
+      net: _bp5_current_en_gate_N2
+    placement_prior: {}
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _bp5_current_en_gate_N1
+    - _bp5_current_en_gate_N2
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 5 件 / 7 网 / 端口 4 + 轨 1；铜 37 段 + 7 孔；死铜删 0；口岸切口 5；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 原样扣，4 层板保留原层；**纵长**——D603
+      在很下面，件框拉开近 20mm）
+    notes:
+    - 5 件 / 7 网：4 个信号口岸（CURRENT_DETECT / CURRENT_EN_OVERRIDE 两路输入、CURRENT_EN 出、VREG_EN 出）+ 轨 +3V3；另外 2
+      张无名网是 D602/D603 的阳极节点。
+    - Q602 = `SI2301` P-MOS，栅极由 D602 / D603 把 `CURRENT_DETECT` 与 `CURRENT_EN_OVERRIDE` **二极管或**到 `VREG_EN`：任一路拉低就打开
+      Q602、把 `VREG_EN` 放行给 LDO。R613 10K 上拉（默认关）、R612 200R 串栅极。
+    - ⚠ **两条独立路径**：`CURRENT_DETECT` 是限流锁存的输出，`CURRENT_EN_OVERRIDE` 来自 IO-expand 页——删掉其中一条就只剩另一条能开 LDO。
+    - ⚠ 真下拉 R401 100K 在 `bp5_vreg_adj_ldo` 那块（物理上贴着 LDO 的 EN 脚），不在本块；**单独用这一块时 VREG_EN 会浮**，得自己加下拉。
+    - 板 7.94×19.59mm；铜 37 段 + 7 孔（B 7 / F 24 / In1 12 / In2 1）；死铜删 0 段/孔；口岸切口 5 处、走线出口 10 处；源板在本块这几张网上铺过铜（+3V3），按「块内不带铺铜」**整张删**，拼板时由整板铺铜接上。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - 借道块外焊盘 1 处：+3V3->U102.8（In1.Cu 换层）——铜端压在别的块的焊盘上换层续接，块单看这里是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0、clearance 0、shorting 0；未连通 1 条：1 条落在被切开的口岸网上（VREG_EN×1）——那根网在窗口上被切开不止一处，块内这几段要在拼板时经块外铜接回；违规
+      5 条全部是 `track_dangling`——那是块的口岸断头（铜走到窗口边就停），不是毛刺（`sdi.spur` 已把毛刺清零）。明细：track_dangling×5。

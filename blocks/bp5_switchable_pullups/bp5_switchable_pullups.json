@@ -1,0 +1,8 @@
+{
+  "description": "从 Bus Pirate 5 主板 REV10A 的 `IO-expand-595-mux` 子页裁出，板从整板 `REV10a.kicad_pcb` 按位号原样扣铜（只做平移 + 删死铜）。",
+  "keywords": "10k si2301",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_switchable_pullups"
+  }
+}

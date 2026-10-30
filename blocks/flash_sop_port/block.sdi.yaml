@@ -1,0 +1,227 @@
+project:
+  kind: block
+  name: flash_sop_port
+  version: sdi/1
+defs:
+  flash_sop_port:
+    category: connector
+    rationale: '**适配板左侧"输入侧"**：J1 是 1×10 卧式母座（本体探出板左沿，套在 Bus Pirate 5 的排针上），J2 是同位的 1×10 竖排针，两只逐脚并联、实际只焊一只。
+      十脚：**1=VOUT、2=VCC_PIN、3=GND_PIN、4=HOLD、5=WP、6=CDI、7=CS、8=SCLK、 9=CDO、10=GND**。两只 SPDT 开关决定芯片吃哪路电：SW1（VCC）
+      **1=VCC_PIN、2=VCC_CHIP、3=VOUT**，SW2（GND）**1=GND、2=GND_CHIP、3=GND_PIN**。 十脚里其实是**两对独立电源**：1/10 号是
+      `VOUT`/`GND`，2/3 号是 `VCC_PIN`/`GND_PIN`， 两对在本块里不相连，只在开关处二选一（⚠ SW1/SW2 必须拨到同一对）。 ⚠ 本块与 `flash_zif_port`
+      的**电路逐网相同、几何不同**（那只板两只开关离得远 2mm 以上）。'
+    ports:
+    - name: CDI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-6
+        connector: true
+      pin: J1/6
+      note: 第 6 脚 → 芯片 **MISO**（`CDI` 是主控侧叫法）；J1.6 与 J2.6 同网
+    - name: CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-9
+        connector: true
+      pin: J1/9
+      note: 第 9 脚 → 芯片 **MOSI**（Controller Data Out）；J1.9 / J2.9 同网
+    - name: CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-7
+        connector: true
+      pin: J1/7
+      note: 第 7 脚（片选，低有效）
+    - name: GND_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: SW2-2
+        connector: false
+      pin: SW2/2
+      note: ⚠ 出口脚是 **SW2 的中间脚**：芯片地从这里出去，进 SW2 前在 GND（第 10 脚）/ GND_PIN（第 3 脚）之间二选一
+    - name: HOLD
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-4
+        connector: true
+      pin: J1/4
+      note: 第 4 脚（HOLD# / RESET#）
+    - name: SCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-8
+        connector: true
+      pin: J1/8
+      note: 第 8 脚（时钟）
+    - name: VCC_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: SW1-2
+        connector: false
+      pin: SW1/2
+      note: ⚠ 出口脚是 **SW1 的中间脚**（不是排针脚）：芯片电源从这里出去，进 SW1 前在 VOUT / VCC_PIN 之间二选一
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-1
+        connector: true
+      pin: J1/1
+      note: 第 1 脚：主机 VOUT 直入，也是电源灯的取电点（灯在另一个块里）；SW1.3 也在这根网上
+    rails:
+    - GND
+    parts:
+    - ref: SW1
+      lib: Switch:SW_SPDT
+      value: SW_SPDT
+      footprint: Button_Switch_SMD:SW_SPDT_PCM12
+    - ref: SW2
+      lib: Switch:SW_SPDT
+      value: SW_SPDT
+      footprint: Button_Switch_SMD:SW_SPDT_PCM12
+    - ref: J2
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical
+    - ref: J1
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal
+    conns:
+    - ref: J1
+      pin: '6'
+      net: CDI
+    - ref: J2
+      pin: '6'
+      net: CDI
+    - ref: J1
+      pin: '9'
+      net: CDO
+    - ref: J2
+      pin: '9'
+      net: CDO
+    - ref: J1
+      pin: '7'
+      net: CS
+    - ref: J2
+      pin: '7'
+      net: CS
+    - ref: J1
+      pin: '10'
+      net: GND
+    - ref: J2
+      pin: '10'
+      net: GND
+    - ref: SW2
+      pin: '1'
+      net: GND
+    - ref: SW2
+      pin: '2'
+      net: GND_CHIP
+    - ref: J1
+      pin: '3'
+      net: GND_PIN
+    - ref: J2
+      pin: '3'
+      net: GND_PIN
+    - ref: SW2
+      pin: '3'
+      net: GND_PIN
+    - ref: J1
+      pin: '4'
+      net: HOLD
+    - ref: J2
+      pin: '4'
+      net: HOLD
+    - ref: J1
+      pin: '8'
+      net: SCLK
+    - ref: J2
+      pin: '8'
+      net: SCLK
+    - ref: SW1
+      pin: '2'
+      net: VCC_CHIP
+    - ref: J1
+      pin: '2'
+      net: VCC_PIN
+    - ref: J2
+      pin: '2'
+      net: VCC_PIN
+    - ref: SW1
+      pin: '1'
+      net: VCC_PIN
+    - ref: J1
+      pin: '1'
+      net: VOUT
+    - ref: J2
+      pin: '1'
+      net: VOUT
+    - ref: SW1
+      pin: '3'
+      net: VOUT
+    - ref: J1
+      pin: '5'
+      net: WP
+    - ref: J2
+      pin: '5'
+      net: WP
+    placement_prior:
+      anchor: J1
+      max_mm: 6.0
+      rationale: 左侧竖条 18.82×44.37mm：母座贴左沿、竖针在其右侧 3.80mm，SW1 在上（y≈68）、 SW2 在下（y≈106）。复用要点同 `flash_zif_port`：开口朝板外、这块板要骑在主机排针上。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - GND_PIN
+    - VCC_PIN
+    - WP
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 flash adapter (SOP) REV3
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 12 网 / 端口 8 + 轨 1；铜 48 段 + 3 孔；死铜删 11；口岸切口 6；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 flash-sop-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 **GND_CHIP** 灌铜（芯片侧地，不是板上 GND）是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**适配板左侧"输入侧"**：J1 是 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`，本体探出板左沿 9.09mm、套在 Bus Pirate
+      5 的排针上），J2 是同位的 1×10 竖排针（`PinHeader_1x10_P2.54mm_Vertical`），两只逐脚并联、实际只焊一只。十脚：**1=VOUT、2=VCC_PIN、3=GND_PIN、4=HOLD、5=WP、6=CDI、7=CS、8=SCLK、9=CDO、10=GND**。'
+    - ⚠ `CDI` / `CDO` 是**主控侧**的名字（Controller Data In / Out）：`CDI` 接芯片的 **MISO**、`CDO` 接芯片的 **MOSI**——与芯片手册上的
+      MOSI/MISO 正好相反。照名字直连会把主控的输入接到芯片的输入上。
+    - 两只 SPDT 开关决定**芯片吃哪路电**：SW1（VCC）**1=VCC_PIN、2=VCC_CHIP、3=VOUT**，SW2（GND）**1=GND、2=GND_CHIP、3=GND_PIN**。所以
+      `VCC_CHIP` / `GND_CHIP` 这两个端口的出口脚是**开关的中间脚**（SW1.2 / SW2.2），不是排针脚——拼板时接的就是这两个脚。⚠ 两只开关**必须拨到同一对**（都选
+      VOUT/GND，或都选 VCC_PIN/GND_PIN），拨混了芯片的电源与地来自两对不同的源。
+    - ⚠ 十脚里其实是**两对独立电源**：1/10 号是 `VOUT`/`GND`（主机直供的一对），2/3 号是 `VCC_PIN`/`GND_PIN`（另一对）。两对在本块里不相连，只在开关处二选一。
+    - ⚠ `WP`（排针第 5 脚）在**本版到不了座**：这一族 ZIF / 16 脚 / 20 脚测试座上都**没有** WP 触点，它只连到 J1.5 ↔ J2.5 两个排针脚就断了（卡里登记为块内网
+      `WP`，拼装时逐实例改名、别当端口）。要控写保护，得自己从排针第 5 脚飞一根线到芯片的 WP# 那一脚——这正是本版与 lotes / wson 两版（WP 真的到焊位）最实用的一处电路差别。
+    - 几何：J1 @(138.44, 75.41) rot 0、J2 @(142.24, 75.44) rot 0（x 差 3.80mm、y 差 0.03mm，两列脚一一对齐）；SW1 @(142.24,
+      68.25) rot 180、SW2 @(142.24, 105.78) rot 0。块 20.1×47.72mm（J1 的封装框从 x=127.86 起，比板左沿还外 9.09mm——这块板是**骑在**主机排针上的）。复用要点：母座开口朝板外、竖针朝上；复制块时朝向一起搬。
+    - ⚠ 同族对照：本块与 `flash_zif_port` **逐件同坐标**（J1/J2/SW1/SW2 的 x/y/rot 全同），两块可以互换；铜略有差别（本块 60 段 + 6 孔，那只
+      61 段 + 5 孔）。四块 `*_port` 里 J1/J2 处处相同，**只有 SW1/SW2 的 y 会动**（这一族差 1.85mm），所以四块都得按板各留一份，不能共用一个块。
+    - '⚠ 这一族四张板子的**灌铜是 `GND_CHIP`（芯片侧地），不是 `GND`**。所以「块内不带铺铜」删掉的是芯片地，裂岛/裸脚全落在 `GND_CHIP` 上；`GND`（排针第 10
+      脚、灯的回流）本来就没有铺铜，只靠走线。卡里 `GND_CHIP` 记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）；它电学上是**芯片的电源/地网**，拼板时按同名接，别当信号口去串阻容。'
+    - 铜 48 段 + 3 孔（B 8 / F 52）；死铜删 11 段/孔（两端全悬空、谁也连不上的才算）；口岸切口 6 处（一端悬空=块的铜接口，按用户拍板留着）、走线出口 7 处；削剩残迹留
+      4 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND_CHIP 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - 本块的铜有 1 处止在**块外器件**的焊盘上（VOUT->R1.1→1）：那几只焊盘不在这块里（`VOUT→R1.1` 就是电源灯的那颗电阻），块单看这一头是断的，拼板时接上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 7 + 悬空过孔 3 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_*
+      2 条（源板自带，见基线）；源板 flash-sop-rev3.kicad_pcb 基线：未连通 0 / isolated_copper 0 / 违规 64 条。

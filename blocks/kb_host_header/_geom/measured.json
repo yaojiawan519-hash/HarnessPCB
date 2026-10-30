@@ -1,0 +1,14 @@
+{
+  "block": "kb_host_header",
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：2 件、块内 26 段铜、 0 孔、0 铺铜；源板那张 GND 是整板平面，按\"块内不带铺铜\"整张删）",
+  "parts_xy": {
+    "J2": [
+      34.29,
+      93.98
+    ],
+    "J3": [
+      45.72,
+      93.98
+    ]
+  }
+}

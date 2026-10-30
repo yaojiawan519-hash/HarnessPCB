@@ -1,0 +1,433 @@
+{
+  "name": "mcu_esp32c3_mini1",
+  "source": "esp-rust-board.kicad_pcb",
+  "origin_src_mm": [
+    148.1675,
+    75.2845
+  ],
+  "size_mm": [
+    20.191,
+    20.489
+  ],
+  "ports": {
+    "IO5": [
+      "U4"
+    ],
+    "IO4": [
+      "U4"
+    ],
+    "IO20_RX": [
+      "U4"
+    ],
+    "IO2": [
+      "R11",
+      "U4"
+    ],
+    "IO21_TX": [
+      "U4"
+    ],
+    "IO1": [
+      "U4"
+    ],
+    "CHIP_PU": [
+      "SW1",
+      "U4"
+    ],
+    "IO3": [
+      "U4"
+    ],
+    "USB_D+": [
+      "D8",
+      "J1",
+      "U4"
+    ],
+    "IO6": [
+      "U4"
+    ],
+    "IO7": [
+      "U4"
+    ],
+    "IO10_SDA": [
+      "R18",
+      "U1",
+      "U2",
+      "U4"
+    ],
+    "GND": [
+      "C1",
+      "C14",
+      "C15",
+      "C16",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C7",
+      "D5",
+      "D7",
+      "D8",
+      "D9",
+      "J1",
+      "R15",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R9",
+      "SW1",
+      "SW2",
+      "U1",
+      "U2",
+      "U4",
+      "U5",
+      "U6"
+    ],
+    "IO9_BOOT": [
+      "C14",
+      "R19",
+      "SW2",
+      "U4"
+    ],
+    "IO0": [
+      "U4"
+    ],
+    "USB_D-": [
+      "D5",
+      "J1",
+      "U4"
+    ],
+    "+3V3": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C6",
+      "C7",
+      "D9",
+      "L1",
+      "R17",
+      "R18",
+      "R19",
+      "R2",
+      "R7",
+      "U1",
+      "U2",
+      "U4"
+    ],
+    "IO8_SCL": [
+      "R17",
+      "U1",
+      "U2",
+      "U4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "+3V3",
+      "x": 152.0444,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 142.113,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "CHIP_PU",
+      "x": 140.081,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO0",
+      "x": 139.731,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO1",
+      "x": 140.3599,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D-",
+      "x": 153.2656,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 153.668,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO7",
+      "x": 146.3533,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO9_BOOT",
+      "x": 152.9588,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO8_SCL",
+      "x": 148.292,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO8_SCL",
+      "x": 146.7104,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO8_SCL",
+      "x": 147.947,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO10_SDA",
+      "x": 147.442,
+      "y": 86.329,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO10_SDA",
+      "x": 147.442,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO21_TX",
+      "x": 144.2418,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO20_RX",
+      "x": 143.8899,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO6",
+      "x": 146.0014,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO5",
+      "x": 145.6495,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO4",
+      "x": 145.2976,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO3",
+      "x": 144.9456,
+      "y": 86.329,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO2",
+      "x": 144.5937,
+      "y": 86.329,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 13,
+    "not_built": [],
+    "nets": 33,
+    "copper_segs": 100,
+    "vias": 14,
+    "stub_kept": 0,
+    "isolated_deleted": 66,
+    "cut_ends": 16,
+    "exit_points": 21,
+    "segs_by_layer": {
+      "B.Cu": 23,
+      "F.Cu": 77
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 38,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->U4.2": 1,
+      "CHIP_PU->U4.1": 1,
+      "IO10_SDA->R18.2": 1,
+      "IO8_SCL->R17.2": 1,
+      "IO9_BOOT->R19.2": 1
+    },
+    "island_split": {
+      "GND": 38
+    },
+    "dangling": {
+      "total": 7,
+      "port_cuts": 7,
+      "port_cut_nets": [
+        "+3V3",
+        "CHIP_PU",
+        "IO10_SDA",
+        "IO8_SCL",
+        "IO9_BOOT"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 39,
+        "vias": 8,
+        "nets": [
+          "IO0",
+          "IO1",
+          "IO10_SDA",
+          "IO2",
+          "IO20_RX",
+          "IO21_TX",
+          "IO3",
+          "IO4",
+          "IO5",
+          "IO6",
+          "IO7",
+          "USB_D+"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C10",
+      "value": "1uF 16V",
+      "fp": "C_0402_1005Metric",
+      "dx": -7.4515,
+      "dy": 2.5665,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C11",
+      "value": "10nF 10V",
+      "fp": "C_0402_1005Metric",
+      "dx": -9.6105,
+      "dy": -3.2755,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C12",
+      "value": "DNP",
+      "fp": "C_0402_1005Metric",
+      "dx": -7.0705,
+      "dy": 8.0275,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C13",
+      "value": "DNP",
+      "fp": "C_0402_1005Metric",
+      "dx": -1.9905,
+      "dy": 8.0275,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C8",
+      "value": "1uF 16V",
+      "fp": "C_0402_1005Metric",
+      "dx": -7.5785,
+      "dy": -3.2755,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C9",
+      "value": "100nF 10V",
+      "fp": "C_0402_1005Metric",
+      "dx": -8.5945,
+      "dy": -3.2755,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D1",
+      "value": "LESD8D3.3CAT5G",
+      "fp": "SOD-882",
+      "dx": -8.7255,
+      "dy": -1.4505,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "D2",
+      "value": "LED",
+      "fp": "LED_0603_1608Metric",
+      "dx": 8.5505,
+      "dy": 7.6465,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R10",
+      "value": "470R 1%",
+      "fp": "R_0402_1005Metric",
+      "dx": 6.0105,
+      "dy": 7.6465,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R12",
+      "value": "DNP",
+      "fp": "R_0402_1005Metric",
+      "dx": -4.5255,
+      "dy": 9.7495,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R8",
+      "value": "10kR 1%",
+      "fp": "R_0402_1005Metric",
+      "dx": -7.4515,
+      "dy": 0.6615,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "U3",
+      "value": "ESP32-C3-MINI-1",
+      "fp": "ESP32-C3-MINI-1",
+      "dx": -0.0855,
+      "dy": 0.9155,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Y1",
+      "value": "32.768Hz",
+      "fp": "Crystal_SMD_3215-2Pin_3.2x1.5mm",
+      "dx": -4.5305,
+      "dy": 8.0275,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

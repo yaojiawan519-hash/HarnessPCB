@@ -1,0 +1,213 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_qspi_flash",
+ "interface": [
+  {
+   "net": "QSPI_SCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U102-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U102-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U102-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U102-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U102-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R101-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C103",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 66.04,
+   "y": 83.82
+  },
+  {
+   "ref": "C104",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 71.12,
+   "y": 83.82
+  },
+  {
+   "ref": "U102",
+   "lib": "dp-memory:xm25qh128a",
+   "value": "W25Q128JVSIQ",
+   "footprint": "Package_SO:SOP-8_5.28x5.23mm_P1.27mm",
+   "x": 57.15,
+   "y": 102.87
+  },
+  {
+   "ref": "SW101",
+   "lib": "Switch:SW_SPST",
+   "value": "SW_SPST",
+   "footprint": "Button_Switch_SMD:SW_SPST_PTS810",
+   "x": 73.66,
+   "y": 111.76
+  },
+  {
+   "ref": "R101",
+   "lib": "Device:R_Small",
+   "value": "1K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 68.58,
+   "y": 107.95
+  },
+  {
+   "ref": "R102",
+   "lib": "Device:R_Small",
+   "value": "DNF",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 86.36,
+   "y": 95.25
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C103",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C104",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R102",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U102",
+   "pin": "8",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C103",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C104",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "SW101",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U102",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "U102",
+   "pin": "6",
+   "net": "QSPI_SCLK"
+  },
+  {
+   "ref": "U102",
+   "pin": "5",
+   "net": "QSPI_SD0"
+  },
+  {
+   "ref": "U102",
+   "pin": "2",
+   "net": "QSPI_SD1"
+  },
+  {
+   "ref": "U102",
+   "pin": "3",
+   "net": "QSPI_SD2"
+  },
+  {
+   "ref": "U102",
+   "pin": "7",
+   "net": "QSPI_SD3"
+  },
+  {
+   "ref": "R101",
+   "pin": "1",
+   "net": "QSPI_SS"
+  },
+  {
+   "ref": "R102",
+   "pin": "2",
+   "net": "QSPI_SS"
+  },
+  {
+   "ref": "U102",
+   "pin": "1",
+   "net": "QSPI_SS"
+  },
+  {
+   "ref": "R101",
+   "pin": "2",
+   "net": "_bp5_qspi_flash_N1"
+  },
+  {
+   "ref": "SW101",
+   "pin": "1",
+   "net": "_bp5_qspi_flash_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

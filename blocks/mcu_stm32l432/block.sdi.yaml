@@ -1,0 +1,277 @@
+project:
+  kind: block
+  name: mcu_stm32l432
+  version: sdi/1
+defs:
+  mcu_stm32l432:
+    category: mcu
+    rationale: '**STM32L432KBU6 最小系统**（作者分区框 "MCU"）：U3 是 QFN32 的 STM32L432KBU6（USB FS + 内建 USB 匹配阻抗），去耦
+      C4 1u + C5/C6/C7 三颗 100n 沿 VDD 排开，R1 10k 是 NRST 上拉，D1 绿 / D2 黄两颗指示灯配 R2/R3 2k2。 SPI3 四线出到 nRF24，USB_D+/D-
+      出到 ESD 块，NRST/SWCLK/SWDIO 出到 SWD 块。 ⚠ 作者在框里点明两件事：**① STM32 的 USB 上拉是内部的**（AN4879），没有外部 1.5k 上拉；**②
+      USB_DP/DM 不要外部端接电阻**（内建匹配阻抗，见数据手册原话）。 换非 L4 系列的 MCU 时这两条都不成立，别照抄。 ⚠ 框里还有一条给布线的：**差分对必须用 `+`/`-`
+      结尾命名**，KiCad 才认得出是 一对；本块的 `USB_D+`/`USB_D-` 就是这么命名的。'
+    ports:
+    - name: NRF_CE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-30
+        connector: false
+    - name: NRF_IRQ
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-25
+        connector: false
+    - name: NRST
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-4
+        connector: false
+    - name: SPI3_!CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-29
+        connector: false
+    - name: SPI3_MISO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-27
+        connector: false
+    - name: SPI3_MOSI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-28
+        connector: false
+    - name: SPI3_SCK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-26
+        connector: false
+    - name: SWCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-24
+        connector: false
+    - name: SWDIO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U3-23
+        connector: false
+    - name: USB_D+
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D-
+      exit:
+        pin: U3-22
+        connector: false
+    - name: USB_D-
+      kind: signal
+      class: bus_diff
+      direction: bidirectional
+      diff_pair: USB_D+
+      exit:
+        pin: U3-21
+        connector: false
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: U3
+      lib: MCU_ST_STM32L4:STM32L432KBUx
+      value: STM32L432KBU6
+      footprint: Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm
+    - ref: C7
+      lib: Device:C
+      value: 100n
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C6
+      lib: Device:C
+      value: 100n
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C5
+      lib: Device:C
+      value: 100n
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C4
+      lib: Device:C
+      value: 1u
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: D1
+      lib: Device:LED
+      value: GR
+      footprint: LED_SMD:LED_0603_1608Metric
+    - ref: D2
+      lib: Device:LED
+      value: YE
+      footprint: LED_SMD:LED_0603_1608Metric
+    - ref: R3
+      lib: Device:R
+      value: 2k2
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R2
+      lib: Device:R
+      value: 2k2
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R1
+      lib: Device:R
+      value: 10k
+      footprint: Resistor_SMD:R_0402_1005Metric
+    conns:
+    - ref: C4
+      pin: '1'
+      net: +3V3
+    - ref: C5
+      pin: '1'
+      net: +3V3
+    - ref: C6
+      pin: '1'
+      net: +3V3
+    - ref: C7
+      pin: '1'
+      net: +3V3
+    - ref: U3
+      pin: '1'
+      net: +3V3
+    - ref: U3
+      pin: '17'
+      net: +3V3
+    - ref: U3
+      pin: '5'
+      net: +3V3
+    - ref: C4
+      pin: '2'
+      net: GND
+    - ref: C5
+      pin: '2'
+      net: GND
+    - ref: C6
+      pin: '2'
+      net: GND
+    - ref: C7
+      pin: '2'
+      net: GND
+    - ref: R1
+      pin: '2'
+      net: GND
+    - ref: R2
+      pin: '2'
+      net: GND
+    - ref: R3
+      pin: '2'
+      net: GND
+    - ref: U3
+      pin: '16'
+      net: GND
+    - ref: U3
+      pin: '32'
+      net: GND
+    - ref: U3
+      pin: '33'
+      net: GND
+    - ref: U3
+      pin: '30'
+      net: NRF_CE
+    - ref: U3
+      pin: '25'
+      net: NRF_IRQ
+    - ref: U3
+      pin: '4'
+      net: NRST
+    - ref: U3
+      pin: '29'
+      net: SPI3_!CS
+    - ref: U3
+      pin: '27'
+      net: SPI3_MISO
+    - ref: U3
+      pin: '28'
+      net: SPI3_MOSI
+    - ref: U3
+      pin: '26'
+      net: SPI3_SCK
+    - ref: U3
+      pin: '24'
+      net: SWCLK
+    - ref: U3
+      pin: '23'
+      net: SWDIO
+    - ref: U3
+      pin: '22'
+      net: USB_D+
+    - ref: U3
+      pin: '21'
+      net: USB_D-
+    - ref: R1
+      pin: '1'
+      net: _mcu_stm32l432_N1
+    - ref: U3
+      pin: '31'
+      net: _mcu_stm32l432_N1
+    - ref: D2
+      pin: '2'
+      net: _mcu_stm32l432_N2
+    - ref: U3
+      pin: '8'
+      net: _mcu_stm32l432_N2
+    - ref: D1
+      pin: '2'
+      net: _mcu_stm32l432_N3
+    - ref: U3
+      pin: '9'
+      net: _mcu_stm32l432_N3
+    - ref: D1
+      pin: '1'
+      net: _mcu_stm32l432_N4
+    - ref: R2
+      pin: '1'
+      net: _mcu_stm32l432_N4
+    - ref: D2
+      pin: '1'
+      net: _mcu_stm32l432_N5
+    - ref: R3
+      pin: '1'
+      net: _mcu_stm32l432_N5
+    placement_prior:
+      anchor: U3
+      max_mm: 15.0
+      rationale: 四颗去耦贴 U3 的 VDD 脚（源板实测就在脚边），R1 贴 NRST 脚；两颗灯朝板边 可见处。USB 差分对朝 USB 座方向出、SPI3 那组朝 nRF24 方向出——两个方向不要
+        交叉，否则拼板时差分对要绕。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _mcu_stm32l432_N1
+    - _mcu_stm32l432_N2
+    - _mcu_stm32l432_N3
+    - _mcu_stm32l432_N4
+    - _mcu_stm32l432_N5
+    provenance:
+      source: human:open-source
+      basis: 从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 "MCU" 整框裁出； 板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。
+      board: STRF (2.4GHz RF-to-USB dongle)
+      license: MIT — 上游 Copyright (c) 2020 Philip Salmony
+      license_tier: permissive
+      author: Philip Salmony（上游）/ HarnessPCB（裁块）
+      date: '2026-10-31'
+      kicad: 10.0.5
+    geometry_status: carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py`
+      无损收 2 层）按位号原样扣铜。本块：10 件 / 31 网， 铜 113 段 + 2 孔，口岸切口 11 处；+3V3 裂 3 岛、GND 裂 6 岛。 铜窗口比件框多外扩
+      0.49mm（2 个过孔挨着块内铜却落在默认窗口外，自动加宽到 1.29mm）。 7 处信号借道**块外**焊盘换层（`NRF_CE→U4.1`、`SPI3_*→U4.2~5`、`USB_D+→U2.1`
+      等）， 那孔不在块里，块单看是断的，拼板插上就通。

@@ -1,0 +1,174 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "plank_io_headers",
+ "interface": [
+  {
+   "net": "INT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J11-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 4 脚：接到 plank_edge 的 INT（丝印把这脚写成 IO2，见块说明）。⚠ 出口脚登记在 **J11**（DNP 那只）；只焊 J12 时从 J12-4 引出（同网）"
+  },
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J11-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 3 脚。⚠ 出口脚登记在 J11（DNP）；只焊 J12 时从 J12-3 引出"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J11-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 2 脚。⚠ 出口脚登记在 J11（DNP）；只焊 J12 时从 J12-2 引出"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J11-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 1 脚：**主机从这里给整板送电**——本块是电源的来源侧。⚠ 出口脚登记在 J11（DNP）；只焊 J12 时从 J12-1 引出"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J12",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 34.29,
+   "y": 93.98
+  },
+  {
+   "ref": "J11",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 45.72,
+   "y": 93.98
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J11",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J12",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J11",
+   "pin": "4",
+   "net": "INT"
+  },
+  {
+   "ref": "J12",
+   "pin": "4",
+   "net": "INT"
+  },
+  {
+   "ref": "J11",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J12",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J11",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J12",
+   "pin": "6",
+   "net": "IO4"
+  },
+  {
+   "ref": "J11",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J12",
+   "pin": "7",
+   "net": "IO5"
+  },
+  {
+   "ref": "J11",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J12",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J11",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J12",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J11",
+   "pin": "3",
+   "net": "SCL"
+  },
+  {
+   "ref": "J12",
+   "pin": "3",
+   "net": "SCL"
+  },
+  {
+   "ref": "J11",
+   "pin": "2",
+   "net": "SDA"
+  },
+  {
+   "ref": "J12",
+   "pin": "2",
+   "net": "SDA"
+  },
+  {
+   "ref": "J11",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J12",
+   "pin": "1",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

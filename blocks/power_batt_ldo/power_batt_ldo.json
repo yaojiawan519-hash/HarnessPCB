@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k 100nf 10k 10uf 1uf 360k 51k battery",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "power_batt_ldo"
+  }
+}

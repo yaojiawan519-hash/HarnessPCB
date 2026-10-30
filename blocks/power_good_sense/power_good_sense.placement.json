@@ -1,0 +1,205 @@
+{
+  "name": "power_good_sense",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    126.5131,
+    61.0
+  ],
+  "size_mm": [
+    11.4362,
+    18.6138
+  ],
+  "ports": {
+    "+3.3V": [
+      "C5",
+      "C7",
+      "J1",
+      "J4",
+      "R12",
+      "R2",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "PWR_GOOD_OUT": [
+      "D3",
+      "J2",
+      "J3"
+    ],
+    "GND": [
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "BULK_VIN": [
+      "C4",
+      "C6",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "U1",
+      "U2"
+    ],
+    "PWR_GOOD": [
+      "J1",
+      "J4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "BULK_VIN",
+      "x": 119.995,
+      "y": 70.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD_OUT",
+      "x": 119.995,
+      "y": 69.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD_OUT",
+      "x": 122.25,
+      "y": 50.8931,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD",
+      "x": 128.0875,
+      "y": 71.1069,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD",
+      "x": 133.0312,
+      "y": 71.0,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 130.1431,
+      "y": 50.8931,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 127.6944,
+      "y": 50.8931,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 133.0312,
+      "y": 68.5,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 6,
+    "nets": 8,
+    "copper_segs": 18,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 12,
+    "cut_ends": 3,
+    "exit_points": 8,
+    "segs_by_layer": {
+      "F.Cu": 18
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 10,
+        "vias": 5,
+        "nets": [
+          "+3.3V",
+          "BULK_VIN",
+          "GND",
+          "PWR_GOOD",
+          "PWR_GOOD_OUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "Q5",
+      "value": "BC807",
+      "fp": "SOT-23",
+      "dx": 2.4869,
+      "dy": -2.25,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q6",
+      "value": "BC817",
+      "fp": "SOT-23",
+      "dx": 2.4869,
+      "dy": 2.0,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R10",
+      "value": "680R",
+      "fp": "R_0805_2012Metric",
+      "dx": 2.4869,
+      "dy": -5.5,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R11",
+      "value": "330R",
+      "fp": "R_0805_2012Metric",
+      "dx": 2.4869,
+      "dy": -7.75,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R13",
+      "value": "6.8K",
+      "fp": "R_0805_2012Metric",
+      "dx": -4.0131,
+      "dy": 8.0,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R8",
+      "value": "1K",
+      "fp": "R_0805_2012Metric",
+      "dx": 2.4869,
+      "dy": 5.25,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

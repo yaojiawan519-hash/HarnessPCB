@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31 07:03:48",
+ "generated_at": "2026-10-31 07:13:29",
  "studio": "PCBStudioV2",
  "studio_rev": "",
  "n_files": 120,
@@ -40,9 +40,9 @@
    "bytes": 19256
   },
   "DesignBlockTools/sdi/blockpcb.py": {
-   "sha256": "ba794669b8a8104fd96216f94e5fb43bce27716c7ae68679edb197ebf4f2d0fb",
+   "sha256": "c1daee9d7ec95110fbabb24ae616f9a1a0ae6d540a83d134760652f6f627688d",
    "source": "DesignBlockTools/sdi/blockpcb.py",
-   "bytes": 77171
+   "bytes": 77174
   },
   "DesignBlockTools/sdi/boardspec.py": {
    "sha256": "d2a0900deee4084ebbe902e573b5d325e22fed01f1fa89b3cab28d13b27ab062",

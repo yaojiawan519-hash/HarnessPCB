@@ -5,8 +5,7 @@ argument-hint: [需求描述]
 
 # 新板设计流程
 
-$ARGUMENTS 是需求描述（没给就先访谈）。目标：产出设计表 + 意图 spec，
-跑全链出 Gerber。
+$ARGUMENTS 是需求描述（没给就先访谈）。目标：产出设计表，跑全链出 Gerber。
 
 1. **需求访谈**（信息不全时问用户，一次问全）：
    板子干什么、接口/连接器清单及各自出边、电源从哪进（电压/变换）、
@@ -16,10 +15,12 @@ $ARGUMENTS 是需求描述（没给就先访谈）。目标：产出设计表 + 
    或翻 KiCad 安装目录 .kicad_sym）。
 3. **写设计表**：按 docs/输入格式说明.md §一（九键 schema + multi +
    pwr_flags + 自动 NC 规则）；写完自查 conns 覆盖每个器件的每个用到的引脚。
-4. **写意图 spec**（接口件≥2 个时建议写）：按 skills/pcb-intent-spec
-   A 段清单逐条过（A8：pad_clear_mm ≥ 板边铜距 0.5+）。
+4. **过 A 段清单**（`skills/pcb-intent-spec`）：接口件全量点名、噪声对、
+   工艺量，并定下三个旋钮——`--face`（接口朝哪面）/ `--gap`（件间净距，
+   默认 0.45）/ `--ports`（口岸网名）。意图 spec 已停用，别再写 intent.json。
 5. **跑全链**：同 /harnesspcb:pcb-run 的步骤 2–5。
-6. **按 B 段验收**：skills/pcb-intent-spec B 段逐条对数后向用户报告。
+6. **按 B 段验收**：skills/pcb-intent-spec B 段逐条对数后向用户报告
+   （去耦最远中心距、courtyard 重叠、试布线档位与完成度）。
 
 判定先大白话（板子成了没有、还差什么），再摆数字表与产物路径。
 改需求就改设计表/intent 重跑（版本号自动 +1，旧版不覆盖）。

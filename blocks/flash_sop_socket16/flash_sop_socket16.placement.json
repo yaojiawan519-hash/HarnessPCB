@@ -1,0 +1,211 @@
+{
+  "name": "flash_sop_socket16",
+  "source": "flash-sop-rev3.kicad_pcb",
+  "origin_src_mm": [
+    161.57,
+    75.3439
+  ],
+  "size_mm": [
+    32.4165,
+    18.6502
+  ],
+  "ports": {
+    "CS": [
+      "J1",
+      "J2",
+      "J5"
+    ],
+    "HOLD": [
+      "J1",
+      "J2",
+      "J5"
+    ],
+    "CDI": [
+      "J1",
+      "J2",
+      "J5"
+    ],
+    "GND": [
+      "J1",
+      "J2",
+      "SW2"
+    ],
+    "SCLK": [
+      "J1",
+      "J2",
+      "J5"
+    ],
+    "GND_CHIP": [
+      "C1",
+      "J5",
+      "SW2"
+    ],
+    "VCC_CHIP": [
+      "C1",
+      "J5",
+      "SW1"
+    ],
+    "CDO": [
+      "J1",
+      "J2",
+      "J5"
+    ],
+    "VOUT": [
+      "J1",
+      "J2",
+      "SW1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 144.5617,
+      "y": 67.0617,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 146.5,
+      "y": 85.469,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "CDI",
+      "x": 159.25,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "CS",
+      "x": 154.5,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCLK",
+      "x": 168.031,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "CDO",
+      "x": 172.2,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HOLD",
+      "x": 165.25,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HOLD",
+      "x": 144.5617,
+      "y": 83.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HOLD",
+      "x": 153.25,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VCC_CHIP",
+      "x": 173.5,
+      "y": 85.469,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VCC_CHIP",
+      "x": 144.5617,
+      "y": 72.0,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 10,
+    "copper_segs": 27,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 17,
+    "cut_ends": 10,
+    "exit_points": 11,
+    "segs_by_layer": {
+      "B.Cu": 6,
+      "F.Cu": 21
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND_CHIP": 3,
+      "HOLD": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 23,
+        "vias": 2,
+        "nets": [
+          "CDI",
+          "CDO",
+          "CS",
+          "GND",
+          "HOLD",
+          "SCLK",
+          "VCC_CHIP",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C2",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 13.68,
+      "dy": -6.3439,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D1",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -9.57,
+      "dy": -7.0939,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "16PIN",
+      "fp": "16PIN_SCOKET",
+      "dx": 2.18,
+      "dy": 0.1561,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -12.82,
+      "dy": -7.0939,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

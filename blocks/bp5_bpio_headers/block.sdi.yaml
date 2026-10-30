@@ -1,0 +1,186 @@
+project:
+  kind: block
+  name: bp5_bpio_headers
+  version: sdi/1
+defs:
+  bp5_bpio_headers:
+    category: connector
+    rationale: "**BPIO 的物理出口：两个不同封装、同一组信号的排针**。 · J301 = `PinHeader_1x10_P2.54mm_Vertical`（2.54mm 直插单排，**装背面**、rot\
+      \ −90°）：\n  `1 = VREF_VOUT 2..9 = BPIO0..7 10 = GND`；\n· J302 = `JST_SH_SM09B-SRSS-TB_1x09-1MP_P1.00mm_Horizontal`（**1.00mm\
+      \ 间距 JST-SH\n  卧式侧插**，11 个焊盘 = 9 信号 + 2 固定脚）：`1..8 = BPIO0..7 9 = GND`。\n两只口**脚脚并联**——同一个信号既能在 2.54\
+      \ 排针上接杜邦线，也能在 JST-SH 上接成品线， **一次只用一边**（两边同时插等于两条线并在一根网上）。 ⚠ `VREF_VOUT` **只出在 J301 的 1 号脚**（J302\
+      \ 没有参考电压脚）：用 JST-SH 那口时 目标板得自己给参考，或者从 J301 的 1 号脚另取。 R404 10K 是 `VREF_VOUT` 的对地泄放（原理图值 10K，源板 PCB\
+      \ 丝印/属性标的是 133K — 以原理图为准），作用是关电后把参考电压放掉。3 件 / 10 网 / 端口 9 （`BPIO0..7` + `VREF_VOUT`）+ 轨 `GND`。"
+    ports:
+    - name: BPIO0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-2
+        connector: true
+    - name: BPIO1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-3
+        connector: true
+    - name: BPIO2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-4
+        connector: true
+    - name: BPIO3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-5
+        connector: true
+    - name: BPIO4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-6
+        connector: true
+    - name: BPIO5
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-7
+        connector: true
+    - name: BPIO6
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-8
+        connector: true
+    - name: BPIO7
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-9
+        connector: true
+    - name: VREF_VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J301-1
+        connector: true
+    rails:
+    - GND
+    parts:
+    - ref: J301
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical
+    - ref: J302
+      lib: Connector_Generic:Conn_01x09
+      value: Conn_01x09
+      footprint: Connector_JST:JST_SH_SM09B-SRSS-TB_1x09-1MP_P1.00mm_Horizontal
+    - ref: R404
+      lib: Device:R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    conns:
+    - ref: J301
+      pin: '2'
+      net: BPIO0
+    - ref: J302
+      pin: '1'
+      net: BPIO0
+    - ref: J301
+      pin: '3'
+      net: BPIO1
+    - ref: J302
+      pin: '2'
+      net: BPIO1
+    - ref: J301
+      pin: '4'
+      net: BPIO2
+    - ref: J302
+      pin: '3'
+      net: BPIO2
+    - ref: J301
+      pin: '5'
+      net: BPIO3
+    - ref: J302
+      pin: '4'
+      net: BPIO3
+    - ref: J301
+      pin: '6'
+      net: BPIO4
+    - ref: J302
+      pin: '5'
+      net: BPIO4
+    - ref: J301
+      pin: '7'
+      net: BPIO5
+    - ref: J302
+      pin: '6'
+      net: BPIO5
+    - ref: J301
+      pin: '8'
+      net: BPIO6
+    - ref: J302
+      pin: '7'
+      net: BPIO6
+    - ref: J301
+      pin: '9'
+      net: BPIO7
+    - ref: J302
+      pin: '8'
+      net: BPIO7
+    - ref: J301
+      pin: '10'
+      net: GND
+    - ref: J302
+      pin: '9'
+      net: GND
+    - ref: R404
+      pin: '2'
+      net: GND
+    - ref: J301
+      pin: '1'
+      net: VREF_VOUT
+    - ref: R404
+      pin: '1'
+      net: VREF_VOUT
+    placement_prior:
+      anchor: J301
+      max_mm: 14.0
+      rationale: J301 在两组缓冲器之间靠下（118.47,112.22），J302 更靠右下方（129.90,116.82）—— 两只口都在板的中下部、朝同一个"接线区"；J301
+        在背面（B.Cu）是为了排针不挡正面。 R404 **离得很远**（110.90,65.70，板的上方），因为它只是参考电压的泄放，不需要靠端子。
+    slots: []
+    hot_loop: []
+    provenance:
+      basis: 3 件 / 10 网 / 端口 9 + 轨 1；铜 57 段 + 2 孔；死铜删 64；口岸切口 12
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: schematic-only —— 板级几何待扣（成员已定，PCB 从整板 `REV10a.kicad_pcb` 扣）
+    notes:
+    - '**BPIO 的物理出口：两只不同封装、同一组信号的排针，脚脚并联**。· J301 = `PinHeader_1x10_P2.54mm_Vertical`（**装背面** B.Cu、rot
+      −90°）：`1 = VREF_VOUT 2..9 = BPIO0..7 10 = GND`；· J302 = `JST_SH_SM09B-SRSS-TB`（**1.00mm 间距 JST-SH
+      卧式侧插**，11 焊盘 = 9 信号 + 2 固定脚）：`1..8 = BPIO0..7 9 = GND`。同一根信号两头都能插：杜邦线走 J301、成品线走 J302，**一次只用一边**。2
+      件上板 / 10 网 / 端口 9 + 轨 `GND`。'
+    - ⚠ **`VREF_VOUT` 只出在 J301 的 1 号脚**（J302 没有参考电压脚）。用 JST-SH 那口时目标板得自己给参考，或者从 J301 的 1 号脚另取——别以为这只口自带参考。
+    - ⚠ **R404 未上板**（`counts.not_built`）：本页画了一只 10K 的 `R404` 做 `VREF_VOUT` 的对地泄放，而同一工程 `bpu-current_limiter`
+      页也有一只 `R404`（133K，`VREG_OUT`→`VREG_ADJ` 分压，就在 U403 旁边）。**整板只有一份封装，板上那只 R404 是电流限制的**，本页这只泄放电阻**板上不存在**。所以它进了卡（原理图是它的真相）但不参与任何板上比较；要补上，就在拼板时于
+      `VREF_VOUT` 与 GND 之间加一只 10K。
+    - '**板形很怪是有原因的**：这只是"两只接插件 + 它们之间的干线"，块框 28.04×9.84mm、交付板 33.04×14.84mm 的一条长条——J301 与 J302 相隔 11.4mm，中间全是
+      BPIO 干线。复用这块时别想把它塞进小角落。'
+    - '**铜**：73 段 + 2 孔、0 张铺铜；**孤立铜删 64 段/孔**（干线之外的碎铜全清）；口岸切口 12 处；残迹留 0；`naked_plane_pads` 2（两只 GND 脚靠整板铺铜）、`island_split`
+      `GND×2`。`counts.borrowed_pads` 3 处：`BPIO0 → RN305.1 / RN312.1`、`BPIO7 → RN309.4`（干线在缓冲器块里换层，本块单看是断的）。'

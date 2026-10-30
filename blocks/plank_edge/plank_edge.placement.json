@@ -1,0 +1,158 @@
+{
+  "name": "plank_edge",
+  "source": "stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb",
+  "origin_src_mm": [
+    120.5,
+    97.5
+  ],
+  "size_mm": [
+    9.654,
+    19.854
+  ],
+  "ports": {
+    "VOUT": [
+      "J1",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9",
+      "R1"
+    ],
+    "SDA": [
+      "J1",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ],
+    "GND": [
+      "D1",
+      "J1",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ],
+    "INT": [
+      "J11",
+      "J12"
+    ],
+    "SCL": [
+      "J1",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J8",
+      "J9"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "INT",
+      "x": 114.873,
+      "y": 96.953,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "INT",
+      "x": 114.873,
+      "y": 93.695,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 122.75,
+      "y": 86.773,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 114.873,
+      "y": 97.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 114.873,
+      "y": 105.667,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 114.873,
+      "y": 89.333,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 1,
+    "nets": 5,
+    "copper_segs": 14,
+    "vias": 0,
+    "stub_kept": 4,
+    "isolated_deleted": 3,
+    "cut_ends": 6,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 7,
+      "F.Cu": 7
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "INT": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 8,
+        "vias": 0,
+        "nets": [
+          "GND",
+          "INT",
+          "SCL",
+          "SDA",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J10",
+      "value": "ED10BGFBK",
+      "fp": "CONN-TH_SA10BL01D",
+      "dx": 0.0,
+      "dy": 0.0,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

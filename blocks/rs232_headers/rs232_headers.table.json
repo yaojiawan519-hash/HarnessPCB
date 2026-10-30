@@ -1,0 +1,211 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "rs232_headers",
+ "interface": [
+  {
+   "net": "UART0CTS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-8",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART0RTS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-9",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART0RX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-7",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART0TX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-6",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1CTS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-4",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1RTS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-5",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1RX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-3",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "UART1TX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-2",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND",
+  "VOUT"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 34.29,
+   "y": 93.98
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 45.72,
+   "y": 93.98
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "UART0CTS"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "UART0CTS"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "UART0RTS"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "UART0RTS"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "UART0RX"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "UART0RX"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "UART0TX"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "UART0TX"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "UART1CTS"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "UART1CTS"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "UART1RTS"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "UART1RTS"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "UART1RX"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "UART1RX"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "UART1TX"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "UART1TX"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

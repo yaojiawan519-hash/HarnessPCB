@@ -1,0 +1,262 @@
+project:
+  kind: block
+  name: ir_tx_cc
+  version: sdi/1
+defs:
+  ir_tx_cc:
+    category: actuator
+    rationale: '**恒流红外发射头**：一路 IO4 进来，经 U5 推一颗 MMBT4401，串两只 5mm 红外 LED 打出去。逐段说： ① **U5 AiP74LVC1T45**（SC-70-6）：VCCA
+      与 VCCB 都接 VOUT、DIR 接地（页上注记 "DIR=GND=B Input"，B 侧进 A 侧出）——两侧同电位，所以它**不是电平转换**， 是把 IO4 的驱动能力放大到几十
+      mA 去拉基极的缓冲器； ② **基极钳位**：R3 330R 从 U5 输出到 Q3 基极，D9 + D10 两只 1N4148WS 串联从基极到地， 把基极钉在 ≈2×0.65 = 1.3V——这一层钳位让发射极落在
+      ≈0.6V，**电流由发射极电阻定、 不由输入电压定**，这才是"恒流"两个字的来源； ③ **三档电流用跳线选**：Q3 发射极接 J3（2x03 1.27mm）的三个偶数脚（2/4/6 连在一起），
+      三个奇数脚各经 R6 1R2 / R11 3R0 / R13 6R8 到地。按 Vb≈1.3V、Vbe≈0.75V 估 ⇒ 约 **0.46A / 0.18A / 0.08A** 三档（真实值随器件与温度漂）。
+      ⚠ **一次只插一个跳线帽**：偶数脚是共的，插两个等于把两颗电阻并联，电流反而更大； ④ **LED 串**：VOUT → D3 → D4 → Q3 集电极，两只串联（总正向压降 ~3V），
+      脉冲电流由 C6 100µF（3528 钽）+ C3 4.7µF 在 VOUT 上就近供给，C7/C8 0.1µF 是 U5 两侧去耦。 复用要点：① 0.46A 那档是**脉冲用**，占空比要按所用
+      LED 的 datasheet 卡住， 直流长亮会烧；② 大电流那段原板靠 F.Cu 内部网载流铺铜（本块自带 5 张）， 拼板时别把它们当"多余铺铜"删掉；③ 两只 LED 要开孔/朝外，型号可换成其它
+      940nm 5mm 红外管，注意正向压降与串联只数匹配 VOUT；④ 换 3.3V 供电时两只串联压降 会顶到轨，得改成一只或换低 Vf 管。'
+    ports:
+    - name: IO4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U5-4
+        connector: false
+      pin: U5/4
+      note: 发射输入：高电平点亮（经块内 U5 缓冲 → R3 → Q3 基极）
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C3-1
+        connector: false
+      pin: C3/1
+      note: 5V 供电 + 脉冲储能（C6 100µF / C3 4.7µF 在块内）
+    rails:
+    - GND
+    parts:
+    - ref: D9
+      lib: Diode:1N4148W
+      value: 1N4148WS
+      footprint: Diode_SMD:D_SOD-323F
+    - ref: D3
+      lib: Device:LED
+      value: TSAL6100
+      footprint: LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm_IRGrey
+    - ref: C6
+      lib: Device:C_Polarized_Small
+      value: 100uF
+      footprint: Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder
+    - ref: Q3
+      lib: Device:Q_NPN_BEC
+      value: MMBT4401LT1G
+      footprint: Package_TO_SOT_SMD:SOT-23
+    - ref: J3
+      lib: Connector_Generic:Conn_02x03_Odd_Even
+      value: Conn_02x03_1.27mm
+      footprint: Connector_PinHeader_1.27mm:PinHeader_2x03_P1.27mm_Vertical
+    - ref: R3
+      lib: Device:R
+      value: 330R
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: C7
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: C3
+      lib: Device:C
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: D4
+      lib: Device:LED
+      value: TSAL6200
+      footprint: LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm_IRGrey
+    - ref: U5
+      lib: Logic_LevelTranslator:SN74LVC1T45DCK
+      value: AiP74LVC1T45GC363.TR
+      footprint: Package_TO_SOT_SMD:SOT-363_SC-70-6
+    - ref: R13
+      lib: Device:R
+      value: 6R8
+      footprint: Resistor_SMD:R_1206_3216Metric
+    - ref: D10
+      lib: Diode:1N4148W
+      value: 1N4148WS
+      footprint: Diode_SMD:D_SOD-323F
+    - ref: R6
+      lib: Device:R
+      value: 1R2
+      footprint: Resistor_SMD:R_1206_3216Metric
+    - ref: C8
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: R11
+      lib: Device:R
+      value: 3R0
+      footprint: Resistor_SMD:R_1206_3216Metric
+    conns:
+    - ref: C3
+      pin: '2'
+      net: GND
+    - ref: C6
+      pin: '2'
+      net: GND
+    - ref: C7
+      pin: '1'
+      net: GND
+    - ref: C8
+      pin: '2'
+      net: GND
+    - ref: D10
+      pin: '1'
+      net: GND
+    - ref: R11
+      pin: '2'
+      net: GND
+    - ref: R13
+      pin: '2'
+      net: GND
+    - ref: R6
+      pin: '2'
+      net: GND
+    - ref: U5
+      pin: '2'
+      net: GND
+    - ref: U5
+      pin: '5'
+      net: GND
+    - ref: U5
+      pin: '4'
+      net: IO4
+    - ref: C3
+      pin: '1'
+      net: VOUT
+    - ref: C6
+      pin: '1'
+      net: VOUT
+    - ref: C7
+      pin: '2'
+      net: VOUT
+    - ref: C8
+      pin: '1'
+      net: VOUT
+    - ref: D3
+      pin: '2'
+      net: VOUT
+    - ref: U5
+      pin: '1'
+      net: VOUT
+    - ref: U5
+      pin: '6'
+      net: VOUT
+    - ref: J3
+      pin: '2'
+      net: _ir_tx_cc_N1
+    - ref: J3
+      pin: '4'
+      net: _ir_tx_cc_N1
+    - ref: J3
+      pin: '6'
+      net: _ir_tx_cc_N1
+    - ref: Q3
+      pin: '2'
+      net: _ir_tx_cc_N1
+    - ref: D9
+      pin: '2'
+      net: _ir_tx_cc_N2
+    - ref: Q3
+      pin: '1'
+      net: _ir_tx_cc_N2
+    - ref: R3
+      pin: '1'
+      net: _ir_tx_cc_N2
+    - ref: D10
+      pin: '2'
+      net: _ir_tx_cc_N3
+    - ref: D9
+      pin: '1'
+      net: _ir_tx_cc_N3
+    - ref: D3
+      pin: '1'
+      net: _ir_tx_cc_N4
+    - ref: D4
+      pin: '2'
+      net: _ir_tx_cc_N4
+    - ref: D4
+      pin: '1'
+      net: _ir_tx_cc_N5
+    - ref: Q3
+      pin: '3'
+      net: _ir_tx_cc_N5
+    - ref: J3
+      pin: '1'
+      net: _ir_tx_cc_N6
+    - ref: R6
+      pin: '1'
+      net: _ir_tx_cc_N6
+    - ref: J3
+      pin: '3'
+      net: _ir_tx_cc_N7
+    - ref: R11
+      pin: '1'
+      net: _ir_tx_cc_N7
+    - ref: J3
+      pin: '5'
+      net: _ir_tx_cc_N8
+    - ref: R13
+      pin: '1'
+      net: _ir_tx_cc_N8
+    - ref: R3
+      pin: '2'
+      net: _ir_tx_cc_N9
+    - ref: U5
+      pin: '3'
+      net: _ir_tx_cc_N9
+    placement_prior:
+      anchor: Q3
+      max_mm: 16.0
+      rationale: 15 件铺满 23.85×32.13mm，是全库密度最高的一块，分三条带： 中间是**功率链**（Q3 3.23~4.77mm 内挤着 R13 / D4 / D9 / D10，D3
+        7.21mm 在 LED 串尽头）， 左上 U5 + C7/C8 组成驱动侧（U5 11.94mm），左侧一列是**电流档电阻 + J3** （J3 6.54mm、R6 9.77、R11
+        10.26），下方 C3/C6 是储能（9.18 / 15.75mm）。 要保住的是"基极钳位二极管贴着 Q3 基极、发射极电阻到 J3 路径短、储能电容贴着 LED 串的 VOUT 端"——这三条一散，脉冲边沿和电流精度就都变了。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _ir_tx_cc_N1
+    - _ir_tx_cc_N2
+    - _ir_tx_cc_N3
+    - _ir_tx_cc_N4
+    - _ir_tx_cc_N5
+    - _ir_tx_cc_N6
+    - _ir_tx_cc_N7
+    - _ir_tx_cc_N8
+    - _ir_tx_cc_N9
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 IR Toy 适配板（3REV3）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 15 件 / 12 网 / 端口 2 + 轨 1；铜 69 段 + 4 孔；死铜删 29；口岸切口 1；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 15 件 / 12 网，但只有 3 张有名字：IO4 输入、VOUT 供电、GND。其余 9 张全是块内无名网（基极钳位节点、LED 串、发射极三档电阻、J3 各脚），卡里统一登记为块内网，拼装时逐实例改名（两份同块否则会把发射极电阻并联）。
+    - '**U5 AiP74LVC1T45** 两侧 VCC 都接 VOUT、DIR 接地 ⇒ 它不干电平转换，只当缓冲：把 IO4 的驱动能力放大到能拉几百 mA 级的基极电流。'
+    - '**恒流是怎么来的**：D9+D10 两只 1N4148WS 串联把基极钉在 ≈2×0.65 = 1.3V ⇒ 发射极≈0.6V ⇒ 电流由发射极电阻定，不由输入电压/占空比定。三档按 Vbe≈0.75V
+      估：R6 1R2 ≈ **0.46A**、R11 3R0 ≈ **0.18A**、R13 6R8 ≈ **0.08A**，真实值随器件与温度漂。'
+    - ⚠ **一次只插一个跳线帽**：J3 三个偶数脚（2/4/6）是共的，插两个等于把两颗发射极电阻并联，电流反而变大——它不是互锁的三选一。
+    - '**LED 串**：VOUT → D3 → D4 → Q3 集电极，两只 5mm 红外管串联（正向压降合计 ~3V），脉冲电流由 C6 100µF（3528 钽）+ C3 4.7µF 就近供给，C7/C8
+      0.1µF 是 U5 两侧去耦。'
+    - ⚠ 0.46A 那档是**脉冲用**：占空比要按所用 LED 的 datasheet 卡住，直流长亮会烧；换 3.3V 供电时两只串联的正向压降会顶到轨，得改成一只或换低 Vf 管。
+    - ⚠ 5 张**内部网载流铺铜**跟着块走（`_ir_tx_cc_N1/N5/N6/N7/N8`）：这是"块内不带铺铜"的唯一例外——它们不是地/电源平面，是 0.46A 脉冲那一段的铜，拼板时别当多余铺铜删掉。
+    - 铜 69 段 + 4 孔（B 9 / F 68）；死铜删 29 段/孔；口岸切口 1 处、走线出口 2 处；削剩残迹留 0 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走
+      5 张（GND 铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。
+    - 块里 5 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 8 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上；**VOUT 裂成 3 个铜岛**（各含焊盘）：源板上 VOUT 是经块外干线绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上。
+    - 借道块外器件焊盘换层 6 处（IO4->J2.6、VOUT->R12.2、VOUT->R2.2、VOUT->R4.2、VOUT->R5.2、VOUT->R7.2）——那孔不在块里，块单看这几处是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 9 条（GND×14、VOUT×4）；断头走线 3 + 悬空过孔 7 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通
+      0 / isolated_copper 0 / 违规 113 条。

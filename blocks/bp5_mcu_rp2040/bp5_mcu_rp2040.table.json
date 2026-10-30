@@ -1,0 +1,1026 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_mcu_rp2040",
+ "interface": [
+  {
+   "net": "AMUX_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-40",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-4",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-8",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFDIR7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-9",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-12",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-13",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-14",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-15",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-16",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-17",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUFIO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-18",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "BUTTONS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-39",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CURRENT_ADJ_MCU",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-34",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CURRENT_SENSE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-41",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-37",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_DP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-36",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-52",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-53",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-55",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-54",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SD3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-51",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "QSPI_SS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-56",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "RGB_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-28",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SD_CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-38",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SHIFT_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-32",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SHIFT_LATCH",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-31",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CDI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-27",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-30",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-29",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SWCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-24",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SWDIO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-25",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U103-47",
+    "connector": false
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U103-46",
+    "connector": false
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VREG_ADJ_MCU",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U103-35",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U103",
+   "lib": "RP_Silicon:RP2040",
+   "value": "RP2040",
+   "footprint": "RP_Silicon:RP2040-QFN-56",
+   "x": 184.15,
+   "y": 100.33
+  },
+  {
+   "ref": "C106",
+   "lib": "Device:C_Small",
+   "value": "15pF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 138.43,
+   "y": 110.49
+  },
+  {
+   "ref": "C105",
+   "lib": "Device:C_Small",
+   "value": "15pF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 125.73,
+   "y": 110.49
+  },
+  {
+   "ref": "C108",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 177.8,
+   "y": 34.29
+  },
+  {
+   "ref": "C110",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 236.22,
+   "y": 36.83
+  },
+  {
+   "ref": "C111",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 238.76,
+   "y": 31.75
+  },
+  {
+   "ref": "C112",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 241.3,
+   "y": 36.83
+  },
+  {
+   "ref": "C113",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 243.84,
+   "y": 31.75
+  },
+  {
+   "ref": "C114",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 246.38,
+   "y": 36.83
+  },
+  {
+   "ref": "C115",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 248.92,
+   "y": 31.75
+  },
+  {
+   "ref": "C107",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 167.64,
+   "y": 34.29
+  },
+  {
+   "ref": "C117",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 270.51,
+   "y": 36.83
+  },
+  {
+   "ref": "C118",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 274.32,
+   "y": 31.75
+  },
+  {
+   "ref": "Y101",
+   "lib": "Device:Crystal_GND24_Small",
+   "value": "12Mhz",
+   "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+   "x": 132.08,
+   "y": 107.95
+  },
+  {
+   "ref": "C116",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 251.46,
+   "y": 36.83
+  },
+  {
+   "ref": "R103",
+   "lib": "Device:R_Small",
+   "value": "200R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 209.55,
+   "y": 31.75
+  },
+  {
+   "ref": "C109",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 209.55,
+   "y": 43.18
+  },
+  {
+   "ref": "C121",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 154.94,
+   "y": 167.64
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C107",
+   "pin": "1",
+   "net": "+1V1"
+  },
+  {
+   "ref": "C117",
+   "pin": "1",
+   "net": "+1V1"
+  },
+  {
+   "ref": "C118",
+   "pin": "1",
+   "net": "+1V1"
+  },
+  {
+   "ref": "U103",
+   "pin": "23",
+   "net": "+1V1"
+  },
+  {
+   "ref": "U103",
+   "pin": "45",
+   "net": "+1V1"
+  },
+  {
+   "ref": "U103",
+   "pin": "50",
+   "net": "+1V1"
+  },
+  {
+   "ref": "C108",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C110",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C111",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C112",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C113",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C114",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C115",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C116",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C121",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R103",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "10",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "22",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "26",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "33",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "42",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "44",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "48",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "49",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U103",
+   "pin": "40",
+   "net": "AMUX_OUT"
+  },
+  {
+   "ref": "U103",
+   "pin": "2",
+   "net": "BUFDIR0"
+  },
+  {
+   "ref": "U103",
+   "pin": "3",
+   "net": "BUFDIR1"
+  },
+  {
+   "ref": "U103",
+   "pin": "4",
+   "net": "BUFDIR2"
+  },
+  {
+   "ref": "U103",
+   "pin": "5",
+   "net": "BUFDIR3"
+  },
+  {
+   "ref": "U103",
+   "pin": "6",
+   "net": "BUFDIR4"
+  },
+  {
+   "ref": "U103",
+   "pin": "7",
+   "net": "BUFDIR5"
+  },
+  {
+   "ref": "U103",
+   "pin": "8",
+   "net": "BUFDIR6"
+  },
+  {
+   "ref": "U103",
+   "pin": "9",
+   "net": "BUFDIR7"
+  },
+  {
+   "ref": "U103",
+   "pin": "11",
+   "net": "BUFIO0"
+  },
+  {
+   "ref": "U103",
+   "pin": "12",
+   "net": "BUFIO1"
+  },
+  {
+   "ref": "U103",
+   "pin": "13",
+   "net": "BUFIO2"
+  },
+  {
+   "ref": "U103",
+   "pin": "14",
+   "net": "BUFIO3"
+  },
+  {
+   "ref": "U103",
+   "pin": "15",
+   "net": "BUFIO4"
+  },
+  {
+   "ref": "U103",
+   "pin": "16",
+   "net": "BUFIO5"
+  },
+  {
+   "ref": "U103",
+   "pin": "17",
+   "net": "BUFIO6"
+  },
+  {
+   "ref": "U103",
+   "pin": "18",
+   "net": "BUFIO7"
+  },
+  {
+   "ref": "U103",
+   "pin": "39",
+   "net": "BUTTONS"
+  },
+  {
+   "ref": "U103",
+   "pin": "34",
+   "net": "CURRENT_ADJ_MCU"
+  },
+  {
+   "ref": "U103",
+   "pin": "41",
+   "net": "CURRENT_SENSE"
+  },
+  {
+   "ref": "U103",
+   "pin": "37",
+   "net": "DISPLAY_CS"
+  },
+  {
+   "ref": "U103",
+   "pin": "36",
+   "net": "DISPLAY_DP"
+  },
+  {
+   "ref": "C105",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C106",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C107",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C108",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C109",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C110",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C111",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C112",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C113",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C114",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C115",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C116",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C117",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C118",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C121",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U103",
+   "pin": "19",
+   "net": "GND"
+  },
+  {
+   "ref": "U103",
+   "pin": "57",
+   "net": "GND"
+  },
+  {
+   "ref": "Y101",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Y101",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "U103",
+   "pin": "52",
+   "net": "QSPI_SCLK"
+  },
+  {
+   "ref": "U103",
+   "pin": "53",
+   "net": "QSPI_SD0"
+  },
+  {
+   "ref": "U103",
+   "pin": "55",
+   "net": "QSPI_SD1"
+  },
+  {
+   "ref": "U103",
+   "pin": "54",
+   "net": "QSPI_SD2"
+  },
+  {
+   "ref": "U103",
+   "pin": "51",
+   "net": "QSPI_SD3"
+  },
+  {
+   "ref": "U103",
+   "pin": "56",
+   "net": "QSPI_SS"
+  },
+  {
+   "ref": "U103",
+   "pin": "28",
+   "net": "RGB_CDO"
+  },
+  {
+   "ref": "U103",
+   "pin": "38",
+   "net": "SD_CS"
+  },
+  {
+   "ref": "U103",
+   "pin": "32",
+   "net": "SHIFT_EN"
+  },
+  {
+   "ref": "U103",
+   "pin": "31",
+   "net": "SHIFT_LATCH"
+  },
+  {
+   "ref": "U103",
+   "pin": "27",
+   "net": "SPI_CDI"
+  },
+  {
+   "ref": "U103",
+   "pin": "30",
+   "net": "SPI_CDO"
+  },
+  {
+   "ref": "U103",
+   "pin": "29",
+   "net": "SPI_CLK"
+  },
+  {
+   "ref": "U103",
+   "pin": "24",
+   "net": "SWCLK"
+  },
+  {
+   "ref": "U103",
+   "pin": "25",
+   "net": "SWDIO"
+  },
+  {
+   "ref": "U103",
+   "pin": "47",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "U103",
+   "pin": "46",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "U103",
+   "pin": "35",
+   "net": "VREG_ADJ_MCU"
+  },
+  {
+   "ref": "C105",
+   "pin": "1",
+   "net": "_bp5_mcu_rp2040_N1"
+  },
+  {
+   "ref": "U103",
+   "pin": "20",
+   "net": "_bp5_mcu_rp2040_N1"
+  },
+  {
+   "ref": "Y101",
+   "pin": "1",
+   "net": "_bp5_mcu_rp2040_N1"
+  },
+  {
+   "ref": "C106",
+   "pin": "1",
+   "net": "_bp5_mcu_rp2040_N2"
+  },
+  {
+   "ref": "U103",
+   "pin": "21",
+   "net": "_bp5_mcu_rp2040_N2"
+  },
+  {
+   "ref": "Y101",
+   "pin": "3",
+   "net": "_bp5_mcu_rp2040_N2"
+  },
+  {
+   "ref": "C109",
+   "pin": "1",
+   "net": "_bp5_mcu_rp2040_N3"
+  },
+  {
+   "ref": "R103",
+   "pin": "2",
+   "net": "_bp5_mcu_rp2040_N3"
+  },
+  {
+   "ref": "U103",
+   "pin": "43",
+   "net": "_bp5_mcu_rp2040_N3"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

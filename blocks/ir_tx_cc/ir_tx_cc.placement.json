@@ -1,0 +1,246 @@
+{
+  "name": "ir_tx_cc",
+  "source": "bp5-ir-toy-v3-rev3.kicad_pcb",
+  "origin_src_mm": [
+    150.9215,
+    89.6681
+  ],
+  "size_mm": [
+    23.853,
+    32.1262
+  ],
+  "ports": {
+    "VOUT": [
+      "J1",
+      "J2",
+      "R1",
+      "R10",
+      "R12",
+      "R2",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C4",
+      "C5",
+      "D1",
+      "J1",
+      "J2",
+      "U1",
+      "U2",
+      "U3",
+      "U4"
+    ],
+    "IO4": [
+      "J1",
+      "J2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 144.895,
+      "y": 72.805,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 151.5,
+      "y": 72.805,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 15,
+    "nets": 12,
+    "copper_segs": 69,
+    "vias": 4,
+    "stub_kept": 0,
+    "isolated_deleted": 29,
+    "cut_ends": 1,
+    "exit_points": 2,
+    "segs_by_layer": {
+      "B.Cu": 9,
+      "F.Cu": 60
+    },
+    "zones_kept": 5,
+    "naked_plane_pads": 5,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "IO4->J2.6": 1,
+      "VOUT->R12.2": 1,
+      "VOUT->R2.2": 1,
+      "VOUT->R4.2": 1,
+      "VOUT->R5.2": 1,
+      "VOUT->R7.2": 1
+    },
+    "island_split": {
+      "GND": 8,
+      "VOUT": 3
+    },
+    "dangling": {
+      "total": 4,
+      "port_cuts": 4,
+      "port_cut_nets": [
+        "IO4",
+        "VOUT"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 8,
+        "vias": 7,
+        "nets": [
+          "GND",
+          "IO4",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C3",
+      "value": "4.7uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -0.6715,
+      "dy": -6.6681,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C6",
+      "value": "100uF",
+      "fp": "CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder",
+      "dx": -2.6715,
+      "dy": -13.4181,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C7",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -10.9215,
+      "dy": 13.0819,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C8",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -4.4215,
+      "dy": 13.0819,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D10",
+      "value": "1N4148WS",
+      "fp": "D_SOD-323F",
+      "dx": -5.1715,
+      "dy": 7.0819,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D3",
+      "value": "TSAL6100",
+      "fp": "LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm_IRGrey",
+      "dx": 1.7015,
+      "dy": -3.5431,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D4",
+      "value": "TSAL6200",
+      "fp": "LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm_IRGrey",
+      "dx": 1.7015,
+      "dy": 1.7469,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D9",
+      "value": "1N4148WS",
+      "fp": "D_SOD-323F",
+      "dx": -2.9215,
+      "dy": 7.0819,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Conn_02x03_1.27mm",
+      "fp": "PinHeader_2x03_P1.27mm_Vertical",
+      "dx": -5.5465,
+      "dy": -3.4431,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q3",
+      "value": "MMBT4401LT1G",
+      "fp": "SOT-23",
+      "dx": -2.4815,
+      "dy": 2.3319,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R11",
+      "value": "3R0",
+      "fp": "R_1206_3216Metric",
+      "dx": -5.6715,
+      "dy": -7.4181,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R13",
+      "value": "6R8",
+      "fp": "R_1206_3216Metric",
+      "dx": -5.6715,
+      "dy": 2.8319,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R3",
+      "value": "330R",
+      "fp": "R_0805_2012Metric",
+      "dx": -4.4215,
+      "dy": 10.0819,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R6",
+      "value": "1R2",
+      "fp": "R_1206_3216Metric",
+      "dx": -3.1715,
+      "dy": -7.4181,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "U5",
+      "value": "AiP74LVC1T45GC363.TR",
+      "fp": "SOT-363_SC-70-6",
+      "dx": -7.6715,
+      "dy": 13.0819,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

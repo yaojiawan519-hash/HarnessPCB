@@ -1,0 +1,113 @@
+project:
+  kind: block
+  name: ir_rcv_learner
+  version: sdi/1
+defs:
+  ir_rcv_learner:
+    category: sensor
+    rationale: '**20~60kHz 宽频红外学习头**：U1 OS1200MW-A1（TSOP18XX 封装，自带屏蔽罩）负责解调， 外围只有三颗 0805——R8 100R 串在 VOUT
+      与模块 VCC 之间、C4 4.7µF 接在模块 VCC 与地之间 （合起来是 340Hz 的 RC 低通，把 VOUT 上的脉冲噪声挡在模块外面，不是随便的"去耦"）， R9 10K 是输出上拉。
+      输出是**开漏、低电平有效**：没有载波时被 R9 拉到 VOUT，收到载波才拉低到地—— 所以 IO1 上看到的是"有红外 = 低"，接主机时要按反相理解。 作者在页上写的备选是 TSMP58000（已停产）/
+      TSMP98000，两颗都是宽频学习型， 换件不用动外围。 复用要点：① 受光面（模块正面）必须朝板边或开窗，屏蔽罩前面别放器件； ② 100R + 4.7µF 别省——省掉以后 VOUT 上的开关电源纹波会直接进模块
+      VCC， 表现为"无故输出一串脉冲"；③ **上拉 R9 接的是 VOUT 不是 3V3**，所以输出高电平 等于 VOUT（本板 5V）；④ 接 3.3V 主机时这颗电阻要改接到 3V3，否则
+      5V 灌进主机 IO。'
+    ports:
+    - name: IO1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R9-1
+        connector: false
+      pin: R9/1
+      note: 解调输出：开漏、有载波时拉低；块内 R9 10K 上拉到 VOUT
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R8-2
+        connector: false
+      pin: R8/2
+      note: 5V 电源，经块内 R8 100R 才到模块 VCC（同节点挂 C4 4.7µF）
+    rails:
+    - GND
+    parts:
+    - ref: R8
+      lib: Device:R
+      value: 100R
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: U1
+      lib: TSOP4838:TSOP4838
+      value: OS1200MW-A1
+      footprint: Library:TSOP18XX
+    - ref: C4
+      lib: Device:C
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: R9
+      lib: Device:R
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: C4
+      pin: '2'
+      net: GND
+    - ref: U1
+      pin: GND
+      net: GND
+    - ref: R9
+      pin: '1'
+      net: IO1
+    - ref: U1
+      pin: OUT
+      net: IO1
+    - ref: R8
+      pin: '2'
+      net: VOUT
+    - ref: R9
+      pin: '2'
+      net: VOUT
+    - ref: C4
+      pin: '1'
+      net: _ir_rcv_learner_N1
+    - ref: R8
+      pin: '1'
+      net: _ir_rcv_learner_N1
+    - ref: U1
+      pin: VCC
+      net: _ir_rcv_learner_N1
+    placement_prior:
+      anchor: U1
+      max_mm: 6.5
+      rationale: 四颗件排成一条 12.45×6.32mm 的窄带（实测到 U1 中心：C4 3.48mm、R9 4.36mm、R8 5.64mm）。 C4 紧贴模块的 VCC 脚、R8
+        在 C4 外侧同一行，R9 在模块输出侧。要保住的是 "C4 贴着模块电源脚、U1 屏蔽罩朝板边、输出上拉在模块与出线之间"这三条。 这一串是**接收头**，位置上唯一真正要紧的是受光方向。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _ir_rcv_learner_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 IR Toy 适配板（3REV3）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 4 网 / 端口 2 + 轨 1；铜 8 段 + 0 孔；死铜删 5；口岸切口 2；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 4 件 / 4 网：2 个出块端口（IO1 输出、VOUT 供电）+ 轨 GND + 1 张块内网（VOUT 经 R8 100R 之后那段，原理图上无名，卡里起名 `_ir_rcv_learner_N1`，模块
+      VCC 与 C4 都挂在上面）。
+    - R8 100R + C4 4.7µF 不是"去耦"套话：它给模块 VCC 单独做一阶 RC，拐点 1/(2π×100×4.7µ) ≈ **340Hz**——VOUT 上的开关纹波和脉冲压降被挡在模块外面。模块内部是
+      38k~60k 的高增益放大器，VCC 一脏它就自己往外吐脉冲。
+    - 输出**开漏、低电平有效**：R9 10K 上拉的是 **VOUT**，所以 IO1 空闲电平等于 VOUT（本板 = 主机 5V），不是 3V3；接 3.3V 主机必须把这颗上拉改接到 3V3。
+    - '作者页上注记 "Alternates: TSMP58000 (obsolete) / TSMP98000"——两颗都是宽频学习型、脚位兼容，换件不动外围。'
+    - 受光面朝向是这块唯一的机械约束：U1 自带屏蔽罩，罩子前面不能有器件或丝印挡住。
+    - 铜 8 段 + 0 孔（B 1 / F 11）；死铜删 5 段/孔；口岸切口 2 处、走线出口 2 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走
+      0 张（GND 铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。
+    - 块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND**（2 个焊盘点名）——源板靠铺铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 2 + 悬空过孔
+      0 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 113 条。

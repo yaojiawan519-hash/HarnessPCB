@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "sm04b-srss-tb (hc-1.0-4pwt)",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "stemma_qwiic_ports"
+  }
+}

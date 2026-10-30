@@ -1,0 +1,92 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ddr5_ldo_3v3",
+ "interface": [],
+ "power_rails": [
+  "+3.3V",
+  "BULK_VIN",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R9",
+   "lib": "Device:R",
+   "value": "1K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 121.92,
+   "y": 88.9
+  },
+  {
+   "ref": "U2",
+   "lib": "Regulator_Linear:MCP1700x-330xxTT",
+   "value": "ME6206A33XG",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 88.9,
+   "y": 39.37
+  },
+  {
+   "ref": "C4",
+   "lib": "Device:C",
+   "value": "10uF/6.3V",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 80.01,
+   "y": 43.18
+  },
+  {
+   "ref": "C5",
+   "lib": "Device:C",
+   "value": "10uF/6.3V",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 99.06,
+   "y": 43.18
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C5",
+   "pin": "1",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "R9",
+   "pin": "2",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "U2",
+   "pin": "2",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "C4",
+   "pin": "1",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "U2",
+   "pin": "3",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "C4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R9",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "1",
+   "net": "GND"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

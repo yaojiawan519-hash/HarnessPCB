@@ -1,0 +1,107 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ddr5_sodimm_socket",
+ "interface": [
+  {
+   "net": "HSCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J4-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "插座 4 脚：SPD I²C 时钟，3.3V 摆幅，经 i2c_level_shift 到 5V 侧"
+  },
+  {
+   "net": "HSDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J4-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "插座 6 脚：SPD I²C 数据，3.3V 摆幅；线上必须有上拉（块里没有）"
+  },
+  {
+   "net": "PWR_GOOD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J4-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "插座 7 脚：内存条自检就绪，低=就绪，进 power_good_sense 的两级缓冲"
+  }
+ ],
+ "power_rails": [
+  "+3.3V",
+  "BULK_VIN",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J4",
+   "lib": "10160554-001SHLF:10160554-001SHLF",
+   "value": "10160554-001SHLF",
+   "footprint": "footprints:AMPHENOL_10160554-001SHLF",
+   "x": 243.84,
+   "y": 92.71
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J4",
+   "pin": "8",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "J4",
+   "pin": "3",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "J4",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "9",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "SH",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "4",
+   "net": "HSCL"
+  },
+  {
+   "ref": "J4",
+   "pin": "6",
+   "net": "HSDA"
+  },
+  {
+   "ref": "J4",
+   "pin": "7",
+   "net": "PWR_GOOD"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

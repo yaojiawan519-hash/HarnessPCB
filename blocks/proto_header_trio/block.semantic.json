@@ -1,0 +1,102 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**主机排针的三联座**：J2 是 1×10 卧式母座（骑在 Bus Pirate 5 的十脚排针上）、 J3 与 J5 是同序的竖针（给面包板/杜邦线用），三只**逐脚并联**——同一根 IO 在三处都能碰到。 十脚顺序照主机约定：`1=VOUT / 2..9=IO0..IO7 / 10=GND`（page 上的全局标签就是这个名字）。 ⚠ 这块板**没有自己的电路**：它只是把一根总线复制到三个接插件上，所以 「内部网」一个都没有，十张网全是接口网（`--iface` 声明：IO0..IO7 + GND，加上板上 另有两只洞洞板焊盘挂了 VOUT，VOUT 天然是口岸网）。 复用要点：① 三只排针的脚位要一一对齐，插错一根就整条总线错位； ② 源板上那 1654 个洞洞板焊盘**不在块里**（块只收有电路的那三只）； ③ 地在这块板上只靠铺铜连，块里按规矩不带铺铜，拼板时整板重铺接上。",
+  "power_rails": [
+    "GND",
+    "VOUT"
+  ],
+  "interface": [
+    {
+      "name": "IO0",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/2",
+      "note": "第 2 脚 = `IO0`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 2 位是同一张网"
+    },
+    {
+      "name": "IO1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/3",
+      "note": "第 3 脚 = `IO1`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 3 位是同一张网"
+    },
+    {
+      "name": "IO2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/4",
+      "note": "第 4 脚 = `IO2`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 4 位是同一张网"
+    },
+    {
+      "name": "IO3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/5",
+      "note": "第 5 脚 = `IO3`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 5 位是同一张网"
+    },
+    {
+      "name": "IO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/6",
+      "note": "第 6 脚 = `IO4`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 6 位是同一张网"
+    },
+    {
+      "name": "IO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/7",
+      "note": "第 7 脚 = `IO5`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 7 位是同一张网"
+    },
+    {
+      "name": "IO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/8",
+      "note": "第 8 脚 = `IO6`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 8 位是同一张网"
+    },
+    {
+      "name": "IO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J2/9",
+      "note": "第 9 脚 = `IO7`：J2/J3/J5 三只 1×10 **逐脚并联**，同一根 IO 在三处都能碰到；出口脚登记在 **J2**（骑在主机排针上的卧座），J3/J5 第 9 位是同一张网"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J2",
+    "max_mm": 6.0,
+    "rationale": "件占地 24.34×27.86mm，三只排针一字排开（J2 卧座在下、J3/J5 竖针在上）， 间距就是源板洞洞板的 2.54 栅格。要保住的是\"三只的同号脚在一条直线上\"。"
+  },
+  "hot_loop": [],
+  "internal_nets": [],
+  "notes": [
+    "**这块板是主机排针的三联座**：J2 = 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`，本体探出板沿、骑在 Bus Pirate 5 的十脚排针上）、J3 = 1×10 竖针（`PinHeader_1x10_P2.54mm_Vertical_No_Silk`）、J5 = 1×10 矮竖针（`PinHeader_1x10_P2.54mm_Vertical_Reduced_2`）。三只**逐脚并联**——同一根 IO 在三处都能碰到。3 件 / 10 网 / 端口 8 + 轨 2。",
+    "**十脚的顺序照主机约定**：`1=VOUT / 2..9=IO0..IO7 / 10=GND`。这不是猜的——原页上这十张网用的就是作者的全局标签 `VOUT / IO0..IO7 / GND`，块里的名字与板上网络名一字不差。",
+    "**八根 IO 登记成端口**（出口脚记在 **J2** 那一侧，J3/J5 是同网的竖针）。它们在本块\"没有外部件\"只是因为这页没有别的器件，不是真的不出块；`sdi.pcbcarve --iface` 也是按同一口径把它们当接口网判的：岛可以裂，但每个岛必须含焊盘。VOUT 与 GND 是**轨**（电源网，从排针进出整板），不占端口名额。",
+    "**铜**：块内 20 段（B.Cu 17 + F.Cu 3）、0 过孔、0 铺铜。源板上 GND 靠**一张铺满整板的平面**连（4 只缝合孔在板四角、离件框 26.59mm），按用户定的「块内不带铺铜」整张删掉——拼板时整板重铺一次，GND 就接上了。F.Cu 上那 3 段是源板仅有的顶层铜，别当没用删掉。",
+    "⚠ **岛的账（`counts.island_split`）：GND×3、IO7×2**。GND 三只在源板上本来就只靠铺铜连，块里不带铺铜所以裂成三只、各自都有焊盘（装板时从脚上引出）；**IO7 的 2 只是源板自身的缺陷**：板上 IO7 只有一根走线，J2.9 从来就没被接上——kicad-cli DRC 在**源板**上就报 `Found 1 unconnected items — Missing connection between items [PTH pad 9 [IO7] of J2, PTH pad 9 [IO7] of J3]`。块照原样继承，没有擅自补线：拼装/打板时要么在拼板层把 J2.9 与 J3.9 接上，要么接受 J2 的 9 号脚不导通。",
+    "源板上还有 **1654 个洞洞板焊盘**（位号空 / `REF**`，只有 2 个挂了 VOUT 网），它们是那块\"万能板\"的本体、不是电路，**不进块**；块只收有电路的这三只排针。因此 VOUT 在 `sdi.pcbcarve` 眼里是口岸网（块外那 1 件就是 `REF**` 焊盘），不影响卡里的判定。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `blank-plank-rev0b.kicad_pcb` 原样扣，坐标 = 源板坐标平移，origin: page；2 层，件占地 24.34×27.86mm、块板 29.34×32.86mm；块内铜 20 段（B.Cu 17 + F.Cu 3）/ 0 过孔 / **0 铺铜**——源板上那张 GND 是整板平面（铺铜框伸出件框 26.59mm），按\"块内不带铺铜\"整张删，拼板时整板重铺接上）",
+  "provenance": {
+    "basis": "3 件 / 10 网 / 端口 8 + 轨 2；铜 17 段 + 0 孔；死铜删 0；口岸切口 0",
+    "source": "human:open-source",
+    "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch.kicad_pcb",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "description": "从 Phil's Lab STRF 2.4GHz RF-to-USB 加密狗的 `STRF.kicad_sch` 作者分区框 \"3V3 Regulator\" 整框裁出；板从同一工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜 （只做平移 + 删死铜 + 删整板铺铜）。",
+  "keywords": "100 @ 100mhz 100ma 10u xc6206p332mr",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "power_3v3_usb_ldo"
+  }
+}

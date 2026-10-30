@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 1k sk6812-mini-e sk6812-side-a_b",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_rgb_leds"
+  }
+}

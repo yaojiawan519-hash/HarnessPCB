@@ -1,0 +1,37 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "indicator",
+  "rationale": "**板内 5V 指示灯**：`VDD — R2 2K — D2 阳极 — 阴极 — GND`（D2 = `Device:LED`， 脚 1=K 落地、脚 2=A 接 R2，中间那张无名网是 `R2.2 + D2.2`）。 它挂在 **`VDD`**（不是 `VOUT`）上，所以**任何一个供电来源**都会点亮它： BP 经 `kb_backflow_prevent` + `kb_vout_switch` 过来的、USB-C/A 的 VBUS、 以及 `J9` 的外部 5V——用它判断\"板子到底有没有电\"很直观。 复用要点：2K 在 5V 下 ≈1.5mA，够看；换成 3.3V 也不用改电阻。",
+  "power_rails": [
+    "GND",
+    "VDD"
+  ],
+  "interface": [],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "D2",
+    "max_mm": 10.0,
+    "rationale": "D2 在板右上、R2 在它左边 7.5mm 的同一行（中间是 USB-A 那一坨的走线）， 件框因此有 9.50×18.43mm——是作者的布局事实，不是这两只自己要这么大。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_kb_power_led_N1"
+  ],
+  "notes": [
+    "**`VDD` 电源指示灯**：`VDD — R2 2K — D2 阳极 — 阴极 — GND`（D2 = `Device:LED`，1=K 落地、2=A 接 R2；中间 `Net-(D2-A)` 是 `R2.2 + D2.2`）。2 件 / 3 网 / 端口 0 + 轨 GND+VDD。",
+    "它挂在 **`VDD`**（**不是** `VOUT`）上，所以**任何一个供电来源**都会点亮它：BP 经回流保护 + 开关过来的、USB-C/A 的 VBUS、以及 `J9` 的外部 5V。2K 在 5V 下 ≈1.5mA，够看；换 3.3V 也不用改电阻。",
+    "⚠ **`counts.borrowed_pads` = `VDD→J9.1`、`VDD→SW1.2`**：VDD 的铜端正好压在块外两只焊盘上（J9 属 `kb_vdd_header`、SW1 属 `kb_vout_switch`）。块单看 VDD 是断的；这两块拼装时要挨着放，或者按端口名重新引。",
+    "**铜**：14 段（F.Cu 13 / B.Cu 1）、2 孔、0 铺铜。孤立铜删 3 段；口沿截断 1 处；残迹保留 1 段；`naked_plane_pads` 1（D2 的阴极脚）。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：2 件、块内 14 段铜 + 2 孔、0 铺铜）",
+  "provenance": {
+    "basis": "2 件 / 3 网 / 端口 0 + 轨 2；铜 14 段 + 2 孔；死铜删 3；口岸切口 1",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

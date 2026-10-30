@@ -1,0 +1,14 @@
+{
+  "block": "swd_connector",
+  "geometry_status": "carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py` 无损收 2 层）按位号原样扣铜。本块：2 件 / 8 网， 铜 8 段 + 1 孔，口岸切口 2 处；GND 裂 4 岛（铺铜删掉的必然结果）。 3 处走线出口（NRST/SWDIO/SWCLK 的铜在这里离开块）。 ⚠ 源板上 GND 有 3 个脚是裸脚（没有走线接上，靠整板 GND 平面），铺铜删掉后 这 3 个脚在块里就是断的——拼板重铺接回。",
+  "parts_xy": {
+    "C3": [
+      245.11,
+      139.7
+    ],
+    "J3": [
+      224.79,
+      141.605
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "name": "kb_vout_switch",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    136.6884,
+    98.1356
+  ],
+  "size_mm": [
+    7.4733,
+    10.1212
+  ],
+  "ports": {
+    "VOUT": [
+      "Q401",
+      "Q402"
+    ],
+    "VDD": [
+      "C1",
+      "C2",
+      "C3",
+      "J9",
+      "L1",
+      "L2",
+      "L4",
+      "L5",
+      "R2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VDD",
+      "x": 132.1517,
+      "y": 93.4125,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VDD",
+      "x": 133.25,
+      "y": 92.275,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VDD",
+      "x": 132.1517,
+      "y": 96.5983,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 132.1517,
+      "y": 99.75,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 1,
+    "nets": 3,
+    "copper_segs": 5,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 4,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 4
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 1,
+        "vias": 0,
+        "nets": [
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "SW1",
+      "value": "SW_SPDT",
+      "fp": "SW_SPDT_PCM12",
+      "dx": 0.3116,
+      "dy": -0.6356,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

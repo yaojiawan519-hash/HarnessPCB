@@ -1,0 +1,136 @@
+project:
+  kind: block
+  name: i2c_level_shift
+  version: sdi/1
+defs:
+  i2c_level_shift:
+    category: interface
+    rationale: '**I²C 双向电平转换**：U1 TXS0102DCU（8 脚 VSSOP）。 VCCA(3)=+3.3V、OE(6) 也接 +3.3V（常使能，不做方向/使能控制）、VCCB(7)=BULK_VIN（5V）；
+      A 侧（低压侧）= HSDA(5) / HSCL(4)，B 侧（高压侧）= SDA(8) / SCL(1)。 ⚠ 方向与本页的直觉相反：**插座侧（HSDA/HSCL）落在低压 A 侧，排针侧（SDA/SCL）才是
+      5V B 侧** —— 也就是说内存条那一侧看到的是 3.3V 摆幅，测试排针这一侧是 5V 摆幅。 两侧各一颗 10µF（C6 在 VCCB/GND、C7 在 VCCA/GND），都是 0805。
+      复用要点：① 块里**没有任何上拉电阻**，页上也没有——I²C 的上拉必须由总线两端（主机 / 内存条）提供，复用前先确认线上有上拉，否则两侧都是开漏悬空； ② OE 焊死在 VCCA 上，所以这块一上电就导通，**没有隔离功能**：要做热插拔/断电保护，
+      得自己把 OE 引出去控制；③ C6/C7 是两颗 10µF 而非常见的 0.1µF——TXS 系列靠一次性加速管 推边沿，电源要能瞬间出力；换成小容值会把上升沿拖慢。'
+    ports:
+    - name: HSCL
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-4
+        connector: false
+      pin: U1/4
+      note: A 侧（3.3V）= U1.4，接插座 SPD 时钟；开漏，需上拉
+    - name: HSDA
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-5
+        connector: false
+      pin: U1/5
+      note: A 侧（3.3V）= U1.5，接插座 SPD 数据；开漏，需总线两端上拉
+    - name: SCL
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-1
+        connector: false
+      pin: U1/1
+      note: B 侧（5V）= U1.1，接测试排针；开漏，需上拉
+    - name: SDA
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-8
+        connector: false
+      pin: U1/8
+      note: B 侧（5V）= U1.8，接测试排针；开漏，需上拉
+    rails:
+    - +3.3V
+    - BULK_VIN
+    - GND
+    parts:
+    - ref: C6
+      lib: Device:C
+      value: 10uF/6.3V
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: C7
+      lib: Device:C
+      value: 10uF/6.3V
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: U1
+      lib: Logic_LevelTranslator:TXS0102DCU
+      value: TXS0102DCU
+      footprint: Package_SO:VSSOP-8_2.3x2mm_P0.5mm
+    conns:
+    - ref: C7
+      pin: '1'
+      net: +3.3V
+    - ref: U1
+      pin: '3'
+      net: +3.3V
+    - ref: U1
+      pin: '6'
+      net: +3.3V
+    - ref: C6
+      pin: '1'
+      net: GND
+    - ref: C7
+      pin: '2'
+      net: GND
+    - ref: U1
+      pin: '2'
+      net: GND
+    - ref: U1
+      pin: '4'
+      net: HSCL
+    - ref: U1
+      pin: '5'
+      net: HSDA
+    - ref: U1
+      pin: '1'
+      net: SCL
+    - ref: U1
+      pin: '8'
+      net: SDA
+    - ref: C6
+      pin: '2'
+      net: BULK_VIN
+    - ref: U1
+      pin: '7'
+      net: BULK_VIN
+    placement_prior:
+      anchor: U1
+      max_mm: 5.0
+      rationale: 三件（U1 + 两侧各一颗去耦）。规矩是**去耦贴自己那只电源脚**：C6 贴 VCCB(7)、 C7 贴 VCCA(3) 与 OE(6) 那一侧，别为了排齐把两颗电容摆成一排挡在信号脚前面。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 3 件 / 7 网 / 端口 4 + 轨 3；铜 9 段 + 0 孔；死铜删 6；口岸切口 7；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 adapter-ram-ddr5-1REV2.kicad_pcb 原样扣，坐标
+      = 源板坐标平移，origin: page；源板两张铺铜（GND 平面 + LDO 输出那一小片 +3.3V）按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - '**I²C 双向电平转换**：U1 TXS0102DCU（8 脚 VSSOP）。3 件 / 7 网：4 个出块端口（HSDA / HSCL / SDA / SCL）+ 3 条轨（+3.3V
+      / BULK_VIN / GND）。'
+    - 电压方向与本页直觉相反：VCCA(3)=+3.3V、OE(6) 也接 +3.3V（常使能）、VCCB(7)=BULK_VIN(5V)；A 侧（低压侧）= HSDA(5) / HSCL(4)，B
+      侧（高压侧）= SDA(8) / SCL(1)。也就是说**插座侧看到的是 3.3V 摆幅，测试排针这一侧才是 5V 摆幅**。
+    - ⚠ 块里**没有任何上拉电阻**，页上也没有——I²C 的上拉必须由总线两端（主机 / 内存条）提供。复用前先确认线上有上拉，否则两侧都是开漏悬空，读出来全是高。
+    - ⚠ OE 焊死在 VCCA 上 ⇒ 一上电就导通，**没有隔离功能**。要做热插拔/断电保护，得自己把 OE 引出去控制。
+    - C6 在 VCCB/GND、C7 在 VCCA/GND，两颗都是 **10µF**（不是常见的 0.1µF）——TXS 系列靠一次性加速管推边沿，电源要能瞬间出力；换小容值会把上升沿拖慢。
+    - ⚠ 网名：本板的 5V 供电在**页上有三个名字**（`BULK_VIN` 全局标签 / `+5V` 电源符号 / `VOUT` 全局标签），kicad-cli 把它们当同一张网、名取 `BULK_VIN`；卡里的网名一律用
+      `BULK_VIN`，而块内原理图上剩的可能是其中另一个名字——同一个网，不是两根轨。
+    - 铜 9 段 + 0 孔（F 16）；死铜删 6 段/孔；口岸切口 7 处、走线出口 7 处；削剩残迹留 5 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（本板两张都是平面网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里 3 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 3 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。
+    - 借道块外器件焊盘换层 1 处（+3.3V->R9.2）——那孔不在块里，块单看这几处是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 2 条，**全是 GND**（4 个焊盘点名）——源板靠铺铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 7 + 悬空过孔
+      1 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 248 条。

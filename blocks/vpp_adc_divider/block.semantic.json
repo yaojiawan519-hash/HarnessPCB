@@ -1,0 +1,52 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "三颗件的**高压分压 + 钳位**：R22 9K1 与 R24 3K3 把 VPP 分到 VPP_ADC（分压比 3.3/(9.1+3.3)\n  ≈ 0.266，也就是 VPP 到 18V 时 ADC 侧约 4.8V——**可见单靠分压是超 3.3V 的**），\n  D4（标 4.7V 的 SOD-123 齐纳）把 VPP_ADC 钳在 4.7V，替下游 ADC 的钳位二极管挡电流。\n  复用要点：① 这是一块**给\"读高压\"用的接口电路**，精度取决于两颗电阻的比值，不是绝对值；\n  ② 齐纳换成 3.3V 供电的目标板时，D4 要跟着降到 3.0~3.3V，否则 ADC 脚还是被打；\n  ③ 分压电阻是 0805，直接加高压时注意 R22 上的功耗（18V 时分压网络持续耗约 1.2mA）。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "VPP",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R22/1",
+      "note": "被测高压（来自 vpp_boost 的输出）"
+    },
+    {
+      "name": "VPP_ADC",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "D4/1",
+      "note": "分压并钳位后的采样点，接主控 ADC；上限由 D4（标 4.7V）决定"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "R22",
+    "max_mm": 5.0,
+    "rationale": "三颗件挤在 4.59mm 内（R24 4.00mm、D4 4.59mm）。分压臂 R22/R24 必须紧贴（中间那段\n    就是 VPP_ADC 的走线），齐纳 D4 跟着 VPP_ADC 节点走。这块的约束是\"VPP 节点别拉长\"，\n    不是\"三颗排整齐\"。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "3 件 / 3 网：2 个信号口岸（VPP 进、VPP_ADC 出）+ 轨 GND，**没有块内网**——三颗件串在一条分压链上。",
+    "分压比 = 3.3K/(9.1K+3.3K) ≈ 0.266：VPP 到 18V 时 ADC 侧理论 4.8V，**已经超过 3.3V**——所以 D4（标 4.7V 的齐纳）不是可选项，它在替下游 ADC 挡电流。",
+    "换到 3.3V 系统时 D4 要降到 3.0~3.3V，否则 ADC 脚还是被打；分压电阻的比值决定读数，绝对值只影响耗流（18V 时整条链约 1.2mA）。",
+    "铜 6 段 + 0 孔（B 1 / F 9）；死铜删 13 段/孔；口岸切口 2 处、走线出口 5 处；铺铜带走 0 张（源板那张 GND 铺铜按「块内不带铺铜」整张删掉，拼板时由整板铺铜接上）。",
+    "块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "kicad-cli DRC：isolated_copper 0；未连通 1 条，全是 GND 焊盘（源板靠铺铜连，块里没铺铜）；其余 5 条（track_dangling×3、lib_footprint_mismatch×2）是源板自带 + 切块断头——源板本身 23 条违规 / 未连通 0（lib_footprint_mismatch×20、silk_over_copper×1、silk_overlap×1、starved_thermal×1），块里能对上的都是从那儿继承的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 vpp-maker-rev6-ian.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 GND 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "3 件 / 3 网 / 端口 2 + 轨 1；铜 6 段 + 0 孔；死铜删 13；口岸切口 2；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

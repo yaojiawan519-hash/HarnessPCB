@@ -1,0 +1,10 @@
+{
+  "block": "sim_socket_te5145",
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 sim-rev3c.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 /SIM_GND 灌铜是跨块的**口岸网**，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）",
+  "parts_xy": {
+    "J1": [
+      115.57,
+      97.79
+    ]
+  }
+}

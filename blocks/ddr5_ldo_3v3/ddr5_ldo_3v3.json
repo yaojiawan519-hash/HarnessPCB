@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "10uf/6.3v 1k me6206a33xg",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "ddr5_ldo_3v3"
+  }
+}

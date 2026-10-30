@@ -1,0 +1,178 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "vpp_boost",
+ "interface": [
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C13-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "输入轨：Bus Pirate 给的 5V（这块的电源入口），同时给 L1 与指示灯供电"
+  },
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C15-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "升压输出（可达 18V，由块外分压+固件 PWM 闭环控），出口到 J4.1 与 vpp_switch"
+  },
+  {
+   "net": "VPP_PWM",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q4-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "开关管 Q4 的基极驱动，直接由主控 IO 出方波（块内无限流电阻）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D3",
+   "lib": "Device:D_Zener_Small",
+   "value": "BZT52C18W (18V)",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "x": 123.19,
+   "y": 111.76
+  },
+  {
+   "ref": "C14",
+   "lib": "Device:C_Polarized",
+   "value": "10uF/16V/CASE-A",
+   "footprint": "Capacitor_Tantalum_SMD:CP_EIA-3216-18_Kemet-A",
+   "x": 72.39,
+   "y": 118.11
+  },
+  {
+   "ref": "C15",
+   "lib": "Device:C_Polarized",
+   "value": "47uF/25V/CASE-D",
+   "footprint": "Capacitor_Tantalum_SMD:CP_EIA-7343-31_Kemet-D",
+   "x": 114.3,
+   "y": 118.11
+  },
+  {
+   "ref": "C13",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder",
+   "x": 59.69,
+   "y": 118.11
+  },
+  {
+   "ref": "Q4",
+   "lib": "Transistor_BJT:MMBT3904",
+   "value": "MMBT3904",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 93.98,
+   "y": 119.38
+  },
+  {
+   "ref": "L1",
+   "lib": "Device:L",
+   "value": "680uH",
+   "footprint": "Library:L_YP0504",
+   "x": 82.55,
+   "y": 109.22
+  },
+  {
+   "ref": "D2",
+   "lib": "Diode:BAT54W",
+   "value": "BAT54W",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 105.41,
+   "y": 109.22
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C13",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C14",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C15",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "D3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Q4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C13",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C14",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "L1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C15",
+   "pin": "1",
+   "net": "VPP"
+  },
+  {
+   "ref": "D2",
+   "pin": "3",
+   "net": "VPP"
+  },
+  {
+   "ref": "D3",
+   "pin": "1",
+   "net": "VPP"
+  },
+  {
+   "ref": "Q4",
+   "pin": "1",
+   "net": "VPP_PWM"
+  },
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "_vpp_boost_N1"
+  },
+  {
+   "ref": "L1",
+   "pin": "2",
+   "net": "_vpp_boost_N1"
+  },
+  {
+   "ref": "Q4",
+   "pin": "3",
+   "net": "_vpp_boost_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

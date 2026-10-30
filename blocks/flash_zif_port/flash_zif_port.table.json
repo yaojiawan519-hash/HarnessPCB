@@ -1,0 +1,264 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "flash_zif_port",
+ "interface": [
+  {
+   "net": "CDI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 6 脚 → 芯片 **MISO**（`CDI` 是主控侧叫法）；J1.6 与 J2.6 同网"
+  },
+  {
+   "net": "CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 9 脚 → 芯片 **MOSI**（Controller Data Out）；J1.9 / J2.9 同网"
+  },
+  {
+   "net": "CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 7 脚（片选，低有效）"
+  },
+  {
+   "net": "GND_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW2-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "⚠ 出口脚是 **SW2 的中间脚**：芯片地从这里出去，进 SW2 前在 GND（第 10 脚）/ GND_PIN（第 3 脚）之间二选一"
+  },
+  {
+   "net": "HOLD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 4 脚（HOLD# / RESET#）"
+  },
+  {
+   "net": "SCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 8 脚（时钟）"
+  },
+  {
+   "net": "VCC_CHIP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "⚠ 出口脚是 **SW1 的中间脚**（不是排针脚）：芯片电源从这里出去，进 SW1 前在 VOUT / VCC_PIN 之间二选一"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "第 1 脚：主机 VOUT 直入，也是电源灯的取电点（灯在另一个块里）；SW1.3 也在这根网上"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "SW1",
+   "lib": "Switch:SW_SPDT",
+   "value": "SW_SPDT",
+   "footprint": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "x": 87.63,
+   "y": 82.55
+  },
+  {
+   "ref": "SW2",
+   "lib": "Switch:SW_SPDT",
+   "value": "SW_SPDT",
+   "footprint": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "x": 92.71,
+   "y": 127.0
+  },
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 92.71,
+   "y": 106.68
+  },
+  {
+   "ref": "J1",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 81.28,
+   "y": 106.68
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "6",
+   "net": "CDI"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "CDI"
+  },
+  {
+   "ref": "J1",
+   "pin": "9",
+   "net": "CDO"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "CDO"
+  },
+  {
+   "ref": "J1",
+   "pin": "7",
+   "net": "CS"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "CS"
+  },
+  {
+   "ref": "J1",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "SW2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "SW2",
+   "pin": "2",
+   "net": "GND_CHIP"
+  },
+  {
+   "ref": "J1",
+   "pin": "3",
+   "net": "GND_PIN"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "GND_PIN"
+  },
+  {
+   "ref": "SW2",
+   "pin": "3",
+   "net": "GND_PIN"
+  },
+  {
+   "ref": "J1",
+   "pin": "4",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "HOLD"
+  },
+  {
+   "ref": "J1",
+   "pin": "8",
+   "net": "SCLK"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "SCLK"
+  },
+  {
+   "ref": "SW1",
+   "pin": "2",
+   "net": "VCC_CHIP"
+  },
+  {
+   "ref": "J1",
+   "pin": "2",
+   "net": "VCC_PIN"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "VCC_PIN"
+  },
+  {
+   "ref": "SW1",
+   "pin": "1",
+   "net": "VCC_PIN"
+  },
+  {
+   "ref": "J1",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "SW1",
+   "pin": "3",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J1",
+   "pin": "5",
+   "net": "WP"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "WP"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

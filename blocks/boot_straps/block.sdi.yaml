@@ -1,0 +1,195 @@
+project:
+  kind: block
+  name: boot_straps
+  version: sdi/1
+defs:
+  boot_straps:
+    category: interface
+    rationale: "七个\"装不装\"的电阻，决定这颗 FPGA 怎么被编程：\n  ① USB 直连还是经 FPGA——R21（1.5K，DNI）、R22/R23（两个 OPEN 焊盘跳线，按页上批注\n\
+      \     \"Install R22, R23 (68 Ohms)\"装成 68Ω）；\n  ② SPI 直通还是交换——R12/R13 装 0Ω、R11/R27 是 DNI，四选二就能把\
+      \ FLASH 的\n     MISO/MOSI 与 FT232H、FPGA 之间接成直通或交叉。\n  **这块一条轨都没有**（9 个网全是信号口岸）：它的全部作用就是重排连接关系。\n\
+      \  复用要点：这是\"装配选项块\"，画在板上是为了让四种模式共用一张板；\n  目标板若不需要模式切换，整块可以删掉，把选定的两个 0Ω 直接画成铜。"
+    ports:
+    - name: FLASH_MISO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R11-2
+        connector: false
+      pin: R11/2
+      note: SPI 引导拉绳（R11）
+    - name: FLASH_MOSI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R12-2
+        connector: false
+      pin: R12/2
+      note: SPI 引导拉绳（R12）
+    - name: FPGA_SI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R13-2
+        connector: false
+      pin: R13/2
+      note: 配置口引导拉绳（R13）
+    - name: FPGA_SO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R11-1
+        connector: false
+      pin: R11/1
+      note: 配置口引导拉绳（R11）
+    - name: IOB_22A
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R21-2
+        connector: false
+      pin: R21/2
+      note: IO 引导拉绳（R21）
+    - name: IOB_23B
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R22-1
+        connector: false
+      pin: R22/1
+      note: IO 引导拉绳（R22）
+    - name: IOB_24A
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R23-1
+        connector: false
+      pin: R23/1
+      note: IO 引导拉绳（R23）
+    - name: USB_M
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R23-2
+        connector: false
+      pin: R23/2
+      note: USB D- 的引导拉绳（R23 串进去）
+    - name: USB_P
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R21-1
+        connector: false
+      pin: R21/1
+      note: USB D+ 的引导拉绳（R21 串进去）
+    rails: []
+    parts:
+    - ref: R22
+      lib: UPduino_v3.0:Device_R
+      value: OPEN
+      footprint: vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm
+    - ref: R23
+      lib: UPduino_v3.0:Device_R
+      value: OPEN
+      footprint: vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm
+    - ref: R21
+      lib: UPduino_v3.0:Device_R
+      value: DNI
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R13
+      lib: UPduino_v3.0:Device_R
+      value: '0'
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R12
+      lib: UPduino_v3.0:Device_R
+      value: '0'
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R11
+      lib: UPduino_v3.0:Device_R
+      value: DNI
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: R27
+      lib: UPduino_v3.0:Device_R
+      value: DNI
+      footprint: Resistor_SMD:R_0603_1608Metric
+    conns:
+    - ref: R11
+      pin: '2'
+      net: FLASH_MISO
+    - ref: R13
+      pin: '1'
+      net: FLASH_MISO
+    - ref: R12
+      pin: '2'
+      net: FLASH_MOSI
+    - ref: R27
+      pin: '1'
+      net: FLASH_MOSI
+    - ref: R13
+      pin: '2'
+      net: FPGA_SI
+    - ref: R27
+      pin: '2'
+      net: FPGA_SI
+    - ref: R11
+      pin: '1'
+      net: FPGA_SO
+    - ref: R12
+      pin: '1'
+      net: FPGA_SO
+    - ref: R21
+      pin: '2'
+      net: IOB_22A
+    - ref: R22
+      pin: '1'
+      net: IOB_23B
+    - ref: R23
+      pin: '1'
+      net: IOB_24A
+    - ref: R23
+      pin: '2'
+      net: USB_M
+    - ref: R21
+      pin: '1'
+      net: USB_P
+    - ref: R22
+      pin: '2'
+      net: USB_P
+    placement_prior:
+      anchor: R21
+      max_mm: 24.0
+      rationale: "两组隔了 20mm：USB 复用的 R21/R22/R23 挤在 2.95mm 内（R22 1.91 / R23 2.95），\n    SPI 交换的 R27/R13/R12/R11\
+        \ 又挤在 21~22mm 处（R27 20.65 / R13 21.24 / R12 21.66 /\n    R11 22.19）。**这不是一块，是两个簇**——页上标题把它们归在一起，几何上并不在一起。\n\
+        \    页上的批注写了原因：\"Layout with overlapping resistors so that only horizontal/vertical\n    resistors\
+        \ need to be installed\"：R22/R23 的焊盘刻意做成叠放，横着装=短路、竖着装=68Ω。\n    复用时别照抄这个叠放技巧（DRC 会报重叠），要么做两颗独立电阻。"
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: UPduino v3.01
+      license: MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc
+      license_tier: permissive
+      author: TinyVision.ai（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 7 件 / 9 网 / 端口 9 + 轨 0；铜 58 段 + 7 孔；死铜删 6；口岸切口 12；窗口 1.75mm；DRC isolated_copper 0；卡↔板门 ①~⑤
+        全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板的铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 7 件 / 9 网 / **0 条轨**：全部是信号引脚的引导拉绳（上/下拉电阻），所以这块没有电源口岸——它只借别人的网。
+    - 两块**相距 20mm 的拉绳簇**（这就是它 28.30×9.98mm 这么长的原因）：一侧是 FLASH_MISO/FLASH_MOSI/FPGA_SI/FPGA_SO，另一侧是 IOB_22A/IOB_23B/IOB_24A/USB_P/USB_M。
+    - 铜 58 段 + 7 孔（B.Cu 64 / F.Cu 28 / In1.Cu 1 / In2.Cu 4）；死铜删 6 段/孔；口岸切口 12 处。
+    - 窗口外扩到 1.75mm（3 个过孔在件框外，都在 USB_P/USB_M 那侧）。
+    - USB_P/USB_M 借道 J1.2/J1.3 与 TP20/TP21 换层（块外器件），块单看是断的。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条。
+    - 源板 4 层（F/In1/In2/B），本块内层走线 In1 1 段 + In2 4 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。

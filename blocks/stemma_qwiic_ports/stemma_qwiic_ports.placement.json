@@ -1,0 +1,175 @@
+{
+  "name": "stemma_qwiic_ports",
+  "source": "stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb",
+  "origin_src_mm": [
+    136.0,
+    97.1144
+  ],
+  "size_mm": [
+    6.61,
+    38.6212
+  ],
+  "ports": {
+    "SDA": [
+      "J10",
+      "J11",
+      "J12",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ],
+    "VOUT": [
+      "J10",
+      "J11",
+      "J12",
+      "J6",
+      "J7",
+      "J8",
+      "J9",
+      "R1"
+    ],
+    "SCL": [
+      "J10",
+      "J11",
+      "J12",
+      "J6",
+      "J8",
+      "J9"
+    ],
+    "GND": [
+      "D1",
+      "J10",
+      "J11",
+      "J12",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "SDA",
+      "x": 131.895,
+      "y": 82.355,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 131.895,
+      "y": 112.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 131.895,
+      "y": 92.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 131.895,
+      "y": 102.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 131.895,
+      "y": 115.605,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 133.0038,
+      "y": 77.0038,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 133.775,
+      "y": 117.225,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 15,
+    "vias": 4,
+    "stub_kept": 3,
+    "isolated_deleted": 22,
+    "cut_ends": 7,
+    "exit_points": 7,
+    "segs_by_layer": {
+      "B.Cu": 4,
+      "F.Cu": 11
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 11,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 12,
+      "SDA": 4
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 8,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "SCL",
+          "SDA",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+      "fp": "JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+      "dx": 0.0,
+      "dy": 15.3856,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+      "fp": "JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+      "dx": 0.0,
+      "dy": 5.3856,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+      "fp": "JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+      "dx": 0.0,
+      "dy": -4.6144,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J4",
+      "value": "SM04B-SRSS-TB (HC-1.0-4PWT)",
+      "fp": "JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+      "dx": 0.0,
+      "dy": -14.6144,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

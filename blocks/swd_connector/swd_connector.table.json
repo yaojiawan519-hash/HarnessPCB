@@ -1,0 +1,106 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "swd_connector",
+ "interface": [
+  {
+   "net": "NRST",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C3-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SWCLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-4",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SWDIO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-2",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C3",
+   "lib": "Device:C",
+   "value": "100n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 245.11,
+   "y": 139.7
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_02x05_Odd_Even",
+   "value": "ARM 10pin",
+   "footprint": "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical",
+   "x": 224.79,
+   "y": 141.605
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "GND"
+  },
+  {
+   "ref": "C3",
+   "pin": "1",
+   "net": "NRST"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "NRST"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "SWCLK"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "SWDIO"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

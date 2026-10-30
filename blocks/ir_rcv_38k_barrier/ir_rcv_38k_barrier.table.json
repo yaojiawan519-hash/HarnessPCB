@@ -1,0 +1,113 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ir_rcv_38k_barrier",
+ "interface": [
+  {
+   "net": "IO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R2-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "解调输出：开漏、有 38kHz 载波时拉低；块内 R2 10K 上拉到 VOUT"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "5V 电源，经块内 R1 100R 到模块 VCC（同节点挂 C1 4.7µF）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R2",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 94.615,
+   "y": 67.31
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 85.09,
+   "y": 76.2
+  },
+  {
+   "ref": "R1",
+   "lib": "Device:R",
+   "value": "100R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 85.09,
+   "y": 67.31
+  },
+  {
+   "ref": "U2",
+   "lib": "TSOP4838:TSOP4838",
+   "value": "IRM-3638J7",
+   "footprint": "Library:TSOP18XX",
+   "x": 104.14,
+   "y": 77.47
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "GND",
+   "net": "GND"
+  },
+  {
+   "ref": "R2",
+   "pin": "1",
+   "net": "IO3"
+  },
+  {
+   "ref": "U2",
+   "pin": "OUT",
+   "net": "IO3"
+  },
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "R2",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "_ir_rcv_38k_barrier_N1"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "_ir_rcv_38k_barrier_N1"
+  },
+  {
+   "ref": "U2",
+   "pin": "VCC",
+   "net": "_ir_rcv_38k_barrier_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

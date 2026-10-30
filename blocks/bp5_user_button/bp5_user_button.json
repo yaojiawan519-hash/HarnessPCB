@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "4p_button_sw",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_user_button"
+  }
+}

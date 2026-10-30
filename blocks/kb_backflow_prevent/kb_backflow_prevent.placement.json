@@ -1,0 +1,152 @@
+{
+  "name": "kb_backflow_prevent",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    118.5144,
+    94.3989
+  ],
+  "size_mm": [
+    9.4211,
+    10.0944
+  ],
+  "ports": {
+    "VOUT_BP_SIDE": [
+      "J2",
+      "J3",
+      "R3"
+    ],
+    "VOUT": [
+      "SW1"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "J7",
+      "J8",
+      "J9",
+      "R1",
+      "R5"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 124.025,
+      "y": 96.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT_BP_SIDE",
+      "x": 113.0038,
+      "y": 97.7538,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT_BP_SIDE",
+      "x": 120.7462,
+      "y": 100.2462,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 6,
+    "nets": 6,
+    "copper_segs": 28,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 0,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "B.Cu": 2,
+      "F.Cu": 26
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 3,
+        "vias": 2,
+        "nets": [
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D401",
+      "value": "1N4148WT",
+      "fp": "D_SOD-523",
+      "dx": 0.7356,
+      "dy": -2.8989,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q401",
+      "value": "BCM857BS-7-F",
+      "fp": "SOT-363_SC-70-6",
+      "dx": 0.7356,
+      "dy": -0.3989,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q402",
+      "value": "BC2301T 2.8A",
+      "fp": "SOT-523",
+      "dx": 0.7356,
+      "dy": 2.6011,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R408",
+      "value": "68K",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.5144,
+      "dy": -1.8989,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R410",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": 3.7356,
+      "dy": -1.8989,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R412",
+      "value": "100K",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.5144,
+      "dy": 1.8511,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

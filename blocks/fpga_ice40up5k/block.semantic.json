@@ -1,0 +1,379 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "mcu",
+  "rationale": "iCE40UP5K-SG48（QFN-48 带 5.6×5.6 散热盘）的**裸片最小系统**：三组银行 IO 电压选择 （SJ31/SJ19 选银行 0，SJ20/SJ26 选银行 1/2，都做成可焊跳线而不是 0Ω 电阻）、 内核电源（3V3 经 D2 1N4148 降到 2.5V，再经 SJ34 与板上 1.2V 二者选一）、 PLL 滤波（R6 100Ω + C10/C11）、CRESET 上拉 R5 10K，以及 8 颗去耦 （C5/C6/C14/C15/C22/C35 0.1u 贴脚，C11/C30 4.7u 作大容量）。 出块 42 个信号全是 FPGA 的 IO（`IOT_*`/`IOB_*` 命名照原图）加 3 个控制脚 （CDONE、CRESET_N）与 3 个 LED 驱动（LED_R/G/B，走 bank 2 的 IO）， 轨 +1V2/+3V3/GND。**块内自造三条电源**：+1.2V_CORE（内核）、+2V5（D2 之后）、 VCC_PLL——它们在这里生成、不出块，所以是内部网，不是轨。 复用要点：三组跳线的默认焊法决定 IO 电平，换板时必须先定 3.3V 还是 1.2V 再落铜。",
+  "power_rails": [
+    "+1V2",
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CDONE",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/7",
+      "note": "配置完成（开漏）。另一端在 usb_ftdi_bridge 的 U3.19，led_indicator 的 D1 也挂在这根上"
+    },
+    {
+      "name": "CRESET_N",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R5/1",
+      "note": "配置复位（低有效）。R5 10K 上拉在本块内，另一端到 U3.20 与 J2"
+    },
+    {
+      "name": "FPGA_SI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/17",
+      "note": "配置口串行入（SPI 的 MOSI 侧）"
+    },
+    {
+      "name": "FPGA_SO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/14",
+      "note": "配置口串行出（SPI 的 MISO 侧）"
+    },
+    {
+      "name": "FT_SCK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/15",
+      "note": "配置口时钟，源头是 FT232H 的 U3.13"
+    },
+    {
+      "name": "FT_SSn",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/16",
+      "note": "配置口片选，源头是 FT232H 的 U3.17"
+    },
+    {
+      "name": "IOB_0A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/46",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_13B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/6",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_16A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/9",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_18A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/10",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_20A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/11",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_22A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/12",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_23B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/21",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_24A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/13",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_25B_G3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/20",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_29B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/19",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_2A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/47",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_31B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/18",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_3B_G6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/44",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_4A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/48",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_5B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/45",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_6A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/2",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_8A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/4",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOB_9B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/3",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_36B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/25",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_37A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/23",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_38B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/27",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_39A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/26",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_41A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/28",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_42B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/31",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_43A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/32",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_44B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/34",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_45A_G1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/37",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_46B_G0",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/35",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_48B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/36",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_49A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/43",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_50B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/38",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "IOT_51A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/42",
+      "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+    },
+    {
+      "name": "LED_B",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/40"
+    },
+    {
+      "name": "LED_G",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/39"
+    },
+    {
+      "name": "LED_R",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U2/41"
+    },
+    {
+      "name": "VIO_BANK_0_2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SJ19/1",
+      "note": "银行 0/2 的 IO 电压选择网：SJ19/SJ31 决定这组 IO 吃 3V3 还是 1V2"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U2",
+    "max_mm": 22.0,
+    "rationale": "8 颗去耦全在芯片 5mm 内（C14 2.61 / C11 2.65 / C15 2.76 / C30 2.80 / C5 3.02 / C10 3.10 / C6 3.51 / C22 3.98 mm，到芯片中心），R5 3.77、PLL 的 R6 5.61、 内核二极管 D2 6.82、SJ34 7.16 mm。三组电压选择跳线故意放在块外缘 （SJ31/SJ20 10.8mm、SJ19/SJ26 12.58mm）——它们是**装配时才动的**，不能压在芯片嘴边。 复用时这张图的判据是\"去耦贴脚 + 跳线在外缘\"，不是\"照抄 25.16×9.51 的长条比例\"。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "+1.2V_CORE",
+    "+2V5",
+    "VCC_PLL",
+    "_fpga_ice40up5k_N1",
+    "_fpga_ice40up5k_N2"
+  ],
+  "notes": [
+    "20 件 / 50 网：42 个信号口岸 + 轨 +1V2/+3V3/GND；U2 在原理图里是**四个单元**（银行 0/1/2 与电源），卡里因此有 23 条 parts 记录、20 个位号——按位号算件数是 20。",
+    "块内自造三条电源：+1.2V_CORE（内核）、+2V5（D2 之后）、VCC_PLL。它们在这里生成、不出块，所以记成 internal_nets 而不是轨。",
+    "铜 242 段 + 29 孔（B.Cu 179 / F.Cu 240 / In2.Cu 26）；死铜删 65 段/孔；口岸切口 44 处。内部网 +1.2V_CORE 的铜伸到件框外 1.64mm，窗口按它加宽到 1.69；另有 7 个过孔落在窗口外、却连着块内的铜，窗口再加到 **2.29mm**。",
+    "U2.3/U2.4（IOB_9B / IOB_8A）的铜从芯片出来走 5.84mm，一直扎进 **J3 排针的孔**（J3.19 / J3.18，属 connectors_io 块）——这是这两只脚在块里唯一的一段铜，所以按\"焊盘自己出来的铜接口\"照留 2 段残迹，不删。",
+    "有 5 处信号借道**块外器件**的孔换层（FT_SCK→R9.1/U5.6、FT_SSn→U5.1、LED_G→D3.3、LED_R→D3.4）：块单看这几处是断的，拼板时插上就通。",
+    "kicad-cli DRC：isolated_copper 0；未连通 2 条，都是轨（存源板靠铺铜连，块里没铺铜）；其余违规是上游板自带的（源板本身 738 条，U3 散热盘无网 70 条一类）。",
+    "源板 4 层（F/In1/In2/B），本块内层走线 In2 26 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "UPduino v3.01",
+    "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+    "license_tier": "permissive",
+    "author": "TinyVision.ai（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "20 件 / 50 网 / 端口 42 + 轨 3；内网 3；铜 242 段 + 29 孔；死铜删 65；口岸切口 44；窗口 2.29mm；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

@@ -1,0 +1,155 @@
+project:
+  kind: block
+  name: bp5_current_sense
+  version: sdi/1
+defs:
+  bp5_current_sense:
+    category: analog
+    rationale: '**高边电流检测（作者标题 Current sense）**：R601 = 0R2（2512）串在 `+VUSB → VREG_VIN` 之间做分流电阻；U601 = `LMV321A`
+      差分放大，R602/R603 各 1K 进、 R604/R605 各 33K 反馈，**增益 33 → 6.6 V/A**（0.5A 输出顶到 3.3V，正好是 MCU 的 ADC 满量程）。
+      C601 2.2µF / C602 0.1µF 给 U601 自己供电，C603/C605 在限流比较器那块。 8 件 / 6 网。 ⚠ **量的是 `+VUSB` 侧（USB 进来的 5V）**，不是
+      `VREF_VOUT` 那侧，所以它测的是 BP5 自己从 USB 抽的电流，不是目标板吃的。拼板要做别的量程，得改 R601 或 R604/R605。 ⚠ 输出 `CURRENT_SENSE`
+      是**模拟电压**，去 `micro-rp2040` 页的 ADC。'
+    ports:
+    - name: CURRENT_SENSE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R605-1
+        connector: false
+      pin: R605/1
+      note: 模拟电压（6.6 V/A），去 `micro-rp2040` 的 ADC，同时进 `bp5_current_limit` 比较器
+    - name: VREG_VIN
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R601-2
+        connector: false
+      pin: R601/2
+      note: R601 下游，去 `bp5_vreg_adj_ldo` 的 VIN
+    rails:
+    - +VUSB
+    - GND
+    parts:
+    - ref: R602
+      lib: Device:R_Small
+      value: 1K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R601
+      lib: Device:R
+      value: 0R2
+      footprint: Resistor_SMD:R_2512_6332Metric_Pad1.40x3.35mm_HandSolder
+    - ref: R603
+      lib: Device:R_Small
+      value: 1K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R604
+      lib: Device:R_Small
+      value: 33K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R605
+      lib: Device:R_Small
+      value: 33K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: C602
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C601
+      lib: Device:C_Small
+      value: 2.2uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U601
+      lib: Comparator:LMV331
+      value: LMV321A
+      footprint: Package_TO_SOT_SMD:SOT-23-5
+    conns:
+    - ref: C601
+      pin: '1'
+      net: +VUSB
+    - ref: C602
+      pin: '2'
+      net: +VUSB
+    - ref: R601
+      pin: '1'
+      net: +VUSB
+    - ref: R602
+      pin: '2'
+      net: +VUSB
+    - ref: U601
+      pin: '5'
+      net: +VUSB
+    - ref: R605
+      pin: '1'
+      net: CURRENT_SENSE
+    - ref: U601
+      pin: '4'
+      net: CURRENT_SENSE
+    - ref: C601
+      pin: '2'
+      net: GND
+    - ref: C602
+      pin: '1'
+      net: GND
+    - ref: R604
+      pin: '1'
+      net: GND
+    - ref: U601
+      pin: '2'
+      net: GND
+    - ref: R601
+      pin: '2'
+      net: VREG_VIN
+    - ref: R603
+      pin: '2'
+      net: VREG_VIN
+    - ref: R602
+      pin: '1'
+      net: _bp5_current_sense_N1
+    - ref: R604
+      pin: '2'
+      net: _bp5_current_sense_N1
+    - ref: U601
+      pin: '1'
+      net: _bp5_current_sense_N1
+    - ref: R603
+      pin: '1'
+      net: _bp5_current_sense_N2
+    - ref: R605
+      pin: '2'
+      net: _bp5_current_sense_N2
+    - ref: U601
+      pin: '3'
+      net: _bp5_current_sense_N2
+    placement_prior: {}
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _bp5_current_sense_N1
+    - _bp5_current_sense_N2
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 8 件 / 6 网 / 端口 2 + 轨 2；铜 22 段 + 1 孔；死铜删 19；口岸切口 2；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 原样扣，4 层板保留原层；R601 是
+      2512 大脚距分流电阻，无背面件）
+    notes:
+    - 8 件 / 6 网：2 个信号口岸（CURRENT_SENSE 出、VREG_VIN 出）+ 轨 +VUSB/GND；另外 2 张无名网是放大器的两个输入节点（`Net-(U601-4)` 这类），不出块。
+    - R601 = 0R2（2512 封装，专门为大电流选的）；U601 = `LMV321A` 差分配置：R602/R603 各 1K 进、R604/R605 各 33K 反馈 ⇒ **增益 33**，跨
+      R601 的 20mV/A 放大成 **6.6 V/A**，0.5A 输出时顶到 3.3V（正好是 MCU 的 ADC 满量程）。
+    - ⚠ **量的是 `+VUSB` 侧（USB 进来的 5V），不是 `VREF_VOUT` 那侧**：它测的是 BP5 自己从 USB 抽的电流，不是目标板吃的。拼板要做别的量程，改 R601
+      或 R604/R605。
+    - ⚠ 输出 `CURRENT_SENSE` 是**模拟电压**（卡里 class 记 digital 是模板默认，这块实际是 ADC 输入），去 `micro-rp2040` 页读。
+    - 板 9.87×10.07mm；铜 22 段 + 1 孔（B 1 / F 23 / In2 3）；死铜删 19 段/孔；口岸切口 2 处、走线出口 5 处；源板在本块这几张网上铺过铜（+VUSB、GND、VREG_VIN），按「块内不带铺铜」**整张删**，拼板时由整板铺铜接上；sdi.spur
+      清掉毛刺 11 段 + 6 孔（网 +VUSB）。
+    - 块里 5 个平面网焊盘一根铜都没有（源板就靠铺铜连它们），拼板时由整板铺铜接上。
+    - 没有借道块外焊盘的铜：本块所有连接都在块内闭合（口岸靠切口引出）。
+    - kicad-cli DRC：isolated_copper 0、clearance 0、shorting 0；未连通 5 条：5 条落在源板铺过铜的网（+VUSB×2、GND×3）——块里不带铺铜，拼板时由整板铺铜接上；违规
+      2 条全部是 `track_dangling`——那是块的口岸断头（铜走到窗口边就停），不是毛刺（`sdi.spur` 已把毛刺清零）。明细：track_dangling×2。

@@ -1,0 +1,88 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "W25Q32JVSSIM（4MB SPI NOR，SOIC-8）加四个上拉和两个跳线。上拉是照着\n  \"脚悬空时电平要确定\"配的：R8 10K 在 CS 上、R9 10K 在 CLK 上、R14/R15 10K 在 IO2/IO3\n  上（后两颗只在 qSPI 模式下有意义）。SJ24/SJ25 两个焊盘跳线把 FLASH 的 IO2/IO3\n  接进 FPGA 的 IOB_18A / IOB_25B_G3 —— **默认 OPEN = 单线 SPI**，装上去才是 qSPI。\n  出块 6 个信号：FLASH_MISO/MOSI、FT_SCK/FT_SSn（这颗 FLASH 和 FT232H 共用 SPI 总线）、\n  IOB_18A、IOB_25B_G3。复用要点：两个跳线决定 SPI 还是 qSPI，和 FPGA 侧一起改。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "FLASH_MISO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U5/2",
+      "note": "SPI 数据（flash→主）"
+    },
+    {
+      "name": "FLASH_MOSI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U5/5",
+      "note": "SPI 数据（主→flash）"
+    },
+    {
+      "name": "FT_SCK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R9/1",
+      "note": "SPI 时钟，串 R9 到 U5.6"
+    },
+    {
+      "name": "FT_SSn",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R8/1",
+      "note": "SPI 片选，串 R8 到 U5.1"
+    },
+    {
+      "name": "IOB_18A",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SJ24/2",
+      "note": "经 SJ24 选进 IO 的 bank 电压域"
+    },
+    {
+      "name": "IOB_25B_G3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SJ25/2",
+      "note": "经 SJ25 选进 IO 的 bank 电压域"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U5",
+    "max_mm": 12.0,
+    "rationale": "U5 是中心，四颗上拉贴得最近（4.29~6.54mm：R15 5.29 / R9 5.54 / R14 6.28 / R8 6.54），\n    去耦 C17 6.51mm，两个跳线 SJ25 4.29 / SJ24 5.62mm。整块 10.44×14.70mm 是\n    **竖长**的——因为 SOIC-8 转 270° 后脚朝上下、上拉排在两侧。照抄这个形状没有意义，\n    要照抄的是\"上拉贴片、跳线在外侧\"这一条。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_flash_qspi_N1",
+    "_flash_qspi_N2"
+  ],
+  "notes": [
+    "8 件 / 10 网：6 个信号口岸 + 轨 +3V3/GND。U5 是 SPI/QSPI flash，R8/R9 是串在片选与时钟上的小电阻（不是上拉）。",
+    "铜 92 段 + 10 孔（B.Cu 21 / F.Cu 81 / In2.Cu 10）；死铜删 22 段/孔；口岸切口 11 处。",
+    "SJ24/SJ25 把两根 IO 选进 bank 电压域，和 fpga 块里的三组跳线是同一套机制。",
+    "kicad-cli DRC：isolated_copper 0；未连通 2 条，都是轨。",
+    "源板 4 层（F/In1/In2/B），本块内层走线 In2 10 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "UPduino v3.01",
+    "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+    "license_tier": "permissive",
+    "author": "TinyVision.ai（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "8 件 / 10 网 / 端口 6 + 轨 2；铜 92 段 + 10 孔；死铜删 22；口岸切口 11；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

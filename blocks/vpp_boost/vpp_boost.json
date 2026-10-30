@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 10uf/16v/case-a 47uf/25v/case-d 680uh bat54w bzt52c18w (18v) mmbt3904",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "vpp_boost"
+  }
+}

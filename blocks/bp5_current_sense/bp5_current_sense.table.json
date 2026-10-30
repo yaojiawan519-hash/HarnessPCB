@@ -1,0 +1,196 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_current_sense",
+ "interface": [
+  {
+   "net": "CURRENT_SENSE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R605-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "模拟电压（6.6 V/A），去 `micro-rp2040` 的 ADC，同时进 `bp5_current_limit` 比较器"
+  },
+  {
+   "net": "VREG_VIN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R601-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "R601 下游，去 `bp5_vreg_adj_ldo` 的 VIN"
+  }
+ ],
+ "power_rails": [
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R602",
+   "lib": "Device:R_Small",
+   "value": "1K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 29.21,
+   "y": 38.1
+  },
+  {
+   "ref": "R601",
+   "lib": "Device:R",
+   "value": "0R2",
+   "footprint": "Resistor_SMD:R_2512_6332Metric_Pad1.40x3.35mm_HandSolder",
+   "x": 21.59,
+   "y": 41.91
+  },
+  {
+   "ref": "R603",
+   "lib": "Device:R_Small",
+   "value": "1K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 29.21,
+   "y": 45.72
+  },
+  {
+   "ref": "R604",
+   "lib": "Device:R_Small",
+   "value": "33K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 36.83,
+   "y": 53.34
+  },
+  {
+   "ref": "R605",
+   "lib": "Device:R_Small",
+   "value": "33K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 45.72,
+   "y": 57.15
+  },
+  {
+   "ref": "C602",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 50.8,
+   "y": 27.94
+  },
+  {
+   "ref": "C601",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 40.64,
+   "y": 27.94
+  },
+  {
+   "ref": "U601",
+   "lib": "Comparator:LMV331",
+   "value": "LMV321A",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "x": 48.26,
+   "y": 41.91
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C601",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C602",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R601",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R602",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U601",
+   "pin": "5",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R605",
+   "pin": "1",
+   "net": "CURRENT_SENSE"
+  },
+  {
+   "ref": "U601",
+   "pin": "4",
+   "net": "CURRENT_SENSE"
+  },
+  {
+   "ref": "C601",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C602",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R604",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U601",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R601",
+   "pin": "2",
+   "net": "VREG_VIN"
+  },
+  {
+   "ref": "R603",
+   "pin": "2",
+   "net": "VREG_VIN"
+  },
+  {
+   "ref": "R602",
+   "pin": "1",
+   "net": "_bp5_current_sense_N1"
+  },
+  {
+   "ref": "R604",
+   "pin": "2",
+   "net": "_bp5_current_sense_N1"
+  },
+  {
+   "ref": "U601",
+   "pin": "1",
+   "net": "_bp5_current_sense_N1"
+  },
+  {
+   "ref": "R603",
+   "pin": "1",
+   "net": "_bp5_current_sense_N2"
+  },
+  {
+   "ref": "R605",
+   "pin": "2",
+   "net": "_bp5_current_sense_N2"
+  },
+  {
+   "ref": "U601",
+   "pin": "3",
+   "net": "_bp5_current_sense_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

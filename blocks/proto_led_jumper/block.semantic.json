@@ -1,0 +1,36 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "indicator",
+  "rationale": "**反并联双色 LED + 限流，两头都引到排针上**：J1 是 1×04 排针，`1=GND`、`4=VOUT` 两头固定； `2`、`3` 之间串的是 `J1.2 — D3 — R1 2K — J1.3` 这一条**悬空链** （`Net-(D3-AK)` = D3.2 + J1.2，`Net-(D3-KA)` = D3.1 + R1.2，`Net-(J1-Pin_3)` = J1.3 + R1.1）。 ⚠ D3 不是共阴/共阳三脚管，是 `Device:LED_Dual_Bidirectional`——**两只 LED 反并联在同一对脚上**， 所以颜色由**电流方向**定：要把 2 和 3 分别接到 4（VOUT）与 1（GND），**两条跳线都插**才亮， 两脚对调就换色；只插一条不会亮（链的另一头还悬着）。 复用要点：R1 只有 2K，按 VOUT 5V、Vf≈2V 算 ≈1.5mA——**指示**用，别当照明； 换管子时确认是\"反并联双色\"这种两脚管，三脚共阴/共阳代不进来。",
+  "power_rails": [
+    "GND",
+    "VOUT"
+  ],
+  "interface": [],
+  "slots": [],
+  "placement_prior": {},
+  "hot_loop": [],
+  "internal_nets": [
+    "_proto_led_jumper_N1",
+    "_proto_led_jumper_N2",
+    "_proto_led_jumper_N3"
+  ],
+  "notes": [
+    "**反并联双色 LED + 限流，两头都引到排针上**：J1（`Conn_01x04_Pin`）的 `1=GND`、`4=VOUT` 是固定两头；`2`、`3` 之间串的是 `J1.2 — D3 — R1 2K — J1.3` 这一条**悬空链**。3 件 / 5 网 / 端口 0 + 轨 2（GND、VOUT）。",
+    "⚠ D3 是 `Device:LED_Dual_Bidirectional`——**两只 LED 反并联在同一对脚上**的两脚管，不是共阴/共阳三脚管。所以颜色由**电流方向**定：把 2 和 3 分别接到 4（VOUT）与 1（GND），**两条跳线都插**才亮，两脚对调换色；只插一条不亮（链的另一头还悬着）。",
+    "R1 只有 2K：按 VOUT 5V、Vf≈2V 算 ≈1.5mA，3.3V 下更小——这是**指示**不是照明。换其它 Vf 的管子不用改电阻，电流差别在 mA 量级的十几分之一。",
+    "三张无名内部网（`_proto_led_jumper_N1..N3`）就是这条链的三段：`Net-(D3-AK)`（D3.2+J1.2）、`Net-(D3-KA)`（D3.1+R1.2）、`Net-(J1-Pin_3)`（J1.3+R1.1）。拼装时按块的实例逐条改名，不要把两块的这个电路并在一起。",
+    "⚠ **只有原理图**：源板 `blank-plank-rev0b.kicad_pcb` 上没有 J1/D3/R1 的封装（板上 1657 个封装里只有 J2/J3/J5 三只排针带位号），作者没给这块做 PCB。复用这块要自己按原理图摆件布线。"
+  ],
+  "geometry_status": "schematic-only —— 只交了原理图：源板 `blank-plank-rev0b.kicad_pcb` 上**没有这几只的封装**（板上 1657 个封装里只有 J2/J3/J5 三只排针带位号，其余是洞洞板焊盘），作者没给它们做 PCB。板级几何（摆放/布线/DRC）未做",
+  "provenance": {
+    "basis": "3 件 / 5 网 / 端口 0 + 轨 2；无 carve counts（老 V3.x 血统，板由 V3.3 引擎生成）",
+    "source": "human:open-source",
+    "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

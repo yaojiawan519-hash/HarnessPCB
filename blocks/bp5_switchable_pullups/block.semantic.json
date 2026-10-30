@@ -1,0 +1,98 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "io",
+  "rationale": "**8 路可开关上拉**：8 只 SI2301 P-MOS（Q300–Q307）栅极并联到 PULLUP_EN，源极全接 VREF_VOUT，漏极各经 RN311/RN312 的 10K 接到 BPIO0–7。PULLUP_EN 拉低 → 8 根扩展线各挂 一个 10K 上拉到 VREF_VOUT；拉高 → 上拉全撤。R313(10K) 是栅极上拉到 +VUSB 的默认关断电阻。 ⚠ 用的基准是 **VREF_VOUT 不是 +3V3**——它是模拟基准（后面 16:1 开关也拿它当量程）， 换成 3V3 会让\"上拉\"变成\"拉偏基准\"，换料/移植时最容易错的一处。 ⚠ 8 只 MOS 是 8 个独立单元（同型号不同位号），不是排阻式的共用体：可以只装一部分， 空着的 BPIO 就真的没有上拉（作者没留跳线，靠装料决定）。",
+  "power_rails": [
+    "+VUSB"
+  ],
+  "interface": [
+    {
+      "name": "BPIO0",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "PULLUP_EN",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "VREF_VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "board",
+    "max_mm": 0,
+    "rationale": "8 只 MOS 沿一条直线排开、栅极朝向同一条 PULLUP_EN 干线，两只排阻贴各自 MOS 的漏极侧， BPIO0–7 出口朝块外同一面（接口一面对外、便于和后面的跟随器段对接）。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_bp5_switchable_pullups_N1",
+    "_bp5_switchable_pullups_N2",
+    "_bp5_switchable_pullups_N3",
+    "_bp5_switchable_pullups_N4",
+    "_bp5_switchable_pullups_N5",
+    "_bp5_switchable_pullups_N6",
+    "_bp5_switchable_pullups_N7",
+    "_bp5_switchable_pullups_N8"
+  ],
+  "geometry_status": "schematic-only —— 只交了原理图，板级几何（摆放/布线/DRC）未做",
+  "provenance": {
+    "source": "human:open-source",
+    "basis": "从 Bus Pirate 5 主板 REV10A 的 `IO-expand-595-mux` 子页裁出，板从整板 `REV10a.kicad_pcb` 按位号原样扣铜（只做平移 + 删死铜）。",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

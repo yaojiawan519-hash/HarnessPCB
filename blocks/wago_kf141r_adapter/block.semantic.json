@@ -1,0 +1,114 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**10 路螺钉端子的快速接线转接板**：J1 是 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`， 本体探出板左沿，套在主机排针上），J2 是 **WAGO KF141R 10 位 2.54mm 卧式弹簧端子** （`dp_connector:wago_kf141r_2.54`）。两只**逐脚 1:1 贯通**，中间没有任何器件—— 这一页的电路就是十根直通线。源页上**一个网标都没有**，所以端口按脚号命名（`P1..P10`）； 同产品线 `plank_io_headers` 那十脚是 `1=VOUT 2=SDA 3=SCL 4=INT 5..9=IO3..IO7 10=GND` （主机侧约定），但本页没有依据，卡里不认。 ⚠ 与 `wago_kf141v_adapter` 的**原理图逐字节相同**，只差 J2 的封装（卧式 r / 立式 v）。",
+  "power_rails": [],
+  "interface": [
+    {
+      "name": "P1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/1",
+      "note": "第 1 脚：与 J2 第 1 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/2",
+      "note": "第 2 脚：与 J2 第 2 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/3",
+      "note": "第 3 脚：与 J2 第 3 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/4",
+      "note": "第 4 脚：与 J2 第 4 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/5",
+      "note": "第 5 脚：与 J2 第 5 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/6",
+      "note": "第 6 脚：与 J2 第 6 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/7",
+      "note": "第 7 脚：与 J2 第 7 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P8",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/8",
+      "note": "第 8 脚：与 J2 第 8 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P9",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/9",
+      "note": "第 9 脚：与 J2 第 9 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    },
+    {
+      "name": "P10",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/10",
+      "note": "第 10 脚：与 J2 第 10 位（KF141 端子）同一张网，1:1 直通，中间没有器件"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J1",
+    "max_mm": 4.0,
+    "rationale": "16.77×30.10mm 的长条：母座贴左沿（本体探出板外）、端子占右半（J2 中心 (146.05, 87.00)、rot −90°）。复用要点：母座开口朝板外，这块板要骑在主机排针上。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**这块板是十根直通线**：J1（1×10 卧式母座 `PinSocket_1x10_P2.54mm_Horizontal`，本体探出板左沿、套在主机排针上）与 J2（WAGO KF141 10 位 2.54mm 弹簧端子 `dp_connector:wago_kf141r_2.54`（卧式 / 侧出线））**逐脚 1:1 贯通**，中间没有任何器件、没有电阻电容、没有保护。2 件 / 10 网 / 端口 10 + 轨 0。",
+    "**源页上一个网标都没有**（10 段导线、0 个标签、0 个电源符号，整页 2 个符号）。所以端口名只能是**脚号** `P1..P10`，出口脚记在 J1 那一侧；J2 第 n 位是同一张网。卡里的名字是本次**命名**的结果，不是从原图抄来的——原图没得抄。",
+    "⚠ 十脚里哪一脚是电源、哪一脚是地，**本页没有任何依据**：作者没放网标、没放电源符号，仓库文档也没写。复用前自己拿万用表对一遍（同产品线的 `plank_io_headers` 卡里，主机排针是 1=VOUT、10=GND，但那不是本页的事实）。",
+    "**几何照原板一字未动**：J1 在 (138.43, 75.57) rot 0，J2 中心 (146.05, 87.00) rot −90°；外形 16.77×30.10mm；件占地 25.52×29.45mm；块板 30.52×34.45mm。块板比板框大，是因为 J1 的母座本体本来就探出板左沿 11.1mm（它要骑在主机排针上），`sdi.pcbcarve` 按件框算板。",
+    "**铜**：全板 30 段、全在 B.Cu，一块没删（没有孤立铜、没有铺铜）；0 过孔、0 铺铜。底板那一层（F.Cu）在源板上本来就是空的——这块板只画了底面走线，拼板时整板铺铜会把它盖住，**要在 F.Cu 上给这十根线留出走路**（或者干脆双面都走）。",
+    "⚠ 与另一块 `wago_kf141v_adapter` 的**原理图逐字节相同**（同样的两只 `Conn_01x10`、同样的十根线），差别只在 J2 的封装：卧式（r，侧出线）↔ 立式（v，顶出线）。选哪块取决于装配方向，不是电路选择。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `wago kf141r adapter adapter.kicad_pcb` 原样扣，坐标 = 源板坐标平移，origin: page；2 层，块内铜全在 B.Cu，无过孔、**无铺铜**（源板本来就没有）；外形 16.77×30.10mm；件占地 25.52×29.45mm；块板 30.52×34.45mm）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "wago kf141r adapter.kicad_sch / .kicad_pcb",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 10 网 / 端口 10 + 轨 0；铜 30 段（全 B.Cu）/ 0 孔 / 0 铺铜；源页无任何网标，端口名 = 脚号（本次命名）"
+  }
+}

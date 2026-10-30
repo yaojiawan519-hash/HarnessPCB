@@ -1,0 +1,155 @@
+project:
+  kind: block
+  name: buttons_pullup
+  version: sdi/1
+defs:
+  buttons_pullup:
+    category: input
+    rationale: 四颗轻触键同一套接法：一端接地、另一端走 BTN1~BTN4，各挂一颗 100K 上拉到 +3V3， 按下把 MCU 的脚拉低。**两个键的双重身份**：BTN2/BTN3
+      还同时接进电源块的 U1(SR2HARU)， 也就是这两根线既当普通按键、又参与电源控制（Watchy 用它做组合键开关机）； BTN3 还引到测试点 TP3(BOOT)——按住它上电就是下载模式。R4/R7/R10/R11
+      都是 100K， 上拉阻值一样大说明四路是对称的普通按键，没有哪一路做特殊处理。
+    ports:
+    - name: BTN1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R4-1
+        connector: false
+      pin: R4/1
+      note: 按下拉低（R4 100K 上拉在块内）
+    - name: BTN2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R7-1
+        connector: false
+      pin: R7/1
+      note: 按下拉低（R7 100K 上拉在块内），兼电源控制
+    - name: BTN3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R10-1
+        connector: false
+      pin: R10/1
+      note: 按下拉低（R10 100K 上拉在块内），兼 BOOT
+    - name: BTN4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R11-1
+        connector: false
+      pin: R11/1
+      note: 按下拉低（R11 100K 上拉在块内）
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: R7
+      lib: Device:R
+      value: 100K
+      footprint: Watchy:R_0402_1005Metric
+    - ref: SW1
+      lib: Switch:SW_SPST
+      value: BTN2
+      footprint: Watchy:EVQPUC
+    - ref: R10
+      lib: Device:R
+      value: 100K
+      footprint: Watchy:R_0402_1005Metric
+    - ref: SW3
+      lib: Switch:SW_SPST
+      value: BTN3
+      footprint: Watchy:EVQPUC
+    - ref: SW4
+      lib: Switch:SW_SPST
+      value: BTN4
+      footprint: Watchy:EVQPUC
+    - ref: SW2
+      lib: Switch:SW_SPST
+      value: BTN1
+      footprint: Watchy:EVQPUC
+    - ref: R4
+      lib: Device:R
+      value: 100K
+      footprint: Watchy:R_0402_1005Metric
+    - ref: R11
+      lib: Device:R
+      value: 100K
+      footprint: Watchy:R_0402_1005Metric
+    conns:
+    - ref: R10
+      pin: '2'
+      net: +3V3
+    - ref: R11
+      pin: '2'
+      net: +3V3
+    - ref: R4
+      pin: '2'
+      net: +3V3
+    - ref: R7
+      pin: '2'
+      net: +3V3
+    - ref: R4
+      pin: '1'
+      net: BTN1
+    - ref: SW2
+      pin: '1'
+      net: BTN1
+    - ref: R7
+      pin: '1'
+      net: BTN2
+    - ref: SW1
+      pin: '1'
+      net: BTN2
+    - ref: R10
+      pin: '1'
+      net: BTN3
+    - ref: SW3
+      pin: '1'
+      net: BTN3
+    - ref: R11
+      pin: '1'
+      net: BTN4
+    - ref: SW4
+      pin: '1'
+      net: BTN4
+    - ref: SW1
+      pin: '2'
+      net: GND
+    - ref: SW2
+      pin: '2'
+      net: GND
+    - ref: SW3
+      pin: '2'
+      net: GND
+    - ref: SW4
+      pin: '2'
+      net: GND
+    placement_prior:
+      anchor: SW1
+      max_mm: 24.0
+      rationale: 按键贴人手能按到的板边（手表上是圆周分布），上拉电阻贴在各自按键旁边。源板实测 SW2→R4 4.18mm、SW4→R11 4.18mm、SW3→R10 4.86mm 都是贴脚，唯独
+        SW1→R7 11.84mm； 四颗键彼此相距 26.4mm（贴两侧表耳），**块的包围盒由人手位决定，不能压缩**。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Watchy
+      license: MIT — 上游 Copyright (c) 2026 SQFMI
+      license_tier: permissive
+      author: SQFMI（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 8 件 / 6 网 / 端口 4 + 轨 2；铜 255 段 + 30 孔；死铜删 104；口岸切口 22；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板的铺铜按"块内不带铺铜"整张删掉）'
+    notes:
+    - 8 件 / 6 网，4 个口岸 + 轨 +3V3/GND；四颗键的接法完全对称（都是 100K 上拉）。
+    - BTN2/BTN3 在块外还有第二个身份（接进电源块的 U1、BTN3 还是 BOOT），这块只管按键本体，别在这儿加去抖电路——去抖归 MCU 侧。
+    - ⚠ 块 40.58×41.07mm 是人手位置决定的（四颗键分居手表两侧），不复用这个尺寸就得重排，`placement_prior` 里写的是原板相对位置，不是约束。
+    - 死铜删 104 段/孔：这一格在源板中央，周围的 GND/+3V3 干线几乎都服务块外器件。

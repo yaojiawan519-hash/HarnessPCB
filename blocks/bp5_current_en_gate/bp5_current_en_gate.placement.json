@@ -1,0 +1,235 @@
+{
+  "name": "bp5_current_en_gate",
+  "source": "REV10a.kicad_pcb",
+  "origin_src_mm": [
+    116.0439,
+    85.7306
+  ],
+  "size_mm": [
+    7.9377,
+    19.5899
+  ],
+  "ports": {
+    "CURRENT_EN_OVERRIDE": [
+      "U502"
+    ],
+    "VREG_EN": [
+      "R401",
+      "U403"
+    ],
+    "CURRENT_DETECT": [
+      "R610",
+      "RN402",
+      "U602"
+    ],
+    "+3V3": [
+      "C103",
+      "C104",
+      "C108",
+      "C110",
+      "C111",
+      "C112",
+      "C113",
+      "C114",
+      "C115",
+      "C116",
+      "C121",
+      "C301",
+      "C302",
+      "C303",
+      "C307",
+      "C308",
+      "C309",
+      "C313",
+      "C314",
+      "C402",
+      "C413",
+      "C414",
+      "C501",
+      "C502",
+      "C605",
+      "D601",
+      "LCD201",
+      "Q601",
+      "R102",
+      "R103",
+      "R501",
+      "R609",
+      "SW102",
+      "U102",
+      "U103",
+      "U105",
+      "U301",
+      "U302",
+      "U303",
+      "U304",
+      "U305",
+      "U306",
+      "U307",
+      "U308",
+      "U401",
+      "U501",
+      "U502",
+      "U602",
+      "U603"
+    ],
+    "CURRENT_EN": [
+      "U502"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "+3V3",
+      "x": 120.8127,
+      "y": 77.405,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 111.275,
+      "y": 81.525,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 120.8127,
+      "y": 80.25,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 111.2857,
+      "y": 75.1357,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VREG_EN",
+      "x": 111.275,
+      "y": 83.9007,
+      "layer": "In1.Cu"
+    },
+    {
+      "net": "VREG_EN",
+      "x": 112.8,
+      "y": 75.1357,
+      "layer": "In1.Cu"
+    },
+    {
+      "net": "CURRENT_DETECT",
+      "x": 115.4,
+      "y": 75.1357,
+      "layer": "In1.Cu"
+    },
+    {
+      "net": "CURRENT_DETECT",
+      "x": 111.275,
+      "y": 81.257,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "CURRENT_EN",
+      "x": 120.8127,
+      "y": 92.964,
+      "layer": "In1.Cu"
+    },
+    {
+      "net": "CURRENT_EN_OVERRIDE",
+      "x": 120.8127,
+      "y": 93.2459,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 5,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 37,
+    "vias": 7,
+    "stub_kept": 0,
+    "isolated_deleted": 0,
+    "cut_ends": 5,
+    "exit_points": 10,
+    "segs_by_layer": {
+      "B.Cu": 7,
+      "F.Cu": 22,
+      "In1.Cu": 7,
+      "In2.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->U102.8": 1
+    },
+    "island_split": {
+      "VREG_EN": 2
+    },
+    "dangling": {
+      "total": 3,
+      "port_cuts": 3,
+      "port_cut_nets": [
+        "+3V3"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 7,
+        "vias": 1,
+        "nets": [
+          "CURRENT_EN",
+          "CURRENT_EN_OVERRIDE"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D602",
+      "value": "1N4148WT",
+      "fp": "D_SOD-523",
+      "dx": -3.2439,
+      "dy": -7.4806,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "D603",
+      "value": "1N4148WT",
+      "fp": "D_SOD-523",
+      "dx": 1.8206,
+      "dy": 7.7414,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q602",
+      "value": "SI2301",
+      "fp": "SOT-523",
+      "dx": -0.7439,
+      "dy": -8.1806,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R612",
+      "value": "200R",
+      "fp": "R_0402_1005Metric",
+      "dx": -2.3939,
+      "dy": -4.3306,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R613",
+      "value": "10K",
+      "fp": "R_0402_1005Metric",
+      "dx": -3.4439,
+      "dy": -4.3306,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

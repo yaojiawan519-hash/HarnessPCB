@@ -1,0 +1,523 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "mcu_esp32c3_mini1",
+ "interface": [
+  {
+   "net": "CHIP_PU",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C10-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "EN/复位：块内 10k 上拉 + 1µF 延时，上电自动放行"
+  },
+  {
+   "net": "IO0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C12-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "32.768kHz 晶振的一端（XTAL_32K_P）；块内 Y1/R12/C12 已带上，三颗 DNP"
+  },
+  {
+   "net": "IO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C13-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "32.768kHz 晶振的另一端（XTAL_32K_N）；同上"
+  },
+  {
+   "net": "IO10_SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-16",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据"
+  },
+  {
+   "net": "IO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "作者用来驱 WS2812B 的可寻址灯口（灯在 status_led 块里）"
+  },
+  {
+   "net": "IO20_RX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-30",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "UART RX"
+  },
+  {
+   "net": "IO21_TX",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-31",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "UART TX"
+  },
+  {
+   "net": "IO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "IO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-18",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "IO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-19",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "IO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-20",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "IO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R10-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "块内红 LED（R10 470R + D2）的驱动脚，高电平点亮"
+  },
+  {
+   "net": "IO8_SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-22",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟（块外挂两颗传感器）"
+  },
+  {
+   "net": "IO9_BOOT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U3-23",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "BOOT 键（低电平进下载模式）"
+  },
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U3-27",
+    "connector": false
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional",
+   "note": "USB 2.0 D+（模组内置 PHY，**不需要外挂晶振**）"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U3-26",
+    "connector": false
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional",
+   "note": "USB 2.0 D−"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U3",
+   "lib": "Espressif:ESP32-C3-MINI-1",
+   "value": "ESP32-C3-MINI-1",
+   "footprint": "Espressif:ESP32-C3-MINI-1",
+   "x": 78.74,
+   "y": 57.15
+  },
+  {
+   "ref": "C11",
+   "lib": "Device:C_Small",
+   "value": "10nF 10V",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 43.18,
+   "y": 88.9
+  },
+  {
+   "ref": "C9",
+   "lib": "Device:C_Small",
+   "value": "100nF 10V",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 35.56,
+   "y": 88.9
+  },
+  {
+   "ref": "R8",
+   "lib": "Device:R_Small_US",
+   "value": "10kR 1%",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 36.83,
+   "y": 29.21
+  },
+  {
+   "ref": "C10",
+   "lib": "Device:C_Small",
+   "value": "1uF 16V",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 36.83,
+   "y": 40.64
+  },
+  {
+   "ref": "D2",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0603_1608Metric",
+   "x": 142.24,
+   "y": 139.7
+  },
+  {
+   "ref": "R10",
+   "lib": "Device:R_Small_US",
+   "value": "470R 1%",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 130.81,
+   "y": 139.7
+  },
+  {
+   "ref": "C8",
+   "lib": "Device:C_Small",
+   "value": "1uF 16V",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 27.94,
+   "y": 88.9
+  },
+  {
+   "ref": "Y1",
+   "lib": "Device:Crystal",
+   "value": "32.768Hz",
+   "footprint": "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm",
+   "x": 132.08,
+   "y": 81.28
+  },
+  {
+   "ref": "C12",
+   "lib": "Device:C_Small",
+   "value": "DNP",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 124.46,
+   "y": 87.63
+  },
+  {
+   "ref": "C13",
+   "lib": "Device:C_Small",
+   "value": "DNP",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 139.7,
+   "y": 87.63
+  },
+  {
+   "ref": "R12",
+   "lib": "Device:R_Small_US",
+   "value": "DNP",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 132.08,
+   "y": 71.12
+  },
+  {
+   "ref": "D1",
+   "lib": "Device:D_TVS",
+   "value": "LESD8D3.3CAT5G",
+   "footprint": "Rust_Board:SOD-882",
+   "x": 19.05,
+   "y": 91.44
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C11",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C8",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C9",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "D1",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R8",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U3",
+   "pin": "3",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C10",
+   "pin": "1",
+   "net": "CHIP_PU"
+  },
+  {
+   "ref": "R8",
+   "pin": "2",
+   "net": "CHIP_PU"
+  },
+  {
+   "ref": "U3",
+   "pin": "8",
+   "net": "CHIP_PU"
+  },
+  {
+   "ref": "C10",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C11",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C12",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C13",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C8",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C9",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "D1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "11",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "14",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U3",
+   "pin": "36",
+   "net": "GND"
+  },
+  {
+   "ref": "C12",
+   "pin": "1",
+   "net": "IO0"
+  },
+  {
+   "ref": "R12",
+   "pin": "1",
+   "net": "IO0"
+  },
+  {
+   "ref": "U3",
+   "pin": "12",
+   "net": "IO0"
+  },
+  {
+   "ref": "Y1",
+   "pin": "1",
+   "net": "IO0"
+  },
+  {
+   "ref": "C13",
+   "pin": "1",
+   "net": "IO1"
+  },
+  {
+   "ref": "R12",
+   "pin": "2",
+   "net": "IO1"
+  },
+  {
+   "ref": "U3",
+   "pin": "13",
+   "net": "IO1"
+  },
+  {
+   "ref": "Y1",
+   "pin": "2",
+   "net": "IO1"
+  },
+  {
+   "ref": "U3",
+   "pin": "16",
+   "net": "IO10_SDA"
+  },
+  {
+   "ref": "U3",
+   "pin": "5",
+   "net": "IO2"
+  },
+  {
+   "ref": "U3",
+   "pin": "30",
+   "net": "IO20_RX"
+  },
+  {
+   "ref": "U3",
+   "pin": "31",
+   "net": "IO21_TX"
+  },
+  {
+   "ref": "U3",
+   "pin": "6",
+   "net": "IO3"
+  },
+  {
+   "ref": "U3",
+   "pin": "18",
+   "net": "IO4"
+  },
+  {
+   "ref": "U3",
+   "pin": "19",
+   "net": "IO5"
+  },
+  {
+   "ref": "U3",
+   "pin": "20",
+   "net": "IO6"
+  },
+  {
+   "ref": "R10",
+   "pin": "1",
+   "net": "IO7"
+  },
+  {
+   "ref": "U3",
+   "pin": "21",
+   "net": "IO7"
+  },
+  {
+   "ref": "U3",
+   "pin": "22",
+   "net": "IO8_SCL"
+  },
+  {
+   "ref": "U3",
+   "pin": "23",
+   "net": "IO9_BOOT"
+  },
+  {
+   "ref": "U3",
+   "pin": "27",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "U3",
+   "pin": "26",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "_mcu_esp32c3_mini1_N1"
+  },
+  {
+   "ref": "R10",
+   "pin": "2",
+   "net": "_mcu_esp32c3_mini1_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

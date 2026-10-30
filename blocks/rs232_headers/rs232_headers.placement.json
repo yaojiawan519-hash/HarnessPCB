@@ -1,0 +1,184 @@
+{
+  "name": "rs232_headers",
+  "source": "rs232-dual-adapter.refswap.kicad_pcb",
+  "origin_src_mm": [
+    98.825,
+    97.5
+  ],
+  "size_mm": [
+    16.0,
+    26.5
+  ],
+  "ports": {
+    "UART1RX": [
+      "U1"
+    ],
+    "UART1TX": [
+      "U1"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C3",
+      "C5",
+      "C7",
+      "C9",
+      "D2",
+      "J1",
+      "J4",
+      "U1",
+      "U2"
+    ],
+    "UART1RTS": [
+      "U1"
+    ],
+    "UART1CTS": [
+      "U1"
+    ],
+    "UART0TX": [
+      "U2"
+    ],
+    "UART0RTS": [
+      "U2"
+    ],
+    "UART0RX": [
+      "U2"
+    ],
+    "UART0CTS": [
+      "U2"
+    ],
+    "VOUT": [
+      "C1",
+      "C7",
+      "R2",
+      "U1",
+      "U2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "UART1TX",
+      "x": 107.625,
+      "y": 88.615,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART1RX",
+      "x": 107.625,
+      "y": 87.25,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART1CTS",
+      "x": 107.625,
+      "y": 93.695,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART1RTS",
+      "x": 107.625,
+      "y": 92.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART0TX",
+      "x": 107.625,
+      "y": 98.775,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART0RX",
+      "x": 107.625,
+      "y": 101.315,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 101.4,
+      "y": 83.45,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 107.625,
+      "y": 86.075,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "UART0CTS",
+      "x": 107.625,
+      "y": 103.855,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART0RTS",
+      "x": 107.625,
+      "y": 102.6,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 10,
+    "vias": 0,
+    "stub_kept": 7,
+    "isolated_deleted": 2,
+    "cut_ends": 10,
+    "exit_points": 10,
+    "segs_by_layer": {
+      "B.Cu": 9,
+      "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 16,
+        "vias": 0,
+        "nets": [
+          "UART0CTS",
+          "UART0RTS",
+          "UART0RX",
+          "UART0TX",
+          "UART1CTS",
+          "UART1RTS",
+          "UART1RX",
+          "UART1TX",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 2.575,
+      "dy": -11.45,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 6.175,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

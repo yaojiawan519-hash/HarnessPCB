@@ -1,0 +1,153 @@
+{
+  "name": "ddr5_sodimm_socket",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    122.1406,
+    119.25
+  ],
+  "size_mm": [
+    11.6813,
+    98.55
+  ],
+  "ports": {
+    "PWR_GOOD": [
+      "J1",
+      "R8"
+    ],
+    "BULK_VIN": [
+      "C4",
+      "C6",
+      "J1",
+      "J2",
+      "J3",
+      "R13",
+      "U1",
+      "U2"
+    ],
+    "HSCL": [
+      "J1",
+      "U1"
+    ],
+    "GND": [
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "Q6",
+      "R11",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "+3.3V": [
+      "C5",
+      "C7",
+      "J1",
+      "R10",
+      "R12",
+      "R2",
+      "R9",
+      "U1",
+      "U2"
+    ],
+    "HSDA": [
+      "J1",
+      "U1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "BULK_VIN",
+      "x": 123.4062,
+      "y": 69.175,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BULK_VIN",
+      "x": 116.0,
+      "y": 69.175,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "HSDA",
+      "x": 128.7812,
+      "y": 86.2188,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "HSCL",
+      "x": 128.7812,
+      "y": 85.2188,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD",
+      "x": 128.0875,
+      "y": 69.175,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "PWR_GOOD",
+      "x": 128.7812,
+      "y": 71.0,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 1,
+    "nets": 97,
+    "copper_segs": 3,
+    "vias": 1,
+    "stub_kept": 0,
+    "isolated_deleted": 4,
+    "cut_ends": 3,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 5
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 13,
+        "vias": 5,
+        "nets": [
+          "BULK_VIN",
+          "GND",
+          "HSCL",
+          "HSDA",
+          "PWR_GOOD"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J4",
+      "value": "10160554-001SHLF",
+      "fp": "AMPHENOL_10160554-001SHLF",
+      "dx": -0.1406,
+      "dy": 0.0,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

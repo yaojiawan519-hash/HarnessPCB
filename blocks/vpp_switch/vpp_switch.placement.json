@@ -1,0 +1,207 @@
+{
+  "name": "vpp_switch",
+  "source": "vpp-maker-rev6-ian.kicad_pcb",
+  "origin_src_mm": [
+    151.3966,
+    98.7751
+  ],
+  "size_mm": [
+    14.2033,
+    11.9463
+  ],
+  "ports": {
+    "GND": [
+      "C13",
+      "C14",
+      "C15",
+      "D1",
+      "D3",
+      "D4",
+      "J1",
+      "J2",
+      "J4",
+      "Q4",
+      "R24"
+    ],
+    "VPP": [
+      "C15",
+      "D2",
+      "D3",
+      "J4",
+      "R22"
+    ],
+    "VPP_HIGH": [
+      "J1",
+      "J2"
+    ],
+    "VPP_LOW": [
+      "J1",
+      "J2"
+    ],
+    "VPP_SW": [
+      "J4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 143.495,
+      "y": 97.19,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 144.5,
+      "y": 92.002,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP",
+      "x": 153.9125,
+      "y": 92.002,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP",
+      "x": 156.0,
+      "y": 92.002,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP_HIGH",
+      "x": 143.495,
+      "y": 101.75,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP_LOW",
+      "x": 143.495,
+      "y": 102.325,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP_SW",
+      "x": 159.2983,
+      "y": 100.0,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 10,
+    "copper_segs": 20,
+    "vias": 0,
+    "stub_kept": 3,
+    "isolated_deleted": 11,
+    "cut_ends": 5,
+    "exit_points": 7,
+    "segs_by_layer": {
+      "F.Cu": 20
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VPP->D3.1": 1
+    },
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 2,
+      "port_cuts": 2,
+      "port_cut_nets": [
+        "VPP"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 3,
+        "vias": 0,
+        "nets": [
+          "VPP_HIGH",
+          "VPP_LOW",
+          "VPP_SW"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "Q1",
+      "value": "MMBT3906",
+      "fp": "SOT-23",
+      "dx": 1.6034,
+      "dy": -1.2126,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q2",
+      "value": "MMBT3904",
+      "fp": "SOT-23",
+      "dx": 1.6034,
+      "dy": 2.7249,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q3",
+      "value": "MMBT3904",
+      "fp": "SOT-23",
+      "dx": -2.8966,
+      "dy": -1.2751,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R23",
+      "value": "100K",
+      "fp": "R_0805_2012Metric",
+      "dx": 1.6034,
+      "dy": -4.2751,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R25",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": -1.8966,
+      "dy": -4.2751,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R27",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": -5.3966,
+      "dy": 1.7249,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R28",
+      "value": "100R",
+      "fp": "R_0805_2012Metric",
+      "dx": 4.6034,
+      "dy": 2.1374,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R29",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": -1.4841,
+      "dy": 2.6374,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "mcu",
+  "rationale": "12MHz 有源晶振（U4 SG-210STF，4 脚：VDD/GND/OUT/ST）加一级双缓冲器 （U8 SN74AUP2G125，两个单元并联使用）。设计意图从网上读得出来：晶振输出先给 FT232H 做时钟源（CLK_12M_FT），缓冲之后再进 FPGA（CLK_12M_EXT）， 进 FPGA 那一路串 SJ16 焊盘跳线——默认 OPEN，也就是**板子出厂不把 12MHz 送到 FPGA**， 由 FPGA 内部 PLL 或外部时钟代替。R10 是 DNI（12K 对地，作者留的\"待机拉低\"位）。 两颗去耦 C18（晶振侧）+ C36（缓冲器侧）各 0.1u。 复用要点：跳线 SJ16 的默认状态就是\"FPGA 时钟来自哪里\"这个系统决定，别照抄成常闭。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CLK_12M_EXT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U8/6",
+      "note": "缓冲之后进 FPGA 那一路"
+    },
+    {
+      "name": "CLK_12M_FT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U4/3",
+      "note": "晶振输出直给 FT232H（U3.1）当 12MHz 时钟源"
+    },
+    {
+      "name": "IOB_25B_G3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "SJ16/2",
+      "note": "SJ16 的焊盘跳线：默认 OPEN，即出厂不把 12MHz 送进 FPGA"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U4",
+    "max_mm": 24.0,
+    "rationale": "晶振与它的去耦 C18 相距 2.30mm、DNI 下拉 R10 2.24mm——这三个是一组，必须贴。 缓冲器 U8 在 18.51mm 外、它的去耦 C36 20.38mm、出口跳线 SJ16 22.73mm， **源板把这一块拉成 23.76×14.93 的长条正是因为缓冲器离晶振这么远**： 12MHz 是慢时钟，作者没做紧耦合。复用时若把缓冲器挪近到 8mm 内只会更好， 这条距离是\"原板事实\"，不是约束。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_clock_12m_N1",
+    "_clock_12m_N2"
+  ],
+  "notes": [
+    "6 件（U8 是双缓冲器，原理图两个单元算一件）/ 7 网：3 个信号口岸 + 轨 +3V3/GND。",
+    "铜 196 段 + 7 孔（B.Cu 62 / F.Cu 131 / In2.Cu 13）；死铜删 96 段/孔；口岸切口 17 处。",
+    "⚠ 这块的铜**借道隔壁排针的孔换层**：SJ16.2（IOB_25B_G3）出来走 F.Cu 到 J3.5 的孔位、换到 In2 再走。J3 属 connectors_io 块，孔不在块里，所以块单看这一处是断的（DRC 未连通里唯一一条信号网就是它）——拼板时插上就通。",
+    "窗口外扩到 1.50mm：有 1 个过孔在件框外 0.93mm、连着块内的铜，不拉进来这只脚（SJ16.2）在块里就一根铜都不剩。",
+    "SJ16 的默认状态是 OPEN（板子出厂不把 12MHz 送给 FPGA），复用时别把它当常闭跳线照抄。",
+    "kicad-cli DRC：isolated_copper 0；未连通 6 条（5 条轨 + 1 条上述借道）。",
+    "源板 4 层（F/In1/In2/B），本块内层走线 In2 13 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "UPduino v3.01",
+    "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+    "license_tier": "permissive",
+    "author": "TinyVision.ai（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "6 件 / 7 网 / 端口 3 + 轨 2；铜 196 段 + 7 孔；死铜删 96；口岸切口 17；窗口 1.50mm；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

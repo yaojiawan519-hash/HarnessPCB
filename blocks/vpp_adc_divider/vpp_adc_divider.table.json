@@ -1,0 +1,90 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "vpp_adc_divider",
+ "interface": [
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R22-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "被测高压（来自 vpp_boost 的输出）"
+  },
+  {
+   "net": "VPP_ADC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D4-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "分压并钳位后的采样点，接主控 ADC；上限由 D4（标 4.7V）决定"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D4",
+   "lib": "Device:D_Zener_Small",
+   "value": "BZT52C4V7W (4.7V)",
+   "footprint": "Diode_SMD:D_SOD-123",
+   "x": 142.24,
+   "y": 121.92
+  },
+  {
+   "ref": "R24",
+   "lib": "Device:R",
+   "value": "3K3",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 138.43,
+   "y": 124.46
+  },
+  {
+   "ref": "R22",
+   "lib": "Device:R",
+   "value": "9K1",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 138.43,
+   "y": 114.3
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R24",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R22",
+   "pin": "1",
+   "net": "VPP"
+  },
+  {
+   "ref": "D4",
+   "pin": "1",
+   "net": "VPP_ADC"
+  },
+  {
+   "ref": "R22",
+   "pin": "2",
+   "net": "VPP_ADC"
+  },
+  {
+   "ref": "R24",
+   "pin": "1",
+   "net": "VPP_ADC"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

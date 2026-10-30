@@ -1,0 +1,351 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ir_tx_cc",
+ "interface": [
+  {
+   "net": "IO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U5-4",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "发射输入：高电平点亮（经块内 U5 缓冲 → R3 → Q3 基极）"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C3-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "5V 供电 + 脉冲储能（C6 100µF / C3 4.7µF 在块内）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D9",
+   "lib": "Diode:1N4148W",
+   "value": "1N4148WS",
+   "footprint": "Diode_SMD:D_SOD-323F",
+   "x": 88.9,
+   "y": 132.08
+  },
+  {
+   "ref": "D3",
+   "lib": "Device:LED",
+   "value": "TSAL6100",
+   "footprint": "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm_IRGrey",
+   "x": 96.52,
+   "y": 110.49
+  },
+  {
+   "ref": "C6",
+   "lib": "Device:C_Polarized_Small",
+   "value": "100uF",
+   "footprint": "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder",
+   "x": 90.805,
+   "y": 109.22
+  },
+  {
+   "ref": "Q3",
+   "lib": "Device:Q_NPN_BEC",
+   "value": "MMBT4401LT1G",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 93.98,
+   "y": 128.27
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_02x03_Odd_Even",
+   "value": "Conn_02x03_1.27mm",
+   "footprint": "Connector_PinHeader_1.27mm:PinHeader_2x03_P1.27mm_Vertical",
+   "x": 96.52,
+   "y": 140.97
+  },
+  {
+   "ref": "R3",
+   "lib": "Device:R",
+   "value": "330R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 85.09,
+   "y": 128.27
+  },
+  {
+   "ref": "C7",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 63.5,
+   "y": 116.84
+  },
+  {
+   "ref": "C3",
+   "lib": "Device:C",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 81.915,
+   "y": 110.49
+  },
+  {
+   "ref": "D4",
+   "lib": "Device:LED",
+   "value": "TSAL6200",
+   "footprint": "LED_THT:LED_D5.0mm_Horizontal_O1.27mm_Z3.0mm_IRGrey",
+   "x": 96.52,
+   "y": 119.38
+  },
+  {
+   "ref": "U5",
+   "lib": "Logic_LevelTranslator:SN74LVC1T45DCK",
+   "value": "AiP74LVC1T45GC363.TR",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 55.88,
+   "y": 128.27
+  },
+  {
+   "ref": "R13",
+   "lib": "Device:R",
+   "value": "6R8",
+   "footprint": "Resistor_SMD:R_1206_3216Metric",
+   "x": 99.06,
+   "y": 149.86
+  },
+  {
+   "ref": "D10",
+   "lib": "Diode:1N4148W",
+   "value": "1N4148WS",
+   "footprint": "Diode_SMD:D_SOD-323F",
+   "x": 88.9,
+   "y": 139.7
+  },
+  {
+   "ref": "R6",
+   "lib": "Device:R",
+   "value": "1R2",
+   "footprint": "Resistor_SMD:R_1206_3216Metric",
+   "x": 93.98,
+   "y": 149.86
+  },
+  {
+   "ref": "C8",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 48.26,
+   "y": 116.84
+  },
+  {
+   "ref": "R11",
+   "lib": "Device:R",
+   "value": "3R0",
+   "footprint": "Resistor_SMD:R_1206_3216Metric",
+   "x": 96.52,
+   "y": 149.86
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C7",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C8",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "D10",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R11",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R13",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U5",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "U5",
+   "pin": "4",
+   "net": "IO4"
+  },
+  {
+   "ref": "C3",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C6",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C7",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "C8",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "D3",
+   "pin": "2",
+   "net": "VOUT"
+  },
+  {
+   "ref": "U5",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "U5",
+   "pin": "6",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "_ir_tx_cc_N1"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "_ir_tx_cc_N1"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "_ir_tx_cc_N1"
+  },
+  {
+   "ref": "Q3",
+   "pin": "2",
+   "net": "_ir_tx_cc_N1"
+  },
+  {
+   "ref": "D9",
+   "pin": "2",
+   "net": "_ir_tx_cc_N2"
+  },
+  {
+   "ref": "Q3",
+   "pin": "1",
+   "net": "_ir_tx_cc_N2"
+  },
+  {
+   "ref": "R3",
+   "pin": "1",
+   "net": "_ir_tx_cc_N2"
+  },
+  {
+   "ref": "D10",
+   "pin": "2",
+   "net": "_ir_tx_cc_N3"
+  },
+  {
+   "ref": "D9",
+   "pin": "1",
+   "net": "_ir_tx_cc_N3"
+  },
+  {
+   "ref": "D3",
+   "pin": "1",
+   "net": "_ir_tx_cc_N4"
+  },
+  {
+   "ref": "D4",
+   "pin": "2",
+   "net": "_ir_tx_cc_N4"
+  },
+  {
+   "ref": "D4",
+   "pin": "1",
+   "net": "_ir_tx_cc_N5"
+  },
+  {
+   "ref": "Q3",
+   "pin": "3",
+   "net": "_ir_tx_cc_N5"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "_ir_tx_cc_N6"
+  },
+  {
+   "ref": "R6",
+   "pin": "1",
+   "net": "_ir_tx_cc_N6"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "_ir_tx_cc_N7"
+  },
+  {
+   "ref": "R11",
+   "pin": "1",
+   "net": "_ir_tx_cc_N7"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "_ir_tx_cc_N8"
+  },
+  {
+   "ref": "R13",
+   "pin": "1",
+   "net": "_ir_tx_cc_N8"
+  },
+  {
+   "ref": "R3",
+   "pin": "2",
+   "net": "_ir_tx_cc_N9"
+  },
+  {
+   "ref": "U5",
+   "pin": "3",
+   "net": "_ir_tx_cc_N9"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

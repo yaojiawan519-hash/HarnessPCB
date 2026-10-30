@@ -1,0 +1,178 @@
+{
+  "name": "irtoy_headers",
+  "source": "bp5-ir-toy-v3-rev3.kicad_pcb",
+  "origin_src_mm": [
+    135.9687,
+    87.493
+  ],
+  "size_mm": [
+    16.2126,
+    26.5
+  ],
+  "ports": {
+    "IO7": [
+      "R12",
+      "U4"
+    ],
+    "IO4": [
+      "U5"
+    ],
+    "IO3": [
+      "R2",
+      "U2"
+    ],
+    "IO1": [
+      "R9",
+      "U1"
+    ],
+    "VOUT": [
+      "C3",
+      "C6",
+      "C7",
+      "C8",
+      "D3",
+      "R1",
+      "R10",
+      "R12",
+      "R2",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "U5"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "D1",
+      "D10",
+      "R11",
+      "R13",
+      "R6",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5"
+    ],
+    "IO5": [
+      "R5",
+      "U3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 144.257,
+      "y": 73.443,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 140.0,
+      "y": 101.543,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO1",
+      "x": 144.857,
+      "y": 73.443,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "IO3",
+      "x": 144.875,
+      "y": 96.35,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO4",
+      "x": 142.3,
+      "y": 101.543,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO5",
+      "x": 144.875,
+      "y": 97.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO7",
+      "x": 138.7,
+      "y": 101.543,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 22,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 4,
+    "cut_ends": 6,
+    "exit_points": 7,
+    "segs_by_layer": {
+      "B.Cu": 16,
+      "F.Cu": 6
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 3,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2,
+      "VOUT": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 18,
+        "vias": 0,
+        "nets": [
+          "IO1",
+          "IO3",
+          "IO4",
+          "IO5",
+          "IO7",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 2.4687,
+      "dy": -11.4624,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 6.2813,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

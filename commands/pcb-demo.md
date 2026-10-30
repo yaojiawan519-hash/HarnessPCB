@@ -14,8 +14,7 @@ description: 跑包内合成 demo 板全链（从零验证环境到出 Gerber）
    ```bash
    python3 $PKG/executors/SchematicDesign/design2schematic/d2s.py chain \
      -d $PKG/demo/demo_blinker.design.json -o $PKG/demo/out \
-     --clearances 205,215,225,235,245 --mp 60 \
-     --intent-file $PKG/demo/demo_blinker_intent.json
+     --clearances 205,215,225,235,245 --mp 60
    ```
    长进程输出一律重定向到日志文件再读（严禁管道截断）。
 3. **读结果**：按 skills/pcb-drc-read 口径读 DRC 报告（铜级 9 类须 0），

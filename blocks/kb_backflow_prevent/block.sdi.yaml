@@ -1,0 +1,151 @@
+project:
+  kind: block
+  name: kb_backflow_prevent
+  version: sdi/1
+defs:
+  kb_backflow_prevent:
+    category: power
+    rationale: '**回流保护（作者原签 "Backflow prevention"）**：一只**匹配 PNP 对**（Q401 = BCM857BS， SOT-363）做电流方向检测，一只
+      P-MOS（Q402 = BC2301T，SOT-523）做开关， D401（1N4148WS，SOD-523）+ R408/R410/R412 做参考与偏置。 逐脚事实（网表原样）： `Q401`
+      是 `E1B1C2E2B2C1` 脚序（1=E1 2=B1 6=C1 / 4=E2 5=B2 3=C2）， `E1=VOUT`、`B1=Net-(Q401A-B1)`、`C1=Net-(Q401A-C1)`；
+      **第二只三极管 B2 与 C2 短在一起**（都落 `Net-(D401-A)`）、`E2=VOUT_BP_SIDE`； `Q402`（1=G 2=S 3=D）：`S=VOUT`、`D=VOUT_BP_SIDE`、`G=Net-(Q401A-C1)`；
+      `D401`（1=K 2=A）：`K=VOUT_BP_SIDE`、`A=Net-(D401-A)`； `R408 68K`：`Net-(D401-A) → GND`；`R410 10K`：`Net-(D401-A)
+      → B1`； `R412 100K`：`Net-(Q401A-C1) → GND`。 怎么工作（按上面的极性读出来的一套，不是猜的）：`E2` 那只二极管接法把 `VOUT_BP_SIDE`
+      抬高到 `D401-A ≈ V_BP − 0.65` 并让 68K 泄流——这路电流就是 "BP 那头还活着"的参考。参考在的时候 `Q401A` 的 `Vbe` 被顶平、它不通，100K 把
+      `Q402` 的栅极按到地（`Vgs ≈ −VOUT`）⇒ **P-MOS 导通，把 `VOUT_BP_SIDE` 与 `VOUT` 低阻短起来**（这时靠的是 MOS 的沟道，不是体二极管，压降只有几十毫伏）。
+      参考消失（BP 断电/没插）时 `Q401A` 导通、栅极被拉到 `VOUT`（`Vgs≈0`）⇒ **P-MOS 关断**， 此时只剩体二极管、方向是 `D→S`（`VOUT_BP_SIDE
+      → VOUT`）——也就是说 **板内 5V（USB VBUS / J9 那一路）推不回 BP 的 VOUT 轨**，反过来 BP 有电时照样给板子供电。 ⚠ **换件必须对脚序**：作者原话（块里
+      `decoration:` 一个字没改）写着 `BCM857 / BCM856 / NST45010MW6T1G` 可代，而 `DMMT3906 / PMP5201 / PMP5501` 的脚序是
+      `BBCEEC`、**要改板**。这只对管的作用是"两只管的 Vbe 互相抵消、 只留参考电流"——配不成对的普通双 PNP 会把阈值漂到温度里去。'
+    ports:
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: Q401-1
+        connector: false
+    - name: VOUT_BP_SIDE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D401-1
+        connector: false
+    rails:
+    - GND
+    parts:
+    - ref: D401
+      lib: Diode:1N4148WS
+      value: 1N4148WT
+      footprint: Diode_SMD:D_SOD-523
+    - ref: R410
+      lib: Device:R_Small
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R408
+      lib: Device:R_Small
+      value: 68K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: Q401
+      lib: kicad5-device:Q_DUAL_PNP_PNP_E1B1C2E2B2C1
+      value: BCM857BS-7-F
+      footprint: Package_TO_SOT_SMD:SOT-363_SC-70-6
+    - ref: Q402
+      lib: Transistor_FET:BSS84
+      value: BC2301T 2.8A
+      footprint: Package_TO_SOT_SMD:SOT-523
+    - ref: R412
+      lib: Device:R_Small
+      value: 100K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: R408
+      pin: '2'
+      net: GND
+    - ref: R412
+      pin: '2'
+      net: GND
+    - ref: Q401
+      pin: '1'
+      net: VOUT
+    - ref: Q402
+      pin: '2'
+      net: VOUT
+    - ref: D401
+      pin: '1'
+      net: VOUT_BP_SIDE
+    - ref: Q401
+      pin: '4'
+      net: VOUT_BP_SIDE
+    - ref: Q402
+      pin: '3'
+      net: VOUT_BP_SIDE
+    - ref: D401
+      pin: '2'
+      net: _kb_backflow_prevent_N1
+    - ref: Q401
+      pin: '3'
+      net: _kb_backflow_prevent_N1
+    - ref: Q401
+      pin: '5'
+      net: _kb_backflow_prevent_N1
+    - ref: R408
+      pin: '1'
+      net: _kb_backflow_prevent_N1
+    - ref: R410
+      pin: '2'
+      net: _kb_backflow_prevent_N1
+    - ref: Q401
+      pin: '6'
+      net: _kb_backflow_prevent_N2
+    - ref: Q402
+      pin: '1'
+      net: _kb_backflow_prevent_N2
+    - ref: R412
+      pin: '1'
+      net: _kb_backflow_prevent_N2
+    - ref: Q401
+      pin: '2'
+      net: _kb_backflow_prevent_N3
+    - ref: R410
+      pin: '1'
+      net: _kb_backflow_prevent_N3
+    placement_prior:
+      anchor: Q402
+      max_mm: 8.0
+      rationale: 6 件占 9.42×10.09mm，是板上最密的一坨：Q401/Q402/D401 三点一线竖着排 （SOT-363 → SOT-523 → SOD-523），R408/R412
+        在它们左边一列、R410 在右边。 要保住的是"两只管子背靠背、100K 紧贴栅极"——这块的铜在这个尺寸下没有余量。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _kb_backflow_prevent_N1
+    - _kb_backflow_prevent_N2
+    - _kb_backflow_prevent_N3
+    provenance:
+      basis: 6 件 / 6 网 / 端口 2 + 轨 1；铜 28 段 + 2 孔；死铜删 2；口岸切口 0
+      source: human:open-source
+      board: Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：6 件、块内 31 段铜、
+      4 孔、0 铺铜；源板上 VOUT / VOUT_BP_SIDE 两张小铜与整板 GND 都没带进来）
+    notes:
+    - '**回流保护（作者原签 "Backflow prevention"）**：一只匹配 PNP 对（Q401 = BCM857BS，SOT-363）做电流方向检测、一只 P-MOS（Q402 =
+      BC2301T，SOT-523）做开关、D401 二极管 + R408/R410/R412 做参考与偏置。6 件 / 6 网 / 端口 VOUT+VOUT_BP_SIDE + 轨 GND /
+      内部网 3 条。（原理图里 Q401 是两个 unit，所以页上是 7 个符号、板上只有 1 只 SOT-363。）'
+    - '**逐脚事实（网表原样，不是读图猜的）**：`Q401` 脚序 `E1B1C2E2B2C1`（1=E1 2=B1 6=C1 / 4=E2 5=B2 3=C2）；`E1=VOUT`、`B1=Net-(Q401A-B1)`、`C1=Net-(Q401A-C1)`；**第二只三极管的
+      B2 与 C2 短在一起**（都落 `Net-(D401-A)`）、`E2=VOUT_BP_SIDE`；`Q402`（1=G 2=S 3=D）`S=VOUT`、`D=VOUT_BP_SIDE`、`G=Net-(Q401A-C1)`；`D401`（1=K
+      2=A）`K=VOUT_BP_SIDE`、`A=Net-(D401-A)`；`R408 68K`：`Net-(D401-A)→GND`；`R410 10K`：`Net-(D401-A)→B1`；`R412
+      100K`：`Net-(Q401A-C1)→GND`。'
+    - '**怎么工作（按上面的极性读出来的一套）**：`E2` 那只二极管接法把 `VOUT_BP_SIDE` 抬到 `D401-A ≈ V_BP − 0.65` 并由 68K 泄流——这路电流就是"BP
+      那头还活着"的参考。参考在时 `Q401A` 的 `Vbe` 被顶平、它不通，100K 把 `Q402` 栅极按到地（`Vgs ≈ −VOUT`）⇒ **P-MOS 导通**，`VOUT_BP_SIDE`
+      与 `VOUT` 低阻直连（沟道，压降几十毫伏）。参考消失（BP 断电/没插）时 `Q401A` 导通、栅极被拉到 `VOUT`（`Vgs≈0`）⇒ **P-MOS 关断**，只剩体二极管、方向
+      `D→S`（`VOUT_BP_SIDE→VOUT`）：**板内 5V 推不回 BP 的轨**，反过来 BP 有电时照样给板子供电。'
+    - ⚠ **换件必须对脚序**：块里 `decoration` 是作者原话（一个字没改）——`BCM857 / BCM856 / NST45010MW6T1G` 可代，而 `DMMT3906 /
+      PMP5201 / PMP5501` 的脚序是 `BBCEEC`、**要改板**。这对管靠"两只管的 Vbe 互相抵消、只留参考电流"工作，配不成对的双 PNP 会把阈值漂到温度里去。
+    - '**铜**：31 段（F.Cu 29 / B.Cu 2）、4 孔、0 铺铜。源板上 VOUT / VOUT_BP_SIDE 两张**小铺铜**加宽了这两条大电流线，块里按"不带铺铜"整张删——拼板时要重新铺或者把它们加宽回去，别按信号线看待。孤立铜删
+      2 段（其中一段是 1.168mm 电源干线的残段，判据修好后删掉的）；口沿截断 0 处。`island_split` `GND×2`（R408/R412 两只接地脚原来靠铺铜连）。'

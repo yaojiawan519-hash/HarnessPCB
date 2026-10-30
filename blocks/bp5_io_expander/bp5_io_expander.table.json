@@ -1,0 +1,578 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_io_expander",
+ "interface": [
+  {
+   "net": "AMUX_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN315-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R316-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN315-4",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN315-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN315-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CURRENT_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U502-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CURRENT_EN_OVERRIDE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U502-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CURRENT_RESET",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U502-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_BACKLIGHT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U501-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_RESET",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U501-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "LEDS_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U503-13",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "PULLUP_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U503-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "RGB_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U503-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SHIFT_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R501-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SHIFT_LATCH",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U501-12",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U501-14",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U501-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R501",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 34.29,
+   "y": 22.86
+  },
+  {
+   "ref": "U501",
+   "lib": "74xx:74AHCT595",
+   "value": "AIP74HC595TA",
+   "footprint": "Package_SO:TSSOP-16_4.4x5mm_P0.65mm",
+   "x": 54.61,
+   "y": 40.64
+  },
+  {
+   "ref": "C501",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 48.26,
+   "y": 24.13
+  },
+  {
+   "ref": "U502",
+   "lib": "74xx:74AHCT595",
+   "value": "AIP74HC595TA",
+   "footprint": "Package_SO:TSSOP-16_4.4x5mm_P0.65mm",
+   "x": 54.61,
+   "y": 91.44
+  },
+  {
+   "ref": "C502",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 48.26,
+   "y": 74.93
+  },
+  {
+   "ref": "U503",
+   "lib": "74xx:74HC245",
+   "value": "AIP74HCT245TA",
+   "footprint": "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm",
+   "x": 114.3,
+   "y": 43.18
+  },
+  {
+   "ref": "C503",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 111.76,
+   "y": 22.86
+  },
+  {
+   "ref": "RN315",
+   "lib": "dp-rarray:R_Array",
+   "value": "510R",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 129.54,
+   "y": 30.48
+  },
+  {
+   "ref": "R316",
+   "lib": "Device:R_Small",
+   "value": "510R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 132.08,
+   "y": 40.64
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C501",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C502",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R501",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U501",
+   "pin": "10",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U501",
+   "pin": "16",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U502",
+   "pin": "10",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U502",
+   "pin": "16",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C503",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U503",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U503",
+   "pin": "20",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "RN315",
+   "pin": "1",
+   "net": "AMUX_EN"
+  },
+  {
+   "ref": "R316",
+   "pin": "1",
+   "net": "AMUX_S0"
+  },
+  {
+   "ref": "RN315",
+   "pin": "4",
+   "net": "AMUX_S1"
+  },
+  {
+   "ref": "RN315",
+   "pin": "3",
+   "net": "AMUX_S2"
+  },
+  {
+   "ref": "RN315",
+   "pin": "2",
+   "net": "AMUX_S3"
+  },
+  {
+   "ref": "U502",
+   "pin": "1",
+   "net": "CURRENT_EN"
+  },
+  {
+   "ref": "U502",
+   "pin": "5",
+   "net": "CURRENT_EN_OVERRIDE"
+  },
+  {
+   "ref": "U502",
+   "pin": "3",
+   "net": "CURRENT_RESET"
+  },
+  {
+   "ref": "U502",
+   "pin": "4",
+   "net": "DAC_CS"
+  },
+  {
+   "ref": "U501",
+   "pin": "5",
+   "net": "DISPLAY_BACKLIGHT"
+  },
+  {
+   "ref": "U501",
+   "pin": "6",
+   "net": "DISPLAY_RESET"
+  },
+  {
+   "ref": "C501",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C502",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C503",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U501",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "U502",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "U503",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "U503",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "U503",
+   "pin": "13",
+   "net": "LEDS_CDO"
+  },
+  {
+   "ref": "U503",
+   "pin": "11",
+   "net": "PULLUP_EN"
+  },
+  {
+   "ref": "U503",
+   "pin": "7",
+   "net": "RGB_CDO"
+  },
+  {
+   "ref": "R501",
+   "pin": "2",
+   "net": "SHIFT_EN"
+  },
+  {
+   "ref": "U501",
+   "pin": "13",
+   "net": "SHIFT_EN"
+  },
+  {
+   "ref": "U502",
+   "pin": "13",
+   "net": "SHIFT_EN"
+  },
+  {
+   "ref": "U503",
+   "pin": "19",
+   "net": "SHIFT_EN"
+  },
+  {
+   "ref": "U501",
+   "pin": "12",
+   "net": "SHIFT_LATCH"
+  },
+  {
+   "ref": "U502",
+   "pin": "12",
+   "net": "SHIFT_LATCH"
+  },
+  {
+   "ref": "U501",
+   "pin": "14",
+   "net": "SPI_CDO"
+  },
+  {
+   "ref": "U501",
+   "pin": "11",
+   "net": "SPI_CLK"
+  },
+  {
+   "ref": "U502",
+   "pin": "11",
+   "net": "SPI_CLK"
+  },
+  {
+   "ref": "U501",
+   "pin": "1",
+   "net": "_bp5_io_expander_N1"
+  },
+  {
+   "ref": "U503",
+   "pin": "6",
+   "net": "_bp5_io_expander_N1"
+  },
+  {
+   "ref": "U501",
+   "pin": "15",
+   "net": "_bp5_io_expander_N2"
+  },
+  {
+   "ref": "U503",
+   "pin": "2",
+   "net": "_bp5_io_expander_N2"
+  },
+  {
+   "ref": "U501",
+   "pin": "2",
+   "net": "_bp5_io_expander_N3"
+  },
+  {
+   "ref": "U503",
+   "pin": "5",
+   "net": "_bp5_io_expander_N3"
+  },
+  {
+   "ref": "U501",
+   "pin": "3",
+   "net": "_bp5_io_expander_N4"
+  },
+  {
+   "ref": "U503",
+   "pin": "4",
+   "net": "_bp5_io_expander_N4"
+  },
+  {
+   "ref": "U501",
+   "pin": "4",
+   "net": "_bp5_io_expander_N5"
+  },
+  {
+   "ref": "U503",
+   "pin": "3",
+   "net": "_bp5_io_expander_N5"
+  },
+  {
+   "ref": "U501",
+   "pin": "7",
+   "net": "_bp5_io_expander_N6"
+  },
+  {
+   "ref": "U503",
+   "pin": "9",
+   "net": "_bp5_io_expander_N6"
+  },
+  {
+   "ref": "U501",
+   "pin": "9",
+   "net": "_bp5_io_expander_N7"
+  },
+  {
+   "ref": "U502",
+   "pin": "14",
+   "net": "_bp5_io_expander_N7"
+  },
+  {
+   "ref": "R316",
+   "pin": "2",
+   "net": "_bp5_io_expander_N8"
+  },
+  {
+   "ref": "U503",
+   "pin": "14",
+   "net": "_bp5_io_expander_N8"
+  },
+  {
+   "ref": "RN315",
+   "pin": "5",
+   "net": "_bp5_io_expander_N9"
+  },
+  {
+   "ref": "U503",
+   "pin": "15",
+   "net": "_bp5_io_expander_N9"
+  },
+  {
+   "ref": "RN315",
+   "pin": "6",
+   "net": "_bp5_io_expander_N10"
+  },
+  {
+   "ref": "U503",
+   "pin": "16",
+   "net": "_bp5_io_expander_N10"
+  },
+  {
+   "ref": "RN315",
+   "pin": "7",
+   "net": "_bp5_io_expander_N11"
+  },
+  {
+   "ref": "U503",
+   "pin": "17",
+   "net": "_bp5_io_expander_N11"
+  },
+  {
+   "ref": "RN315",
+   "pin": "8",
+   "net": "_bp5_io_expander_N12"
+  },
+  {
+   "ref": "U503",
+   "pin": "18",
+   "net": "_bp5_io_expander_N12"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

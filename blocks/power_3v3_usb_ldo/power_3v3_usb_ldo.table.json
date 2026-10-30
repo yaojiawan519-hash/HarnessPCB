@@ -1,0 +1,110 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "power_3v3_usb_ldo",
+ "interface": [],
+ "power_rails": [
+  "+3V3",
+  "+5V",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U1",
+   "lib": "Regulator_Linear:XC6206PxxxMR",
+   "value": "XC6206P332MR",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 68.58,
+   "y": 33.655
+  },
+  {
+   "ref": "C1",
+   "lib": "Device:C",
+   "value": "10u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 57.15,
+   "y": 40.64
+  },
+  {
+   "ref": "C2",
+   "lib": "Device:C",
+   "value": "10u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 78.74,
+   "y": 40.64
+  },
+  {
+   "ref": "FB1",
+   "lib": "Device:Ferrite_Bead",
+   "value": "100 @ 100MHz",
+   "footprint": "Inductor_SMD:L_0805_2012Metric",
+   "x": 49.53,
+   "y": 33.655
+  },
+  {
+   "ref": "F1",
+   "lib": "Device:Fuse",
+   "value": "100mA",
+   "footprint": "Fuse:Fuse_1206_3216Metric",
+   "x": 38.1,
+   "y": 33.655
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U1",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "F1",
+   "pin": "2",
+   "net": "+5V"
+  },
+  {
+   "ref": "C1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C1",
+   "pin": "1",
+   "net": "_power_3v3_usb_ldo_N1"
+  },
+  {
+   "ref": "FB1",
+   "pin": "1",
+   "net": "_power_3v3_usb_ldo_N1"
+  },
+  {
+   "ref": "U1",
+   "pin": "3",
+   "net": "_power_3v3_usb_ldo_N1"
+  },
+  {
+   "ref": "F1",
+   "pin": "1",
+   "net": "_power_3v3_usb_ldo_N2"
+  },
+  {
+   "ref": "FB1",
+   "pin": "2",
+   "net": "_power_3v3_usb_ldo_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

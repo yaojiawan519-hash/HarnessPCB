@@ -1,0 +1,191 @@
+{
+  "name": "plank_io_headers",
+  "source": "stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb",
+  "origin_src_mm": [
+    98.7,
+    97.5
+  ],
+  "size_mm": [
+    15.75,
+    26.5
+  ],
+  "ports": {
+    "INT": [
+      "J10"
+    ],
+    "GND": [
+      "D1",
+      "J1",
+      "J10",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ],
+    "SCL": [
+      "J1",
+      "J10",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J8",
+      "J9"
+    ],
+    "SDA": [
+      "J1",
+      "J10",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9"
+    ],
+    "VOUT": [
+      "J1",
+      "J10",
+      "J2",
+      "J3",
+      "J4",
+      "J6",
+      "J7",
+      "J8",
+      "J9",
+      "R1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "INT",
+      "x": 107.375,
+      "y": 93.695,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 106.825,
+      "y": 111.55,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 107.375,
+      "y": 111.0,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 107.375,
+      "y": 85.9145,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 107.375,
+      "y": 97.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 107.375,
+      "y": 88.53,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 104.2,
+      "y": 111.55,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 107.375,
+      "y": 108.935,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 104.75,
+      "y": 83.45,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 101.25,
+      "y": 83.45,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 107.375,
+      "y": 86.075,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 10,
+    "copper_segs": 10,
+    "vias": 0,
+    "stub_kept": 7,
+    "isolated_deleted": 0,
+    "cut_ends": 8,
+    "exit_points": 11,
+    "segs_by_layer": {
+      "F.Cu": 10
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 13,
+        "vias": 0,
+        "nets": [
+          "GND",
+          "INT",
+          "SCL",
+          "SDA",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J11",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": 6.05,
+      "dy": -11.425,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J12",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": 2.7,
+      "dy": -11.45,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

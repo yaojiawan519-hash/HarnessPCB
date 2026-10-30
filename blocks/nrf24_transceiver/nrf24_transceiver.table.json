@@ -1,0 +1,341 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "nrf24_transceiver",
+ "interface": [
+  {
+   "net": "NRF_ANT1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-12",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_ANT2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-13",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_CE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_IRQ",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_VDD_PA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_XC1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-10",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "NRF_XC2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-9",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI3_!CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI3_MISO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI3_MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-4",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI3_SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-3",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U4",
+   "lib": "RF:nRF24L01P",
+   "value": "nRF24L01P",
+   "footprint": "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm",
+   "x": 59.69,
+   "y": 138.43
+  },
+  {
+   "ref": "R4",
+   "lib": "Device:R",
+   "value": "22k",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 27.94,
+   "y": 154.94
+  },
+  {
+   "ref": "C12",
+   "lib": "Device:C",
+   "value": "33n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 41.91,
+   "y": 154.94
+  },
+  {
+   "ref": "C9",
+   "lib": "Device:C",
+   "value": "10n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 54.61,
+   "y": 102.87
+  },
+  {
+   "ref": "C10",
+   "lib": "Device:C",
+   "value": "10n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 64.135,
+   "y": 102.87
+  },
+  {
+   "ref": "C11",
+   "lib": "Device:C",
+   "value": "10n",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 73.66,
+   "y": 102.87
+  },
+  {
+   "ref": "C8",
+   "lib": "Device:C",
+   "value": "10u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 45.085,
+   "y": 102.87
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C10",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C11",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C8",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C9",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "15",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "18",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "7",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C10",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C11",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C12",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C8",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C9",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "14",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "17",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "20",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "12",
+   "net": "NRF_ANT1"
+  },
+  {
+   "ref": "U4",
+   "pin": "13",
+   "net": "NRF_ANT2"
+  },
+  {
+   "ref": "U4",
+   "pin": "1",
+   "net": "NRF_CE"
+  },
+  {
+   "ref": "U4",
+   "pin": "6",
+   "net": "NRF_IRQ"
+  },
+  {
+   "ref": "U4",
+   "pin": "11",
+   "net": "NRF_VDD_PA"
+  },
+  {
+   "ref": "U4",
+   "pin": "10",
+   "net": "NRF_XC1"
+  },
+  {
+   "ref": "U4",
+   "pin": "9",
+   "net": "NRF_XC2"
+  },
+  {
+   "ref": "U4",
+   "pin": "2",
+   "net": "SPI3_!CS"
+  },
+  {
+   "ref": "U4",
+   "pin": "5",
+   "net": "SPI3_MISO"
+  },
+  {
+   "ref": "U4",
+   "pin": "4",
+   "net": "SPI3_MOSI"
+  },
+  {
+   "ref": "U4",
+   "pin": "3",
+   "net": "SPI3_SCK"
+  },
+  {
+   "ref": "R4",
+   "pin": "1",
+   "net": "_nrf24_transceiver_N1"
+  },
+  {
+   "ref": "U4",
+   "pin": "16",
+   "net": "_nrf24_transceiver_N1"
+  },
+  {
+   "ref": "C12",
+   "pin": "1",
+   "net": "_nrf24_transceiver_N2"
+  },
+  {
+   "ref": "U4",
+   "pin": "19",
+   "net": "_nrf24_transceiver_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

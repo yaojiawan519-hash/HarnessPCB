@@ -1,0 +1,132 @@
+{
+  "name": "usb_esd_usblc6",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    25.575,
+    34.5
+  ],
+  "size_mm": [
+    13.4,
+    10.65
+  ],
+  "ports": {
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J2",
+      "J3",
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "U1",
+      "U3",
+      "U4",
+      "Y1"
+    ],
+    "USB_D-": [
+      "U3"
+    ],
+    "USB_D+": [
+      "U3"
+    ],
+    "+5V": [
+      "F1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "USB_D-",
+      "x": 33.075,
+      "y": 34.8678,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 33.075,
+      "y": 35.3322,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 7,
+    "copper_segs": 26,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 12,
+    "cut_ends": 2,
+    "exit_points": 2,
+    "segs_by_layer": {
+      "B.Cu": 2,
+      "F.Cu": 24
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+5V->F1.2": 1
+    },
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 1,
+      "port_cuts": 1,
+      "port_cut_nets": [
+        "+5V"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 11,
+        "vias": 5,
+        "nets": [
+          "+5V",
+          "GND",
+          "USB_D+",
+          "USB_D-"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "USB_B_Micro",
+      "fp": "101181930001LF",
+      "dx": -2.825,
+      "dy": 0.0,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "U2",
+      "value": "USBLC6-2SC6",
+      "fp": "SOT-23-6",
+      "dx": 4.775,
+      "dy": 0.6,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

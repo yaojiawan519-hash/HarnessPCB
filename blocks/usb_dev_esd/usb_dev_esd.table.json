@@ -1,0 +1,170 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "usb_dev_esd",
+ "interface": [
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U5-1",
+    "connector": false
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional",
+   "note": "ESD 之后（芯片侧）的 D+，座子侧那一段是块内网 DP"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U5-3",
+    "connector": false
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional",
+   "note": "ESD 之后（芯片侧）的 D-，座子侧那一段是块内网 DN"
+  },
+  {
+   "net": "USB_DET",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R14-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "VBUS 经 R14 51K/R15 100K 分到 0.66 倍，给 MCU 判断插没插线"
+  }
+ ],
+ "power_rails": [
+  "GND",
+  "VBUS"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector:USB_OTG",
+   "value": "Micro USB",
+   "footprint": "Watchy:USB_Micro-B",
+   "x": 117.602,
+   "y": 128.524
+  },
+  {
+   "ref": "C12",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 117.602,
+   "y": 155.194
+  },
+  {
+   "ref": "R14",
+   "lib": "Device:R",
+   "value": "51K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 181.61,
+   "y": 123.19
+  },
+  {
+   "ref": "U5",
+   "lib": "Power_Protection:USBLC6-2P6",
+   "value": "USBLC6-2P6",
+   "footprint": "Package_TO_SOT_SMD:SOT-666",
+   "x": 152.908,
+   "y": 150.876
+  },
+  {
+   "ref": "R15",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 181.61,
+   "y": 130.81
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "DN"
+  },
+  {
+   "ref": "U5",
+   "pin": "4",
+   "net": "DN"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "DP"
+  },
+  {
+   "ref": "U5",
+   "pin": "6",
+   "net": "DP"
+  },
+  {
+   "ref": "C12",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "R15",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U5",
+   "pin": "1",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "U5",
+   "pin": "3",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "R14",
+   "pin": "2",
+   "net": "USB_DET"
+  },
+  {
+   "ref": "R15",
+   "pin": "1",
+   "net": "USB_DET"
+  },
+  {
+   "ref": "C12",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "R14",
+   "pin": "1",
+   "net": "VBUS"
+  },
+  {
+   "ref": "U5",
+   "pin": "5",
+   "net": "VBUS"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

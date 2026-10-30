@@ -1,0 +1,807 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "mcu_esp32s3",
+ "interface": [
+  {
+   "net": "ACC_INT_1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-19",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "加速度计中断 1"
+  },
+  {
+   "net": "ACC_INT_2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-18",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "加速度计中断 2"
+  },
+  {
+   "net": "ADC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-14",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "电池电压分压（分压电阻在电源块里）"
+  },
+  {
+   "net": "BTN1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-12",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按键 1（上拉在按键块里）"
+  },
+  {
+   "net": "BTN2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-11",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按键 2，兼电源控制"
+  },
+  {
+   "net": "BTN3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "TP3-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按键 3 / BOOT（TP3 在同一根网上）"
+  },
+  {
+   "net": "BTN4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-13",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "按键 4"
+  },
+  {
+   "net": "BUSY",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-41",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "墨水屏忙信号"
+  },
+  {
+   "net": "CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-38",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "墨水屏片选"
+  },
+  {
+   "net": "DC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-39",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "墨水屏数据/命令"
+  },
+  {
+   "net": "EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C2-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "芯片使能，R1 10K + C2 1uF 做上电延时"
+  },
+  {
+   "net": "MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-36",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "墨水屏 SPI 数据"
+  },
+  {
+   "net": "RES",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-40",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "墨水屏复位"
+  },
+  {
+   "net": "SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-37",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "墨水屏 SPI 时钟"
+  },
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "TP6-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟（加速度计的线）"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "TP7-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据"
+  },
+  {
+   "net": "STAT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-15",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "充电器状态输入"
+  },
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U4-26",
+    "connector": false
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional",
+   "note": "USB D+（座子侧那一段在 usb_dev_esd 块里）"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "U4-25",
+    "connector": false
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional",
+   "note": "USB D-（同 D+，两段网）"
+  },
+  {
+   "net": "USB_DET",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-27",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "USB 插入检测，来自 VBUS 分压"
+  },
+  {
+   "net": "VIB_PWM",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-23",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "振动马达 PWM（低边开关在马达块里）"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "TP4",
+   "lib": "Connector:TestPoint",
+   "value": "3V3",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 172.72,
+   "y": 100.33
+  },
+  {
+   "ref": "Y2",
+   "lib": "Device:Crystal_GND24",
+   "value": "40MHz",
+   "footprint": "Crystal:Crystal_SMD_2520-4Pin_2.5x2.0mm",
+   "x": 166.37,
+   "y": 52.07
+  },
+  {
+   "ref": "C17",
+   "lib": "Device:C",
+   "value": "10pF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 162.56,
+   "y": 29.21
+  },
+  {
+   "ref": "L1",
+   "lib": "Device:L",
+   "value": "7.5nH",
+   "footprint": "Watchy:L_0402_1005Metric",
+   "x": 45.72,
+   "y": 22.86
+  },
+  {
+   "ref": "C19",
+   "lib": "Device:C",
+   "value": "26pF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 175.26,
+   "y": 55.88
+  },
+  {
+   "ref": "R1",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 20.32,
+   "y": 30.48
+  },
+  {
+   "ref": "Y1",
+   "lib": "Device:Crystal",
+   "value": "32.768KHz",
+   "footprint": "Crystal:Crystal_SMD_2012-2Pin_2.0x1.2mm",
+   "x": 166.37,
+   "y": 25.4
+  },
+  {
+   "ref": "C7",
+   "lib": "Device:C",
+   "value": "3pF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 41.91,
+   "y": 26.67
+  },
+  {
+   "ref": "TP5",
+   "lib": "Connector:TestPoint",
+   "value": "GND",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 172.72,
+   "y": 104.14
+  },
+  {
+   "ref": "TP3",
+   "lib": "Connector:TestPoint",
+   "value": "BOOT",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 172.72,
+   "y": 88.9
+  },
+  {
+   "ref": "C18",
+   "lib": "Device:C",
+   "value": "10pF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 170.18,
+   "y": 29.21
+  },
+  {
+   "ref": "TP1",
+   "lib": "Connector:TestPoint",
+   "value": "TX",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 62.23,
+   "y": 72.39
+  },
+  {
+   "ref": "TP6",
+   "lib": "Connector:TestPoint",
+   "value": "SCL",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 172.72,
+   "y": 96.52
+  },
+  {
+   "ref": "C9",
+   "lib": "Device:C",
+   "value": "3pF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 49.53,
+   "y": 26.67
+  },
+  {
+   "ref": "TP7",
+   "lib": "Connector:TestPoint",
+   "value": "SDA",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 172.72,
+   "y": 92.71
+  },
+  {
+   "ref": "TP2",
+   "lib": "Connector:TestPoint",
+   "value": "RX",
+   "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+   "x": 62.23,
+   "y": 74.93
+  },
+  {
+   "ref": "U4",
+   "lib": "Espressif:ESP32-S3",
+   "value": "ESP32-S3",
+   "footprint": "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP5.6x5.6mm",
+   "x": 95.25,
+   "y": 62.23
+  },
+  {
+   "ref": "R12",
+   "lib": "Device:R",
+   "value": "1M",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 132.08,
+   "y": 97.79
+  },
+  {
+   "ref": "C15",
+   "lib": "Device:C",
+   "value": "1uF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 153.67,
+   "y": 86.36
+  },
+  {
+   "ref": "C16",
+   "lib": "Device:C",
+   "value": "26pF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 157.48,
+   "y": 55.88
+  },
+  {
+   "ref": "C2",
+   "lib": "Device:C",
+   "value": "1uF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 20.32,
+   "y": 38.1
+  },
+  {
+   "ref": "C13",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 140.97,
+   "y": 86.36
+  },
+  {
+   "ref": "AE1",
+   "lib": "Device:Antenna_Chip",
+   "value": "Antenna_Chip",
+   "footprint": "Watchy:SWRA117D",
+   "x": 39.37,
+   "y": 20.32
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R1",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "TP4",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "20",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "3",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "46",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "55",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "56",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C18",
+   "pin": "1",
+   "net": "32K_N"
+  },
+  {
+   "ref": "U4",
+   "pin": "22",
+   "net": "32K_N"
+  },
+  {
+   "ref": "Y1",
+   "pin": "2",
+   "net": "32K_N"
+  },
+  {
+   "ref": "C17",
+   "pin": "1",
+   "net": "32K_P"
+  },
+  {
+   "ref": "U4",
+   "pin": "21",
+   "net": "32K_P"
+  },
+  {
+   "ref": "Y1",
+   "pin": "1",
+   "net": "32K_P"
+  },
+  {
+   "ref": "C19",
+   "pin": "1",
+   "net": "40M_N"
+  },
+  {
+   "ref": "U4",
+   "pin": "53",
+   "net": "40M_N"
+  },
+  {
+   "ref": "Y2",
+   "pin": "3",
+   "net": "40M_N"
+  },
+  {
+   "ref": "C16",
+   "pin": "1",
+   "net": "40M_P"
+  },
+  {
+   "ref": "R12",
+   "pin": "2",
+   "net": "40M_P"
+  },
+  {
+   "ref": "Y2",
+   "pin": "1",
+   "net": "40M_P"
+  },
+  {
+   "ref": "U4",
+   "pin": "19",
+   "net": "ACC_INT_1"
+  },
+  {
+   "ref": "U4",
+   "pin": "18",
+   "net": "ACC_INT_2"
+  },
+  {
+   "ref": "U4",
+   "pin": "14",
+   "net": "ADC"
+  },
+  {
+   "ref": "U4",
+   "pin": "12",
+   "net": "BTN1"
+  },
+  {
+   "ref": "U4",
+   "pin": "11",
+   "net": "BTN2"
+  },
+  {
+   "ref": "TP3",
+   "pin": "1",
+   "net": "BTN3"
+  },
+  {
+   "ref": "U4",
+   "pin": "5",
+   "net": "BTN3"
+  },
+  {
+   "ref": "U4",
+   "pin": "13",
+   "net": "BTN4"
+  },
+  {
+   "ref": "U4",
+   "pin": "41",
+   "net": "BUSY"
+  },
+  {
+   "ref": "U4",
+   "pin": "38",
+   "net": "CS"
+  },
+  {
+   "ref": "U4",
+   "pin": "39",
+   "net": "DC"
+  },
+  {
+   "ref": "C2",
+   "pin": "1",
+   "net": "EN"
+  },
+  {
+   "ref": "R1",
+   "pin": "1",
+   "net": "EN"
+  },
+  {
+   "ref": "U4",
+   "pin": "4",
+   "net": "EN"
+  },
+  {
+   "ref": "AE1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C13",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C15",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C16",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C17",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C18",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C19",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C7",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C9",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "TP5",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "57",
+   "net": "GND"
+  },
+  {
+   "ref": "Y2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Y2",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "36",
+   "net": "MOSI"
+  },
+  {
+   "ref": "U4",
+   "pin": "40",
+   "net": "RES"
+  },
+  {
+   "ref": "U4",
+   "pin": "37",
+   "net": "SCK"
+  },
+  {
+   "ref": "TP6",
+   "pin": "1",
+   "net": "SCL"
+  },
+  {
+   "ref": "U4",
+   "pin": "16",
+   "net": "SCL"
+  },
+  {
+   "ref": "TP7",
+   "pin": "1",
+   "net": "SDA"
+  },
+  {
+   "ref": "U4",
+   "pin": "17",
+   "net": "SDA"
+  },
+  {
+   "ref": "U4",
+   "pin": "15",
+   "net": "STAT"
+  },
+  {
+   "ref": "U4",
+   "pin": "26",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "U4",
+   "pin": "25",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "U4",
+   "pin": "27",
+   "net": "USB_DET"
+  },
+  {
+   "ref": "C13",
+   "pin": "1",
+   "net": "VDD"
+  },
+  {
+   "ref": "C15",
+   "pin": "1",
+   "net": "VDD"
+  },
+  {
+   "ref": "U4",
+   "pin": "29",
+   "net": "VDD"
+  },
+  {
+   "ref": "U4",
+   "pin": "23",
+   "net": "VIB_PWM"
+  },
+  {
+   "ref": "AE1",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N1"
+  },
+  {
+   "ref": "C7",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N1"
+  },
+  {
+   "ref": "L1",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N1"
+  },
+  {
+   "ref": "C9",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N2"
+  },
+  {
+   "ref": "L1",
+   "pin": "2",
+   "net": "_mcu_esp32s3_N2"
+  },
+  {
+   "ref": "U4",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N2"
+  },
+  {
+   "ref": "TP1",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N3"
+  },
+  {
+   "ref": "U4",
+   "pin": "49",
+   "net": "_mcu_esp32s3_N3"
+  },
+  {
+   "ref": "TP2",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N4"
+  },
+  {
+   "ref": "U4",
+   "pin": "50",
+   "net": "_mcu_esp32s3_N4"
+  },
+  {
+   "ref": "R12",
+   "pin": "1",
+   "net": "_mcu_esp32s3_N5"
+  },
+  {
+   "ref": "U4",
+   "pin": "54",
+   "net": "_mcu_esp32s3_N5"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

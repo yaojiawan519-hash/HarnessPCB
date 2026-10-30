@@ -1,0 +1,116 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "proto_switched_headers",
+ "interface": [],
+ "power_rails": [
+  "GND",
+  "VOUT"
+ ],
+ "parts": [
+  {
+   "ref": "SW2",
+   "lib": "Switch:SW_SPST",
+   "value": "TS3425BA 098 2.5H 250gf",
+   "footprint": "Button_Switch_SMD:SW_SPST_PTS810",
+   "x": 146.05,
+   "y": 107.95
+  },
+  {
+   "ref": "J6",
+   "lib": "Connector:Conn_01x05_Pin",
+   "value": "Conn_01x05_Pin",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical",
+   "x": 129.54,
+   "y": 88.9
+  },
+  {
+   "ref": "J4",
+   "lib": "Connector:Conn_01x04_Pin",
+   "value": "Conn_01x04_Pin",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+   "x": 129.54,
+   "y": 106.68
+  },
+  {
+   "ref": "SW1",
+   "lib": "Switch:SW_SPDT",
+   "value": "SW_SPDT",
+   "footprint": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "x": 149.86,
+   "y": 88.9
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J4",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "J6",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "J4",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J6",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J4",
+   "pin": "2",
+   "net": "_proto_switched_headers_N1"
+  },
+  {
+   "ref": "SW2",
+   "pin": "1",
+   "net": "_proto_switched_headers_N1"
+  },
+  {
+   "ref": "J4",
+   "pin": "3",
+   "net": "_proto_switched_headers_N2"
+  },
+  {
+   "ref": "SW2",
+   "pin": "2",
+   "net": "_proto_switched_headers_N2"
+  },
+  {
+   "ref": "J6",
+   "pin": "2",
+   "net": "_proto_switched_headers_N3"
+  },
+  {
+   "ref": "SW1",
+   "pin": "3",
+   "net": "_proto_switched_headers_N3"
+  },
+  {
+   "ref": "J6",
+   "pin": "3",
+   "net": "_proto_switched_headers_N4"
+  },
+  {
+   "ref": "SW1",
+   "pin": "2",
+   "net": "_proto_switched_headers_N4"
+  },
+  {
+   "ref": "J6",
+   "pin": "4",
+   "net": "_proto_switched_headers_N5"
+  },
+  {
+   "ref": "SW1",
+   "pin": "1",
+   "net": "_proto_switched_headers_N5"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

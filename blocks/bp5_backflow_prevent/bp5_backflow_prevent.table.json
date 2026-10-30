@@ -1,0 +1,187 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_backflow_prevent",
+ "interface": [
+  {
+   "net": "VREF_VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q401-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "背靠背开关之后的对外输出，全板 27 个件挂在它上面"
+  },
+  {
+   "net": "VREG_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D401-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "LDO 输出侧（`bp5_vreg_adj_ldo`）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "Q402",
+   "lib": "Transistor_FET:BSS84",
+   "value": "SI2301",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 146.05,
+   "y": 107.95
+  },
+  {
+   "ref": "R408",
+   "lib": "Device:R_Small",
+   "value": "33K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 137.16,
+   "y": 124.46
+  },
+  {
+   "ref": "R412",
+   "lib": "Device:R_Small",
+   "value": "100K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 157.48,
+   "y": 124.46
+  },
+  {
+   "ref": "R409",
+   "lib": "Device:R_Small",
+   "value": "33K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 137.16,
+   "y": 127.0
+  },
+  {
+   "ref": "D401",
+   "lib": "Diode:1N4148WS",
+   "value": "1N4148WT",
+   "footprint": "Diode_SMD:D_SOD-523",
+   "x": 142.24,
+   "y": 113.03
+  },
+  {
+   "ref": "R410",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 146.05,
+   "y": 116.84
+  },
+  {
+   "ref": "Q401",
+   "lib": "kicad5-device:Q_DUAL_PNP_PNP_E1B1C2E2B2C1",
+   "value": "BCM857",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 154.94,
+   "y": 116.84
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R409",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R412",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Q401",
+   "pin": "1",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "Q402",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "D401",
+   "pin": "1",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "Q401",
+   "pin": "4",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "Q402",
+   "pin": "3",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "D401",
+   "pin": "2",
+   "net": "_bp5_backflow_prevent_N1"
+  },
+  {
+   "ref": "Q401",
+   "pin": "3",
+   "net": "_bp5_backflow_prevent_N1"
+  },
+  {
+   "ref": "Q401",
+   "pin": "5",
+   "net": "_bp5_backflow_prevent_N1"
+  },
+  {
+   "ref": "R408",
+   "pin": "2",
+   "net": "_bp5_backflow_prevent_N1"
+  },
+  {
+   "ref": "R410",
+   "pin": "2",
+   "net": "_bp5_backflow_prevent_N1"
+  },
+  {
+   "ref": "Q401",
+   "pin": "6",
+   "net": "_bp5_backflow_prevent_N2"
+  },
+  {
+   "ref": "Q402",
+   "pin": "1",
+   "net": "_bp5_backflow_prevent_N2"
+  },
+  {
+   "ref": "R412",
+   "pin": "1",
+   "net": "_bp5_backflow_prevent_N2"
+  },
+  {
+   "ref": "R408",
+   "pin": "1",
+   "net": "_bp5_backflow_prevent_N3"
+  },
+  {
+   "ref": "R409",
+   "pin": "1",
+   "net": "_bp5_backflow_prevent_N3"
+  },
+  {
+   "ref": "Q401",
+   "pin": "2",
+   "net": "_bp5_backflow_prevent_N4"
+  },
+  {
+   "ref": "R410",
+   "pin": "1",
+   "net": "_bp5_backflow_prevent_N4"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

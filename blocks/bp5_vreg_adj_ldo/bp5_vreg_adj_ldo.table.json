@@ -1,0 +1,217 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_vreg_adj_ldo",
+ "interface": [
+  {
+   "net": "VREG_ADJ",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R403-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "来自 `bp5_vreg_adj_buffer` 的 U603 输出，进 ADJ 脚"
+  },
+  {
+   "net": "VREG_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R401-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "来自 `bp5_current_en_gate` 的 D602；本块 R401 100K 下拉"
+  },
+  {
+   "net": "VREG_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C407-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "LDO 输出，去 `bp5_backflow_prevent` 的 Q402 侧"
+  },
+  {
+   "net": "VREG_VIN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "C404-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "来自 `bp5_current_sense` 的 R601 下游（0R2 之后），不是直接接 +VUSB"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U403",
+   "lib": "dp-vreg:MCP1824",
+   "value": "AP2127",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "x": 50.8,
+   "y": 110.49
+  },
+  {
+   "ref": "C407",
+   "lib": "Device:C_Small",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 90.17,
+   "y": 110.49
+  },
+  {
+   "ref": "C404",
+   "lib": "Device:C_Small",
+   "value": "4.7uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 35.56,
+   "y": 105.41
+  },
+  {
+   "ref": "R401",
+   "lib": "Device:R_Small",
+   "value": "100K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 34.29,
+   "y": 114.3
+  },
+  {
+   "ref": "R404",
+   "lib": "Device:R_Small",
+   "value": "133K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 68.58,
+   "y": 110.49
+  },
+  {
+   "ref": "R405",
+   "lib": "Device:R_Small",
+   "value": "33K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 68.58,
+   "y": 127.0
+  },
+  {
+   "ref": "R403",
+   "lib": "Device:R_Small",
+   "value": "102K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 63.5,
+   "y": 123.19
+  },
+  {
+   "ref": "C408",
+   "lib": "Device:C_Small",
+   "value": "120pF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 80.01,
+   "y": 110.49
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C404",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C407",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R401",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R405",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U403",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R403",
+   "pin": "1",
+   "net": "VREG_ADJ"
+  },
+  {
+   "ref": "R401",
+   "pin": "1",
+   "net": "VREG_EN"
+  },
+  {
+   "ref": "U403",
+   "pin": "3",
+   "net": "VREG_EN"
+  },
+  {
+   "ref": "C407",
+   "pin": "1",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "C408",
+   "pin": "1",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "R404",
+   "pin": "1",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "U403",
+   "pin": "5",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "C404",
+   "pin": "1",
+   "net": "VREG_VIN"
+  },
+  {
+   "ref": "U403",
+   "pin": "1",
+   "net": "VREG_VIN"
+  },
+  {
+   "ref": "C408",
+   "pin": "2",
+   "net": "_bp5_vreg_adj_ldo_N1"
+  },
+  {
+   "ref": "R403",
+   "pin": "2",
+   "net": "_bp5_vreg_adj_ldo_N1"
+  },
+  {
+   "ref": "R404",
+   "pin": "2",
+   "net": "_bp5_vreg_adj_ldo_N1"
+  },
+  {
+   "ref": "R405",
+   "pin": "1",
+   "net": "_bp5_vreg_adj_ldo_N1"
+  },
+  {
+   "ref": "U403",
+   "pin": "4",
+   "net": "_bp5_vreg_adj_ldo_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

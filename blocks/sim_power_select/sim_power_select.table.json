@@ -1,0 +1,115 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "sim_power_select",
+ "interface": [
+  {
+   "net": "GND_PIN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW2-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SW2 掷 3：主机送进来的地（本地 GND 是掷 1）"
+  },
+  {
+   "net": "SIM_GND",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW2-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SW2 的公共端 → 卡座地（`/SIM_GND`）"
+  },
+  {
+   "net": "VCC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SW1 的公共端 → 卡座供电（`/VCC`）"
+  },
+  {
+   "net": "VCC_PIN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SW1 掷 1：主机送进来的 VCC"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW1-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SW1 掷 3：主机送进来的 3.3V"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "SW2",
+   "lib": "Switch:SW_SPDT",
+   "value": "SW_SPDT",
+   "footprint": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "x": 85.09,
+   "y": 140.97
+  },
+  {
+   "ref": "SW1",
+   "lib": "Switch:SW_SPDT",
+   "value": "SW_SPDT",
+   "footprint": "Button_Switch_SMD:SW_SPDT_PCM12",
+   "x": 85.09,
+   "y": 49.53
+  }
+ ],
+ "conns": [
+  {
+   "ref": "SW2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "SW2",
+   "pin": "3",
+   "net": "GND_PIN"
+  },
+  {
+   "ref": "SW2",
+   "pin": "2",
+   "net": "SIM_GND"
+  },
+  {
+   "ref": "SW1",
+   "pin": "2",
+   "net": "VCC"
+  },
+  {
+   "ref": "SW1",
+   "pin": "1",
+   "net": "VCC_PIN"
+  },
+  {
+   "ref": "SW1",
+   "pin": "3",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

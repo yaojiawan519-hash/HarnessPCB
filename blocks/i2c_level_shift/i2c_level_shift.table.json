@@ -1,0 +1,144 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "i2c_level_shift",
+ "interface": [
+  {
+   "net": "HSCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-4",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "A 侧（3.3V）= U1.4，接插座 SPD 时钟；开漏，需上拉"
+  },
+  {
+   "net": "HSDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "A 侧（3.3V）= U1.5，接插座 SPD 数据；开漏，需总线两端上拉"
+  },
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "B 侧（5V）= U1.1，接测试排针；开漏，需上拉"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U1-8",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "B 侧（5V）= U1.8，接测试排针；开漏，需上拉"
+  }
+ ],
+ "power_rails": [
+  "+3.3V",
+  "BULK_VIN",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "C6",
+   "lib": "Device:C",
+   "value": "10uF/6.3V",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 92.71,
+   "y": 77.47
+  },
+  {
+   "ref": "C7",
+   "lib": "Device:C",
+   "value": "10uF/6.3V",
+   "footprint": "Capacitor_SMD:C_0805_2012Metric",
+   "x": 105.41,
+   "y": 77.47
+  },
+  {
+   "ref": "U1",
+   "lib": "Logic_LevelTranslator:TXS0102DCU",
+   "value": "TXS0102DCU",
+   "footprint": "Package_SO:VSSOP-8_2.3x2mm_P0.5mm",
+   "x": 99.06,
+   "y": 92.71
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C7",
+   "pin": "1",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "U1",
+   "pin": "3",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "U1",
+   "pin": "6",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "C6",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C7",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U1",
+   "pin": "4",
+   "net": "HSCL"
+  },
+  {
+   "ref": "U1",
+   "pin": "5",
+   "net": "HSDA"
+  },
+  {
+   "ref": "U1",
+   "pin": "1",
+   "net": "SCL"
+  },
+  {
+   "ref": "U1",
+   "pin": "8",
+   "net": "SDA"
+  },
+  {
+   "ref": "C6",
+   "pin": "2",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "U1",
+   "pin": "7",
+   "net": "BULK_VIN"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

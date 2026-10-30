@@ -1,0 +1,229 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "sim_headers",
+ "interface": [
+  {
+   "net": "C4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.9 / J3.9：TE 座 C4 → U2.C4"
+  },
+  {
+   "net": "C8",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.8 / J3.8：TE 座 C8 → U2.C8"
+  },
+  {
+   "net": "CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.3 / J3.3：SIM 时钟"
+  },
+  {
+   "net": "GND_PIN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.7 / J3.7：主机送来的地，进 SW2 的一个掷（远端地用法）"
+  },
+  {
+   "net": "I/O",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.2 / J3.2：SIM 数据 I/O（开漏，需上拉）"
+  },
+  {
+   "net": "RST",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.4 / J3.4：SIM 复位（低有效）"
+  },
+  {
+   "net": "VCC_PIN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.6 / J3.6：主机送来的 VCC，进 SW1 的一个掷"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.1 / J3.1：主机送来的 3.3V——既喂灯，也是 SW1 的一个候选源"
+  },
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.5 / J3.5：SIM 编程电压"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 40.64,
+   "y": 100.33
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 52.07,
+   "y": 100.33
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "C4"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "C4"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "C8"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "C8"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "CLK"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "CLK"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "GND_PIN"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "GND_PIN"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "I/O"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "I/O"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "RST"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "RST"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "VCC_PIN"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "VCC_PIN"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "VPP"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "VPP"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

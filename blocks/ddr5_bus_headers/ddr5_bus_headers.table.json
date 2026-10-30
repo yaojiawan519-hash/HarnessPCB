@@ -1,0 +1,164 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ddr5_bus_headers",
+ "interface": [
+  {
+   "net": "PWR_GOOD_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.4 / J3.4：内存条就绪的**开集**输出（高=就绪，由 R13 6.8K 拉到 5V）"
+  },
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.3 / J3.3：5V 侧 I²C 时钟"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "J2.2 / J3.2：5V 侧 I²C 数据（来自 i2c_level_shift 的 B 侧）"
+  }
+ ],
+ "power_rails": [
+  "BULK_VIN",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 30.48,
+   "y": 91.44
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 41.91,
+   "y": 91.44
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "PWR_GOOD_OUT"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "PWR_GOOD_OUT"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "SCL"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "SCL"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "SDA"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "SDA"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "_ddr5_bus_headers_N1"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "_ddr5_bus_headers_N1"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "_ddr5_bus_headers_N2"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "_ddr5_bus_headers_N2"
+  },
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "_ddr5_bus_headers_N3"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "_ddr5_bus_headers_N3"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "_ddr5_bus_headers_N4"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "_ddr5_bus_headers_N4"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "_ddr5_bus_headers_N5"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "_ddr5_bus_headers_N5"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "BULK_VIN"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "BULK_VIN"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

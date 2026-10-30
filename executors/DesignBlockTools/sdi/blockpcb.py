@@ -1437,7 +1437,7 @@ def main(argv=None) -> int:
             'basis': f'从用户项目板 {src_board} 裁出的块（块内坐标一字未动）',
             'board': 'STM32F103_USB_v1',
             'license': 'internal-only —— 用户项目板，不进公开发行包（块规范模版 §六 D 层）',
-            'author': 'yaoyuan',
+            'author': 'HarnessPCB',
             'date': '2026-10-27', 'kicad': '10.0.5'}
 
     rows = []

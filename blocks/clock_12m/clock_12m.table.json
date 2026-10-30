@@ -1,0 +1,196 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "clock_12m",
+ "interface": [
+  {
+   "net": "CLK_12M_EXT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U8-6",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "缓冲之后进 FPGA 那一路"
+  },
+  {
+   "net": "CLK_12M_FT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U4-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "晶振输出直给 FT232H（U3.1）当 12MHz 时钟源"
+  },
+  {
+   "net": "IOB_25B_G3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SJ16-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SJ16 的焊盘跳线：默认 OPEN，即出厂不把 12MHz 送进 FPGA"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U4",
+   "lib": "UPduino_v3.0:ASDMB-xxxMHz-Oscillator",
+   "value": "SG-210STF 12.0000ML3",
+   "footprint": "vs:Oscillator_SMD_Abracon_ASDMB-4Pin_2.5x2.0mm",
+   "x": 223.52,
+   "y": 39.37
+  },
+  {
+   "ref": "C18",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 204.47,
+   "y": 31.75
+  },
+  {
+   "ref": "R10",
+   "lib": "UPduino_v3.0:Device_R_Small",
+   "value": "DNI",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 209.55,
+   "y": 43.18
+  },
+  {
+   "ref": "U8",
+   "lib": "UPduino_v3.0:74xGxx_74AUC2G125",
+   "value": "SN74AUP2G125DCUR",
+   "footprint": "Package_SO:VSSOP-8_2.3x2mm_P0.5mm",
+   "x": 262.89,
+   "y": 55.88
+  },
+  {
+   "ref": "C36",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 270.51,
+   "y": 67.31
+  },
+  {
+   "ref": "SJ16",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 271.78,
+   "y": 31.75
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C18",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C36",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U4",
+   "pin": "4",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U8",
+   "pin": "8",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U8",
+   "pin": "6",
+   "net": "CLK_12M_EXT"
+  },
+  {
+   "ref": "U4",
+   "pin": "3",
+   "net": "CLK_12M_FT"
+  },
+  {
+   "ref": "U8",
+   "pin": "2",
+   "net": "CLK_12M_FT"
+  },
+  {
+   "ref": "U8",
+   "pin": "5",
+   "net": "CLK_12M_FT"
+  },
+  {
+   "ref": "C18",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C36",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R10",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U4",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U8",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U8",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "U8",
+   "pin": "7",
+   "net": "GND"
+  },
+  {
+   "ref": "SJ16",
+   "pin": "2",
+   "net": "IOB_25B_G3"
+  },
+  {
+   "ref": "R10",
+   "pin": "2",
+   "net": "_clock_12m_N1"
+  },
+  {
+   "ref": "U4",
+   "pin": "1",
+   "net": "_clock_12m_N1"
+  },
+  {
+   "ref": "SJ16",
+   "pin": "1",
+   "net": "_clock_12m_N2"
+  },
+  {
+   "ref": "U8",
+   "pin": "3",
+   "net": "_clock_12m_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

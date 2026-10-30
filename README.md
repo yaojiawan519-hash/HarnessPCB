@@ -3,8 +3,9 @@
 **在自己的 Claude Code 里设计 PCB**：喂三段意图报告（原理图设计表 / 放置意图 /
 布线意图），LLM 决策层调度执行器完成全链，产出可送厂的 Gerber。
 
-> 状态：🟢 P0–P4 已完成（执行器抽取 + 双仓字节级复现 + 8 Skills + plugin 骨架
-> + MCP server 随包 + 数据剥离审计 + MIT 许可），当前 **v0.1**。
+> 状态：🟢 P0–P5 已完成（执行器抽取 + 双仓字节级复现 + 8 Skills + plugin 骨架
+> + MCP server 随包 + 数据剥离审计 + MIT 许可；**P5 = 退役 RL 放置线、换规则摆件、
+> 108 块人画电路块随包**），当前 **v0.2**。
 
 ## 快速开始（一屏）
 
@@ -15,7 +16,7 @@
 ```bash
 git clone <本仓库> && cd HarnessPCB
 
-# 1. 装依赖（生成 executors/Placement/.venv，含政策模型推理）
+# 1. 装依赖（生成 executors/Placement/.venv；v0.2 起不再需要 torch——放置是纯规则）
 cd executors/Placement && uv sync && cd ../..
 
 # 2. 写本机工具路径（通常只需改 java / jar 两键；MCP server 已随包）
@@ -37,8 +38,7 @@ executors/Placement/.venv/bin/kca doctor
 # 4. 跑包内 demo 全链（设计表 → 原理图 → 放置 → 布线 → 铺铜 → DRC）
 python3 executors/SchematicDesign/design2schematic/d2s.py chain \
   -d demo/demo_blinker.design.json -o demo/out \
-  --clearances 205,215,225,235,245 --mp 60 \
-  --intent-file demo/demo_blinker_intent.json
+  --clearances 205,215,225,235,245 --mp 60
 ```
 
 demo 是什么、期望产物链，见 `demo/README.md`。全绿后按
@@ -76,12 +76,29 @@ claude plugin install harnesspcb@harnesspcb
 | Skill | 何时用 |
 |---|---|
 | `pcb-chain` | 一条命令全链（sch→board→place→route→pour→DRC），默认入口 |
-| `pcb-place` / `pcb-route` | 单独重跑放置 / 布线（换 seed、调阶梯、看真数） |
+| `pcb-place` / `pcb-route` | 单独重跑放置（规则摆件，调 `--face`/`--gap`/`--ports`）/ 布线（调阶梯、看真数） |
 | `pcb-route-session` | 剩余死网手术：candidates/blockers/单网重布/快照回滚 |
-| `pcb-intent-spec` | 写放置意图前检查清单 + 交付验收对照 |
+| `pcb-intent-spec` | 放置的写前清单 + 交付审查对照（原「意图 spec」，spec 本身已停用） |
 | `pcb-drc-read` | DRC 报告口径（铜级 9 类 / 容忍项 / fail-closed） |
 | `pcb-silk-tidy` | 丝印清理五条方法学（美观项，不挡验收） |
 | `pcb-fab-export` | Gerber + 钻孔 + 贴片坐标导出打包 |
+
+## 块库（108 块）
+
+`blocks/` 里是从真实开源板**一件一件、一截铜一截铜扣下来**的电路：原理图、封装、
+人手画的走线原封不动。设计新板时当**菜单**用——能整块复用的别重画。
+
+```bash
+ls blocks/                      # 每块一个目录
+cat blocks/INDEX.md             # 人看：块名 / 类别 / 件数 / 铜量 / 来源板 / 许可
+python3 -c "import json;[print(b['name'],b['category']) for b in json.load(open('blocks/index.json'))['blocks']]"
+```
+
+每块带块卡（端口 / 轨 / 内部网 / 出处与许可）与实测几何。**口岸按焊盘记**：
+拼板时从焊盘重新拉线，不指望块里切剩的出口铜对接上。GND 与电源轨在块里是裂开的
+（块不带铺铜），拼板必须整板重铺。规矩与坑详见 `docs/块库说明.md`。
+
+只收可公开发行的块（MIT/Apache 等）；用户自己的板与许可未核定的块**不在本仓库**。
 
 ## 仓库结构
 
@@ -92,16 +109,24 @@ claude plugin install harnesspcb@harnesspcb
 | `.claude-plugin/` + `.mcp.json` | Claude Code plugin 清单与 MCP 声明 |
 | `mcp/` | 随包 KiCad MCP server（单文件 bundle + python 接口层，源自 KiCAD-MCP-Server v2.7.0，MIT，见 `mcp/LICENSE-KiCAD-MCP-Server`） |
 | `executors/` | 白名单抽取的执行器（d2s / 规则摆件 place_rules / route 冻结梯子 / actions / 块工具链 sdi + IL 解析层），`MANIFEST.json` 逐文件 sha256 |
-| `docs/` | 输入格式说明、参数快照 FLAG_FREEZE |
-| `demo/` | 合成 demo 板（设计表 + 意图 spec + 期望产物说明） |
-| `tools/` | `pack_from_studio.py` 抽取脚本 + allowlist |
+| `blocks/` | **108 块人画电路块**（原理图 + 板 + 块卡 + 实测几何），可整块复用；见 `docs/块库说明.md` |
+| `docs/` | 输入格式说明、块库说明、参数快照 FLAG_FREEZE |
+| `demo/` | 合成 demo 板（设计表 + 期望产物说明） |
+| `tools/` | 抽取脚本（`pack_from_studio.py` + allowlist、`pack_blocks.py`） |
 
 ## 同步机制（贡献者向）
 
 ```bash
 python3 tools/pack_from_studio.py --check   # 看差异（缺/多/变动）
 python3 tools/pack_from_studio.py --sync    # 重生成 executors/ + MANIFEST.json
+
+python3 tools/pack_blocks.py --list         # 谁进包、谁被许可证挡下
+python3 tools/pack_blocks.py --check        # 块库差异
+python3 tools/pack_blocks.py --sync         # 重生成 blocks/ + 索引 + MANIFEST-blocks.json
 ```
+
+块库**按许可证筛**而不是按路径：只收 `license_tier: permissive`，`internal`
+（用户自己的板 / 许可未核定）与无块卡的老块整批拒绝——公开仓放不起这个错。
 
 `executors/` 由抽取脚本从开发工作台（母舰）生成，**禁止手改**（下次同步会被
 覆盖）；`skills/`、`docs/`、`demo/`、`commands/`、`.claude-plugin/` 的权威源

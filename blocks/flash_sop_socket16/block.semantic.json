@@ -1,0 +1,108 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**上排那只 16 触点测试座**（作者自建封装 `TEST_SOCKETS:16PIN_SCOKET`， 一块弹簧触点转接座：SOP 片子压进去，脚落到触点上）+ C2 0.1uF 芯片侧去耦 （`VCC_CHIP`/`GND_CHIP`）+ R1 2K / D1 电源指示灯（挂在 VOUT 上，与芯片无关）。 16 个触点不是 16 根信号：**CS 在 1+5、CDI 在 2+6、GND_CHIP 在 4+8、CDO 在 9+13、 SCLK 在 10+14、VCC_CHIP 在 12+16、HOLD 独占 3+7+11+15**—— 同一列上几个位置都能夹到同一根信号，**哪个触点夹到芯片第几脚按手册对照本卡网表核**。 `WP` 不在座上（只在排针第 5 脚）。 ⚠ 页上作者在这只座上下各画了一只虚线框（本卡按窗口整窗带走了）——那是他标的 **两个插片位置**，不是两份电路。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CDI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/2",
+      "note": "触点 2+6 → 芯片 MISO"
+    },
+    {
+      "name": "CDO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/13",
+      "note": "触点 9+13 → 芯片 MOSI"
+    },
+    {
+      "name": "CS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/1",
+      "note": "测试座触点 1+5"
+    },
+    {
+      "name": "GND_CHIP",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C2/2",
+      "note": "触点 4+8（+ C2 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片"
+    },
+    {
+      "name": "HOLD",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/11",
+      "note": "触点 3+7+11+15（四只触点同网）"
+    },
+    {
+      "name": "SCLK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J3/10",
+      "note": "触点 10+14"
+    },
+    {
+      "name": "VCC_CHIP",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C2/1",
+      "note": "触点 12+16（+ C2 的 1 脚）：芯片侧电源"
+    },
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R1/1",
+      "note": "只接到 R1（灯在这块里）：本块不出 VOUT，是消费方"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J3",
+    "max_mm": 10.0,
+    "rationale": "座上排（封装框 20.83×18.34mm），C2 贴座右沿、R1/D1 在座左上角。 复用要点：① 座要留得出插片与压合的手指空间；② C2 必须贴着 `VCC_CHIP` 进座的那两个触点； ③ 它与 `flash_sop_socket20` 在源板上下紧叠（间隙 0.36mm），要两只一起复用时照这个间距。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_flash_sop_socket16_N1"
+  ],
+  "notes": [
+    "**上排那只 16 脚测试座**：J3 是作者自建封装 `TEST_SOCKETS:16PIN_SCOKET`（16 触点 + 2 个不带号的定位焊盘，SOP 片子压进去靠弹簧触点接触），C2 0.1uF 是它的芯片侧去耦，R1 2K + D1 是 VOUT 电源指示灯（灯就画在座的左边）。",
+    "**触点复用与本族 ZIF 座逐脚相同**：`CS` 在 1+5、`CDI` 在 2+6、`HOLD` 在 3+7+11+15、`GND_CHIP` 在 4+8、`CDO` 在 9+13、`SCLK` 在 10+14、`VCC_CHIP` 在 12+16。同一网的几个触点是\"同一列上几个位置都能压到\"，实际压到哪几个由片子位置决定。",
+    "⚠ `WP`（排针第 5 脚）在**本版到不了座**：这一族 ZIF / 16 脚 / 20 脚测试座上都**没有** WP 触点，它只连到 J1.5 ↔ J2.5 两个排针脚就断了（卡里登记为块内网 `WP`，拼装时逐实例改名、别当端口）。要控写保护，得自己从排针第 5 脚飞一根线到芯片的 WP# 那一脚——这正是本版与 lotes / wson 两版（WP 真的到焊位）最实用的一处电路差别。",
+    "**灯与去耦的分工**：`VOUT` 只到 R1（灯），芯片侧电源走 `VCC_CHIP`（C2 在这里去耦）；别把这颗灯当成\"芯片有电\"的指示——它只说明主机 VOUT 有电，中间还隔着 SW1。灯链 `VOUT → R1 2K → D1 阳极(pad 2) → 阴极(pad 1) → GND`，≈0.65mA @3.3V。⚠ 0805 LED 的 **pad 1 是阴极**。",
+    "几何：J3 @(163.75, 75.50) rot 0；C2 @(175.25, 69.00) rot 90 贴板右沿；R1 @(148.75, 68.25) rot 90、D1 @(152.00, 68.25) rot 90（横排、中心距 3.25mm）。复用要点：座的压片要留出压下去的手指空间，C2 贴着 `VCC_CHIP` 的两个触点放。",
+    "⚠ 本块**只覆盖 16 脚那只座**；同板下沿的 20 脚座是另一块（`flash_sop_socket20`），两块并联在同一个 `CDI/CDO/SCLK/CS/HOLD` 上——**同一时刻只插一颗片子**，两颗都插会抢同一条 MISO。",
+    "⚠ 这一族四张板子的**灌铜是 `GND_CHIP`（芯片侧地），不是 `GND`**。所以「块内不带铺铜」删掉的是芯片地，裂岛/裸脚全落在 `GND_CHIP` 上；`GND`（排针第 10 脚、灯的回流）本来就没有铺铜，只靠走线。卡里 `GND_CHIP` 记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）；它电学上是**芯片的电源/地网**，拼板时按同名接，别当信号口去串阻容。",
+    "铜 27 段 + 0 孔（B 11 / F 39）；死铜删 17 段/孔（两端全悬空、谁也连不上的才算）；口岸切口 10 处（一端悬空=块的铜接口，按用户拍板留着）、走线出口 11 处；削剩残迹留 1 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND_CHIP 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。",
+    "块里 3 个 **GND_CHIP** 焊盘在窗口内一根铜都没挨到：源板上它们全靠那张双面灌铜接起来，块按「不带铺铜」删了，拼板时由整板铺铜接上——DRC 未连通那几条就是它们。",
+    "**GND_CHIP 裂成 3 个铜岛**：源板上这块芯片地靠那张双面灌铜连成一片，块内不带铺铜就各自成岛——拼板时由整板 GND_CHIP 铺铜接上，不是断线；**HOLD 裂成 2 个铜岛**（各含焊盘）：源板上这些片之间的铜不在块窗口里（切到窗口边就停），拼板时由块外干线接上。",
+    "kicad-cli DRC：isolated_copper 0；未连通 3 条（GND_CHIP×4、HOLD×2）：源板上这些片之间那段铜不在块里（窗口切掉/铺铜删掉），拼板时接上；断头走线 10 + 悬空过孔 0 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_* 4 条（源板自带，见基线）；源板 flash-sop-rev3.kicad_pcb 基线：未连通 0 / isolated_copper 0 / 违规 64 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 flash-sop-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 **GND_CHIP** 灌铜（芯片侧地，不是板上 GND）是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 flash adapter (SOP) REV3",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "4 件 / 10 网 / 端口 8 + 轨 1；铜 27 段 + 0 孔；死铜删 17；口岸切口 10；卡↔板门 ①~⑤ 全过"
+  }
+}

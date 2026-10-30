@@ -1,0 +1,14 @@
+{
+ "pcb": "30212:1793373656921063141",
+ "violations": 9,
+ "unconnected": 0,
+ "kinds": {
+  "courtyards_overlap": 1,
+  "footprint_type_mismatch": 1,
+  "lib_footprint_issues": 3,
+  "lib_footprint_mismatch": 2,
+  "track_dangling": 2
+ },
+ "shorts": [],
+ "bridges": []
+}

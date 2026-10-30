@@ -1,0 +1,100 @@
+{
+  "name": "rs232_vout_led",
+  "source": "rs232-dual-adapter.refswap.kicad_pcb",
+  "origin_src_mm": [
+    102.2443,
+    78.2369
+  ],
+  "size_mm": [
+    3.5285,
+    10.4363
+  ],
+  "ports": {
+    "VOUT": [
+      "C1",
+      "C7",
+      "J2",
+      "J3",
+      "U1",
+      "U2"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C3",
+      "C5",
+      "C7",
+      "C9",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "U1",
+      "U2"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 101.4,
+      "y": 84.255,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 0,
+    "cut_ends": 1,
+    "exit_points": 1,
+    "segs_by_layer": {
+      "F.Cu": 3
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 2,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D2",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": -0.7443,
+      "dy": -1.9869,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R2",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -0.7443,
+      "dy": 3.5131,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+project:
+  kind: block
+  name: bp5_io_buffer_0_3
+  version: sdi/1
+defs:
+  bp5_io_buffer_0_3:
+    category: interface
+    rationale: "**BPIO0..3 四路双向电平转换**：U301-304 = `AiP74LVC1T45`（SN74LVC1T45 的国产物， SOT-363-6），逐脚 `1=VCCA\
+      \ 2=GND 3=A 4=B 5=DIR 6=VCCB`；本块里 **`1 (VCCA) = +3V3`、`6 (VCCB) = VREF_VOUT`**，也就是 A 侧是 MCU 的 3.3V\
+      \ 侧、 B 侧是目标电压侧（`VREF_VOUT` 由 `bpu-current_limiter` 那页给，随 BPIO 的 I/O 电压走）。 每路两只 330R 串阻 + 两只 1M 下拉\
+      \ + 一只 100K 方向下拉，全用 `R_Array_Convex_4x0402` （一只网络管四路，所以四路必须同块）： · `BUFIO<n> ── RN301 330R ── (无名网)\
+      \ ── U30x.3 (A)`，该网另有 `RN302 1M ── GND`； · `BPIO<n>  ── RN305 330R ── (无名网) ── U30x.4 (B)`，该网另有\
+      \ `RN304 1M ── GND`； · `BUFDIR<n> ── U30x.5 (DIR)`，`RN303 100K ── GND` → **方向默认低 = B→A**\n  （74LVC1T45：DIR\
+      \ 高 A→B、低 B→A），即上电默认\"目标侧 → MCU\"，MCU 侧不会被反向推动。\n17 件 / 23 网 / 端口 12（`BPIO0..3` `BUFIO0..3` `BUFDIR0..3`，外加参考/供电网\
+      \ `VREF_VOUT`） + 轨 `+3V3`/`GND` + 内部网 8（四组 330R 与 1M 的交点）。 作者原话（卡片 `decoration`，就在这组旁边）：「Small pull-down\
+      \ on VOUT_VREF. Ensures proper partial power down function of the 74LVC1T45」——那两只 1M 是为了 `VREF_VOUT`\
+      \ 半供电时 A/B 脚不悬空（74LVC1T45 的 partial power-down 特性靠它成立）。"
+    ports:
+    - name: BPIO0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN305-1
+        connector: false
+    - name: BPIO1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN305-2
+        connector: false
+    - name: BPIO2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN305-3
+        connector: false
+    - name: BPIO3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN305-4
+        connector: false
+    - name: BUFDIR0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN303-8
+        connector: false
+    - name: BUFDIR1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN303-7
+        connector: false
+    - name: BUFDIR2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN303-6
+        connector: false
+    - name: BUFDIR3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN303-5
+        connector: false
+    - name: BUFIO0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN301-8
+        connector: false
+    - name: BUFIO1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN301-7
+        connector: false
+    - name: BUFIO2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN301-6
+        connector: false
+    - name: BUFIO3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: RN301-5
+        connector: false
+    - name: VREF_VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C304-1
+        connector: false
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: C304
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C302
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U302
+      lib: Logic_LevelTranslator:SN74LVC1T45DCK
+      value: AiP74LVC1T45GC363.TR
+      footprint: Package_TO_SOT_SMD:SOT-363_SC-70-6
+    - ref: C305
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C303
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U303
+      lib: Logic_LevelTranslator:SN74LVC1T45DCK
+      value: AiP74LVC1T45GC363.TR
+      footprint: Package_TO_SOT_SMD:SOT-363_SC-70-6
+    - ref: C306
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C307
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U304
+      lib: Logic_LevelTranslator:SN74LVC1T45DCK
+      value: AiP74LVC1T45GC363.TR
+      footprint: Package_TO_SOT_SMD:SOT-363_SC-70-6
+    - ref: C310
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C301
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U301
+      lib: Logic_LevelTranslator:SN74LVC1T45DCK
+      value: AiP74LVC1T45GC363.TR
+      footprint: Package_TO_SOT_SMD:SOT-363_SC-70-6
+    - ref: RN301
+      lib: dp-rarray:R_Array
+      value: 330R
+      footprint: Resistor_SMD:R_Array_Convex_4x0402
+    - ref: RN302
+      lib: dp-rarray:R_Array
+      value: 1M
+      footprint: Resistor_SMD:R_Array_Convex_4x0402
+    - ref: RN303
+      lib: dp-rarray:R_Array
+      value: 100K
+      footprint: Resistor_SMD:R_Array_Convex_4x0402
+    - ref: RN304
+      lib: dp-rarray:R_Array
+      value: 1M
+      footprint: Resistor_SMD:R_Array_Convex_4x0402
+    - ref: RN305
+      lib: dp-rarray:R_Array
+      value: 330R
+      footprint: Resistor_SMD:R_Array_Convex_4x0402
+    conns:
+    - ref: C301
+      pin: '2'
+      net: +3V3
+    - ref: C302
+      pin: '2'
+      net: +3V3
+    - ref: C303
+      pin: '2'
+      net: +3V3
+    - ref: C307
+      pin: '2'
+      net: +3V3
+    - ref: U301
+      pin: '1'
+      net: +3V3
+    - ref: U302
+      pin: '1'
+      net: +3V3
+    - ref: U303
+      pin: '1'
+      net: +3V3
+    - ref: U304
+      pin: '1'
+      net: +3V3
+    - ref: RN305
+      pin: '1'
+      net: BPIO0
+    - ref: RN305
+      pin: '2'
+      net: BPIO1
+    - ref: RN305
+      pin: '3'
+      net: BPIO2
+    - ref: RN305
+      pin: '4'
+      net: BPIO3
+    - ref: RN303
+      pin: '8'
+      net: BUFDIR0
+    - ref: U301
+      pin: '5'
+      net: BUFDIR0
+    - ref: RN303
+      pin: '7'
+      net: BUFDIR1
+    - ref: U302
+      pin: '5'
+      net: BUFDIR1
+    - ref: RN303
+      pin: '6'
+      net: BUFDIR2
+    - ref: U303
+      pin: '5'
+      net: BUFDIR2
+    - ref: RN303
+      pin: '5'
+      net: BUFDIR3
+    - ref: U304
+      pin: '5'
+      net: BUFDIR3
+    - ref: RN301
+      pin: '8'
+      net: BUFIO0
+    - ref: RN301
+      pin: '7'
+      net: BUFIO1
+    - ref: RN301
+      pin: '6'
+      net: BUFIO2
+    - ref: RN301
+      pin: '5'
+      net: BUFIO3
+    - ref: C301
+      pin: '1'
+      net: GND
+    - ref: C302
+      pin: '1'
+      net: GND
+    - ref: C303
+      pin: '1'
+      net: GND
+    - ref: C304
+      pin: '2'
+      net: GND
+    - ref: C305
+      pin: '2'
+      net: GND
+    - ref: C306
+      pin: '2'
+      net: GND
+    - ref: C307
+      pin: '1'
+      net: GND
+    - ref: C310
+      pin: '2'
+      net: GND
+    - ref: RN302
+      pin: '1'
+      net: GND
+    - ref: RN302
+      pin: '2'
+      net: GND
+    - ref: RN302
+      pin: '3'
+      net: GND
+    - ref: RN302
+      pin: '4'
+      net: GND
+    - ref: RN303
+      pin: '1'
+      net: GND
+    - ref: RN303
+      pin: '2'
+      net: GND
+    - ref: RN303
+      pin: '3'
+      net: GND
+    - ref: RN303
+      pin: '4'
+      net: GND
+    - ref: RN304
+      pin: '5'
+      net: GND
+    - ref: RN304
+      pin: '6'
+      net: GND
+    - ref: RN304
+      pin: '7'
+      net: GND
+    - ref: RN304
+      pin: '8'
+      net: GND
+    - ref: U301
+      pin: '2'
+      net: GND
+    - ref: U302
+      pin: '2'
+      net: GND
+    - ref: U303
+      pin: '2'
+      net: GND
+    - ref: U304
+      pin: '2'
+      net: GND
+    - ref: C304
+      pin: '1'
+      net: VREF_VOUT
+    - ref: C305
+      pin: '1'
+      net: VREF_VOUT
+    - ref: C306
+      pin: '1'
+      net: VREF_VOUT
+    - ref: C310
+      pin: '1'
+      net: VREF_VOUT
+    - ref: U301
+      pin: '6'
+      net: VREF_VOUT
+    - ref: U302
+      pin: '6'
+      net: VREF_VOUT
+    - ref: U303
+      pin: '6'
+      net: VREF_VOUT
+    - ref: U304
+      pin: '6'
+      net: VREF_VOUT
+    - ref: RN301
+      pin: '2'
+      net: _bp5_io_buffer_0_3_N1
+    - ref: RN302
+      pin: '7'
+      net: _bp5_io_buffer_0_3_N1
+    - ref: U302
+      pin: '3'
+      net: _bp5_io_buffer_0_3_N1
+    - ref: RN304
+      pin: '2'
+      net: _bp5_io_buffer_0_3_N2
+    - ref: RN305
+      pin: '7'
+      net: _bp5_io_buffer_0_3_N2
+    - ref: U302
+      pin: '4'
+      net: _bp5_io_buffer_0_3_N2
+    - ref: RN301
+      pin: '3'
+      net: _bp5_io_buffer_0_3_N3
+    - ref: RN302
+      pin: '6'
+      net: _bp5_io_buffer_0_3_N3
+    - ref: U303
+      pin: '3'
+      net: _bp5_io_buffer_0_3_N3
+    - ref: RN304
+      pin: '3'
+      net: _bp5_io_buffer_0_3_N4
+    - ref: RN305
+      pin: '6'
+      net: _bp5_io_buffer_0_3_N4
+    - ref: U303
+      pin: '4'
+      net: _bp5_io_buffer_0_3_N4
+    - ref: RN301
+      pin: '4'
+      net: _bp5_io_buffer_0_3_N5
+    - ref: RN302
+      pin: '5'
+      net: _bp5_io_buffer_0_3_N5
+    - ref: U304
+      pin: '3'
+      net: _bp5_io_buffer_0_3_N5
+    - ref: RN304
+      pin: '4'
+      net: _bp5_io_buffer_0_3_N6
+    - ref: RN305
+      pin: '5'
+      net: _bp5_io_buffer_0_3_N6
+    - ref: U304
+      pin: '4'
+      net: _bp5_io_buffer_0_3_N6
+    - ref: RN301
+      pin: '1'
+      net: _bp5_io_buffer_0_3_N7
+    - ref: RN302
+      pin: '8'
+      net: _bp5_io_buffer_0_3_N7
+    - ref: U301
+      pin: '3'
+      net: _bp5_io_buffer_0_3_N7
+    - ref: RN304
+      pin: '1'
+      net: _bp5_io_buffer_0_3_N8
+    - ref: RN305
+      pin: '8'
+      net: _bp5_io_buffer_0_3_N8
+    - ref: U301
+      pin: '4'
+      net: _bp5_io_buffer_0_3_N8
+    placement_prior:
+      anchor: U301
+      max_mm: 16.0
+      rationale: U301-304 在板上排成一行（y≈103.1，x 106.10/109.25/112.30/115.30，节距约 3.07mm， 全部 rot −90°）。每只 U
+        的正上方 2.7mm 各一只 `+3V3` 去耦、正下方 2.6mm 各一只 `VREF_VOUT` 去耦（两排 y≈100.3 / y≈105.7，与 U 一一对齐）——**一只 U 上下各一只电容**
+        就是这块板的布局事实。四只网络在 U 行的上下方成堆：RN301/RN302 在 x≈112.6 的 y 95.5/98.4（行上方）、RN303 在 109.40,98.30、RN304/RN305
+        在 y 108.05（行下方）。 即"**电容贴脚、电阻网络成堆放在两端**"，不是串阻贴着各自引脚走。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _bp5_io_buffer_0_3_N1
+    - _bp5_io_buffer_0_3_N2
+    - _bp5_io_buffer_0_3_N3
+    - _bp5_io_buffer_0_3_N4
+    - _bp5_io_buffer_0_3_N5
+    - _bp5_io_buffer_0_3_N6
+    - _bp5_io_buffer_0_3_N7
+    - _bp5_io_buffer_0_3_N8
+    provenance:
+      basis: 17 件 / 23 网 / 端口 13 + 轨 2；铜 235 段 + 42 孔；死铜删 20；口岸切口 23
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: schematic-only —— 板级几何待扣（成员已定，PCB 从整板 `REV10a.kicad_pcb` 扣）
+    notes:
+    - '**BPIO0..3 四路双向电平转换**：U301-304 = `AiP74LVC1T45`（SN74LVC1T45 的国产物，SOT-363-6），逐脚 `1=VCCA 2=GND 3=A
+      4=B 5=DIR 6=VCCB`。本块 **`1 VCCA = +3V3`、`6 VCCB = VREF_VOUT`**——A 侧是 MCU 的 3.3V 侧，B 侧是目标电压侧。17 件
+      / 23 网 / 端口 13 + 轨 `+3V3`/`GND` / 内部网 8 条。'
+    - '**每路四只电阻、两个串阻网络**（都是 `R_Array_Convex_4x0402` 四联，一只网络管四路，所以四路必须同块）：`BUFIO<n> ── RN301 330R ── _N<n>
+      ── U30x.3 (A)`，同一只内部网另有 `RN302 1M ── GND`；`BPIO<n> ── RN305 330R ── _N<n+4> ── U30x.4 (B)`，另有 `RN304
+      1M ── GND`；`BUFDIR<n> ── U30x.5 (DIR)`，`RN303 100K ── GND`。于是**方向默认是低 = B→A**（74LVC1T45：DIR 高 A→B、低
+      B→A），上电就先把目标侧读进 MCU 侧。'
+    - '**端口 13 条里 8 条在本页只有一条腿**：`BUFIO0..3`（只落在 RN301 上）和 `BUFDIR0..3`（RN303 + U30x.5 两只脚，但另一端在 MCU）。它们靠全局标签去
+      `micro-rp2040` 页，判据是 `sdi/block_sch.py` 的 `external_globals()`（别页有同名全局标签）。`VREF_VOUT` 也是端口不是轨：它是全局标签画的，由
+      `bpu-current_limiter` 页给。'
+    - 作者原话（卡片 `decoration`，就压在这组旁边）：「Small pull-down on VOUT_VREF. Ensures proper partial power down function
+      of the 74LVC1T45」——那两只 1M 不是为了分压，是为了 `VREF_VOUT` 半供电时 A/B 脚不悬空；74LVC1T45 的 partial power-down 特性就靠这个成立。删掉它们，目标侧掉电时
+      MCU 侧会被反灌。
+    - '**布局事实**：U301-304 一行（y≈103.1，节距 3.07mm，全 rot −90°）；每只 U **正上方 2.7mm 一只 `+3V3` 去耦、正下方 2.6mm 一只 `VREF_VOUT`
+      去耦**（两排 y≈100.3 / 105.7，与 U 一一对齐）；四只电阻网络成堆放在行的上下两端（RN301/RN302 在 x≈112.6 上方，RN303 在 109.4 上方，RN304/RN305
+      在 y≈108 下方），**不是串阻贴着各自引脚走**——复用这块时照这个摆法才和原板一致。'
+    - '**铜**：262 段 + 44 孔、0 张铺铜；孤立铜删 20 段/孔；口岸切口 23 处（留着，装板时从焊盘重新引）；残迹留 0。`naked_plane_pads` 24（**全是 GND**，源板靠整板铺铜连），`island_split`
+      `GND×24`——这只块单看 GND 是碎的，拼板整板重铺后并起来。'
+    - ⚠ **`counts.borrowed_pads` 8 处**：`BPIO0..3 → RN318/RN312`（右半那两块缓冲器的串阻网络，同一根 BPIO 干线从 J301/J302 一直铺到
+      330R 上）、`VREF_VOUT → Q307.2 / R301.1`（`bpu-current_limiter` 页的回流保护管与限流电阻）。这些铜端压在**别的块的焊盘**上换层，块单看这里是断的；拼板时那几只件插上就通。

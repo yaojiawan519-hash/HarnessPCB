@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "2k conn_01x04_pin led_dual_bidirectional",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "proto_led_jumper"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "一路**低边开关升压**：VOUT（Bus Pirate 给的 5V 轨）→ L1 680uH → 肖特基 D2 BAT54W → VPP，\n  Q4 MMBT3904 从 `Net-(D2-A)` 拉低实现能量储存/泵出，基极由 VPP_PWM 直接驱动（**没有栅极电阻、\n  没有缓冲**，全靠 Bus Pirate 的 IO 自己出方波）。C15 47uF 是 VPP 端储能，C13/C14 是 VOUT 端\n  去耦，D3（标 18V 的 SOD-123 齐纳）把 VPP 钳住——**这是这块唯一的安全件**：PWM 跑飞时由它兜底，\n  换目标板若 VPP 目标更高，D3 必须跟着换。\n  复用要点：① 开关管走的是线性区驱动（基极电流由 PWM 源直接出），驱动能力弱、效率低，\n  只适合 mA 级负载；② 反馈完全在块外（VPP 经 vpp_adc_divider 回 ADC，PWM 占空比由固件闭\n  环调节，块内没有任何反馈网络），所以**它是一个\"开环升压功率级\"**，不是一个能独立工作的电源。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C13/1",
+      "note": "输入轨：Bus Pirate 给的 5V（这块的电源入口），同时给 L1 与指示灯供电"
+    },
+    {
+      "name": "VPP",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C15/1",
+      "note": "升压输出（可达 18V，由块外分压+固件 PWM 闭环控），出口到 J4.1 与 vpp_switch"
+    },
+    {
+      "name": "VPP_PWM",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "Q4/1",
+      "note": "开关管 Q4 的基极驱动，直接由主控 IO 出方波（块内无限流电阻）"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "L1",
+    "max_mm": 18.0,
+    "rationale": "功率件贴着 L1 排：Q4 5.28mm、D2 5.14mm、输入去耦 C13 6.51mm / C14 4.77mm，\n    输出储能 C15 11.57mm。**只有钳位管 D3 在 17.65mm 外**——它在原板上是跟着 VPP 的\n    下游走线放的（VPP 从这块出去先到 Q1/R22/R23 再拐回来），不是跟着电感放的。\n    复用时 D3 跟 VPP 出口走、不必和 L1 挤在一起；必须保住的是\"L1—D2—C15 三点一线、\n    开关管回地路径短\"，这是升压的环路面积。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_vpp_boost_N1"
+  ],
+  "notes": [
+    "7 件 / 5 网：3 个信号口岸（VOUT 进、VPP 出、VPP_PWM 控）+ 轨 GND；第 5 张网是块内的**开关节点**（原理图上无名，kicad-cli 自动命名 `Net-(D2-A)`），不出块——L1.2 / Q4.3 / D2.1 三个脚在这里汇合。",
+    "⚠ 这是**开环功率级**：块内没有任何反馈网络，VPP 的实际电压靠块外的 vpp_adc_divider 读回来、由固件的 PWM 占空比闭环。单拿这块装板必须自己补反馈。",
+    "⚠ Q4 的基极**没有串电阻**，直接吃 VPP_PWM 的 IO 电流（MMBT3904 是 NPN 低边开关）。换到驱动能力弱的主控上，先补一只基极电阻再抄。",
+    "D3 是标 18V 的 SOD-123 齐纳，把 VPP 钳住；它是这块唯一的安全件，换更高 VPP 目标时跟着换。",
+    "借道 5 处（VOUT→J2.1、VPP→Q1.2 / R22.1 / R23.2、VPP_PWM→J2.4）都发生在**排针/下游管子**的焊盘上：块单看这几处是断的，拼板时插上就通。",
+    "铜 32 段 + 1 孔（B 2 / F 31）；死铜删 38 段/孔；口岸切口 4 处、走线出口 4 处；铺铜带走 0 张（源板那张 GND 铺铜按「块内不带铺铜」整张删掉，拼板时由整板铺铜接上）。",
+    "块里 5 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "kicad-cli DRC：isolated_copper 0；未连通 4 条，全是 GND 焊盘（源板靠铺铜连，块里没铺铜）；其余 13 条（track_dangling×5、lib_footprint_mismatch×5、lib_footprint_issues×1、silk_overlap×1、silk_over_copper×1）是源板自带 + 切块断头——源板本身 23 条违规 / 未连通 0（lib_footprint_mismatch×20、silk_over_copper×1、silk_overlap×1、starved_thermal×1），块里能对上的都是从那儿继承的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 vpp-maker-rev6-ian.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 GND 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 VPP Maker 适配板（1REV6）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "7 件 / 6 网 / 端口 3 + 轨 1；铜 32 段 + 1 孔；死铜删 38；口岸切口 4；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

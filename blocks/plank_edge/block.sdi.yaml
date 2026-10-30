@@ -1,0 +1,121 @@
+project:
+  kind: block
+  name: plank_edge
+  version: sdi/1
+defs:
+  plank_edge:
+    category: connector
+    rationale: '**Pimoroni Breakout Garden 的 10 触点卡边母座**（`ED10BGFBK` 焊在板上的 `CONN-TH_SA10BL01D` 座上），一块转接板的小卡边直接插进来。
+      它**不是 10 根独立信号**：10 只焊盘按卡边两侧**成对镜像**——同一 y 上左右两只焊盘同网， 所以 breakout 正着插、反着插，电序完全一样： **1=10=VOUT、2=9=GND、3=8=SDA、4=7=INT、5=6=SCL**。
+      复用要点：① 这一对一对是**同一根网的两只焊盘**，不是"接了两遍的冗余"——实物上是卡边 两面的触点，布线时两边都得接；② 本块是全板唯一带 **INT** 的口（Breakout Garden
+      的 惯例），其余口都只有 I2C 四线；③ 卡边开口朝板外，复制块时朝向一起搬。 ⚠ 作者在这颗金手指旁边留了一句实测批注 `NOTE: edge connector spacing seems
+      to be 2.54*2 wide`（间距约 5.08mm），抄进本卡。'
+    ports:
+    - name: INT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J10-4
+        connector: true
+      pin: J10/4
+      note: 中断线（Breakout Garden 第 5 线）：J10.4 与 J10.7 两只镜像触点；全板唯一带 INT 的口，另一端在 plank_io_headers 的第 4 脚（丝印写
+        IO2）
+    - name: SCL
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J10-5
+        connector: true
+      pin: J10/5
+      note: I2C 时钟：J10.5 与 J10.6 两只镜像触点
+    - name: SDA
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J10-3
+        connector: true
+      pin: J10/3
+      note: I2C 数据：J10.3 与 J10.8 两只镜像触点
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J10-1
+        connector: true
+      pin: J10/1
+      note: 整板电源（丝印 `V+`）：J10.1 与 J10.10 两只镜像触点
+    rails:
+    - GND
+    parts:
+    - ref: J10
+      lib: Connector_Generic:Conn_02x05_Odd_Even
+      value: ED10BGFBK
+      footprint: footprints:CONN-TH_SA10BL01D
+    conns:
+    - ref: J10
+      pin: '2'
+      net: GND
+    - ref: J10
+      pin: '9'
+      net: GND
+    - ref: J10
+      pin: '4'
+      net: INT
+    - ref: J10
+      pin: '7'
+      net: INT
+    - ref: J10
+      pin: '5'
+      net: SCL
+    - ref: J10
+      pin: '6'
+      net: SCL
+    - ref: J10
+      pin: '3'
+      net: SDA
+    - ref: J10
+      pin: '8'
+      net: SDA
+    - ref: J10
+      pin: '1'
+      net: VOUT
+    - ref: J10
+      pin: '10'
+      net: VOUT
+    placement_prior:
+      anchor: J10
+      max_mm: 8.0
+      rationale: 独占板子中部竖条，四周给了 3mm 以上的净空（左右分别是 J11/J12 与 J1-J4 两列， 上下是 J6/J7 与 J8/J9 两排）。这块**必须贴板边或独立成岛**：卡边座要能把
+        breakout 插进去， 周围得留手指空间。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 I2C Quick Connect Plank v1 REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 1 件 / 5 网 / 端口 4 + 轨 1；铜 14 段 + 0 孔；死铜删 3；口岸切口 6；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb
+      原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 GND 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**Pimoroni Breakout Garden 的 10 触点卡边母座**（焊在板上的 `ED10BGFBK` / `CONN-TH_SA10BL01D`），一块 breakout 的小卡边直接插进来。1
+      件 / 5 网：4 个出块端口（INT / SCL / SDA / VOUT）+ 1 条轨（GND）。'
+    - '**它不是 10 根独立信号**：10 只焊盘按卡边两侧**成对镜像**，同一 y 上左右两只同网——所以 breakout 正着插、反着插，电序完全一样：**1=10=VOUT、2=9=GND、3=8=SDA、4=7=INT、5=6=SCL**。'
+    - ⚠ 成对那两只焊盘是**同一根网的两只触点**（卡边两面各一只），不是冗余，布线时两边都得接；少接一面，卡边翻过来插就断。
+    - 本块是全板**唯一带 INT 的口**（Breakout Garden 的惯例：5 线含中断），其余口都只有 I2C 四线。⚠ 本块这 10 只焊盘全是 SMD、没有任何过孔；铜全靠走线引出。
+    - '⚠ 作者在这颗金手指旁边留的实测批注：`NOTE: edge connector spacing seems to be 2.54*2 wide`（触点间距约 5.08mm）。换别的卡边座时按这个数核对。'
+    - '⚠ `VOUT` 在本卡里记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）。它电学上是**整板的电源网**（板上丝印写
+      `V+`），拼板时按同名接，不要当信号口串东西。'
+    - 铜 14 段 + 0 孔（B 11 / F 11）；死铜删 3 段/孔；口岸切口 6 处、走线出口 6 处；削剩残迹留 4 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面
+      GND 是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - '**INT 裂成 2 个铜岛**（各含焊盘）：源板上 INT 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上。'
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条（INT×2）；断头走线 6 + 悬空过孔 0 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_*
+      1 条（源板自带，见基线）；源板基线：未连通 0 / isolated_copper 0 / 违规 46 条。

@@ -1,0 +1,121 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "vib_motor_drv",
+ "interface": [
+  {
+   "net": "VIB_PWM",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R13-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "PWM 进 R13 1K 到 Q2 基极；占空比=振动力度，低电平停"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "Q2",
+   "lib": "Device:Q_NPN_BEC",
+   "value": "S8050",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 140.716,
+   "y": 187.198
+  },
+  {
+   "ref": "R13",
+   "lib": "Device:R",
+   "value": "1K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 131.826,
+   "y": 187.198
+  },
+  {
+   "ref": "D2",
+   "lib": "Diode:1N4001",
+   "value": "1N4001",
+   "footprint": "Diode_SMD:D_SOD-123F",
+   "x": 143.256,
+   "y": 178.308
+  },
+  {
+   "ref": "C14",
+   "lib": "Device:C",
+   "value": "100nF",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 148.336,
+   "y": 178.308
+  },
+  {
+   "ref": "M1",
+   "lib": "Motor:Motor_DC",
+   "value": "Vibration_Motor",
+   "footprint": "Watchy:Motor_Header",
+   "x": 157.734,
+   "y": 179.578
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C14",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "M1",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "Q2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R13",
+   "pin": "2",
+   "net": "VIB_PWM"
+  },
+  {
+   "ref": "C14",
+   "pin": "2",
+   "net": "_vib_motor_drv_N1"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "_vib_motor_drv_N1"
+  },
+  {
+   "ref": "M1",
+   "pin": "2",
+   "net": "_vib_motor_drv_N1"
+  },
+  {
+   "ref": "Q2",
+   "pin": "3",
+   "net": "_vib_motor_drv_N1"
+  },
+  {
+   "ref": "Q2",
+   "pin": "1",
+   "net": "_vib_motor_drv_N2"
+  },
+  {
+   "ref": "R13",
+   "pin": "1",
+   "net": "_vib_motor_drv_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

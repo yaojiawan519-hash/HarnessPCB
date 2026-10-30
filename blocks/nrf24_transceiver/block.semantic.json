@@ -1,0 +1,99 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**nRF24L01+ 2.4GHz 收发器本体**（作者分区框 \"NRF24 Transceiver\"）：U4 是 nRF24L01P（QFN20 + 散热盘=第 21 脚），SPI3 四线由主控来、CE/IRQ 出到主控， 天线侧走 ANT1/ANT2 进匹配网络（另见 `nrf24_match_network`），VDD_PA 单独引到 匹配网络块去取电。去耦四颗都是贴脚摆的：C8 10u/C9 10n/C10 10n/C11 10n 在 VDD 一排脚上，C12 33n 单独贴 VDD_PA。R4 22k 是 **IREF 参考电流电阻**——这颗芯片的 输出功率由它定，换值等于改发射功率，不是可随手替的\"上拉\"。 ⚠ 散热盘（`U4.21`）在原理图符号里没有对应脚，只在封装里，板上接 GND； `pcbcarve` 的电路一致性门为此加了\"符号里没有的焊盘不参与比较\"（与既有的 \"未上板的符号脚\"对称，2026-10-31 本块逼出来的）。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "NRF_ANT1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "NRF_ANT2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "NRF_CE",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "NRF_IRQ",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "NRF_VDD_PA",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "NRF_XC1",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "NRF_XC2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SPI3_!CS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SPI3_MISO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SPI3_MOSI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "SPI3_SCK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U4",
+    "max_mm": 12.0,
+    "rationale": "四颗 VDD 去耦必须贴 U4 的 VDD 脚（源板就是这么摆的），C12 贴 VDD_PA 脚； R4 任意但别跨过 SPI 线。天线一侧（ANT1/ANT2/VDD_PA）朝板边，等匹配网络接。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_nrf24_transceiver_N1",
+    "_nrf24_transceiver_N2"
+  ],
+  "geometry_status": "carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py` 无损收 2 层）按位号原样扣铜。本块：7 件 / 15 网， 铜 69 段 + 15 孔，口岸切口 7 处；+3V3 裂 3 岛、GND 裂 8 岛（铺铜删掉的必然结果）。",
+  "provenance": {
+    "source": "human:open-source",
+    "basis": "从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 \"NRF24 Transceiver\" 整框裁出； 板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。",
+    "board": "STRF (2.4GHz RF-to-USB dongle)",
+    "license": "MIT — 上游 Copyright (c) 2020 Philip Salmony",
+    "license_tier": "permissive",
+    "author": "Philip Salmony（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-31",
+    "kicad": "10.0.5"
+  }
+}

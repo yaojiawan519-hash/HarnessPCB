@@ -1,0 +1,124 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**BPIO4..7 四路双向电平转换**，与 `bp5_io_buffer_0_3` **逐器件同构**（同一页的镜像 另一半，作者是复制粘贴出来的）：U305-308 = `AiP74LVC1T45`（`1=VCCA 2=GND 3=A 4=B 5=DIR 6=VCCB`，`1=+3V3`、`6=VREF_VOUT`），每路 `BUFIO<n> ── RN306 330R ── U30x.3`（+ `RN307 1M` 下拉）、 `BPIO<n> ── RN309 330R ── U30x.4`（+ `RN310 1M` 下拉）、 `BUFDIR<n> ── U30x.5`（+ `RN308 100K` 下拉 → 默认 DIR 低 = B→A）。 17 件 / 23 网 / 端口 12（`BPIO4..7` `BUFIO4..7` `BUFDIR4..7` + `VREF_VOUT`） + 轨 `+3V3`/`GND` + 内部网 8。 ⚠ **两块不能互换成\"一块八路\"**：四路共用一只 4 联电阻网络，网络是整只封装， 拆不出两路给另一块。要拼成一个 8 路 I/O 缓冲，插两块、把 `VREF_VOUT`/`+3V3`/`GND` 按同名接起来即可（两组之间没有共用器件）。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "BPIO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BPIO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFDIR4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFDIR5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFDIR6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFDIR7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFIO4",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFIO5",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFIO6",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "BUFIO7",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "VREF_VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U305",
+    "max_mm": 16.0,
+    "rationale": "与左侧那组镜像：U305-308 一行（y≈102.95，x 144.78/147.65/150.47/153.45，节距约 2.9mm， 全 rot −90°）；`+3V3` 去耦四只在 y≈100.3 正上方、`VREF_VOUT` 去耦四只在 y≈105.9 正下方，与每只 U 对齐；网络成堆在两端——RN306/RN307（x≈151.1-151.2，y 94.9/98.2）、 RN308（148.10,98.20）在行上方，RN309/RN310 在 y 107.95 行下方。 与左组不同的是 RN309/RN310 这次是 rot 0（左组是 rot 180）——**电气一样、摆法镜像**。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_bp5_io_buffer_4_7_N1",
+    "_bp5_io_buffer_4_7_N2",
+    "_bp5_io_buffer_4_7_N3",
+    "_bp5_io_buffer_4_7_N4",
+    "_bp5_io_buffer_4_7_N5",
+    "_bp5_io_buffer_4_7_N6",
+    "_bp5_io_buffer_4_7_N7",
+    "_bp5_io_buffer_4_7_N8"
+  ],
+  "notes": [
+    "**BPIO4..7 四路双向电平转换**，与 `bp5_io_buffer_0_3` **逐器件同构**（同页镜像的另一半，作者复制粘贴出来的）：U305-308 = `AiP74LVC1T45`，`1=VCCA=+3V3`、`6=VCCB=VREF_VOUT`，`BUFIO<n> ── RN306 330R ── U30x.3`（+ `RN307 1M` 下拉）、`BPIO<n> ── RN309 330R ── U30x.4`（+ `RN310 1M` 下拉）、`BUFDIR<n> ── U30x.5`（+ `RN308 100K` 下拉 → 默认 DIR 低 = B→A）。17 件 / 23 网 / 端口 13 + 轨 `+3V3`/`GND` / 内部网 8 条。",
+    "⚠ **两块合不成\"一块八路\"**：四路共用一只 4 联电阻网络，网络是整只封装、拆不开。要拼成 8 路 I/O 缓冲，就**插两块**、把 `VREF_VOUT`/`+3V3`/`GND` 按同名接起来——两组之间没有一件共用器件，拼装不会打架。",
+    "**布局事实**：U305-308 一行（y≈102.95，节距约 2.9mm，全 rot −90°）；`+3V3` 去耦四只在正上方 y≈100.3、`VREF_VOUT` 去耦四只在正下方 y≈105.9，与每只 U 对齐；电阻网络成堆在两端（RN306/RN307 在 x≈151.1-151.2 上方、RN308 在 148.1 上方、RN309/RN310 在 y≈108 下方）。与左组唯一差别：RN309/RN310 是 rot 0（左组 rot 180）——**电气一样、摆法镜像**。",
+    "**铜**：247 段 + 43 孔、0 张铺铜；孤立铜删 28 段/孔；口岸切口 18 处；残迹留 0；`naked_plane_pads` 24（全 GND）、`island_split` `GND×24`——GND 同样靠拼板整板重铺。",
+    "⚠ **`counts.borrowed_pads` 7 处**：`BPIO4..7 → RN311/RN317`（左半那两块的串阻网络，BPIO 干线横穿整页）、`VREF_VOUT → Q301.2 / Q302.2`（`bpu-current_limiter` 页的回流保护）。拼板时插上就通，块单看是断的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从整机主板的整板 REV10a.kicad_pcb 扣，4 层板、0.8mm 铜窗口外扩；交付板 16.52×20.36mm；247 段铜 + 43 孔 + 0 张铺铜）",
+  "provenance": {
+    "basis": "17 件 / 23 网 / 端口 13 + 轨 2；铜 227 段 + 39 孔；死铜删 28；口岸切口 18",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

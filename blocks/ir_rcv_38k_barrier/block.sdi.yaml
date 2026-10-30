@@ -1,0 +1,111 @@
+project:
+  kind: block
+  name: ir_rcv_38k_barrier
+  version: sdi/1
+defs:
+  ir_rcv_38k_barrier:
+    category: sensor
+    rationale: '**38kHz 带屏障（barrier）红外解调头**：U2 IRM-3638**J7**，外围与 ir_rcv_38k 逐颗同构 ——R1 100R 串 VOUT→模块
+      VCC、C1 4.7µF 做 RC 滤波、R2 10K 输出上拉、输出开漏低有效。 两块并排画，除了模块型号以外电路一模一样，差别全在模块的光学处理上： 作者用 "barrier" 和备选 TSSP4038
+      标出它要的是**带屏障/短脉冲抑制**的那一档 （对连续光源、荧光灯/节能灯的调制干扰更不敏感）——具体到多强的抑制，得看所装 模块的 datasheet，本卡不替厂家下结论。 复用要点：①
+      三根外围照抄即可，换模块时 R1/C1/R2 都不用动； ② 两块 38kHz 头同时上板时，一颗选普通 IRM-3638T、一颗选 J7，正好拿到 "灵敏"与"抗干扰"两种取舍；③ 上拉接
+      VOUT ⇒ 输出 5V 摆幅，接 3.3V 主机要改接 3V3。'
+    ports:
+    - name: IO3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R2-1
+        connector: false
+      pin: R2/1
+      note: 解调输出：开漏、有 38kHz 载波时拉低；块内 R2 10K 上拉到 VOUT
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R1-2
+        connector: false
+      pin: R1/2
+      note: 5V 电源，经块内 R1 100R 到模块 VCC（同节点挂 C1 4.7µF）
+    rails:
+    - GND
+    parts:
+    - ref: R2
+      lib: Device:R
+      value: 10K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: C1
+      lib: Device:C
+      value: 4.7uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: R1
+      lib: Device:R
+      value: 100R
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: U2
+      lib: TSOP4838:TSOP4838
+      value: IRM-3638J7
+      footprint: Library:TSOP18XX
+    conns:
+    - ref: C1
+      pin: '2'
+      net: GND
+    - ref: U2
+      pin: GND
+      net: GND
+    - ref: R2
+      pin: '1'
+      net: IO3
+    - ref: U2
+      pin: OUT
+      net: IO3
+    - ref: R1
+      pin: '2'
+      net: VOUT
+    - ref: R2
+      pin: '2'
+      net: VOUT
+    - ref: C1
+      pin: '1'
+      net: _ir_rcv_38k_barrier_N1
+    - ref: R1
+      pin: '1'
+      net: _ir_rcv_38k_barrier_N1
+    - ref: U2
+      pin: VCC
+      net: _ir_rcv_38k_barrier_N1
+    placement_prior:
+      anchor: U2
+      max_mm: 6.5
+      rationale: 四颗件 10.45×7.51mm（实测到 U2 中心：C1 3.52mm、R2 4.32mm、R1 5.66mm）， 与 ir_rcv_38k 的排布几乎逐格相同（同构块的正常现象，作者就是按同一张图复制的）。
+        要保住的是"C1 贴模块电源脚 + U2 朝板边"，其余照同构摆。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _ir_rcv_38k_barrier_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 IR Toy 适配板（3REV3）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 4 网 / 端口 2 + 轨 1；铜 17 段 + 2 孔；死铜删 3；口岸切口 1；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板 GND 铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 4 件 / 4 网：2 个出块端口（IO3 输出、VOUT 供电）+ 轨 GND + 1 张块内网（R1 100R 之后的模块 VCC 段，卡里 `_ir_rcv_38k_barrier_N1`）。
+    - 电路与 ir_rcv_38k 逐颗相同（100R + 4.7µF + 10K），差别全在模块：U2 IRM-3638**J7**，作者把它标成 "38kHz demodulator barrier"，备选
+      TSSP4038。
+    - '**"barrier" 我只能报到型号和作者的标题这一层**——抑制多少、在什么光照下不退敏，得看所装模块的 datasheet，卡里不替厂家下结论。'
+    - 输出开漏、低有效；上拉接 VOUT ⇒ 空闲电平 = VOUT，接 3.3V 主机要把 R2 改接到 3V3。
+    - 两块 38kHz 头同时上板时，一颗普通 3638T、一颗 J7，正好拿到"灵敏"与"抗干扰"两种取舍。
+    - 铜 17 段 + 2 孔（B 7 / F 15）；死铜删 3 段/孔；口岸切口 1 处、走线出口 4 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走
+      0 张（GND 铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。
+    - 块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。
+    - kicad-cli DRC：isolated_copper 0；未连通 3 条（GND×2、VOUT×4）；断头走线 2 + 悬空过孔 2 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通
+      0 / isolated_copper 0 / 违规 113 条。

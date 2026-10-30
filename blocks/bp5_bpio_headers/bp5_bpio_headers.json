@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "10k conn_01x09 conn_01x10",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_bpio_headers"
+  }
+}

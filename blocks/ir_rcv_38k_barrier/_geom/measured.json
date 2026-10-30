@@ -1,0 +1,22 @@
+{
+  "block": "ir_rcv_38k_barrier",
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 GND 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "parts_xy": {
+    "R2": [
+      94.615,
+      67.31
+    ],
+    "C1": [
+      85.09,
+      76.2
+    ],
+    "R1": [
+      85.09,
+      67.31
+    ],
+    "U2": [
+      104.14,
+      77.47
+    ]
+  }
+}

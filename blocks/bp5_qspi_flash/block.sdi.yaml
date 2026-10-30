@@ -1,0 +1,169 @@
+project:
+  kind: block
+  name: bp5_qspi_flash
+  version: sdi/1
+defs:
+  bp5_qspi_flash:
+    category: interface
+    rationale: '**RP2040 的 QSPI 启动 flash + BOOTSEL 按键**：U102 = `W25Q128JVSIQ`（16MB，SOP-8）， 逐脚 `1=QSPI_SS
+      2=QSPI_SD1 3=QSPI_SD2 4=GND 5=QSPI_SD0 6=QSPI_SCLK 7=QSPI_SD3 8=+3V3` ——四根数据线全接，跑的就是 RP2040 的 **QSPI（XIP
+      直取）**，不是单线 SPI。 C103（0.1µF）+ C104（2.2µF）是它的一对去耦。 **BOOTSEL**：SW101（`SW_SPST`，`SW_SPST_PTS810`）经
+      R101（1K）把 `QSPI_SS` 拉到 GND， 按住上电即进 RP2040 的 USB 引导；R102 是 **DNF**（`+3V3` 到 `QSPI_SS` 的上拉选项， 默认不焊——焊上就把
+      SS 顶死，flash 读不到）。6 件 / 9 网。 复用要点：R101 值别改小（1K 是"能拉低又不和 flash 抢"的折中）；R102 保持 DNF。'
+    ports:
+    - name: QSPI_SCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U102-6
+        connector: false
+    - name: QSPI_SD0
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U102-5
+        connector: false
+    - name: QSPI_SD1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U102-2
+        connector: false
+    - name: QSPI_SD2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U102-3
+        connector: false
+    - name: QSPI_SD3
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U102-7
+        connector: false
+    - name: QSPI_SS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R101-1
+        connector: false
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: C103
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C104
+      lib: Device:C_Small
+      value: 2.2uF
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: U102
+      lib: dp-memory:xm25qh128a
+      value: W25Q128JVSIQ
+      footprint: Package_SO:SOP-8_5.28x5.23mm_P1.27mm
+    - ref: SW101
+      lib: Switch:SW_SPST
+      value: SW_SPST
+      footprint: Button_Switch_SMD:SW_SPST_PTS810
+    - ref: R101
+      lib: Device:R_Small
+      value: 1K
+      footprint: Resistor_SMD:R_0402_1005Metric
+    - ref: R102
+      lib: Device:R_Small
+      value: DNF
+      footprint: Resistor_SMD:R_0402_1005Metric
+    conns:
+    - ref: C103
+      pin: '1'
+      net: +3V3
+    - ref: C104
+      pin: '1'
+      net: +3V3
+    - ref: R102
+      pin: '1'
+      net: +3V3
+    - ref: U102
+      pin: '8'
+      net: +3V3
+    - ref: C103
+      pin: '2'
+      net: GND
+    - ref: C104
+      pin: '2'
+      net: GND
+    - ref: SW101
+      pin: '2'
+      net: GND
+    - ref: U102
+      pin: '4'
+      net: GND
+    - ref: U102
+      pin: '6'
+      net: QSPI_SCLK
+    - ref: U102
+      pin: '5'
+      net: QSPI_SD0
+    - ref: U102
+      pin: '2'
+      net: QSPI_SD1
+    - ref: U102
+      pin: '3'
+      net: QSPI_SD2
+    - ref: U102
+      pin: '7'
+      net: QSPI_SD3
+    - ref: R101
+      pin: '1'
+      net: QSPI_SS
+    - ref: R102
+      pin: '2'
+      net: QSPI_SS
+    - ref: U102
+      pin: '1'
+      net: QSPI_SS
+    - ref: R101
+      pin: '2'
+      net: _bp5_qspi_flash_N1
+    - ref: SW101
+      pin: '1'
+      net: _bp5_qspi_flash_N1
+    placement_prior:
+      anchor: U102
+      max_mm: 16.0
+      rationale: U102 在板左（118.70, 81.90），C103/C104 在它上方 5.7mm 一排， R101/R102 在它左边 6.9mm、SW101 再往左下 7.5mm——按钮离
+        MCU 远、离 flash 近， 这是按"BOOTSEL 信号从 SS 上取"布的位置。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _bp5_qspi_flash_N1
+    provenance:
+      basis: 6 件 / 9 网 / 端口 6 + 轨 2；铜 35 段 + 5 孔；死铜删 31；口岸切口 5
+      source: human:open-source
+      board: Bus Pirate 5 主板 REV10A（`bus_pirate_pcb/5-REV10A`）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从整板 `REV10a.kicad_pcb` 扣，4 层板； U102 在板上转 45°、SW101
+      转 −45°）
+    notes:
+    - '**QSPI 启动 flash + BOOTSEL**：U102 = `W25Q128JVSIQ`（16MB，SOIC-8，板上转 45°）+ C103 0.1µF/C104 2.2µF 一对去耦
+      + R101 1K 串在片选上 + R102 `DNF` + SW101 轻触。6 件 / 9 网 / 端口 6 + 轨 `+3V3`/`GND` / 内部网 1 条。'
+    - '**BOOTSEL 的接法**：`QSPI_SS → R101 1K → (无名网 N1) → SW101 → GND`。按下时片选经 1K 短路到地、RP2040 进 USB 启动模式；1K
+      是限流不是分压——松开后 `QSPI_SS` 由 RP2040 正常驱动。**R102（DNF）是片选上拉的可选项**，源板不焊；要改"默认不选中 flash"就把它贴上去。'
+    - ⚠ **WP/HOLD 被当 IO2/IO3 用**：`U102.3 (WP) = QSPI_SD2`、`U102.7 (HOLD) = QSPI_SD3`。这是四线 QSPI 的标准做法——**别按单线
+      SPI 去接**（那样两位会被当成写保护/挂起，flash 直接不响应）。
+    - '**端口 6 条**：`QSPI_SCLK`(U102.6) / `QSPI_SD0`(5) / `QSPI_SD1`(2) / `QSPI_SD2`(3) / `QSPI_SD3`(7)
+      / `QSPI_SS`(出口脚记 R101.1，串阻在块内)。全部直连 RP2040。'
+    - '**铜**：52 段 + 8 孔、0 铺铜；孤立铜删 31 段/孔；口沿截断 5 处；残迹留 1 段（单脚网自己出来的铜接口）。`naked_plane_pads` 4、`island_split`
+      `GND×5`。'

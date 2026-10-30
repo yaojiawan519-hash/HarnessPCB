@@ -1,0 +1,14 @@
+{
+ "pcb": "104131:1793372280873864125",
+ "violations": 71,
+ "unconnected": 11,
+ "kinds": {
+  "copper_edge_clearance": 2,
+  "lib_footprint_issues": 15,
+  "lib_footprint_mismatch": 3,
+  "solder_mask_bridge": 32,
+  "track_dangling": 19
+ },
+ "shorts": [],
+ "bridges": []
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "micro-USB 设备口的全部：J2 是 USB_OTG 座（1 VBUS / 2 DN / 3 DP / 4 ID / 5 GND， 6 号是外壳脚，板上没接=空脚），U5(USBLC6-2P6) 是 D+/D- 的 ESD 阵列——**两段网要说清**： 座子那侧是 DN/DP（块内网），芯片那侧才是 USB_D+/USB_D-（口岸），别把连接器脚当芯片脚接。 C12 100nF 是 VBUS 去耦，R14 51K + R15 100K 把 VBUS 分到 0.66 倍生成 USB_DET （5V→3.3V）送进 MCU 判断\"插没插线\"——这块没有 D+ 上拉电阻抽 VBUS，插入检测全靠这根分压。",
+  "power_rails": [
+    "GND",
+    "VBUS"
+  ],
+  "interface": [
+    {
+      "name": "USB_D+",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D-",
+      "pin": "U5/1",
+      "note": "ESD 之后（芯片侧）的 D+，座子侧那一段是块内网 DP"
+    },
+    {
+      "name": "USB_D-",
+      "kind": "signal",
+      "class": "bus_diff",
+      "direction": "bidirectional",
+      "diff_pair": "USB_D+",
+      "pin": "U5/3",
+      "note": "ESD 之后（芯片侧）的 D-，座子侧那一段是块内网 DN"
+    },
+    {
+      "name": "USB_DET",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R14/2",
+      "note": "VBUS 经 R14 51K/R15 100K 分到 0.66 倍，给 MCU 判断插没插线"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J2",
+    "max_mm": 18.0,
+    "rationale": "连接器贴板边、开口朝外；ESD 阵列夹在座子与主芯片之间、尽量贴座子；VBUS 去耦贴 U5 的 VBUS 脚。源板实测 J2→U5 4.98mm、U5→C12 1.67mm（贴脚），分压 R14/R15 彼此 0.94mm 排在座子另一侧。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "DN",
+    "DP"
+  ],
+  "notes": [
+    "5 件 / 7 网，3 个口岸 + 轨 GND/VBUS。**这块没有 +3V3**：座子这侧只有 VBUS，别指望从这儿取 3.3V。",
+    "两段网：座子→ESD 是块内网 DN/DP，ESD→芯片才是口岸 USB_D±。装配时接错侧会把 ESD 阵列短路掉。",
+    "J2.4(ID)、J2.6(外壳) 是空脚，按\"空脚不是网\"不写进卡。",
+    "4 层板但只用了表层：F.Cu 39 / B.Cu 7 段 + 7 过孔，没有 In2 走线。",
+    "源板自带 DRC：J2 的 4 个无网机械脚与相邻焊盘间距不足（clearance 4 条），上游封装的老问题，照搬。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Watchy",
+    "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+    "license_tier": "permissive",
+    "author": "SQFMI（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "5 件 / 7 网 / 端口 3 + 轨 2；铜 31 段 + 0 孔；死铜删 17；口岸切口 5；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

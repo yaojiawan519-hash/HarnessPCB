@@ -1,0 +1,18 @@
+{
+  "block": "kb_usb_a_port",
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：3 件、块内 26 段铜、 3 孔、0 铺铜；GND 在源板上是整板平面 → 整张删）",
+  "parts_xy": {
+    "L2": [
+      48.26,
+      166.37
+    ],
+    "C2": [
+      96.52,
+      41.91
+    ],
+    "J5": [
+      35.56,
+      171.45
+    ]
+  }
+}

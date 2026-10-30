@@ -1,0 +1,98 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "ddr5_status_leds",
+ "interface": [
+  {
+   "net": "PWR_GOOD_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "D3-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "D3 的阴极节点：被拉低时点亮（就绪灯），悬空时由 R13 拉高熄灭"
+  }
+ ],
+ "power_rails": [
+  "+3.3V",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "D2",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 45.72,
+   "y": 128.27
+  },
+  {
+   "ref": "D3",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 59.69,
+   "y": 161.29
+  },
+  {
+   "ref": "R12",
+   "lib": "Device:R",
+   "value": "6.8K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 59.69,
+   "y": 153.67
+  },
+  {
+   "ref": "R2",
+   "lib": "Device:R",
+   "value": "6.8K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 38.1,
+   "y": 128.27
+  }
+ ],
+ "conns": [
+  {
+   "ref": "R12",
+   "pin": "1",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "R2",
+   "pin": "1",
+   "net": "+3.3V"
+  },
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "D3",
+   "pin": "1",
+   "net": "PWR_GOOD_OUT"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "_ddr5_status_leds_N1"
+  },
+  {
+   "ref": "R2",
+   "pin": "2",
+   "net": "_ddr5_status_leds_N1"
+  },
+  {
+   "ref": "D3",
+   "pin": "2",
+   "net": "_ddr5_status_leds_N2"
+  },
+  {
+   "ref": "R12",
+   "pin": "2",
+   "net": "_ddr5_status_leds_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

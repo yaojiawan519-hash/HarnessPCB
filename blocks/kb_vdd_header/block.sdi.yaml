@@ -1,0 +1,48 @@
+project:
+  kind: block
+  name: kb_vdd_header
+  version: sdi/1
+defs:
+  kb_vdd_header:
+    category: connector
+    rationale: '**外部 5V 输入/引出针**：J9 = 1×02 竖排针（`PinHeader_1x02_P2.54mm_Vertical`）， `1=VDD 2=GND`。板上就这一只件、两根网——它是"不靠
+      USB、也不靠 BP，从外面喂 5V" 的那个口子（或者反过来把 `VDD` 引出去给别的东西用）。 复用要点：J9 直接挂在 `VDD` 上，**没有保险丝也没有防反接**——极性插反了就是
+      把 5V 灌到地。要正经当电源入口用，得自己在拼板层加一只二极管/理想二极管。'
+    ports: []
+    rails:
+    - GND
+    - VDD
+    parts:
+    - ref: J9
+      lib: Connector:Conn_01x02_Pin
+      value: Conn_01x02_Pin
+      footprint: Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
+    conns:
+    - ref: J9
+      pin: '2'
+      net: GND
+    - ref: J9
+      pin: '1'
+      net: VDD
+    placement_prior:
+      anchor: J9
+      max_mm: 3.0
+      rationale: J9 在板右上角、针朝上；周围 2mm 内没有别人的件，属于边角上的独立物件。
+    slots: []
+    hot_loop: []
+    provenance:
+      basis: 1 件 / 2 网 / 端口 0 + 轨 2；铜 0 段 + 0 孔；死铜删 0；口岸切口 1
+      source: human:open-source
+      board: Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：1 件、块内 1 段铜、 0
+      孔、0 铺铜）
+    notes:
+    - '**外部 5V 输入/引出针**：J9 = `Conn_01x02_Pin`（1×02 竖排针），`1=VDD 2=GND`。1 件 / 2 网 / 端口 0 + 轨 GND+VDD ——
+      这块**没有接插件意义上的信号口，两条电源轨就是它的接口**。'
+    - ⚠ **J9 直接挂在 `VDD` 上，没有保险丝也没有防反接**：极性插反就是把 5V 灌到地。要正经当电源入口用，得在拼板层自己加一只二极管/理想二极管。
+    - '**铜**：1 段（F.Cu）、0 孔、0 铺铜。口沿截断 1 处；`naked_plane_pads` 1（GND 脚在源板上靠铺铜连）。'

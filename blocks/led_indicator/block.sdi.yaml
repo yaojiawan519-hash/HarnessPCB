@@ -1,0 +1,136 @@
+project:
+  kind: block
+  name: led_indicator
+  version: sdi/1
+defs:
+  led_indicator:
+    category: indicator
+    rationale: "两颗灯配两种用途。D3 是 Cree PLCC4 的**共阳 RGB 灯**，三路 R/G/B 直接吃\n  FPGA 的 IO（LED_R/LED_G/LED_B），限流用的是\
+      \ R28 —— 一颗 **ShortedJumper（焊死的短路片）**\n  而不是电阻，也就是电流全靠 FPGA 引脚驱动能力和 LED 自身压降，**没有限流电阻**。\n  C24\
+      \ 4.7u 是它的储能。D1 是单色 0603 灯，用来看 CDONE（配置完成），带 R7 2.2K 真限流。\n  复用要点：D3 那三路要么补限流电阻、要么确认目标芯片的 IO 驱动能力，\n\
+      \  原样照抄等于把 LED 和 IO 直接串起来。"
+    ports:
+    - name: CDONE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D1-2
+        connector: false
+      pin: D1/2
+      note: 配置完成指示：D1 与 FPGA 的 CDONE、FT232H 的 U3.19 同网
+    - name: LED_B
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D3-2
+        connector: false
+      pin: D3/2
+      note: 蓝灯驱动
+    - name: LED_G
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D3-3
+        connector: false
+      pin: D3/3
+      note: 绿灯驱动
+    - name: LED_R
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D3-4
+        connector: false
+      pin: D3/4
+      note: 红灯驱动（FPGA 银行 2 的 IO 直接来）
+    rails:
+    - +3V3
+    - GND
+    parts:
+    - ref: D1
+      lib: UPduino_v3.0:Device_LED_ALT
+      value: LTST-C191KGKT
+      footprint: LED_SMD:LED_0603_1608Metric
+    - ref: R7
+      lib: UPduino_v3.0:Device_R
+      value: 2.2K
+      footprint: Resistor_SMD:R_0603_1608Metric
+    - ref: D3
+      lib: UPduino_v3.0:Device_LED_ARGB
+      value: CLMVC-FKA-CLBDGL7LBB79353
+      footprint: VS.preety:LED_Cree-PLCC4_2x2mm_CW
+    - ref: R28
+      lib: UPduino_v3.0:Device_R
+      value: SHORT
+      footprint: vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm
+    - ref: C24
+      lib: UPduino_v3.0:Device_C
+      value: 4.7u
+      footprint: Capacitor_SMD:C_0603_1608Metric
+    conns:
+    - ref: R28
+      pin: '2'
+      net: +3V3
+    - ref: R7
+      pin: '2'
+      net: +3V3
+    - ref: D1
+      pin: '2'
+      net: CDONE
+    - ref: R7
+      pin: '1'
+      net: CDONE
+    - ref: C24
+      pin: '2'
+      net: GND
+    - ref: D1
+      pin: '1'
+      net: GND
+    - ref: D3
+      pin: '2'
+      net: LED_B
+    - ref: D3
+      pin: '3'
+      net: LED_G
+    - ref: D3
+      pin: '4'
+      net: LED_R
+    - ref: C24
+      pin: '1'
+      net: _led_indicator_N1
+    - ref: D3
+      pin: '1'
+      net: _led_indicator_N1
+    - ref: R28
+      pin: '1'
+      net: _led_indicator_N1
+    placement_prior:
+      anchor: D3
+      max_mm: 18.0
+      rationale: "D3 与它的储能 C24 相距 3.01mm、短路片 R28 3.29mm；CDONE 灯 D1 在 14.68mm 外、\n    它的限流 R7 17.71mm。**两颗灯根本不是一组**：D3\
+        \ 在 FPGA 边上（IO 直驱），\n    D1 在 FT232H 的 CDONE 脚边上。块里把它们并在一起只是因为页上画在一个标题下；\n    复用时按\"灯跟着各自的驱动源\"\
+        拆开放，块宽 18.53mm 是原板两者之间的距离，不是约束。"
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: UPduino v3.01
+      license: MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc
+      license_tier: permissive
+      author: TinyVision.ai（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 5 件 / 7 网 / 端口 4 + 轨 2；铜 136 段 + 5 孔；死铜删 30；口岸切口 6；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板的铺铜按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - 5 件 / 7 网：4 个口岸 + 轨 +3V3/GND。
+    - ⚠ D3 是**三色一体**的 LED（四个脚：共阳 + R/G/B），所以块里只有一颗 D，却有 LED_R/G/B 三个信号口岸。
+    - ⚠ R28 在板上标的是 *ShortedJumper*（短路跳线），不是限流电阻——也就是说红/绿/蓝三路**没有串电阻**，靠 FPGA IO 的驱动能力限流。复用时要么照抄这个决定，要么自己补电阻，别以为块里已经限好了。
+    - 铜 136 段 + 5 孔（B.Cu 74 / F.Cu 65）；死铜删 30 段/孔；口岸切口 6 处。
+    - kicad-cli DRC：isolated_copper 0；未连通 2 条，都是轨。
+    internal_nets:
+    - _led_indicator_N1

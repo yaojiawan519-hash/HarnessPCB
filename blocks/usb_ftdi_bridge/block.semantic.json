@@ -1,0 +1,157 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "USB-C 座（J1 47589-0001）+ FT232H（U3，QFN-48 带 6.2×6.2 散热盘）组成的下载器。 电源这条线是三段滤波不是一段：VBUS 先过 FB3 铁氧体成 +5VD，FT232H 自己再用三组 铁氧体+电容造内部电源——FB1+C12/C27 给 PHY（V_PHY）、FB2+C13/C28 给 PLL（V_PLL）、 C7/C8/C9 给 IO 与内核（FT_VCORE 由芯片内部稳压器出）。R3 12K 是 FT232H 的 USB 参考电阻（决定全速还是高速）。 出块 12 个信号：USB_P/USB_M（**同一对 USB 线经 SJ35/SJ36 两个短路跳线直通 FPGA**， tinyFPGA 引导模式用）、CDONE/CRESET_N（控制 FPGA 配置）、CLK_12M_FT（12MHz 时钟源， 来自时钟块）、EE_CLK/EE_CS/EE_DAT（Microwire EEPROM）、FT_SCK/FT_SSn/ FLASH_MISO/FLASH_MOSI（SPI）。 12 个 TP1~TP12 是这块的调试口，不是装饰：USB D±、3V3、GND、SPI 四线全引出来了。 复用要点：USB_P/USB_M 走跳线而不是直连，是为了让 FPGA 在错误状态下不打扰下载器； 换板若不需要\"FPGA 直接当 USB 设备\"，SJ35/SJ36 就是该删的两个件。",
+  "power_rails": [
+    "+3V3",
+    "+5VD",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "CDONE",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/19",
+      "note": "配置完成，回读给 FT232H 的 U3.19"
+    },
+    {
+      "name": "CLK_12M_FT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/1",
+      "note": "12MHz 输入（源在 clock_12m 的 U4.3）"
+    },
+    {
+      "name": "CRESET_N",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/20",
+      "note": "配置复位，由 U3.20 驱动"
+    },
+    {
+      "name": "EE_CLK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/44",
+      "note": "Microwire EEPROM 时钟（93LC56）"
+    },
+    {
+      "name": "EE_CS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/45",
+      "note": "Microwire EEPROM 片选"
+    },
+    {
+      "name": "EE_DAT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/43",
+      "note": "Microwire EEPROM 数据（双向）"
+    },
+    {
+      "name": "FLASH_MISO",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/15",
+      "note": "SPI 数据入 U3.15"
+    },
+    {
+      "name": "FLASH_MOSI",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/14",
+      "note": "SPI 数据出 U3.14"
+    },
+    {
+      "name": "FT_SCK",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/13",
+      "note": "SPI 时钟出 U3.13"
+    },
+    {
+      "name": "FT_SSn",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U3/17",
+      "note": "SPI 片选出 U3.17"
+    },
+    {
+      "name": "USB_M",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/2",
+      "note": "USB D-，经 SJ36 短路跳线直通 FPGA（同上）"
+    },
+    {
+      "name": "USB_P",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J1/3",
+      "note": "USB D+，经 SJ35 短路跳线直通 FPGA（tinyFPGA 引导模式用）"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U3",
+    "max_mm": 16.0,
+    "rationale": "以 FT232H 为中心分三圈。第一圈 2.5~5.8mm：R3 12K（2.51，参考电阻必须贴）、 C12 3.20、C27 4.31、C7 5.79、C13 5.83；第二圈 6.4~8.2mm：三颗铁氧体与它们的 电容 FB1 6.44 / C8 6.47 / C4 6.49 / C28 7.04 / C9 7.08 / C2 7.29 / C1 8.21； 第三圈 8.7~11.1mm：两个 USB 跳线 SJ36 8.72 / SJ35 8.91、VBUS 铁氧体 FB3 11.14。 USB-C 座 J1 在 13.56mm、它的去耦 C25 15.12mm。 判据：**参考电阻与三组滤波电容必须贴脚**（这是 FT232H 能不能跑高速的唯一几何条件）， 而座子离得远近是机械问题（座子必须贴板边），照抄 13.56mm 没有意义。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "FT_VCORE",
+    "V_PHY",
+    "V_PLL",
+    "V_USB",
+    "_usb_ftdi_bridge_N1",
+    "_usb_ftdi_bridge_N10",
+    "_usb_ftdi_bridge_N11",
+    "_usb_ftdi_bridge_N12",
+    "_usb_ftdi_bridge_N13",
+    "_usb_ftdi_bridge_N14",
+    "_usb_ftdi_bridge_N15",
+    "_usb_ftdi_bridge_N16",
+    "_usb_ftdi_bridge_N2",
+    "_usb_ftdi_bridge_N3",
+    "_usb_ftdi_bridge_N4",
+    "_usb_ftdi_bridge_N5",
+    "_usb_ftdi_bridge_N6",
+    "_usb_ftdi_bridge_N7",
+    "_usb_ftdi_bridge_N8",
+    "_usb_ftdi_bridge_N9"
+  ],
+  "notes": [
+    "31 件 / 38 网：12 个信号口岸 + 轨 +3V3/+5VD/GND；块内另有四条自造电源（FT_VCORE / V_PHY / V_PLL / V_USB）——FT232H 自己用铁氧体+电容造的内部电源，不出块，所以记成 internal_nets。",
+    "铜 571 段 + 29 孔（B.Cu 172 / F.Cu 368 / In1.Cu 1 / In2.Cu 30；carve 交付时是 588 段 + 40 孔，2026-10-30/31 三轮清死铜删掉 17 段 + 11 孔）；死铜删 26 段/孔；口岸切口 24 处。窗口外扩到 1.78mm（6 个过孔在件框外）。",
+    "USB_P/USB_M 经 SJ35/SJ36 两个短路跳线**直通 FPGA**（tinyFPGA 引导模式）；换板不需要\"FPGA 直接当 USB 设备\"时，这两个就是该删的件。",
+    "TP1~TP12 是这块的调试口（USB D±、3V3、GND、SPI 四线都引出来了），不是装饰。",
+    "有 18 处信号借道**块外器件**的孔换层（排针 J2/J3、缓冲器 U8、EEPROM 的上拉电阻、测试点 TP20/21/26/27/28 都有份）：块单看这些点是断的，拼板时插上就通。",
+    "kicad-cli DRC：isolated_copper 0；未连通 6 条，全是轨。三颗铁氧体与 QFN 散热盘带出的 clearance/shorting 违规上游板自带。",
+    "源板 4 层（F/In1/In2/B），本块内层走线 In1 1 段 + In2 30 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "UPduino v3.01",
+    "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+    "license_tier": "permissive",
+    "author": "TinyVision.ai（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "31 件 / 38 网 / 端口 12 + 轨 3；内网 4；铜 571 段 + 29 孔；死铜删 26；口岸切口 24；窗口 1.78mm；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

@@ -1,0 +1,142 @@
+project:
+  kind: block
+  name: nrf24_match_network
+  version: sdi/1
+defs:
+  nrf24_match_network:
+    category: analog
+    rationale: '**nRF24 天线匹配网络 + SMA 座**（作者分区框 "Antenna Impedance Matching and SMA Connector"）：三颗电感 L1
+      3n9 / L2 8n2 / L3 2n7 + 四颗电容 C15 1p5 / C16 1p / C17 2n2 / C18 4p7，把 nRF24 的两只差分天线脚（ANT1/ANT2）与 VDD_PA
+      变成单端 50Ω 到 J2 SMA 座。这是**巴伦 + 匹配**的复合网络，值都是按 nRF24L01 与板层 算出来的，换板层/换天线要重算，不能照抄。 ⚠ 作者在框外写了两条布线约束：**按
+      50Ω 控阻抗走线**、**这是无源天线**（即不是 陶瓷片天线，靠外部 SMA 接天线）。块里的铜就是按这两条画的，复用时别把这段 挪去别的层或改线宽。 ⚠ 本块的 L/C 值全是**非标称值**（1p、1p5、2n2、2n7、3n9、4p7、8n2），不是
+      E24 里的数——它们是匹配算出来的，采购要按精确规格找。'
+    ports:
+    - name: NRF_ANT1
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: L2-2
+        connector: false
+    - name: NRF_ANT2
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: L1-1
+        connector: false
+    - name: NRF_VDD_PA
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C17-2
+        connector: false
+    rails:
+    - GND
+    parts:
+    - ref: L2
+      lib: Device:L
+      value: 8n2
+      footprint: Inductor_SMD:L_0402_1005Metric
+    - ref: L1
+      lib: Device:L
+      value: 3n9
+      footprint: Inductor_SMD:L_0402_1005Metric
+    - ref: L3
+      lib: Device:L
+      value: 2n7
+      footprint: Inductor_SMD:L_0402_1005Metric
+    - ref: C15
+      lib: Device:C
+      value: 1p5
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C16
+      lib: Device:C
+      value: 1p
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C18
+      lib: Device:C
+      value: 4p7
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: C17
+      lib: Device:C
+      value: 2n2
+      footprint: Capacitor_SMD:C_0402_1005Metric
+    - ref: J2
+      lib: Connector:Conn_Coaxial
+      value: SMA
+      footprint: Connector_Coaxial:SMA_Samtec_SMA-J-P-X-ST-EM1_EdgeMount
+    conns:
+    - ref: C16
+      pin: '1'
+      net: GND
+    - ref: C17
+      pin: '1'
+      net: GND
+    - ref: C18
+      pin: '1'
+      net: GND
+    - ref: J2
+      pin: '2'
+      net: GND
+    - ref: L2
+      pin: '2'
+      net: NRF_ANT1
+    - ref: L3
+      pin: '2'
+      net: NRF_ANT1
+    - ref: L1
+      pin: '1'
+      net: NRF_ANT2
+    - ref: L2
+      pin: '1'
+      net: NRF_ANT2
+    - ref: C17
+      pin: '2'
+      net: NRF_VDD_PA
+    - ref: C18
+      pin: '2'
+      net: NRF_VDD_PA
+    - ref: L3
+      pin: '1'
+      net: NRF_VDD_PA
+    - ref: C15
+      pin: '1'
+      net: _nrf24_match_network_N1
+    - ref: C16
+      pin: '2'
+      net: _nrf24_match_network_N1
+    - ref: J2
+      pin: '1'
+      net: _nrf24_match_network_N1
+    - ref: C15
+      pin: '2'
+      net: _nrf24_match_network_N2
+    - ref: L1
+      pin: '2'
+      net: _nrf24_match_network_N2
+    placement_prior:
+      anchor: J2
+      max_mm: 20.0
+      rationale: SMA 座贴板边、开口朝外；匹配网络沿"nRF24 → 天线座"一条直线铺开（源板上 这些件就是沿天线方向排的）。整块要贴在 `nrf24_transceiver` 的天线侧。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _nrf24_match_network_N1
+    - _nrf24_match_network_N2
+    provenance:
+      source: human:open-source
+      basis: 从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 "Antenna Impedance Matching and SMA Connector"
+        整框裁出；板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。
+      board: STRF (2.4GHz RF-to-USB dongle)
+      license: MIT — 上游 Copyright (c) 2020 Philip Salmony
+      license_tier: permissive
+      author: Philip Salmony（上游）/ HarnessPCB（裁块）
+      date: '2026-10-31'
+      kicad: 10.0.5
+    geometry_status: carved 2026-10-31 kicad 10.0.5。PCB 从 `STRF_2layer.kicad_pcb`（源 4 层经 `specs/_pcb_strf_2layer.py`
+      无损收 2 层）按位号原样扣铜。本块：8 件 / 6 网， 铜 22 段 + 2 孔，口岸切口 3 处；GND 裂 5 岛（铺铜删掉的必然结果）。
+      扣块时人的铜在窗口边被切了 5 处出口（GND×2、NRF_VDD_PA、NRF_ANT1/2），切剩的尾巴
+      在清空线头时全删——块里留下的是匹配网络自己那条**件到件**的铜（L/C 到 J2），
+      到 U4 的三根网按焊盘记口岸，装板时从焊盘重新拉线。

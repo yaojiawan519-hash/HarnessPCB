@@ -1,0 +1,37 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "两颗 AP2127K（SOT-23-5，300mA）做 5V→3.3V（U6）与 5V→1.2V（U7），\n  每颗进出各挂一颗 4.7u（3.3V 侧 C19/C21，1.2V 侧 C20/C29）。\n  **这块一个信号口岸都没有**：全靠轨连接——入口 +5VD，出口 +3V3 与 +1V2，加 GND。\n  也就是\"插进板子只要把三个电源轨接对\"，是这个库里最好复用的一块。\n  复用要点：1.2V 那一路在 UPduino 上只给 FPGA 内核做备用（正路是 D2 降压 + SJ34），\n  换目标板若内核电流更大，AP2127K 的 300mA 就不够，得换型号、不换这块的拓扑。",
+  "power_rails": [
+    "+1V2",
+    "+3V3",
+    "+5VD",
+    "GND"
+  ],
+  "interface": [],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U6",
+    "max_mm": 10.0,
+    "rationale": "两颗 LDO 相距 5.95mm，四个 4.7u 全在 8.63mm 内（C21 2.67 / C19 2.81 /\n    C20 3.75 / C29 8.63）。**整块全在 B 面**（背面）——源板把电源都放在背面，\n    好处是正面留给 FPGA 与排针。复用时这条\"电源在背面\"是原板选择，不是必须；\n    必须保住的是\"每颗 LDO 的输入输出各一颗 4.7u、贴脚 3mm 内\"。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "6 件 / 6 网：**0 个信号口岸**，4 条轨（+1V2 / +3V3 / +5VD / GND）——这块的全部接口就是电源，纯电源块。",
+    "铜 53 段 + 2 孔（B.Cu 65 / F.Cu 3 / In2.Cu 2）；死铜删 **0** 段/孔（这块周围的铜本来就都服务自己），口岸切口 5 处。",
+    "U6/U7 是 AP2127K（3.3V / 1.2V，SOT-23-5）：1=IN、3=EN 直接并到 +5VD（**永久使能，这块连使能脚都没引出来**）、2=GND、5=OUT。所以\"0 个信号口岸\"不是省略，是这颗器件本来就只有电源接口。",
+    "kicad-cli DRC：isolated_copper 0；未连通 1 条（GND）。",
+    "源板 4 层（F/In1/In2/B），本块内层走线 In2 2 段；源板 In1 铺的是 GND、In2 铺的是 +3V3，**两层也同时走信号**。拼板整层重铺时铺铜必须绕开这些走线（图样会被切碎，规则不当会同层短路）——这是拼板步的决策，块内一张铺铜都没带。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 UPduino_v3.01.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "UPduino v3.01",
+    "license": "MIT — 上游 Copyright (c) 2019 tinyvision-ai-inc",
+    "license_tier": "permissive",
+    "author": "TinyVision.ai（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "6 件 / 6 网 / 端口 0 + 轨 4；铜 53 段 + 2 孔；死铜删 0；口岸切口 5；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

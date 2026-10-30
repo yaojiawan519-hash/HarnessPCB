@@ -1,0 +1,132 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "interface",
+  "rationale": "**COM1 这一路的 RS232 电平转换**（DTE 侧，公头 DB9）：BP5 的 `UART1TX/RX/CTS/RTS` 进 U1（**MAX3232**，SOP-16）的 TTL 侧，转换成 RS232 电平送到 J1（DE9 **公头**， `Connector:DE9_Plug_MountingHoles`）的 3/2/7/8 脚；DCD/DSR/DTR/RI 四只脚 **本块一条都没接**（原页上就是四张单脚网），要它们工作得自己补线。 电荷泵按 MAX3232 的标准接法：C2 跨 C1+/C1−、C4 跨 C2+/C2−（飞电容）， C3 从 V+ 到地、C5 从 V− 到地（储能），C1 是 VOUT 上的本地去耦。 复用要点：① 这是**真 RS232 电平**（±5V 以上），别直接怼 3.3V 器件； ② 原板靠 GND 铺铜把几处地连起来，块里不带铺铜，拼板时整板重铺接上； ③ 要和 `rs232_dce` 成对用才是一块\"双通道\"，两块之间走的是 `UART0*/UART1*` 四根网。",
+  "power_rails": [
+    "GND",
+    "VOUT"
+  ],
+  "interface": [
+    {
+      "name": "UART1CTS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1RTS",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1RX",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "UART1TX",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional"
+    },
+    {
+      "name": "DTE_DCD",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/1",
+      "note": "DB9 第 1 脚。DCD：⚠ **本块没接**（原页上是单脚网，板上也无铜）——外部线缆直接接到这个焊盘上才有用"
+    },
+    {
+      "name": "DTE_RXD",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/2",
+      "note": "DB9 第 2 脚。RXD：对面设备发过来的电平（DB9 的 2 号脚是 DTE 的收、DCE 的发）"
+    },
+    {
+      "name": "DTE_TXD",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/3",
+      "note": "DB9 第 3 脚。TXD：本块发出去的电平（DB9 的 3 号脚是 DTE 的发、DCE 的收）"
+    },
+    {
+      "name": "DTE_DTR",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/4",
+      "note": "DB9 第 4 脚。DTR：⚠ **本块没接**（同上）"
+    },
+    {
+      "name": "DTE_DSR",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/6",
+      "note": "DB9 第 6 脚。DSR：⚠ **本块没接**（同上）"
+    },
+    {
+      "name": "DTE_RTS",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/7",
+      "note": "DB9 第 7 脚。RTS：握手输出"
+    },
+    {
+      "name": "DTE_CTS",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/8",
+      "note": "DB9 第 8 脚。CTS：握手输入"
+    },
+    {
+      "name": "DTE_RI",
+      "kind": "signal",
+      "class": "analog",
+      "direction": "bidirectional",
+      "pin": "J1/9",
+      "note": "DB9 第 9 脚。RI：⚠ **本块没接**（同上）"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U1",
+    "max_mm": 12.0,
+    "rationale": "7 件占 31.95×34.44mm：右列是 U1 + 五只 0805（C2/C3/C4/C5 竖排、C1 在左）， 右边 J1 母体探出板沿。要保住的是\"四只泵电容贴着 U1 同侧引脚、C1 夹在 U1 与排针之间\"。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_rs232_dte_N1",
+    "_rs232_dte_N2",
+    "_rs232_dte_N3",
+    "_rs232_dte_N4",
+    "_rs232_dte_N5",
+    "_rs232_dte_N6"
+  ],
+  "notes": [
+    "**COM1 这一路的 RS232 电平转换**：`UART1TX/RX/CTS/RTS` 从主机排针进来，进 U1（**MAX3232**，SOP-16）的 TTL 侧，转成 RS232 电平送到 J1 的 3/2/7/8 脚。7 件 / 20 网 / 端口 12 + 轨 2（GND、VOUT）。",
+    "**电荷泵按 MAX3232 的标准接法**：C2（跨 C1+/C1−）、C4（跨 C2+/C2−）、C3（V+ 到地）、C5（V− 到地） 是四只泵电容（原页上这四张网没有名字，卡里是 `_rs232_dte_N*`），`C1` 是 VOUT 上的本地去耦 0.1µF。这五只电容一只都不能省——省了高波特率下输出摆幅会掉。",
+    "**八根 DB9 信号全部登记成端口**（出口脚记在 J1 上）。其中 RXD/TXD/RTS/CTS 是**真通到** U1 的；DCD/DTR/DSR/RI 四根**本块一条都没接**（原页上就是四张单脚网，板上也无铜）——它们登记成端口是因为\"外部线缆会接到这些焊盘上\"，不是块内线。要这四根工作，得自己在拼板层把它们接到别处。",
+    "**源板的位号交叉**（不是裁块造成的）：原理图里 J1 = COM1，而板上那只封装的位号是 J2/J4 对调过的。`specs/_pcb_surgery_rs232.py` 复制的副本只对调了这两只封装的位号（坐标/封装/铜/孔/铺铜一字未动），块板从那份副本扣。所以**块板上的位号与原理图一致**，可以直接拿去拼板；照源板丝印找件会对不上。",
+    "**地**：源板上 GND 靠整张铺铜连，块里按规矩不带铺铜 → `counts.island_split` 记 `GND×4`（四只岛，每只都含焊盘）。拼板时整板重铺一次就连上了；不重铺这块的 GND 是断的。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `rs232-dual-adapter.kicad_pcb` 的**位号修正副本** 扣，见 `specs/_pcb_surgery_rs232.py`：源板把 J2/J4 两只封装的位号交叉了，只对调位号、 坐标/封装/铜/孔/铺铜一字未动；块内铜 57 段 + 5 孔，0 铺铜——源板那张 GND 是整板平面， 按\"块内不带铺铜\"整张删）",
+  "provenance": {
+    "basis": "7 件 / 20 网 / 端口 12 + 轨 2；铜 42 段 + 2 孔；死铜删 6；口岸切口 5",
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 RS232 双通道转接板 REV0",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

@@ -1,0 +1,74 @@
+project:
+  kind: block
+  name: kb_trig_header
+  version: sdi/1
+defs:
+  kb_trig_header:
+    category: input
+    rationale: '**TRIG 引出针 + 上拉**：J8 = 1×02 竖排针（`1=TRIG 2=GND`）， `R3 = 2K` 把 `TRIG` 上拉到 **`VOUT_BP_SIDE`**（BP
+      那头送来的 5V，不是板内 `VDD`）。 `TRIG` 同时接到总线 2 号脚（`TRIG = J2.2 J3.2 J8.1 R3.1`）——所以外部设备在这两根针上 一短接/一拉低，BP5
+      那边就看到 TRIG 掉下来；空闲时被 2K 顶在 BP 的 5V 上。 复用要点：上拉挂在 `VOUT_BP_SIDE` 上这件事**是有意的**——BP 断电时 TRIG 跟着没有上拉，
+      不会出现"板子自己把一根线举高"的假信号；换成上拉到 `VDD` 就丢掉这个性质了。'
+    ports:
+    - name: TRIG
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J8-1
+        connector: true
+    - name: VOUT_BP_SIDE
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R3-2
+        connector: false
+    rails:
+    - GND
+    parts:
+    - ref: R3
+      lib: Device:R
+      value: 2K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: J8
+      lib: Connector:Conn_01x02_Pin
+      value: Conn_01x02_Pin
+      footprint: Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
+    conns:
+    - ref: J8
+      pin: '2'
+      net: GND
+    - ref: J8
+      pin: '1'
+      net: TRIG
+    - ref: R3
+      pin: '1'
+      net: TRIG
+    - ref: R3
+      pin: '2'
+      net: VOUT_BP_SIDE
+    placement_prior:
+      anchor: J8
+      max_mm: 8.0
+      rationale: J8 在板右沿、R3 在它左边 7mm 的同一行上（中间隔着 SW1 的走线区）， 要保住的是"上拉电阻贴着自己的针"。
+    slots: []
+    hot_loop: []
+    provenance:
+      basis: 2 件 / 3 网 / 端口 2 + 轨 1；铜 3 段 + 0 孔；死铜删 2；口岸切口 2
+      source: human:open-source
+      board: Bus Pirate 5 Kaybee Plank（PS/2 键盘/鼠标转接板）REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+    geometry_status: extracted 2026-10-30 kicad 10.0.5（PCB 从 `kaybee-plank.kicad_pcb` 扣：2 件、块内 5 段铜、 0
+      孔、0 铺铜）
+    notes:
+    - '**TRIG 引出针 + 上拉**：J8 = `Conn_01x02_Pin`（`1=TRIG 2=GND`），`R3 = 2K` 把 `TRIG` 上拉到 **`VOUT_BP_SIDE`**。2
+      件 / 3 网 / 端口 TRIG+VOUT_BP_SIDE + 轨 GND。'
+    - '`TRIG` 同时接到十脚总线 2 号脚（全板上 `TRIG = J2.2 J3.2 J8.1 R3.1`）——外部设备在这两根针上一短接/一拉低，BP5 那侧就看到 TRIG 掉下来；空闲时被
+      2K 顶在 BP 的 5V 上。'
+    - ⚠ **上拉挂在 `VOUT_BP_SIDE` 上是有意的**：BP 断电时 TRIG 跟着没有上拉，不会出现"板子自己把一根线举高"的假信号。改成上拉到 `VDD` 就丢掉这个性质了。
+    - '**铜**：5 段（F.Cu）、0 孔、0 铺铜。孤立铜删 2 段；口沿截断 2 处；`naked_plane_pads` 1（J8 的 GND 脚）。'

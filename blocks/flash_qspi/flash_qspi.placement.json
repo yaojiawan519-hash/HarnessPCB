@@ -1,0 +1,329 @@
+{
+  "name": "flash_qspi",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    126.3507,
+    88.8954
+  ],
+  "size_mm": [
+    10.4415,
+    14.7032
+  ],
+  "ports": {
+    "/FT_SCK": [
+      "J3",
+      "U2",
+      "U3"
+    ],
+    "/IOB_25B_G3": [
+      "J3",
+      "SJ16",
+      "U2"
+    ],
+    "+3V3": [
+      "C14",
+      "C16",
+      "C18",
+      "C21",
+      "C3",
+      "C30",
+      "C33",
+      "C36",
+      "C7",
+      "C8",
+      "C9",
+      "D2",
+      "FB1",
+      "FB2",
+      "J2",
+      "R17",
+      "R18",
+      "R28",
+      "R4",
+      "R5",
+      "R7",
+      "SJ20",
+      "SJ31",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U6",
+      "U8"
+    ],
+    "/IOB_18A": [
+      "J3",
+      "U2"
+    ],
+    "/FLASH_MISO": [
+      "J3",
+      "R11",
+      "R13",
+      "U3"
+    ],
+    "/FT_SSn": [
+      "J3",
+      "U2",
+      "U3"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C18",
+      "C19",
+      "C2",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C27",
+      "C28",
+      "C29",
+      "C3",
+      "C30",
+      "C31",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "D1",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R10",
+      "R3",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U6",
+      "U7",
+      "U8"
+    ],
+    "/FLASH_MOSI": [
+      "J3",
+      "R12",
+      "R27",
+      "U3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 120.33,
+      "y": 95.68,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 120.33,
+      "y": 91.722,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/IOB_18A",
+      "x": 120.33,
+      "y": 93.4233,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/IOB_18A",
+      "x": 132.3715,
+      "y": 94.7589,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "/IOB_25B_G3",
+      "x": 132.3715,
+      "y": 94.2,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 132.3715,
+      "y": 83.6985,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 132.3715,
+      "y": 90.0415,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 132.3715,
+      "y": 85.8485,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 128.447,
+      "y": 97.047,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 132.3715,
+      "y": 88.9615,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FT_SSn",
+      "x": 132.3715,
+      "y": 83.1085,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FT_SCK",
+      "x": 132.3715,
+      "y": 89.9085,
+      "layer": "In2.Cu"
+    }
+  ],
+  "counts": {
+    "members": 8,
+    "not_built": [],
+    "nets": 10,
+    "copper_segs": 92,
+    "vias": 10,
+    "stub_kept": 0,
+    "isolated_deleted": 22,
+    "cut_ends": 11,
+    "exit_points": 12,
+    "segs_by_layer": {
+      "B.Cu": 17,
+      "F.Cu": 67,
+      "In2.Cu": 8
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->C18.1": 1,
+      "/FT_SCK->U2.15": 1,
+      "/FT_SSn->U2.16": 1,
+      "/IOB_25B_G3->U2.20": 1
+    },
+    "island_split": {
+      "+3V3": 2,
+      "GND": 2
+    },
+    "dangling": {
+      "total": 7,
+      "port_cuts": 7,
+      "port_cut_nets": [
+        "+3V3",
+        "/FT_SCK",
+        "/FT_SSn",
+        "/IOB_25B_G3"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 20,
+        "vias": 8,
+        "nets": [
+          "+3V3",
+          "/FLASH_MISO",
+          "/FLASH_MOSI",
+          "/FT_SCK",
+          "/IOB_18A",
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C17",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 2.4273,
+      "dy": 5.8466,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R14",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": -1.7525,
+      "dy": -5.8466,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R15",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": -0.1127,
+      "dy": 5.5926,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "R8",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": 0.7875,
+      "dy": -5.8466,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R9",
+      "value": "10K",
+      "fp": "R_0603_1608Metric",
+      "dx": 3.2093,
+      "dy": 3.8346,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "SJ24",
+      "value": "OPEN",
+      "fp": "SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+      "dx": 4.3958,
+      "dy": -0.5289,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "SJ25",
+      "value": "OPEN",
+      "fp": "SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+      "dx": 3.0493,
+      "dy": -0.5034,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "U5",
+      "value": "W25Q32JVSSIM",
+      "fp": "SOIC-8_5.23x5.23mm_P1.27mm",
+      "dx": -1.1429,
+      "dy": 0.4018,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

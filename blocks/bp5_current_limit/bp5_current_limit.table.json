@@ -1,0 +1,310 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_current_limit",
+ "interface": [
+  {
+   "net": "CURRENT_ADJ_MCU",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R415-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "MCU 的 PWM 阈值（`micro-rp2040` 页），块内 R415/C416 滤成直流"
+  },
+  {
+   "net": "CURRENT_DETECT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R610-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "锁存后的过流标志，去 `bp5_current_en_gate` 与 MCU"
+  },
+  {
+   "net": "CURRENT_RESET",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R611-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "MCU 给脉冲解除锁存"
+  },
+  {
+   "net": "CURRENT_SENSE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R606-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "来自 `bp5_current_sense` 的放大器输出"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R606",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 105.41,
+   "y": 40.64
+  },
+  {
+   "ref": "C603",
+   "lib": "Device:C_Small",
+   "value": "DNF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 107.95,
+   "y": 43.18
+  },
+  {
+   "ref": "C605",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 123.19,
+   "y": 57.15
+  },
+  {
+   "ref": "D601",
+   "lib": "Diode:1N4148WS",
+   "value": "1N4148WT",
+   "footprint": "Diode_SMD:D_SOD-523",
+   "x": 107.95,
+   "y": 31.75
+  },
+  {
+   "ref": "R608",
+   "lib": "Device:R_Small",
+   "value": "200R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 132.08,
+   "y": 31.75
+  },
+  {
+   "ref": "R609",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 138.43,
+   "y": 26.67
+  },
+  {
+   "ref": "R610",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 143.51,
+   "y": 41.91
+  },
+  {
+   "ref": "R611",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 156.21,
+   "y": 26.67
+  },
+  {
+   "ref": "Q601",
+   "lib": "kicad5-device:Q_DUAL_PNP_PNP_E1B1C2E2B2C1",
+   "value": "MMDT3906",
+   "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+   "x": 146.05,
+   "y": 26.67
+  },
+  {
+   "ref": "R415",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 99.06,
+   "y": 57.15
+  },
+  {
+   "ref": "C416",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 104.14,
+   "y": 62.23
+  },
+  {
+   "ref": "U602",
+   "lib": "Comparator:LMV331",
+   "value": "LMV331",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "x": 125.73,
+   "y": 46.99
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C605",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "D601",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "Q601",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "Q601",
+   "pin": "4",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R609",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U602",
+   "pin": "5",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R415",
+   "pin": "2",
+   "net": "CURRENT_ADJ_MCU"
+  },
+  {
+   "ref": "R610",
+   "pin": "2",
+   "net": "CURRENT_DETECT"
+  },
+  {
+   "ref": "U602",
+   "pin": "4",
+   "net": "CURRENT_DETECT"
+  },
+  {
+   "ref": "R611",
+   "pin": "1",
+   "net": "CURRENT_RESET"
+  },
+  {
+   "ref": "R606",
+   "pin": "2",
+   "net": "CURRENT_SENSE"
+  },
+  {
+   "ref": "C416",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C603",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C605",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U602",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C603",
+   "pin": "2",
+   "net": "_bp5_current_limit_N1"
+  },
+  {
+   "ref": "D601",
+   "pin": "2",
+   "net": "_bp5_current_limit_N1"
+  },
+  {
+   "ref": "Q601",
+   "pin": "3",
+   "net": "_bp5_current_limit_N1"
+  },
+  {
+   "ref": "R606",
+   "pin": "1",
+   "net": "_bp5_current_limit_N1"
+  },
+  {
+   "ref": "U602",
+   "pin": "3",
+   "net": "_bp5_current_limit_N1"
+  },
+  {
+   "ref": "Q601",
+   "pin": "6",
+   "net": "_bp5_current_limit_N2"
+  },
+  {
+   "ref": "R608",
+   "pin": "2",
+   "net": "_bp5_current_limit_N2"
+  },
+  {
+   "ref": "R609",
+   "pin": "2",
+   "net": "_bp5_current_limit_N2"
+  },
+  {
+   "ref": "R610",
+   "pin": "1",
+   "net": "_bp5_current_limit_N2"
+  },
+  {
+   "ref": "C416",
+   "pin": "2",
+   "net": "_bp5_current_limit_N3"
+  },
+  {
+   "ref": "R415",
+   "pin": "1",
+   "net": "_bp5_current_limit_N3"
+  },
+  {
+   "ref": "U602",
+   "pin": "1",
+   "net": "_bp5_current_limit_N3"
+  },
+  {
+   "ref": "Q601",
+   "pin": "5",
+   "net": "_bp5_current_limit_N4"
+  },
+  {
+   "ref": "R608",
+   "pin": "1",
+   "net": "_bp5_current_limit_N4"
+  },
+  {
+   "ref": "Q601",
+   "pin": "2",
+   "net": "_bp5_current_limit_N5"
+  },
+  {
+   "ref": "R611",
+   "pin": "2",
+   "net": "_bp5_current_limit_N5"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

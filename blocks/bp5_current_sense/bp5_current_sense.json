@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 0r2 1k 2.2uf 33k lmv321a",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "bp5_current_sense"
+  }
+}

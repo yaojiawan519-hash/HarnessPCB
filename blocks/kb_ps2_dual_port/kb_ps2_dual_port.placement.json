@@ -1,0 +1,153 @@
+{
+  "name": "kb_ps2_dual_port",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    116.75,
+    114.327
+  ],
+  "size_mm": [
+    34.05,
+    22.946
+  ],
+  "ports": {
+    "DAT": [
+      "J2",
+      "J3"
+    ],
+    "VDD": [
+      "C2",
+      "C3",
+      "J9",
+      "L1",
+      "L2",
+      "R2",
+      "SW1"
+    ],
+    "GND": [
+      "C2",
+      "C3",
+      "D2",
+      "J2",
+      "J3",
+      "J5",
+      "J7",
+      "J8",
+      "J9",
+      "R1",
+      "R408",
+      "R412",
+      "R5"
+    ],
+    "CLK": [
+      "J2",
+      "J3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VDD",
+      "x": 126.696,
+      "y": 102.054,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "DAT",
+      "x": 103.554,
+      "y": 102.054,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "CLK",
+      "x": 106.804,
+      "y": 102.054,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 5,
+    "nets": 10,
+    "copper_segs": 23,
+    "vias": 2,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "B.Cu": 11,
+      "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 3
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 6,
+        "vias": 1,
+        "nets": [
+          "CLK",
+          "DAT",
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C1",
+      "value": "47uF/CL21A226MAYNNNE",
+      "fp": "C_0805_2012Metric",
+      "dx": -2.5,
+      "dy": -8.077,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "J1",
+      "value": "Mini-DIN-6",
+      "fp": "Connector_Mini-DIN_Female_6Pin_2rows",
+      "dx": 9.81,
+      "dy": 2.448,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J4",
+      "value": "Mini-DIN-6",
+      "fp": "Connector_Mini-DIN_Female_6Pin_2rows",
+      "dx": -7.19,
+      "dy": 2.448,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "L4",
+      "value": "CBW201209U300T",
+      "fp": "L_0805_2012Metric",
+      "dx": -0.25,
+      "dy": -8.077,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "L5",
+      "value": "CBW201209U300T",
+      "fp": "L_0805_2012Metric",
+      "dx": -4.5,
+      "dy": -8.077,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

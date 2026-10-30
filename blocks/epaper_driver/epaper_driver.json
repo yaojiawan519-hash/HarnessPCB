@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100k 1m 1uf/50v 2.2 4.7uf/50v 47uh 0.5a ao3400a fpc24(0.5mm)",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "epaper_driver"
+  }
+}

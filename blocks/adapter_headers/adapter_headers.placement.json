@@ -1,0 +1,180 @@
+{
+  "name": "adapter_headers",
+  "source": "vpp-maker-rev6-ian.kicad_pcb",
+  "origin_src_mm": [
+    150.1375,
+    87.1382
+  ],
+  "size_mm": [
+    44.625,
+    27.9749
+  ],
+  "ports": {
+    "VPP_LOW": [
+      "R29"
+    ],
+    "VPP_PWM": [
+      "Q4"
+    ],
+    "VPP_HIGH": [
+      "R27"
+    ],
+    "VPP": [
+      "C15",
+      "D2",
+      "D3",
+      "Q1",
+      "R22",
+      "R23"
+    ],
+    "GND": [
+      "C13",
+      "C14",
+      "C15",
+      "D1",
+      "D3",
+      "D4",
+      "Q2",
+      "Q3",
+      "Q4",
+      "R24"
+    ],
+    "VPP_SW": [
+      "Q1",
+      "R28"
+    ],
+    "VPP_ADC": [
+      "D4",
+      "R22",
+      "R24"
+    ],
+    "VOUT": [
+      "C13",
+      "C14",
+      "L1",
+      "R1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 138.4,
+      "y": 72.3508,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 143.6492,
+      "y": 72.3508,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 159.3508,
+      "y": 72.3508,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VPP_LOW",
+      "x": 141.4256,
+      "y": 101.9256,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 12,
+    "copper_segs": 70,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 23,
+    "cut_ends": 10,
+    "exit_points": 4,
+    "segs_by_layer": {
+      "B.Cu": 25,
+      "F.Cu": 45
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VOUT->C13.1": 1,
+      "VOUT->C14.1": 1,
+      "VOUT->L1.1": 1,
+      "VPP->C15.1": 1,
+      "VPP->D3.1": 1,
+      "VPP->Q1.2": 1,
+      "VPP->R22.1": 1,
+      "VPP->R23.2": 1,
+      "VPP_ADC->D4.1": 1,
+      "VPP_ADC->R22.2": 1,
+      "VPP_ADC->R24.1": 1,
+      "VPP_HIGH->R27.2": 1,
+      "VPP_PWM->Q4.1": 1,
+      "VPP_SW->Q1.3": 1,
+      "VPP_SW->R28.2": 1
+    },
+    "island_split": {
+      "GND": 3,
+      "VOUT": 2
+    },
+    "dangling": {
+      "total": 12,
+      "port_cuts": 12,
+      "port_cut_nets": [
+        "VOUT",
+        "VPP",
+        "VPP_ADC",
+        "VPP_HIGH",
+        "VPP_PWM",
+        "VPP_SW"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 11,
+        "vias": 6,
+        "nets": [
+          "GND",
+          "VOUT",
+          "VPP",
+          "VPP_LOW",
+          "VPP_PWM"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J1",
+      "value": "Conn_01x10",
+      "fp": "PinSocket_1x10_P2.54mm_Horizontal",
+      "dx": -11.7375,
+      "dy": -11.5882,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J2",
+      "value": "Conn_01x10",
+      "fp": "PinHeader_1x10_P2.54mm_Vertical",
+      "dx": -7.8875,
+      "dy": -11.5632,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J4",
+      "value": "Conn_01x08",
+      "fp": "PinHeader_1x08_P2.54mm_Horizontal",
+      "dx": 11.7375,
+      "dy": -9.0132,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}

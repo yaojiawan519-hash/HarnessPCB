@@ -1,0 +1,64 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "connector",
+  "rationale": "**板下沿的两只 4P I2C 口，两种国产生态各一**：J8 是 JST-PH 2.0mm 卧贴 （`S4B-PH-SM4-TB`，DFRobot **Gravity** 用这个物理口）——**1=SDA、2=SCL、3=GND、4=VOUT**； J9 是 2.0mm 直插（`HY-4P`，**Grove** 用的 HY2.0 白口）—— **1=GND、2=VOUT、3=SDA、4=SCL**，另有 2 只固定脚 MP 接 GND。两只的页上注释与网表**逐脚吻合**。 ⚠ 两只**脚序完全不同**（Gravity 信号在前、Grove 电源在前），只是碰巧都是 2.0mm 节距的 4P 白口——插头形状像、电序不一样，不能互换着插。 ⚠ 本块**不带上拉**；Grove 线的线序在插头这一侧是 1=GND，若把 STEMMA/Gravity 的线硬插 Grove 座，会把 V+ 和 GND 对调。 J9 是**直插立式**，插上线会高出板面——作者在页上留了一句 `NOTE: need horrizontal version`， 抄进本卡（那是他的待办，不是本块的性质）。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "SCL",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J8/2",
+      "note": "I2C 时钟：J8.2（Gravity）+ J9.4（Grove）"
+    },
+    {
+      "name": "SDA",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J8/1",
+      "note": "I2C 数据：J8.1 + J9.3"
+    },
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "J8/4",
+      "note": "整板电源（丝印 `V+`）：J8.4 + J9.2"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "J8",
+    "max_mm": 20.0,
+    "rationale": "两只同一水平线（J8 中心 y=118.25、J9 y=117.00，差 1.25mm），左右相距 16.00mm， 都在板下沿、开口朝下/板外。贴下沿放，上面给 J10 金手指让出通道。"
+  },
+  "hot_loop": [],
+  "notes": [
+    "**板下沿的两只 4P I2C 口，两种生态各一**：J8 是 JST-PH 2.0mm 卧贴（`S4B-PH-SM4-TB`，DFRobot **Gravity** 用的物理口）——**1=SDA、2=SCL、3=GND、4=VOUT**；J9 是 2.0mm 直插（`HY-4P`，**Grove** 的 HY2.0 白口）——**1=GND、2=VOUT、3=SDA、4=SCL**，另有 2 只固定脚 MP 接 GND。2 件 / 4 网：3 个出块端口 + 1 条轨（GND）。",
+    "两只的页上注释与网表**逐脚吻合**（本板六族里只有 J6/J7 两族对不上，见 ph_ports 卡）。",
+    "⚠ 两只**脚序完全不同**（Gravity 信号在前、Grove 电源在前），只是碰巧都是2.0mm 节距 4P 白口——插头形状像、电序不一样。把 STEMMA/Gravity 的线硬插 Grove 座，会把 V+ 与 GND 对调。",
+    "J8 是卧贴（rot 0，开口朝下/板外）；J9 是**直插立式**，插上线会高出板面——作者在页上留了一句 `NOTE: need horrizontal version`（想要卧式版本），这句是抄给他的待办，不是本块的性质。",
+    "本块**不带上拉**；两只口并到同一对 SDA/SCL 上。",
+    "⚠ `VOUT` 在本卡里记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）。它电学上是**整板的电源网**（板上丝印写 `V+`），拼板时按同名接，不要当信号口串东西。",
+    "铜 12 段 + 2 孔（B 1 / F 21）；死铜删 14 段/孔；口岸切口 3 处、走线出口 5 处；削剩残迹留 1 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND 是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。",
+    "块里 6 个平面网焊盘一根铜都没有（源板就靠那张整板 GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "GND 裂成 6 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上；**SDA 裂成 2 个铜岛**（各含焊盘）：源板上 SDA 是经块外干线/铺铜绕过去连的，窗口把它切断了——这是口岸网，装板时由块外干线接上。",
+    "kicad-cli DRC：isolated_copper 0；未连通 6 条（GND×10、SDA×2）；断头走线 3 + 悬空过孔 0 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_* 2 条（源板自带，见基线）；源板基线：未连通 0 / isolated_copper 0 / 违规 46 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 GND 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 I2C Quick Connect Plank v1 REV1",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 4 网 / 端口 3 + 轨 1；铜 12 段 + 2 孔；死铜删 14；口岸切口 3；卡↔板门 ①~⑤ 全过"
+  }
+}

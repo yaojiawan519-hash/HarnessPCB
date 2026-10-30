@@ -1,0 +1,191 @@
+{
+  "name": "rs232_dce",
+  "source": "rs232-dual-adapter.refswap.kicad_pcb",
+  "origin_src_mm": [
+    123.25,
+    114.0148
+  ],
+  "size_mm": [
+    31.95,
+    35.5262
+  ],
+  "ports": {
+    "UART0RTS": [
+      "J2",
+      "J3"
+    ],
+    "UART0RX": [
+      "J2",
+      "J3"
+    ],
+    "GND": [
+      "C1",
+      "C3",
+      "C5",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "U1"
+    ],
+    "UART0TX": [
+      "J2",
+      "J3"
+    ],
+    "VOUT": [
+      "C1",
+      "J2",
+      "J3",
+      "R2",
+      "U1"
+    ],
+    "UART0CTS": [
+      "J2",
+      "J3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "UART0TX",
+      "x": 105.4459,
+      "y": 98.775,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART0RX",
+      "x": 105.4459,
+      "y": 101.315,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 114.75,
+      "y": 94.4226,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "UART0CTS",
+      "x": 105.4459,
+      "y": 103.855,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "UART0RTS",
+      "x": 105.4459,
+      "y": 102.6,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 7,
+    "nets": 21,
+    "copper_segs": 53,
+    "vias": 4,
+    "stub_kept": 0,
+    "isolated_deleted": 6,
+    "cut_ends": 5,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "B.Cu": 3,
+      "F.Cu": 50
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VOUT->C1.1": 1,
+      "VOUT->U1.16": 1
+    },
+    "island_split": {
+      "GND": 4
+    },
+    "dangling": {
+      "total": 1,
+      "port_cuts": 1,
+      "port_cut_nets": [
+        "VOUT"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 16,
+        "vias": 3,
+        "nets": [
+          "GND",
+          "UART0CTS",
+          "UART0RTS",
+          "UART0RX",
+          "UART0TX"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C10",
+      "value": "0.47uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 5.0,
+      "dy": -14.5148,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C6",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 5.0,
+      "dy": -7.5148,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C7",
+      "value": "0.1uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -6.5,
+      "dy": -7.5148,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C8",
+      "value": "0.47uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 5.0,
+      "dy": -11.0148,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C9",
+      "value": "0.47uF",
+      "fp": "C_0805_2012Metric",
+      "dx": 7.25,
+      "dy": -7.5148,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J4",
+      "value": "COM2",
+      "fp": "DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm",
+      "dx": 5.55,
+      "dy": -1.6952,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U2",
+      "value": "MAX3232",
+      "fp": "SOP-16_3.9x9.9mm_P1.27mm",
+      "dx": -0.75,
+      "dy": -11.0148,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

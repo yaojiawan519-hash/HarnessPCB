@@ -1,0 +1,11 @@
+{
+ "pcb": "34290:1793372857337432710",
+ "violations": 3,
+ "unconnected": 1,
+ "kinds": {
+  "courtyards_overlap": 1,
+  "lib_footprint_mismatch": 2
+ },
+ "shorts": [],
+ "bridges": []
+}

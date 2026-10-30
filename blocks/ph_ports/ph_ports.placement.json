@@ -1,0 +1,152 @@
+{
+  "name": "ph_ports",
+  "source": "stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb",
+  "origin_src_mm": [
+    117.75,
+    76.75
+  ],
+  "size_mm": [
+    25.25,
+    10.25
+  ],
+  "ports": {
+    "GND": [
+      "D1",
+      "J1",
+      "J10",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J8",
+      "J9"
+    ],
+    "SDA": [
+      "J1",
+      "J10",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J8",
+      "J9"
+    ],
+    "VOUT": [
+      "J1",
+      "J10",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J8",
+      "J9",
+      "R1"
+    ],
+    "SCL": [
+      "J1",
+      "J10",
+      "J11",
+      "J12",
+      "J2",
+      "J3",
+      "J4",
+      "J8",
+      "J9"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "SDA",
+      "x": 124.75,
+      "y": 82.675,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SDA",
+      "x": 112.75,
+      "y": 82.675,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SCL",
+      "x": 126.075,
+      "y": 82.675,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 131.175,
+      "y": 76.75,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 104.75,
+      "y": 82.675,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 4,
+    "copper_segs": 4,
+    "vias": 0,
+    "stub_kept": 2,
+    "isolated_deleted": 23,
+    "cut_ends": 4,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "F.Cu": 4
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 6,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 6,
+      "SDA": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 6,
+        "vias": 1,
+        "nets": [
+          "SCL",
+          "SDA",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "J6",
+      "value": "S4B-PH-SM4-TB (HC-PH-4AWT)",
+      "fp": "JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm_Horizontal",
+      "dx": 6.0,
+      "dy": 0.0,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "J7",
+      "value": "S3B-PH-SM4-TB (HC-PH-3AWT)",
+      "fp": "JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal",
+      "dx": -7.0,
+      "dy": 0.0,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

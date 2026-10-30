@@ -1,0 +1,1070 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "fpga_ice40up5k",
+ "interface": [
+  {
+   "net": "CDONE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-7",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置完成（开漏）。另一端在 usb_ftdi_bridge 的 U3.19，led_indicator 的 D1 也挂在这根上"
+  },
+  {
+   "net": "CRESET_N",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R5-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置复位（低有效）。R5 10K 上拉在本块内，另一端到 U3.20 与 J2"
+  },
+  {
+   "net": "FPGA_SI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-17",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置口串行入（SPI 的 MOSI 侧）"
+  },
+  {
+   "net": "FPGA_SO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-14",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置口串行出（SPI 的 MISO 侧）"
+  },
+  {
+   "net": "FT_SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-15",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置口时钟，源头是 FT232H 的 U3.13"
+  },
+  {
+   "net": "FT_SSn",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-16",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "配置口片选，源头是 FT232H 的 U3.17"
+  },
+  {
+   "net": "IOB_0A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-46",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_13B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-6",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_16A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-9",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_18A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-10",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_20A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-11",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_22A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-12",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_23B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-21",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_24A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-13",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_25B_G3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-20",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_29B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-19",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_2A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-47",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_31B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-18",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_3B_G6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-44",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_4A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-48",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_5B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-45",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_6A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_8A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-4",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOB_9B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_36B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-25",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_37A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-23",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_38B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-27",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_39A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-26",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_41A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-28",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_42B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-31",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_43A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-32",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_44B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-34",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_45A_G1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-37",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_46B_G0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-35",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_48B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-36",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_49A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-43",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_50B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-38",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "IOT_51A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-42",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "FPGA 的 IO，名字照原图（IOT=顶边 / IOB=底边，后缀 _Gx 是全局时钟脚）；出板经 connectors_io 的 J2/J3 排针"
+  },
+  {
+   "net": "LED_B",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-40",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "LED_G",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-39",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "LED_R",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U2-41",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VIO_BANK_0_2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SJ19-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "银行 0/2 的 IO 电压选择网：SJ19/SJ31 决定这组 IO 吃 3V3 还是 1V2"
+  }
+ ],
+ "power_rails": [
+  "+1V2",
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U2",
+   "lib": "UPduino_v3.0:ICE40UP5K-SG48ITR-FPGA_Lattice",
+   "value": "ICE40UP5K-SG48ITR",
+   "footprint": "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm",
+   "x": 92.71,
+   "y": 63.5
+  },
+  {
+   "ref": "C5",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 55.88,
+   "y": 36.83
+  },
+  {
+   "ref": "C14",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 106.68,
+   "y": 35.56
+  },
+  {
+   "ref": "C6",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 172.72,
+   "y": 36.83
+  },
+  {
+   "ref": "D2",
+   "lib": "UPduino_v3.0:Diode_1N4148W",
+   "value": "1N4148WT-7",
+   "footprint": "Diode_SMD:D_SOD-523",
+   "x": 64.77,
+   "y": 143.51
+  },
+  {
+   "ref": "C31",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 71.12,
+   "y": 147.32
+  },
+  {
+   "ref": "SJ34",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "SHORT",
+   "footprint": "vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+   "x": 30.48,
+   "y": 143.51
+  },
+  {
+   "ref": "C30",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 116.84,
+   "y": 35.56
+  },
+  {
+   "ref": "C22",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 66.04,
+   "y": 36.83
+  },
+  {
+   "ref": "C35",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 182.88,
+   "y": 36.83
+  },
+  {
+   "ref": "SJ31",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "SHORT",
+   "footprint": "vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+   "x": 45.72,
+   "y": 26.67
+  },
+  {
+   "ref": "C10",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 100.33,
+   "y": 124.46
+  },
+  {
+   "ref": "R6",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "100",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 91.44,
+   "y": 120.65
+  },
+  {
+   "ref": "C11",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "4.7u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 111.76,
+   "y": 124.46
+  },
+  {
+   "ref": "C16",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 55.88,
+   "y": 147.32
+  },
+  {
+   "ref": "C15",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 38.1,
+   "y": 147.32
+  },
+  {
+   "ref": "R5",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 74.93,
+   "y": 38.1
+  },
+  {
+   "ref": "SJ19",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 59.69,
+   "y": 26.67
+  },
+  {
+   "ref": "SJ20",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "SHORT",
+   "footprint": "vs:ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+   "x": 160.02,
+   "y": 26.67
+  },
+  {
+   "ref": "SJ26",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 172.72,
+   "y": 26.67
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C15",
+   "pin": "1",
+   "net": "+1.2V_CORE"
+  },
+  {
+   "ref": "SJ34",
+   "pin": "1",
+   "net": "+1.2V_CORE"
+  },
+  {
+   "ref": "U2",
+   "pin": "30",
+   "net": "+1.2V_CORE"
+  },
+  {
+   "ref": "U2",
+   "pin": "5",
+   "net": "+1.2V_CORE"
+  },
+  {
+   "ref": "R6",
+   "pin": "2",
+   "net": "+1V2"
+  },
+  {
+   "ref": "SJ34",
+   "pin": "2",
+   "net": "+1V2"
+  },
+  {
+   "ref": "C31",
+   "pin": "1",
+   "net": "+2V5"
+  },
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "+2V5"
+  },
+  {
+   "ref": "U2",
+   "pin": "24",
+   "net": "+2V5"
+  },
+  {
+   "ref": "C14",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C16",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C30",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R5",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "SJ20",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "SJ31",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U2",
+   "pin": "22",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U2",
+   "pin": "7",
+   "net": "CDONE"
+  },
+  {
+   "ref": "R5",
+   "pin": "1",
+   "net": "CRESET_N"
+  },
+  {
+   "ref": "U2",
+   "pin": "8",
+   "net": "CRESET_N"
+  },
+  {
+   "ref": "U2",
+   "pin": "17",
+   "net": "FPGA_SI"
+  },
+  {
+   "ref": "U2",
+   "pin": "14",
+   "net": "FPGA_SO"
+  },
+  {
+   "ref": "U2",
+   "pin": "15",
+   "net": "FT_SCK"
+  },
+  {
+   "ref": "U2",
+   "pin": "16",
+   "net": "FT_SSn"
+  },
+  {
+   "ref": "C10",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C11",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C14",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C15",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C16",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C22",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C30",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C31",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C35",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C5",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C6",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "49",
+   "net": "GND"
+  },
+  {
+   "ref": "U2",
+   "pin": "46",
+   "net": "IOB_0A"
+  },
+  {
+   "ref": "U2",
+   "pin": "6",
+   "net": "IOB_13B"
+  },
+  {
+   "ref": "U2",
+   "pin": "9",
+   "net": "IOB_16A"
+  },
+  {
+   "ref": "U2",
+   "pin": "10",
+   "net": "IOB_18A"
+  },
+  {
+   "ref": "U2",
+   "pin": "11",
+   "net": "IOB_20A"
+  },
+  {
+   "ref": "U2",
+   "pin": "12",
+   "net": "IOB_22A"
+  },
+  {
+   "ref": "U2",
+   "pin": "21",
+   "net": "IOB_23B"
+  },
+  {
+   "ref": "U2",
+   "pin": "13",
+   "net": "IOB_24A"
+  },
+  {
+   "ref": "U2",
+   "pin": "20",
+   "net": "IOB_25B_G3"
+  },
+  {
+   "ref": "U2",
+   "pin": "19",
+   "net": "IOB_29B"
+  },
+  {
+   "ref": "U2",
+   "pin": "47",
+   "net": "IOB_2A"
+  },
+  {
+   "ref": "U2",
+   "pin": "18",
+   "net": "IOB_31B"
+  },
+  {
+   "ref": "U2",
+   "pin": "44",
+   "net": "IOB_3B_G6"
+  },
+  {
+   "ref": "U2",
+   "pin": "48",
+   "net": "IOB_4A"
+  },
+  {
+   "ref": "U2",
+   "pin": "45",
+   "net": "IOB_5B"
+  },
+  {
+   "ref": "U2",
+   "pin": "2",
+   "net": "IOB_6A"
+  },
+  {
+   "ref": "U2",
+   "pin": "4",
+   "net": "IOB_8A"
+  },
+  {
+   "ref": "U2",
+   "pin": "3",
+   "net": "IOB_9B"
+  },
+  {
+   "ref": "U2",
+   "pin": "25",
+   "net": "IOT_36B"
+  },
+  {
+   "ref": "U2",
+   "pin": "23",
+   "net": "IOT_37A"
+  },
+  {
+   "ref": "U2",
+   "pin": "27",
+   "net": "IOT_38B"
+  },
+  {
+   "ref": "U2",
+   "pin": "26",
+   "net": "IOT_39A"
+  },
+  {
+   "ref": "U2",
+   "pin": "28",
+   "net": "IOT_41A"
+  },
+  {
+   "ref": "U2",
+   "pin": "31",
+   "net": "IOT_42B"
+  },
+  {
+   "ref": "U2",
+   "pin": "32",
+   "net": "IOT_43A"
+  },
+  {
+   "ref": "U2",
+   "pin": "34",
+   "net": "IOT_44B"
+  },
+  {
+   "ref": "U2",
+   "pin": "37",
+   "net": "IOT_45A_G1"
+  },
+  {
+   "ref": "U2",
+   "pin": "35",
+   "net": "IOT_46B_G0"
+  },
+  {
+   "ref": "U2",
+   "pin": "36",
+   "net": "IOT_48B"
+  },
+  {
+   "ref": "U2",
+   "pin": "43",
+   "net": "IOT_49A"
+  },
+  {
+   "ref": "U2",
+   "pin": "38",
+   "net": "IOT_50B"
+  },
+  {
+   "ref": "U2",
+   "pin": "42",
+   "net": "IOT_51A"
+  },
+  {
+   "ref": "U2",
+   "pin": "40",
+   "net": "LED_B"
+  },
+  {
+   "ref": "U2",
+   "pin": "39",
+   "net": "LED_G"
+  },
+  {
+   "ref": "U2",
+   "pin": "41",
+   "net": "LED_R"
+  },
+  {
+   "ref": "C10",
+   "pin": "1",
+   "net": "VCC_PLL"
+  },
+  {
+   "ref": "C11",
+   "pin": "1",
+   "net": "VCC_PLL"
+  },
+  {
+   "ref": "R6",
+   "pin": "1",
+   "net": "VCC_PLL"
+  },
+  {
+   "ref": "U2",
+   "pin": "29",
+   "net": "VCC_PLL"
+  },
+  {
+   "ref": "SJ19",
+   "pin": "1",
+   "net": "VIO_BANK_0_2"
+  },
+  {
+   "ref": "SJ26",
+   "pin": "1",
+   "net": "VIO_BANK_0_2"
+  },
+  {
+   "ref": "C22",
+   "pin": "1",
+   "net": "_fpga_ice40up5k_N1"
+  },
+  {
+   "ref": "C5",
+   "pin": "1",
+   "net": "_fpga_ice40up5k_N1"
+  },
+  {
+   "ref": "SJ19",
+   "pin": "2",
+   "net": "_fpga_ice40up5k_N1"
+  },
+  {
+   "ref": "SJ31",
+   "pin": "2",
+   "net": "_fpga_ice40up5k_N1"
+  },
+  {
+   "ref": "U2",
+   "pin": "33",
+   "net": "_fpga_ice40up5k_N1"
+  },
+  {
+   "ref": "C35",
+   "pin": "1",
+   "net": "_fpga_ice40up5k_N2"
+  },
+  {
+   "ref": "C6",
+   "pin": "1",
+   "net": "_fpga_ice40up5k_N2"
+  },
+  {
+   "ref": "SJ20",
+   "pin": "2",
+   "net": "_fpga_ice40up5k_N2"
+  },
+  {
+   "ref": "SJ26",
+   "pin": "2",
+   "net": "_fpga_ice40up5k_N2"
+  },
+  {
+   "ref": "U2",
+   "pin": "1",
+   "net": "_fpga_ice40up5k_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

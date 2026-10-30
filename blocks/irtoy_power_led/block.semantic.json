@@ -1,0 +1,47 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "indicator",
+  "rationale": "最小的**上电指示**：VOUT → R10 2K → D1 LED → GND，5V 上约 1.4mA ——是\"看得见但不亮\"的那一档，插在主机上长期亮着也不费电（这块板通常一直插着）。 只有两颗 0805、2 条出块网 + 1 张块内网。 复用要点：① 换到 3.3V 供电时电流会掉到 ~0.65mA，要么把 R10 降下来要么换高亮 LED； ② 灯要放在板边能看见的位置——这颗是复用的唯一意义。",
+  "power_rails": [
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "VOUT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R10/1",
+      "note": "上电指示的供电端，块内串 R10 2K 后点 D1"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "D1",
+    "max_mm": 4.5,
+    "rationale": "两颗件相距 3.81mm、同一水平线（块外形 10.18×2.61mm，就是两颗 0805 加串阻的长度）。 约束只有一条：灯朝板边、看得见。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_irtoy_power_led_N1"
+  ],
+  "notes": [
+    "2 件 / 3 网：VOUT 出块 + 轨 GND + 1 张块内网（R10 与 D1 之间那段，卡里 `_irtoy_power_led_N1`）。",
+    "2K 在 5V 上给约 **1.4mA**——\"看得见但不亮\"的一档，这块板常插在主机上一直亮着，要的是指示不是照明。",
+    "换 3.3V 供电时电流掉到 ≈0.65mA（(3.3−2.0)/2K），要么降 R10 要么换高亮 LED，否则几乎看不见。",
+    "铜 1 段 + 0 孔（F 1）；死铜删 2 段/孔；口岸切口 0 处、走线出口 2 处；削剩残迹留 0 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（GND 铺铜按「块内不带铺铜」整张删掉；本块留下的都挂在内部网上，是载流铜）。",
+    "块里 2 个平面网焊盘一根铜都没有（源板就靠铺铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。",
+    "kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 0 + 悬空过孔 0 处就是\"口岸切口\"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通 0 / isolated_copper 0 / 违规 113 条。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 bp5-ir-toy-v3-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板 GND 铺铜按\"块内不带铺铜\"整张删掉，拼板时由整板铺铜接上）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Bus Pirate 5 IR Toy 适配板（3REV3）",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "2 件 / 3 网 / 端口 1 + 轨 1；铜 1 段 + 0 孔；死铜删 2；口岸切口 0；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

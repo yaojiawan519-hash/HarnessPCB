@@ -1,0 +1,160 @@
+{
+  "name": "ddr5_ldo_3v3",
+  "source": "adapter-ram-ddr5-1REV2.kicad_pcb",
+  "origin_src_mm": [
+    127.1437,
+    29.6569
+  ],
+  "size_mm": [
+    9.7975,
+    13.2763
+  ],
+  "ports": {
+    "BULK_VIN": [
+      "C6",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "R13",
+      "U1"
+    ],
+    "+3.3V": [
+      "C7",
+      "J1",
+      "J4",
+      "R10",
+      "R12",
+      "R2",
+      "U1"
+    ],
+    "GND": [
+      "C6",
+      "C7",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "Q6",
+      "R11",
+      "U1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "BULK_VIN",
+      "x": 121.445,
+      "y": 31.325,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BULK_VIN",
+      "x": 128.25,
+      "y": 37.095,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BULK_VIN",
+      "x": 121.445,
+      "y": 25.555,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "BULK_VIN",
+      "x": 132.8425,
+      "y": 31.3425,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 132.8425,
+      "y": 25.05,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3.3V",
+      "x": 128.75,
+      "y": 37.095,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 3,
+    "copper_segs": 5,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 11,
+    "cut_ends": 3,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "F.Cu": 5
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "+3.3V": 2,
+      "GND": 3
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 8,
+        "vias": 4,
+        "nets": [
+          "+3.3V",
+          "BULK_VIN",
+          "GND"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C4",
+      "value": "10uF/6.3V",
+      "fp": "C_0805_2012Metric",
+      "dx": -3.8937,
+      "dy": -3.6569,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "C5",
+      "value": "10uF/6.3V",
+      "fp": "C_0805_2012Metric",
+      "dx": 2.6063,
+      "dy": -3.6569,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R9",
+      "value": "1K",
+      "fp": "R_0805_2012Metric",
+      "dx": 3.1938,
+      "dy": 5.6631,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "U2",
+      "value": "ME6206A33XG",
+      "fp": "SOT-23",
+      "dx": -0.6437,
+      "dy": -3.6569,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

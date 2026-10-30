@@ -1,0 +1,203 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_lcd_display",
+ "interface": [
+  {
+   "net": "DISPLAY_BACKLIGHT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R208-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "LCD201-8",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_DP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "LCD201-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DISPLAY_RESET",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "LCD201-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CDO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "LCD201-10",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "SPI_CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "LCD201-9",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "Q202",
+   "lib": "Transistor_FET:BSS138",
+   "value": "MMBT7002K",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 172.72,
+   "y": 82.55
+  },
+  {
+   "ref": "R209",
+   "lib": "Device:R_Small",
+   "value": "33R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 175.26,
+   "y": 74.93
+  },
+  {
+   "ref": "R208",
+   "lib": "Device:R_Small",
+   "value": "200R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 161.29,
+   "y": 82.55
+  },
+  {
+   "ref": "LCD201",
+   "lib": "dp-lcd:TFT_20_QT200H1201",
+   "value": "TFT_20_QT200H1201",
+   "footprint": "dp-lcd:TFT_20_QT200H1201",
+   "x": 196.85,
+   "y": 52.07
+  }
+ ],
+ "conns": [
+  {
+   "ref": "LCD201",
+   "pin": "4",
+   "net": "+3V3"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R208",
+   "pin": "1",
+   "net": "DISPLAY_BACKLIGHT"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "8",
+   "net": "DISPLAY_CS"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "7",
+   "net": "DISPLAY_DP"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "2",
+   "net": "DISPLAY_LED-K"
+  },
+  {
+   "ref": "R209",
+   "pin": "2",
+   "net": "DISPLAY_LED-K"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "11",
+   "net": "DISPLAY_RESET"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "12",
+   "net": "GND"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "5",
+   "net": "GND"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "6",
+   "net": "GND"
+  },
+  {
+   "ref": "Q202",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "10",
+   "net": "SPI_CDO"
+  },
+  {
+   "ref": "LCD201",
+   "pin": "9",
+   "net": "SPI_CLK"
+  },
+  {
+   "ref": "Q202",
+   "pin": "1",
+   "net": "_bp5_lcd_display_N1"
+  },
+  {
+   "ref": "R208",
+   "pin": "2",
+   "net": "_bp5_lcd_display_N1"
+  },
+  {
+   "ref": "Q202",
+   "pin": "3",
+   "net": "_bp5_lcd_display_N2"
+  },
+  {
+   "ref": "R209",
+   "pin": "1",
+   "net": "_bp5_lcd_display_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

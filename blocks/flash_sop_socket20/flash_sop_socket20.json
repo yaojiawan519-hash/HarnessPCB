@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 20pin",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "flash_sop_socket20"
+  }
+}

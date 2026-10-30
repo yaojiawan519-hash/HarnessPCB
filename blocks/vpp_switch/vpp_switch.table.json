@@ -1,0 +1,217 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "vpp_switch",
+ "interface": [
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q1-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "高压输入（来自 vpp_boost / J4.1）"
+  },
+  {
+   "net": "VPP_HIGH",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R27-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "使能 Q1 导通的控制脚（高有效）"
+  },
+  {
+   "net": "VPP_LOW",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R29-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "把 VPP_SW 下拉到地的控制脚（高有效，**与 VPP_HIGH 互斥**）"
+  },
+  {
+   "net": "VPP_SW",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "Q1-3",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "开关后的高压输出（到 J4.2）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "Q2",
+   "lib": "Transistor_BJT:MMBT3904",
+   "value": "MMBT3904",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 185.42,
+   "y": 127.0
+  },
+  {
+   "ref": "Q3",
+   "lib": "Transistor_BJT:MMBT3904",
+   "value": "MMBT3904",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 160.02,
+   "y": 133.35
+  },
+  {
+   "ref": "R28",
+   "lib": "Device:R",
+   "value": "100R",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 187.96,
+   "y": 118.11
+  },
+  {
+   "ref": "R27",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 151.13,
+   "y": 133.35
+  },
+  {
+   "ref": "R25",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 162.56,
+   "y": 123.19
+  },
+  {
+   "ref": "Q1",
+   "lib": "Transistor_BJT:MMBT3906",
+   "value": "MMBT3906",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 162.56,
+   "y": 111.76
+  },
+  {
+   "ref": "R29",
+   "lib": "Device:R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 176.53,
+   "y": 130.81
+  },
+  {
+   "ref": "R23",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 153.67,
+   "y": 114.3
+  }
+ ],
+ "conns": [
+  {
+   "ref": "Q2",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Q3",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "Q1",
+   "pin": "2",
+   "net": "VPP"
+  },
+  {
+   "ref": "R23",
+   "pin": "2",
+   "net": "VPP"
+  },
+  {
+   "ref": "R27",
+   "pin": "2",
+   "net": "VPP_HIGH"
+  },
+  {
+   "ref": "R29",
+   "pin": "2",
+   "net": "VPP_LOW"
+  },
+  {
+   "ref": "Q1",
+   "pin": "3",
+   "net": "VPP_SW"
+  },
+  {
+   "ref": "R28",
+   "pin": "2",
+   "net": "VPP_SW"
+  },
+  {
+   "ref": "Q1",
+   "pin": "1",
+   "net": "_vpp_switch_N1"
+  },
+  {
+   "ref": "R23",
+   "pin": "1",
+   "net": "_vpp_switch_N1"
+  },
+  {
+   "ref": "R25",
+   "pin": "2",
+   "net": "_vpp_switch_N1"
+  },
+  {
+   "ref": "Q2",
+   "pin": "1",
+   "net": "_vpp_switch_N2"
+  },
+  {
+   "ref": "R29",
+   "pin": "1",
+   "net": "_vpp_switch_N2"
+  },
+  {
+   "ref": "Q2",
+   "pin": "3",
+   "net": "_vpp_switch_N3"
+  },
+  {
+   "ref": "R28",
+   "pin": "1",
+   "net": "_vpp_switch_N3"
+  },
+  {
+   "ref": "Q3",
+   "pin": "1",
+   "net": "_vpp_switch_N4"
+  },
+  {
+   "ref": "R27",
+   "pin": "1",
+   "net": "_vpp_switch_N4"
+  },
+  {
+   "ref": "Q3",
+   "pin": "3",
+   "net": "_vpp_switch_N5"
+  },
+  {
+   "ref": "R25",
+   "pin": "1",
+   "net": "_vpp_switch_N5"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

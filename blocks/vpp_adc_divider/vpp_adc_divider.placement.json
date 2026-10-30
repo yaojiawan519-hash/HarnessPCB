@@ -1,0 +1,139 @@
+{
+  "name": "vpp_adc_divider",
+  "source": "vpp-maker-rev6-ian.kicad_pcb",
+  "origin_src_mm": [
+    149.8628,
+    85.4293
+  ],
+  "size_mm": [
+    11.8882,
+    6.7552
+  ],
+  "ports": {
+    "VPP_ADC": [
+      "J1",
+      "J2"
+    ],
+    "VPP": [
+      "C15",
+      "D2",
+      "D3",
+      "J4",
+      "Q1",
+      "R23"
+    ],
+    "GND": [
+      "C13",
+      "C14",
+      "C15",
+      "D1",
+      "D3",
+      "J1",
+      "J2",
+      "J4",
+      "Q2",
+      "Q3",
+      "Q4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 144.5,
+      "y": 89.6069,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP",
+      "x": 156.0,
+      "y": 81.2518,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP",
+      "x": 156.0,
+      "y": 89.6069,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP",
+      "x": 152.4125,
+      "y": 89.6069,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VPP_ADC",
+      "x": 143.1187,
+      "y": 85.7664,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 3,
+    "not_built": [],
+    "nets": 3,
+    "copper_segs": 6,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 13,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "F.Cu": 6
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 2,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 4,
+        "vias": 1,
+        "nets": [
+          "VPP",
+          "VPP_ADC"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D4",
+      "value": "4.7V",
+      "fp": "D_SOD-123",
+      "dx": -2.2128,
+      "dy": -0.4293,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R22",
+      "value": "10K",
+      "fp": "R_0805_2012Metric",
+      "dx": 1.6372,
+      "dy": 2.0707,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R24",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.3628,
+      "dy": 2.0707,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

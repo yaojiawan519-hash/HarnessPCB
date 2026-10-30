@@ -1,0 +1,10 @@
+{
+ "pcb": "27999:1793371357027178772",
+ "violations": 4,
+ "unconnected": 1,
+ "kinds": {
+  "track_dangling": 4
+ },
+ "shorts": [],
+ "bridges": []
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "actuator",
+  "rationale": "振动马达的低边开关：M1 一端接 +3V3、另一端进 Q2(S8050 NPN) 集电极，Q2 发射极接地， 基极经 R13 1K 由 VIB_PWM 驱动——PWM 占空比就是振动力度。D2(1N4001) 反并在马达两端 做续流（马达是电感，关断时反峰不打穿三极管），C14 100nF 并在马达两端压火花/刷噪声。 **注意 D2 的方向**：阴极朝 +3V3，正常工作时反偏不导通，只有关断瞬间才导通—— 续流二极管接反了会直接把 +3V3 短到地。",
+  "power_rails": [
+    "+3V3",
+    "GND"
+  ],
+  "interface": [
+    {
+      "name": "VIB_PWM",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R13/2",
+      "note": "PWM 进 R13 1K 到 Q2 基极；占空比=振动力度，低电平停"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "M1",
+    "max_mm": 12.0,
+    "rationale": "续流二极管与电容贴马达两端焊盘，三极管夹在马达与地之间，基极电阻贴三极管基极。 源板实测 M1→Q2 5.32mm、M1→D2 5.27mm、Q2→R13 3.87mm，可按这个距离复用。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "_vib_motor_drv_N1",
+    "_vib_motor_drv_N2"
+  ],
+  "notes": [
+    "5 件 / 5 网，1 个口岸 VIB_PWM + 轨 +3V3/GND；块只有 16 段铜 + 3 过孔，最小的一块。",
+    "D2(1N4001) 反并在马达两端做续流：阴极朝 +3V3、阳极在马达低端节点。接反了会把 +3V3 直接短到地——复用接线时先看方向再焊。",
+    "M1 一端直接吃 +3V3，所以振动力度完全由 PWM 占空比决定，没有稳流。",
+    "块内铜只在 F.Cu（16 段），源板这块没走背面和 In2。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Watchy",
+    "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+    "license_tier": "permissive",
+    "author": "SQFMI（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "5 件 / 5 网 / 端口 1 + 轨 2；铜 28 段 + 3 孔；死铜删 13；口岸切口 4；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "name": "ir_rcv_56k",
+  "source": "bp5-ir-toy-v3-rev3.kicad_pcb",
+  "origin_src_mm": [
+    154.1963,
+    103.25
+  ],
+  "size_mm": [
+    12.5064,
+    6.3208
+  ],
+  "ports": {
+    "IO7": [
+      "J1",
+      "J2"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C6",
+      "C7",
+      "C8",
+      "D1",
+      "D10",
+      "J1",
+      "J2",
+      "R11",
+      "R13",
+      "R6",
+      "U1",
+      "U2",
+      "U3",
+      "U5"
+    ],
+    "VOUT": [
+      "C3",
+      "C6",
+      "C7",
+      "C8",
+      "D3",
+      "J1",
+      "J2",
+      "R1",
+      "R10",
+      "R2",
+      "R4",
+      "R5",
+      "R8",
+      "R9",
+      "U5"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 147.1431,
+      "y": 103.0569,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 151.6271,
+      "y": 99.2896,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 159.6,
+      "y": 99.2896,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 152.5479,
+      "y": 99.2896,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "IO7",
+      "x": 147.1431,
+      "y": 105.75,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 4,
+    "nets": 4,
+    "copper_segs": 12,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 2,
+    "exit_points": 5,
+    "segs_by_layer": {
+      "F.Cu": 12
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 2
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 8,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C5",
+      "value": "4.7uF",
+      "fp": "C_0805_2012Metric",
+      "dx": -0.4463,
+      "dy": -0.5,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R12",
+      "value": "20K",
+      "fp": "R_0805_2012Metric",
+      "dx": -4.9463,
+      "dy": -0.5,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R7",
+      "value": "100R",
+      "fp": "R_0805_2012Metric",
+      "dx": -2.6963,
+      "dy": -0.5,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "U4",
+      "value": "CHQ0038L-56kHz",
+      "fp": "TSOP18XX",
+      "dx": 2.7771,
+      "dy": -0.0012,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

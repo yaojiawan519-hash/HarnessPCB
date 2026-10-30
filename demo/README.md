@@ -23,7 +23,9 @@
 | 文件 | 内容 |
 |---|---|
 | `demo_blinker.design.json` | 设计表（九键 schema，见 `docs/输入格式说明.md` §一） |
-| `demo_blinker_intent.json` | 放置意图 spec：J1 贴左缘、J2 贴右缘、电源簇以 J1 为锚 |
+
+> v0.2 起放置是纯规则（`skills/pcb-place`），原来那份 `demo_blinker_intent.json`
+> 已随 RL 放置线退役一并删除——格式存档在 git 历史 `v0.1` tag 里。
 
 ## 期望产物链
 

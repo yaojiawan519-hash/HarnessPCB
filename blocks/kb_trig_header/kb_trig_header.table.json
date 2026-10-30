@@ -1,0 +1,70 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_trig_header",
+ "interface": [
+  {
+   "net": "TRIG",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J8-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VOUT_BP_SIDE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R3-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R3",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 167.64,
+   "y": 36.83
+  },
+  {
+   "ref": "J8",
+   "lib": "Connector:Conn_01x02_Pin",
+   "value": "Conn_01x02_Pin",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+   "x": 162.56,
+   "y": 44.45
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J8",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "J8",
+   "pin": "1",
+   "net": "TRIG"
+  },
+  {
+   "ref": "R3",
+   "pin": "1",
+   "net": "TRIG"
+  },
+  {
+   "ref": "R3",
+   "pin": "2",
+   "net": "VOUT_BP_SIDE"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

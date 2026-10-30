@@ -1,0 +1,78 @@
+project:
+  kind: block
+  name: plank_power_led
+  version: sdi/1
+defs:
+  plank_power_led:
+    category: indicator
+    rationale: '**一颗电源指示灯**：`VOUT → R1（2K）→ D1 阳极 → D1 阴极 → GND`，两颗 0805 竖排 （D1 在上 y=76.00、R1 在下 y=81.50，中心距
+      5.50mm，都 rot -90）。 按 VOUT=3.3V、这颗 LED 的 Vf≈2.0V 算，电流约 **(3.3−2.0)/2000 = 0.65mA**—— 很暗，只在暗处看得见；想要醒目就把
+      R1 降到 1K（≈1.3mA）。 ⚠ 原理图上 D1 的阳极是 pad **2**（网 `Net-(D1-A)`）、阴极是 pad **1**（接 GND）—— 0805 LED 封装里 1
+      是阴极，别按"1 是阳极"的习惯接。 ⚠ 本块**只指示 VOUT 有没有电**，不指示 I2C、也不指示 3.3V 是否来自主机还是别的源。 真正"能不能通"的判断在主机侧。'
+    ports:
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R1-1
+        connector: false
+      pin: R1/1
+      note: 整板电源（丝印 `V+`）：经 R1 2K 点这颗灯
+    rails:
+    - GND
+    parts:
+    - ref: D1
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: R1
+      lib: Device:R
+      value: 2K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: D1
+      pin: '1'
+      net: GND
+    - ref: R1
+      pin: '1'
+      net: VOUT
+    - ref: D1
+      pin: '2'
+      net: _plank_power_led_N1
+    - ref: R1
+      pin: '2'
+      net: _plank_power_led_N1
+    placement_prior:
+      anchor: D1
+      max_mm: 8.0
+      rationale: 两颗一条竖线上的串联对，中心距 5.50mm、同朝向（rot -90）。源板把它们放在板左上角， 远离所有连接器——复用时就近放 VOUT 入口也合理，别塞到插头手指够不着的地方。
+        ⚠ 别照搬"左上角"这个结论：本块**只带了这颗灯**，位置跟着 **VOUT 的取电点**走。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _plank_power_led_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 I2C Quick Connect Plank v1 REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 2 件 / 3 网 / 端口 1 + 轨 1；铜 1 段 + 0 孔；死铜删 0；口岸切口 1；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb
+      原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 GND 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**一颗电源指示灯**：`VOUT → R1（2K）→ D1 阳极 → D1 阴极 → GND`，两颗 0805 竖排（D1 在上 y=76.00、R1 在下 y=81.50，中心距 5.50mm，都
+      rot −90）。2 件 / 3 网：1 个出块端口（VOUT）+ 1 条轨（GND）+ 1 张块内网（`Net-(D1-A)`，卡里 `_plank_power_led_N*`——拼装时逐实例改名，别并网）。'
+    - 按 VOUT=3.3V、这颗 LED 的 Vf≈2.0V 算，电流 ≈ **(3.3−2.0)/2000 = 0.65mA**——很暗，只在暗处看得见。想醒目就把 R1 降到 1K（≈1.3mA）。
+    - ⚠ 原理图上 D1 的**阳极是 pad 2**（网 `Net-(D1-A)`）、**阴极是 pad 1**（接 GND）。0805 LED 封装里 1 是阴极，别按"1 是阳极"的习惯接。
+    - ⚠ 本块**只指示 VOUT 有没有电**，不指示 I2C 通不通、也不区分 VOUT 来自哪个源。
+    - '⚠ `VOUT` 在本卡里记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）。它电学上是**整板的电源网**（板上丝印写
+      `V+`），拼板时按同名接，不要当信号口串东西。'
+    - 铜 1 段 + 0 孔（F 2）；死铜删 0 段/孔；口岸切口 1 处、走线出口 1 处；削剩残迹留 1 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND
+      是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里 1 个平面网焊盘一根铜都没有（源板就靠那张整板 GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 1 + 悬空过孔 0 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_*
+      2 条（源板自带，见基线）；源板基线：未连通 0 / isolated_copper 0 / 违规 46 条。

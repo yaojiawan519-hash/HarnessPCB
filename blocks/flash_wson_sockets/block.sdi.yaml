@@ -1,0 +1,203 @@
+project:
+  kind: block
+  name: flash_wson_sockets
+  version: sdi/1
+defs:
+  flash_wson_sockets:
+    category: connector
+    rationale: '**两种 WSON 封装的焊盘位**，各配一只 0.1uF 芯片侧去耦： U1 `WSON-5x6` + C1，U2 `WSON8-6x8` + C2。这两只**不是测试座，是裸焊盘**——
+      WSON 片子直接焊上去（换片子要热风枪），所以一个块只服务一个封装尺寸。 两只的**八脚逐脚同网、与 25LCxxx 的 SOIC-8 引脚一一对应**： **1=CS、2=CDI（芯片 MISO）、3=WP、4=GND_CHIP、5=CDO（芯片
+      MOSI）、6=SCLK、 7=HOLD、8=VCC_CHIP**——这一版**写保护是独立的**。 ⚠ 每只封装 10 个焊盘，其中 8 个是带号的信号脚，另 2 个**不带号**（封装自带的
+      定位/散热盘，哪根网都不接）。 ⚠ `CDI`/`CDO` 是**主控侧**的名字，接的是芯片的 MISO / MOSI，与 MOSI/MISO 正好相反。 ⚠ 两片焊位**并联**：同一时刻只焊一颗，两颗都焊会互相抢同一条
+      MISO。'
+    ports:
+    - name: CDI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-2
+        connector: false
+      pin: U1/2
+      note: 焊位 2 脚 → 芯片 MISO
+    - name: CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-5
+        connector: false
+      pin: U1/5
+      note: 焊位 5 脚 → 芯片 MOSI
+    - name: CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-1
+        connector: false
+      pin: U1/1
+      note: 焊位 1 脚（U1.1 / U2.1）
+    - name: GND_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C1-2
+        connector: false
+      pin: C1/2
+      note: 焊位 4 脚（+ 两只 0.1uF 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片
+    - name: HOLD
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-7
+        connector: false
+      pin: U1/7
+      note: 焊位 7 脚
+    - name: SCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-6
+        connector: false
+      pin: U1/6
+      note: 焊位 6 脚
+    - name: VCC_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C1-1
+        connector: false
+      pin: C1/1
+      note: 焊位 8 脚（+ 两只 0.1uF 的 1 脚）：芯片侧电源
+    - name: WP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: U1-3
+        connector: false
+      pin: U1/3
+      note: 焊位 3 脚（写保护）：本版真的到焊位
+    rails: []
+    parts:
+    - ref: U2
+      lib: Memory_EEPROM:25LCxxx
+      value: 25LCxxx
+      footprint: TEST_SOCKETS:WSON8-6x8
+    - ref: C1
+      lib: Device:C
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: C2
+      lib: Device:C
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    - ref: U1
+      lib: Memory_EEPROM:25LCxxx
+      value: 25LCxxx
+      footprint: TEST_SOCKETS:WSON-5x6
+    conns:
+    - ref: U1
+      pin: '2'
+      net: CDI
+    - ref: U2
+      pin: '2'
+      net: CDI
+    - ref: U1
+      pin: '5'
+      net: CDO
+    - ref: U2
+      pin: '5'
+      net: CDO
+    - ref: U1
+      pin: '1'
+      net: CS
+    - ref: U2
+      pin: '1'
+      net: CS
+    - ref: C1
+      pin: '2'
+      net: GND_CHIP
+    - ref: C2
+      pin: '2'
+      net: GND_CHIP
+    - ref: U1
+      pin: '4'
+      net: GND_CHIP
+    - ref: U2
+      pin: '4'
+      net: GND_CHIP
+    - ref: U1
+      pin: '7'
+      net: HOLD
+    - ref: U2
+      pin: '7'
+      net: HOLD
+    - ref: U1
+      pin: '6'
+      net: SCLK
+    - ref: U2
+      pin: '6'
+      net: SCLK
+    - ref: C1
+      pin: '1'
+      net: VCC_CHIP
+    - ref: C2
+      pin: '1'
+      net: VCC_CHIP
+    - ref: U1
+      pin: '8'
+      net: VCC_CHIP
+    - ref: U2
+      pin: '8'
+      net: VCC_CHIP
+    - ref: U1
+      pin: '3'
+      net: WP
+    - ref: U2
+      pin: '3'
+      net: WP
+    placement_prior:
+      anchor: U1
+      max_mm: 8.0
+      rationale: 右侧竖条 10.44×30.72mm，两片上下排（U1 y≈78.75 rot 90、U2 y≈95.00 rot 90）， 各自的去耦贴在焊位**上沿**（C1 y=72.00、C2
+        y=87.00）。 复用要点：① 焊位四周留出热风枪与返修空间；② 去耦必须贴着 `VCC_CHIP` 那几个脚。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 flash adapter (WSON) REV3
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 8 网 / 端口 8 + 轨 0；铜 55 段 + 6 孔；死铜删 11；口岸切口 4；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 flash-wson-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 **GND_CHIP** 灌铜（芯片侧地，不是板上 GND）是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**两种 WSON 封装的焊位**（不是座，是**裸焊盘**：WSON 片子直接焊上去，换片子要热风枪），各配一只 0.1uF 芯片侧去耦：U1 `WSON-5x6` + C1，U2 `WSON8-6x8`
+      + C2。4 件 / 8 网 / 8 个端口、**没有轨、没有块内网**。'
+    - '**八脚与 25LCxxx 的 SOIC-8 一一对应**（两片焊位逐脚同网）：**1=CS、2=CDI（芯片 MISO）、3=WP、4=GND_CHIP、5=CDO（芯片 MOSI）、6=SCLK、7=HOLD、8=VCC_CHIP**——写保护独立、真的到位。'
+    - ⚠ 两片焊位各 10 个焊盘：8 个带号的信号脚 + **2 个不带号的定位/散热盘**（哪根网都不接，别给它们编网名）。
+    - ⚠ `CDI` / `CDO` 是**主控侧**的名字（Controller Data In / Out）：`CDI` 接芯片的 **MISO**、`CDO` 接芯片的 **MOSI**——与芯片手册上的
+      MOSI/MISO 正好相反。照名字直连会把主控的输入接到芯片的输入上。
+    - ⚠ **本块没有轨是正常的**：`GND_CHIP` 是独立网，要经 `flash_wson_port` 的 SW2 二选一才和主机地汇合。⚠ 两片焊位**并联**：同一时刻只焊一颗，两颗都焊会互相抢
+      MISO。
+    - 几何：右侧竖条，U1 @(154.00, 78.75) rot 90 / U2 @(153.75, 95.00) rot 90（右脚贴板右沿 0.83mm）；C1 @(154.00, 72.00)
+      rot 0、C2 @(154.00, 87.00) rot 0——**两只是正上方**（不是 lotes 那样的下沿）。复用要点：① 焊位四周留出热风枪与返修空间；② 去耦贴着 `VCC_CHIP`
+      的第 8 脚。
+    - '⚠ 这一族四张板子的**灌铜是 `GND_CHIP`（芯片侧地），不是 `GND`**。所以「块内不带铺铜」删掉的是芯片地，裂岛/裸脚全落在 `GND_CHIP` 上；`GND`（排针第 10
+      脚、灯的回流）本来就没有铺铜，只靠走线。卡里 `GND_CHIP` 记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）；它电学上是**芯片的电源/地网**，拼板时按同名接，别当信号口去串阻容。'
+    - 铜 55 段 + 6 孔（B 6 / F 71）；死铜删 11 段/孔（两端全悬空、谁也连不上的才算）；口岸切口 4 处（一端悬空=块的铜接口，按用户拍板留着）、走线出口 6 处；削剩残迹留
+      0 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND_CHIP 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - '**GND_CHIP 裂成 4 个铜岛**：源板上这块芯片地靠那张双面灌铜连成一片，块内不带铺铜就各自成岛——拼板时由整板 GND_CHIP 铺铜接上，不是断线。'
+    - kicad-cli DRC：isolated_copper 0；未连通 3 条，**全是 GND_CHIP**——芯片侧地源板上靠整板灌铜，块按规矩不带铺铜，拼板时铺上就通；断头走线 5 +
+      悬空过孔 5 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_* 4 条（源板自带，见基线）；源板 flash-wson-rev3.kicad_pcb
+      基线：未连通 0 / isolated_copper 0 / 违规 70 条。

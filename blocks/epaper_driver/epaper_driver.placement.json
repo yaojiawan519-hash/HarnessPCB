@@ -1,0 +1,360 @@
+{
+  "name": "epaper_driver",
+  "source": "Watchy.kicad_pcb",
+  "origin_src_mm": [
+    83.67,
+    102.1407
+  ],
+  "size_mm": [
+    29.79,
+    18.9352
+  ],
+  "ports": {
+    "RES": [
+      "U4"
+    ],
+    "SCK": [
+      "U4"
+    ],
+    "BUSY": [
+      "U4"
+    ],
+    "DC": [
+      "U4"
+    ],
+    "CS": [
+      "U4"
+    ],
+    "+3V3": [
+      "C1",
+      "C10",
+      "C14",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "D2",
+      "M1",
+      "R1",
+      "R10",
+      "R11",
+      "R18",
+      "R20",
+      "R4",
+      "R7",
+      "TP4",
+      "U1",
+      "U2",
+      "U4",
+      "U6"
+    ],
+    "GND": [
+      "AE1",
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C9",
+      "J1",
+      "J2",
+      "Q2",
+      "R15",
+      "R2",
+      "R3",
+      "R9",
+      "SW1",
+      "SW2",
+      "SW3",
+      "SW4",
+      "TP5",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "Y2"
+    ],
+    "MOSI": [
+      "U4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 93.1069,
+      "y": 90.4681,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 95.63,
+      "y": 90.4681,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "BUSY",
+      "x": 88.3707,
+      "y": 90.4681,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "RES",
+      "x": 87.9464,
+      "y": 90.4681,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "DC",
+      "x": 87.5222,
+      "y": 90.4681,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "MOSI",
+      "x": 86.32,
+      "y": 90.4681,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 19,
+    "not_built": [],
+    "nets": 24,
+    "copper_segs": 129,
+    "vias": 9,
+    "stub_kept": 0,
+    "isolated_deleted": 34,
+    "cut_ends": 8,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 2,
+      "F.Cu": 100,
+      "In2.Cu": 27
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->C10.1": 1,
+      "+3V3->R4.2": 1,
+      "+3V3->TP4.1": 1,
+      "+3V3->U2.5": 1,
+      "GND->C10.2": 1
+    },
+    "island_split": {
+      "GND": 12
+    },
+    "dangling": {
+      "total": 19,
+      "port_cuts": 19,
+      "port_cut_nets": [
+        "+3V3",
+        "CS",
+        "GND",
+        "SCK"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 15,
+        "vias": 12,
+        "nets": [
+          "BUSY",
+          "DC",
+          "GND",
+          "MOSI",
+          "RES"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C20",
+      "value": "4.7uF/50V",
+      "fp": "C_0603_1608Metric",
+      "dx": -9.25,
+      "dy": 7.1893,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C21",
+      "value": "4.7uF/50V",
+      "fp": "C_0603_1608Metric",
+      "dx": -9.25,
+      "dy": 1.2293,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C22",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": -2.09,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C23",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": 5.8,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C24",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": -0.25,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C25",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": -1.17,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C26",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": -3.01,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C27",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": -4.85,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C28",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": 0.67,
+      "dy": -6.0807,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C29",
+      "value": "1uF/50V",
+      "fp": "C_0402_1005Metric",
+      "dx": -3.93,
+      "dy": -6.0807,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "D3",
+      "value": "MBR0530",
+      "fp": "D_SOD-123",
+      "dx": -13.72,
+      "dy": -1.8507,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D4",
+      "value": "MBR0530",
+      "fp": "D_SOD-123",
+      "dx": -11.42,
+      "dy": -1.8507,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "D5",
+      "value": "MBR0530",
+      "fp": "D_SOD-123",
+      "dx": -9.12,
+      "dy": -1.8507,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "FPC24(0.5MM)",
+      "fp": "24_Pins_0.5mm_Pitch_ZIF_Connector_UP",
+      "dx": 1.98,
+      "dy": -1.8707,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "L2",
+      "value": "47uH 0.5A",
+      "fp": "L_Taiyo-Yuden_NR-40xx",
+      "dx": -8.48,
+      "dy": 4.2093,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "Q3",
+      "value": "AO3400A",
+      "fp": "SOT-23",
+      "dx": 13.17,
+      "dy": 4.7593,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R16",
+      "value": "1M",
+      "fp": "R_0402_1005Metric",
+      "dx": 7.67,
+      "dy": -6.1007,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R17",
+      "value": "2.2",
+      "fp": "R_0402_1005Metric",
+      "dx": 6.73,
+      "dy": -6.1007,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R19",
+      "value": "100K",
+      "fp": "R_0402_1005Metric",
+      "dx": 4.87,
+      "dy": -6.1007,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

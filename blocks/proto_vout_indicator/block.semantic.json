@@ -1,0 +1,34 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "indicator",
+  "rationale": "**VOUT 电源指示灯**，全库最小的一块（2 件 + 2 轨）：`VOUT — R2 2K — D2 阳极 — 阴极 — GND`。 R2.1 落在 VOUT 全局标签上，D2.1 落在 GND 上（D2 是 `Device:LED`，脚 1=K、脚 2=A， 所以 `Net-(D2-A)` 是 R2.2 + D2.2 这一段）。 复用要点：2K 在 5V 下约 1.5mA、在 3.3V 下约 0.65mA——只够\"看着亮\"，日光下可能偏暗； 要换成其它颜色/Vf 的管子不用改电阻（电流差别在 mA 级的十几分之一）。 这块板没有接插件：**轨就是接口**，VOUT 与 GND 全靠电源轨接进拼板。",
+  "power_rails": [
+    "GND",
+    "VOUT"
+  ],
+  "interface": [],
+  "slots": [],
+  "placement_prior": {},
+  "hot_loop": [],
+  "internal_nets": [
+    "_proto_vout_indicator_N1"
+  ],
+  "notes": [
+    "**VOUT 电源指示灯**，全库最小的一块：`VOUT — R2 2K — D2 阳极 — 阴极 — GND`。2 件 / 3 网 / 端口 0 + 轨 2（GND、VOUT）。",
+    "D2 是 `Device:LED`（脚 1=K、脚 2=A），所以 `VOUT` 落在 R2.1、`GND` 落在 D2.1，中间那段 `Net-(D2-A)` 是 R2.2 + D2.2（阳极侧）。方向反了不会亮。",
+    "R2 2K：5V 下 ≈1.5mA、3.3V 下 ≈0.65mA——只够\"看着亮\"，日光下可能偏暗；换颜色不用改电阻。",
+    "**这块板没有接插件：轨就是接口**。拼装时 VOUT 与 GND 直接靠电源轨接进拼板，卡里因此是 0 端口 / 2 轨，不是漏登记。",
+    "⚠ **只有原理图**：源板 `blank-plank-rev0b.kicad_pcb` 上没有 D2/R2 的封装（板上 1657 个封装里只有 J2/J3/J5 三只排针带位号），作者没给这块做 PCB。"
+  ],
+  "geometry_status": "schematic-only —— 只交了原理图：源板 `blank-plank-rev0b.kicad_pcb` 上**没有这几只的封装**（板上 1657 个封装里只有 J2/J3/J5 三只排针带位号，其余是洞洞板焊盘），作者没给它们做 PCB。板级几何（摆放/布线/DRC）未做",
+  "provenance": {
+    "basis": "2 件 / 3 网 / 端口 0 + 轨 2；无 carve counts（老 V3.x 血统，板由 V3.3 引擎生成）",
+    "source": "human:open-source",
+    "board": "KiCAD_Access/hw_sources/BusPirate5-hardware/adapter-blank-plank-1REV0B/blank-plank-rev0b.kicad_sch",
+    "license": "MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC",
+    "license_tier": "permissive",
+    "author": "Dangerous Prototypes（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5"
+  }
+}

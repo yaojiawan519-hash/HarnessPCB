@@ -1,0 +1,52 @@
+{
+ "pcb": "211718:1793381601831331039",
+ "violations": 180,
+ "unconnected": 6,
+ "kinds": {
+  "clearance": 70,
+  "courtyards_overlap": 23,
+  "lib_footprint_issues": 4,
+  "lib_footprint_mismatch": 15,
+  "shorting_items": 3,
+  "silk_over_copper": 3,
+  "silk_overlap": 7,
+  "solder_mask_bridge": 13,
+  "track_dangling": 42
+ },
+ "shorts": [],
+ "bridges": [
+  {
+   "nets": [
+    "<no net>",
+    "Net-(SJ35-Pad1"
+   ],
+   "items": [
+    "Polygon [<no net>] of SJ35 on F.Cu",
+    "Pad 1 [Net-(SJ35-Pad1)] of SJ35 on F.Cu"
+   ],
+   "kind": "bridge"
+  },
+  {
+   "nets": [
+    "<no net>",
+    "Net-(SJ36-Pad1"
+   ],
+   "items": [
+    "Polygon [<no net>] of SJ36 on F.Cu",
+    "Pad 1 [Net-(SJ36-Pad1)] of SJ36 on F.Cu"
+   ],
+   "kind": "bridge"
+  },
+  {
+   "nets": [
+    "<no net>",
+    "/USB_P"
+   ],
+   "items": [
+    "Polygon [<no net>] of SJ36 on F.Cu",
+    "Pad 2 [/USB_P] of SJ36 on F.Cu"
+   ],
+   "kind": "bridge"
+  }
+ ]
+}

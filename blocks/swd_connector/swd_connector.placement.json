@@ -1,0 +1,150 @@
+{
+  "name": "swd_connector",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    30.2625,
+    39.555
+  ],
+  "size_mm": [
+    9.565,
+    4.5
+  ],
+  "ports": {
+    "+3V3": [
+      "C10",
+      "C11",
+      "C2",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "U1",
+      "U3",
+      "U4"
+    ],
+    "SWCLK": [
+      "U3"
+    ],
+    "SWDIO": [
+      "U3"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C2",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "J1",
+      "J2",
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "Y1"
+    ],
+    "NRST": [
+      "U3"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "NRST",
+      "x": 36.55,
+      "y": 41.2,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "SWDIO",
+      "x": 36.55,
+      "y": 40.75,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SWCLK",
+      "x": 36.55,
+      "y": 41.2434,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 8,
+    "copper_segs": 3,
+    "vias": 0,
+    "stub_kept": 1,
+    "isolated_deleted": 12,
+    "cut_ends": 2,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 2
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {
+      "GND": 3
+    },
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 4
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 5,
+        "vias": 1,
+        "nets": [
+          "GND",
+          "NRST",
+          "SWCLK",
+          "SWDIO"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C3",
+      "value": "100n",
+      "fp": "C_0402_1005Metric",
+      "dx": -3.8275,
+      "dy": 1.355,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "J3",
+      "value": "ARM 10pin",
+      "fp": "PinHeader_2x05_P1.27mm_Vertical",
+      "dx": 3.6075,
+      "dy": -0.625,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "100r 10k 4.7uf irm-3638j7",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "ir_rcv_38k_barrier"
+  }
+}

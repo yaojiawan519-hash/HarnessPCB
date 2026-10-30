@@ -1,0 +1,8 @@
+{
+  "description": "从 Phil's Lab STRF 的 `STRF.kicad_sch` 作者分区框 \"USB Connector and ESD Protection\" 整框裁出；板从同工程 `STRF_2layer.kicad_pcb` 按位号原样扣铜。",
+  "keywords": "usblc6-2sc6 usb_b_micro",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "usb_esd_usblc6"
+  }
+}

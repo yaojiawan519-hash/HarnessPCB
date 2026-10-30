@@ -1,0 +1,14 @@
+{
+  "block": "wago_kf141v_adapter",
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 `wago kf141v adapter adapter.kicad_pcb` 原样扣，坐标 = 源板坐标平移，origin: page；2 层，块内铜全在 B.Cu，无过孔、**无铺铜**（源板本来就没有）；外形 14.23×30.10mm；件占地 24.20×29.44mm；块板 29.20×34.44mm）",
+  "parts_xy": {
+    "J2": [
+      134.62,
+      91.44
+    ],
+    "J1": [
+      97.79,
+      91.44
+    ]
+  }
+}

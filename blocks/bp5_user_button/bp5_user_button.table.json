@@ -1,0 +1,42 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_user_button",
+ "interface": [
+  {
+   "net": "BUTTONS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SW102-1",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+3V3"
+ ],
+ "parts": [
+  {
+   "ref": "SW102",
+   "lib": "dp-switch:4P_button_sw",
+   "value": "4P_button_sw",
+   "footprint": "dp-switch:GT-TC026X-HXXX-LX",
+   "x": 269.24,
+   "y": 143.51
+  }
+ ],
+ "conns": [
+  {
+   "ref": "SW102",
+   "pin": "4",
+   "net": "+3V3"
+  },
+  {
+   "ref": "SW102",
+   "pin": "1",
+   "net": "BUTTONS"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

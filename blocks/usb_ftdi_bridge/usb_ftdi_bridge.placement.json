@@ -1,0 +1,607 @@
+{
+  "name": "usb_ftdi_bridge",
+  "source": "UPduino_v3.01.kicad_pcb",
+  "origin_src_mm": [
+    147.294,
+    87.475
+  ],
+  "size_mm": [
+    28.922,
+    14.5
+  ],
+  "ports": {
+    "/FLASH_MOSI": [
+      "J3",
+      "R12",
+      "R27",
+      "U5"
+    ],
+    "/CLK_12M_FT": [
+      "U4",
+      "U8"
+    ],
+    "/CDONE": [
+      "D1",
+      "J2",
+      "R7",
+      "U2"
+    ],
+    "/FLASH_MISO": [
+      "J3",
+      "R11",
+      "R13",
+      "U5"
+    ],
+    "/EE_DAT": [
+      "R1",
+      "TP28",
+      "U1"
+    ],
+    "/CRESET_N": [
+      "J2",
+      "R5",
+      "U2"
+    ],
+    "/FT_SCK": [
+      "J3",
+      "R9",
+      "U2",
+      "U5"
+    ],
+    "GND": [
+      "C10",
+      "C11",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C29",
+      "C3",
+      "C30",
+      "C31",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "C5",
+      "C6",
+      "D1",
+      "J2",
+      "J3",
+      "J4",
+      "R10",
+      "U1",
+      "U2",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8"
+    ],
+    "+3V3": [
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C21",
+      "C3",
+      "C30",
+      "C33",
+      "C36",
+      "D2",
+      "J2",
+      "R14",
+      "R15",
+      "R17",
+      "R18",
+      "R28",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "SJ20",
+      "SJ31",
+      "U1",
+      "U2",
+      "U4",
+      "U5",
+      "U6",
+      "U8"
+    ],
+    "/FT_SSn": [
+      "J3",
+      "R8",
+      "U2",
+      "U5"
+    ],
+    "+5VD": [
+      "C19",
+      "C20",
+      "C34",
+      "J2",
+      "J4",
+      "U6",
+      "U7"
+    ],
+    "/USB_P": [
+      "R21",
+      "R22",
+      "TP20"
+    ],
+    "/EE_CLK": [
+      "R18",
+      "TP27",
+      "U1"
+    ],
+    "/USB_M": [
+      "R23",
+      "TP21"
+    ],
+    "/EE_CS": [
+      "R17",
+      "TP26",
+      "U1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 161.6,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "+5VD",
+      "x": 131.058,
+      "y": 78.486,
+      "layer": "In1.Cu"
+    },
+    {
+      "net": "/CDONE",
+      "x": 131.058,
+      "y": 83.142,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/CRESET_N",
+      "x": 136.1371,
+      "y": 96.5,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/FLASH_MISO",
+      "x": 131.058,
+      "y": 86.305,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 134.07,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FLASH_MOSI",
+      "x": 148.5,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FT_SSn",
+      "x": 131.058,
+      "y": 84.422,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FT_SSn",
+      "x": 160.32,
+      "y": 96.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "/FT_SCK",
+      "x": 131.058,
+      "y": 91.222,
+      "layer": "In2.Cu"
+    },
+    {
+      "net": "/FT_SCK",
+      "x": 157.78,
+      "y": 96.5,
+      "layer": "In2.Cu"
+    }
+  ],
+  "counts": {
+    "members": 31,
+    "not_built": [],
+    "nets": 38,
+    "copper_segs": 571,
+    "vias": 29,
+    "stub_kept": 0,
+    "isolated_deleted": 26,
+    "cut_ends": 24,
+    "exit_points": 11,
+    "segs_by_layer": {
+      "B.Cu": 172,
+      "F.Cu": 368,
+      "In1.Cu": 1,
+      "In2.Cu": 30
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "+3V3->C3.1": 1,
+      "+3V3->C33.1": 1,
+      "+3V3->C36.1": 1,
+      "+3V3->J2.9": 1,
+      "+3V3->R17.1": 1,
+      "+3V3->R18.2": 1,
+      "+3V3->U8.8": 1,
+      "+5VD->J2.8": 1,
+      "/CDONE->J2.4": 1,
+      "/CLK_12M_FT->U8.2": 1,
+      "/CLK_12M_FT->U8.5": 1,
+      "/CRESET_N->J2.3": 1,
+      "/EE_CLK->R18.1": 1,
+      "/EE_CLK->TP27.1": 1,
+      "/EE_CS->R17.2": 1,
+      "/EE_CS->TP26.1": 1,
+      "/EE_DAT->TP28.1": 1,
+      "/EE_DAT->U1.3": 1,
+      "/FLASH_MISO->R11.2": 1,
+      "/FLASH_MISO->R13.1": 1,
+      "/FLASH_MOSI->R12.2": 1,
+      "/USB_M->R23.2": 1,
+      "/USB_M->TP21.1": 1,
+      "/USB_P->R21.1": 1,
+      "/USB_P->R22.2": 1,
+      "/USB_P->TP20.1": 1,
+      "GND->C23.2": 1,
+      "GND->C3.2": 1,
+      "GND->C36.2": 1,
+      "GND->J2.1": 1,
+      "GND->U8.1": 1,
+      "GND->U8.4": 1,
+      "GND->U8.7": 1
+    },
+    "island_split": {
+      "+3V3": 4,
+      "GND": 3
+    },
+    "dangling": {
+      "total": 42,
+      "port_cuts": 28,
+      "port_cut_nets": [
+        "+3V3",
+        "+5VD",
+        "/CDONE",
+        "/CLK_12M_FT",
+        "/CRESET_N",
+        "/EE_CLK",
+        "/EE_CS",
+        "/EE_DAT",
+        "/FLASH_MISO",
+        "/FLASH_MOSI",
+        "/USB_M",
+        "/USB_P",
+        "GND"
+      ],
+      "binds": 14,
+      "bind_nets": [
+        "+3V3",
+        "/CDONE",
+        "/CRESET_N",
+        "/EE_DAT",
+        "/FLASH_MISO",
+        "/FLASH_MOSI",
+        "/FT_SCK",
+        "/FT_SSn",
+        "/FT_VCORE"
+      ],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 17,
+        "vias": 11,
+        "nets": [
+          "+3V3",
+          "/FLASH_MOSI",
+          "/FT_SCK",
+          "/FT_SSn",
+          "GND"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C1",
+      "value": "4.7u",
+      "fp": "C_0603_1608Metric",
+      "dx": 3.3915,
+      "dy": 3.711,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C12",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": -1.544,
+      "dy": 2.187,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "C13",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 1.606,
+      "dy": -1.475,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C2",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": -9.394,
+      "dy": 5.025,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C25",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 9.716,
+      "dy": 6.495,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C27",
+      "value": "4.7u",
+      "fp": "C_0603_1608Metric",
+      "dx": -1.544,
+      "dy": 3.675,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "C28",
+      "value": "4.7u",
+      "fp": "C_0603_1608Metric",
+      "dx": 2.856,
+      "dy": -1.4875,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C4",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": -9.394,
+      "dy": 3.725,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C7",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": -6.744,
+      "dy": -4.975,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C8",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 0.28,
+      "dy": 4.981,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "C9",
+      "value": "0.1u",
+      "fp": "C_0603_1608Metric",
+      "dx": 2.006,
+      "dy": -3.625,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "FB1",
+      "value": "BLM18HE152SN1D",
+      "fp": "L_0603_1608Metric",
+      "dx": 0.756,
+      "dy": 4.475,
+      "rot": 270.0,
+      "side": "B"
+    },
+    {
+      "ref": "FB2",
+      "value": "BLM18HE152SN1D",
+      "fp": "L_0603_1608Metric",
+      "dx": 4.852,
+      "dy": -0.607,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "FB3",
+      "value": "BLM18HE152SN1D",
+      "fp": "L_0603_1608Metric",
+      "dx": 6.63,
+      "dy": 3.457,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "J1",
+      "value": "47589-0001",
+      "fp": "USB_Micro_AB_Female_0475890001",
+      "dx": 9.506,
+      "dy": 1.415,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R3",
+      "value": "12K",
+      "fp": "R_0603_1608Metric",
+      "dx": -1.544,
+      "dy": 0.663,
+      "rot": 180.0,
+      "side": "B"
+    },
+    {
+      "ref": "SJ35",
+      "value": "SHORT",
+      "fp": "ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+      "dx": 4.706,
+      "dy": 2.025,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "SJ36",
+      "value": "SHORT",
+      "fp": "ShortedJumper-2_P1.3mm_Bridged_Pad1.0x1.0mm",
+      "dx": 4.706,
+      "dy": 0.725,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP1",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -6.044,
+      "dy": -6.225,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP10",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -9.894,
+      "dy": 1.675,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP11",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": 3.856,
+      "dy": -5.725,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP12",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": 1.296,
+      "dy": -5.687,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP2",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -8.794,
+      "dy": -3.925,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP3",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -11.394,
+      "dy": -5.575,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP4",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -12.944,
+      "dy": -5.525,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP5",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -11.658,
+      "dy": -3.401,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP6",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -13.436,
+      "dy": -3.02,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP7",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -12.801,
+      "dy": -1.623,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP8",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -11.144,
+      "dy": -1.125,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "TP9",
+      "value": "TestPoint",
+      "fp": "TestPoint_Pad_D1.0mm",
+      "dx": -10.644,
+      "dy": 0.325,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U3",
+      "value": "FT232H",
+      "fp": "QFN-48-1EP_8x8mm_P0.5mm_EP6.2x6.2mm",
+      "dx": -3.9956,
+      "dy": 0.1262,
+      "rot": 180.0,
+      "side": "F"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_power_led",
+ "interface": [],
+ "power_rails": [
+  "GND",
+  "VDD"
+ ],
+ "parts": [
+  {
+   "ref": "D2",
+   "lib": "Device:LED",
+   "value": "LED",
+   "footprint": "LED_SMD:LED_0805_2012Metric",
+   "x": 57.15,
+   "y": 144.78
+  },
+  {
+   "ref": "R2",
+   "lib": "Device:R",
+   "value": "2K",
+   "footprint": "Resistor_SMD:R_0805_2012Metric",
+   "x": 49.53,
+   "y": 144.78
+  }
+ ],
+ "conns": [
+  {
+   "ref": "D2",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "R2",
+   "pin": "1",
+   "net": "VDD"
+  },
+  {
+   "ref": "D2",
+   "pin": "2",
+   "net": "_kb_power_led_N1"
+  },
+  {
+   "ref": "R2",
+   "pin": "2",
+   "net": "_kb_power_led_N1"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

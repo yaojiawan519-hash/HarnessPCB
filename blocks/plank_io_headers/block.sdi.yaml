@@ -1,0 +1,165 @@
+project:
+  kind: block
+  name: plank_io_headers
+  version: sdi/1
+defs:
+  plank_io_headers:
+    category: connector
+    rationale: '**这块板子插到 Bus Pirate 5 上的那一路接口**：J12 是 1×10 卧式母座 （`PinSocket_1x10_P2.54mm_Horizontal`，本体探出板左沿，套在
+      BP5 的排针上）， J11 是同位的 1×10 竖排针（`PinHeader_1x10_P2.54mm_Vertical`）——**J11 是 DNP**： 页上 `(dnp yes)` +
+      `in_bom no`，作者自己的 BOM 与坐标文件里都只有 J12。 两只**逐脚并联**，是同一接口的两种插法，实际只焊一只。 脚位（两只相同）：**1=VOUT、2=SDA、3=SCL、4=INT、5=IO3、6=IO4、7=IO5、8=IO6、
+      9=IO7、10=GND**。 ⚠ 第 4 脚的网名是 `INT`，而**板上丝印写的是 `IO2`**——同一个脚在 BP5 侧叫 IO2、 在 Breakout Garden 侧叫 INT，丝印用的是主机侧的名字。复用本块时别被丝印带偏。
+      ⚠ 5..9 这五根（IO3..IO7）在本块里是**纯贯通**（J11.n ↔ J12.n 两脚一张网）， 没有任何别的器件落在上面；它们是块内网，拼装时逐实例改名，不要当端口。 复用要点：①
+      这是**主机接口**，方向和那五个"从机口"相反——本块不出线去别处， 整板所有信号都是从这 10 个脚往外的；② 2.54mm 节距，母座开口朝板外、竖针朝上。'
+    ports:
+    - name: INT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J11-4
+        connector: true
+      pin: J11/4
+      note: 第 4 脚：接到 plank_edge 的 INT（丝印把这脚写成 IO2，见块说明）。⚠ 出口脚登记在 **J11**（DNP 那只）；只焊 J12 时从 J12-4 引出（同网）
+    - name: SCL
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J11-3
+        connector: true
+      pin: J11/3
+      note: 第 3 脚。⚠ 出口脚登记在 J11（DNP）；只焊 J12 时从 J12-3 引出
+    - name: SDA
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J11-2
+        connector: true
+      pin: J11/2
+      note: 第 2 脚。⚠ 出口脚登记在 J11（DNP）；只焊 J12 时从 J12-2 引出
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J11-1
+        connector: true
+      pin: J11/1
+      note: 第 1 脚：**主机从这里给整板送电**——本块是电源的来源侧。⚠ 出口脚登记在 J11（DNP）；只焊 J12 时从 J12-1 引出
+    rails:
+    - GND
+    parts:
+    - ref: J12
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal
+    - ref: J11
+      lib: Connector_Generic:Conn_01x10
+      value: Conn_01x10
+      footprint: Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical
+    conns:
+    - ref: J11
+      pin: '10'
+      net: GND
+    - ref: J12
+      pin: '10'
+      net: GND
+    - ref: J11
+      pin: '4'
+      net: INT
+    - ref: J12
+      pin: '4'
+      net: INT
+    - ref: J11
+      pin: '5'
+      net: IO3
+    - ref: J12
+      pin: '5'
+      net: IO3
+    - ref: J11
+      pin: '6'
+      net: IO4
+    - ref: J12
+      pin: '6'
+      net: IO4
+    - ref: J11
+      pin: '7'
+      net: IO5
+    - ref: J12
+      pin: '7'
+      net: IO5
+    - ref: J11
+      pin: '8'
+      net: IO6
+    - ref: J12
+      pin: '8'
+      net: IO6
+    - ref: J11
+      pin: '9'
+      net: IO7
+    - ref: J12
+      pin: '9'
+      net: IO7
+    - ref: J11
+      pin: '3'
+      net: SCL
+    - ref: J12
+      pin: '3'
+      net: SCL
+    - ref: J11
+      pin: '2'
+      net: SDA
+    - ref: J12
+      pin: '2'
+      net: SDA
+    - ref: J11
+      pin: '1'
+      net: VOUT
+    - ref: J12
+      pin: '1'
+      net: VOUT
+    placement_prior:
+      anchor: J12
+      max_mm: 5.0
+      rationale: 两只中心距 3.35mm（x=101.40 与 104.75）、脚 1 对齐、同一 y 起点 86.05/86.08。 母座贴左沿（本体本来就探出板边），竖针在其右侧紧贴。
+        复用时要贴边放：套 BP5 排针时这块板得**骑在**主板上。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - IO3
+    - IO4
+    - IO5
+    - IO6
+    - IO7
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 I2C Quick Connect Plank v1 REV1
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 2 件 / 10 网 / 端口 4 + 轨 1；铜 10 段 + 0 孔；死铜删 0；口岸切口 8；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 stemma-qwiic-grove-gravity-bog-plank-1REV1.kicad_pcb
+      原样扣，坐标 = 源板坐标平移，origin: page；源板那张双面 GND 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**这块板插到 Bus Pirate 5 上的那一路**：J12 是 1×10 卧式母座（`PinSocket_1x10_P2.54mm_Horizontal`，本体探出板左沿，套在 BP5
+      的排针上），J11 是同位的 1×10 竖排针。2 件 / 10 网：4 个出块端口（INT / SCL / SDA / VOUT）+ 1 条轨（GND）+ 5 张块内网（IO3..IO7）。'
+    - '**J11 是 DNP**：页上 `(dnp yes)` + `in_bom no`，作者自己的 BOM 与坐标文件里都只有 J12。两只逐脚并联，是同一接口的两种插法，实际只焊一只。本块照原板两件都带着——复用时按需只放
+      J12（或者反过来）。'
+    - 脚位（两只相同）：**1=VOUT、2=SDA、3=SCL、4=INT、5=IO3、6=IO4、7=IO5、8=IO6、9=IO7、10=GND**。
+    - ⚠ 第 4 脚的网名叫 `INT`，而**板上丝印写的是 `IO2`**——同一个脚在 BP5 侧叫 IO2、在 Breakout Garden 侧叫 INT，丝印用的是主机侧的名字。别被丝印带偏。
+    - ⚠ IO3..IO7 这五张网在本块里是**纯贯通**（J11.n ↔ J12.n 两脚一张网），没有任何别的器件落在上面。它们登记在 `internal_nets`：拼装时**逐实例改名**，不要当端口，否则两份本块插进同一张板会把
+      IO3 短在一起。
+    - 方向性与那五个"从机口"相反：本块是**主机接口**，整板所有信号都从这 10 个脚往外走。母座开口朝板外（本体跨在板边），竖针朝上；复制块时这块板要**骑在**主板上。
+    - '⚠ `VOUT` 在本卡里记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）。它电学上是**整板的电源网**（板上丝印写
+      `V+`），拼板时按同名接，不要当信号口串东西。'
+    - 铜 10 段 + 0 孔（B 3 / F 20）；死铜删 0 段/孔；口岸切口 8 处、走线出口 11 处；削剩残迹留 7 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面
+      GND 是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里 1 个平面网焊盘一根铜都没有（源板就靠那张整板 GND 灌铜连它），拼板时由整板铺铜接上——DRC 的未连通条数就是它们。
+    - GND 裂成 2 个铜岛（没铺铜的必然结果：每颗件的接地脚各自一小块铜），拼板时由整板铺铜接上。
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND**——源板靠整板 GND 灌铜接地，块里没铺铜，拼板时由整板铺铜接上；断头走线 8 + 悬空过孔
+      0 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_* 2 条（源板自带，见基线）；源板基线：未连通 0 / isolated_copper 0 /
+      违规 46 条。

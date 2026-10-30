@@ -1,0 +1,167 @@
+project:
+  kind: block
+  name: sim_socket_te5145
+  version: sdi/1
+defs:
+  sim_socket_te5145:
+    category: connector
+    rationale: '**TE 5145300-3 SIM 卡座**（8 触点 + 卡片检测开关）。触点按 ISO 7816 命名： C1=VCC、C2=RST、C3=CLK、C4、C5=SIM_GND、C6=VPP、C7=I/O、C8——**C4/C8
+      只在这只座子上 才有第二个去处**（U2 与排针），本板其余两只 6 触点座子没有这两只脚。 检测开关是两只独立触点：`SW1`(接 GND) 与 `SW2`(接本卡块的出块端口 `SIM_CD`)；
+      卡片插入/拔出时 SW1↔SW2 通断，`SIM_CD` 这根线送到 `sim_leds` 的 D1 阴极。 ⚠ 开关是**常开还是常闭**由这颗座子决定（TE 图纸为准）——影响"灯亮=有卡还是无卡"，
+      本卡不假设方向：`SIM_CD` 被开关拉到 GND 时 D1 亮，仅此而已。 复用要点：① 8 只触点 + 开关触点都在同一排（1.75×1.0mm 长条焊盘，轴距 2.54mm）， 布线时先走
+      CLK/RST/I/O 再走电源；② 座子有 2 只**无名机械焊盘**（2.15×2.15mm）， 它们没有网号也不是 SH 脚，别当成地；③ SW1/SW2 是**干接点**，能拉的电流很小，
+      只适合驱动高阻节点（这里经 2K 限流点一颗 LED）。'
+    ports:
+    - name: C4
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C4
+        connector: true
+      pin: J1/C4
+      note: TE 座 C4 脚 → U2.C4 / 排针 8-9 脚一侧
+    - name: C8
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C8
+        connector: true
+      pin: J1/C8
+      note: TE 座 C8 脚 → U2.C8 / 排针 8-9 脚一侧
+    - name: CLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C3
+        connector: true
+      pin: J1/C3
+      note: SIM 时钟（ISO C3）
+    - name: I/O
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C7
+        connector: true
+      pin: J1/C7
+      note: SIM 数据（ISO C7），开漏双向；需上拉
+    - name: RST
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C2
+        connector: true
+      pin: J1/C2
+      note: SIM 复位（ISO C2），低有效
+    - name: SIM_CD
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-SW2
+        connector: true
+      pin: J1/SW2
+      note: 卡片检测开关的输出（J1.SW2），另一端 SW1 接 GND；送到 sim_leds 的 D1 阴极
+    - name: SIM_GND
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C5
+        connector: true
+      pin: J1/C5
+      note: 卡座地，经 SW2 选出（本地 GND 或 GND_PIN）
+    - name: VCC
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C1
+        connector: true
+      pin: J1/C1
+      note: 卡座供电，经 SW1 选出（VOUT 或 VCC_PIN）
+    - name: VPP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J1-C6
+        connector: true
+      pin: J1/C6
+      note: SIM 编程电压（ISO C6）
+    rails:
+    - GND
+    parts:
+    - ref: J1
+      lib: 5145300-3:5145300-3
+      value: 5145300-3
+      footprint: footprints:TE_5145300-3
+    conns:
+    - ref: J1
+      pin: C4
+      net: C4
+    - ref: J1
+      pin: C8
+      net: C8
+    - ref: J1
+      pin: C3
+      net: CLK
+    - ref: J1
+      pin: SW1
+      net: GND
+    - ref: J1
+      pin: C7
+      net: I/O
+    - ref: J1
+      pin: C2
+      net: RST
+    - ref: J1
+      pin: SW2
+      net: SIM_CD
+    - ref: J1
+      pin: C5
+      net: SIM_GND
+    - ref: J1
+      pin: C1
+      net: VCC
+    - ref: J1
+      pin: C6
+      net: VPP
+    placement_prior:
+      anchor: J1
+      max_mm: 4.0
+      rationale: 单件块。座子开口朝板边，卡片才能插到底；开关触点那一侧留出走线窗口（到 D1 的 SIM_CD）。
+    slots: []
+    hot_loop: []
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 SIM 卡适配板（adapter-sim-iccard-1REV3C）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 1 件 / 10 网 / 端口 9 + 轨 1；铜 186 段 + 25 孔；死铜删 84；口岸切口 22；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 sim-rev3c.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 /SIM_GND 灌铜是跨块的**口岸网**，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**TE 5145300-3 SIM 卡座**（8 触点 + 卡片检测开关）。1 件 / 10 网：9 个出块端口（C4 / C8 / CLK / I/O / RST / SIM_CD /
+      SIM_GND / VCC / VPP）+ 1 条轨（GND）。'
+    - 触点按 ISO 7816：C1=VCC、C2=RST、C3=CLK、C4、C5=SIM_GND、C6=VPP、C7=I/O、C8。**C4/C8 在这只座子上是活的**（另两只 6 触点座子没有这两只脚），经排针
+      8/9 脚引出。
+    - 检测开关是两只独立触点：`SW1` 接 GND、`SW2` 接出块端口 `SIM_CD`（送到 `sim_leds` 的 D1 阴极）。⚠ 这颗座子的开关是**常开还是常闭**以 TE 图纸为准——它决定"灯亮
+      = 有卡还是无卡"，本卡不假设方向：`SIM_CD` 被开关拉到 GND 时 D1 亮，仅此而已。
+    - ⚠ 封装里有 2 只**无名机械焊盘**（2.15×2.15mm，NetCode=0）：不是 SH 脚、不接网，别把它们当接地焊盘用。
+    - 复用要点：SW1/SW2 是**干接点**，只能拉高阻节点（这里经 R1 2K 点一颗 LED）；触点全部 1.75×1.0mm 长条、轴距 2.54mm，布线先走 CLK/RST/I/O 再走电源。
+    - ⚠ 网名：本板的网在页上和板上都带**前导斜杠**（`/VCC`、`/SIM_GND`、`/I{slash}O` …），那是 KiCad 给局部网加的分页路径，不是层级设计。卡里照抄板上写法，拼板接网时按**同名**匹配；`I{slash}O`
+      是 KiCad5 对 `I/O` 的转义写法，说的是同一根线。
+    - 铜 186 段 + 25 孔（B 66 / F 124）；死铜删 84 段/孔；口岸切口 22 处、走线出口 9 处；削剩残迹留 0 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走
+      0 张（源板那张 /SIM_GND 是跨块的口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - 借道块外器件焊盘换层 25 处（/C4->J3.9、/C4->U2.C4、/C8->J3.8、/C8->U2.C8、/CLK->J3.3、/CLK->U2.C3、/CLK->U3.C3、/I/O->J3.2、/I/O->U1.C7、/I/O->U2.C7、/I/O->U3.C7、/RST->J3.4、/RST->U2.C2、/RST->U3.C2、/SIM_GND->U2.C5、/VCC->SW1.2、/VCC->U2.C1、/VCC->U3.C1、/VPP->J3.5、/VPP->U1.C6、/VPP->U2.C6、/VPP->U3.C6、GND->J3.10、GND->U2.SH、GND->U3.SH）——那孔不在块里，块单看这几处是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 27 + 悬空过孔 2 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通
+      0 / isolated_copper 0 / 违规 36 条。

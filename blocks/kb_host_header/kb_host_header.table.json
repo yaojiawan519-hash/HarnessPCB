@@ -1,0 +1,225 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "kb_host_header",
+ "interface": [
+  {
+   "net": "CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-7",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "DAT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-6",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "TRIG",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-2",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "USB_D+",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "J2-3",
+    "connector": true
+   },
+   "diff_pair": "USB_D-",
+   "direction": "bidirectional"
+  },
+  {
+   "net": "USB_D-",
+   "kind": "hlabel",
+   "class": "bus_diff",
+   "exit": {
+    "pin": "J2-4",
+    "connector": true
+   },
+   "diff_pair": "USB_D+",
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VOUT_BP_SIDE",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-1",
+    "connector": true
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "IO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "在 BP5 十脚排针的 5 号脚；本块只到排针为止。"
+  },
+  {
+   "net": "IO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "在 BP5 十脚排针的 8 号脚；本块只到排针为止。"
+  },
+  {
+   "net": "IO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J2-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "在 BP5 十脚排针的 9 号脚；本块只到排针为止。"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J2",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x10_P2.54mm_Horizontal",
+   "x": 34.29,
+   "y": 93.98
+  },
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x10",
+   "value": "Conn_01x10",
+   "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical",
+   "x": 45.72,
+   "y": 93.98
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J2",
+   "pin": "7",
+   "net": "CLK"
+  },
+  {
+   "ref": "J3",
+   "pin": "7",
+   "net": "CLK"
+  },
+  {
+   "ref": "J2",
+   "pin": "6",
+   "net": "DAT"
+  },
+  {
+   "ref": "J3",
+   "pin": "6",
+   "net": "DAT"
+  },
+  {
+   "ref": "J2",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "GND"
+  },
+  {
+   "ref": "J2",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "IO3"
+  },
+  {
+   "ref": "J2",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "IO6"
+  },
+  {
+   "ref": "J2",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "IO7"
+  },
+  {
+   "ref": "J2",
+   "pin": "2",
+   "net": "TRIG"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "TRIG"
+  },
+  {
+   "ref": "J2",
+   "pin": "3",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "USB_D+"
+  },
+  {
+   "ref": "J2",
+   "pin": "4",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "J3",
+   "pin": "4",
+   "net": "USB_D-"
+  },
+  {
+   "ref": "J2",
+   "pin": "1",
+   "net": "VOUT_BP_SIDE"
+  },
+  {
+   "ref": "J3",
+   "pin": "1",
+   "net": "VOUT_BP_SIDE"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

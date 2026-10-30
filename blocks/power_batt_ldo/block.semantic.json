@@ -1,0 +1,83 @@
+{
+  "schema": "pcbstudio.block.v1.1",
+  "category": "power",
+  "rationale": "电池 + USB 两路输入的整条电源链。U3(TP4054，MCP73831 封装) 是线性锂电充电器：VDD=VBUS、 VBAT=+BATT、R3 10K 是 PROG（充电电流约 1000/10k = 100mA）；STAT 是开漏状态脚，经 R6 100K 串到 MCU 的 STAT 网、再由 R5 51K 上拉到 VBUS——**同一颗灯/同一根线既给 MCU 读状态、 又能点灯**。Q1(CJ2301 P-MOS) 做电源路径：栅极接 VBUS，插上 USB 时栅极高、Q1 关断， 电池被断开（充电器才能正常工作），同时 D1(MBR0530) 把 VBUS 送进 LDO；拔掉 USB 后 栅极被 R2 100K 拉到地、Q1 导通，电池供电。U2(RT908033，AP2112K-3.3 封装) 出 +3V3， C4/C5/C6/C10 与 C1/C3 是输入/输出去耦。R8 100K + R9 360K + C11 100nF 是电池电压分压 （4.2V → 3.29V，正好落在 3.3V ADC 量程内）。U1(SR2HARU) 只有 6 脚，接在 EN / BTN2 / BTN3 三根网上，是按键与使能之间的控制件。",
+  "power_rails": [
+    "+3V3",
+    "GND",
+    "VBUS"
+  ],
+  "interface": [
+    {
+      "name": "ADC",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "C11/1",
+      "note": "电池电压分压的中点，R8 100K/R9 360K 把 4.2V 分到 3.29V；MCU 侧 ADC 直接读，别再并电阻"
+    },
+    {
+      "name": "BTN2",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U1/2",
+      "note": "按键网，同时接进 U1(SR2HARU)——不是纯按键，电源控制也看它"
+    },
+    {
+      "name": "BTN3",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U1/5",
+      "note": "按键网，同时接进 U1(SR2HARU)，并且是 BOOT 键（TP3 也在这根网上）"
+    },
+    {
+      "name": "EN",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "U1/3",
+      "note": "MCU 使能/复位 RC 的那一侧（R1 10K + C2 1uF 在 MCU 块里）"
+    },
+    {
+      "name": "STAT",
+      "kind": "signal",
+      "class": "digital",
+      "direction": "bidirectional",
+      "pin": "R5/2",
+      "note": "充电器开漏状态，R5 51K 上拉到 VBUS、R6 100K 串到 U3 的 STAT 脚"
+    }
+  ],
+  "slots": [],
+  "placement_prior": {
+    "anchor": "U2",
+    "max_mm": 26.0,
+    "rationale": "充电器 U3 贴电池座 J1 一侧，PROG 电阻 R3 紧贴 U3；电源路径 Q1/D1 夹在 VBUS 与 LDO 输入 之间；LDO 输出电容贴 U2 的 OUT 脚。源板上 LDO→输出电容 2.84mm、U3→R3 3.66mm 是贴脚的， 但 Q1→D1 6.91mm、J1→U3 15.94mm 是作者为了走线让开的距离，不当作约束。"
+  },
+  "hot_loop": [],
+  "internal_nets": [
+    "+BATT",
+    "_power_batt_ldo_N1",
+    "_power_batt_ldo_N2",
+    "_power_batt_ldo_N3"
+  ],
+  "notes": [
+    "12 条网：+BATT 是块内网（电池节点只在块内），VBUS/+3V3/GND 是轨，EN/BTN2/BTN3/STAT/ADC 是 5 个信号口岸。",
+    "U1(SR2HARU) 6 脚，上游没给用途说明，这里只按网表说话：它接 EN、BTN2、BTN3 与 +3V3/GND，是这两颗键与使能之间的控制件。换板复用时这三个口岸要一起接，只接 EN 不管键，等于把它晾在中间。",
+    "源板 4 层：F.Cu / In1.Cu / In2.Cu / B.Cu，内层只有一张填好的 GND 平面（In1+In2 同一张 zone）和五张没填的残留 zone。按\"块内不带铺铜\"整张删掉，块里 0 张铺铜——拼板时由整板铺铜接上。",
+    "块内铜：F.Cu 142 段 / In2.Cu 68 段 / B.Cu 50 段 + 30 过孔。⚠ In2 在源板既是平面层又是走线层，块里保留了 68 段 In2 走线——拼板重铺平面时 In2 不能再整层铺铜（会被走线切开、同层短路），要么只在 In1 铺，要么换叠层。",
+    "死铜删 86 段/孔（只服务块外器件的 GND/+3V3 干线），口岸切口 26 处。kicad-cli DRC：isolated_copper 0。"
+  ],
+  "geometry_status": "extracted 2026-10-30 kicad 10.0.5（PCB 从 Watchy.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin: page；源板的铺铜按\"块内不带铺铜\"整张删掉）",
+  "provenance": {
+    "source": "human:open-source",
+    "board": "Watchy",
+    "license": "MIT — 上游 Copyright (c) 2026 SQFMI",
+    "license_tier": "permissive",
+    "author": "SQFMI（上游）/ HarnessPCB（裁块）",
+    "date": "2026-10-30",
+    "kicad": "10.0.5",
+    "basis": "19 件 / 12 网 / 端口 5 + 轨 3；铜 294 段 + 33 孔；死铜删 86；口岸切口 26；DRC isolated_copper 0；卡↔板门 ①~⑤ 全过"
+  }
+}

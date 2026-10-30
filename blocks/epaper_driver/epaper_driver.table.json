@@ -1,0 +1,513 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "epaper_driver",
+ "interface": [
+  {
+   "net": "BUSY",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-9",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "屏忙"
+  },
+  {
+   "net": "CS",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-12",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "片选"
+  },
+  {
+   "net": "DC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-11",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "数据/命令"
+  },
+  {
+   "net": "MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-14",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "SPI 数据"
+  },
+  {
+   "net": "RES",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-10",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "屏复位（R19 100K 下拉）"
+  },
+  {
+   "net": "SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J3-13",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "SPI 时钟"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J3",
+   "lib": "Connector_Generic:Conn_01x24",
+   "value": "FPC24(0.5MM)",
+   "footprint": "Watchy:24_Pins_0.5mm_Pitch_ZIF_Connector_UP",
+   "x": 259.08,
+   "y": 55.88
+  },
+  {
+   "ref": "C23",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 250.19,
+   "y": 38.1
+  },
+  {
+   "ref": "C24",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 250.19,
+   "y": 71.12
+  },
+  {
+   "ref": "C25",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 250.19,
+   "y": 76.2
+  },
+  {
+   "ref": "C26",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 250.19,
+   "y": 81.28
+  },
+  {
+   "ref": "C27",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 250.19,
+   "y": 86.36
+  },
+  {
+   "ref": "C28",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 273.05,
+   "y": 71.12
+  },
+  {
+   "ref": "C20",
+   "lib": "Device:C",
+   "value": "4.7uF/50V",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 201.93,
+   "y": 52.07
+  },
+  {
+   "ref": "L2",
+   "lib": "Device:L",
+   "value": "47uH 0.5A",
+   "footprint": "Inductor_SMD:L_Taiyo-Yuden_NR-40xx",
+   "x": 205.74,
+   "y": 48.26
+  },
+  {
+   "ref": "C21",
+   "lib": "Device:C",
+   "value": "4.7uF/50V",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 209.55,
+   "y": 44.45
+  },
+  {
+   "ref": "D3",
+   "lib": "Device:D",
+   "value": "MBR0530",
+   "footprint": "Diodes_SMD:D_SOD-123",
+   "x": 213.36,
+   "y": 38.1
+  },
+  {
+   "ref": "D4",
+   "lib": "Device:D",
+   "value": "MBR0530",
+   "footprint": "Diodes_SMD:D_SOD-123",
+   "x": 213.36,
+   "y": 40.64
+  },
+  {
+   "ref": "D5",
+   "lib": "Device:D",
+   "value": "MBR0530",
+   "footprint": "Diodes_SMD:D_SOD-123",
+   "x": 213.36,
+   "y": 48.26
+  },
+  {
+   "ref": "C22",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 217.17,
+   "y": 52.07
+  },
+  {
+   "ref": "Q3",
+   "lib": "Transistor_FET:DMN3042L",
+   "value": "AO3400A",
+   "footprint": "Package_TO_SOT_SMD:SOT-23",
+   "x": 207.01,
+   "y": 69.85
+  },
+  {
+   "ref": "R16",
+   "lib": "Device:R",
+   "value": "1M",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 201.93,
+   "y": 73.66
+  },
+  {
+   "ref": "R17",
+   "lib": "Device:R",
+   "value": "2.2",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 213.36,
+   "y": 74.93
+  },
+  {
+   "ref": "R19",
+   "lib": "Device:R",
+   "value": "100K",
+   "footprint": "Watchy:R_0402_1005Metric",
+   "x": 273.05,
+   "y": 46.99
+  },
+  {
+   "ref": "C29",
+   "lib": "Device:C",
+   "value": "1uF/50V",
+   "footprint": "Watchy:C_0402_1005Metric",
+   "x": 217.17,
+   "y": 34.29
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C20",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "C28",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J3",
+   "pin": "15",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J3",
+   "pin": "16",
+   "net": "+3V3"
+  },
+  {
+   "ref": "L2",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R19",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "J3",
+   "pin": "9",
+   "net": "BUSY"
+  },
+  {
+   "ref": "J3",
+   "pin": "12",
+   "net": "CS"
+  },
+  {
+   "ref": "J3",
+   "pin": "11",
+   "net": "DC"
+  },
+  {
+   "ref": "J3",
+   "pin": "2",
+   "net": "GDR"
+  },
+  {
+   "ref": "Q3",
+   "pin": "1",
+   "net": "GDR"
+  },
+  {
+   "ref": "R16",
+   "pin": "1",
+   "net": "GDR"
+  },
+  {
+   "ref": "C20",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C22",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C23",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C24",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C25",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C26",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C27",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C28",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C29",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "D4",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "17",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "8",
+   "net": "GND"
+  },
+  {
+   "ref": "R16",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R17",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J3",
+   "pin": "14",
+   "net": "MOSI"
+  },
+  {
+   "ref": "C22",
+   "pin": "1",
+   "net": "PREVGH"
+  },
+  {
+   "ref": "D5",
+   "pin": "1",
+   "net": "PREVGH"
+  },
+  {
+   "ref": "J3",
+   "pin": "21",
+   "net": "PREVGH"
+  },
+  {
+   "ref": "C29",
+   "pin": "2",
+   "net": "PREVGL"
+  },
+  {
+   "ref": "D3",
+   "pin": "2",
+   "net": "PREVGL"
+  },
+  {
+   "ref": "J3",
+   "pin": "23",
+   "net": "PREVGL"
+  },
+  {
+   "ref": "J3",
+   "pin": "10",
+   "net": "RES"
+  },
+  {
+   "ref": "R19",
+   "pin": "2",
+   "net": "RES"
+  },
+  {
+   "ref": "J3",
+   "pin": "3",
+   "net": "RESE"
+  },
+  {
+   "ref": "Q3",
+   "pin": "2",
+   "net": "RESE"
+  },
+  {
+   "ref": "R17",
+   "pin": "2",
+   "net": "RESE"
+  },
+  {
+   "ref": "J3",
+   "pin": "13",
+   "net": "SCK"
+  },
+  {
+   "ref": "C21",
+   "pin": "2",
+   "net": "_epaper_driver_N1"
+  },
+  {
+   "ref": "D5",
+   "pin": "2",
+   "net": "_epaper_driver_N1"
+  },
+  {
+   "ref": "L2",
+   "pin": "1",
+   "net": "_epaper_driver_N1"
+  },
+  {
+   "ref": "Q3",
+   "pin": "3",
+   "net": "_epaper_driver_N1"
+  },
+  {
+   "ref": "C21",
+   "pin": "1",
+   "net": "_epaper_driver_N2"
+  },
+  {
+   "ref": "D3",
+   "pin": "1",
+   "net": "_epaper_driver_N2"
+  },
+  {
+   "ref": "D4",
+   "pin": "2",
+   "net": "_epaper_driver_N2"
+  },
+  {
+   "ref": "C24",
+   "pin": "1",
+   "net": "_epaper_driver_N3"
+  },
+  {
+   "ref": "J3",
+   "pin": "18",
+   "net": "_epaper_driver_N3"
+  },
+  {
+   "ref": "C25",
+   "pin": "1",
+   "net": "_epaper_driver_N4"
+  },
+  {
+   "ref": "J3",
+   "pin": "20",
+   "net": "_epaper_driver_N4"
+  },
+  {
+   "ref": "C26",
+   "pin": "1",
+   "net": "_epaper_driver_N5"
+  },
+  {
+   "ref": "J3",
+   "pin": "22",
+   "net": "_epaper_driver_N5"
+  },
+  {
+   "ref": "C27",
+   "pin": "1",
+   "net": "_epaper_driver_N6"
+  },
+  {
+   "ref": "J3",
+   "pin": "24",
+   "net": "_epaper_driver_N6"
+  },
+  {
+   "ref": "C23",
+   "pin": "1",
+   "net": "_epaper_driver_N7"
+  },
+  {
+   "ref": "J3",
+   "pin": "5",
+   "net": "_epaper_driver_N7"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

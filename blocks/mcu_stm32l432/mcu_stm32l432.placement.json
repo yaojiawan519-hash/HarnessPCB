@@ -1,0 +1,284 @@
+{
+  "name": "mcu_stm32l432",
+  "source": "STRF_2layer.kicad_pcb",
+  "origin_src_mm": [
+    36.8275,
+    33.125
+  ],
+  "size_mm": [
+    11.765,
+    11.0
+  ],
+  "ports": {
+    "USB_D-": [
+      "U2"
+    ],
+    "USB_D+": [
+      "U2"
+    ],
+    "SWCLK": [
+      "J3"
+    ],
+    "NRF_IRQ": [
+      "U4"
+    ],
+    "SPI3_MISO": [
+      "U4"
+    ],
+    "GND": [
+      "C1",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C16",
+      "C17",
+      "C18",
+      "C2",
+      "C3",
+      "C8",
+      "C9",
+      "J1",
+      "J2",
+      "J3",
+      "R4",
+      "U1",
+      "U2",
+      "U4",
+      "Y1"
+    ],
+    "SWDIO": [
+      "J3"
+    ],
+    "+3V3": [
+      "C10",
+      "C11",
+      "C2",
+      "C8",
+      "C9",
+      "J3",
+      "U1",
+      "U4"
+    ],
+    "SPI3_MOSI": [
+      "U4"
+    ],
+    "SPI3_SCK": [
+      "U4"
+    ],
+    "NRST": [
+      "C3",
+      "J3"
+    ],
+    "SPI3_!CS": [
+      "U4"
+    ],
+    "NRF_CE": [
+      "U4"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "GND",
+      "x": 44.0,
+      "y": 39.125,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 29.655,
+      "y": 32.235,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 29.655,
+      "y": 32.24,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "+3V3",
+      "x": 44.0,
+      "y": 36.825,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRST",
+      "x": 39.93,
+      "y": 39.915,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "SWDIO",
+      "x": 39.755,
+      "y": 39.915,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "SWCLK",
+      "x": 40.415,
+      "y": 39.915,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "NRF_IRQ",
+      "x": 44.0,
+      "y": 36.0875,
+      "layer": "F.Cu"
+    }
+  ],
+  "counts": {
+    "members": 10,
+    "not_built": [],
+    "nets": 31,
+    "copper_segs": 113,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 44,
+    "cut_ends": 11,
+    "exit_points": 8,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 112
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 0,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "NRF_CE->U4.1": 1,
+      "SPI3_!CS->U4.2": 1,
+      "SPI3_MISO->U4.5": 1,
+      "SPI3_MOSI->U4.4": 1,
+      "SPI3_SCK->U4.3": 1,
+      "USB_D+->U2.1": 1,
+      "USB_D-->U2.3": 1
+    },
+    "island_split": {
+      "+3V3": 3,
+      "GND": 6
+    },
+    "dangling": {
+      "total": 7,
+      "port_cuts": 7,
+      "port_cut_nets": [
+        "NRF_CE",
+        "SPI3_!CS",
+        "SPI3_MISO",
+        "SPI3_MOSI",
+        "SPI3_SCK",
+        "USB_D+",
+        "USB_D-"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 19,
+        "vias": 13,
+        "nets": [
+          "+3V3",
+          "GND",
+          "NRF_IRQ",
+          "NRST",
+          "SWCLK",
+          "SWDIO"
+        ],
+        "when": "2026-10-31"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C4",
+      "value": "1u",
+      "fp": "C_0402_1005Metric",
+      "dx": 4.3375,
+      "dy": -2.855,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C5",
+      "value": "100n",
+      "fp": "C_0402_1005Metric",
+      "dx": 3.2875,
+      "dy": -2.855,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "C6",
+      "value": "100n",
+      "fp": "C_0402_1005Metric",
+      "dx": -0.1875,
+      "dy": 5.005,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "C7",
+      "value": "100n",
+      "fp": "C_0402_1005Metric",
+      "dx": 1.6125,
+      "dy": -2.855,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "D1",
+      "value": "GR",
+      "fp": "LED_0603_1608Metric",
+      "dx": -1.4875,
+      "dy": -3.7325,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "D2",
+      "value": "YE",
+      "fp": "LED_0603_1608Metric",
+      "dx": 0.2125,
+      "dy": -3.7325,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "2k2",
+      "fp": "R_0402_1005Metric",
+      "dx": 5.3875,
+      "dy": -2.86,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R2",
+      "value": "2k2",
+      "fp": "R_0603_1608Metric",
+      "dx": -4.3775,
+      "dy": -4.725,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R3",
+      "value": "2k2",
+      "fp": "R_0603_1608Metric",
+      "dx": 2.65,
+      "dy": -4.745,
+      "rot": 0.0,
+      "side": "F"
+    },
+    {
+      "ref": "U3",
+      "value": "STM32L432KBU6",
+      "fp": "QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm",
+      "dx": 1.8375,
+      "dy": 1.33,
+      "rot": 270.0,
+      "side": "F"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "flash_qspi",
+ "interface": [
+  {
+   "net": "FLASH_MISO",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U5-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 数据（flash→主）"
+  },
+  {
+   "net": "FLASH_MOSI",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U5-5",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 数据（主→flash）"
+  },
+  {
+   "net": "FT_SCK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R9-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 时钟，串 R9 到 U5.6"
+  },
+  {
+   "net": "FT_SSn",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R8-1",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "SPI 片选，串 R8 到 U5.1"
+  },
+  {
+   "net": "IOB_18A",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SJ24-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "经 SJ24 选进 IO 的 bank 电压域"
+  },
+  {
+   "net": "IOB_25B_G3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "SJ25-2",
+    "connector": false
+   },
+   "direction": "bidirectional",
+   "note": "经 SJ25 选进 IO 的 bank 电压域"
+  }
+ ],
+ "power_rails": [
+  "+3V3",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "U5",
+   "lib": "UPduino_v3.0:W25Q32JVSS-Memory_Flash",
+   "value": "W25Q32JVSSIM",
+   "footprint": "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm",
+   "x": 187.96,
+   "y": 130.81
+  },
+  {
+   "ref": "C17",
+   "lib": "UPduino_v3.0:Device_C",
+   "value": "0.1u",
+   "footprint": "Capacitor_SMD:C_0603_1608Metric",
+   "x": 151.13,
+   "y": 121.92
+  },
+  {
+   "ref": "R14",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 219.71,
+   "y": 120.65
+  },
+  {
+   "ref": "R15",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 227.33,
+   "y": 120.65
+  },
+  {
+   "ref": "R9",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 172.72,
+   "y": 121.92
+  },
+  {
+   "ref": "R8",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0603_1608Metric",
+   "x": 162.56,
+   "y": 121.92
+  },
+  {
+   "ref": "SJ24",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 234.95,
+   "y": 133.35
+  },
+  {
+   "ref": "SJ25",
+   "lib": "UPduino_v3.0:Device_R",
+   "value": "OPEN",
+   "footprint": "vs:SolderJumper-2_0603_Open_TrianglePad1.0x1.5mm",
+   "x": 234.95,
+   "y": 135.89
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C17",
+   "pin": "1",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R14",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R15",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R8",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "R9",
+   "pin": "2",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U5",
+   "pin": "8",
+   "net": "+3V3"
+  },
+  {
+   "ref": "U5",
+   "pin": "2",
+   "net": "FLASH_MISO"
+  },
+  {
+   "ref": "U5",
+   "pin": "5",
+   "net": "FLASH_MOSI"
+  },
+  {
+   "ref": "R9",
+   "pin": "1",
+   "net": "FT_SCK"
+  },
+  {
+   "ref": "U5",
+   "pin": "6",
+   "net": "FT_SCK"
+  },
+  {
+   "ref": "R8",
+   "pin": "1",
+   "net": "FT_SSn"
+  },
+  {
+   "ref": "U5",
+   "pin": "1",
+   "net": "FT_SSn"
+  },
+  {
+   "ref": "C17",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U5",
+   "pin": "4",
+   "net": "GND"
+  },
+  {
+   "ref": "SJ24",
+   "pin": "2",
+   "net": "IOB_18A"
+  },
+  {
+   "ref": "SJ25",
+   "pin": "2",
+   "net": "IOB_25B_G3"
+  },
+  {
+   "ref": "R14",
+   "pin": "1",
+   "net": "_flash_qspi_N1"
+  },
+  {
+   "ref": "SJ24",
+   "pin": "1",
+   "net": "_flash_qspi_N1"
+  },
+  {
+   "ref": "U5",
+   "pin": "3",
+   "net": "_flash_qspi_N1"
+  },
+  {
+   "ref": "R15",
+   "pin": "1",
+   "net": "_flash_qspi_N2"
+  },
+  {
+   "ref": "SJ25",
+   "pin": "1",
+   "net": "_flash_qspi_N2"
+  },
+  {
+   "ref": "U5",
+   "pin": "7",
+   "net": "_flash_qspi_N2"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

@@ -1,0 +1,213 @@
+project:
+  kind: block
+  name: flash_zif_socket
+  version: sdi/1
+defs:
+  flash_zif_socket:
+    category: connector
+    rationale: '**芯片那一侧**：J3 是 3M `216-3340-00-0602J` 万能 ZIF 座（16 触点、2×8、 四档行距 4.3/5.08/7.62/10.16/10.9mm，扳杆松开插入再压下），
+      C1 0.1uF 是芯片侧电源去耦（一端 `VCC_CHIP` 一端 `GND_CHIP`——**跟着芯片走的两根网**， 不是板的 VCC/GND），R1 2K + D1 是 VOUT 电源指示灯。
+      **ZIF 座的 16 个触点不是 16 根信号**：板上把同一根网布在多个触点上—— `CS` 在 1+5、`CDI` 在 2+6、`GND_CHIP` 在 4+8、`CDO` 在 9+13、`SCLK`
+      在 10+14、 `VCC_CHIP` 在 12+16、`HOLD` 独占 3+7+11+15 四个触点。 这是"同一列上几个位置都能夹到同一根信号"，插片位置由 ZIF 座的机械触点决定；
+      **哪几个触点夹到你手上那颗片子，按芯片手册对照本卡的网表核一遍**。 `WP` 不在座上（只在排针第 5 脚）——要控写到保护，得自己从 J1/J2 引一根过去。'
+    ports:
+    - name: CDI
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-2
+        connector: true
+      pin: J3/2
+      note: ZIF 触点 2+6 → 芯片 MISO
+    - name: CDO
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-13
+        connector: true
+      pin: J3/13
+      note: ZIF 触点 9+13 → 芯片 MOSI
+    - name: CS
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-1
+        connector: true
+      pin: J3/1
+      note: ZIF 触点 1+5（同一根 CS 两个夹点）
+    - name: GND_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C1-2
+        connector: true
+      pin: C1/2
+      note: ZIF 触点 4+8（+ C1 的 2 脚）：芯片侧地，源板上靠整板灌铜连成一片
+    - name: HOLD
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-11
+        connector: true
+      pin: J3/11
+      note: ZIF 触点 3+7+11+15（四只触点同网）
+    - name: SCLK
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: J3-10
+        connector: true
+      pin: J3/10
+      note: ZIF 触点 10+14
+    - name: VCC_CHIP
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: C1-1
+        connector: true
+      pin: C1/1
+      note: ZIF 触点 12+16（+ C1 的 1 脚）：芯片侧电源
+    - name: VOUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: R1-1
+        connector: false
+      pin: R1/1
+      note: 只接到 R1（灯在这块里）：本块不出 VOUT，是消费方
+    rails:
+    - GND
+    parts:
+    - ref: J3
+      lib: Connector_Generic:Conn_02x08_Counter_Clockwise
+      value: ZIF SOCKET
+      footprint: Socket:DIP_Socket-16_W4.3_W5.08_W7.62_W10.16_W10.9_3M_216-3340-00-0602J
+    - ref: D1
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: R1
+      lib: Device:R
+      value: 2K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: C1
+      lib: Device:C_Small
+      value: 0.1uF
+      footprint: Capacitor_SMD:C_0805_2012Metric
+    conns:
+    - ref: J3
+      pin: '2'
+      net: CDI
+    - ref: J3
+      pin: '6'
+      net: CDI
+    - ref: J3
+      pin: '13'
+      net: CDO
+    - ref: J3
+      pin: '9'
+      net: CDO
+    - ref: J3
+      pin: '1'
+      net: CS
+    - ref: J3
+      pin: '5'
+      net: CS
+    - ref: D1
+      pin: '1'
+      net: GND
+    - ref: C1
+      pin: '2'
+      net: GND_CHIP
+    - ref: J3
+      pin: '4'
+      net: GND_CHIP
+    - ref: J3
+      pin: '8'
+      net: GND_CHIP
+    - ref: J3
+      pin: '11'
+      net: HOLD
+    - ref: J3
+      pin: '15'
+      net: HOLD
+    - ref: J3
+      pin: '3'
+      net: HOLD
+    - ref: J3
+      pin: '7'
+      net: HOLD
+    - ref: J3
+      pin: '10'
+      net: SCLK
+    - ref: J3
+      pin: '14'
+      net: SCLK
+    - ref: C1
+      pin: '1'
+      net: VCC_CHIP
+    - ref: J3
+      pin: '12'
+      net: VCC_CHIP
+    - ref: J3
+      pin: '16'
+      net: VCC_CHIP
+    - ref: R1
+      pin: '1'
+      net: VOUT
+    - ref: D1
+      pin: '2'
+      net: _flash_zif_socket_N1
+    - ref: R1
+      pin: '2'
+      net: _flash_zif_socket_N1
+    placement_prior:
+      anchor: J3
+      max_mm: 10.0
+      rationale: ZIF 座是这一块的主角（封装框 17.75×48.66mm，比板子还高——扳杆和座体探出板边）， C1 在座右侧 166..168mm 处贴边、R1/D1 在座左上角。复用要点：
+        ① 座要**贴板边或独立成岛**，扳杆要能掀起来；② C1 必须贴着 `VCC_CHIP` 进座的那两个触点； ③ 电源灯画在 VOUT 上，跟芯片无关。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _flash_zif_socket_N1
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 flash adapter (DIP/ZIF) REV3
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 10 网 / 端口 8 + 轨 1；铜 59 段 + 0 孔；死铜删 21；口岸切口 6；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 flash-zif-rev3.kicad_pcb 原样扣，坐标 = 源板坐标平移，origin:
+      page；源板那张双面 **GND_CHIP** 灌铜（芯片侧地，不是板上 GND）是整板口岸网，按「块内不带铺铜」整张删，拼板时由整板铺铜接上）'
+    notes:
+    - '**芯片那一侧**：J3 是 3M `216-3340-00-0602J` 万能 ZIF 座（16 触点、2×8、四档行距 4.3/5.08/7.62/10.16/10.9mm，扳杆松开→插入→压下），C1
+      0.1uF 是芯片侧去耦（一端 `VCC_CHIP` 一端 `GND_CHIP`——**跟着芯片走的两根网**，不是板的 VCC/GND），R1 2K + D1 是 VOUT 电源指示灯。'
+    - '**ZIF 座的 16 个触点不是 16 根信号**：板上把同一根网布在多个触点上——`CS` 在 1+5、`CDI` 在 2+6、`GND_CHIP` 在 4+8、`CDO` 在 9+13、`SCLK`
+      在 10+14、`VCC_CHIP` 在 12+16、`HOLD` 独占 3+7+11+15 四个触点。这是"同一列上几个位置都能夹到同一根信号"，插片落在哪个位置由 ZIF 座机械触点决定；**哪几个触点夹到你手上那颗片子，按芯片手册对照本卡网表核一遍**。'
+    - ⚠ `WP`（排针第 5 脚）在**本版到不了座**：这一族 ZIF / 16 脚 / 20 脚测试座上都**没有** WP 触点，它只连到 J1.5 ↔ J2.5 两个排针脚就断了（卡里登记为块内网
+      `WP`，拼装时逐实例改名、别当端口）。要控写保护，得自己从排针第 5 脚飞一根线到芯片的 WP# 那一脚——这正是本版与 lotes / wson 两版（WP 真的到焊位）最实用的一处电路差别。
+    - '**灯为什么并进这一块**：R1/D1 的封装框（x 148.29..151.75）完整落在 J3 的框里，单独成块会让两块铜窗口重叠、同一段铜被剪两次——按「完全截取」并成一片才是原图的分法。灯链：`VOUT
+      → R1 2K → D1 阳极(pad 2) → D1 阴极(pad 1) → GND`，按 VOUT=3.3V、Vf≈2.0V 算 ≈ **0.65mA**（VOUT 拨到 5V 时 ≈1.5mA）——很暗，只在暗处看得见。⚠
+      0805 LED 封装里 **pad 1 是阴极**，别按"1 是阳极"的习惯接。'
+    - 几何：J3 @(154.00, 81.67) rot 0（封装框 y 58.28..107.92，**比 42.10mm 高的板子还高**，上沿探出 7.67mm——扳杆和座体在板外）；C1
+      @(167.00, 79.00) rot 90 贴板右沿；R1 @(150.00, 67.50) rot 0、D1 @(150.00, 69.75) rot 180（上下摆，D1 在下，阳极朝上对着电阻）。复用要点：①
+      座要贴板边或独立成岛，扳杆要能掀起来；② C1 必须贴着 `VCC_CHIP` 进座的那两个触点；③ 灯画在 VOUT 上，跟芯片无关。
+    - '⚠ 这一族四张板子的**灌铜是 `GND_CHIP`（芯片侧地），不是 `GND`**。所以「块内不带铺铜」删掉的是芯片地，裂岛/裸脚全落在 `GND_CHIP` 上；`GND`（排针第 10
+      脚、灯的回流）本来就没有铺铜，只靠走线。卡里 `GND_CHIP` 记在 **ports** 下、`kind: signal`——那是引擎的规则（rails 只收电源符号 `#PWR`，本板作者用的是全局标签）；它电学上是**芯片的电源/地网**，拼板时按同名接，别当信号口去串阻容。'
+    - 铜 59 段 + 0 孔（B 11 / F 64）；死铜删 21 段/孔（两端全悬空、谁也连不上的才算）；口岸切口 6 处（一端悬空=块的铜接口，按用户拍板留着）、走线出口 8 处；削剩残迹留
+      1 段（残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走 0 张（源板那张双面 GND_CHIP 灌铜是整板口岸网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - '**GND_CHIP 裂成 2 个铜岛**：源板上这块芯片地靠那张双面灌铜连成一片，块内不带铺铜就各自成岛——拼板时由整板 GND_CHIP 铺铜接上，不是断线。'
+    - kicad-cli DRC：isolated_copper 0；未连通 1 条，**全是 GND_CHIP**——芯片侧地源板上靠整板灌铜，块按规矩不带铺铜，拼板时铺上就通；断头走线 6 +
+      悬空过孔 2 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；lib_footprint_* 4 条（源板自带，见基线）；源板 flash-zif-rev3.kicad_pcb
+      基线：未连通 0 / isolated_copper 0 / 违规 67 条。

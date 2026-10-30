@@ -1,0 +1,113 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "grove_gravity_ports",
+ "interface": [
+  {
+   "net": "SCL",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J8-2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 时钟：J8.2（Gravity）+ J9.4（Grove）"
+  },
+  {
+   "net": "SDA",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J8-1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "I2C 数据：J8.1 + J9.3"
+  },
+  {
+   "net": "VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J8-4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "整板电源（丝印 `V+`）：J8.4 + J9.2"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J8",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "S4B-PH-SM4-TB (HC-PH-4AWT)",
+   "footprint": "footprints:JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm_Horizontal",
+   "x": 100.33,
+   "y": 107.95
+  },
+  {
+   "ref": "J9",
+   "lib": "Connector_Generic_MountingPin:Conn_01x04_MountingPin",
+   "value": "HY-4P",
+   "footprint": "footprints:CONN-SMD_HY2.0-4P",
+   "x": 129.54,
+   "y": 107.95
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J8",
+   "pin": "3",
+   "net": "GND"
+  },
+  {
+   "ref": "J8",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J9",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "J9",
+   "pin": "MP",
+   "net": "GND"
+  },
+  {
+   "ref": "J8",
+   "pin": "2",
+   "net": "SCL"
+  },
+  {
+   "ref": "J9",
+   "pin": "4",
+   "net": "SCL"
+  },
+  {
+   "ref": "J8",
+   "pin": "1",
+   "net": "SDA"
+  },
+  {
+   "ref": "J9",
+   "pin": "3",
+   "net": "SDA"
+  },
+  {
+   "ref": "J8",
+   "pin": "4",
+   "net": "VOUT"
+  },
+  {
+   "ref": "J9",
+   "pin": "2",
+   "net": "VOUT"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

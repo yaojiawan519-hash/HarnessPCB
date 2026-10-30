@@ -1,0 +1,711 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "bp5_analog_mux",
+ "interface": [
+  {
+   "net": "AMUX_EN",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R402-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R406-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U402-10",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U402-11",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U402-14",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "AMUX_S3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "U402-13",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "CURRENT_DETECT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN402-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO0",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN401-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO1",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN401-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO2",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN401-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO3",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN401-8",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN400-5",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO5",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN400-6",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO6",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN400-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "MUX_BPIO7",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN400-8",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VREF_VOUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "R319-2",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  },
+  {
+   "net": "VREG_OUT",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "RN402-7",
+    "connector": false
+   },
+   "direction": "bidirectional"
+  }
+ ],
+ "power_rails": [
+  "+VUSB",
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "R402",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 186.69,
+   "y": 158.75
+  },
+  {
+   "ref": "R406",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 219.71,
+   "y": 133.35
+  },
+  {
+   "ref": "C403",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 160.02,
+   "y": 114.3
+  },
+  {
+   "ref": "U402",
+   "lib": "74xx:CD74HC4067M",
+   "value": "CD4067",
+   "footprint": "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm",
+   "x": 165.1,
+   "y": 143.51
+  },
+  {
+   "ref": "R407",
+   "lib": "Device:R_Small",
+   "value": "10K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 223.52,
+   "y": 139.7
+  },
+  {
+   "ref": "C405",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 199.39,
+   "y": 121.92
+  },
+  {
+   "ref": "C406",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 209.55,
+   "y": 121.92
+  },
+  {
+   "ref": "RN400",
+   "lib": "dp-rarray:R_Array",
+   "value": "510R",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 147.32,
+   "y": 125.73
+  },
+  {
+   "ref": "RN401",
+   "lib": "dp-rarray:R_Array",
+   "value": "510R",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 147.32,
+   "y": 135.89
+  },
+  {
+   "ref": "U404",
+   "lib": "Comparator:LMV331",
+   "value": "LMV321",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "x": 207.01,
+   "y": 133.35
+  },
+  {
+   "ref": "RN402",
+   "lib": "dp-rarray:R_Array",
+   "value": "510R",
+   "footprint": "Resistor_SMD:R_Array_Convex_4x0402",
+   "x": 147.193,
+   "y": 153.67
+  },
+  {
+   "ref": "R320",
+   "lib": "Device:R_Small",
+   "value": "510R",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 147.32,
+   "y": 146.05
+  },
+  {
+   "ref": "C504",
+   "lib": "Device:C_Small",
+   "value": "2.2uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 246.38,
+   "y": 106.68
+  },
+  {
+   "ref": "D500",
+   "lib": "Diode:BAT54C",
+   "value": "BAS40T-05",
+   "footprint": "Package_TO_SOT_SMD:SOT-523",
+   "x": 243.84,
+   "y": 123.19
+  },
+  {
+   "ref": "C506",
+   "lib": "Device:C_Small",
+   "value": "0.1uF",
+   "footprint": "Capacitor_SMD:C_0402_1005Metric",
+   "x": 256.54,
+   "y": 106.68
+  },
+  {
+   "ref": "R319",
+   "lib": "Device:R_Small",
+   "value": "100K",
+   "footprint": "Resistor_SMD:R_0402_1005Metric",
+   "x": 240.03,
+   "y": 115.57
+  },
+  {
+   "ref": "U506",
+   "lib": "Comparator:LMV331",
+   "value": "LMV321",
+   "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+   "x": 254.0,
+   "y": 118.11
+  }
+ ],
+ "conns": [
+  {
+   "ref": "C403",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C405",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C406",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C504",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "C506",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "D500",
+   "pin": "3",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R320",
+   "pin": "2",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R402",
+   "pin": "1",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U402",
+   "pin": "24",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U404",
+   "pin": "5",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "U506",
+   "pin": "5",
+   "net": "+VUSB"
+  },
+  {
+   "ref": "R402",
+   "pin": "2",
+   "net": "AMUX_EN"
+  },
+  {
+   "ref": "U402",
+   "pin": "15",
+   "net": "AMUX_EN"
+  },
+  {
+   "ref": "R406",
+   "pin": "2",
+   "net": "AMUX_OUT"
+  },
+  {
+   "ref": "R407",
+   "pin": "2",
+   "net": "AMUX_OUT"
+  },
+  {
+   "ref": "U402",
+   "pin": "10",
+   "net": "AMUX_S0"
+  },
+  {
+   "ref": "U402",
+   "pin": "11",
+   "net": "AMUX_S1"
+  },
+  {
+   "ref": "U402",
+   "pin": "14",
+   "net": "AMUX_S2"
+  },
+  {
+   "ref": "U402",
+   "pin": "13",
+   "net": "AMUX_S3"
+  },
+  {
+   "ref": "RN402",
+   "pin": "5",
+   "net": "CURRENT_DETECT"
+  },
+  {
+   "ref": "C403",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C405",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C406",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "C504",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "C506",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "R407",
+   "pin": "1",
+   "net": "GND"
+  },
+  {
+   "ref": "U402",
+   "pin": "12",
+   "net": "GND"
+  },
+  {
+   "ref": "U402",
+   "pin": "16",
+   "net": "GND"
+  },
+  {
+   "ref": "U402",
+   "pin": "17",
+   "net": "GND"
+  },
+  {
+   "ref": "U402",
+   "pin": "18",
+   "net": "GND"
+  },
+  {
+   "ref": "U402",
+   "pin": "19",
+   "net": "GND"
+  },
+  {
+   "ref": "U404",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "U506",
+   "pin": "2",
+   "net": "GND"
+  },
+  {
+   "ref": "RN401",
+   "pin": "5",
+   "net": "MUX_BPIO0"
+  },
+  {
+   "ref": "RN401",
+   "pin": "6",
+   "net": "MUX_BPIO1"
+  },
+  {
+   "ref": "RN401",
+   "pin": "7",
+   "net": "MUX_BPIO2"
+  },
+  {
+   "ref": "RN401",
+   "pin": "8",
+   "net": "MUX_BPIO3"
+  },
+  {
+   "ref": "RN400",
+   "pin": "5",
+   "net": "MUX_BPIO4"
+  },
+  {
+   "ref": "RN400",
+   "pin": "6",
+   "net": "MUX_BPIO5"
+  },
+  {
+   "ref": "RN400",
+   "pin": "7",
+   "net": "MUX_BPIO6"
+  },
+  {
+   "ref": "RN400",
+   "pin": "8",
+   "net": "MUX_BPIO7"
+  },
+  {
+   "ref": "RN402",
+   "pin": "8",
+   "net": "MUX_VREF_VOUT"
+  },
+  {
+   "ref": "U506",
+   "pin": "3",
+   "net": "MUX_VREF_VOUT"
+  },
+  {
+   "ref": "U506",
+   "pin": "4",
+   "net": "MUX_VREF_VOUT"
+  },
+  {
+   "ref": "R319",
+   "pin": "2",
+   "net": "VREF_VOUT"
+  },
+  {
+   "ref": "RN402",
+   "pin": "7",
+   "net": "VREG_OUT"
+  },
+  {
+   "ref": "R406",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N1"
+  },
+  {
+   "ref": "U404",
+   "pin": "3",
+   "net": "_bp5_analog_mux_N1"
+  },
+  {
+   "ref": "U404",
+   "pin": "4",
+   "net": "_bp5_analog_mux_N1"
+  },
+  {
+   "ref": "D500",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N2"
+  },
+  {
+   "ref": "R319",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N2"
+  },
+  {
+   "ref": "U506",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N2"
+  },
+  {
+   "ref": "U402",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N3"
+  },
+  {
+   "ref": "U404",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N3"
+  },
+  {
+   "ref": "RN401",
+   "pin": "4",
+   "net": "_bp5_analog_mux_N4"
+  },
+  {
+   "ref": "U402",
+   "pin": "2",
+   "net": "_bp5_analog_mux_N4"
+  },
+  {
+   "ref": "RN402",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N5"
+  },
+  {
+   "ref": "U402",
+   "pin": "20",
+   "net": "_bp5_analog_mux_N5"
+  },
+  {
+   "ref": "RN402",
+   "pin": "2",
+   "net": "_bp5_analog_mux_N6"
+  },
+  {
+   "ref": "U402",
+   "pin": "21",
+   "net": "_bp5_analog_mux_N6"
+  },
+  {
+   "ref": "RN402",
+   "pin": "4",
+   "net": "_bp5_analog_mux_N7"
+  },
+  {
+   "ref": "U402",
+   "pin": "22",
+   "net": "_bp5_analog_mux_N7"
+  },
+  {
+   "ref": "R320",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N8"
+  },
+  {
+   "ref": "U402",
+   "pin": "23",
+   "net": "_bp5_analog_mux_N8"
+  },
+  {
+   "ref": "RN401",
+   "pin": "3",
+   "net": "_bp5_analog_mux_N9"
+  },
+  {
+   "ref": "U402",
+   "pin": "3",
+   "net": "_bp5_analog_mux_N9"
+  },
+  {
+   "ref": "RN401",
+   "pin": "2",
+   "net": "_bp5_analog_mux_N10"
+  },
+  {
+   "ref": "U402",
+   "pin": "4",
+   "net": "_bp5_analog_mux_N10"
+  },
+  {
+   "ref": "RN401",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N11"
+  },
+  {
+   "ref": "U402",
+   "pin": "5",
+   "net": "_bp5_analog_mux_N11"
+  },
+  {
+   "ref": "RN400",
+   "pin": "4",
+   "net": "_bp5_analog_mux_N12"
+  },
+  {
+   "ref": "U402",
+   "pin": "6",
+   "net": "_bp5_analog_mux_N12"
+  },
+  {
+   "ref": "RN400",
+   "pin": "3",
+   "net": "_bp5_analog_mux_N13"
+  },
+  {
+   "ref": "U402",
+   "pin": "7",
+   "net": "_bp5_analog_mux_N13"
+  },
+  {
+   "ref": "RN400",
+   "pin": "2",
+   "net": "_bp5_analog_mux_N14"
+  },
+  {
+   "ref": "U402",
+   "pin": "8",
+   "net": "_bp5_analog_mux_N14"
+  },
+  {
+   "ref": "RN400",
+   "pin": "1",
+   "net": "_bp5_analog_mux_N15"
+  },
+  {
+   "ref": "U402",
+   "pin": "9",
+   "net": "_bp5_analog_mux_N15"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

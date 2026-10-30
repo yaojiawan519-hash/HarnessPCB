@@ -1,0 +1,174 @@
+{
+  "name": "kb_usb_c_port",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    108.89,
+    80.3938
+  ],
+  "size_mm": [
+    16.23,
+    18.7625
+  ],
+  "ports": {
+    "USB_D+": [
+      "J2",
+      "J3",
+      "J5"
+    ],
+    "USB_D-": [
+      "J2",
+      "J3",
+      "J5"
+    ],
+    "VDD": [
+      "C1",
+      "C2",
+      "J9",
+      "L2",
+      "L4",
+      "L5",
+      "R2",
+      "SW1"
+    ],
+    "GND": [
+      "C1",
+      "C2",
+      "D2",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "J8",
+      "J9",
+      "R408",
+      "R412"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VDD",
+      "x": 117.805,
+      "y": 88.95,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D-",
+      "x": 117.805,
+      "y": 76.75,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D-",
+      "x": 109.25,
+      "y": 90.575,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "GND",
+      "x": 116.0,
+      "y": 90.575,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 117.805,
+      "y": 77.25,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "USB_D+",
+      "x": 108.5714,
+      "y": 90.575,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 5,
+    "nets": 9,
+    "copper_segs": 39,
+    "vias": 4,
+    "stub_kept": 1,
+    "isolated_deleted": 6,
+    "cut_ends": 5,
+    "exit_points": 6,
+    "segs_by_layer": {
+      "B.Cu": 3,
+      "F.Cu": 36
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {
+      "GND": 6
+    },
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 27,
+        "vias": 6,
+        "nets": [
+          "GND",
+          "USB_D+",
+          "USB_D-",
+          "VDD"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "C3",
+      "value": "47uF/CL21A226MAYNNNE",
+      "fp": "C_0805_2012Metric",
+      "dx": 7.11,
+      "dy": 7.6062,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "J7",
+      "value": "TYPE-C-31-M-12",
+      "fp": "HRO_TYPE-C-31-M-12",
+      "dx": -0.39,
+      "dy": -6.5063,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "L1",
+      "value": "CBW201209U300T",
+      "fp": "L_0805_2012Metric",
+      "dx": 4.86,
+      "dy": 7.6062,
+      "rot": 90.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "5.1K",
+      "fp": "R_0805_2012Metric",
+      "dx": -7.14,
+      "dy": -5.8938,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R5",
+      "value": "5.1K",
+      "fp": "R_0805_2012Metric",
+      "dx": -7.14,
+      "dy": -0.6438,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

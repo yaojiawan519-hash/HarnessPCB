@@ -1,0 +1,100 @@
+project:
+  kind: block
+  name: ddr5_status_leds
+  version: sdi/1
+defs:
+  ddr5_status_leds:
+    category: indicator
+    rationale: "**两颗 0805 状态灯**，都是 `+3.3V → 6.8K → LED → 目标节点` 的无源接法，没有晶体管、 没有独立控制线： · D2 + R2 6.8K：目标节点是\
+      \ **GND**，所以**常亮**——上电就有 3.3V 就亮，只是很暗\n  （(3.3−Vf)/6.8K ≈ 0.19mA，Vf 按 2V 算）；它是\"电源已到\"的长明灯，不是可编程指示灯。\n\
+      · D3 + R12 6.8K：目标节点是 **PWR_GOOD_OUT**（块外的那只开集输出），\n  该节点被拉低时 D3 导通点亮，被 R13 拉回 5V 时熄灭——即\"内存条自检就绪\"\
+      灯。\n复用要点：① 反向漏电会给目标节点灌电流：D3 熄灯时 PWR_GOOD_OUT 上的漏电全压在 那颗 6.8K 后面，只是 µA 级，一般无碍；但要是把 D3 挂到高阻节点上，得算一下。\
+      \ ② 6.8K 是为 3.3V 定的。改 5V 供电亮一倍多（≈0.44mA），改 1.8V 就基本看不见了。 ③ 两颗都是 0805、方向相同（**阴极朝 GND / 朝被拉低那一侧**），丝印上\
+      \ D2 是电源、 D3 是就绪；装反了不亮，不会烧。"
+    ports:
+    - name: PWR_GOOD_OUT
+      kind: signal
+      class: digital
+      direction: bidirectional
+      exit:
+        pin: D3-1
+        connector: false
+      pin: D3/1
+      note: D3 的阴极节点：被拉低时点亮（就绪灯），悬空时由 R13 拉高熄灭
+    rails:
+    - +3.3V
+    - GND
+    parts:
+    - ref: D2
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: D3
+      lib: Device:LED
+      value: LED
+      footprint: LED_SMD:LED_0805_2012Metric
+    - ref: R12
+      lib: Device:R
+      value: 6.8K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    - ref: R2
+      lib: Device:R
+      value: 6.8K
+      footprint: Resistor_SMD:R_0805_2012Metric
+    conns:
+    - ref: R12
+      pin: '1'
+      net: +3.3V
+    - ref: R2
+      pin: '1'
+      net: +3.3V
+    - ref: D2
+      pin: '1'
+      net: GND
+    - ref: D3
+      pin: '1'
+      net: PWR_GOOD_OUT
+    - ref: D2
+      pin: '2'
+      net: _ddr5_status_leds_N1
+    - ref: R2
+      pin: '2'
+      net: _ddr5_status_leds_N1
+    - ref: D3
+      pin: '2'
+      net: _ddr5_status_leds_N2
+    - ref: R12
+      pin: '2'
+      net: _ddr5_status_leds_N2
+    placement_prior:
+      anchor: D3
+      max_mm: 6.0
+      rationale: 四件两组。规矩是**灯贴板边、朝外**（外壳开孔/导光柱看得到），限流电阻紧跟在自己那颗灯后面； 两组按"电源 / 就绪"的阅读顺序并排，别一根线绕过去交叉。
+    slots: []
+    hot_loop: []
+    internal_nets:
+    - _ddr5_status_leds_N1
+    - _ddr5_status_leds_N2
+    provenance:
+      source: human:open-source
+      board: Bus Pirate 5 DDR5 内存适配板（adapter-ram-ddr5-1REV2）
+      license: MIT — 上游 Copyright (c) 2023 Ian Lesnet / Where Labs LLC
+      license_tier: permissive
+      author: Dangerous Prototypes（上游）/ HarnessPCB（裁块）
+      date: '2026-10-30'
+      kicad: 10.0.5
+      basis: 4 件 / 5 网 / 端口 1 + 轨 2；铜 15 段 + 1 孔；死铜删 4；口岸切口 1；卡↔板门 ①~⑤ 全过
+    geometry_status: 'extracted 2026-10-30 kicad 10.0.5（PCB 从 adapter-ram-ddr5-1REV2.kicad_pcb 原样扣，坐标
+      = 源板坐标平移，origin: page；源板两张铺铜（GND 平面 + LDO 输出那一小片 +3.3V）按"块内不带铺铜"整张删掉，拼板时由整板铺铜接上）'
+    notes:
+    - '**两颗 0805 状态灯**，都是 `+3.3V → 6.8K → LED → 目标节点` 的无源接法，没有晶体管、没有独立控制线。4 件 / 5 网：1 个出块端口（PWR_GOOD_OUT）+
+      2 条轨（+3.3V / GND）+ 2 张块内网（两颗 LED 的阳极段）。'
+    - D2 + R2 6.8K：目标节点是 **GND** ⇒ **常亮**，上电有 3.3V 就亮，只是很暗（(3.3−Vf)/6.8K ≈ 0.19mA，Vf 按 2V 估）；它是"电源已到"的长明灯，不可编程。
+    - D3 + R12 6.8K：目标节点是 **PWR_GOOD_OUT**（块外那只开集输出），该节点被拉低时点亮、被 R13 拉回 5V 时熄灭 ⇒"内存条自检就绪"灯。
+    - 6.8K 是为 3.3V 定的：改 5V 供电亮一倍多（≈0.44mA），改 1.8V 基本看不见。两颗都是 0805、阴极朝 GND / 朝被拉低那一侧；装反了不亮，不会烧。
+    - 铜 15 段 + 1 孔（B 1 / F 17）；死铜删 4 段/孔；口岸切口 1 处、走线出口 3 处；削剩残迹留 1 段（其余丢掉——残迹长度只是窗口参数的函数、不是人的设计）；铺铜带走
+      0 张（本板两张都是平面网，按「块内不带铺铜」整张删，拼板时重铺）。
+    - 块里每个脚都有铜可接（没有"只靠铺铜连"的焊盘）。
+    - 借道块外器件焊盘换层 1 处（PWR_GOOD_OUT->R13.1）——那孔不在块里，块单看这几处是断的，拼板时插上就通。
+    - kicad-cli DRC：isolated_copper 0；未连通 **0** 条；断头走线 1 + 悬空过孔 3 处就是"口岸切口"（铜走到窗口边就停 = 块的铜接口，留着）；源板基线：未连通
+      0 / isolated_copper 0 / 违规 248 条。

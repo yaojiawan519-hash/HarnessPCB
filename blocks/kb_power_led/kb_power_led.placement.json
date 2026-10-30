@@ -1,0 +1,115 @@
+{
+  "name": "kb_power_led",
+  "source": "kaybee-plank.kicad_pcb",
+  "origin_src_mm": [
+    133.7725,
+    86.7687
+  ],
+  "size_mm": [
+    9.495,
+    18.4296
+  ],
+  "ports": {
+    "GND": [
+      "C1",
+      "C2",
+      "C3",
+      "J1",
+      "J2",
+      "J3",
+      "J4",
+      "J5",
+      "J7",
+      "J8",
+      "J9",
+      "R1",
+      "R408",
+      "R412",
+      "R5"
+    ],
+    "VDD": [
+      "C1",
+      "C2",
+      "C3",
+      "J9",
+      "L1",
+      "L2",
+      "L4",
+      "L5",
+      "SW1"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VDD",
+      "x": 128.225,
+      "y": 93.5625,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VDD",
+      "x": 131.9665,
+      "y": 96.7835,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "nets": 3,
+    "copper_segs": 14,
+    "vias": 2,
+    "stub_kept": 1,
+    "isolated_deleted": 3,
+    "cut_ends": 1,
+    "exit_points": 2,
+    "segs_by_layer": {
+      "B.Cu": 1,
+      "F.Cu": 13
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {
+      "VDD->J9.1": 1,
+      "VDD->SW1.2": 1
+    },
+    "island_split": {},
+    "dangling": {
+      "total": 3,
+      "port_cuts": 3,
+      "port_cut_nets": [
+        "VDD"
+      ],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 0,
+        "vias": 0,
+        "nets": [],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D2",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": 3.7275,
+      "dy": -6.0187,
+      "rot": 270.0,
+      "side": "F"
+    },
+    {
+      "ref": "R2",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -3.7725,
+      "dy": 5.7313,
+      "rot": 90.0,
+      "side": "F"
+    }
+  ]
+}

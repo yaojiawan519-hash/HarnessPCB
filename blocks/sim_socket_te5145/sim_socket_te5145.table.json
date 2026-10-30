@@ -1,0 +1,171 @@
+{
+ "$schema": "pcbstudio.blocktable.v1",
+ "block": "sim_socket_te5145",
+ "interface": [
+  {
+   "net": "C4",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C4",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "TE 座 C4 脚 → U2.C4 / 排针 8-9 脚一侧"
+  },
+  {
+   "net": "C8",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C8",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "TE 座 C8 脚 → U2.C8 / 排针 8-9 脚一侧"
+  },
+  {
+   "net": "CLK",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C3",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "SIM 时钟（ISO C3）"
+  },
+  {
+   "net": "I/O",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C7",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "SIM 数据（ISO C7），开漏双向；需上拉"
+  },
+  {
+   "net": "RST",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "SIM 复位（ISO C2），低有效"
+  },
+  {
+   "net": "SIM_CD",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-SW2",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "卡片检测开关的输出（J1.SW2），另一端 SW1 接 GND；送到 sim_leds 的 D1 阴极"
+  },
+  {
+   "net": "SIM_GND",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C5",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "卡座地，经 SW2 选出（本地 GND 或 GND_PIN）"
+  },
+  {
+   "net": "VCC",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C1",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "卡座供电，经 SW1 选出（VOUT 或 VCC_PIN）"
+  },
+  {
+   "net": "VPP",
+   "kind": "hlabel",
+   "class": "digital",
+   "exit": {
+    "pin": "J1-C6",
+    "connector": true
+   },
+   "direction": "bidirectional",
+   "note": "SIM 编程电压（ISO C6）"
+  }
+ ],
+ "power_rails": [
+  "GND"
+ ],
+ "parts": [
+  {
+   "ref": "J1",
+   "lib": "5145300-3:5145300-3",
+   "value": "5145300-3",
+   "footprint": "footprints:TE_5145300-3",
+   "x": 115.57,
+   "y": 97.79
+  }
+ ],
+ "conns": [
+  {
+   "ref": "J1",
+   "pin": "C4",
+   "net": "C4"
+  },
+  {
+   "ref": "J1",
+   "pin": "C8",
+   "net": "C8"
+  },
+  {
+   "ref": "J1",
+   "pin": "C3",
+   "net": "CLK"
+  },
+  {
+   "ref": "J1",
+   "pin": "SW1",
+   "net": "GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "C7",
+   "net": "I/O"
+  },
+  {
+   "ref": "J1",
+   "pin": "C2",
+   "net": "RST"
+  },
+  {
+   "ref": "J1",
+   "pin": "SW2",
+   "net": "SIM_CD"
+  },
+  {
+   "ref": "J1",
+   "pin": "C5",
+   "net": "SIM_GND"
+  },
+  {
+   "ref": "J1",
+   "pin": "C1",
+   "net": "VCC"
+  },
+  {
+   "ref": "J1",
+   "pin": "C6",
+   "net": "VPP"
+  }
+ ],
+ "$schema_note": "由 sdi.blockpcb 从裁块产物生成；parts/conns 与 d2s 全板设计表同构。"
+}

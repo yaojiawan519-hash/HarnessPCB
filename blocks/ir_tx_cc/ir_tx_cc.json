@@ -1,0 +1,8 @@
+{
+  "description": "",
+  "keywords": "0.1uf 100uf 1n4148ws 1r2 330r 3r0 4.7uf 6r8",
+  "fields": {
+    "PCBSTUDIO": "v1",
+    "PCBSTUDIO_BLOCK": "ir_tx_cc"
+  }
+}

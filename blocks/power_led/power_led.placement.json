@@ -1,0 +1,112 @@
+{
+  "name": "power_led",
+  "source": "vpp-maker-rev6-ian.kicad_pcb",
+  "origin_src_mm": [
+    143.645,
+    70.1715
+  ],
+  "size_mm": [
+    7.2,
+    6.1195
+  ],
+  "ports": {
+    "VOUT": [
+      "C13",
+      "C14",
+      "J1",
+      "J2",
+      "J4",
+      "L1"
+    ],
+    "GND": [
+      "C13",
+      "C14",
+      "C15",
+      "D3",
+      "D4",
+      "J1",
+      "J2",
+      "J4",
+      "Q2",
+      "Q3",
+      "Q4",
+      "R24"
+    ]
+  },
+  "cut_points": [
+    {
+      "net": "VOUT",
+      "x": 139.245,
+      "y": 71.255,
+      "layer": "F.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 148.045,
+      "y": 70.5,
+      "layer": "B.Cu"
+    },
+    {
+      "net": "VOUT",
+      "x": 142.25,
+      "y": 74.0312,
+      "layer": "B.Cu"
+    }
+  ],
+  "counts": {
+    "members": 2,
+    "not_built": [],
+    "nets": 3,
+    "copper_segs": 1,
+    "vias": 0,
+    "stub_kept": 0,
+    "isolated_deleted": 2,
+    "cut_ends": 1,
+    "exit_points": 3,
+    "segs_by_layer": {
+      "F.Cu": 1
+    },
+    "zones_kept": 0,
+    "naked_plane_pads": 1,
+    "naked_signal_pads": {},
+    "borrowed_pads": {},
+    "island_split": {},
+    "dangling": {
+      "total": 0,
+      "port_cuts": 0,
+      "port_cut_nets": [],
+      "binds": 0,
+      "bind_nets": [],
+      "spurs": 0,
+      "regressed": {},
+      "trimmed": {
+        "tracks": 1,
+        "vias": 0,
+        "nets": [
+          "VOUT"
+        ],
+        "when": "2026-10-30"
+      }
+    }
+  },
+  "placement": [
+    {
+      "ref": "D1",
+      "value": "LED",
+      "fp": "LED_0805_2012Metric",
+      "dx": 1.855,
+      "dy": 0.3285,
+      "rot": 180.0,
+      "side": "F"
+    },
+    {
+      "ref": "R1",
+      "value": "2K",
+      "fp": "R_0805_2012Metric",
+      "dx": -1.895,
+      "dy": 0.3285,
+      "rot": 0.0,
+      "side": "F"
+    }
+  ]
+}
