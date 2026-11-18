@@ -343,6 +343,12 @@ class NegotiatedRouter:
         # 预算空转；早停只省墙钟，最优快照照常 restore，质量不变。
         self.stagnation_k = stagnation_k
         self.hist: dict[tuple[int, int, int], float] = {}
+        # 过程遥测（2026-11-17）：布线**过程中**的失败状况，非终态——
+        # Phase1 逐网失败 + 协商逐轮冲突/err 快照，出 report 的 process 段。
+        # 布局复盘用：哪里反复挣扎 = 哪里通道挤死（用户拍板"不只看结果"）。
+        self.tel: list[dict] = []
+        # 逐格网归因：cell → {net: 撕线次数}（热区→贡献网，_hist_add 维护）
+        self._cell_nets: dict[tuple, dict[str, int]] = {}
 
         # 网表：≥2 盘、无 zone、未连通（已连通的既有铜不重布）
         zone_nets = {z.net for z in board.zones}
@@ -796,7 +802,7 @@ class NegotiatedRouter:
                 out.append(net)
         return out
 
-    def _hist_add(self, p: NetPath) -> None:
+    def _hist_add(self, p: NetPath, net: str | None = None) -> None:
         """被撕冲突网的栅格位加历史惩罚（单调递增）。
 
         键 = (ix, iy, 层序)——与 GridRouter.route 的 hist 参数同一坐标
@@ -818,13 +824,16 @@ class NegotiatedRouter:
                 cells.add((ix, iy, li))
         for c in cells:
             self.hist[c] = self.hist.get(c, 0.0) + self.hist_penalty
+            if net is not None:      # 逐格网归因：热区→贡献网（布局复盘定位堵点主语）
+                self._cell_nets.setdefault(c, {}).setdefault(net, 0)
+                self._cell_nets[c][net] += 1
 
     def _rip(self, net: str, penalise: bool) -> None:
         p = self.paths[net]
         if not p.copper():
             return
         if penalise:
-            self._hist_add(p)
+            self._hist_add(p, net)
         self.router.rollback(p.segs, p.vias)
         p.segs, p.vias = [], []
 
@@ -915,6 +924,37 @@ class NegotiatedRouter:
             if p.copper():
                 self.router.commit(p.segs, p.vias)
 
+    def _tel_export(self) -> dict:
+        """过程遥测导出（report 的 process 段）。
+
+        - events：p1_fail（首布失败，A* 原话：网/焊盘对/栅格/间隙/异网铜
+          封路）+ iter（协商逐轮：冲突网名单 + 该轮 err 快照——失败是
+          过程量，终态 per_net 只剩最后一帧）
+        - struggle_heat：hist 挣扎热力图 top200（被撕冲突网反复占据的
+          栅格位，mm 坐标 + 罚值）。**布局复盘的抓手**：热区 = 通道
+          挤死/元件挡道的位置，挪件让道比磨布线有效
+        """
+        st = self.router.cfg.step
+        layers = list(self.router.layers)
+        heat = sorted(
+            ((round(ix * st, 3), round(iy * st, 3),
+              layers[li] if li < len(layers) else str(li), round(pen, 2))
+             for (ix, iy, li), pen in self.hist.items()),
+            key=lambda c: -c[3])[:200]
+        # 热区逐格归因：top30 格 → 贡献网（撕线次数排序）。
+        # 用途：热区定位到"哪根网在挣扎"——布局修谁、给谁让道的主语。
+        zone = []
+        for h in heat:
+            cell = (round(h[0] / st), round(h[1] / st),
+                    layers.index(h[2]) if h[2] in layers else 0)
+            nets = self._cell_nets.get(cell)
+            if nets:
+                top = sorted(nets.items(), key=lambda kv: -kv[1])[:3]
+                zone.append([h[0], h[1], h[2],
+                             [[n, c] for n, c in top]])
+        return {"events": self.tel, "struggle_heat": heat,
+                "zone_attribution": zone[:30]}
+
     # ---------------------------------------------------------------- 主循环
     def run(self) -> dict:
         t0 = time.time()
@@ -927,6 +967,9 @@ class NegotiatedRouter:
                 self.paths[net].err = "预算耗尽"
                 continue
             self._route_net(net)
+            if self.paths[net].err is not None:   # 过程遥测：首布失败点名
+                self.tel.append({"t": "p1_fail", "net": net,
+                                 "err": self.paths[net].err})
         # Phase 2：全量 commit（确定性序——先布铜成为后布铜的障碍）；
         # 每次 commit 后采井样本——后布的网看到前缀实测节距（Q3）。
         for net in order:
@@ -950,6 +993,9 @@ class NegotiatedRouter:
             iterations += 1
             conflict_set = set(conflicted)
             for net in self.targets:            # 全拆（仅冲突网落 hist 惩罚）
+                if net in conflict_set:
+                    # 过程遥测：rip 归因（哪根网在挣扎；热力图格子→网）
+                    self.tel.append({"t": "rip", "i": iterations, "net": net})
                 self._rip(net, penalise=net in conflict_set)
             # 全拆后铜面全变：井样本作废重采（p* 本身保留——连续性暖启）。
             self._pitch_gaps.clear()
@@ -971,6 +1017,11 @@ class NegotiatedRouter:
                     self._pitch_update(net)
                     self._via_pitch_update(net)
                     self._bundle_pitch_update(net)
+            self.tel.append({              # 过程遥测：本轮失败状况快照
+                "t": "iter", "i": iterations,
+                "conflicted": sorted(conflict_set),
+                "errd": {n: self.paths[n].err for n in order
+                         if self.paths[n].err is not None}})
             if self._bundle_lay:
                 # D5② 网级降级：无吸引重试后仍布不通（非预算耗尽）的
                 # 束网永久撤吸引——下轮起当散网布（_diag_fb 先例）。
@@ -1135,6 +1186,7 @@ class NegotiatedRouter:
                   else "failed")
         return {
             "status": status, "clearance_mm": self.router.cfg.clearance,
+            "process": self._tel_export(),
             "layers": list(self.router.layers),
             "dir_prior": self.dir_prior,
             "via_cost": self.router.cfg.via_cost,

@@ -798,6 +798,66 @@ class GridRouter:
 
     # ---------------------------------------------------------------- A*
 
+    def _copper_seeds(self, pad: Pad, net: str, half_w: float,
+                       reach: float = 2.2) -> dict[str, list[tuple[int, int, float]]]:
+        """骨架种子（第四回退，2026-11-17）：pad 附近同网既有铜上的栅格点。
+
+        满栅格 BGA 球被骨架（dogbone/通道线）预连时，锚/出口/狗骨三回退
+        全灭（0.6mm 锚在 0.8mm 球距无处安放）——但骨架铜已把球引到逃逸
+        口。从同网铜上的栅格点直接入堆（parent=None 不补段：骨架物理在
+        板上，连通判定 _pads_connected 把 board 既有铜一并计入，本路由
+        只需布「骨架出口 → 对端」余段）。返回 {layer: [(ix, iy, stub)]}，
+        stub = 格点到盘心距（保守计入 g，h 可采纳性由 r_goal 承担）。
+        仅锚全灭时被调用，对原本可布通的网 inert（零影响）。"""
+        st = self.cfg.step
+        clean: dict[str, list[tuple[int, int, float]]] = {}
+        dirty: dict[str, list[tuple[int, int, float]]] = {}
+
+        def _try(x: float, y: float, layers: tuple[str, ...]) -> None:
+            ix, iy = round(x / st), round(y / st)
+            if not (self._ix_lo <= ix <= self._ix_hi
+                    and self._iy_lo <= iy <= self._iy_hi):
+                return
+            stub = math.hypot(ix * st - pad.x, iy * st - pad.y)
+            if stub > reach + _EPS:
+                return
+            for layer in layers:
+                if layer not in self.layers:
+                    continue
+                tgt = (clean if self.index.point_clear(
+                    ix * st, iy * st, layer, net, half_w) else dirty)
+                tgt.setdefault(layer, []).append((ix, iy, stub))
+
+        for s in self.board.segments:
+            if s.net != net:
+                continue
+            if (max(s.x1, s.x2) < pad.x - reach
+                    or min(s.x1, s.x2) > pad.x + reach
+                    or max(s.y1, s.y2) < pad.y - reach
+                    or min(s.y1, s.y2) > pad.y + reach):
+                continue
+            # 沿段全程采样栅格点（步长 = 半栅步，保不漏格；远处 = 骨架
+            # 出口方向，优先——通道线的出口端在球阵外，格位干净）
+            dx, dy = s.x2 - s.x1, s.y2 - s.y1
+            ln = math.hypot(dx, dy)
+            n = max(1, int(ln / (st / 2)))
+            for i in range(n + 1):
+                t = i / n
+                _try(s.x1 + t * dx, s.y1 + t * dy, (s.layer,))
+        for v in self.board.vias:
+            if v.net != net:
+                continue
+            if math.hypot(v.x - pad.x, v.y - pad.y) > reach:
+                continue
+            _try(v.x, v.y, self.layers)  # 通孔贯穿全层
+        out: dict[str, list[tuple[int, int, float]]] = {}
+        for layer, lst in {**dirty, **clean}.items():  # clean 覆盖同键
+            merged = list(dirty.get(layer, [])) + list(clean.get(layer, []))
+            # 远的优先（=骨架出口方向），同距按坐标稳定序
+            merged.sort(key=lambda t3: (-t3[2], t3[0], t3[1]))
+            out[layer] = merged[:24]
+        return out
+
     def route(self, net: str, a: Pad, b: Pad,
               hist: dict[tuple[int, int, int], float] | None = None,
               ) -> tuple[list[Segment], list[Via]]:
@@ -835,9 +895,14 @@ class GridRouter:
             dog_a = self._dogbone_seeds(a, net, dog_half)
             dog_b = self._dogbone_seeds(b, net, dog_half)
         if not starts and not a_exits and not dog_a:
+            # 骨架种子第四回退：同网骨架铜上的栅格点（满栅格 BGA 预连球）
+            starts = self._copper_seeds(a, net, half_w)
+        if not starts and not a_exits and not dog_a:
             raise ValueError(f"{net} 焊盘 {a.key} 栅格锚（半径 "
                              f"{self.cfg.anchor_radius}mm）与轴向出口"
                              f"（half_w={half_w:.3f}mm）全被封死")
+        if not goals and not b_exits and not dog_b:
+            goals = self._copper_seeds(b, net, half_w)
         if not goals and not b_exits and not dog_b:
             raise ValueError(f"{net} 焊盘 {b.key} 栅格锚与轴向出口全被封死")
         goal_stub = {(ix, iy, self.layers.index(li)): s

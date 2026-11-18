@@ -411,3 +411,30 @@ P4 出包审计发现 segment.py 模块 docstring 首行携带工作台内部复
    （29761 B / 621 行），取代 2026-10-14 附录的 `c74bca10…`；其余
    七文件（engine/astar/model/snap/freeroute/drc/actions）零触碰、
    冻结值继续有效。
+
+## 附录续（2026-11-18）：布局验证遥测层解冻——engine.py + astar.py 功能性新增（非 inert）
+
+引擎角色扩展为**布局验证器**（用户拍板"引擎快速诊断布局、减少 FreeRouting"，
+2026-11-17）：每轮 240s 压力测试驱动布局迭代。为此解冻 engine.py + astar.py，
+**本条非 inert**——新增功能改变"原本必死路径"的行为（正是目的），如实记录：
+
+1. **engine.py 新增**（纯增量）：report `process` 段——`p1_fail`（锚死点名）/
+   `iter`（协商逐轮快照）/`rip`（撕线归因）/`struggle_heat`（挣扎热力图 top200）/
+   `zone_attribution`（热格→贡献网，`_cell_nets`）。布线决策路径零触碰。
+2. **astar.py 新增 `_copper_seeds` 第四回退**：锚/出口/狗骨三回退全灭（满栅格
+   BGA 球的必死路径）时，从 pad 2.2mm 内同网骨架铜取栅格点入堆。沿段全程采样 +
+   clean/dirty 双档 + 远端优先；只在必死路径生效，对原本可布通的网零影响
+   （条件性 inert）。
+3. **证据**：`tests/test_route_astar.py` 47 passed；HPM5E00 全板实弹锚死
+   73→0，MII 网组布通率 3%→30%（`--width 0.1 --clearance-um 200` 诊断口径），
+   CAN 组 100%；布局迭代 20 轮热值 67.3→56.8。
+4. **同步 `Placement/src/route_rl/loop.py`**（route_rl 侧，不在本冻结清单）：
+   priority pass 的 `only_nets` 加 signal_escapes——修复 esc 铜被摘 pins 后
+   遭 FR 盲丢的 bug。
+5. **MD5 重录**（工作台 = executors 镜像，md5 双处同值）：
+   - engine.py `8df3be0a34d418d17d22e7f8cf7a32e1`（取代 2026-10-10 附录值）
+   - astar.py `8c3cdacf4a177db2fa0b0cf18bdff45f`（取代同上）
+   - 其余六文件（model/snap/freeroute/drc/actions/segment）零触碰，冻结值继续有效。
+6. **随包新增**（executors/DesignBlockTools/）：`pcb_check_layout_rules.py`
+   （L0 六规则）、`pcb_check_net_groups.py`（网组布通率）、
+   `pcb_render_heatmap.py`（热力图渲染）+ `skills/engine-stress-eval/`（方法 Skill）。

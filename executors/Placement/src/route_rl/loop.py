@@ -20,8 +20,10 @@ import time
 from pathlib import Path
 
 from . import env, metrics, records
-from .dsn_edit import (del_nets, force_clearance, keep_only_nets, lock_layer,
-                       protect_wiring, shrink_npth_keepout)
+from .dsn_edit import (del_nets, drop_pins, fix_net_wiring, fix_wiring,
+                       force_clearance, keep_only_nets, lock_layer,
+                       protect_wiring, shrink_npth_keepout,
+                       skeleton_keepouts, split_power_class)
 from .mdp import CLEARANCE_GRID, obs_vector, unflatten_action
 from .stackup import PassSpec, Stackup
 
@@ -209,15 +211,38 @@ def compile_pass_dsn(board: Path, dst: Path, spec: PassSpec, stackup: Stackup,
     等价（l0_equiv_check 前提不破）。"""
     env.pcbnew("export_dsn", str(board), str(dst), str(clearance_um))
     t = dst.read_text()
+    if stackup.aux_power_nets:                       # 0 序：电源轨拆 PWR 类走粗线
+        t, n_moved = split_power_class(t, list(stackup.aux_power_nets))
+        if n_moved:
+            print(f"  [dsn] PWR 类拆出 {n_moved} 根电源轨（粗线 0.2mm；"
+                  f"KiCad10 netclass 在工程文件、独立导 DSN 丢失，文本层补）")
     if spec.delete_plane_nets:                       # A 序：删网 → 锁层 → 抬 clearance
         t = del_nets(t, sorted(stackup.plane_nets))
     if spec.only_nets:                               # 关键网先布：其余网摘 pins
         t = keep_only_nets(t, list(spec.only_nets))
+    _no_route = os.environ.get("RRL_DSN_NO_ROUTE", "")   # 手布网禁布：摘 pins
+    if _no_route:                                    # （wiring 顶层段不伤，铜仍是障碍）
+        _nr = [s.strip() for s in _no_route.split(",") if s.strip()]
+        t = drop_pins(t, _nr)
+        t, _ = fix_net_wiring(t, _nr)                # 手布铜钉 fixed（route 型会被撕）
+        t, _nk = skeleton_keepouts(t, _nr)           # 骨架铜→keepout（FR 对无脚网
+        if _nk:                                      #   的 fixed 铜也盲，run4 实证）
+            print(f"  [dsn] 骨架 keepout {_nk} 条")
+    _fix_only = os.environ.get("RRL_DSN_FIX", "")    # 半手布网（大电源轨）：pins 全留
+    if _fix_only:                                    #   给 FR 布余段，手布铜只钉 fixed
+        _fx = [s.strip() for s in _fix_only.split(",") if s.strip()]
+        t, _nf = fix_net_wiring(t, _fx)
+        if _nf:                                      # 不摘 pins/不加 keepout：有脚网
+            print(f"  [dsn] fix-only 钉 fixed {_nf} 条")
+        # 的 fixed 铜 FR 看得见（盲只发生在无脚网，run4）；已连通 fixed 子图
+        # 从 ratsnest 消失 → FR 不会重布手放的球逃逸段，只补余下脚
     if spec.shrink_npth:                             # C 序：缩径 → protect → 锁层
         t = shrink_npth_keepout(t, clearance_um,
                                 stackup.npth_hole_radius_um,
                                 stackup.npth_exported_radius_um)
-    if spec.protect_wiring:
+    if spec.fix_wiring:
+        t, _ = fix_wiring(t)
+    elif spec.protect_wiring:
         t, _ = protect_wiring(t)
     if spec.lock_non_signal:
         for L in stackup.layers:
@@ -227,6 +252,8 @@ def compile_pass_dsn(board: Path, dst: Path, spec: PassSpec, stackup: Stackup,
         for L in stackup.signal_layers:
             if L not in active_layers:
                 t = lock_layer(t, L)
+    for _L in filter(None, os.environ.get("RRL_DSN_LOCK_LAYERS", "").split(",")):
+        t = lock_layer(t, _L.strip())                # 全 pass 硬锁层（骨架专属层）
     if spec.force_clearance_txt:
         t = force_clearance(t, clearance_um)
     dst.write_text(t)
@@ -393,6 +420,14 @@ def run_round(base: Path, out_dir: Path, spec: PassSpec, stackup: Stackup,
 
         env.pcbnew("import_ses", str(ses), str(base), str(raw))  # ④
         env.pcbnew("cleanup", str(raw), str(tmp))
+        _skel = os.environ.get("RRL_SKELETON")
+        if _skel:
+            # ④' 骨架守卫：cleanup 把只挂单层走线的骨架过孔（窗孔只带 F 狗骨；
+            # 落孔接通前是单层岛）判悬空剪掉——幂等补回。必须放 cleanup 之后：
+            # 落盘 tmp 永远带骨架 → 下轮 DSN 导出看得见窗孔位，FR 才不会把
+            # 别的网布进窗位（放 cleanup 之前 = DSN 从无骨架板出，窗位被占后
+            # 补回的孔直接撞线）。已接通两层的骨架件 cleanup 不剪，幂等跳过。
+            env.pcbnew("skeleton_apply", _skel, str(tmp), str(tmp))
         # pcbnew Save 会在 raw/tmp 旁顺手写 .kicad_pro/.kicad_prl——留着会让
         # 事后人工 kicad-cli 复判读到 demo netclass 判距（0.25/0.28 ≠ 板规 0.2，
         # 见 env.kicad_drc 注）。kicad_drc 已隔离判决，这里删掉保副产物单板可复判。
@@ -499,7 +534,8 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
                  engine: str = "freerouting",
                  priority_nets: list[str] | None = None,
                  fan_early: bool = False,
-                 fan_early_only: list[str] | None = None) -> dict:
+                 fan_early_only: list[str] | None = None,
+                 signal_escapes: list[str] | None = None) -> dict:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     run_id = records.new_run_id()
@@ -514,12 +550,23 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
         for p in plan:
             if p.name == "priority":
                 raise ValueError("优先级 pass 名与计划冲突")
+        # signal_escapes 网也要进 priority 的 only_nets：否则 keep_only_nets 摘掉
+        # 它们的 pins → esc 预埋铜变无脚网 → FR 对无脚网 fixed 铜盲（同源见
+        # _fix_only 注释）→ esc 铜在 priority pass 丢失、signal pass 也看不到
+        # （2026-11-16 HPM5E00 BGA 满栅格实弹）。esc 网有脚后 FR 从预埋孔连到
+        # 对端，正是 signal-escapes 的本意。
         plan = [PassSpec("priority", delete_plane_nets=True,
                          lock_non_signal=True, force_clearance_txt=True,
-                         only_nets=tuple(priority_nets))] + plan
-        # 后续信号 pass 不许重布这几根网：protect = 既有铜变障碍（不是删掉）
+                         fix_wiring=True,
+                         only_nets=tuple(priority_nets) + tuple(signal_escapes or ()))] + plan
+        # priority pass 自己也要 fix_wiring：pkbnew 导出把既有桩写成
+        # `(type route)`，FreeRouting 会把它们整棵撕掉重放——桩的径向方向
+        # 没了，出口面被 FreeRouting 自己的斜穿线封死（"一根线挡住所有线"）。
+        # 而且桩多为单脚网，`(type protect)` 对单脚网无效（铜被当悬空丢弃），
+        # 只有 `(type fixed)` 把桩留成永固障碍——单脚桩保住、别的网绕道内层/绕行。
+        # 后续信号 pass 不许重布这几根网：fix = 既有铜变永固障碍（不是删掉）
         import dataclasses as _dc
-        plan = [p if p.name != "signal" else _dc.replace(p, protect_wiring=True)
+        plan = [p if p.name != "signal" else _dc.replace(p, fix_wiring=True)
                 for p in plan]
         print(f"  关键网先布：{'、'.join(priority_nets)}")
 
@@ -557,7 +604,8 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
         from .fanout import add_keepouts, plan_fanout, place_fanout
 
     def _plan_fanout(b: Path, tight: bool | None,
-                     only: set[str] | None = None) -> Path:
+                     only: set[str] | None = None,
+                     esc: tuple[str, ...] = ()) -> Path:
         """在**当前**板上找落孔位 + 落 keepout。`tight` 见 fanout.plan_fanout。
 
         `only`：只给这几只脚落 keepout（其余照常规划但不当障碍），位号-脚号
@@ -567,16 +615,21 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
         # 已经订下、但铜还没落的落孔位（早占位那一批）：后一批规划必须让开
         reserved = [{'x': s['x'], 'y': s['y'], 'vd': s['vd'],
                      'px': (s['px'], s['py']),
-                     'elbow': tuple(s['elbow']) if s.get('elbow') else None}
+                     'elbow': tuple(s['elbow']) if s.get('elbow') else None,
+                     'net': s['net'], 'esc': bool(s.get('esc'))}
                     for s in fan_spots]
         try:
             spots = plan_fanout(b, stackup, tight=tight, skip=covered,
-                                reserved=reserved)
+                                reserved=reserved,
+                                signal_escapes=tuple(signal_escapes or ()))
         except Exception as e:      # 规划失败不挡链：退回布线后 stitch
             print(f"  [fanout] 规划失败，跳过（回退到 planes.stitch）：{e}")
             return b
         if only is not None:
-            spots = [s for s in spots if f"{s['ref']}-{s['num']}" in only]
+            # esc spot（信号逃逸）不受 only 白名单约束——它伺候的是"网"不是
+            # "这只脚要不要早占位"（2026-11-13 MCU_5e00_Core）
+            spots = [s for s in spots if s.get('esc')
+                     or f"{s['ref']}-{s['num']}" in only]
             if not spots:
                 print(f"  [fanout] 指定要早占位的脚在这块板上找不到落孔位："
                       f"{sorted(only)}")
@@ -609,13 +662,19 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
                 print(f"  [fanout] 这几只平面网脚本轮**没有落孔位**："
                       f"{'、'.join(nospot)}（布完会悬空）")
         print(f"== pass {spec.name} (base={cur.name}) ==")
-        if fan_spots and spec.name == "planes":
-            cur = place_fanout(cur, fan_spots,
-                               out_dir / "_fanout_copper.kicad_pcb")
-            print(f"  [fanout] 落铜 {len(fan_spots)} 枚过孔 + 引线")
-            fan_spots = None
         if spec.name == "planes":
-            from .planes import run_planes_pass
+            from .planes import run_planes_pass, strip_plane_copper
+            # 先剥净 power pass 布的平面网铜（含过孔），再落扇出铜：power pass
+            # 的 FreeRouting 落孔位不守 fanout 的 _lane_ok，可能压死口岸出口
+            # （h730 的 +3.3V 过孔压死 RXD0）。剥完扇出才是唯一的平面网过孔来源。
+            cur = strip_plane_copper(cur, out_dir, stackup)
+            if fan_spots:
+                cur = place_fanout(cur, fan_spots,
+                                   out_dir / "_fanout_copper.kicad_pcb")
+                print(f"  [fanout] 落铜 {place_fanout.last_landed}"
+                      f"/{len(fan_spots)} 枚过孔 + 引线")
+                nospot = sorted(set(nospot) | set(place_fanout.last_failed))
+                fan_spots = None
             rec = run_planes_pass(cur, out_dir, stackup, run_id)
             records.append_round(out_dir, rec)
             cur = Path(rec["board_out"])
@@ -645,8 +704,12 @@ def run_pipeline(board: Path, stackup: Stackup, out_dir: Path,
     if fan_spots:
         cur = place_fanout(cur, fan_spots,
                            out_dir / "_fanout_copper.kicad_pcb")
-        print(f"  [fanout] 落铜 {len(fan_spots)} 枚过孔 + 引线")
-        chain["fanout"] = {"board": str(cur), "spots": len(fan_spots)}
+        print(f"  [fanout] 落铜 {place_fanout.last_landed}"
+              f"/{len(fan_spots)} 枚过孔 + 引线")
+        nospot = sorted(set(nospot) | set(place_fanout.last_failed))
+        chain["fanout"] = {"board": str(cur), "spots": len(fan_spots),
+                           "landed": place_fanout.last_landed,
+                           "replan_failed": place_fanout.last_failed}
 
     result = {"run_id": run_id, "board_id": stackup.board_id,
               "chain": chain, "final": str(cur),
